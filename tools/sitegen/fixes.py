@@ -443,7 +443,16 @@ def fix_common(text, pg):
         text = text.replace('"close_content":"Close"', '"close_content":"Închide"')
     text = re.sub(r'<div class="ds-popup" id="ds-popup-1" role="dialog" aria-label="[^"]*">',
                   f'<div class="ds-popup" id="ds-popup-1" role="dialog" aria-modal="true" aria-label="{t["popup"]}">', text)
-    text = re.sub(r'<h2>(<img [^>]*wp-image-243[^>]*>)</h2>', r'<div class="ds-popup-icon">\1</div>', text)
+    # iconița: aceeași plăcuță cu scut ca în sistemul de iconițe al site-ului (în locul PNG-ului)
+    from .siteicons import svg as site_svg
+    text = re.sub(r'<h2>(<img [^>]*wp-image-243[^>]*>)</h2>',
+                  lambda m: f'<div class="ds-popup-icon"><span class="bx-ic-plate">{site_svg("shield-check")}</span></div>', text)
+    text = text.replace('<button class="ds-button ds-close-popup is-medium is-fullwidth" style="color:#ffffff; background:rgb(26,34,102)">',
+                        '<button class="ds-button ds-close-popup bx-popup-ok" type="button">')
+    # butonul de închidere generat de plugin: „×” fin, ca în căutare
+    text = text.replace('"close_type":"-icon"', '"close_type":"-text"').replace('"close_content":"Închide"', '"close_content":"×"').replace('"close_content":"Close"', '"close_content":"×"')
+    text = re.sub(r'"close_css":\{[^}]*\}', '"close_css":{"font-size":"28px","color":"#1A2266"}', text)
+    text = text.replace('"height":"450px"', '"height":"auto"')
 
     # UI-11 / UI-12: breadcrumbs – „Acasă” duce acasă, nivelul de secțiune e text, nav + aria-current
     def crumbs(m):
@@ -919,7 +928,8 @@ def retarget_links(text, here):
 def apply_fixes():
     transform_theme_css()
     (DIST / "assets" / "img").mkdir(parents=True, exist_ok=True)
-    shutil.copy2(SRC / "site" / "img" / "og-bimx.png", DIST / OG_IMAGE)
+    for name in ("og-bimx.png", "hero-x.webp"):
+        shutil.copy2(SRC / "site" / "img" / name, DIST / "assets" / "img" / name)
     changed = 0
     for f in sorted(DIST.rglob("*.html")):
         rel = f.relative_to(DIST)

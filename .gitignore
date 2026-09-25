@@ -11,3 +11,4 @@ __pycache__/
 # documente de lucru (audituri, corespondență): păstrate doar local, nu în repository
 /docs/
 /audits/
+/exports/

@@ -218,6 +218,33 @@
       if (d && d <= today) { b.textContent = b.getAttribute('data-after'); b.classList.add('is-open'); }
     });
 
+    // Hero „X”: reflexie de lumină o singură dată la încărcare, apoi înclinare discretă (≤ 2,5°) după mouse
+    var art = document.querySelector('.bx-home-art-img');
+    var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (art && !still) {
+      var tilt = art.querySelector('.bx-tilt'), sheen = art.querySelector('.bx-sheen'), img = art.querySelector('img');
+      var start = function () {
+        // masca reflexiei = forma X-ului; pe file:// browserul blochează imaginea ca mască, deci reflexia trece fără mască
+        if (location.protocol !== 'file:') sheen.style.setProperty('--bx-mask', 'url("' + img.currentSrc + '")');
+        else sheen.classList.add('no-mask');
+        sheen.classList.add('run');
+      };
+      if (img.complete) start(); else img.addEventListener('load', start, { once: true });
+      if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+        var hero = document.querySelector('.bx-home-hero'), raf = 0, MAX = 3;
+        hero.addEventListener('mousemove', function (e) {
+          cancelAnimationFrame(raf);
+          raf = requestAnimationFrame(function () {
+            var r = hero.getBoundingClientRect();
+            var x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+            tilt.style.transform = 'rotateY(' + (x * 2 * MAX).toFixed(2) + 'deg) rotateX(' + (-y * 2 * MAX).toFixed(2) + 'deg) ' +
+              'translate3d(' + (x * 10).toFixed(1) + 'px,' + (y * 8).toFixed(1) + 'px,0)';
+          });
+        });
+        hero.addEventListener('mouseleave', function () { tilt.style.transform = ''; });
+      }
+    }
+
     // Subsolul: pe mobil coloanele sunt pliate, pe desktop deschise
     var fcols = document.querySelectorAll('.bx-f-col');
     var fmq = window.matchMedia('(max-width: 768px)');

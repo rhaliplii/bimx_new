@@ -1448,3 +1448,127 @@ header.site-header .header_content .center nav ul.menu-wrapper li.menu-item-has-
   }
 }
 .bx-home-hero::after { border-color: rgba(30, 177, 241, .06) !important; }
+/* mobil: ilustrația devine fundal discret în spatele titlului (nu mai ocupă spațiu în flux) */
+@media (max-width: 600px) {
+  .bx-home-hero-grid { position: relative; }
+  .bx-home-art {
+    position: absolute !important; top: 8px; right: -40px; width: 260px !important; max-width: none !important;
+    margin: 0 !important; opacity: .14; pointer-events: none; z-index: 0;
+  }
+  .bx-home-hero-copy { position: relative; z-index: 1; }
+}
+@media (max-width: 600px) { .bx-home-hero-grid { padding-bottom: 8px !important; } .bx-lt { padding-top: 16px !important; } }
+/* „X”-ul mare, fără fluxuri: înălțime limitată ca hero-ul să nu crească */
+.bx-xmark { max-height: 400px; width: auto !important; max-width: 100% !important; }
+.bx-home-art { display: flex; justify-content: center; }
+.bx-xmark { overflow: visible; }
+
+/* ---------- Hero: imaginea „X” 3D, cu marginile topite în fundal (fără linii drepte) ---------- */
+.bx-home-art-img { position: relative; }
+.bx-home-art-img picture, .bx-home-art-img img { display: block; width: 100%; height: auto; }
+.bx-home-art-img img {
+  max-width: 620px; margin: 0 auto;
+  -webkit-mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 58%, transparent 100%);
+  mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 58%, transparent 100%);
+}
+@media (max-width: 1100px) { .bx-home-art-img img { max-width: 480px; } }
+/* imaginea are fundal transparent: fără mască */
+.bx-home-art-img img { -webkit-mask-image: none !important; mask-image: none !important; }
+/* hero: fundal #141A55 */
+.bx-home-hero { background: #141A55 !important; }
+/* imaginea hero (aproape pătrată): înălțime limitată, ca hero-ul să nu crească */
+.bx-home-art-img img { width: auto !important; max-width: 100% !important; max-height: 420px; margin: 0 auto; }
+@media (max-width: 1100px) { .bx-home-art-img img { max-height: 320px; } }
+.bx-home-hero::before, .bx-home-hero::after { display: none !important; }
+/* imaginea are fundal propriu: margini estompate, fără dreptunghi vizibil */
+.bx-home-art-img img {
+  -webkit-mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 62%, transparent 100%) !important;
+  mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 62%, transparent 100%) !important;
+}
+
+/* ---------- Avertizarea despre datele de piață: tipografia, butonul și închiderea site-ului ---------- */
+#ds-popup-1 .ds-popup-wrapper { border-radius: 16px !important; box-shadow: 0 24px 64px -16px rgba(0, 0, 0, .45) !important; padding: 0 !important; height: auto !important; max-width: 560px !important; }
+#ds-popup-1 .ds-popup-content { padding: 36px 36px 32px !important; font-family: "Prompt", sans-serif !important; }
+#ds-popup-1 .ds-popup-icon { margin: 0 0 20px; }
+#ds-popup-1 .ds-popup-icon .bx-ic-plate { width: 48px; height: 48px; }
+#ds-popup-1 h2 { margin: 0 0 12px !important; font-size: 24px !important; line-height: 32px !important; font-weight: 700 !important; letter-spacing: -.01em; color: var(--bx-navy) !important; }
+#ds-popup-1 p { margin: 0 0 12px !important; font-size: 16px !important; line-height: 25px !important; color: #4A5065 !important; }
+#ds-popup-1 p:last-child { margin: 24px 0 0 !important; }
+#ds-popup-1 .bx-popup-ok {
+  display: inline-flex; align-items: center; justify-content: center; width: 100%; min-height: 48px; padding: 12px 22px; border: 0 !important;
+  border-radius: 8px !important; background: #1DB0F0 !important; color: #fff !important; font-family: inherit; font-size: 16px !important; font-weight: 600 !important;
+  cursor: pointer; transition: background .15s; box-shadow: none !important;
+}
+#ds-popup-1 .bx-popup-ok:hover { background: #139BD6 !important; }
+#ds-popup-1 .bx-popup-ok:focus-visible { outline: 2px solid #1A2266 !important; outline-offset: 2px !important; }
+#ds-popup-1 .ds-close-popup:not(.bx-popup-ok), #ds-popup-1 [class*="-topRight"] {
+  width: 40px !important; height: 40px !important; top: 14px !important; right: 14px !important; display: flex !important; align-items: center; justify-content: center;
+  border-radius: 10px !important; background: transparent !important; color: var(--bx-navy) !important; font-size: 28px !important; line-height: 1 !important; font-weight: 300 !important;
+}
+#ds-popup-1 .ds-close-popup:not(.bx-popup-ok):hover, #ds-popup-1 [class*="-topRight"]:hover { background: #F1F4F9 !important; }
+@media (max-width: 600px) { #ds-popup-1 .ds-popup-content { padding: 28px 22px 24px !important; } #ds-popup-1 h2 { font-size: 21px !important; line-height: 28px !important; } }
+#ds-popup-1 .ds-popup-close {
+  position: absolute !important; top: 14px !important; right: 14px !important; width: 40px !important; height: 40px !important; padding: 0 !important;
+  display: flex !important; align-items: center; justify-content: center; border: 0 !important; border-radius: 10px !important; background: transparent !important;
+  font-size: 0 !important; cursor: pointer; z-index: 2;
+}
+#ds-popup-1 .ds-popup-close::before, #ds-popup-1 .ds-popup-close::after {
+  content: "" !important; position: absolute; left: 50%; top: 50%; width: 18px; height: 2px; border-radius: 2px; background: var(--bx-navy) !important;
+  transform: translate(-50%, -50%) rotate(45deg); display: block !important; font-size: 0 !important;
+}
+#ds-popup-1 .ds-popup-close::after { transform: translate(-50%, -50%) rotate(-45deg); }
+#ds-popup-1 .ds-popup-close:hover { background: #F1F4F9 !important; }
+#ds-popup-1 .ds-popup-wrapper { height: auto !important; min-height: 0 !important; }
+/* fereastra: centrată, cât conținutul (plugin-ul o întinde pe toată înălțimea ecranului) */
+#ds-popup-1 .ds-popup-wrapper {
+  position: fixed !important; top: 50% !important; left: 50% !important; right: auto !important; bottom: auto !important;
+  transform: translate(-50%, -50%) !important; width: calc(100% - 32px) !important; max-width: 560px !important; height: auto !important;
+  max-height: calc(100vh - 32px); overflow: auto;
+}
+.bx-home-art-img img { -webkit-mask-image: none !important; mask-image: none !important; }
+/* imaginea hero cu 20 % mai mare, fără să crească hero-ul (scalare vizuală, nu de layout) */
+@media (min-width: 1101px) { .bx-home-art-img img { transform: scale(1.2); transform-origin: 50% 50%; } }
+/* partea de jos a imaginii (reflexia) se stinge treptat, fără linie de final */
+.bx-home-art-img img {
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 72%, transparent 97%) !important;
+  mask-image: linear-gradient(to bottom, #000 0%, #000 72%, transparent 97%) !important;
+}
+/* lumină discretă în spatele „X”-ului, ca semnul să lumineze spațiul din jur */
+.bx-home-art-img { isolation: isolate; }
+.bx-home-art-img::before {
+  content: ""; position: absolute; z-index: -1; pointer-events: none; left: 50%; top: 46%;
+  width: 150%; aspect-ratio: 1; transform: translate(-50%, -50%);
+  background: radial-gradient(circle at center, rgba(90, 180, 238, .12), transparent 60%);
+}
+
+/* ---------- Hero „X”: reflexie de lumină o singură dată + înclinare discretă după mouse ---------- */
+.bx-home-art-img { perspective: 1200px; }
+.bx-home-art-img .bx-tilt { position: relative; display: block; transform-style: preserve-3d; transition: transform .6s cubic-bezier(.2, .7, .2, 1); will-change: transform; }
+.bx-home-art-img .bx-sheen {
+  position: absolute; inset: 0; pointer-events: none; opacity: 0;
+  background: linear-gradient(105deg, transparent 38%, rgba(255, 255, 255, .55) 50%, transparent 62%);
+  background-size: 250% 100%; background-position: 130% 0; mix-blend-mode: overlay;
+  -webkit-mask: var(--bx-mask) center / contain no-repeat; mask: var(--bx-mask) center / contain no-repeat;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .bx-home-art-img .bx-sheen.run { animation: bx-sheen 1.8s cubic-bezier(.4, .1, .2, 1) .5s 1 both; }
+  @keyframes bx-sheen { 0% { opacity: 0; background-position: 130% 0; } 15% { opacity: 1; } 85% { opacity: 1; } 100% { opacity: 0; background-position: -30% 0; } }
+}
+@media (prefers-reduced-motion: reduce) { .bx-home-art-img .bx-tilt { transform: none !important; transition: none; } }
+.bx-home-art-img { perspective: 700px !important; }
+.bx-home-art-img .bx-tilt { transition: transform .35s ease-out !important; }
+.bx-home-art-img .bx-sheen.no-mask { -webkit-mask: radial-gradient(ellipse 45% 40% at 50% 45%, #000 60%, transparent 100%); mask: radial-gradient(ellipse 45% 40% at 50% 45%, #000 60%, transparent 100%); mix-blend-mode: soft-light; }
+/* „Știri și anunțuri”: titlu de secțiune propriu-zis (H2), nu etichetă */
+.bx-home-news .home_posts .head_section h2 {
+  font-size: 30px !important; line-height: 38px !important; font-weight: 700 !important; letter-spacing: -.01em !important;
+  text-transform: none !important; color: var(--bx-navy) !important;
+}
+@media (max-width: 768px) { .bx-home-news .home_posts .head_section h2 { font-size: 24px !important; line-height: 32px !important; } }
+/* desktop: un arc larg în partea stângă-jos a hero-ului (cerc foarte mare, cu centrul în afara hero-ului) */
+@media (min-width: 1101px) {
+  .bx-home-hero::after {
+    display: block !important; content: ""; position: absolute; z-index: -1; pointer-events: none;
+    left: calc(50% - 1620px); top: 360px; bottom: auto; width: 1600px; height: 1600px; border-radius: 50%;
+    border: 130px solid rgba(30, 177, 241, .06) !important; box-sizing: border-box;
+  }
+}

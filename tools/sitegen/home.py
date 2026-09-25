@@ -22,6 +22,7 @@ ICON_MAIL = ('<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke
              'stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m3 6.5 9 6.5 9-6.5"/></svg>')
 ICON_PHONE = ('<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" '
               'stroke-linejoin="round" aria-hidden="true"><path d="M21.5 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 1.6 4.2 2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L7.5 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.7 2z"/></svg>')
+HERO_W, HERO_H = 1056, 1100      # dimensiunile imaginii hero-x.webp (BIMx-hero-X-sharp-3816x3936.png)
 TL_LABELS = {
     "ro": {"title": "Calendarul lansării", "full": "Vizualizați calendarul complet", "done": "Finalizat", "next": "Urmează",
            "planned": "Planificat", "day": "în 1 zi", "days": "în {n} zile", "today": "astăzi"},
@@ -127,6 +128,50 @@ TRUST = {
 }
 
 
+def _inset(poly, b):
+    """Poligon convex micșorat cu b (muchiile deplasate spre interior) – fața teșită a brațelor X-ului."""
+    n = len(poly)
+    area = sum(poly[i][0] * poly[(i + 1) % n][1] - poly[(i + 1) % n][0] * poly[i][1] for i in range(n))
+    sgn = 1 if area > 0 else -1
+    lines = []
+    for i in range(n):
+        (x1, y1), (x2, y2) = poly[i], poly[(i + 1) % n]
+        dx, dy = x2 - x1, y2 - y1
+        L = (dx * dx + dy * dy) ** .5
+        nx, ny = -dy / L * sgn, dx / L * sgn            # normala spre interior
+        lines.append(((x1 + nx * b, y1 + ny * b), (dx, dy)))
+    out = []
+    for i in range(n):
+        (p1, d1), (p2, d2) = lines[i - 1], lines[i]
+        den = d1[0] * d2[1] - d1[1] * d2[0]
+        t = ((p2[0] - p1[0]) * d2[1] - (p2[1] - p1[1]) * d2[0]) / den
+        out.append((p1[0] + d1[0] * t, p1[1] + d1[1] * t))
+    return out
+
+
+def _facets(poly, b):
+    """Teșitura unui poligon: câte o fațetă pentru fiecare muchie, umbrită după direcția ei față de lumina din stânga sus."""
+    inner = _inset(poly, b)
+    n = len(poly)
+    area = sum(poly[i][0] * poly[(i + 1) % n][1] - poly[(i + 1) % n][0] * poly[i][1] for i in range(n))
+    sgn = 1 if area > 0 else -1
+    out = []
+    for i in range(n):
+        (x1, y1), (x2, y2) = poly[i], poly[(i + 1) % n]
+        dx, dy = x2 - x1, y2 - y1
+        L = (dx * dx + dy * dy) ** .5
+        nx, ny = dy / L * sgn, -dx / L * sgn                 # normala spre exterior
+        light = max(0.0, min(1.0, .5 + .5 * (-nx * .6 - ny * .8)))   # lumină din stânga sus
+        r, g, bb = (int(118 + (255 - 118) * light), int(150 + (255 - 150) * light), int(222 + (255 - 222) * light))
+        quad = [poly[i], poly[(i + 1) % n], inner[(i + 1) % n], inner[i]]
+        out.append(f'<path d="{_d(quad)}" fill="rgb({r},{g},{bb})"/>')
+    return "".join(out), _d(inner)
+
+
+def _d(poly):
+    return "M" + "L".join(f"{x:.1f} {y:.1f}" for x, y in poly) + "Z"
+
+
 def x_mark():
     """SVG: semnul „x” din logo (X navy + săgeata albastră), mărit, în centrul unei rețele de fluxuri.
 
@@ -136,24 +181,60 @@ def x_mark():
     left = [(40, 60), (22, 140), (48, 220), (22, 300), (40, 380)]
     right = [(600, 60), (618, 140), (592, 220), (618, 300), (600, 380)]
     parts = []
-    for i, (x, y) in enumerate(left):
-        parts.append(f'<path class="flow flow-in" d="M{x} {y}C{x + 150} {y} {cx - 150} {cy + (y - cy) * .18:.0f} {cx - 64} {cy + (y - cy) * .1:.0f}" style="animation-delay:{i * .35:.2f}s"/>')
-        parts.append(f'<circle class="end end-in" cx="{x}" cy="{y}" r="5"/>')
-    for i, (x, y) in enumerate(right):
-        parts.append(f'<path class="flow flow-out" d="M{cx + 64} {cy + (y - cy) * .1:.0f}C{cx + 150} {cy + (y - cy) * .18:.0f} {x - 150} {y} {x} {y}" style="animation-delay:{i * .35 + .2:.2f}s"/>')
-        parts.append(f'<circle class="end end-out" cx="{x}" cy="{y}" r="5"/>')
-    # X-ul: două brațe (ca în logo), săgeata albastră în centru
-    s = 118
-    arm = 34
-    parts.append(f'<g class="xmark" transform="translate({cx} {cy})">'
-                 f'<path class="x-arm" d="M{-s} {-s}h{arm * 1.6:.0f}L{s} {s}h{-arm * 1.6:.0f}Z"/>'
-                 f'<path class="x-arm" d="M{s} {-s}h{-arm * 1.6:.0f}L{-s} {s}h{arm * 1.6:.0f}Z"/>'
-                 f'<path class="x-chev" d="M{-58} {-58}H{-8}L{50} 0L{-8} 58H{-58}L0 0Z"/></g>')
-    grid = "".join(f'<circle class="grid" cx="{gx}" cy="{gy}" r="1.2"/>' for gx in range(20, W, 40) for gy in range(20, H, 40))
-    return (f'<svg class="bx-xmark" viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">'
-            f'<defs><radialGradient id="bx-x-glow" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#1DB0F0" stop-opacity=".14"/>'
-            f'<stop offset="1" stop-color="#1DB0F0" stop-opacity="0"/></radialGradient></defs>{grid}'
-            f'<circle cx="{cx}" cy="{cy}" r="200" fill="url(#bx-x-glow)"/>' + "".join(parts) + "</svg>")
+    # X-ul în 3D: două brațe de „sticlă” albă cu grosime (fața laterală mai închisă), săgeata albastră luminoasă
+    # în centru, halou și reflexie pe „podea”. Geometria urmează logo-ul BIMx.
+    s, w, d = 118, 54, 12                       # jumătatea X-ului, lățimea brațului, adâncimea extrudării
+    arm1 = f"M{-s} {-s}h{w}L{s} {s}h{-w}Z"
+    arm2 = f"M{s} {-s}h{-w}L{-s} {s}h{w}Z"
+    chev = "M-58 -58H-8L50 0L-8 58H-58L0 0Z"
+    p1 = [(-s, -s), (-s + w, -s), (s, s), (s - w, s)]
+    p2 = [(s, -s), (s - w, -s), (-s, s), (-s + w, s)]
+    fac1, f1 = _facets(p1, 8)
+    fac2, f2 = _facets(p2, 8)
+    x3d = (f'<g class="xmark" transform="translate({cx} {cy})">'
+           # lumina de pe podea (difuză)
+           f'<ellipse cx="0" cy="{s + 10}" rx="{s + 60}" ry="16" fill="url(#bx-x-floor)" filter="url(#bx-x-soft)"/>'
+           # reflexia: oglindită, estompată și ștearsă treptat
+           f'<g transform="translate(0 {2 * s + 16}) scale(1 -1)" opacity=".28" mask="url(#bx-x-refl)" filter="url(#bx-x-reflblur)">'
+           f'<path d="{arm1}" fill="#DCE8FF"/><path d="{arm2}" fill="#DCE8FF"/><path d="{chev}" fill="#3FB8FF"/></g>'
+           # extrudarea (grosimea) brațelor, estompată ușor
+           f'<g transform="translate({d * .55:.1f} {d})" opacity=".85"><path d="{arm1}" fill="url(#bx-x-side)"/><path d="{arm2}" fill="url(#bx-x-side)"/></g>'
+           # brațele: fațetele teșiturii și fața de sus
+           f'{fac1}{fac2}'
+           f'<path d="{f1}" fill="url(#bx-x-face)"/><path d="{f2}" fill="url(#bx-x-face2)"/>'
+           # săgeata: strălucire, extrudare, față, reflex, muchie
+           f'<g filter="url(#bx-x-bloom)"><path d="{chev}" fill="#1DB0F0" opacity=".9"/></g>'
+           f'<g transform="translate({d * .55:.1f} {d})"><path d="{chev}" fill="#1463E6"/></g>'
+           f'<path d="{chev}" fill="url(#bx-x-chev)"/>'
+           f'<path d="M-58 -58H-8L50 0H-6Z" fill="#fff" opacity=".22"/>'
+           f'<path d="{chev}" fill="none" stroke="#B6EEFF" stroke-opacity=".95" stroke-width="1.2"/>'
+           f'</g>')
+    parts.append(x3d)
+    defs3d = ('<linearGradient id="bx-x-face" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/>'
+              '<stop offset=".55" stop-color="#EEF5FF"/><stop offset="1" stop-color="#C9DCFA"/></linearGradient>'
+              '<linearGradient id="bx-x-face2" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/>'
+              '<stop offset=".5" stop-color="#E6F0FF"/><stop offset="1" stop-color="#BFD5F7"/></linearGradient>'
+              '<linearGradient id="bx-x-bevel" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/>'
+              '<stop offset=".5" stop-color="#B9CFF5"/><stop offset="1" stop-color="#7FA1E4"/></linearGradient>'
+              '<linearGradient id="bx-x-bevel2" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/>'
+              '<stop offset=".5" stop-color="#B1C9F3"/><stop offset="1" stop-color="#7497DF"/></linearGradient>'
+              '<filter id="bx-x-soft" x="-50%" y="-200%" width="200%" height="500%"><feGaussianBlur stdDeviation="6"/></filter>'
+              '<filter id="bx-x-reflblur" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="2.5"/></filter>'
+              '<linearGradient id="bx-x-side" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8FB3EE"/>'
+              '<stop offset="1" stop-color="#5D82CF"/></linearGradient>'
+              '<linearGradient id="bx-x-chev" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5FE0FF"/>'
+              '<stop offset=".5" stop-color="#1DB0F0"/><stop offset="1" stop-color="#1463E6"/></linearGradient>'
+              '<radialGradient id="bx-x-floor" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#7DD3FC" stop-opacity=".45"/>'
+              '<stop offset="1" stop-color="#7DD3FC" stop-opacity="0"/></radialGradient>'
+              '<filter id="bx-x-bloom" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="14"/></filter>'
+              '<linearGradient id="bx-x-refl-g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/>'
+              '<stop offset="1" stop-color="#fff" stop-opacity=".9"/></linearGradient>'
+              f'<mask id="bx-x-refl"><rect x="-200" y="40" width="400" height="{s - 40}" fill="url(#bx-x-refl-g)"/></mask>')
+    grid = ""
+    return (f'<svg class="bx-xmark" viewBox="{cx - 175} {cy - 150} 350 360" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">'
+            f'<defs><radialGradient id="bx-x-glow" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#3E8BFF" stop-opacity=".32"/>'
+            f'<stop offset="1" stop-color="#1DB0F0" stop-opacity="0"/></radialGradient>{defs3d}</defs>{grid}'
+            f'<rect x="{cx - 175}" y="{cy - 150}" width="350" height="360" fill="url(#bx-x-glow)"/>' + "".join(parts) + "</svg>")
 
 
 # ---------------------------------------------------------------- restructurarea primei pagini
@@ -211,7 +292,9 @@ def restructure_home(text, pg):
       <p class="bx-home-lead">{desc}</p>
       <div class="bx-home-actions"><a class="bx-home-cta" href="{pg.link(cta_href)}">{cta}{ARROW}</a></div>
     </div>
-    <div class="bx-home-art">{x_mark()}</div>
+    <div class="bx-home-art bx-home-art-img">
+      <span class="bx-tilt"><span class="bx-sheen" aria-hidden="true"></span><img src="{pg.asset("assets/img/hero-x.webp")}" alt="" width="{HERO_W}" height="{HERO_H}" fetchpriority="high" decoding="async"></span>
+    </div>
   </div>
   <div class="container">
     <div class="bx-lt" role="region" aria-labelledby="bx-lt-h" data-done="{L["done"]}" data-next="{L["next"]}" data-planned="{L["planned"]}"
