@@ -128,6 +128,8 @@ PATHS = {
 }
 
 
+# hero: butonul principal (admiterea); „Prezentare generală” devine butonul secundar
+APPLY = {"ro": "Aplicați pentru admitere", "en": "Apply for admission", "ru": "Подать заявку на допуск", "uk": "Подати заявку на допуск"}
 OPEN_LABEL = {"ro": "Deschis", "en": "Open", "ru": "Открыт", "uk": "Відкрито"}
 
 
@@ -394,7 +396,7 @@ def restructure_home(text, pg):
       <p class="bx-home-eyebrow">{eyebrow}</p>
       <h1 id="bx-home-title">{title}</h1>
       <p class="bx-home-lead">{desc}</p>
-      <div class="bx-home-actions"><a class="bx-home-cta" href="{pg.link(cta_href)}">{cta}{ARROW}</a></div>
+      <div class="bx-home-actions"><a class="bx-home-cta bx-home-apply" href="{pg.link("atestarea-brokerilor/index.html")}">{APPLY[pg.lang]}{ARROW}</a><a class="bx-home-cta bx-home-cta-2" href="{pg.link(cta_href)}">{cta}</a></div>
     </div>
     <div class="bx-home-art bx-home-art-img">
       <span class="bx-tilt"><span class="bx-sheen" aria-hidden="true"></span><img src="{pg.asset("assets/img/hero-x.webp")}" alt="" width="{HERO_W}" height="{HERO_H}" fetchpriority="high" decoding="async"></span>

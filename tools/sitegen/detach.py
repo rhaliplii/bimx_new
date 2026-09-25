@@ -105,7 +105,12 @@ def detach():
     REPLICA_JS.parent.mkdir(parents=True, exist_ok=True)
     REPLICA_JS.write_text((SRC / "site" / "replica.js").read_text(encoding="utf-8"), encoding="utf-8")
     SITE_CSS.parent.mkdir(parents=True, exist_ok=True)
-    SITE_CSS.write_text((SRC / "site" / "site.css").read_text(encoding="utf-8"), encoding="utf-8")
+    site_css = (SRC / "site" / "site.css").read_text(encoding="utf-8")
+    # pe tabletă (992–1199 px) meniul desktop nu încape: aceleași reguli ca meniul mobil (sitegen/tabletnav.py)
+    from .tabletnav import tablet_css
+    theme_css = DIST / "wp-content" / "themes" / "victor-child" / "assets" / "css" / "main.css"
+    theme = theme_css.read_text(encoding="utf-8") if theme_css.exists() else ""
+    SITE_CSS.write_text(site_css + tablet_css(theme, site_css), encoding="utf-8")
     if MARKET_DATA.exists():
         responses = json.loads(MARKET_DATA.read_text(encoding="utf-8"))["responses"]
         MARKET_JS.write_text("window.BIMX_MARKET_DATA = " + json.dumps(responses, ensure_ascii=False, separators=(",", ":"))

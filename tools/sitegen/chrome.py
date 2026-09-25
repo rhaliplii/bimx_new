@@ -195,6 +195,25 @@ ICON_CHECK = ('<svg class="bx-lang-check" width="16" height="16" viewBox="0 0 16
 ICON_CLOSE = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>'
 
 
+# meniul mobil: al doilea CTA (admiterea) și, jos, contactul cu programul de lucru
+MENU_APPLY = {"ro": "Aplicați pentru admitere", "en": "Apply for admission", "ru": "Подать заявку на допуск", "uk": "Подати заявку на допуск"}
+MENU_CONTACT = {"ro": "Contact", "en": "Contact", "ru": "Контакты", "uk": "Контакти"}
+ICON_CLOCK = ('<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" '
+              'stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>')
+
+
+def menu_extras(pg, login_li):
+    from .home import HOURS
+    label, days, closed = HOURS[pg.lang]
+    apply_li = (f'<li class="hide_desktop bx-menu-apply menu-item"><a href="{pg.link("atestarea-brokerilor/index.html")}">'
+                f'{MENU_APPLY[pg.lang]} →</a></li>')
+    contact_li = (f'<li class="bx-menu-contact menu-item"><p class="bx-menu-contact-h">{MENU_CONTACT[pg.lang]}</p>'
+                  f'<a href="tel:+37322897700">{ICON_PHONE}+373 22 89 77 00</a>'
+                  f'<a href="mailto:office@bimx.md">{ICON_MAIL}office@bimx.md</a>'
+                  f'<p class="bx-menu-hours">{ICON_CLOCK}<span><strong>{label}</strong> {days}<br>{closed}</span></p></li>')
+    return apply_li + "\n" + login_li + "\n" + contact_li
+
+
 CURRENT = ' aria-current="true"'
 
 
@@ -230,6 +249,9 @@ def header(text, pg):
              f'<a class="bx-status-right" href="{CNPF_REGISTER}" target="_blank" rel="noopener">{lic} — {t["register"]} ↗</a>'
              f'</div></div>')
     head = head.replace('<div class="header_mask">', strip + '\n    <div class="header_mask">', 1)
+    # comutatorul RO/EN al temei originale (în meniul mobil) dispare: limba se alege din selectorul nou din antet
+    head = re.sub(r'\s*<li id="menu-item-253"[^>]*class="pll-parent-menu-item[\s\S]*?</ul>\s*</li>', "", head, count=1)
+    head = re.sub(r'(<li id="menu-item-252"[^>]*>[\s\S]*?</li>)', lambda m: menu_extras(pg, m.group(1)), head, count=1)
     for mid, labels in NAV.items():
         head = re.sub(rf'(<li id="menu-item-{mid}"[^>]*><a [^>]*>)[^<]*(</a>)', rf"\g<1>{labels[IDX[pg.lang]]}\2", head, count=1)
     head = re.sub(r'(\s*<a href="[^"]*" class="btn1 bx-login")', lambda m: "\n                    " + lang_menu(pg, t) + m.group(1), head, count=1)
