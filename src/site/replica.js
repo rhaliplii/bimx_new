@@ -1,7 +1,9 @@
 // Comportamentul care, pe bimx.md, depindea de server: formulare și partajare.
 (function () {
-  var EN = (document.documentElement.lang || '').indexOf('en') === 0;
-  var MSG = EN ? 'This feature is currently unavailable.' : 'Această funcție nu este disponibilă momentan.';
+  var HL = document.documentElement.lang || '';
+  var EN = HL.indexOf('en') === 0, RU = HL.indexOf('ru') === 0, UK = HL.indexOf('uk') === 0;
+  var MSG = EN ? 'This feature is currently unavailable.' : RU ? 'Эта функция пока недоступна.' : UK ? 'Ця функція поки що недоступна.'
+    : 'Această funcție nu este disponibilă momentan.';
 
   // Formularele marcate la build (contactul) nu trimit date nicăieri.
   document.addEventListener('submit', function (e) {
@@ -196,7 +198,10 @@
         var d = dayOf(li.getAttribute('data-date')), extra = '';
         if (d) {
           var n = Math.round((d - today) / 86400000);
-          extra = n === 0 ? box.getAttribute('data-today') : n === 1 ? box.getAttribute('data-one') : box.getAttribute('data-many').replace('{n}', n);
+          var few = box.getAttribute('data-few'), d10 = n % 10, d100 = n % 100;
+          var form = !few ? (n === 1 ? 'data-one' : 'data-many')                      // rusă / ucraineană: „через 1 день / 3 дня / 5 дней”
+            : (d10 === 1 && d100 !== 11) ? 'data-one' : (d10 >= 2 && d10 <= 4 && (d100 < 12 || d100 > 14)) ? 'data-few' : 'data-many';
+          extra = n === 0 ? box.getAttribute('data-today') : box.getAttribute(form).replace('{n}', n);
         }
         st.innerHTML = box.getAttribute('data-next') + (extra ? '<span class="bx-lt-days">' + extra + '</span>' : '');
       });
@@ -256,6 +261,46 @@
         hero.addEventListener('mouseleave', function () { tilt.style.transform = ''; });
       }
     }
+
+    // Banda de sus: dacă mesajul nu încape (mobil), curge continuu spre stânga, ca o bandă de știri („Pre-lansare” rămâne fix)
+    var strip = document.querySelector('.bx-strip'), move = strip && strip.querySelector('.bx-strip-move');
+    if (move) {
+      var item = move.querySelector('.bx-strip-item');
+      var fit = function () {
+        strip.classList.remove('is-marquee');
+        [].slice.call(move.querySelectorAll('.bx-strip-clone')).forEach(function (c) { c.remove(); });
+        if (item.scrollWidth <= strip.clientWidth + 1) return;
+        var clone = item.cloneNode(true);                       // a doua copie: bucla fără gol vizibil
+        clone.classList.add('bx-strip-clone'); clone.setAttribute('aria-hidden', 'true');
+        move.appendChild(clone);
+        var dist = item.getBoundingClientRect().width + parseFloat(getComputedStyle(item).paddingRight || 0);
+        strip.style.setProperty('--bx-strip-dist', -dist + 'px');
+        strip.style.setProperty('--bx-strip-time', Math.round(dist / 35) + 's');   // ~35 px/s
+        strip.classList.add('is-marquee');
+      };
+      fit();
+      var rt; window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(fit, 150); });
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+    }
+
+    // Selectorul de limbă: lista se deschide la clic, se închide la clic în afară sau cu Escape
+    document.querySelectorAll('.bx-lang').forEach(function (box) {
+      var btn = box.querySelector('.bx-lang-btn'), menu = box.querySelector('.bx-lang-menu');
+      if (!btn || !menu) return;
+      var set = function (open) {
+        menu.hidden = !open; btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        if (open) { var cur = menu.querySelector('a[aria-current]') || menu.querySelector('a'); if (cur) cur.focus(); }
+      };
+      btn.addEventListener('click', function (e) { e.stopPropagation(); set(menu.hidden); });
+      document.addEventListener('click', function (e) { if (!box.contains(e.target)) set(false); });
+      box.addEventListener('keydown', function (e) {
+        var links = [].slice.call(menu.querySelectorAll('a')), i = links.indexOf(document.activeElement);
+        if (e.key === 'Escape' && !menu.hidden) { set(false); btn.focus(); }
+        else if ((e.key === 'ArrowDown' || e.key === 'ArrowUp') && !menu.hidden) {
+          e.preventDefault(); links[(i + (e.key === 'ArrowDown' ? 1 : links.length - 1)) % links.length].focus();
+        }
+      });
+    });
 
     // Subsolul: pe mobil coloanele sunt pliate, pe desktop deschise
     var fcols = document.querySelectorAll('.bx-f-col');

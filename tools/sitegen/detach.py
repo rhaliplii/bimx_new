@@ -12,7 +12,7 @@ import json
 import re
 from pathlib import Path
 
-from .config import DIST, SRC
+from .config import DIST, SRC, lang_of, SITE_LANGS
 from .util import relto
 
 ORIGIN = re.compile(r"https?:(?:\\?/){2}(?:www\.)?bimx\.md")
@@ -37,15 +37,17 @@ SHARE = re.compile(r'href="(https://[^"]*?[?&](?:u|url)=)https?%3A%2F%2F(?:www\.
 DATA_LINK = re.compile(r'data-link="https?://(?:www\.)?bimx\.md[^"]*"', re.I)
 
 
-def local_target(path, en=False):
-    """Fișierul din dist/ care corespunde unei căi bimx.md (în engleză pentru paginile EN), sau None."""
+def local_target(path, lang="ro"):
+    """Fișierul din dist/ care corespunde unei căi bimx.md (în limba paginii care conține linkul), sau None."""
     path = path.split("#")[0].split("?")[0] or "/"
     path = LINK_ALIASES.get(path.rstrip("/") or "/", path)
     if path.rstrip("/") in ("/en", "/en/home"):
         path = "/en/"
+    if lang not in ("ro", "en") and path.startswith("/en/"):
+        path = f"/{lang}/" + path[4:]
     candidates = [path]
-    if en and not path.startswith("/en/"):
-        candidates.insert(0, "/en" + path)
+    if lang != "ro" and not path.startswith(tuple(f"/{x}/" for x in SITE_LANGS[1:])):
+        candidates.insert(0, f"/{lang}" + path)
     for p in candidates:
         local = DIST / p.lstrip("/")
         if p.endswith("/") or not local.suffix:
@@ -76,7 +78,7 @@ def detach_page(text, here):
 
     def href(m):
         attr, q, _, path = m.groups()
-        target = local_target(path, en=here.relative_to(DIST).parts[:1] == ("en",))
+        target = local_target(path, lang=lang_of(here.relative_to(DIST).parts))
         if not target:
             return m.group(0)
         frag = "#" + path.split("#", 1)[1] if "#" in path else ""

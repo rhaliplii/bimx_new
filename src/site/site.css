@@ -1708,3 +1708,159 @@ header.site-header .header_content .center nav ul.menu-wrapper li.menu-item-has-
 /* logo-ul din antet păstrează proporțiile originale (242 × 72) pe orice lățime – tema îi forța 100px lățime pe mobil */
 header.site-header .header_content .left_side img.custom-logo { width: auto !important; height: 36px !important; max-width: none !important; aspect-ratio: 242 / 72; object-fit: contain; }
 @media (max-width: 600px) { header.site-header .header_content .left_side img.custom-logo { height: 32px !important; } }
+/* căutarea: indicația de tastatură (Esc, /) doar pe dispozitivele cu mouse; pe ecranele tactile nu există Esc */
+@media (hover: none), (pointer: coarse) { .bx-search-hint { display: none !important; } }
+
+/* ---------- Selectorul de limbă: buton compact (glob + cod) și listă derulantă RO / EN / RU (replica.js) ---------- */
+.bx-lang { position: relative; display: inline-flex !important; padding: 0 !important; background: none !important; margin: 0 2px !important; }
+.bx-lang-btn {
+  display: inline-flex; align-items: center; gap: 6px; height: 40px; padding: 0 10px; border: 0; border-radius: 8px;
+  background: transparent; color: var(--bx-navy); font: inherit; font-size: 14px; font-weight: 600; letter-spacing: .02em; cursor: pointer;
+  transition: background .15s;
+}
+.bx-lang-btn:hover, .bx-lang-btn[aria-expanded="true"] { background: #F1F4F9; }
+.bx-lang-btn:focus-visible { outline: 2px solid #1DB0F0; outline-offset: 2px; }
+.bx-lang-btn svg { flex: 0 0 auto; }
+.bx-lang-chev { transition: transform .15s; }
+.bx-lang-btn[aria-expanded="true"] .bx-lang-chev { transform: rotate(180deg); }
+.bx-lang-menu {
+  position: absolute; top: calc(100% + 6px); right: 0; z-index: 1200; min-width: 196px; margin: 0; padding: 6px; list-style: none;
+  background: #fff; border: 1px solid #E3E6EE; border-radius: 12px; box-shadow: 0 16px 36px -12px rgba(20, 26, 61, .28);
+}
+.bx-lang-menu[hidden] { display: none; }
+.bx-lang-menu li { margin: 0; }
+.bx-lang-menu a {
+  display: flex !important; align-items: center; gap: 10px; padding: 9px 10px !important; border-radius: 8px;
+  font-size: 14px !important; line-height: 20px; font-weight: 500 !important; color: var(--bx-navy) !important; text-decoration: none;
+  background: none !important; box-shadow: none !important;
+}
+.bx-lang-menu a:hover, .bx-lang-menu a:focus-visible { background: #F1F4F9 !important; }
+.bx-lang-menu a[aria-current] { font-weight: 600 !important; }
+.bx-lang-code { width: 26px; font-size: 12px; font-weight: 700; letter-spacing: .04em; color: #6A7181; }
+.bx-lang-name { flex: 1 1 auto; }
+.bx-lang-check { color: #1DB0F0; }
+@media (max-width: 991px) {
+  .bx-lang { display: inline-flex !important; }
+  .bx-lang-btn { padding: 0 6px; gap: 4px; }
+  .bx-lang-btn > svg:first-child { display: none; }
+}
+
+/* rusă și ucraineană: Prompt nu are chirilică – pe paginile RU și UK textul folosește Montserrat (tot geometric, cu chirilică completă) */
+html[lang^="ru"] body, html[lang^="ru"] body *:not(code):not(pre):not(svg):not(svg *),
+html[lang^="uk"] body, html[lang^="uk"] body *:not(code):not(pre):not(svg):not(svg *) { font-family: "Montserrat", "Prompt", system-ui, sans-serif !important; }
+@media (max-width: 991px) { header.site-header .header_content .right_side .bx-lang { order: -1; } }
+/* rusă și ucraineană: denumirile din rândul de încredere sunt mai lungi – pot trece pe al doilea rând */
+html[lang^="ru"] .bx-trust-row li > strong, html[lang^="uk"] .bx-trust-row li > strong { white-space: normal !important; }
+/* rusă și ucraineană: Montserrat 500 e vizibil mai subțire decât Prompt 500 – meniul de navigare (inclusiv panourile și submeniurile) la 600, ca să arate la fel ca în RO/EN */
+html[lang^="ru"] header.site-header nav ul.menu-wrapper > li > a,
+html[lang^="uk"] header.site-header nav ul.menu-wrapper > li > a,
+html[lang^="ru"] header.site-header nav ul.menu-wrapper .sub-menu a,
+html[lang^="uk"] header.site-header nav ul.menu-wrapper .sub-menu a { font-weight: 600 !important; }
+/* … și în interiorul panourilor: titlurile coloanelor și linkurile (aceeași specificitate ca regulile temei + limba) */
+html[lang^="ru"] header.site-header .header_content .center nav ul.menu-wrapper li.menu-item-has-children > ul.sub-menu > li > a,
+html[lang^="ru"] header.site-header .header_content .center nav ul.menu-wrapper li.menu-item-has-children > ul.sub-menu > li.not_click > a,
+html[lang^="ru"] header.site-header .header_content .center nav ul.menu-wrapper li.menu-item-has-children > ul.sub-menu > li.not_click > a:hover,
+html[lang^="ru"] header.site-header .header_content .center nav ul.menu-wrapper li.menu-item-has-children > ul.sub-menu > li.not_click > ul.sub-menu > li > a,
+html[lang^="uk"] header.site-header .header_content .center nav ul.menu-wrapper li.menu-item-has-children > ul.sub-menu > li > a,
+html[lang^="uk"] header.site-header .header_content .center nav ul.menu-wrapper li.menu-item-has-children > ul.sub-menu > li.not_click > a,
+html[lang^="uk"] header.site-header .header_content .center nav ul.menu-wrapper li.menu-item-has-children > ul.sub-menu > li.not_click > a:hover,
+html[lang^="uk"] header.site-header .header_content .center nav ul.menu-wrapper li.menu-item-has-children > ul.sub-menu > li.not_click > ul.sub-menu > li > a { font-weight: 600 !important; }
+/* panourile meniului: săgeata urmează ultimul cuvânt al linkului (și când textul trece pe două rânduri), nu marginea coloanei */
+@media (min-width: 992px) {
+  header.site-header .header_content .center nav ul.menu-wrapper li.menu-item-has-children > ul.sub-menu > li.not_click > ul.sub-menu > li > a { display: inline !important; }
+  header.site-header .header_content .center nav ul.menu-wrapper li.menu-item-has-children > ul.sub-menu > li.not_click > ul.sub-menu > li > a:after {
+    display: inline-block !important; position: relative !important; right: auto !important; top: 1px !important;
+    margin-left: 6px !important; vertical-align: baseline;
+  }
+}
+/* rusă și ucraineană: textul din subsol la 500 în loc de 400 (Montserrat e mai subțire decât Prompt); titlurile rămân 600–700 */
+html[lang^="ru"] footer.site-footer.bx-footer .bx-f-brand p,
+html[lang^="ru"] footer.site-footer.bx-footer .bx-f-contact li > span,
+html[lang^="ru"] footer.site-footer.bx-footer .bx-f-contact li > a,
+html[lang^="ru"] footer.site-footer.bx-footer .bx-f-col a,
+html[lang^="ru"] footer.site-footer.bx-footer .bx-f-resources a,
+html[lang^="ru"] footer.site-footer.bx-footer .bx-f-disclaimer p,
+html[lang^="ru"] footer.site-footer.bx-footer .bx-f-bottom p,
+html[lang^="uk"] footer.site-footer.bx-footer .bx-f-brand p,
+html[lang^="uk"] footer.site-footer.bx-footer .bx-f-contact li > span,
+html[lang^="uk"] footer.site-footer.bx-footer .bx-f-contact li > a,
+html[lang^="uk"] footer.site-footer.bx-footer .bx-f-col a,
+html[lang^="uk"] footer.site-footer.bx-footer .bx-f-resources a,
+html[lang^="uk"] footer.site-footer.bx-footer .bx-f-disclaimer p,
+html[lang^="uk"] footer.site-footer.bx-footer .bx-f-bottom p { font-weight: 500 !important; }
+/* rândul de încredere (desktop): eticheta aliniată sus, pe același rând cu numele */
+@media (min-width: 901px) {
+  .bx-trust-inner { align-items: flex-start !important; }
+  .bx-trust-title { align-self: flex-start !important; }
+  .bx-trust-row { align-items: start; }
+}
+/* ucraineană (desktop): coloana НКФР mai îngustă, „Агентство публічної власності” mai lată – numele încape pe un rând */
+@media (min-width: 901px) {
+  html[lang^="uk"] .bx-trust-row { grid-template-columns: 205fr 285fr 305fr 267fr !important; }
+}
+/* rusă (desktop): eticheta mai îngustă, spații interioare mai mici și coloane pe măsura numelor – fiecare nume pe un rând */
+@media (min-width: 901px) {
+  html[lang^="ru"] .bx-trust-title { flex-basis: 110px !important; }
+  html[lang^="ru"] .bx-trust-row li, html[lang^="ru"] .bx-trust-row li:first-child { padding-left: 14px !important; padding-right: 14px !important; }
+  html[lang^="ru"] .bx-trust-row { grid-template-columns: 178fr 286fr 338fr 276fr !important; }
+}
+/* ultimul cuvânt + săgeata din „Structura acționariatului →” păstrează stilul linkului (nu al etichetelor gri) */
+.bx-trust-row .bx-trust-link .bx-nowrap { color: inherit !important; font: inherit !important; }
+/* mobil: etapele din afara cardului „Urmează” – cercul și textul pe aceeași verticală ca în card (chenar 1px + 16px / 52px) */
+@media (max-width: 600px) {
+  .bx-home-hero .bx-lt-step:not(.is-next) { padding-left: 53px; padding-right: 17px; }
+  .bx-home-hero .bx-lt-step:not(.is-next)::before { left: 17px; }
+}
+
+/* ---------- Banda de sus: pe ecranele înguste, mesajul curge continuu spre stânga (bandă de știri); „Pre-lansare” rămâne fix ---------- */
+.bx-status-left .bx-strip { flex: 1 1 auto; min-width: 0; overflow: hidden; white-space: nowrap; }
+.bx-status-left .bx-strip-move { display: inline-flex; }
+.bx-status-left .bx-strip-item { display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; }
+.bx-status-left .bx-strip-item strong { white-space: nowrap; }
+.bx-status-left .bx-strip-item .bx-strip-text { overflow: visible !important; text-overflow: clip !important; white-space: nowrap; }
+.bx-strip.is-marquee .bx-strip-item { padding-right: 48px; }
+.bx-strip.is-marquee { -webkit-mask: linear-gradient(90deg, transparent 0, #000 12px, #000 calc(100% - 16px), transparent);
+                       mask: linear-gradient(90deg, transparent 0, #000 12px, #000 calc(100% - 16px), transparent); }
+@media (prefers-reduced-motion: no-preference) {
+  .bx-strip.is-marquee .bx-strip-move { animation: bx-marquee var(--bx-strip-time, 12s) linear infinite; will-change: transform; }
+  .bx-strip.is-marquee:hover .bx-strip-move { animation-play-state: paused; }
+  @keyframes bx-marquee { from { transform: translateX(0); } to { transform: translateX(var(--bx-strip-dist, -50%)); } }
+}
+@media (prefers-reduced-motion: reduce) {                  /* fără animații: textul trece pe al doilea rând */
+  .bx-strip.is-marquee { -webkit-mask: none; mask: none; white-space: normal; }
+  .bx-strip.is-marquee .bx-strip-item, .bx-strip.is-marquee .bx-strip-text { white-space: normal !important; display: inline; }
+  .bx-strip.is-marquee .bx-strip-clone { display: none; }
+}
+.bx-status-left .bx-strip { text-overflow: clip !important; }
+.bx-status-left .bx-strip-move, .bx-status-left .bx-strip-item, .bx-status-left .bx-strip-item > * { overflow: visible !important; text-overflow: clip !important; }
+.bx-status-left .bx-strip { margin-left: 4px; }
+/* programul de lucru lângă telefon, în bara de contact de deasupra subsolului: informație secundară, discretă */
+.bx-home-hours { display: inline-flex; align-items: center; gap: 8px; margin-left: 8px; padding-left: 16px; border-left: 1px solid #DDE1EE;
+  font-size: 13px; line-height: 18px; font-weight: 400; color: #5B6178; }
+.bx-home-hours svg { flex: 0 0 auto; width: 16px; height: 16px; color: #8A90A6; }
+.bx-home-hours strong { font-weight: 600; color: #4A5075; }
+@media (max-width: 991px) {
+  .bx-home-hours { margin-left: 0; padding-left: 0; border-left: 0; flex-basis: 100%; }
+}
+@media (max-width: 600px) {
+  .bx-home-hours { align-items: flex-start; }
+  .bx-home-hours svg { margin-top: 1px; }
+  .bx-home-hours-sep { display: none; }
+  .bx-home-hours > span > strong::after { content: ""; }
+}
+/* programul: vizibil și pe mobil (regula de mai sus ascundea toate span-urile, inclusiv separatorul „·”) și cu contrast suficient */
+.bx-home-contact-links .bx-home-hours, .bx-home-contact-links .bx-home-hours span { color: #5B6178; }
+.bx-home-contact-links .bx-home-hours strong { color: #4A5075; }
+@media (max-width: 600px) {
+  .bx-home-contact-links .bx-home-hours { display: inline-flex !important; margin-top: 4px; }
+  .bx-home-contact-links .bx-home-hours > span { display: inline !important; }
+  .bx-home-contact-links .bx-home-hours .bx-home-hours-sep { display: none !important; }
+  .bx-home-contact-links .bx-home-hours strong { display: block; }
+}
+@media (max-width: 600px) { .bx-home-contact-links .bx-home-hours > span > .bx-hours-line { display: block !important; } }
+/* programul pe rândul lui, sub email și telefon (nu alături) */
+.bx-home-contact-links .bx-home-hours { flex-basis: 100%; margin-left: 0; padding-left: 0; border-left: 0; }
+@media (min-width: 601px) {
+  .bx-home-contact-links { display: grid !important; grid-template-columns: auto auto 1fr; column-gap: 16px; row-gap: 8px; justify-content: end; align-items: center; }
+  .bx-home-contact-links .bx-home-hours { grid-column: 1 / -1; }
+}

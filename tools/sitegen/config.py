@@ -13,9 +13,30 @@ ACADEMY_ASSETS = DIST / "academy" / "assets"
 
 BIMX = "https://bimx.md"
 
+# Limbile site-ului: româna (sursa, la rădăcină), apoi engleza, rusa și ucraineana, fiecare în folderul ei
+# (/en/, /ru/, /uk/) – aceleași căi în toate limbile. Codul afișat în selector: UA pentru ucraineană (ISO: uk).
+SITE_LANGS = ("ro", "en", "uk", "ru")          # și ordinea din selectorul de limbă
+LANG_PREFIX = {lang: ("" if lang == "ro" else f"{lang}/") for lang in SITE_LANGS}
+LOCALES = {"ro": ("ro-RO", "ro_RO"), "en": ("en-GB", "en_GB"), "ru": ("ru-RU", "ru_RU"), "uk": ("uk-UA", "uk_UA")}
+LANG_NAMES = {"ro": "Română", "en": "English", "ru": "Русский", "uk": "Українська"}
+LANG_CODES = {"ro": "RO", "en": "EN", "ru": "RU", "uk": "UA"}
+CYRILLIC = ("ru", "uk")                                  # fontul cu chirilică și pluralul cu trei forme
+
+
+def lang_of(parts):
+    """Limba unei căi din dist/ (după primul segment: en/, ru/, uk/ sau nimic pentru română)."""
+    return parts[0] if parts and parts[0] in SITE_LANGS[1:] else "ro"
+
+
+def pick(lang, ro, en, ru, uk):
+    """Valoarea în limba dată (pentru textele scurte scrise direct în cod)."""
+    return {"ro": ro, "en": en, "ru": ru, "uk": uk}[lang]
+
+
 LANGS = {
-    "ro": {"content": CONTENT / "ro", "out": DIST / "academy", "template": ACADEMY_SRC / "templates" / "index.ro.html"},
-    "en": {"content": CONTENT / "en", "out": DIST / "en" / "academy", "template": ACADEMY_SRC / "templates" / "index.en.html"},
+    lang: {"content": CONTENT / lang, "out": DIST / LANG_PREFIX[lang] / "academy",
+           "template": ACADEMY_SRC / "templates" / f"index.{lang}.html"}
+    for lang in SITE_LANGS
 }
 
 # Paginile bimx.md din meniul „BIMX ACADEMY”, înlocuite de secțiunile Academy.

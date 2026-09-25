@@ -23,6 +23,16 @@ def slugify(text):
 
 
 def plural(n, forms):
+    """„1 lecție / 5 lecții”; în rusă sunt trei forme: [one, few, many] („1 урок, 3 урока, 5 уроков”)."""
+    if len(forms) == 3:
+        one, few, many = forms
+        if n % 10 == 1 and n % 100 != 11:
+            word = one
+        elif 2 <= n % 10 <= 4 and not 12 <= n % 100 <= 14:
+            word = few
+        else:
+            word = many
+        return f"{n} {word}"
     one, many = forms
     return f"{n} {one if n == 1 else many}"
 

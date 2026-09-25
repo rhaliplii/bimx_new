@@ -1,7 +1,7 @@
-"""Antetul compact și subsolul nou, pe toate paginile (bimx.md și BIMx Academy), în RO și EN.
+"""Antetul compact și subsolul nou, pe toate paginile (bimx.md și BIMx Academy), în RO, EN, RU și UK.
 
 Antet: fără bara de sus; logo + eticheta „Pre-lansare”; meniul în sentence case; în dreapta căutarea, comutatorul
-RO/EN și „Intră în cont”. Căutarea devine o fereastră de dialog (stilurile în src/site/site.css, comportamentul în
+de limbă (meniu RO / EN / RU / UA) și „Intră în cont”. Căutarea devine o fereastră de dialog (stilurile în src/site/site.css, comportamentul în
 src/site/search.js): se închide cu „×”, Escape sau clic în afara ei.
 
 Subsol: identitate și contact, rețele sociale, patru coloane cu paginile funcționale, partenerii instituționali,
@@ -10,10 +10,12 @@ Formularul de contact (fereastra modală din subsolul temei) se păstrează.
 """
 import re
 
+from .config import LANG_CODES, LANG_NAMES, SITE_LANGS, pick
+
 LINKEDIN = "https://linkedin.com/company/moldova-international-stock-exchange-bursa-internationala-a-moldovei"
 FACEBOOK = "https://www.facebook.com/BIMx.MD/"
 
-LICENCE_NO = None      # numărul licenței CNPF: de completat când e confirmat (fără el, textul nu afișează numărul)
+LICENCE_NO = "000945"  # numărul licenței de operator de piață acordate de CNPF
 CNPF_REGISTER = "https://www.cnpf.md/ro/registrele-actelor-permisive-6412.html"
 
 # Logo-ul din subsol, vectorial (PNG-ul original are 130 × 43 px și e neclar pe ecranele retina):
@@ -24,8 +26,10 @@ WORDMARK = ('<span class="bx-wordmark" aria-hidden="true"><span>BIM</span>'
 
 PDF_ATTR = ' target="_blank" rel="noopener"'
 
-NAV = {"407": ("Despre noi", "About us"), "408": ("Piață", "Market"), "409": ("Listare", "Listing"),
-       "410": ("BIMx Academy", "BIMx Academy"), "411": ("Noutăți & Comunicate", "News & Announcements")}
+NAV = {"407": ("Despre noi", "About us", "О нас", "Про нас"), "408": ("Piață", "Market", "Рынок", "Ринок"),
+       "409": ("Listare", "Listing", "Листинг", "Лістинг"), "410": ("BIMx Academy", "BIMx Academy", "BIMx Academy", "BIMx Academy"),
+       "411": ("Noutăți & Comunicate", "News & Announcements", "Новости и Объявления", "Новини та Оголошення")}
+IDX = {"ro": 0, "en": 1, "ru": 2, "uk": 3}
 
 T = {
     "ro": {
@@ -100,6 +104,80 @@ T = {
         "partner_names": {"invest": "Invest Moldova", "oda": "ODA – Organisation for Entrepreneurship Development",
                           "cnpf": "CNPF – National Commission for Financial Markets"},
     },
+    "ru": {
+        "prelaunch": "Подготовка к запуску", "strip_text": "Торги начнутся до конца 2026 года", "licence": "Лицензия НКФР", "register": "смотреть в реестре", "prelaunch_title": "Торги ещё не начались; платформа ARENA вводится в эксплуатацию 1 октября 2026 г.",
+        "lang": "Язык", "close": "Закрыть поиск", "search_hint": "Нажмите Esc, чтобы закрыть",
+        "about": "Международная фондовая биржа Молдовы (BIMx) — прозрачный регулируемый рынок с 2026 года.",
+        "address": "ул. Влайку Пыркэлаб, 63, MD-2012, Кишинёв, Республика Молдова",
+        "follow": "BIMx в соцсетях",
+        "cols": [
+            ("Компания", [("О бирже", "identitate/index.html"), ("Совет и исполнительный орган", "consiliul-si-organul-executiv/index.html"),
+                          ("Учредители BIMx", "fondatori/index.html"), ("Институциональные партнёры", "parteneri-institutionali/index.html"),
+                          ("Карьера", "cariere/index.html"), ("Контакты", "contacte/index.html")]),
+            ("Рынок", [("Общий обзор", "prezentare-generala/index.html"), ("Котировки в реальном времени", "cotatii-in-timp-real/index.html"),
+                       ("Биржевые индексы", "indicii-bursei/index.html"), ("Акции", "actiuni/index.html"),
+                       ("Облигации и зелёное финансирование", "obligatiuni/index.html"), ("Расписание торгов", "program-de-tranzactionare/index.html"),
+                       ("Торговый календарь", "trading-calendar/index.html")]),
+            ("Услуги", [("Торговая платформа", "platforma-de-tranzactionare/index.html"), ("Услуги по листингу", "servicii-de-listare/index.html"),
+                        ("Клиринг и расчёты", "compensare-si-decontare/index.html"), ("Рыночные данные", "date-de-piata/index.html"),
+                        ("Операционная модель", "model-operational/index.html")]),
+            ("Листинг", [("Процедура листинга", "procesul-de-listare/index.html"), ("Тарифы", "wp-content/uploads/2026/09/Nomenclatorul_taxelor_si_comisioanelor-1.pdf"),
+                         ("Аттестация брокеров", "atestarea-brokerilor/index.html"), ("Список компаний", "lista-societatilor/index.html")]),
+            ("Право и комплаенс", [("Регламенты и нормативные акты", "regulamente-si-acte-normative/index.html"),
+                                   ("Политика конфиденциальности", "politica-de-confidentialitate/index.html"),
+                                   ("Политика cookie", "politica-cookie/index.html"), ("Центр загрузок", "centru-de-descarcare/index.html"),
+                                   ("Доступность", "accesibilitate-incluziune-si-diversitate/index.html")]),
+        ],
+        "resources": [("BIMx Academy", "academy/index.html"), ("Объявления BIMx", "category/anunturi-bimx/index.html"),
+                      ("Новости", "category/stiri/index.html"), ("Медиацентр", "centru-media/index.html")],
+        "resources_h": "Ресурсы",
+        "partners": "Институциональные партнёры",
+        "disclaimer_h": "Уведомление о рыночных данных",
+        "disclaimer": "Обращаем ваше внимание, что на данном этапе рыночные данные, представленные на этой платформе, носят исключительно "
+                      "демонстрационный характер. Отображаемые значения, индексы, процентные изменения и статистика сформированы в "
+                      "иллюстративных целях, чтобы продемонстрировать возможности платформы, и не отражают реальные сделки или котировки "
+                      "ценных бумаг в режиме реального времени.",
+        "accessibility": "Доступность",
+        "partner_names": {"invest": "Invest Moldova", "oda": "ODA — Организация по развитию предпринимательства",
+                          "cnpf": "НКФР — Национальная комиссия по финансовому рынку"},
+    },
+    "uk": {
+        "prelaunch": "Підготовка до запуску", "strip_text": "Торги розпочнуться до кінця 2026 року", "licence": "Ліцензія НКФР", "register": "переглянути в реєстрі", "prelaunch_title": "Торги ще не розпочалися; платформа ARENA запрацює 1 жовтня 2026 р.",
+        "lang": "Мова", "close": "Закрити пошук", "search_hint": "Натисніть Esc, щоб закрити",
+        "about": "Міжнародна фондова біржа Молдови (BIMx) — прозорий регульований ринок із 2026 року.",
+        "address": "вул. Влайку Пиркелаб, 63, MD-2012, Кишинів, Республіка Молдова",
+        "follow": "BIMx у соцмережах",
+        "cols": [
+            ("Компанія", [("Про біржу", "identitate/index.html"), ("Рада та виконавчий орган", "consiliul-si-organul-executiv/index.html"),
+                          ("Засновники BIMx", "fondatori/index.html"), ("Інституційні партнери", "parteneri-institutionali/index.html"),
+                          ("Кар’єра", "cariere/index.html"), ("Контакти", "contacte/index.html")]),
+            ("Ринок", [("Загальний огляд", "prezentare-generala/index.html"), ("Котирування в реальному часі", "cotatii-in-timp-real/index.html"),
+                       ("Біржові індекси", "indicii-bursei/index.html"), ("Акції", "actiuni/index.html"),
+                       ("Облігації та зелене фінансування", "obligatiuni/index.html"), ("Розклад торгів", "program-de-tranzactionare/index.html"),
+                       ("Календар торгів", "trading-calendar/index.html")]),
+            ("Послуги", [("Торговельна платформа", "platforma-de-tranzactionare/index.html"), ("Послуги з лістингу", "servicii-de-listare/index.html"),
+                         ("Клірінг і розрахунки", "compensare-si-decontare/index.html"), ("Ринкові дані", "date-de-piata/index.html"),
+                         ("Операційна модель", "model-operational/index.html")]),
+            ("Лістинг", [("Процедура лістингу", "procesul-de-listare/index.html"), ("Тарифи", "wp-content/uploads/2026/09/Nomenclatorul_taxelor_si_comisioanelor-1.pdf"),
+                         ("Атестація брокерів", "atestarea-brokerilor/index.html"), ("Перелік компаній", "lista-societatilor/index.html")]),
+            ("Право та комплаєнс", [("Регламенти та нормативні акти", "regulamente-si-acte-normative/index.html"),
+                                    ("Політика конфіденційності", "politica-de-confidentialitate/index.html"),
+                                    ("Політика щодо cookie", "politica-cookie/index.html"), ("Центр завантажень", "centru-de-descarcare/index.html"),
+                                    ("Доступність", "accesibilitate-incluziune-si-diversitate/index.html")]),
+        ],
+        "resources": [("BIMx Academy", "academy/index.html"), ("Оголошення BIMx", "category/anunturi-bimx/index.html"),
+                      ("Новини", "category/stiri/index.html"), ("Медіацентр", "centru-media/index.html")],
+        "resources_h": "Ресурси",
+        "partners": "Інституційні партнери",
+        "disclaimer_h": "Повідомлення щодо ринкових даних",
+        "disclaimer": "Звертаємо вашу увагу, що на цьому етапі ринкові дані, представлені на платформі, мають виключно "
+                      "демонстраційний характер. Відображені значення, індекси, відсоткові зміни та статистика сформовані з "
+                      "ілюстративною метою, щоб продемонструвати можливості платформи, і не відображають реальних угод чи котирувань "
+                      "цінних паперів у реальному часі.",
+        "accessibility": "Доступність",
+        "partner_names": {"invest": "Invest Moldova", "oda": "ODA — Організація з розвитку підприємництва",
+                          "cnpf": "НКФР — Національна комісія з фінансового ринку"},
+    },
 }
 
 ICON_PIN = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0119 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>'
@@ -108,7 +186,28 @@ ICON_MAIL = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke=
 ICON_LINKEDIN = '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 11-.01 5 2.5 2.5 0 01.01-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.6 8.65 21 11.2 21 14.5V21h-4v-5.8c0-1.4-.03-3.2-1.95-3.2-1.95 0-2.25 1.52-2.25 3.1V21H9z"/></svg>'
 ICON_FACEBOOK = '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7.5h2.5l.4-3h-2.9V8.6c0-.87.25-1.46 1.5-1.46h1.6V4.46A21 21 0 0014.3 4.3c-2.3 0-3.8 1.4-3.8 3.95v2.25H8v3h2.5V21z"/></svg>'
 ICON_INFO = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>'
+ICON_GLOBE = ('<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" '
+              'stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/></svg>')
+ICON_CHEVRON = ('<svg class="bx-lang-chev" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">'
+                '<path d="M3 4.5l3 3 3-3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>')
+ICON_CHECK = ('<svg class="bx-lang-check" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">'
+              '<path d="M3.5 8.5l3 3 6-6.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>')
 ICON_CLOSE = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>'
+
+
+CURRENT = ' aria-current="true"'
+
+
+def lang_menu(pg, t):
+    """Selectorul de limbă: buton compact (glob + codul limbii) care deschide lista limbilor (replica.js)."""
+    items = "".join(
+        f'<li><a href="{pg.alt(x)}" lang="{x}" hreflang="{x}"{CURRENT if x == pg.lang else ""}>'
+        f'<span class="bx-lang-code">{LANG_CODES[x]}</span><span class="bx-lang-name">{LANG_NAMES[x]}</span>'
+        f'{ICON_CHECK if x == pg.lang else ""}</a></li>' for x in SITE_LANGS)
+    return (f'<div class="bx-lang"><button type="button" class="bx-lang-btn" aria-haspopup="true" aria-expanded="false" '
+            f'aria-controls="bx-lang-menu" aria-label="{t["lang"]}: {LANG_NAMES[pg.lang]}">{ICON_GLOBE}'
+            f'<span>{LANG_CODES[pg.lang]}</span>{ICON_CHEVRON}</button>'
+            f'<ul class="bx-lang-menu" id="bx-lang-menu" hidden>{items}</ul></div>')
 
 
 def header(text, pg):
@@ -118,30 +217,22 @@ def header(text, pg):
     if h0 < 0 or h1 < 0 or "bx-lang" in text[h0:h1]:
         return text
     head = text[h0:h1]
-    # comutatorul de limbă: legăturile din bara de sus (spre aceeași pagină în cealaltă limbă)
-    ro = re.search(r'<a href="([^"]*)" lang="ro-RO" hreflang="ro-RO">RO</a>', head)
-    en = re.search(r'<a href="([^"]*)" lang="en-GB" hreflang="en-GB">EN</a>', head)
     # bara de sus (starea pieței, ceasul, limba) dispare: starea devine o etichetă lângă logo, limba intră în meniu
     t0, t1 = head.find('<div class="top_header">'), head.find('<div class="header_mask">')
     if t0 >= 0 and t1 > t0:
         head = head[:t0] + head[t1:]
     # banda de stare deasupra meniului: pre-lansare (stânga) și licența CNPF cu link spre registru (dreapta)
-    lic = f'{t["licence"]} nr. {LICENCE_NO}' if LICENCE_NO else t["licence"]
+    lic = f'{t["licence"]} {pick(pg.lang, "nr.", "No.", "№", "№")} {LICENCE_NO}' if LICENCE_NO else t["licence"]
     strip = (f'<div class="bx-status-strip"><div class="container bx-status-inner">'
              f'<p class="bx-status-left"><span class="bx-status-dot" aria-hidden="true"></span><strong>{t["prelaunch"]}</strong>'
-             f'<span>{t["strip_text"]}</span></p>'
+             f'<span class="bx-strip"><span class="bx-strip-move"><span class="bx-strip-item">'
+             f'<span class="bx-strip-text">{t["strip_text"]}</span></span></span></span></p>'
              f'<a class="bx-status-right" href="{CNPF_REGISTER}" target="_blank" rel="noopener">{lic} — {t["register"]} ↗</a>'
              f'</div></div>')
     head = head.replace('<div class="header_mask">', strip + '\n    <div class="header_mask">', 1)
-    for mid, (lro, len_) in NAV.items():
-        label = lro if pg.lang == "ro" else len_
-        head = re.sub(rf'(<li id="menu-item-{mid}"[^>]*><a [^>]*>)[^<]*(</a>)', rf"\g<1>{label}\2", head, count=1)
-    if ro and en:
-        cur_ro = ' aria-current="true"' if pg.lang == "ro" else ""
-        cur_en = ' aria-current="true"' if pg.lang == "en" else ""
-        lang = (f'<nav class="bx-lang" aria-label="{t["lang"]}"><a href="{ro.group(1)}" lang="ro" hreflang="ro"{cur_ro}>RO</a>'
-                f'<a href="{en.group(1)}" lang="en" hreflang="en"{cur_en}>EN</a></nav>')
-        head = re.sub(r'(\s*<a href="[^"]*" class="btn1 bx-login")', lambda m: "\n                    " + lang + m.group(1), head, count=1)
+    for mid, labels in NAV.items():
+        head = re.sub(rf'(<li id="menu-item-{mid}"[^>]*><a [^>]*>)[^<]*(</a>)', rf"\g<1>{labels[IDX[pg.lang]]}\2", head, count=1)
+    head = re.sub(r'(\s*<a href="[^"]*" class="btn1 bx-login")', lambda m: "\n                    " + lang_menu(pg, t) + m.group(1), head, count=1)
     # căutarea: butonul de închidere e un „×” clar, cu nume accesibil
     head = re.sub(r'(<div class="close" role="button" tabindex="0" aria-label=")[^"]*(">)\s*<svg[\s\S]*?</svg>',
                   rf'\g<1>{t["close"]}\2{ICON_CLOSE}', head, count=1)
@@ -162,8 +253,6 @@ def footer(text, pg):
     imgs = {k: re.search(rf'<img src="([^"]*/{name})"', old) for k, name in (("invest", "Invest.png"), ("oda", "oda.png"), ("cnpf", "CNPF.png"))}
     urls = {"invest": "https://invest.gov.md/", "oda": "https://oda.md/ro/", "cnpf": "https://www.cnpf.md/"}
     bottom = re.search(r'<div class="footer_bottom">\s*<p>([\s\S]*?)</p>', old)
-    ro = re.search(r'<a href="([^"]*)" lang="ro-RO" hreflang="ro-RO">RO</a>', old)
-    en = re.search(r'<a href="([^"]*)" lang="en-GB" hreflang="en-GB">EN</a>', old)
 
     # pe mobil fiecare coloană e o secțiune pliabilă (<details>, deschisă implicit pe desktop – replica.js)
     cols = "".join(
@@ -176,12 +265,9 @@ def footer(text, pg):
     partners = "".join(
         f'<a href="{urls[k]}" target="_blank" rel="noopener" class="bx-f-partner"><img src="{m.group(1)}" alt="{t["partner_names"][k]}"></a>'
         for k, m in imgs.items() if m)
-    lang = ""
-    if ro and en:
-        cur = ' aria-current="true"'
-        cur_ro, cur_en = (cur, "") if pg.lang == "ro" else ("", cur)
-        lang = (f'<nav class="bx-f-lang" aria-label="{t["lang"]}"><a href="{ro.group(1)}"{cur_ro}>RO</a>'
-                f'<a href="{en.group(1)}"{cur_en}>EN</a></nav>')
+    lang = (f'<nav class="bx-f-lang" aria-label="{t["lang"]}">'
+            + "".join(f'<a href="{pg.alt(x)}" lang="{x}" hreflang="{x}"{CURRENT if x == pg.lang else ""}>{LANG_CODES[x]}</a>' for x in SITE_LANGS)
+            + "</nav>")
 
     new = f'''<footer id="colophon" class="site-footer bx-footer">
   <div class="container">

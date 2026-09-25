@@ -2,24 +2,34 @@
   "levels": {
     "beg": {
       "ro": "Începător",
-      "en": "Beginner"
+      "en": "Beginner",
+      "ru": "Начальный",
+      "uk": "Початковий"
     },
     "int": {
       "ro": "Intermediar",
-      "en": "Intermediate"
+      "en": "Intermediate",
+      "ru": "Средний",
+      "uk": "Середній"
     },
     "adv": {
       "ro": "Avansat",
-      "en": "Advanced"
+      "en": "Advanced",
+      "ru": "Продвинутый",
+      "uk": "Поглиблений"
     },
     "pro": {
       "ro": "Profesional",
-      "en": "Professional"
+      "en": "Professional",
+      "ru": "Профессиональный",
+      "uk": "Професійний"
     }
   },
   "live_label": {
     "ro": "În desfășurare",
-    "en": "In progress"
+    "en": "In progress",
+    "ru": "Проводится",
+    "uk": "Триває"
   },
   "directions": {
     "introducere-piata-de-capital": {
@@ -31,6 +41,14 @@
         "en": [
           "Beginner",
           "General public"
+        ],
+        "ru": [
+          "Начальный",
+          "Широкая публика"
+        ],
+        "uk": [
+          "Початковий",
+          "Широка громадськість"
         ]
       },
       "icon": "<path d=\"M2 10l10-5 10 5-10 5-10-5z\"/><path d=\"M6 12v5c3 2.5 9 2.5 12 0v-5\"/>"
@@ -46,6 +64,16 @@
           "Intermediate",
           "Issuers",
           "Local authorities & state"
+        ],
+        "ru": [
+          "Средний",
+          "Эмитенты",
+          "ОМПУ и государство"
+        ],
+        "uk": [
+          "Середній",
+          "Емітенти",
+          "ОМПУ та держава"
         ]
       },
       "icon": "<path d=\"M3 21h18\"/><path d=\"M5 21V10l7-5 7 5v11\"/><path d=\"M9 21v-6h6v6\"/>"
@@ -59,6 +87,14 @@
         "en": [
           "Advanced",
           "Investors"
+        ],
+        "ru": [
+          "Продвинутый",
+          "Инвесторы"
+        ],
+        "uk": [
+          "Поглиблений",
+          "Інвестори"
         ]
       },
       "icon": "<rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"3\"/><path d=\"M8 16v-4M12 16V8M16 16v-6\"/>"
@@ -74,6 +110,16 @@
           "Intermediate",
           "Issuers",
           "Investors"
+        ],
+        "ru": [
+          "Средний",
+          "Эмитенты",
+          "Инвесторы"
+        ],
+        "uk": [
+          "Середній",
+          "Емітенти",
+          "Інвестори"
         ]
       },
       "icon": "<path d=\"M11 20A7 7 0 014 13c0-5 4-9 16-9 0 12-4 16-9 16z\"/><path d=\"M4 20c4-4 7-7 11-10\"/>"
@@ -87,6 +133,14 @@
         "en": [
           "Dedicated program",
           "Women entrepreneurs"
+        ],
+        "ru": [
+          "Специальная программа",
+          "Женщины-предприниматели"
+        ],
+        "uk": [
+          "Спеціальна програма",
+          "Жінки-підприємиці"
         ]
       },
       "icon": "<circle cx=\"12\" cy=\"8\" r=\"4\"/><path d=\"M5 21a7 7 0 0114 0\"/><path d=\"M17 3l1.5 1.5L21 2\"/>"
@@ -100,6 +154,14 @@
         "en": [
           "Professional",
           "Brokers"
+        ],
+        "ru": [
+          "Профессиональный",
+          "Брокеры"
+        ],
+        "uk": [
+          "Професійний",
+          "Брокери"
         ]
       },
       "icon": "<rect x=\"2\" y=\"4\" width=\"20\" height=\"13\" rx=\"2\"/><path d=\"M8 21h8M12 17v4\"/><path d=\"M6 13l3-3 3 2 5-5\"/>"
@@ -116,6 +178,14 @@
       "en": {
         "description": "What a stock exchange is, how prices are formed and who the market participants are.",
         "format": "Online"
+      },
+      "ru": {
+        "description": "Что такое биржа, как формируется цена и кто является участниками рынка.",
+        "format": "Онлайн"
+      },
+      "uk": {
+        "description": "Що таке біржа, як формується ціна і хто є учасниками ринку.",
+        "format": "Онлайн"
       }
     },
     {
@@ -128,6 +198,14 @@
       "en": {
         "description": "How the instruments differ, return, risk and how they are traded.",
         "format": "Online"
+      },
+      "ru": {
+        "description": "Различия между инструментами, доходность, риск и порядок торговли.",
+        "format": "Онлайн"
+      },
+      "uk": {
+        "description": "Відмінності між інструментами, дохідність, ризик і порядок торгівлі.",
+        "format": "Онлайн"
       }
     },
     {
@@ -140,6 +218,14 @@
       "en": {
         "description": "The role of investment firms, the documents you need and your first buy order.",
         "format": "Online"
+      },
+      "ru": {
+        "description": "Роль инвестиционных компаний, необходимые документы и первый приказ на покупку.",
+        "format": "Онлайн"
+      },
+      "uk": {
+        "description": "Роль інвестиційних компаній, необхідні документи та перша заявка на купівлю.",
+        "format": "Онлайн"
       }
     },
     {
@@ -152,6 +238,14 @@
       "en": {
         "description": "Preparing the company, the prospectus, admission to trading and ongoing obligations.",
         "format": "Hybrid"
+      },
+      "ru": {
+        "description": "Подготовка компании, проспект, допуск к торгам и последующие обязательства.",
+        "format": "Гибридный"
+      },
+      "uk": {
+        "description": "Підготовка компанії, проспект, допуск до торгів і подальші зобов’язання.",
+        "format": "Гібридний"
       }
     },
     {
@@ -164,6 +258,14 @@
       "en": {
         "description": "Sustainability criteria, ESG reporting and issuing instruments for green projects.",
         "format": "Online"
+      },
+      "ru": {
+        "description": "Критерии устойчивого развития, ESG-отчётность и выпуск инструментов для зелёных проектов.",
+        "format": "Онлайн"
+      },
+      "uk": {
+        "description": "Критерії сталого розвитку, ESG-звітність і випуск інструментів для зелених проєктів.",
+        "format": "Онлайн"
       }
     },
     {
@@ -176,6 +278,14 @@
       "en": {
         "description": "Capital market financing options, getting investor-ready and next steps.",
         "format": "Workshop"
+      },
+      "ru": {
+        "description": "Варианты финансирования через рынок капитала, подготовка к работе с инвесторами и дальнейшие шаги.",
+        "format": "Воркшоп"
+      },
+      "uk": {
+        "description": "Варіанти фінансування через ринок капіталу, підготовка до роботи з інвесторами та подальші кроки.",
+        "format": "Воркшоп"
       }
     },
     {
@@ -188,6 +298,14 @@
       "en": {
         "description": "Concrete requirements for shares on the Regulated Market and the MTF, and the path for BVM-listed issuers.",
         "format": "Hybrid"
+      },
+      "ru": {
+        "description": "Конкретные требования к акциям на регулируемом рынке и MTF и путь эмитентов, прошедших листинг на BVM.",
+        "format": "Гибридный"
+      },
+      "uk": {
+        "description": "Конкретні вимоги до акцій на регульованому ринку та MTF і шлях емітентів, які пройшли лістинг на BVM.",
+        "format": "Гібридний"
       }
     },
     {
@@ -200,6 +318,14 @@
       "en": {
         "description": "Admission of municipal bonds and government securities to BIMx.",
         "format": "Online"
+      },
+      "ru": {
+        "description": "Допуск муниципальных облигаций и государственных ценных бумаг на BIMx.",
+        "format": "Онлайн"
+      },
+      "uk": {
+        "description": "Допуск муніципальних облігацій і державних цінних паперів на BIMx.",
+        "format": "Онлайн"
       }
     },
     {
@@ -212,6 +338,14 @@
       "en": {
         "description": "Balance sheet, income statement, cash flows and key performance indicators.",
         "format": "Online"
+      },
+      "ru": {
+        "description": "Баланс, отчёт о прибылях и убытках, денежные потоки и ключевые показатели эффективности.",
+        "format": "Онлайн"
+      },
+      "uk": {
+        "description": "Баланс, звіт про прибутки та збитки, грошові потоки та ключові показники ефективності.",
+        "format": "Онлайн"
       }
     },
     {
@@ -224,6 +358,14 @@
       "en": {
         "description": "Market multiples, discounted cash flows and comparing issuers in the same sector.",
         "format": "Hybrid"
+      },
+      "ru": {
+        "description": "Рыночные мультипликаторы, дисконтированные денежные потоки и сравнение эмитентов одной отрасли.",
+        "format": "Гибридный"
+      },
+      "uk": {
+        "description": "Ринкові мультиплікатори, дисконтовані грошові потоки та порівняння емітентів однієї галузі.",
+        "format": "Гібридний"
       }
     },
     {
@@ -236,6 +378,14 @@
       "en": {
         "description": "Asset allocation, diversification, measuring risk and rebalancing a portfolio.",
         "format": "Online"
+      },
+      "ru": {
+        "description": "Распределение активов, диверсификация, измерение риска и ребалансировка портфеля.",
+        "format": "Онлайн"
+      },
+      "uk": {
+        "description": "Розподіл активів, диверсифікація, вимірювання ризику та ребалансування портфеля.",
+        "format": "Онлайн"
       }
     },
     {
@@ -249,6 +399,16 @@
       "en": {
         "description": "The BVB–BIMx–broker operating model and the trading session, phase by phase.",
         "format": "Platform training",
+        "live": true
+      },
+      "ru": {
+        "description": "Операционная модель BVB–BIMx–брокер и торговая сессия — этап за этапом.",
+        "format": "Обучение на платформе",
+        "live": true
+      },
+      "uk": {
+        "description": "Операційна модель BVB–BIMx–брокер і торгова сесія — етап за етапом.",
+        "format": "Навчання на платформі",
         "live": true
       }
     },
@@ -264,6 +424,16 @@
         "description": "Eligibility, the application file and the theoretical and technical exam for exchange traders.",
         "format": "Online",
         "live": true
+      },
+      "ru": {
+        "description": "Условия, пакет документов, теоретический и технический экзамены для биржевых агентов.",
+        "format": "Онлайн",
+        "live": true
+      },
+      "uk": {
+        "description": "Умови, пакет документів, теоретичний і технічний іспити для біржових агентів.",
+        "format": "Онлайн",
+        "live": true
       }
     },
     {
@@ -277,6 +447,16 @@
       "en": {
         "description": "What to practise in the ARENA test environment before the first live session.",
         "format": "Platform training",
+        "live": true
+      },
+      "ru": {
+        "description": "Что отрабатывается в тестовой среде ARENA перед первой реальной торговой сессией.",
+        "format": "Обучение на платформе",
+        "live": true
+      },
+      "uk": {
+        "description": "Що відпрацьовується в тестовому середовищі ARENA перед першою реальною торговою сесією.",
+        "format": "Навчання на платформі",
         "live": true
       }
     },
@@ -292,6 +472,16 @@
         "description": "The membership application, the Participation Agreement and T+2 settlement through the DCU.",
         "format": "Online",
         "live": true
+      },
+      "ru": {
+        "description": "Заявление о допуске, договор об участии и расчёты T+2 через ЕЦД.",
+        "format": "Онлайн",
+        "live": true
+      },
+      "uk": {
+        "description": "Заява про допуск, договір про участь і розрахунки T+2 через ЄЦД.",
+        "format": "Онлайн",
+        "live": true
       }
     },
     {
@@ -305,6 +495,16 @@
       "en": {
         "description": "Initiating and Intermediary Participants and preparing issuers from the BVM.",
         "format": "Online",
+        "live": true
+      },
+      "ru": {
+        "description": "Участник-инициатор и участник-посредник, подготовка эмитентов с BVM.",
+        "format": "Онлайн",
+        "live": true
+      },
+      "uk": {
+        "description": "Учасник-ініціатор і учасник-посередник, підготовка емітентів із BVM.",
+        "format": "Онлайн",
         "live": true
       }
     }
@@ -320,6 +520,14 @@
       "en": {
         "title": "The beginner investor's guide",
         "short": "Your first steps on the capital market, explained in plain language."
+      },
+      "ru": {
+        "title": "Руководство начинающего инвестора",
+        "short": "Первые шаги на рынке капитала — простым и понятным языком."
+      },
+      "uk": {
+        "title": "Посібник для інвестора-початківця",
+        "short": "Перші кроки на ринку капіталу — простою та зрозумілою мовою."
       }
     },
     {
@@ -332,6 +540,14 @@
       "en": {
         "title": "The listing guide for issuers",
         "short": "The steps, documents and requirements for admission to trading."
+      },
+      "ru": {
+        "title": "Руководство по листингу для эмитентов",
+        "short": "Этапы, документы и требования для допуска к торгам."
+      },
+      "uk": {
+        "title": "Посібник із лістингу для емітентів",
+        "short": "Етапи, документи та вимоги для допуску до торгів."
       }
     },
     {
@@ -344,6 +560,14 @@
       "en": {
         "title": "ESG and green bonds",
         "short": "Standards, good practice and green financing instruments."
+      },
+      "ru": {
+        "title": "ESG и зелёные облигации",
+        "short": "Стандарты, передовая практика и инструменты зелёного финансирования."
+      },
+      "uk": {
+        "title": "ESG і зелені облігації",
+        "short": "Стандарти, найкращі практики та інструменти зеленого фінансування."
       }
     },
     {
@@ -357,6 +581,14 @@
       "en": {
         "title": "How to read a financial report",
         "short": "Key indicators and how to interpret issuers' reports."
+      },
+      "ru": {
+        "title": "Как читать финансовый отчёт",
+        "short": "Ключевые показатели и интерпретация отчётности эмитентов."
+      },
+      "uk": {
+        "title": "Як читати фінансовий звіт",
+        "short": "Ключові показники та інтерпретація звітності емітентів."
       }
     },
     {
@@ -369,6 +601,14 @@
       "en": {
         "title": "The BIMx broker's guide",
         "short": "ARENA Trading, exchange trader certification, simulations and exchange membership."
+      },
+      "ru": {
+        "title": "Руководство брокера BIMx",
+        "short": "ARENA Trading, аттестация биржевых агентов, симуляции и допуск в качестве участника."
+      },
+      "uk": {
+        "title": "Посібник брокера BIMx",
+        "short": "ARENA Trading, атестація біржових агентів, симуляції та допуск як учасника."
       }
     }
   ]

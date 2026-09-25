@@ -8,10 +8,13 @@ import datetime
 import html as _html
 import re
 import shutil
+from pathlib import Path
 
 from . import chrome
-from .config import DIST, SRC
+from .config import CYRILLIC, DIST, LANG_PREFIX, LOCALES, SITE_LANGS, SRC, lang_of, pick
 from .util import relto
+
+IDX = {"ro": 0, "en": 1, "ru": 2, "uk": 3}  # poziția limbii în tuplurile (RO, EN, RU, UK) de mai jos
 
 UPLOADS = "wp-content/uploads"
 NOMENCLATOR_OLD = f"{UPLOADS}/2026/09/Nomenclatorul_taxelor_si_comisioanelor.pdf"
@@ -89,6 +92,48 @@ TXT = {
         "doc_download": "Download", "in_prep": "This page is being prepared.",
         "section": {"piata": "Market", "despre": "About us", "juridic": "Legal &amp; Compliance", "servicii": "Services"},
     },
+    "ru": {
+        "prelaunch": "Подготовка к запуску", "prelaunch_more": " · Торговая платформа ARENA вводится в эксплуатацию 1 октября 2026 г.",
+        "skip": "Перейти к содержанию", "home": "Главная", "breadcrumb": "Навигационная цепочка",
+        "search_open": "Поиск по сайту", "search_close": "Закрыть поиск", "menu": "Открыть меню", "close": "Закрыть",
+        "soon": "Скоро", "demo": "Демонстрационные данные", "pause": "Пауза", "play": "Запустить",
+        "ticker_label": "Бегущая строка с демонстрационными котировками",
+        "popup": "Уведомление о рыночных данных",
+        "stay": "Будьте в курсе", "stay_p": "Следите за BIMx в LinkedIn и Facebook: объявления, пресс-релизы и новости о запуске рынка.",
+        "address": "ул. Влайку Пыркэлаб, 63, MD-2012, Кишинёв, Республика Молдова",
+        "copyright": "© 2026 Международная фондовая биржа Молдовы. Оператор рынка, лицензированный НКФР 21 августа 2026 г. для "
+                     "регулируемого рынка и MTF. Торговая платформа ARENA вводится в эксплуатацию 1 октября 2026 г.; "
+                     "первый листинг запланирован до конца 2026 г.",
+        "calendar": "Торговый календарь", "accessibility": "Доступность",
+        "partners": {"invest": "Invest Moldova", "oda": "ODA — Организация по развитию предпринимательства",
+                     "cnpf": "НКФР — Национальная комиссия по финансовому рынку"},
+        "notes": ["Первый листинг: до конца 2026 г.", "Допуск эмитентов: с 28 сентября 2026 г.",
+                  "Допуск брокеров: с 28 сентября 2026 г."],
+        "read_more": "Подробнее", "pdf": "PDF", "new_tab": "(откроется в новой вкладке)",
+        "doc_download": "Скачать", "in_prep": "Страница находится в разработке.",
+        "section": {"piata": "Рынок", "despre": "О нас", "juridic": "Право и комплаенс", "servicii": "Услуги"},
+    },
+    "uk": {
+        "prelaunch": "Підготовка до запуску", "prelaunch_more": " · Торговельна платформа ARENA запрацює 1 жовтня 2026 р.",
+        "skip": "Перейти до вмісту", "home": "Головна", "breadcrumb": "Навігаційний ланцюжок",
+        "search_open": "Пошук на сайті", "search_close": "Закрити пошук", "menu": "Відкрити меню", "close": "Закрити",
+        "soon": "Незабаром", "demo": "Демонстраційні дані", "pause": "Пауза", "play": "Запустити",
+        "ticker_label": "Рядок із демонстраційними котируваннями",
+        "popup": "Повідомлення щодо ринкових даних",
+        "stay": "Будьте в курсі", "stay_p": "Стежте за BIMx у LinkedIn і Facebook: оголошення, прес-релізи та новини про запуск ринку.",
+        "address": "вул. Влайку Пиркелаб, 63, MD-2012, Кишинів, Республіка Молдова",
+        "copyright": "© 2026 Міжнародна фондова біржа Молдови. Оператор ринку, ліцензований НКФР 21 серпня 2026 р. для "
+                     "регульованого ринку та MTF. Торговельна платформа ARENA запрацює 1 жовтня 2026 р.; "
+                     "перший лістинг заплановано до кінця 2026 р.",
+        "calendar": "Календар торгів", "accessibility": "Доступність",
+        "partners": {"invest": "Invest Moldova", "oda": "ODA — Організація з розвитку підприємництва",
+                     "cnpf": "НКФР — Національна комісія з фінансового ринку"},
+        "notes": ["Перший лістинг: до кінця 2026 р.", "Допуск емітентів: з 28 вересня 2026 р.",
+                  "Допуск брокерів: з 28 вересня 2026 р."],
+        "read_more": "Детальніше", "pdf": "PDF", "new_tab": "(відкриється в новій вкладці)",
+        "doc_download": "Завантажити", "in_prep": "Сторінка готується.",
+        "section": {"piata": "Ринок", "despre": "Про нас", "juridic": "Право та комплаєнс", "servicii": "Послуги"},
+    },
 }
 
 # UI-01, UI-33: paginile „În curând” devin pagini reale (titlu, breadcrumbs, conținut)
@@ -97,69 +142,116 @@ PAGES = {
         "section": "piata",
         "ro": ("Calendarul de tranzacționare", "Etapele lansării pieței BIMx, conform comunicărilor oficiale ale BIMx."),
         "en": ("Trading calendar", "The launch stages of the BIMx market, as set out in BIMx's official communications."),
+        "ru": ("Торговый календарь", "Этапы запуска рынка BIMx согласно официальным сообщениям BIMx."),
+        "uk": ("Календар торгів", "Етапи запуску ринку BIMx відповідно до офіційних повідомлень BIMx."),
         "kind": "calendar",
     },
     "statut": {"section": "despre", "ro": ("Statut", "Statutul Bursei Internaționale a Moldovei."),
                "en": ("Articles of association", "The articles of association of the Moldova International Stock Exchange."),
-               "kind": "docs", "docs": [(f"{UPLOADS}/2026/06/Statut-BIMx.pdf", "Statut BIMx", "BIMx articles of association")]},
+               "ru": ("Устав", "Устав Международной фондовой биржи Молдовы."),
+               "uk": ("Статут", "Статут Міжнародної фондової біржі Молдови."),
+               "kind": "docs", "docs": [(f"{UPLOADS}/2026/06/Statut-BIMx.pdf", "Statut BIMx", "BIMx articles of association", "Устав BIMx", "Статут BIMx")]},
     "organigrama": {"section": "despre", "ro": ("Organigrama", "Structura organizatorică a BIMx."),
                     "en": ("Organisational chart", "The organisational structure of BIMx."),
-                    "kind": "org", "docs": [(f"{UPLOADS}/2026/06/Organigrama-Final.pdf", "Organigrama BIMx (PDF)", "BIMx organisational chart (PDF)")]},
+                    "ru": ("Организационная структура", "Организационная структура BIMx."),
+                    "uk": ("Організаційна структура", "Організаційна структура BIMx."),
+                    "kind": "org", "docs": [(f"{UPLOADS}/2026/06/Organigrama-Final.pdf", "Organigrama BIMx (PDF)", "BIMx organisational chart (PDF)",
+                                             "Организационная структура BIMx (PDF)", "Організаційна структура BIMx (PDF)")]},
     "situatii-financiare": {
         "section": "despre", "ro": ("Situații financiare", "Situațiile financiare anuale și raportul auditorului."),
         "en": ("Financial statements", "The annual financial statements and the auditor's report."),
+        "ru": ("Финансовая отчётность", "Годовая финансовая отчётность и аудиторское заключение."),
+        "uk": ("Фінансова звітність", "Річна фінансова звітність і аудиторський звіт."),
         "kind": "docs", "docs": [
-            (f"{UPLOADS}/2026/06/Situatii-financiare-BIMx-anul-2025.pdf", "Situații financiare BIMx, anul 2025", "BIMx financial statements, 2025"),
-            (f"{UPLOADS}/2026/06/Raportul-audit-financiar-BIMx-anul-2025.pdf", "Raportul de audit financiar, anul 2025", "Financial audit report, 2025"),
+            (f"{UPLOADS}/2026/06/Situatii-financiare-BIMx-anul-2025.pdf", "Situații financiare BIMx, anul 2025", "BIMx financial statements, 2025",
+             "Финансовая отчётность BIMx за 2025 год", "Фінансова звітність BIMx за 2025 рік"),
+            (f"{UPLOADS}/2026/06/Raportul-audit-financiar-BIMx-anul-2025.pdf", "Raportul de audit financiar, anul 2025", "Financial audit report, 2025",
+             "Аудиторское заключение за 2025 год", "Аудиторський звіт за 2025 рік"),
         ]},
-    "statistici-de-piata": {"section": "piata", "ro": ("Statistici de piață", ""), "en": ("Market statistics", ""), "kind": "prep",
-                            "see": ("date-de-piata/index.html", "Date de piață", "Market data")},
+    "statistici-de-piata": {"section": "piata", "ro": ("Statistici de piață", ""), "en": ("Market statistics", ""),
+                            "ru": ("Рыночная статистика", ""), "uk": ("Ринкова статистика", ""), "kind": "prep",
+                            "see": ("date-de-piata/index.html", "Date de piață", "Market data", "Рыночные данные", "Ринкові дані")},
     "platforma-de-tranzactionare": {"section": "servicii", "ro": ("Platforma de tranzacționare", ""),
-                                    "en": ("Trading platform", ""), "kind": "prep",
+                                    "en": ("Trading platform", ""), "ru": ("Торговая платформа", ""),
+                                    "uk": ("Торговельна платформа", ""), "kind": "prep",
                                     "see": ("model-operational/index.html", "Modelul operațional și platforma ARENA",
-                                            "The operating model and the ARENA platform")},
-    "servicii": {"section": "servicii", "ro": ("Servicii", ""), "en": ("Services", ""), "kind": "prep",
-                 "see": ("servicii-de-listare/index.html", "Servicii de listare", "Listing services")},
+                                            "The operating model and the ARENA platform", "Операционная модель и платформа ARENA",
+                                            "Операційна модель і платформа ARENA")},
+    "servicii": {"section": "servicii", "ro": ("Servicii", ""), "en": ("Services", ""), "ru": ("Услуги", ""), "uk": ("Послуги", ""), "kind": "prep",
+                 "see": ("servicii-de-listare/index.html", "Servicii de listare", "Listing services", "Услуги по листингу", "Послуги з лістингу")},
     "politica-de-confidentialitate": {"section": "juridic", "ro": ("Politica de confidențialitate", ""),
-                                      "en": ("Privacy policy", ""), "kind": "prep", "see": ("contacte/index.html", "Contacte", "Contacts")},
-    "politica-cookie": {"section": "juridic", "ro": ("Politica cookie", ""), "en": ("Cookie policy", ""), "kind": "prep",
-                        "see": ("contacte/index.html", "Contacte", "Contacts")},
+                                      "en": ("Privacy policy", ""), "ru": ("Политика конфиденциальности", ""),
+                                      "uk": ("Політика конфіденційності", ""), "kind": "prep",
+                                      "see": ("contacte/index.html", "Contacte", "Contacts", "Контакты", "Контакти")},
+    "politica-cookie": {"section": "juridic", "ro": ("Politica cookie", ""), "en": ("Cookie policy", ""),
+                        "ru": ("Политика использования файлов cookie", ""), "uk": ("Політика щодо файлів cookie", ""), "kind": "prep",
+                        "see": ("contacte/index.html", "Contacte", "Contacts", "Контакты", "Контакти")},
 }
 
 # Etapele din calendar: (data exactă sau None, RO: (dată, titlu, detalii), EN: ...). Starea se calculează la build.
 CALENDAR = [
     (datetime.date(2025, 9, 15), ("15 septembrie 2025", "Memorandum de înțelegere (Moldova Business Week)", "Memorandumul de înțelegere privind crearea Bursei Internaționale a Moldovei este semnat în cadrul Moldova Business Week 2025."),
-                                 ("15 September 2025", "Memorandum of understanding (Moldova Business Week)", "The memorandum of understanding on creating the Moldova International Stock Exchange is signed at Moldova Business Week 2025.")),
+                                 ("15 September 2025", "Memorandum of understanding (Moldova Business Week)", "The memorandum of understanding on creating the Moldova International Stock Exchange is signed at Moldova Business Week 2025."),
+                                 ("15 сентября 2025", "Меморандум о взаимопонимании (Moldova Business Week)", "Меморандум о взаимопонимании о создании Международной фондовой биржи Молдовы подписан в рамках Moldova Business Week 2025."),
+                                 ("15 вересня 2025", "Меморандум про взаєморозуміння (Moldova Business Week)", "Меморандум про взаєморозуміння щодо створення Міжнародної фондової біржі Молдови підписано в межах Moldova Business Week 2025.")),
     (datetime.date(2025, 10, 15), ("15 octombrie 2025", "Guvernul aprobă crearea societății pe acțiuni", "Guvernul Republicii Moldova aprobă crearea societății pe acțiuni care va administra noua bursă."),
-                                  ("15 October 2025", "The Government approves the creation of the joint-stock company", "The Government of the Republic of Moldova approves the creation of the joint-stock company that will operate the new exchange.")),
+                                  ("15 October 2025", "The Government approves the creation of the joint-stock company", "The Government of the Republic of Moldova approves the creation of the joint-stock company that will operate the new exchange."),
+                                 ("15 октября 2025", "Правительство одобряет создание акционерного общества", "Правительство Республики Молдова одобряет создание акционерного общества, которое будет управлять новой биржей."),
+                                 ("15 жовтня 2025", "Уряд схвалює створення акціонерного товариства", "Уряд Республіки Молдова схвалює створення акціонерного товариства, яке керуватиме новою біржею.")),
     (datetime.date(2025, 12, 12), ("12 decembrie 2025", "Înregistrare oficială la Agenția Servicii Publice", "Bursa Internațională a Moldovei S.A. este înregistrată oficial ca persoană juridică la Agenția Servicii Publice."),
-                                  ("12 December 2025", "Official registration with the Public Services Agency", "Moldova International Stock Exchange S.A. is officially registered as a legal entity with the Public Services Agency.")),
+                                  ("12 December 2025", "Official registration with the Public Services Agency", "Moldova International Stock Exchange S.A. is officially registered as a legal entity with the Public Services Agency."),
+                                 ("12 декабря 2025", "Официальная регистрация в Агентстве государственных услуг", "АО «Международная фондовая биржа Молдовы» официально зарегистрировано как юридическое лицо в Агентстве государственных услуг."),
+                                 ("12 грудня 2025", "Офіційна реєстрація в Агентстві державних послуг", "АТ «Міжнародна фондова біржа Молдови» офіційно зареєстроване як юридична особа в Агентстві державних послуг.")),
     (datetime.date(2026, 1, 20), ("20 ianuarie 2026", "CNPF înregistrează emisiunea de constituire", "Comisia Națională a Pieței Financiare înregistrează emisiunea de acțiuni plasată la constituirea societății."),
-                                 ("20 January 2026", "The CNPF registers the founding share issue", "The National Commission for Financial Markets registers the share issue placed at the company's incorporation.")),
+                                 ("20 January 2026", "The CNPF registers the founding share issue", "The National Commission for Financial Markets registers the share issue placed at the company's incorporation."),
+                                 ("20 января 2026", "НКФР регистрирует учредительную эмиссию", "Национальная комиссия по финансовому рынку регистрирует эмиссию акций, размещённых при учреждении общества."),
+                                 ("20 січня 2026", "НКФР реєструє засновницьку емісію", "Національна комісія з фінансового ринку реєструє емісію акцій, розміщених під час заснування товариства.")),
     (datetime.date(2026, 8, 21), ("21 august 2026", "Licența de operator de piață obținută de la CNPF",
                                   "CNPF acordă BIMx licența de operator de piață și autorizațiile pentru Piața Reglementată și sistemul multilateral de tranzacționare (Hotărârea CNPF nr. 42/3)."),
                                  ("21 August 2026", "Market operator licence obtained from the CNPF",
-                                  "The CNPF grants BIMx the market operator licence and the authorisations for the Regulated Market and the multilateral trading facility (CNPF Decision No. 42/3).")),
+                                  "The CNPF grants BIMx the market operator licence and the authorisations for the Regulated Market and the multilateral trading facility (CNPF Decision No. 42/3)."),
+                                 ("21 августа 2026", "Лицензия оператора рынка получена от НКФР",
+                                  "НКФР выдаёт BIMx лицензию оператора рынка и разрешения на управление регулируемым рынком и многосторонней торговой системой (Постановление НКФР № 42/3)."),
+                                 ("21 серпня 2026", "Ліцензію оператора ринку отримано від НКФР",
+                                  "НКФР видає BIMx ліцензію оператора ринку та дозволи на регульований ринок і багатосторонню торговельну систему (Постанова НКФР № 42/3).")),
     (datetime.date(2026, 9, 28), ("28 septembrie 2026", "Începe admiterea brokerilor și a emitenților",
                                   "Societățile de investiții pot solicita admiterea ca membri ai bursei, iar emitenții – admiterea valorilor mobiliare la tranzacționare."),
                                  ("28 September 2026", "Admission of brokers and issuers opens",
-                                  "Investment firms can apply for exchange membership, and issuers can apply for the admission of their securities to trading.")),
+                                  "Investment firms can apply for exchange membership, and issuers can apply for the admission of their securities to trading."),
+                                 ("28 сентября 2026", "Начинается допуск брокеров и эмитентов",
+                                  "Инвестиционные компании могут подать заявку на участие в торгах на бирже, а эмитенты — на допуск своих ценных бумаг к торгам."),
+                                 ("28 вересня 2026", "Розпочинається допуск брокерів і емітентів",
+                                  "Інвестиційні компанії можуть подати заявку на членство в біржі, а емітенти — на допуск своїх цінних паперів до торгів.")),
     (datetime.date(2026, 10, 1), ("1 octombrie 2026", "Platforma ARENA, sistemul de tranzacționare BIMx, intră în producție",
                                   "Platforma de tranzacționare ARENA, dezvoltată de Bursa de Valori București, devine operațională pentru membrii admiși."),
                                  ("1 October 2026", "ARENA, the BIMx trading system, goes live",
-                                  "The ARENA trading platform, developed by the Bucharest Stock Exchange, becomes operational for admitted members.")),
+                                  "The ARENA trading platform, developed by the Bucharest Stock Exchange, becomes operational for admitted members."),
+                                 ("1 октября 2026", "Платформа ARENA, торговая система BIMx, вводится в эксплуатацию",
+                                  "Торговая платформа ARENA, разработанная Бухарестской фондовой биржей, начинает работать для допущенных участников."),
+                                 ("1 жовтня 2026", "Платформа ARENA, торговельна система BIMx, починає роботу",
+                                  "Торговельна платформа ARENA, розроблена Бухарестською фондовою біржею, починає працювати для допущених учасників.")),
     (None, ("Până la sfârșitul anului 2026", "Prima listare și prima ședință de tranzacționare",
             "Prima listare la BIMx este planificată până la sfârșitul anului 2026. Ședințele de tranzacționare încep după prima listare."),
            ("By the end of 2026", "First listing and first trading session",
-            "The first listing on BIMx is planned by the end of 2026. Trading sessions start after the first listing.")),
+            "The first listing on BIMx is planned by the end of 2026. Trading sessions start after the first listing."),
+                                 ("До конца 2026 года", "Первый листинг и первая торговая сессия",
+            "Первый листинг на BIMx запланирован до конца 2026 года. Торговые сессии начнутся после первого листинга."),
+                                 ("До кінця 2026 року", "Перший лістинг і перша торгова сесія",
+            "Перший лістинг на BIMx заплановано до кінця 2026 року. Торгові сесії розпочнуться після першого лістингу.")),
 ]
 CAL_STATE = {"ro": {"done": "Finalizat", "next": "Urmează", "planned": "Planificat"},
-             "en": {"done": "Completed", "next": "Next", "planned": "Planned"}}
+             "en": {"done": "Completed", "next": "Next", "planned": "Planned"},
+             "ru": {"done": "Завершено", "next": "Следующий этап", "planned": "Запланировано"},
+             "uk": {"done": "Завершено", "next": "Наступний етап", "planned": "Заплановано"}}
 CALENDAR_NOTE = {
     "ro": ("Programul zilnic al ședințelor este descris pe pagina {link}. Datele se actualizează pe măsură ce BIMx publică noi comunicate.",
            "Programul de tranzacționare"),
     "en": ("The daily session schedule is described on the {link} page. Dates are updated as BIMx publishes new announcements.",
            "Trading schedule"),
+    "ru": ("Ежедневное расписание торговых сессий приведено на странице «{link}». Даты обновляются по мере публикации BIMx новых сообщений.",
+           "Расписание торгов"),
+    "uk": ("Щоденний розклад торгових сесій наведено на сторінці «{link}». Дати оновлюються в міру того, як BIMx публікує нові повідомлення.",
+           "Розклад торгів"),
 }
 
 # UI-36: iconițe SVG din setul liniar al site-ului (în locul PNG-urilor de 28 px)
@@ -185,7 +277,7 @@ CRUMB_SECTION = {"regulamente-si-acte-normative": "despre", "parteneri-instituti
                  "atestarea-brokerilor": "piata", "lista-societatilor": "piata"}
 
 
-# breadcrumbs: fiecare nivel de secțiune duce la pagina principală a secțiunii (etichete RO și EN, fără majuscule)
+# breadcrumbs: fiecare nivel de secțiune duce la pagina principală a secțiunii (etichete în toate limbile, fără majuscule)
 SECTION_HUBS = {
     "despre noi": "identitate", "about us": "identitate",
     "piață": "prezentare-generala", "piaţă": "prezentare-generala", "market": "prezentare-generala",
@@ -194,6 +286,14 @@ SECTION_HUBS = {
     "participanți": "lista-societatilor", "participants": "lista-societatilor",
     "servicii": "servicii-de-listare", "services": "servicii-de-listare",
     "juridic și conformitate": "regulamente-si-acte-normative", "legal & compliance": "regulamente-si-acte-normative",
+    # rusă
+    "о нас": "identitate", "рынок": "prezentare-generala", "листинг": "procesul-de-listare",
+    "новости и объявления": "category/anunturi-bimx", "новости и сообщения": "category/anunturi-bimx",
+    "участники": "lista-societatilor", "услуги": "servicii-de-listare", "право и комплаенс": "regulamente-si-acte-normative",
+    # ucraineană
+    "про нас": "identitate", "ринок": "prezentare-generala", "лістинг": "procesul-de-listare",
+    "новини та оголошення": "category/anunturi-bimx", "учасники": "lista-societatilor", "послуги": "servicii-de-listare",
+    "право та комплаєнс": "regulamente-si-acte-normative",
 }
 
 
@@ -204,7 +304,7 @@ def link_crumbs(text, pg):
         hub = SECTION_HUBS.get(key)
         if not hub:
             return m.group(0)
-        target = DIST / (("en/" if pg.lang == "en" else "") + hub) / "index.html"
+        target = DIST / (LANG_PREFIX[pg.lang] + hub) / "index.html"
         if target.resolve() == pg.path.resolve():          # pagina principală a secțiunii: nivelul e de prisos
             return "<!--bx-drop-crumb-->"
         return f'<a href="{pg.link(hub + "/index.html")}">{label}</a>'
@@ -218,8 +318,9 @@ class Page:
     def __init__(self, path):
         self.path = path
         self.rel = path.relative_to(DIST)
-        self.lang = "en" if self.rel.parts[0] == "en" else "ro"
-        parts = self.rel.parts[1:] if self.lang == "en" else self.rel.parts
+        self.lang = lang_of(self.rel.parts)
+        parts = self.rel.parts[1:] if self.lang != "ro" else self.rel.parts
+        self.inner = Path(*parts)                                      # calea paginii în interiorul limbii
         self.key = parts[0] if len(parts) > 1 else parts[0]          # „index.html” sau numele primului director
         self.academy = self.key == "academy"
         self.home = parts == ("index.html",)
@@ -227,8 +328,12 @@ class Page:
 
     def link(self, path):
         """Link relativ spre o pagină (cale RO, de la rădăcină) în limba paginii curente."""
-        prefix = "en/" if self.lang == "en" and not path.startswith(("wp-content/", "assets/")) else ""
+        prefix = LANG_PREFIX[self.lang] if not path.startswith(("wp-content/", "assets/")) else ""
         return relto(DIST / (prefix + path), self.path.parent) or "index.html"
+
+    def alt(self, lang):
+        """Link relativ spre aceeași pagină în altă limbă (selectorul de limbă)."""
+        return relto(DIST / LANG_PREFIX[lang] / self.inner, self.path.parent) or "index.html"
 
     def asset(self, path):
         return relto(DIST / path, self.path.parent)
@@ -238,8 +343,8 @@ def human_size(path, lang):
     size = (DIST / path).stat().st_size
     if size >= 1024 * 1024:
         val = f"{size / 1024 / 1024:.1f}"
-        return (val.replace(".", ",") if lang == "ro" else val) + " MB"
-    return f"{round(size / 1024)} KB"
+        return (val if lang == "en" else val.replace(".", ",")) + pick(lang, " MB", " MB", " МБ", " МБ")
+    return f"{round(size / 1024)}" + pick(lang, " KB", " KB", " КБ", " КБ")
 
 
 def strip_tags(text):
@@ -270,11 +375,11 @@ def fix_header(text, pg):
     text = re.sub(r'<div class="close">', f'<div class="close" role="button" tabindex="0" aria-label="{t["close"]}">', text)
     # meniul Piață: grupul „Tranzacționare” (programul și calendarul de tranzacționare)
     if "bx-nav-trading" not in text:
-        ro = pg.lang == "ro"
+        L = pg.lang
         group = (f'<li class="not_click menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children bx-nav-trading">'
-                 f'<a href="#">{"Tranzacționare" if ro else "Trading"}</a><ul class="sub-menu">'
-                 f'<li class="menu-item"><a href="{pg.link("program-de-tranzactionare/index.html")}">{"Program de tranzacționare" if ro else "Trading schedule"}</a></li>'
-                 f'<li class="menu-item"><a href="{pg.link("trading-calendar/index.html")}">{"Calendarul de tranzacționare" if ro else "Trading calendar"}</a></li>'
+                 f'<a href="#">{pick(L, "Tranzacționare", "Trading", "Торги", "Торги")}</a><ul class="sub-menu">'
+                 f'<li class="menu-item"><a href="{pg.link("program-de-tranzactionare/index.html")}">{pick(L, "Program de tranzacționare", "Trading schedule", "Расписание торгов", "Розклад торгів")}</a></li>'
+                 f'<li class="menu-item"><a href="{pg.link("trading-calendar/index.html")}">{pick(L, "Calendarul de tranzacționare", "Trading calendar", "Торговый календарь", "Календар торгів")}</a></li>'
                  f'</ul></li>\n\t')
         cur = {"program-de-tranzactionare": "program-de-tranzactionare/index.html", "trading-calendar": "trading-calendar/index.html"}.get(pg.key)
         if cur:   # pagina curentă e în grupul nou: marcată în meniu, iar „Piață” devine secțiunea activă
@@ -294,7 +399,7 @@ def fix_header(text, pg):
     text = re.sub(r'(<li id="menu-item-599"[^>]*>)<a [^>]*>', lambda m: m.group(1) + f'<a href="{pg.link("organigrama/index.html")}">', text, count=1)
     # BIMx Academy: primul link duce la începutul paginii Academy (celelalte duc la secțiuni)
     if "bx-nav-academy-home" not in text:
-        label = "Prezentare generală" if pg.lang == "ro" else "Overview"
+        label = pick(pg.lang, "Prezentare generală", "Overview", "Общий обзор", "Загальний огляд")
         cur = ' class="menu-item current-menu-item bx-nav-academy-home"' if pg.key == "academy" and pg.path.name == "index.html" and len(pg.rel.parts) <= 3 else ' class="menu-item bx-nav-academy-home"'
         text = re.sub(r'(<li id="menu-item-410"[\s\S]*?<ul class="sub-menu">\s*<li[^>]*back_to_main_menu[^>]*>[\s\S]*?</li>)',
                       lambda m: m.group(1) + f'\n\t<li{cur}><a href="{pg.link("academy/index.html")}">{label}</a></li>', text, count=1)
@@ -327,7 +432,7 @@ def menu_columns(text, lang):
         m = re.search(rf'(<li id="menu-item-{mid}"[^>]*>\s*<a [^>]*>([^<]*)</a>[\s\S]*?<ul class="sub-menu">)', text)
         if not m or f'bx-nav-col-{mid}' in text:
             continue
-        label = chrome.NAV[mid][0 if lang == "ro" else 1]
+        label = chrome.NAV[mid][IDX[lang]]
         start = m.end()
         # sfârșitul panoului: </ul> care închide sub-meniul de nivel 1
         depth, pos, end = 1, start, None
@@ -457,7 +562,7 @@ def fix_common(text, pg):
     # UI-11 / UI-12: breadcrumbs – „Acasă” duce acasă, nivelul de secțiune e text, nav + aria-current
     def crumbs(m):
         ul = m.group(0)
-        ul = re.sub(r'<li><a href="">(Acasă|Home)</a></li>', lambda x: f'<li><a href="{pg.link("index.html")}">{x.group(1)}</a></li>', ul)
+        ul = re.sub(r'<li><a href="">(Acasă|Home|Главная|Головна)</a></li>', lambda x: f'<li><a href="{pg.link("index.html")}">{x.group(1)}</a></li>', ul)
         ul = re.sub(r'<a href="#"(?: class="without_click")?>([^<]*)</a>', r'<span class="without_click">\1</span>', ul)
         ul = re.sub(r"<li>(\s*<svg)", r'<li aria-hidden="true">\1', ul)
         ul = re.sub(r'<li><span>([^<]*)</span></li>(\s*</ul>)', r'<li><span aria-current="page">\1</span></li>\2', ul)
@@ -501,7 +606,7 @@ def fix_common(text, pg):
         text = re.sub(r'<a href="(https://www\.facebook\.com/[^"]*)" class="bx-social-btn">', r'<a href="\1" class="bx-social-btn" target="_blank" rel="noopener" aria-label="Facebook">', text)
 
     # UI-24: iframe-ul hărții are titlu
-    text = re.sub(r'<iframe (src="https://www\.google\.com/maps[^"]*")', rf'<iframe title="{"Harta sediului BIMx" if pg.lang == "ro" else "Map of the BIMx office"}" \1', text)
+    text = re.sub(r'<iframe (src="https://www\.google\.com/maps[^"]*")', rf'<iframe title="{pick(pg.lang, "Harta sediului BIMx", "Map of the BIMx office", "Карта офиса BIMx", "Карта офісу BIMx")}" \1', text)
     # UI-28: miniatura de 300 px nu mai e aleasă pentru carduri afișate la ~450 px
     text = re.sub(r',\s*[^",]*article_image-300x200\.png 300w', "", text)
 
@@ -515,6 +620,7 @@ def fix_common(text, pg):
     return text
 
 
+RU_FONT = ('<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&amp;display=swap">\n')
 SITE_URL = "https://rhaliplii.github.io/bimx_new/"      # adresa publică a site-ului (pentru imaginea și linkurile de partajare)
 OG_IMAGE = "assets/img/og-bimx.png"
 
@@ -527,12 +633,14 @@ def fix_og(text, pg):
     title = re.search(r"<title>([^<]*)</title>", text)
     title = _html.unescape(title.group(1)).strip() if title else "BIMx"
     if pg.home:
-        title = "Bursa Internațională a Moldovei (BIMx)" if pg.lang == "ro" else "Moldova International Stock Exchange (BIMx)"
+        title = pick(pg.lang, "Bursa Internațională a Moldovei (BIMx)", "Moldova International Stock Exchange (BIMx)",
+                     "Международная фондовая биржа Молдовы (BIMx)", "Міжнародна фондова біржа Молдови (BIMx)")
     desc = re.search(r'<meta name="description" content="([^"]*)"', text)
     desc = _html.unescape(desc.group(1)) if desc else ""
     url = SITE_URL + str(pg.rel).replace("\\", "/").removesuffix("index.html")
     e = lambda v: _html.escape(v, quote=True)
-    locale, alt = ("ro_RO", "en_GB") if pg.lang == "ro" else ("en_GB", "ro_RO")
+    locale = LOCALES[pg.lang][1]
+    alts = "".join(f'\n<meta property="og:locale:alternate" content="{LOCALES[x][1]}">' for x in SITE_LANGS if x != pg.lang)
     # scoatem meta-datele vechi (WordPress), ca să nu fie duble
     head = re.sub(r'\s*<meta (?:property="og:[^"]*"|name="twitter:[^"]*")[^>]*>', "", text[:head_end])
     tags = (f'\n<meta property="og:type" content="website">'
@@ -541,11 +649,11 @@ def fix_og(text, pg):
             f'\n<meta property="og:description" content="{e(desc)}">'
             f'\n<meta property="og:url" content="{e(url)}">'
             f'\n<meta property="og:locale" content="{locale}">'
-            f'\n<meta property="og:locale:alternate" content="{alt}">'
+            f'{alts}'
             f'\n<meta property="og:image" content="{SITE_URL}{OG_IMAGE}">'
             f'\n<meta property="og:image:width" content="1200">'
             f'\n<meta property="og:image:height" content="630">'
-            f'\n<meta property="og:image:alt" content="BIMx – Bursa Internațională a Moldovei">'
+            f'\n<meta property="og:image:alt" content="{pick(pg.lang, "BIMx – Bursa Internațională a Moldovei", "BIMx – Moldova International Stock Exchange", "BIMx — Международная фондовая биржа Молдовы", "BIMx — Міжнародна фондова біржа Молдови")}">'
             f'\n<meta name="twitter:card" content="summary_large_image">'
             f'\n<meta name="twitter:title" content="{e(title)}">'
             f'\n<meta name="twitter:description" content="{e(desc)}">'
@@ -568,7 +676,8 @@ def fix_meta(text, pg):
     if not desc:
         title = re.search(r"<title>([^<]*)</title>", text)
         name = strip_tags(title.group(1)).split(" – ")[0] if title else "BIMx"
-        desc = f"{name} – " + ("Bursa Internațională a Moldovei (BIMx)." if pg.lang == "ro" else "Moldova International Stock Exchange (BIMx).")
+        desc = f"{name} – " + pick(pg.lang, "Bursa Internațională a Moldovei (BIMx).", "Moldova International Stock Exchange (BIMx).",
+                                   "Международная фондовая биржа Молдовы (BIMx).", "Міжнародна фондова біржа Молдови (BIMx).")
     desc = desc if len(desc) <= 160 else desc[:157].rsplit(" ", 1)[0] + "…"
     return text.replace("</title>", f'</title>\n<meta name="description" content="{_html.escape(desc)}">', 1)
 
@@ -579,7 +688,7 @@ def fix_meta(text, pg):
 COMPANY_PAGE = "https://app.gov.md/companies/operator-de-piata-bursa-internationala-a-moldovei-s-a/"
 IDNO = "1025600073907"                        # confirmat de BIMx (24.09.2026)
 
-# (RO vechi, RO nou, EN vechi, EN nou). Documentele (comunicatul și scrisorile BIMx) spun: licența CNPF la 21.08.2026,
+# (RO vechi, RO nou, EN vechi, EN nou); în rusă textele corectate sunt direct în catalogul i18n/ru.json. Documentele (comunicatul și scrisorile BIMx) spun: licența CNPF la 21.08.2026,
 # admiterea brokerilor și a emitenților din 28.09.2026, ARENA în producție la 1.10.2026, prima listare până la sfârșitul
 # anului 2026, fără transfer automat al emitenților de la BVM. „28 septembrie” nu e data primei ședințe de tranzacționare.
 TEXT_FIXES = [
@@ -617,23 +726,39 @@ TEXT_FIXES = [
 # Blocurile „Disponibilitate – 28 septembrie 2026”: starea reală și pasul următor, pe fiecare pagină
 STATUS_BLOCKS = {
     "actiuni": ("Lista acțiunilor admise la tranzacționare, cu datele de referință și clasificarea pe piețe, va fi publicată după admiterea primilor emitenți. Prima listare este planificată până la sfârșitul anului 2026.",
-                "The list of shares admitted to trading, with reference data and market classification, will be published once the first issuers are admitted. The first listing is planned by the end of 2026."),
+                "The list of shares admitted to trading, with reference data and market classification, will be published once the first issuers are admitted. The first listing is planned by the end of 2026.",
+               "Список акций, допущенных к торгам, с базовыми данными и распределением по рынкам будет опубликован после допуска первых эмитентов. Первый листинг запланирован до конца 2026 года.",
+               "Перелік акцій, допущених до торгів, із довідковими даними та розподілом за ринками буде опубліковано після допуску перших емітентів. Перший лістинг заплановано до кінця 2026 року."),
     "cotatii-in-timp-real": ("Cotațiile vor fi publicate după începerea tranzacționării, care urmează primei listări (planificată până la sfârșitul anului 2026).",
-                             "Quotes will be published once trading begins, following the first listing (planned by the end of 2026)."),
+                             "Quotes will be published once trading begins, following the first listing (planned by the end of 2026).",
+                            "Котировки будут публиковаться после начала торгов, которые последуют за первым листингом (запланирован до конца 2026 года).",
+                            "Котирування публікуватимуться після початку торгів, які розпочнуться після першого лістингу (запланованого до кінця 2026 року)."),
     "fise-detaliate": ("Fișele detaliate devin active odată cu admiterea primelor instrumente la tranzacționare.",
-                       "Detailed factsheets go live once the first instruments are admitted to trading."),
+                       "Detailed factsheets go live once the first instruments are admitted to trading.",
+                      "Подробные карточки станут доступны с допуском первых инструментов к торгам.",
+                      "Детальні картки стануть доступними з допуском перших інструментів до торгів."),
     "indicii-bursei": ("Indicii vor fi calculați după ce tranzacționarea atinge o bază suficientă de calcul. Metodologia fiecărui indice va fi publicată înainte de lansarea lui.",
-                       "Indices will be calculated once trading provides a sufficient basis. The methodology of each index will be published before it is launched."),
+                       "Indices will be calculated once trading provides a sufficient basis. The methodology of each index will be published before it is launched.",
+                      "Индексы будут рассчитываться, когда объём торгов обеспечит достаточную базу для расчёта. Методика каждого индекса будет опубликована до его запуска.",
+                      "Індекси розраховуватимуться, коли обсяг торгів забезпечить достатню базу для розрахунку. Методику кожного індексу буде опубліковано до його запуску."),
     "program-de-tranzactionare": ("Calendarul zilelor de tranzacționare va fi publicat pe această pagină înainte de prima ședință de tranzacționare, care urmează primei listări.",
-                                  "The calendar of trading days will be published on this page before the first trading session, which follows the first listing."),
+                                  "The calendar of trading days will be published on this page before the first trading session, which follows the first listing.",
+                                 "Календарь торговых дней будет опубликован на этой странице до первой торговой сессии, которая последует за первым листингом.",
+                                 "Календар торговельних днів буде опубліковано на цій сторінці до першої торгової сесії, яка відбудеться після першого лістингу."),
     "rapoarte": ("Rapoartele proprii BIMx devin disponibile după începerea tranzacționării.",
-                 "BIMx's own reports become available once trading begins."),
+                 "BIMx's own reports become available once trading begins.",
+                "Собственные отчёты BIMx станут доступны после начала торгов.",
+                "Власні звіти BIMx стануть доступними після початку торгів."),
     "valori-mobiliare": ("Datele de tranzacționare vor fi publicate în secțiunea „Cotații în timp real” după începerea tranzacționării.",
-                         "Trading data will be published in the “Real-Time Quotes” section once trading begins."),
+                         "Trading data will be published in the “Real-Time Quotes” section once trading begins.",
+                        "Торговые данные будут публиковаться в разделе «Котировки в режиме реального времени» после начала торгов.",
+                        "Торговельні дані публікуватимуться в розділі «Котирування в реальному часі» після початку торгів."),
 }
 # pe Procesul de listare data de 28 septembrie e corectă: e data de la care emitenții pot cere admiterea
 LISTING_BLOCK = (("Admiterea emitenților", "Emitenții pot depune cererea de admitere începând cu 28 septembrie 2026. Prima listare este planificată până la sfârșitul anului 2026."),
-                 ("Admission of issuers", "Issuers can apply for admission from 28 September 2026. The first listing is planned by the end of 2026."))
+                 ("Admission of issuers", "Issuers can apply for admission from 28 September 2026. The first listing is planned by the end of 2026."),
+                 ("Допуск эмитентов", "Эмитенты могут подать заявку на допуск с 28 сентября 2026 г. Первый листинг запланирован до конца 2026 года."),
+                 ("Допуск емітентів", "Емітенти можуть подати заявку на допуск із 28 вересня 2026 р. Перший лістинг заплановано до кінця 2026 року."))
 
 
 # Adresarea formală (dvs.) în interfața și textele bimx.md: forma de „tu” → forma de politețe
@@ -650,30 +775,33 @@ def fix_content(text, pg):
         text = re.sub(r">(\s*)Vezi toate", r">\1Vedeți toate", text)
         text = re.sub(r">(\s*)Citește mai mult", r">\1Citiți mai mult", text)
         text = re.sub(r">(\s*)Descarcă(\s)", r">\1Descărcați\2", text)
-    i = 1 if pg.lang == "ro" else 3
-    for row in TEXT_FIXES:
-        text = text.replace(row[i - 1], row[i])
+    if pg.lang in ("ro", "en"):            # în rusă și ucraineană, cataloagele i18n/ conțin deja textele corectate
+        i = 1 if pg.lang == "ro" else 3
+        for row in TEXT_FIXES:
+            text = text.replace(row[i - 1], row[i])
     # în română, separatorul zecimal al procentelor e virgula (26,67%), ca în documente
     if pg.lang == "ro":
         text = re.sub(r">(\s*)(\d{1,3})\.(\d{1,2})%(\s*)<", r">\1\2,\3%\4<", text)
     # IDNO confirmat, cu link spre fișa companiei (app.gov.md); licența: fără numărul provizoriu „000123”
     text = re.sub(r"<b>1003600028020</b>",
                   f'<b><a href="{COMPANY_PAGE}" target="_blank" rel="noopener" class="bx-idno">{IDNO}</a></b>', text)
-    text = re.sub(r"<b>CNPF, seri(?:a|es) CNPF N(?:r|o)\. 000123</b>",
-                  "<b>Licență de operator de piață, CNPF (21 august 2026)</b>" if pg.lang == "ro"
-                  else "<b>Market operator licence, CNPF (21 August 2026)</b>", text)
+    text = re.sub(r"<b>(?:CNPF, seri(?:a|es) CNPF N(?:r|o)\.|НКФР, сері[яї] CNPF №) 000123</b>",
+                  pick(pg.lang, "<b>Licență de operator de piață, CNPF (21 august 2026)</b>",
+                       "<b>Market operator licence, CNPF (21 August 2026)</b>",
+                       "<b>Лицензия оператора рынка, НКФР (21 августа 2026 г.)</b>",
+                       "<b>Ліцензія оператора ринку, НКФР (21 серпня 2026 р.)</b>"), text)
 
     def status(m):
         block = m.group(0)
-        if not re.search(r"<h2>\s*28 (?:septembrie|September) 2026\s*</h2>", block):
+        if not re.search(r"<h2>\s*28 (?:septembrie|September|сентября|вересня) 2026(?: [гр]\.)?\s*</h2>", block):
             return block
         if pg.key == "procesul-de-listare":
-            label, desc = LISTING_BLOCK[0 if pg.lang == "ro" else 1]
-            value = "28 septembrie 2026" if pg.lang == "ro" else "28 September 2026"
+            label, desc = LISTING_BLOCK[IDX[pg.lang]]
+            value = pick(pg.lang, "28 septembrie 2026", "28 September 2026", "28 сентября 2026 г.", "28 вересня 2026 р.")
         else:
             texts = STATUS_BLOCKS.get(pg.key)
-            label, value = ("Stare", "În pregătire") if pg.lang == "ro" else ("Status", "In preparation")
-            desc = texts[0 if pg.lang == "ro" else 1] if texts else None
+            label, value = pick(pg.lang, ("Stare", "În pregătire"), ("Status", "In preparation"), ("Статус", "В подготовке"), ("Статус", "У підготовці"))
+            desc = texts[IDX[pg.lang]] if texts else None
         block = re.sub(r"(<h6[^>]*>)[\s\S]*?(</h6>)", rf"\g<1>{label}\2", block, count=1)
         block = re.sub(r"<h2>[^<]*</h2>", f"<h2>{value}</h2>", block, count=1)
         if desc:
@@ -762,12 +890,12 @@ def page_body(pg, spec):
     title, desc = spec[lang]
     if spec["kind"] == "calendar":
         today = datetime.date.today()
-        kinds = ["done" if dt and dt <= today else "todo" for dt, _, _ in CALENDAR]
+        kinds = ["done" if row[0] and row[0] <= today else "todo" for row in CALENDAR]
         first = next((i for i, k in enumerate(kinds) if k == "todo"), None)
         kinds = [k if k == "done" else ("next" if i == first else "planned") for i, k in enumerate(kinds)]
         items = []
-        for i, ((dt, ro, en), k) in enumerate(zip(CALENDAR, kinds)):
-            d, h, p = ro if lang == "ro" else en
+        for i, (row, k) in enumerate(zip(CALENDAR, kinds)):
+            dt, (d, h, p) = row[0], row[1 + IDX[lang]]
             seg = " seg-done" if k == "done" and i + 1 < len(kinds) and kinds[i + 1] == "done" else ""
             items.append(f'<li class="bx-step is-{k}{seg}" data-date="{dt.isoformat() if dt else ""}"><span class="bx-step-dot" aria-hidden="true"></span>'
                          f'<p class="bx-step-meta"><time>{d}</time><span class="bx-step-state">{CAL_STATE[lang][k]}</span></p>'
@@ -780,25 +908,28 @@ def page_body(pg, spec):
                    f'<p class="bx-page-note">{note}</p>')
     elif spec["kind"] == "org":
         from .org import org_chart
-        path, ro, en = spec["docs"][0]
-        name = ro if lang == "ro" else en
+        path, *names = spec["docs"][0]
+        name = names[IDX[lang]]
         content = (org_chart(lang) + f'<ul class="bx-docs bx-org-doc"><li class="bx-doc">{ICON_DOC}<div><h2>{name}</h2>'
                    f'<p class="bx-file">PDF · {human_size(path, lang)} · RO</p></div><a class="bx-doc-btn" href="{pg.asset(path)}" '
                    f'target="_blank" rel="noopener">{t["doc_download"]}<span class="screen-reader-text"> {name} {t["new_tab"]}</span></a></li></ul>')
     elif spec["kind"] == "docs":
         cards = []
-        for path, ro, en in spec["docs"]:
-            name = ro if lang == "ro" else en
+        for path, *names in spec["docs"]:
+            name = names[IDX[lang]]
             cards.append(
                 f'<li class="bx-doc">{ICON_DOC}<div><h2>{name}</h2><p class="bx-file">PDF · {human_size(path, lang)} · RO</p></div>'
                 f'<a class="bx-doc-btn" href="{pg.asset(path)}" target="_blank" rel="noopener">{t["doc_download"]}'
                 f'<span class="screen-reader-text"> {name} {t["new_tab"]}</span></a></li>')
         content = f'<ul class="bx-docs">{"".join(cards)}</ul>'
     else:
-        path, ro, en = spec["see"]
-        see = "Până atunci, consultați: " if lang == "ro" else "In the meantime, see: "
+        path, *names = spec["see"]
+        see = pick(lang, "Până atunci, consultați: ", "In the meantime, see: ", "Пока вы можете ознакомиться с разделом ",
+                   "Поки що ви можете ознайомитися з розділом ")
+        label = names[IDX[lang]]
+        label = f"«{label}»" if lang in CYRILLIC else label
         content = (f'<div class="bx-prep"><p><strong>{t["in_prep"]}</strong></p>'
-                   f'<p>{see}<a href="{pg.link(path)}">{ro if lang == "ro" else en}</a>.</p></div>')
+                   f'<p>{see}<a href="{pg.link(path)}">{label}</a>.</p></div>')
     return hero(pg, title, desc, spec["section"]) + f'<div class="container"><div class="bx-page">{content}</div></div>'
 
 
@@ -897,9 +1028,9 @@ def transform_theme_css():
 
 def redirect_page(dest, target_dir, lang):
     here = dest.parent
-    target = relto(DIST / (("en/" if lang == "en" else "") + target_dir) / "index.html", here)
+    target = relto(DIST / (LANG_PREFIX[lang] + target_dir) / "index.html", here)
     dest.write_text(
-        f'<!doctype html>\n<html lang="{"en-GB" if lang == "en" else "ro-RO"}"><head><meta charset="utf-8">'
+        f'<!doctype html>\n<html lang="{LOCALES[lang][0]}"><head><meta charset="utf-8">'
         f'<meta http-equiv="refresh" content="0; url={target}"><link rel="canonical" href="{target}"><title>BIMx</title></head>'
         f'<body><a href="{target}">BIMx</a></body></html>\n', encoding="utf-8")
 
@@ -916,7 +1047,7 @@ def retarget_links(text, here):
         except ValueError:
             return m.group(0)
         parts = target.parts
-        lang = "en/" if parts[:1] == ("en",) else ""
+        lang = LANG_PREFIX[lang_of(parts)]
         rest = parts[1:] if lang else parts
         if len(rest) == 2 and rest[0] in REDIRECTS and rest[1] == "index.html":
             new = relto(DIST / (lang + REDIRECTS[rest[0]]) / "index.html", here) + (f"#{frag}" if frag else "")
@@ -955,18 +1086,20 @@ def apply_fixes():
             new, _ = apply_icons(new, pg.key, pg.lang)
         new = link_crumbs(new, pg)
         new = fix_og(new, pg)
+        if pg.lang in CYRILLIC and "family=Montserrat" not in new:     # fontul cu chirilică (vezi site.css)
+            new = new.replace("</head>", RU_FONT + "</head>", 1)
         new = fix_headings(new)
         new = retarget_links(new, f.parent)
         if new != text:
             f.write_text(new, encoding="utf-8")
             changed += 1
-    # pagina „Intră în cont” (RO și EN), construită din pagina-șablon deja corectată
+    # pagina „Intră în cont” (în toate limbile), construită din pagina-șablon deja corectată
     from .login import build_login_pages
     build_login_pages(Page)
     # rutele duplicate devin redirecționări; vechiul Nomenclator nu mai e folosit
-    for lang in ("ro", "en"):
+    for lang in SITE_LANGS:
         for src, dst in REDIRECTS.items():
-            dest = DIST / (("en/" if lang == "en" else "") + src) / "index.html"
+            dest = DIST / (LANG_PREFIX[lang] + src) / "index.html"
             if dest.exists():
                 redirect_page(dest, dst, lang)
     old = DIST / NOMENCLATOR_OLD

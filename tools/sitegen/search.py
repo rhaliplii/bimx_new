@@ -11,7 +11,7 @@ import re
 import unicodedata
 from html.parser import HTMLParser
 
-from .config import DIST, SRC
+from .config import DIST, SRC, SITE_LANGS, lang_of
 from .util import relto
 
 SEARCH_JS = DIST / "assets" / "js" / "search.js"
@@ -98,7 +98,7 @@ def _page(path):
     title = re.sub(r"\s+[–-]\s+(BIMx Academy|Ghid BIMx Academy|BIMx Academy guide|BIMx)$", "", title.strip())
     if PLACEHOLDER.match(title) or PLACEHOLDER.match(body) or len(body.split()) < 12:
         return None
-    crumbs = [c for c in p.crumbs[1:-1] if c not in ("Acasă", "Home")]
+    crumbs = [c for c in p.crumbs[1:-1] if c not in ("Acasă", "Home", "Главная")]
     fix = {"Despre Noi": "Despre noi", "Piaţă": "Piață", "Ştiri": "Știri"}
     section = " › ".join(fix.get(c, c) for c in crumbs) or ("BIMx Academy" if "/academy/" in "/" + str(path) else "BIMx")
     return {"u": str(path.relative_to(DIST)).replace("\\", "/"), "t": unicodedata.normalize("NFC", title),
@@ -106,16 +106,16 @@ def _page(path):
 
 
 def build_search():
-    """Scrie indexurile RO/EN și scriptul de căutare; adaugă scriptul pe paginile care au formularul de căutare."""
+    """Scrie indexurile de căutare (câte unul pe limbă) și scriptul de căutare; adaugă scriptul pe paginile care au formularul de căutare."""
     INDEX_DIR.mkdir(parents=True, exist_ok=True)
-    pages = {"ro": [], "en": []}
+    pages = {lang: [] for lang in SITE_LANGS}
     for f in sorted(DIST.rglob("*.html")):
         rel = f.relative_to(DIST)
         if rel.parts[0] in ("assets", "wp-content", "wp-includes"):
             continue
         entry = _page(f)
         if entry:
-            pages["en" if rel.parts[0] == "en" else "ro"].append(entry)
+            pages[lang_of(rel.parts)].append(entry)
     for lang, entries in pages.items():
         data = json.dumps(entries, ensure_ascii=False, separators=(",", ":"))
         (INDEX_DIR / f"{lang}.js").write_text(

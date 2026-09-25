@@ -7,7 +7,7 @@ Pagina se construiește din pagina „Politica cookie” (aceeași adâncime, an
 """
 import re
 
-from .config import DIST
+from .config import DIST, LANG_PREFIX, SITE_LANGS
 
 SLUG = "autentificare"
 TEMPLATE = "politica-cookie"
@@ -46,6 +46,40 @@ T = {
         "arena": "Trading takes place on the ARENA platform, using the user code and password each certified exchange trader receives.",
         "no_account": "No account?", "no_account_p": "Access is granted after admission. For questions, write to {mail}.",
         "desc": "Log in to the BIMx participant portal: members, certified exchange traders and issuers.",
+    },
+    "ru": {
+        "button": "Войти в кабинет", "title": "Вход в кабинет", "crumb": "Вход в кабинет", "home": "Главная",
+        "lead": "Портал участников BIMx — для участников биржи, аттестованных биржевых агентов и эмитентов, допущенных к торгам.",
+        "notice_h": "Портал пока не работает",
+        "notice": "Учётные записи создаются после допуска первых участников и эмитентов (допуск начинается 28 сентября 2026 г.). "
+                  "До этого вход недоступен, а введённые данные не отправляются.",
+        "form_h": "Вход", "user": "Эл. почта или имя пользователя", "password": "Пароль", "show": "Показать пароль",
+        "hide": "Скрыть пароль", "remember": "Запомнить меня на этом устройстве", "submit": "Войти",
+        "forgot": "Забыли пароль?", "forgot_p": "Напишите нам на {mail}.",
+        "who_h": "Кто получает доступ",
+        "who": [("Участники биржи", "Инвестиционные компании, лицензированные НКФР и допущенные в число участников BIMx.", "lista-societatilor/index.html"),
+                ("Аттестованные биржевые агенты", "Лица, назначенные участниками и прошедшие процедуру аттестации.", "atestarea-brokerilor/index.html"),
+                ("Эмитенты", "Компании и органы власти, чьи инструменты допущены к торгам.", "procesul-de-listare/index.html")],
+        "arena": "Торги проводятся на платформе ARENA с кодом пользователя и паролем, которые получает каждый аттестованный биржевой агент.",
+        "no_account": "Нет учётной записи?", "no_account_p": "Доступ предоставляется после допуска. С вопросами пишите на {mail}.",
+        "desc": "Вход в портал участников BIMx: участники биржи, аттестованные биржевые агенты и эмитенты.",
+    },
+    "uk": {
+        "button": "Увійти в кабінет", "title": "Вхід до кабінету", "crumb": "Вхід до кабінету", "home": "Головна",
+        "lead": "Портал учасників BIMx — для учасників біржі, атестованих біржових агентів та емітентів, допущених до торгів.",
+        "notice_h": "Портал ще не працює",
+        "notice": "Облікові записи створюються після допуску перших учасників та емітентів (допуск розпочинається 28 вересня 2026 р.). "
+                  "До того часу вхід недоступний, а введені дані не надсилаються.",
+        "form_h": "Вхід", "user": "Ел. пошта або ім’я користувача", "password": "Пароль", "show": "Показати пароль",
+        "hide": "Приховати пароль", "remember": "Запам’ятати мене на цьому пристрої", "submit": "Увійти",
+        "forgot": "Забули пароль?", "forgot_p": "Напишіть нам на {mail}.",
+        "who_h": "Хто отримує доступ",
+        "who": [("Учасники біржі", "Інвестиційні компанії, ліцензовані НКФР і допущені до складу учасників BIMx.", "lista-societatilor/index.html"),
+                ("Атестовані біржові агенти", "Особи, призначені учасниками, які пройшли процедуру атестації.", "atestarea-brokerilor/index.html"),
+                ("Емітенти", "Компанії та органи влади, інструменти яких допущено до торгів.", "procesul-de-listare/index.html")],
+        "arena": "Торги відбуваються на платформі ARENA з кодом користувача та паролем, які отримує кожен атестований біржовий агент.",
+        "no_account": "Немає облікового запису?", "no_account_p": "Доступ надається після допуску. З питаннями пишіть на {mail}.",
+        "desc": "Вхід до порталу учасників BIMx: учасники біржі, атестовані біржові агенти та емітенти.",
     },
 }
 
@@ -110,10 +144,10 @@ def page_main(pg):
 
 
 def build_login_pages(page_cls):
-    """Scrie autentificare/index.html (RO și EN) pornind de la pagina-șablon; întoarce numărul de pagini."""
+    """Scrie autentificare/index.html (în toate limbile) pornind de la pagina-șablon; întoarce numărul de pagini."""
     made = 0
-    for lang in ("ro", "en"):
-        prefix = "en/" if lang == "en" else ""
+    for lang in SITE_LANGS:
+        prefix = LANG_PREFIX[lang]
         src = DIST / f"{prefix}{TEMPLATE}" / "index.html"
         if not src.exists():
             continue

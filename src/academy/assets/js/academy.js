@@ -1,5 +1,12 @@
 // Page language: UI messages follow <html lang>.
 const EN_A = document.documentElement.lang === 'en';
+const RU_A = (document.documentElement.lang || '').indexOf('ru') === 0;
+const UK_A = (document.documentElement.lang || '').indexOf('uk') === 0;
+// rusă și ucraineană: trei forme de plural („1 урок, 3 урока, 5 уроков” / „1 урок, 3 уроки, 5 уроків”)
+const ruPlural = (n, one, few, many) => {
+  const d = n % 10, h = n % 100;
+  return d === 1 && h !== 11 ? one : (d >= 2 && d <= 4 && (h < 12 || h > 14)) ? few : many;
+};
 
 // BIMx Academy – progres, test și navigare pentru paginile de program și lecție.
 (function () {
@@ -37,8 +44,8 @@ const EN_A = document.documentElement.lang === 'en';
     }
     const setText = (id, t) => { const el = document.getElementById(id); if (el) el.textContent = t; };
     setText('progress-pct', pct + '%');
-    setText('progress-count', EN_A ? `${done} of ${total} lessons completed` : `${done} din ${total} lecții finalizate`);
-    setText('mini-count', `${done}/${total} ${EN_A ? 'lessons' : 'lecții'}`);
+    setText('progress-count', EN_A ? `${done} of ${total} lessons completed` : RU_A ? `Пройдено ${done} из ${total} ${ruPlural(total, 'урока', 'уроков', 'уроков')}` : UK_A ? `Пройдено ${done} з ${total} ${ruPlural(total, 'уроку', 'уроків', 'уроків')}` : `${done} din ${total} lecții finalizate`);
+    setText('mini-count', `${done}/${total} ${EN_A ? 'lessons' : RU_A ? ruPlural(total, 'урок', 'урока', 'уроков') : UK_A ? ruPlural(total, 'урок', 'уроки', 'уроків') : 'lecții'}`);
     setText('mini-pct', pct + '%');
     const bar = document.querySelector('#mini-bar i');
     if (bar) bar.style.width = pct + '%';
@@ -46,7 +53,7 @@ const EN_A = document.documentElement.lang === 'en';
     const start = document.getElementById('start-link');
     if (start && done > 0 && done < total) {
       const next = document.querySelector('.lesson_row:not(.is-done)');
-      if (next) { start.href = next.getAttribute('href'); start.firstChild.textContent = EN_A ? 'Continue where you left off ' : 'Continuă de unde ai rămas '; }
+      if (next) { start.href = next.getAttribute('href'); start.firstChild.textContent = EN_A ? 'Continue where you left off ' : RU_A ? 'Продолжить с того места, где вы остановились ' : UK_A ? 'Продовжити з того місця, де ви зупинилися ' : 'Continuă de unde ai rămas '; }
     }
 
     const btn = document.getElementById('complete-btn');
@@ -54,8 +61,8 @@ const EN_A = document.documentElement.lang === 'en';
       const isDone = !!progress[program + '/' + lesson];
       btn.classList.toggle('is-done', isDone);
       btn.querySelector('span').textContent = isDone
-        ? (EN_A ? 'Lesson completed' : 'Lecție finalizată')
-        : (EN_A ? 'Mark as completed' : 'Marchează ca finalizată');
+        ? (EN_A ? 'Lesson completed' : RU_A ? 'Урок пройден' : UK_A ? 'Урок пройдено' : 'Lecție finalizată')
+        : (EN_A ? 'Mark as completed' : RU_A ? 'Отметить как пройденный' : UK_A ? 'Позначити як пройдений' : 'Marchează ca finalizată');
     }
   }
 
@@ -100,6 +107,8 @@ const EN_A = document.documentElement.lang === 'en';
         result.className = 'quiz_result';
         result.textContent = EN_A
           ? `You have ${unanswered.length === 1 ? 'one question' : unanswered.length + ' questions'} left unanswered.`
+          : RU_A ? `Без ответа ${unanswered.length === 1 ? 'остался один вопрос' : 'осталось ' + unanswered.length + ' ' + ruPlural(unanswered.length, 'вопрос', 'вопроса', 'вопросов')}.`
+          : UK_A ? `Без відповіді ${unanswered.length === 1 ? 'залишилося одне запитання' : 'залишилося ' + unanswered.length + ' ' + ruPlural(unanswered.length, 'запитання', 'запитання', 'запитань')}.`
           : `Mai ai ${unanswered.length === 1 ? 'o întrebare' : unanswered.length + ' întrebări'} fără răspuns.`;
         unanswered[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
         return;
@@ -119,8 +128,8 @@ const EN_A = document.documentElement.lang === 'en';
       const all = score === questions.length;
       result.className = 'quiz_result' + (all ? ' good' : '');
       result.textContent = all
-        ? (EN_A ? `Excellent! ${score} of ${questions.length} answers correct.` : `Excelent! ${score} din ${questions.length} răspunsuri corecte.`)
-        : (EN_A ? `${score} of ${questions.length} answers correct. Read the explanations and try again.` : `${score} din ${questions.length} răspunsuri corecte. Citește explicațiile și încearcă din nou.`);
+        ? (EN_A ? `Excellent! ${score} of ${questions.length} answers correct.` : RU_A ? `Отлично! Правильных ответов: ${score} из ${questions.length}.` : UK_A ? `Чудово! Правильних відповідей: ${score} з ${questions.length}.` : `Excelent! ${score} din ${questions.length} răspunsuri corecte.`)
+        : (EN_A ? `${score} of ${questions.length} answers correct. Read the explanations and try again.` : RU_A ? `Правильных ответов: ${score} из ${questions.length}. Прочитайте пояснения и попробуйте ещё раз.` : UK_A ? `Правильних відповідей: ${score} з ${questions.length}. Прочитайте пояснення та спробуйте ще раз.` : `${score} din ${questions.length} răspunsuri corecte. Citește explicațiile și încearcă din nou.`);
       check.hidden = true;
       retry.hidden = false;
       if (all && lesson && !progress[program + '/' + lesson]) setDone(true);

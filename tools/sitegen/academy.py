@@ -2,7 +2,7 @@
 import json
 import re
 
-from .config import (ACADEMY_ASSETS, DIRECTION_META, HOME_COURSES, LANGS, LEVELS, LIVE, PUBLICATIONS, ROOT, T)
+from .config import (ACADEMY_ASSETS, DIRECTION_META, HOME_COURSES, LANGS, LEVELS, LIVE, LOCALES, PUBLICATIONS, ROOT, SITE_LANGS, T)
 from .icons import (ARROW, ARROW_LEFT, CALLOUT_ICONS, CHECK, CRUMB, ICON_BAR, ICON_BOOK, ICON_CLOCK, ICON_LAYERS,
                     ICON_USER)
 from .shell import shell_parts
@@ -23,17 +23,17 @@ class Ctx:
         self._here = here
 
     def switch(self):
-        """Linkurile RO/EN către aceeași pagină în cealaltă limbă."""
-        return (relto(LANGS["ro"]["out"] / self.rel, self._here),
-                relto(LANGS["en"]["out"] / self.rel, self._here))
+        """Linkurile către aceeași pagină în fiecare limbă (ordinea din SITE_LANGS)."""
+        return tuple(relto(LANGS[lang]["out"] / self.rel, self._here) for lang in SITE_LANGS)
 
 
 
 def page(ctx, title, description, body_attrs, main, read_progress=False):
     attrs = " ".join(f'data-{k}="{esc(str(v))}"' for k, v in body_attrs.items())
-    ro, en = ctx.switch()
+    links = ctx.switch()
     a = ctx.a
-    sh = shell_parts(ctx.lang, ctx._here, (ro, en))
+    sh = shell_parts(ctx.lang, ctx._here, links)
+    alternates = "\n".join(f'<link rel="alternate" hreflang="{lang}" href="{href}">' for lang, href in zip(SITE_LANGS, links))
     progress = '<div class="read_progress" aria-hidden="true"><i></i></div>' if read_progress else ""
     return f"""<!DOCTYPE html>
 <html lang="{ctx.lang}">
@@ -42,8 +42,7 @@ def page(ctx, title, description, body_attrs, main, read_progress=False):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(description)}">
-<link rel="alternate" hreflang="ro" href="{ro}">
-<link rel="alternate" hreflang="en" href="{en}">
+{alternates}
 <link rel="icon" href="https://bimx.md/wp-content/uploads/2026/07/Favicon.png">
 {sh["head"]}
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -560,9 +559,7 @@ def update_home(lang, programs):
 
 
 def apply_shell_to_home(text, lang, here):
-    ro = relto(LANGS["ro"]["out"] / "index.html", here)
-    en = relto(LANGS["en"]["out"] / "index.html", here)
-    sh = shell_parts(lang, here, (ro, en))
+    sh = shell_parts(lang, here, tuple(relto(LANGS[x]["out"] / "index.html", here) for x in SITE_LANGS))
     for name in ("header", "footer"):
         marker = f"<!-- BUILD:bimx-{name} -->"
         if marker not in text:

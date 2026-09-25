@@ -3,12 +3,12 @@ import os
 import re
 from pathlib import Path
 
-from .config import ACADEMY_ASSETS, ACADEMY_SRC, DIST
+from .config import ACADEMY_ASSETS, ACADEMY_SRC, DIST, LANG_PREFIX, SITE_LANGS
 from .util import relto
 
 SCOPE = ".bx-academy"
-SHELL_SRC = {"ro": DIST / "index.html", "en": DIST / "en" / "index.html"}
-# Scripturile temei preluate în Academy; „main.” prinde și main.en.js, varianta tradusă din paginile EN.
+SHELL_SRC = {lang: DIST / LANG_PREFIX[lang] / "index.html" for lang in SITE_LANGS}
+# Scripturile temei preluate în Academy; „main.” prinde și main.en.js / main.ru.js, variantele traduse.
 THEME_SCRIPTS = ("jquery-3.7.0.min.js", "slick.js", "lightbox.js", "victor-child/assets/js/main.", "primary-navigation.js")
 _SHELLS = {}
 
@@ -62,7 +62,7 @@ def load_shell(lang):
 def shell_parts(lang, page_dir, switch):
     sh = load_shell(lang)
     parts = {k: rebase(sh[k], sh["dir"], page_dir) for k in ("head", "scripts", "header", "footer")}
-    ro, en = switch
+    ro, en = switch[:2]
     for k in ("header", "footer"):
         parts[k] = re.sub(r'href="[^"]*"(\s+lang="ro-RO"\s+hreflang="ro-RO")', lambda m: f'href="{ro}"{m.group(1)}', parts[k])
         parts[k] = re.sub(r'href="[^"]*"(\s+lang="en-GB"\s+hreflang="en-GB")', lambda m: f'href="{en}"{m.group(1)}', parts[k])

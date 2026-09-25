@@ -8,18 +8,37 @@ ca pe pagina calendarului, din comunicările oficiale BIMx).
 import datetime
 import re
 
+from .config import pick
+
+IDX = {"ro": 0, "en": 1, "ru": 2, "uk": 3}
+
 TODAY = datetime.date.today()
 
 # Aceleași etape ca pe pagina „Calendarul de tranzacționare” (fixes.CALENDAR), în formă scurtă.
 MILESTONES = [
-    (datetime.date(2026, 8, 21), ("21 august 2026", "Licența de operator de piață obținută de la CNPF"), ("21 August 2026", "Market operator licence obtained from the CNPF")),
+    (datetime.date(2026, 8, 21), ("21 august 2026", "Licența de operator de piață obținută de la CNPF"), ("21 August 2026", "Market operator licence obtained from the CNPF"),
+                                 ("21 августа 2026", "Лицензия оператора рынка получена от НКФР"),
+                                 ("21 серпня 2026", "Ліцензію оператора ринку отримано від НКФР")),
     (datetime.date(2026, 9, 28), ("28 septembrie 2026", "Începe admiterea brokerilor și a emitenților"),
-                                 ("28 September 2026", "Admission of brokers and issuers opens")),
-    (datetime.date(2026, 10, 1), ("1 octombrie 2026", "Platforma ARENA, sistemul de tranzacționare BIMx, intră în producție"), ("1 October 2026", "ARENA, the BIMx trading system, goes live")),
-    (None, ("Până la sfârșitul anului 2026", "Prima listare și prima ședință de tranzacționare"), ("By the end of 2026", "First listing and first trading session")),
+                                 ("28 September 2026", "Admission of brokers and issuers opens"),
+                                 ("28 сентября 2026", "Начинается допуск брокеров и эмитентов"),
+                                 ("28 вересня 2026", "Розпочинається допуск брокерів і емітентів")),
+    (datetime.date(2026, 10, 1), ("1 octombrie 2026", "Platforma ARENA, sistemul de tranzacționare BIMx, intră în producție"), ("1 October 2026", "ARENA, the BIMx trading system, goes live"),
+                                ("1 октября 2026", "Платформа ARENA, торговая система BIMx, вводится в эксплуатацию"),
+                                ("1 жовтня 2026", "Платформа ARENA, торговельна система BIMx, починає роботу")),
+    (None, ("Până la sfârșitul anului 2026", "Prima listare și prima ședință de tranzacționare"), ("By the end of 2026", "First listing and first trading session"),
+           ("До конца 2026 года", "Первый листинг и первая торговая сессия"),
+           ("До кінця 2026 року", "Перший лістинг і перша торгова сесія")),
 ]
 ICON_MAIL = ('<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" '
              'stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m3 6.5 9 6.5 9-6.5"/></svg>')
+ICON_CLOCK = ('<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" '
+              'stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>')
+# programul de lucru (lângă telefon), ca nimeni să nu sune în afara orelor
+HOURS = {"ro": ("Program:", "Lun – Vin: 09:00 – 18:00", "Weekend și sărbători: închis"),
+         "en": ("Hours:", "Mon – Fri: 09:00 – 18:00", "Weekend and public holidays: closed"),
+         "ru": ("Часы работы:", "Пн – Пт: 09:00 – 18:00", "Сб, Вс и праздники: выходной"),
+         "uk": ("Години роботи:", "Пн – Пт: 09:00 – 18:00", "Сб, Нд і свята: вихідний")}
 ICON_PHONE = ('<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" '
               'stroke-linejoin="round" aria-hidden="true"><path d="M21.5 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 1.6 4.2 2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L7.5 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.7 2z"/></svg>')
 HERO_W, HERO_H = 1056, 1100      # dimensiunile imaginii hero-x.webp (BIMx-hero-X-sharp-3816x3936.png)
@@ -28,14 +47,24 @@ TL_LABELS = {
            "planned": "Planificat", "day": "în 1 zi", "days": "în {n} zile", "today": "astăzi"},
     "en": {"title": "Launch calendar", "full": "View the full calendar", "done": "Completed", "next": "Next",
            "planned": "Planned", "day": "in 1 day", "days": "in {n} days", "today": "today"},
+    "ru": {"title": "Календарь запуска", "full": "Смотреть полный календарь", "done": "Завершено", "next": "Следующий этап",
+           "planned": "Запланировано", "day": "через {n} день", "days": "через {n} дней", "few": "через {n} дня",
+           "today": "сегодня"},
+    "uk": {"title": "Календар запуску", "full": "Переглянути повний календар", "done": "Завершено", "next": "Наступний етап",
+           "planned": "Заплановано", "day": "через {n} день", "days": "через {n} днів", "few": "через {n} дні",
+           "today": "сьогодні"},
 }
 # numai pe mobil: bara de progres, „Etapa X din N” și lista pliată (ultima etapă finalizată + următoarea)
 M_LABELS = {
-    "ro": {"step": "Etapa {i} din {n} spre prima tranzacție", "all": "Vedeți toate etapele ({n})", "less": "Afișați mai puține etape"},
+    "ro": {"step": "Etapa {i} din {n} spre prima tranzacție", "all": "Afișați toate etapele ({n})", "less": "Afișați mai puține etape"},
     "en": {"step": "Step {i} of {n} towards the first trade", "all": "View all steps ({n})", "less": "Show fewer steps"},
+    "ru": {"step": "Этап {i} из {n} на пути к первой сделке", "all": "Смотреть все этапы ({n})", "less": "Показать меньше этапов"},
+    "uk": {"step": "Етап {i} з {n} на шляху до першої угоди", "all": "Переглянути всі етапи ({n})", "less": "Показати менше етапів"},
 }
 LABELS = {"ro": {"calendar": "Calendar", "full": "Vizualizați calendarul"},
-          "en": {"calendar": "Calendar", "full": "View calendar"}}
+          "en": {"calendar": "Calendar", "full": "View calendar"},
+          "ru": {"calendar": "Календарь", "full": "Смотреть календарь"},
+          "uk": {"calendar": "Календар", "full": "Переглянути календар"}}
 ARROW = ('<svg width="16" height="16" viewBox="0 0 17 17" fill="none" aria-hidden="true"><path d="M3.5 8.4h9.8M8.4 3.5l4.9 4.9-4.9 4.9" '
          'stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>')
 
@@ -52,12 +81,20 @@ INTRO = {  # eticheta din subsolul original; titlul și descrierea formulate de 
     "ro": ("Bursa Internațională a Moldovei (BIMx)", "Lansăm noua bursă a Moldovei",
            "O piață reglementată care oferă capital pentru companii și oportunități pentru investitori.",
            ("Prezentare generală", "prezentare-generala/index.html")),
+    "uk": ("Міжнародна фондова біржа Молдови (BIMx)", "Запускаємо нову біржу Молдови",
+           "Регульований ринок, що відкриває компаніям доступ до капіталу, а інвесторам — нові можливості.",
+           ("Загальний огляд", "prezentare-generala/index.html")),
+    "ru": ("Международная фондовая биржа Молдовы (BIMx)", "Запускаем новую биржу Молдовы",
+           "Регулируемый рынок, который открывает компаниям доступ к капиталу, а инвесторам — новые возможности.",
+           ("Общий обзор", "prezentare-generala/index.html")),
     "en": ("Moldova International Stock Exchange (BIMx)", "Launching Moldova's new stock exchange",
            "A regulated market that provides capital for companies and opportunities for investors.",
            ("Overview", "prezentare-generala/index.html")),
 }
 NEXT_CTA = {"ro": ("Pregătiți dosarul de admitere", "atestarea-brokerilor/index.html"),
-            "en": ("Prepare your admission file", "atestarea-brokerilor/index.html")}
+            "en": ("Prepare your admission file", "atestarea-brokerilor/index.html"),
+            "ru": ("Подготовьте документы для допуска", "atestarea-brokerilor/index.html"),
+            "uk": ("Підготуйте документи для допуску", "atestarea-brokerilor/index.html")}
 # „Cum doriți să participați?” – înlocuiește blocul „Pentru cine este BIMx?” (text stabilit de BIMx, 25.09.2026)
 PATHS = {
     "ro": ("Cum puteți să participați?", [
@@ -67,6 +104,20 @@ PATHS = {
          "Aplicați pentru admitere", "atestarea-brokerilor/index.html", "Se deschide 28.09"),
         ("Investitori", "Investiți la BIMx", "Cum puteți cumpăra acțiuni și obligațiuni prin brokeri licențiați.",
          "Ghidul investitorului", "academy/publicatii/ghidul-investitorului-incepator.html", None)]),
+    "uk": ("Як ви можете взяти участь?", [
+        ("Емітенти", "Розмістіть акції компанії", "Критерії допуску, тарифи та календар першого лістингу.",
+         "Ознайомитися з етапами", "procesul-de-listare/index.html", None),
+        ("Брокери та посередники", "Станьте учасником BIMx", "Необхідні документи, технічне підключення до ARENA та строки.",
+         "Подати заявку на допуск", "atestarea-brokerilor/index.html", "Відкриття 28.09"),
+        ("Інвестори", "Інвестуйте на BIMx", "Як купити акції та облігації через ліцензованих брокерів.",
+         "Посібник інвестора", "academy/publicatii/ghidul-investitorului-incepator.html", None)]),
+    "ru": ("Как вы можете принять участие?", [
+        ("Эмитенты", "Разместите акции компании", "Критерии допуска, тарифы и календарь первого листинга.",
+         "Ознакомиться с этапами", "procesul-de-listare/index.html", None),
+        ("Брокеры и посредники", "Станьте участником BIMx", "Необходимые документы, техническое подключение к ARENA и сроки.",
+         "Подать заявку на допуск", "atestarea-brokerilor/index.html", "Открытие 28.09"),
+        ("Инвесторы", "Инвестируйте на BIMx", "Как купить акции и облигации через лицензированных брокеров.",
+         "Руководство инвестора", "academy/publicatii/ghidul-investitorului-incepator.html", None)]),
     "en": ("How can you take part?", [
         ("Issuers", "List your company", "Admission criteria, costs and the timeline for the first listing.",
          "Review the steps", "procesul-de-listare/index.html", None),
@@ -77,7 +128,7 @@ PATHS = {
 }
 
 
-OPEN_LABEL = {"ro": "Deschis", "en": "Open"}
+OPEN_LABEL = {"ro": "Deschis", "en": "Open", "ru": "Открыт", "uk": "Відкрито"}
 
 
 def paths_section(pg):
@@ -96,17 +147,29 @@ def paths_section(pg):
 # Știrile de pe prima pagină: titlu și categorie reale pentru fiecare articol (după adresă), în RO și EN
 NEWS_EDIT = {
     "comunicat-de-presa": (("Licență", "BIMx a obținut licența de operator de piață de la CNPF"),
-                           ("Licence", "BIMx obtains its market operator licence from the CNPF")),
+                           ("Licence", "BIMx obtains its market operator licence from the CNPF"),
+                          ("Лицензия", "BIMx получила лицензию оператора рынка от НКФР"),
+                          ("Ліцензія", "BIMx отримала ліцензію оператора ринку від НКФР")),
     "in-atentia-actionarilor": (("Acționari", "Hotărârile adunării generale extraordinare a acționarilor din 21 august 2026"),
-                                ("Shareholders", "Resolutions of the extraordinary general meeting of shareholders of 21 August 2026")),
+                                ("Shareholders", "Resolutions of the extraordinary general meeting of shareholders of 21 August 2026"),
+                               ("Акционеры", "Решения внеочередного общего собрания акционеров от 21 августа 2026 г."),
+                               ("Акціонери", "Рішення позачергових загальних зборів акціонерів від 21 серпня 2026 р.")),
     "bimx-depune-dosarul": (("Licență", "BIMx depune dosarul pentru obținerea licenței de operator de piață"),
-                            ("Licence", "BIMx submits its application for a market operator licence")),
+                            ("Licence", "BIMx submits its application for a market operator licence"),
+                           ("Лицензия", "BIMx подаёт документы на получение лицензии оператора рынка"),
+                           ("Ліцензія", "BIMx подає документи на отримання ліцензії оператора ринку")),
     "comunicat-informativ-11-iunie": (("Acționari", "Acționarii aprobă depunerea dosarului de licențiere la CNPF"),
-                                      ("Shareholders", "Shareholders approve filing the licence application with the CNPF")),
+                                      ("Shareholders", "Shareholders approve filing the licence application with the CNPF"),
+                                     ("Акционеры", "Акционеры одобряют подачу документов на лицензирование в НКФР"),
+                                     ("Акціонери", "Акціонери схвалюють подання документів на ліцензування до НКФР")),
     "comunicat-informativ-28-mai": (("Acționari", "Acționarii confirmă auditorul pentru exercițiul 2025–2026"),
-                                    ("Shareholders", "Shareholders confirm the auditor for the 2025–2026 financial year")),
+                                    ("Shareholders", "Shareholders confirm the auditor for the 2025–2026 financial year"),
+                                   ("Акционеры", "Акционеры утверждают аудитора на 2025–2026 финансовый год"),
+                                   ("Акціонери", "Акціонери затверджують аудитора на 2025–2026 фінансовий рік")),
     "comunicat-informativ-02-aprilie": (("Acționari", "Acționarii aprobă contractul SaaS pentru platforma ARENA"),
-                                        ("Shareholders", "Shareholders approve the SaaS contract for the ARENA platform")),
+                                        ("Shareholders", "Shareholders approve the SaaS contract for the ARENA platform"),
+                                       ("Акционеры", "Акционеры одобряют SaaS-договор на платформу ARENA"),
+                                       ("Акціонери", "Акціонери схвалюють SaaS-договір на платформу ARENA")),
 }
 
 # rezumatul complet al articolului principal (fără trunchiere „…”)
@@ -114,19 +177,24 @@ NEWS_EXCERPT = {
     "comunicat-de-presa": ("Bursa Internațională a Moldovei (BIMx) anunță obținerea licenței de operator de piață și a autorizațiilor "
                            "pentru administrarea și exploatarea unei piețe reglementate și a unui sistem multilateral de tranzacționare.",
                            "The Moldova International Stock Exchange (BIMx) announces that it has obtained its market operator licence "
-                           "and the authorisations to manage and operate a regulated market and a multilateral trading facility."),
+                           "and the authorisations to manage and operate a regulated market and a multilateral trading facility.",
+                           "Международная фондовая биржа Молдовы (BIMx) сообщает о получении лицензии оператора рынка и разрешений "
+                           "на управление и эксплуатацию регулируемого рынка и многосторонней торговой системы.",
+                           "Міжнародна фондова біржа Молдови (BIMx) повідомляє про отримання ліцензії оператора ринку та дозволів "
+                           "на управління й експлуатацію регульованого ринку та багатосторонньої торговельної системи."),
 }
 
 
 def news_edit(href, lang):
     for k, v in NEWS_EDIT.items():
         if k in href:
-            return v[0 if lang == "ro" else 1]
+            return v[IDX[lang]]
     return None
 
 
 # rândul de încredere de sub hero (text stabilit de BIMx, 25.09.2026): (nume, rol, pagina, rolul e un link)
-TRUST_TITLE = {"ro": "Reglementat și susținut de", "en": "Regulated and backed by"}
+TRUST_TITLE = {"ro": "Reglementat și susținut de", "en": "Regulated and backed by", "ru": "Регулирование и поддержка",
+               "uk": "Регулювання та підтримка"}
 EXT = ' target="_blank" rel="noopener"'
 CNPF_REGISTER = "https://www.cnpf.md/ro/registrele-actelor-permisive-6412.html"   # registrele actelor permisive CNPF
 TRUST = {
@@ -134,6 +202,14 @@ TRUST = {
            ("Bursa de Valori București", "Acționar strategic", None, False),
            ("Agenția Proprietății Publice", "Acționar, 20%", None, False),
            ("Bănci și companii de asigurări", "Structura acționariatului", "fondatori/index.html", True)],
+    "uk": [("НКФР", "Наглядовий орган", None, False),
+           ("Бухарестська фондова біржа", "Стратегічний акціонер", None, False),
+           ("Агентство публічної власності", "Акціонер, 20 %", None, False),
+           ("Банки та страхові компанії", "Структура акціонерів", "fondatori/index.html", True)],
+    "ru": [("НКФР", "Надзорный орган", None, False),
+           ("Бухарестская фондовая биржа", "Стратегический акционер", None, False),
+           ("Агентство публичной собственности", "Акционер, 20 %", None, False),
+           ("Банки и страховые компании", "Структура акционеров", "fondatori/index.html", True)],
     "en": [("CNPF", "Supervisory authority", None, False),
            ("Bucharest Stock Exchange", "Strategic shareholder", None, False),
            ("Public Property Agency", "Shareholder, 20%", None, False),
@@ -252,6 +328,12 @@ def x_mark():
 
 # ---------------------------------------------------------------- restructurarea primei pagini
 
+def nowrap_last(label):
+    """Ultimul cuvânt și săgeata rămân împreună (săgeata nu trece singură pe rândul următor)."""
+    head, _, last = label.rpartition(" ")
+    return f'{head} <span class="bx-nowrap">{last}{ARROW}</span>' if head else f'<span class="bx-nowrap">{label}{ARROW}</span>'
+
+
 def restructure_home(text, pg):
     lab = LABELS[pg.lang]
     m = re.search(r'<div class="container_fluid">\s*<div class="main_section"[^>]*>([\s\S]*?)</div>\s*</div>\s*</div>\s*</div>', text)
@@ -267,7 +349,7 @@ def restructure_home(text, pg):
     lines = [x.strip() for x in re.split(r"<br\s*/?>", p.group(1)) if x.strip()]
     lead, detail = lines[0], (lines[1] if len(lines) > 1 else "")
 
-    states = [milestone_state(date) for date, _, _ in MILESTONES]
+    states = [milestone_state(row[0]) for row in MILESTONES]
     next_i = next((i for i, st in enumerate(states) if st != "done"), None)
     cta_label, cta_path = NEXT_CTA[pg.lang]
     head, _, last = cta_label.rpartition(" ")     # săgeata rămâne lipită de ultimul cuvânt
@@ -275,8 +357,8 @@ def restructure_home(text, pg):
     steps = []
     check = ('<svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3.5 8.5l3 3 6-6.5" '
              'stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>')
-    for i, ((date, ro, en), st) in enumerate(zip(MILESTONES, states)):
-        d, title = ro if pg.lang == "ro" else en
+    for i, (row, st) in enumerate(zip(MILESTONES, states)):
+        date, (d, title) = row[0], row[1 + IDX[pg.lang]]
         kind = "done" if st == "done" else ("next" if i == next_i else "planned")
         if kind == "done":
             status = f'{check}{L["done"]}'
@@ -302,7 +384,7 @@ def restructure_home(text, pg):
     trust = "".join(
         f'<li><strong>{name}</strong>'
         + (f'<a class="bx-trust-link" href="{h if h.startswith("http") else pg.link(h)}"'
-           f'{EXT if h.startswith("http") else ""}>{role}{ARROW}</a>' if more else f'<span>{role}</span>')
+           f'{EXT if h.startswith("http") else ""}>{nowrap_last(role)}</a>' if more else f'<span>{role}</span>')
         + '</li>' for name, role, h, more in TRUST[pg.lang])
 
     new_hero = f'''<div class="container_fluid">
@@ -320,7 +402,7 @@ def restructure_home(text, pg):
   </div>
   <div class="container">
     <div class="bx-lt" role="region" aria-labelledby="bx-lt-h" data-done="{L["done"]}" data-next="{L["next"]}" data-planned="{L["planned"]}"
-         data-one="{L["day"]}" data-many="{L["days"]}" data-today="{L["today"]}">
+         data-one="{L["day"]}" data-many="{L["days"]}" data-few="{L.get("few", "")}" data-today="{L["today"]}">
       <div class="bx-lt-head"><h2 id="bx-lt-h">{L["title"]}</h2>
         <a href="{pg.link("trading-calendar/index.html")}">{L["full"]}{ARROW}</a></div>
       {m_prog}
@@ -329,7 +411,7 @@ def restructure_home(text, pg):
     </div>
   </div>
 </section>
-<section class="bx-trust" aria-label="{"Cadrul BIMx" if pg.lang == "ro" else "The BIMx framework"}">
+<section class="bx-trust" aria-label="{pick(pg.lang, "Cadrul BIMx", "The BIMx framework", "Регулирование BIMx", "Регулювання BIMx")}">
   <div class="container bx-trust-inner"><p class="bx-trust-title">{TRUST_TITLE[pg.lang]}</p><ul class="bx-trust-row">{trust}</ul></div>
 </section>
 '''   # containerul „container_fluid” original rămâne deschis și se închide după stilul tickerului, ca în bimx.md
@@ -356,7 +438,7 @@ def restructure_home(text, pg):
             block = re.sub(r'(<div class="post-excerpt">\s*<p>)[\s\S]*?\d{2}\.\d{2}\.\d{4},\s*Chișinău\s*[–-]\s*', r"\1", block, count=1)
             ex = next((v for k, v in NEWS_EXCERPT.items() if k in mp.group(1)), None)
             if ex:
-                full = ex[0 if pg.lang == "ro" else 1]
+                full = ex[IDX[pg.lang]]
                 block = re.sub(r'(<div class="post-excerpt">\s*<p>)[\s\S]*?(</p>)', lambda x: x.group(1) + full + x.group(2), block, count=1)
         # data articolului principal urcă lângă categorie („Licență · 25 august 2026”); „Citiți mai mult” rămâne jos
         dm = re.search(r'\s*<div class="post-date">([^<]*)</div>', block)
@@ -378,11 +460,15 @@ def restructure_home(text, pg):
         end = text.find("</main>")
         text = text[:end] + '<section class="bx-home-news">' + block + "</section>\n" + text[end:]
     # contactul pentru admitere, deasupra subsolului (adresa generală BIMx)
-    q, mail_l = ("Întrebări despre admitere?", "Scrieți-ne") if pg.lang == "ro" else ("Questions about admission?", "Write to us")
+    q, mail_l = pick(pg.lang, ("Întrebări despre admitere?", "Scrieți-ne"), ("Questions about admission?", "Write to us"),
+                     ("Вопросы о допуске?", "Напишите нам"), ("Питання щодо допуску?", "Напишіть нам"))
+    hours = HOURS[pg.lang]
     contact = (f'<section class="bx-home-contact" aria-label="{q}"><div class="container bx-home-contact-inner">'
                f'<p><strong>{q}</strong></p><p class="bx-home-contact-links">'
                f'<a href="mailto:office@bimx.md">{ICON_MAIL}office@bimx.md</a>'
-               f'<span aria-hidden="true">·</span><a href="tel:+37322897700">{ICON_PHONE}+373 22 89 77 00</a></p></div></section>\n')
+               f'<span aria-hidden="true">·</span><a href="tel:+37322897700">{ICON_PHONE}+373 22 89 77 00</a>'
+               f'<span class="bx-home-hours">{ICON_CLOCK}<span><strong>{hours[0]}</strong> <span class="bx-hours-line">{hours[1]}</span>'
+               f'<span class="bx-home-hours-sep" aria-hidden="true"> · </span><span class="bx-hours-line">{hours[2]}</span></span></span></p></div></section>\n')
     end = text.find("</main>")
     text = text[:end] + contact + text[end:]
     return text

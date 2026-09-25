@@ -1,8 +1,9 @@
-"""Copia bimx.md: paginile RO din src/bimx-mirror/ro/ → dist/ și, traduse cu catalogul i18n/en.json, → dist/en/.
+"""Copia bimx.md: paginile RO din src/bimx-mirror/ro/ → dist/ și, traduse cu cataloagele i18n/{en,ru,uk}.json,
+→ dist/en/, dist/ru/ și dist/uk/.
 
-bimx.md nu are versiune engleză (doar o pagină /en/home/ provizorie), așa că fiecare pagină EN se generează
-din pagina RO corespunzătoare: aceleași căi (dist/X ↔ dist/en/X), texte din catalog, linkuri spre paginile EN,
-selector de limbă și lang="en-GB". Resursele (wp-content, wp-includes) sunt comune: dist/wp-content/.
+bimx.md nu are alte versiuni de limbă (doar o pagină /en/home/ provizorie), așa că fiecare pagină EN și RU se
+generează din pagina RO corespunzătoare: aceleași căi (dist/X ↔ dist/en/X ↔ dist/ru/X ↔ dist/uk/X), texte din catalog, linkuri
+spre paginile din aceeași limbă și lang="en-GB" / "ru-RU". Resursele (wp-content, wp-includes) sunt comune.
 """
 import json
 import os
@@ -11,26 +12,29 @@ import shutil
 from pathlib import Path
 
 from . import translate
-from .config import ACADEMY_REDIRECTS, BIMX, DIST, LANGS, MIRROR
+from .config import ACADEMY_REDIRECTS, BIMX, DIST, LANG_PREFIX, LANGS, LOCALES, MIRROR, SITE_LANGS, lang_of
 from .util import relto
 
 LINK_ATTR = re.compile(r'\s(href|src|srcset|data-src|poster)=(["\'])([^"\']*)\2')
 CSS_URL = re.compile(r"url\(\s*(['\"]?)([^'\")]+)\1\s*\)")
 RO_PAGES = MIRROR / "ro"
-CATALOG_FILE = MIRROR / "i18n" / "en.json"
-LOCALE = {"ro": ("ro-RO", "ro_RO"), "en": ("en-GB", "en_GB")}
 
 
-def load_catalog():
-    if not CATALOG_FILE.exists():
+def catalog_file(lang):
+    return MIRROR / "i18n" / f"{lang}.json"
+
+
+def load_catalog(lang):
+    f = catalog_file(lang)
+    if not f.exists():
         return {"text": {}, "js": {}}
-    data = json.loads(CATALOG_FILE.read_text(encoding="utf-8"))
+    data = json.loads(f.read_text(encoding="utf-8"))
     return {"text": data.get("text", {}), "js": data.get("js", {})}
 
 
 def page_dest(rest, lang):
     """Calea din dist/ a paginii `rest` (relativă la ro/) în limba dată."""
-    return (DIST / rest) if lang == "ro" else (DIST / "en" / rest)
+    return DIST / LANG_PREFIX[lang] / rest
 
 
 def academy_target(site_file):
@@ -39,8 +43,8 @@ def academy_target(site_file):
         parts = site_file.relative_to(DIST).parts
     except ValueError:
         return None
-    lang = "en" if parts[:1] == ("en",) else "ro"
-    parts = parts[1:] if lang == "en" else parts
+    lang = lang_of(parts)
+    parts = parts[1:] if lang != "ro" else parts
     if len(parts) == 2 and parts[1] == "index.html" and parts[0] in ACADEMY_REDIRECTS:
         return LANGS[lang]["out"] / "index.html", ACADEMY_REDIRECTS[parts[0]]
     return None
@@ -89,8 +93,8 @@ def rewrite_links(text, src, dest, lang):
 
 
 def set_language(text, rest, dest, lang):
-    """lang/og:locale, selectorul RO/EN spre aceeași pagină și limba marcată ca activă."""
-    html_lang, og_locale = LOCALE[lang]
+    """lang/og:locale, selectorul RO/EN spre aceeași pagină și limba marcată ca activă (selectorul final: chrome.py)."""
+    html_lang, og_locale = LOCALES[lang]
     text = re.sub(r'(<html[^>]*\slang=")[^"]*"', rf'\g<1>{html_lang}"', text, count=1)
     text = re.sub(r'(property="og:locale"\s+content=")[^"]*"', rf'\g<1>{og_locale}"', text)
     ro, en = relto(page_dest(rest, "ro"), dest.parent), relto(page_dest(rest, "en"), dest.parent)
@@ -103,8 +107,8 @@ def set_language(text, rest, dest, lang):
             cls = cls.replace(f"lang-item-{lang}", f"lang-item-{lang} current-lang")
         return f'{m.group(1)}{cls}"'
     text = re.sub(r'(<li\b[^>]*class=")([^"]*\blang-item-(?:ro|en)\b[^"]*)"', classes, text)
-    if lang == "en":
-        text = text.replace('<a href="#pll_switcher">RO</a>', '<a href="#pll_switcher">EN</a>')
+    if lang != "ro":
+        text = text.replace('<a href="#pll_switcher">RO</a>', f'<a href="#pll_switcher">{lang.upper()}</a>')
     return text
 
 
@@ -114,18 +118,20 @@ def translate_js(text, js):
     return text
 
 
-def write_js_translations(js):
-    """Copii .en.js ale scripturilor temei care conțin texte românești; întoarce {cale RO: cale EN}."""
+def write_js_translations(js, lang):
+    """Copii .<lang>.js ale scripturilor temei care conțin texte românești; întoarce {cale RO: cale tradusă}."""
     out = {}
     if not js:
         return out
     for f in sorted((DIST / "wp-content" / "themes").rglob("*.js")):
+        if re.search(r"\.(%s)\.js$" % "|".join(SITE_LANGS[1:]), f.name):
+            continue
         text = f.read_text(encoding="utf-8", errors="replace")
         new = translate_js(text, js)
         if new != text:
-            en = f.with_name(f.stem + ".en.js")
-            en.write_text(new, encoding="utf-8")
-            out[f] = en
+            dest = f.with_name(f"{f.stem}.{lang}.js")
+            dest.write_text(new, encoding="utf-8")
+            out[f] = dest
     return out
 
 
@@ -138,7 +144,7 @@ def redirect(dest, target, lang):
 
 
 def build_snapshot():
-    """Copiază resursele, scrie paginile RO și EN; întoarce (pagini, texte netraduse)."""
+    """Copiază resursele, scrie paginile în toate limbile; întoarce (pagini, {limbă: texte netraduse})."""
     if not RO_PAGES.exists():
         raise SystemExit("Lipsește src/bimx-mirror/ro/ (rulați tools/mirror_bimx.py)")
     for src in sorted((MIRROR / "shared").rglob("*")):
@@ -147,33 +153,34 @@ def build_snapshot():
             dest.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(src, dest)
 
-    catalog = load_catalog()
-    js_files = write_js_translations(catalog["js"])
-    pages, missing = 0, {}
+    catalogs = {lang: load_catalog(lang) for lang in SITE_LANGS if lang != "ro"}
+    js_files = {lang: write_js_translations(cat["js"], lang) for lang, cat in catalogs.items()}
+    pages, missing = 0, {lang: {} for lang in catalogs}
     for src in sorted(RO_PAGES.rglob("*.html")):
         rest = src.relative_to(RO_PAGES)
         original = src.read_text(encoding="utf-8", errors="replace")
-        for lang in ("ro", "en"):
+        for lang in SITE_LANGS:
             dest = page_dest(rest, lang)
             dest.parent.mkdir(parents=True, exist_ok=True)
             text = original
-            if lang == "en":
-                text, miss = translate.apply(text, catalog["text"])
+            if lang != "ro":
+                cat = catalogs[lang]
+                text, miss = translate.apply(text, cat["text"])
                 for key in miss:
-                    missing.setdefault(key, str(rest))
+                    missing[lang].setdefault(key, str(rest))
                 text = re.sub(r"(<script(?![^>]*\bsrc=)[^>]*>)([\s\S]*?)(</script>)",
-                              lambda m: m.group(1) + translate_js(m.group(2), catalog["js"]) + m.group(3), text)
+                              lambda m, js=cat["js"]: m.group(1) + translate_js(m.group(2), js) + m.group(3), text)
             text = rewrite_links(text, src, dest, lang)
             text = set_language(text, rest, dest, lang)
-            if lang == "en":
-                for ro_js, en_js in js_files.items():
-                    text = text.replace(f'"{relto(ro_js, dest.parent)}', f'"{relto(en_js, dest.parent)}')
-                    text = text.replace(f"'{relto(ro_js, dest.parent)}", f"'{relto(en_js, dest.parent)}")
+            if lang != "ro":
+                for ro_js, tr_js in js_files[lang].items():
+                    text = text.replace(f'"{relto(ro_js, dest.parent)}', f'"{relto(tr_js, dest.parent)}')
+                    text = text.replace(f"'{relto(ro_js, dest.parent)}", f"'{relto(tr_js, dest.parent)}")
             dest.write_text(text, encoding="utf-8")
             pages += 1
 
     # paginile bimx.md înlocuite de Academy devin redirecționări; /en/home/ (adresa veche EN) → /en/
-    for lang in ("ro", "en"):
+    for lang in SITE_LANGS:
         for page, anchor in ACADEMY_REDIRECTS.items():
             dest = page_dest(Path(page) / "index.html", lang)
             redirect(dest, relto(LANGS[lang]["out"] / "index.html", dest.parent) + anchor, lang)
@@ -190,8 +197,11 @@ def localize_links(folder, lang):
             return m.group(0)
         if path in ("/en", "/en/", "/en/home/"):
             path = "/en/"
-        elif lang == "en" and not path.startswith("/en/"):
-            path = "/en" + path
+        prefixes = tuple(f"/{x}/" for x in SITE_LANGS[1:])
+        if lang != "ro" and not path.startswith(prefixes):
+            path = f"/{lang}" + path
+        elif lang not in ("ro", "en") and path.startswith("/en/"):
+            path = f"/{lang}/" + path[4:]
         local = DIST / path.lstrip("/")
         if path.endswith("/") or not local.suffix:
             local = local / "index.html"

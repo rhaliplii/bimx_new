@@ -1,12 +1,22 @@
 // Căutarea din antet (modalul .modal_search_form), fără server: indexul paginilor se generează la build
-// (tools/sitegen/search.py → assets/search/{ro,en}.js) și se încarcă la prima căutare.
+// (tools/sitegen/search.py → assets/search/{ro,en,ru,uk}.js) și se încarcă la prima căutare.
 (function () {
   var me = document.currentScript;
   var ROOT = (me && me.getAttribute('data-root')) || '';
-  var LANG = (document.documentElement.lang || '').toLowerCase().indexOf('en') === 0 ? 'en' : 'ro';
-  var T = LANG === 'en'
-    ? { loading: 'Searching…', none: 'No results for', one: 'result for', many: 'results for', error: 'Search is unavailable right now.', hint: 'Type at least 2 characters.' }
-    : { loading: 'Se caută…', none: 'Niciun rezultat pentru', one: 'rezultat pentru', many: 'rezultate pentru', error: 'Căutarea nu este disponibilă momentan.', hint: 'Scrieți cel puțin 2 caractere.' };
+  var HL = (document.documentElement.lang || '').toLowerCase();
+  var LANG = ['en', 'ru', 'uk'].filter(function (l) { return HL.indexOf(l) === 0; })[0] || 'ro';
+  var T = {
+    en: { loading: 'Searching…', none: 'No results for', one: 'result for', many: 'results for', error: 'Search is unavailable right now.', hint: 'Type at least 2 characters.' },
+    ro: { loading: 'Se caută…', none: 'Niciun rezultat pentru', one: 'rezultat pentru', many: 'rezultate pentru', error: 'Căutarea nu este disponibilă momentan.', hint: 'Scrieți cel puțin 2 caractere.' },
+    ru: { loading: 'Идёт поиск…', none: 'Ничего не найдено по запросу', one: 'результат по запросу', few: 'результата по запросу', many: 'результатов по запросу', error: 'Поиск сейчас недоступен.', hint: 'Введите не менее 2 символов.' },
+    uk: { loading: 'Триває пошук…', none: 'Нічого не знайдено за запитом', one: 'результат за запитом', few: 'результати за запитом', many: 'результатів за запитом', error: 'Пошук зараз недоступний.', hint: 'Введіть щонайменше 2 символи.' }
+  }[LANG];
+  // „1 результат, 3 результата, 5 результатов” – trei forme în rusă și ucraineană
+  function countLabel(n) {
+    if (!T.few) return n === 1 ? T.one : T.many;
+    var d = n % 10, h = n % 100;
+    return d === 1 && h !== 11 ? T.one : (d >= 2 && d <= 4 && (h < 12 || h > 14)) ? T.few : T.many;
+  }
   var MAX_RESULTS = 20;
 
   var modal = document.querySelector('.modal_search_form');
@@ -66,7 +76,7 @@
 
   function search(q) {
     var nq = norm(q).trim();
-    var terms = nq.split(/[^a-z0-9]+/).filter(function (w) { return w.length >= 2 || /\d/.test(w); });
+    var terms = nq.split(/[^\p{L}\p{N}]+/u).filter(function (w) { return w.length >= 2 || /\d/.test(w); });
     if (!terms.length) return [];
     var out = [];
     index.forEach(function (p) {
@@ -116,12 +126,12 @@
     return (start > 0 ? '…' : '') + text.slice(start, end).trim() + (end < text.length ? '…' : '');
   }
   function render(q, results) {
-    var quoted = LANG === 'en' ? '“' + esc(q) + '”' : '„' + esc(q) + '”';
+    var quoted = LANG === 'en' ? '“' + esc(q) + '”' : (LANG === 'ru' || LANG === 'uk') ? '«' + esc(q) + '»' : '„' + esc(q) + '”';
     if (!results.length) {
       box.innerHTML = '<p class="bx-sr-status">' + T.none + ' ' + quoted + '.</p>';
     } else {
       box.innerHTML = '<p class="bx-sr-status">' + results.length + (results.length >= MAX_RESULTS ? '+' : '') + ' ' +
-        (results.length === 1 ? T.one : T.many) + ' ' + quoted + '</p><ol>' +
+        countLabel(results.length) + ' ' + quoted + '</p><ol>' +
         results.map(function (r) {
           var d = r.p.d;
           return '<li><a href="' + esc(ROOT + d.u) + '"><span class="bx-sr-sec">' + esc(d.s) + '</span>' +
@@ -194,7 +204,8 @@
   });
   var hint = document.createElement('p');
   hint.className = 'bx-search-hint';
-  hint.textContent = LANG === 'en' ? 'Press Esc to close · / to search from any page' : 'Apăsați Esc pentru a închide · / pentru a căuta de pe orice pagină';
+  hint.textContent = { en: 'Press Esc to close · / to search from any page', ro: 'Apăsați Esc pentru a închide · / pentru a căuta de pe orice pagină',
+    ru: 'Нажмите Esc, чтобы закрыть · / — поиск с любой страницы', uk: 'Натисніть Esc, щоб закрити · / — пошук з будь-якої сторінки' }[LANG];
   form.parentNode.insertBefore(hint, box);
 
   // tastatură: săgeți între rezultate, Escape închide

@@ -136,6 +136,20 @@ ICON_BLOCK = re.compile(r'<div class="icon(?: bx-icon)?">\s*(?:<svg[\s\S]*?</svg
 H6_ICON = re.compile(r'(<h6[^>]*>)\s*<svg[\s\S]*?</svg>\s*([^<]*)')
 
 
+_CATALOG_LABELS = {}
+
+
+def labels_from_catalog(lang):
+    """Etichetele (h6) în altă limbă: traducerea din catalogul i18n/<lang>.json a etichetelor RO."""
+    if lang not in _CATALOG_LABELS:
+        import json
+        from .config import MIRROR
+        f = MIRROR / "i18n" / f"{lang}.json"
+        cat = json.loads(f.read_text(encoding="utf-8"))["text"] if f.exists() else {}
+        _CATALOG_LABELS[lang] = {cat[k].strip(): v for k, v in LABELS.items() if k in cat}
+    return _CATALOG_LABELS[lang]
+
+
 def apply_icons(text, key, lang):
     """Înlocuiește iconițele din <main> cu setul unitar; întoarce (text, câte au fost înlocuite)."""
     m0, m1 = text.find("<main"), text.find("</main>")
@@ -189,7 +203,7 @@ def apply_icons(text, key, lang):
                     f'{svg("file-text" if soon else "download", 20)}</span>{m.group(2)}{m.group(3)}')
         main = DOC_ICON.sub(doc, main)
 
-    table = LABELS if lang == "ro" else LABELS_EN
+    table = {"ro": LABELS, "en": LABELS_EN}.get(lang) or labels_from_catalog(lang)
 
     def label(m):
         nonlocal count

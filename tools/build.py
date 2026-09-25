@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Construiește site-ul complet în dist/: copia bimx.md + BIMx Academy, în română și în engleză.
+"""Construiește site-ul complet în dist/: copia bimx.md + BIMx Academy, în română, engleză și rusă.
 
 Rulare:  python3 tools/build.py   (sau: make build)
 
@@ -32,39 +32,40 @@ from sitegen.detach import detach  # noqa: E402
 from sitegen.fixes import apply_fixes  # noqa: E402
 from sitegen.pdf import build_pdfs  # noqa: E402
 from sitegen.search import build_search  # noqa: E402
-from sitegen.config import ACADEMY_ASSETS, ACADEMY_SRC, DIST, LANGS, PUBLICATIONS, ROOT  # noqa: E402
+from sitegen.config import ACADEMY_ASSETS, ACADEMY_SRC, DIST, LANGS, PUBLICATIONS, ROOT, SITE_LANGS  # noqa: E402
 from sitegen.mirror import build_snapshot, localize_links  # noqa: E402
 from sitegen.shell import write_scoped_css  # noqa: E402
 
 
 def main():
-    ro = load_programs("ro")
-    en = load_programs("en")
-    if not ro:
+    programs = {lang: load_programs(lang) for lang in SITE_LANGS}
+    if not programs["ro"]:
         raise SystemExit("Nu există lecții în src/academy/content/ro/")
-    ro_slugs = [p["slug"] for p in ro]
-    en_slugs = [p["slug"] for p in en]
-    if ro_slugs != en_slugs:
-        missing = sorted(set(ro_slugs) - set(en_slugs))
-        raise SystemExit(f"content/en/ nu corespunde cu content/ro/ (lipsesc: {missing})")
+    ro_slugs = [p["slug"] for p in programs["ro"]]
+    for lang in SITE_LANGS[1:]:
+        slugs = [p["slug"] for p in programs[lang]]
+        if slugs != ro_slugs:
+            missing = sorted(set(ro_slugs) - set(slugs))
+            raise SystemExit(f"content/{lang}/ nu corespunde cu content/ro/ (lipsesc: {missing})")
     if DIST.exists():
         shutil.rmtree(DIST)
     pages, missing = build_snapshot()
-    print(f"bimx.md: {pages} pagini (RO + EN) din src/bimx-mirror/")
-    if missing:
-        print(f"  Atenție: {len(missing)} texte fără traducere EN (rămân în română) – rulați tools/validate.py")
+    print(f"bimx.md: {pages} pagini ({' + '.join(l.upper() for l in SITE_LANGS)}) din src/bimx-mirror/")
+    for lang, keys in missing.items():
+        if keys:
+            print(f"  Atenție: {len(keys)} texte fără traducere {lang.upper()} (rămân în română) – rulați tools/validate.py")
     shutil.copytree(ACADEMY_SRC / "assets", ACADEMY_ASSETS, ignore=shutil.ignore_patterns(".DS_Store"))
     write_scoped_css()
-    for lang, programs in (("ro", ro), ("en", en)):
-        count = build(lang, programs)
+    for lang in SITE_LANGS:
+        count = build(lang, programs[lang])
         localize_links(LANGS[lang]["out"], lang)
-        print(f"Academy [{lang}]: {len(programs)} programe, {count} lecții, {len(PUBLICATIONS)} ghiduri.")
+        print(f"Academy [{lang}]: {len(programs[lang])} programe, {count} lecții, {len(PUBLICATIONS)} ghiduri.")
     print(f"Decuplare de bimx.md: {detach()} pagini ajustate.")
     print(f"Corecturi din auditul UI/UX: {apply_fixes()} pagini ajustate.")
     made, total = build_pdfs()
     print(f"PDF-uri pentru ghiduri: {made} din {total}" + ("" if made == total else " (fără Chrome: butonul tipărește pagina)"))
     counts, injected = build_search()
-    print(f"Căutare: {counts['ro']} pagini RO, {counts['en']} pagini EN în index; scriptul adăugat pe {injected} pagini.")
+    print("Căutare: " + ", ".join(f"{counts[l]} pagini {l.upper()}" for l in SITE_LANGS) + f" în index; scriptul adăugat pe {injected} pagini.")
     print(f"Gata. Deschideți {(DIST / 'index.html').relative_to(ROOT)}")
 
 
