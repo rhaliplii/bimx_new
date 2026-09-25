@@ -24,7 +24,7 @@
     '.bx-search-results ol{list-style:none;margin:0;padding:0;display:grid;gap:8px}',
     '.bx-search-results a{display:block;padding:12px 16px;border:1px solid #E5E7EB;border-radius:12px;text-decoration:none;color:#1A2266;background:#fff;transition:border-color .2s,background .2s}',
     '.bx-search-results a:hover,.bx-search-results a:focus-visible{border-color:#1EB1F1;background:#F5FBFE;outline:none}',
-    '.bx-search-results .bx-sr-sec{display:block;font-size:12px;font-weight:600;letter-spacing:.03em;color:#0A7FB5;margin-bottom:2px}',
+    '.bx-search-results .bx-sr-sec{display:block;font-size:12px;font-weight:600;letter-spacing:.03em;color:#1DB0F0;margin-bottom:2px}',
     '.bx-search-results .bx-sr-title{display:block;font-size:16px;font-weight:600;line-height:1.35}',
     '.bx-search-results .bx-sr-snip{display:block;font-size:14px;line-height:1.5;color:#4A5065;margin-top:4px}',
     '.bx-search-results mark{background:#FFF1B8;color:inherit;border-radius:3px;padding:0 1px}'
@@ -164,13 +164,38 @@
   // la deschiderea modalului: focus în câmp și încărcarea indexului în avans
   document.addEventListener('click', function (e) {
     if (e.target.closest && e.target.closest('.header_content .search')) {
-      setTimeout(function () { input.focus(); }, 350);
+      setTimeout(function () { input.focus(); }, 120);
       load().catch(function () {});
     }
     if (e.target.closest && e.target.closest('.modal_search_form .close')) {
       setTimeout(function () { clear(); }, 300);
     }
   });
+
+  // dialogul: clic pe fundal închide; „/” deschide; pagina din spate nu se derulează cât dialogul e deschis
+  function closeSearch() {
+    modal.classList.remove('active');
+    clear();
+    var opener = document.querySelector('.header_content .search');
+    if (opener && opener.focus) opener.focus();
+  }
+  modal.addEventListener('click', function (e) { if (e.target === modal) closeSearch(); });
+  new MutationObserver(function () {
+    document.body.classList.toggle('bx-search-open', modal.classList.contains('active'));
+  }).observe(modal, { attributes: true, attributeFilter: ['class'] });
+  document.addEventListener('keydown', function (e) {
+    var tag = (document.activeElement && document.activeElement.tagName) || '';
+    if (e.key === '/' && !modal.classList.contains('active') && !/INPUT|TEXTAREA|SELECT/.test(tag)) {
+      e.preventDefault();
+      var opener = document.querySelector('.header_content .search');
+      if (opener) opener.click();
+      setTimeout(function () { input.focus(); }, 60);
+    }
+  });
+  var hint = document.createElement('p');
+  hint.className = 'bx-search-hint';
+  hint.textContent = LANG === 'en' ? 'Press Esc to close · / to search from any page' : 'Apăsați Esc pentru a închide · / pentru a căuta de pe orice pagină';
+  form.parentNode.insertBefore(hint, box);
 
   // tastatură: săgeți între rezultate, Escape închide
   modal.addEventListener('keydown', function (e) {
@@ -183,10 +208,7 @@
       e.preventDefault();
       if (i <= 0) input.focus(); else links[i - 1].focus();
     } else if (e.key === 'Escape') {
-      modal.classList.remove('active');
-      clear();
-      var opener = document.querySelector('.header_content .search');
-      if (opener && opener.focus) opener.focus();
+      closeSearch();
     }
   });
 })();

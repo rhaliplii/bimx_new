@@ -1,19 +1,22 @@
+  /* Tokenurile comune cu bimx.md vin din src/site/site.css (--bx-*); valorile de aici sunt doar rezerve. */
   :root {
-    --navy: #1A2266;
+    --navy: var(--bx-navy, #1A2266);
     --navy-2: #1A1F67;
-    --blue: #1EB1F1;
+    --blue: var(--bx-blue, #1EB1F1);                /* fundaluri, iconițe, accente pe fundal închis */
+    --blue-ink: var(--bx-blue-ink, #1DB0F0);        /* albastrul de brand pentru text */
+    --lilac-ink: #5E62AE;
     --blue-10: rgba(30, 177, 241, .1);
     --blue-20: rgba(30, 177, 241, .2);
     --blue-30: rgba(30, 177, 241, .3);
     --lilac: #9195CF;
     --text: #1A2266;
-    --muted: #6A7181;
-    --border: #E5E7EB;
+    --muted: var(--bx-muted, #6A7181);
+    --border: var(--bx-border, #E5E7EB);
     --bg-soft: #F8FAFC;
     --bg-soft-2: #F0F5F7;
     --green: #2BAB6F;
     --white: #FFFFFF;
-    --radius: 16px;
+    --radius: var(--bx-radius-lg, 16px);
     --container: 1240px;
   }
 
@@ -44,17 +47,17 @@
     cursor: pointer; transition: background .2s, color .2s, border-color .2s, transform .2s;
     white-space: nowrap;
   }
-  .btn1 { background: var(--blue); color: var(--white); }
+  .btn1 { background: var(--blue-ink); color: var(--white); }
   .btn1:hover { background: #1399d3; }
   .btn2 { background: transparent; color: var(--white); border-color: rgba(255,255,255,.3); }
   .btn2:hover { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.6); }
   .btn3 { background: var(--white); color: var(--navy); border-color: var(--border); }
-  .btn3:hover { border-color: var(--blue); color: var(--blue); }
+  .btn3:hover { border-color: var(--blue); color: var(--blue-ink); }
 
   .label {
     display: inline-block; width: fit-content;
     font-weight: 700; font-size: 12px; line-height: 16px; letter-spacing: .02em;
-    color: var(--blue); padding: 2px 10px;
+    color: var(--blue-ink); padding: 2px 10px;
     background: var(--blue-20); border: 1px solid var(--blue-30); border-radius: 9999px;
   }
   .label.light { background: var(--blue-10); border-color: var(--blue-20); }
@@ -76,7 +79,7 @@
   .logo .mark {
     font-weight: 700; font-size: 26px; letter-spacing: -.02em; color: var(--navy); line-height: 1;
   }
-  .logo .mark span { color: var(--blue); }
+  .logo .mark span { color: var(--blue-ink); }
   .logo .divider { width: 1px; height: 26px; background: var(--border); }
   .logo .sub { font-size: 11px; line-height: 13px; font-weight: 500; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
 
@@ -87,7 +90,7 @@
     font-size: 14px; font-weight: 500; color: var(--navy);
     padding: 10px 12px; border-radius: 8px; text-transform: uppercase; letter-spacing: .01em;
   }
-  .primary-navigation > ul > li > a:hover, .primary-navigation > ul > li.current > a { color: var(--blue); }
+  .primary-navigation > ul > li > a:hover, .primary-navigation > ul > li.current > a { color: var(--blue-ink); }
   .primary-navigation > ul > li.current > a { background: var(--blue-10); }
   .primary-navigation .sub-menu {
     position: absolute; top: calc(100% + 8px); left: 0; min-width: 230px;
@@ -97,11 +100,11 @@
   }
   .primary-navigation li:hover > .sub-menu, .primary-navigation li:focus-within > .sub-menu { opacity: 1; visibility: visible; transform: none; }
   .primary-navigation .sub-menu a { display: block; padding: 8px 12px; border-radius: 8px; font-size: 14px; color: var(--navy); }
-  .primary-navigation .sub-menu a:hover { background: var(--bg-soft); color: var(--blue); }
+  .primary-navigation .sub-menu a:hover { background: var(--bg-soft); color: var(--blue-ink); }
 
   .header_actions { display: flex; align-items: center; gap: 12px; }
   .icon_btn { width: 40px; height: 40px; border-radius: 8px; border: 1px solid var(--border); background: var(--white); display: grid; place-items: center; cursor: pointer; color: var(--navy); }
-  .icon_btn:hover { border-color: var(--blue); color: var(--blue); }
+  .icon_btn:hover { border-color: var(--blue); color: var(--blue-ink); }
   .menu_toggle { display: none; }
 
   .mobile_nav { display: none; border-top: 1px solid var(--border); padding: 12px 20px 20px; background: var(--white); }
@@ -127,7 +130,7 @@
   ul.breadcrumbs li a { color: rgba(255,255,255,.6); }
   ul.breadcrumbs li a:hover { color: var(--white); }
   ul.breadcrumbs li span { color: rgba(255,255,255,.9); }
-  .second_main_section .label { margin-bottom: 16px; }
+  .second_main_section .label { margin-bottom: 16px; color: #7DD3FC; }
   .second_main_section h1 { font-weight: 700; font-size: 56px; line-height: 64px; letter-spacing: -.02em; margin-bottom: 18px; }
   .second_main_section h1 em { font-style: normal; color: var(--blue); }
   .second_main_section .lead { font-weight: 300; font-size: 18px; line-height: 30px; color: rgba(255,255,255,.75); max-width: 620px; margin-bottom: 32px; }
@@ -198,7 +201,7 @@
     padding: 28px; display: flex; flex-direction: column; gap: 18px; position: relative; transition: .2s;
   }
   .mission .block:hover { border-color: var(--blue); }
-  .mission .block .num { position: absolute; top: 26px; right: 28px; font-size: 13px; font-weight: 600; color: var(--lilac); }
+  .mission .block .num { position: absolute; top: 26px; right: 28px; font-size: 13px; font-weight: 600; color: var(--lilac-ink); }
   .mission .block h3 { font-size: 20px; line-height: 28px; font-weight: 600; }
   .mission .block p { font-size: 15px; line-height: 24px; color: var(--muted); }
   .mission .block .meta { display: flex; gap: 8px; flex-wrap: wrap; margin-top: auto; }
@@ -228,7 +231,7 @@
   }
   .level { font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 999px; position: relative; z-index: 1; }
   .level.beg { background: rgba(43,171,111,.18); color: #6ee0a8; }
-  .level.int { background: var(--blue-20); color: var(--blue); }
+  .level.int { background: var(--blue-20); color: var(--blue-ink); }
   .level.adv { background: rgba(145,149,207,.25); color: #c5c8f2; }
   .level.pro { background: rgba(255,255,255,.14); color: var(--white); }
   .course .cover .code { font-size: 12px; color: rgba(255,255,255,.75); font-weight: 500; position: relative; z-index: 1; background: rgba(16,22,74,.6); padding: 2px 8px; border-radius: 6px; }
@@ -240,7 +243,7 @@
   .course .facts svg { color: var(--blue); }
   .course .foot { display: flex; justify-content: space-between; align-items: center; padding: 0 24px 24px; }
   .soon { font-size: 12px; font-weight: 600; color: var(--navy); background: var(--bg-soft-2); padding: 4px 10px; border-radius: 6px; }
-  .link_arrow { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 500; color: var(--blue); }
+  .link_arrow { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 500; color: var(--blue-ink); }
   .link_arrow svg { transition: transform .2s; }
   .link_arrow:hover svg, .course:hover .link_arrow svg, .pub:hover .link_arrow svg { transform: translateX(3px); }
 
@@ -253,7 +256,7 @@
   .step { position: relative; }
   .step .n {
     width: 51px; height: 51px; border-radius: 13px; background: var(--navy); border: 1px solid var(--blue);
-    display: grid; place-items: center; font-weight: 600; color: var(--blue); margin-bottom: 22px; position: relative;
+    display: grid; place-items: center; font-weight: 600; color: var(--blue-ink); margin-bottom: 22px; position: relative;
   }
   .step h3 { font-size: 19px; line-height: 27px; font-weight: 600; margin-bottom: 8px; }
   .step p { font-size: 14px; line-height: 22px; color: rgba(255,255,255,.65); }
@@ -274,7 +277,7 @@
   .glossary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
   .term { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px; }
   .term h4 { font-size: 16px; font-weight: 600; margin-bottom: 6px; display: flex; justify-content: space-between; gap: 10px; }
-  .term h4 small { font-size: 11px; font-weight: 500; color: var(--lilac); text-transform: uppercase; letter-spacing: .06em; }
+  .term h4 small { font-size: 11px; font-weight: 500; color: var(--lilac-ink); text-transform: uppercase; letter-spacing: .06em; }
   .term p { font-size: 14px; line-height: 22px; color: var(--muted); }
   .term.hidden { display: none; }
   .empty { display: none; text-align: center; color: var(--muted); padding: 32px; border: 1px dashed var(--border); border-radius: 12px; }
@@ -289,7 +292,7 @@
   .event .date b { font-size: 24px; line-height: 28px; font-weight: 600; }
   .event .date span { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
   .event .info { flex: 1; min-width: 0; }
-  .event .info .type { font-size: 12px; font-weight: 600; color: var(--blue); text-transform: uppercase; letter-spacing: .06em; }
+  .event .info .type { font-size: 12px; font-weight: 600; color: var(--blue-ink); text-transform: uppercase; letter-spacing: .06em; }
   .event .info h3 { font-size: 18px; line-height: 26px; font-weight: 600; margin: 2px 0 6px; }
   .event .info p { font-size: 14px; color: var(--muted); display: flex; gap: 14px; flex-wrap: wrap; }
   .partner_box { background: var(--navy); color: var(--white); border-radius: var(--radius); padding: 32px; display: flex; flex-direction: column; gap: 16px; position: relative; overflow: hidden; }
@@ -380,7 +383,7 @@
   footer .logo { margin-bottom: 15px; }
   footer .column p { font-size: 12px; line-height: 18px; color: rgba(255,255,255,.6); }
   footer .column .contacts { margin-top: 16px; display: grid; gap: 8px; font-size: 13px; color: rgba(255,255,255,.75); }
-  footer .column .contacts a:hover { color: var(--blue); }
+  footer .column .contacts a:hover { color: var(--blue-ink); }
   footer .column h4 { font-size: 14px; font-weight: 600; margin-bottom: 16px; }
   footer .column ul { display: grid; gap: 10px; }
   footer .column ul a { font-size: 13px; color: rgba(255,255,255,.6); }
@@ -401,7 +404,7 @@
   }
 
   /* ---------- Launch stage: announcement, notes, Despre BIMx ---------- */
-  .top_header .status .announce { color: var(--blue); font-weight: 500; }
+  .top_header .status .announce { color: var(--blue-ink); font-weight: 500; }
   .top_header .status .announce:hover { text-decoration: underline; }
   .audience .card .note {
     display: block; margin: 20px 0 0; padding: 10px 12px; border-radius: 10px;
@@ -426,7 +429,7 @@
   .about_bimx .timeline li:last-child::after { display: none; }
   .about_bimx .timeline li.done::before { background: var(--blue); border-color: var(--blue); }
   .about_bimx .timeline li.now::before { background: var(--green); border-color: var(--green); box-shadow: 0 0 0 4px rgba(43,171,111,.25); }
-  .about_bimx .timeline time { font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--blue); }
+  .about_bimx .timeline time { font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--blue-ink); }
   .about_bimx .timeline li.now time { color: #6ee0a8; }
   .about_bimx .timeline span { font-size: 14px; line-height: 21px; color: rgba(255,255,255,.8); }
   .about_bimx .timeline .link_arrow { color: var(--white); }
@@ -435,7 +438,7 @@
   .about_quote figcaption { margin-top: 10px; font-size: 14px; color: var(--muted); }
   .about_links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
   .about_links a { font-size: 14px; font-weight: 500; padding: 8px 14px; border-radius: 999px; border: 1px solid var(--border); background: var(--white); color: var(--navy); }
-  .about_links a:hover { border-color: var(--blue); color: var(--blue); }
+  .about_links a:hover { border-color: var(--blue); color: var(--blue-ink); }
 
   .events_group { font-size: 13px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin: 8px 0 -4px; }
   .events_group:first-child { margin-top: 0; }
@@ -443,13 +446,13 @@
   .event.past .date { background: var(--white); }
   .event .date b { white-space: nowrap; }
   .event .date b.sm { font-size: 17px; }
-  .step .soon_tag { display: inline-block; vertical-align: 3px; margin-left: 6px; font-size: 11px; font-weight: 600; padding: 1px 8px; border-radius: 999px; background: rgba(255,255,255,.12); color: var(--blue); }
+  .step .soon_tag { display: inline-block; vertical-align: 3px; margin-left: 6px; font-size: 11px; font-weight: 600; padding: 1px 8px; border-radius: 999px; background: rgba(255,255,255,.12); color: var(--blue-ink); }
   .date_section .stages { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 4px; }
   .date_section .stage .year { font-size: 32px; line-height: 40px; }
   .date_section .stage p { font-size: 14px; line-height: 22px; }
 
   .date_section .contact_line { font-size: 13px; color: var(--muted); margin-bottom: 6px; }
-  .date_section .contact_line a { color: var(--blue); }
+  .date_section .contact_line a { color: var(--blue-ink); }
 
   /* ---------- Responsive ---------- */
   @media (max-width: 1100px) {

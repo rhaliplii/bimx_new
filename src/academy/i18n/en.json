@@ -86,5 +86,6 @@
     "levels",
     "courses",
     "interactive lessons"
-  ]
+  ],
+  "print_pdf": "Print / save as PDF"
 }

@@ -18,6 +18,7 @@ from .util import relto
 ORIGIN = re.compile(r"https?:(?:\\?/){2}(?:www\.)?bimx\.md")
 REPLICA_JS = DIST / "assets" / "js" / "replica.js"
 MARKET_JS = DIST / "assets" / "js" / "market-data.js"
+SITE_CSS = DIST / "assets" / "css" / "site.css"
 MARKET_DATA = SRC / "bimx-mirror" / "data" / "market.json"
 
 # Linkuri de pe bimx.md care duc la pagini inexistente (404 și pe original), cu echivalentul local.
@@ -88,6 +89,9 @@ def detach_page(text, here):
     script = f'<script src="{relto(REPLICA_JS, here)}" defer></script>\n'
     if "replica.js" not in text:
         text = text.replace("</body>", script + "</body>", 1)
+    # corecturile de stil peste temă (src/site/site.css), după stilurile temei
+    if "assets/css/site.css" not in text:
+        text = text.replace("</head>", f'<link rel="stylesheet" href="{relto(SITE_CSS, here)}">\n</head>', 1)
     # în <head>, sincron: scripturile inline din pagină cer datele de piață încă de la încărcare
     market = f'<script src="{relto(MARKET_JS, here)}"></script>\n'
     if MARKET_JS.exists() and "market-data.js" not in text:
@@ -98,6 +102,8 @@ def detach_page(text, here):
 def detach():
     REPLICA_JS.parent.mkdir(parents=True, exist_ok=True)
     REPLICA_JS.write_text((SRC / "site" / "replica.js").read_text(encoding="utf-8"), encoding="utf-8")
+    SITE_CSS.parent.mkdir(parents=True, exist_ok=True)
+    SITE_CSS.write_text((SRC / "site" / "site.css").read_text(encoding="utf-8"), encoding="utf-8")
     if MARKET_DATA.exists():
         responses = json.loads(MARKET_DATA.read_text(encoding="utf-8"))["responses"]
         MARKET_JS.write_text("window.BIMX_MARKET_DATA = " + json.dumps(responses, ensure_ascii=False, separators=(",", ":"))

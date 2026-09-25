@@ -24,11 +24,12 @@ src/
     i18n/en.json                           traducerea EN: text RO → text EN
     data/market.json                       datele de piață demonstrative (ticker, top-uri, grafic)
     shared/                                wp-content, wp-includes (comune ambelor limbi)
-  site/replica.js                          formulare și partajare fără serverul bimx.md
+  site/replica.js                          formulare, partajare și accesibilitate (tastatură, Escape, aria-expanded)
+  site/site.css                            corecturile de stil peste tema bimx.md (audit UI/UX)
   site/search.js                           căutarea din antet (index generat la build)
 tools/
   build.py                                 punctul de intrare al build-ului
-  sitegen/                                 codul build-ului (config, mirror, translate, shell, academy, detach, search, util, icons)
+  sitegen/                                 codul build-ului (config, mirror, translate, shell, academy, detach, fixes, pdf, search, util, icons)
   validate.py                              verifică lecțiile și că fiecare text bimx.md are traducere EN
   check_links.py                           verifică linkurile locale din dist/ și că nimic nu trimite spre bimx.md
   mirror_bimx.py                           descarcă din nou bimx.md în src/bimx-mirror/
@@ -71,13 +72,23 @@ Un text fără traducere rămâne în română în pagina EN; `make validate` le
 Niciun link, buton, formular sau resursă din `dist/` nu trimite spre bimx.md (pasul `sitegen/detach.py`; `make check` pică dacă apare vreunul):
 
 - linkurile spre pagini copiate devin locale; linkurile rupte și pe bimx.md au echivalent local în `LINK_ALIASES` (ex. `/calendar` → `trading-calendar/`);
-- „Intra in cont” / „Log In” rămân în antet, dar la clic afișează „Această funcție nu este disponibilă momentan.” — autentificarea există doar pe serverul bimx.md;
-- newsletterul și formularul de contact nu trimit date: afișează „Această funcție nu este disponibilă momentan.”;
+- „Intra in cont” / „Log In” au fost scoase: autentificarea există doar pe serverul bimx.md;
+- formularul de contact validează câmpurile obligatorii, dar nu trimite date: afișează „Această funcție nu este disponibilă momentan.”; newsletterul MailPoet e înlocuit de linkuri spre LinkedIn și Facebook;
 - căutarea din antet funcționează local: la build, `tools/sitegen/search.py` indexează conținutul principal al paginilor (RO și EN, fără antet, subsol, secțiuni ascunse și pagini „În curând”) în `dist/assets/search/{ro,en}.js`, iar `src/site/search.js` caută în browser, fără diacritice, cu rezultatele pe măsură ce scrii;
 - butoanele de partajare (Facebook, X, LinkedIn, copiere link) folosesc adresa paginii curente.
-- tickerul, panoul de piață, Top Gainers/Losers și graficul folosesc datele demonstrative din `src/bimx-mirror/data/market.json` (ca pe bimx.md, unde sunt tot simulate); `market-data.js` le servește la adresele cerute de temă.
+- tickerul folosește datele demonstrative din `src/bimx-mirror/data/market.json` (ca pe bimx.md, unde sunt tot simulate) și apare doar pe prima pagină și pe paginile de piață, marcat „Date demonstrative”.
 
 Adresele de email @bimx.md și mențiunile „bimx.md” din textul lecțiilor rămân.
+
+## Corecturile din auditul UI/UX
+
+Paginile bimx.md vin neschimbate din `src/bimx-mirror/`, iar corecturile se aplică la build, ca un nou `make mirror` să nu le piardă:
+
+- `tools/sitegen/fixes.py` — antet (pre-lansare în loc de „Market Open”, fără login, butoane accesibile), subsol (adresă, rețele sociale, fără pagini goale), breadcrumbs, prima pagină (butoane cu destinații reale, iconițe SVG, fără secțiunile de piață ascunse), Centrul de descărcare, paginile „În curând” transformate în pagini reale (Calendarul de tranzacționare, Statut, Organigrama, Situații financiare), redirecționări pentru rutele duplicate, skip-link, meta description, ierarhia titlurilor (`aria-level`), corpul de text mai mare în CSS-ul temei;
+- `src/site/site.css` — stilurile corecturilor și tokenurile comune `--bx-*` (folosite și de Academy);
+- `tools/sitegen/pdf.py` — PDF-urile ghidurilor Academy, generate cu Chrome headless (dacă Chrome lipsește, butonul tipărește pagina; calea se poate da prin `CHROME=`).
+
+Fiecare corectură e etichetată în cod cu numărul problemei din audit (UI-xx).
 
 ## Limitări
 

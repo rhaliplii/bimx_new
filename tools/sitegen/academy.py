@@ -321,10 +321,11 @@ def lesson_page(lang, program, index):
       <details class="lesson_nav" open>
         <summary>
           <span class="ln_title">{t['program_content']}</span>
-          <a href="index.html" class="ln_program">{esc(program['title'])}</a>
+          <span class="ln_program">{esc(program['title'])}</span>
           <div class="mini_bar" id="mini-bar"><i></i></div>
           <div class="mini_label"><span id="mini-count">0/{total} {t['lesson'][1]}</span><span id="mini-pct">0%</span></div>
         </summary>
+        <a href="index.html" class="ln_back">{ARROW_LEFT} {t['back_program']}</a>
         {''.join(groups)}
       </details>
 
@@ -425,9 +426,9 @@ def publication_page(lang, pub, programs):
           </div>
           <div class="hero_buttons">
             <a href="#capitolul-1" class="btn1">{t['start_reading']} {ARROW}</a>
-            <button type="button" class="btn2" onclick="window.print()">
+            <button type="button" class="btn2" onclick="window.print()" data-pdf="{pub['slug']}.pdf">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>
-              {t['download_pdf']}
+              {t['print_pdf']}
             </button>
           </div>
         </div>

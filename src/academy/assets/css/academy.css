@@ -48,7 +48,7 @@ ol.lesson_list, ol.steps_list { list-style: none; margin: 0; padding: 0; }
 .course_block { border: 1px solid var(--border); border-radius: var(--radius); background: var(--white); margin-bottom: 20px; overflow: hidden; scroll-margin-top: 110px; }
 .course_block:target { border-color: var(--blue); box-shadow: 0 0 0 4px var(--blue-10); }
 .course_block .cb_head { padding: 24px 24px 20px; display: flex; justify-content: space-between; gap: 20px; align-items: flex-start; border-bottom: 1px solid var(--border); background: var(--bg-soft); }
-.course_block .cb_head .code { font-size: 12px; font-weight: 600; color: var(--blue); letter-spacing: .04em; }
+.course_block .cb_head .code { font-size: 12px; font-weight: 600; color: var(--blue-ink); letter-spacing: .04em; }
 .course_block .cb_head h3 { font-size: 20px; line-height: 28px; font-weight: 600; margin: 2px 0 6px; }
 .course_block .cb_head p { font-size: 14px; line-height: 22px; color: var(--muted); }
 .course_block .cb_head .count { flex: 0 0 auto; font-size: 13px; color: var(--muted); text-align: right; white-space: nowrap; }
@@ -79,7 +79,7 @@ ol.lesson_list, ol.steps_list { list-style: none; margin: 0; padding: 0; }
 .other_programs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
 .other_programs a { border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; display: flex; flex-direction: column; gap: 10px; transition: .2s; background: var(--white); }
 .other_programs a:hover { border-color: var(--blue); transform: translateY(-3px); box-shadow: 0 16px 40px rgba(26,34,102,.08); }
-.other_programs .num { font-size: 13px; font-weight: 600; color: var(--lilac); }
+.other_programs .num { font-size: 13px; font-weight: 600; color: var(--lilac-ink); }
 .other_programs h4 { font-size: 17px; line-height: 25px; font-weight: 600; }
 .other_programs p { font-size: 13px; line-height: 20px; color: var(--muted); }
 .other_programs .link_arrow { margin-top: auto; }
@@ -95,13 +95,14 @@ ol.lesson_list, ol.steps_list { list-style: none; margin: 0; padding: 0; }
 .lesson_nav > summary::-webkit-details-marker { display: none; }
 .lesson_nav .ln_title { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; font-weight: 600; }
 .lesson_nav .ln_program { display: block; font-size: 15px; line-height: 22px; font-weight: 600; margin: 4px 0 12px; }
-.lesson_nav .ln_program:hover { color: var(--blue); }
+.lesson_nav .ln_back { display: flex; align-items: center; gap: 6px; margin: 12px 20px 0; padding: 8px 0; font-size: 13px; font-weight: 500; color: var(--blue-ink); }
+.lesson_nav .ln_back:hover { text-decoration: underline; }
 .mini_bar { height: 6px; border-radius: 99px; background: var(--bg-soft-2); overflow: hidden; }
 .mini_bar i { display: block; height: 100%; width: 0; background: var(--green); border-radius: 99px; transition: width .4s; }
 .mini_label { display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); margin-top: 6px; }
 .lesson_nav .group { padding: 14px 12px 6px; }
 .lesson_nav .group + .group { border-top: 1px solid var(--border); }
-.lesson_nav .group > span { display: block; font-size: 12px; font-weight: 600; color: var(--blue); padding: 0 8px 6px; }
+.lesson_nav .group > span { display: block; font-size: 12px; font-weight: 600; color: var(--blue-ink); padding: 0 8px 6px; }
 .lesson_nav .group a { display: flex; gap: 10px; align-items: flex-start; padding: 8px; border-radius: 8px; font-size: 14px; line-height: 20px; color: var(--body-text); }
 .lesson_nav .group a:hover { background: var(--bg-soft); color: var(--navy); }
 .lesson_nav .group a.current { background: var(--blue-10); color: var(--navy); font-weight: 500; }
@@ -140,13 +141,13 @@ ol.lesson_list, ol.steps_list { list-style: none; margin: 0; padding: 0; }
 .callout p { font-size: 15px; line-height: 25px; margin: 0; }
 .callout.definition { background: var(--blue-10); border-color: var(--blue-20); }
 .callout.definition .ci { background: var(--blue); color: var(--white); }
-.callout.definition .ct { color: #0e8cc4; }
+.callout.definition .ct { color: #0a6f9e; }
 .callout.example { background: var(--lilac-10); border-color: rgba(145,149,207,.3); }
 .callout.example .ci { background: var(--navy); color: var(--white); }
 .callout.example .ct { color: #5b60a8; }
 .callout.tip { background: var(--green-10); border-color: rgba(43,171,111,.25); }
 .callout.tip .ci { background: var(--green); color: var(--white); }
-.callout.tip .ct { color: #1f8a57; }
+.callout.tip .ct { color: #17683f; }
 .callout.warning { background: var(--amber-10); border-color: rgba(245,158,11,.3); }
 .callout.warning .ci { background: var(--amber); color: var(--white); }
 .callout.warning .ct { color: #b45309; }
@@ -159,7 +160,7 @@ ol.lesson_list, ol.steps_list { list-style: none; margin: 0; padding: 0; }
 
 .formula { margin: 0 0 24px; border-radius: 12px; background: var(--navy); color: var(--white); padding: 20px 24px; position: relative; overflow: hidden; }
 .formula::after { content: "∑"; position: absolute; right: 18px; top: -6px; font-size: 84px; color: rgba(30,177,241,.12); line-height: 1; }
-.formula .fl { font-size: 12px; font-weight: 600; color: var(--blue); text-transform: uppercase; letter-spacing: .06em; }
+.formula .fl { font-size: 12px; font-weight: 600; color: var(--blue-ink); text-transform: uppercase; letter-spacing: .06em; }
 .formula .fe { font-size: 19px; line-height: 30px; font-weight: 500; margin: 4px 0; position: relative; z-index: 1; }
 .formula .fn { font-size: 14px; line-height: 22px; color: rgba(255,255,255,.65); position: relative; z-index: 1; }
 
@@ -175,7 +176,7 @@ ol.lesson_list, ol.steps_list { list-style: none; margin: 0; padding: 0; }
 .quiz > .quiz_sub { font-size: 15px; color: var(--muted); margin-bottom: 20px; }
 .q { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 14px; }
 .q legend { float: left; width: 100%; font-size: 16px; line-height: 24px; font-weight: 600; color: var(--navy); margin-bottom: 12px; padding: 0; }
-.q legend small { display: block; font-size: 12px; color: var(--blue); font-weight: 600; letter-spacing: .04em; }
+.q legend small { display: block; font-size: 12px; color: var(--blue-ink); font-weight: 600; letter-spacing: .04em; }
 .q fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
 .q .opts { clear: both; display: grid; gap: 8px; }
 .q label { display: flex; gap: 12px; align-items: center; padding: 10px 14px; border: 1px solid var(--border); border-radius: 10px; cursor: pointer; font-size: 15px; line-height: 22px; transition: .15s; }
@@ -214,7 +215,7 @@ ol.lesson_list, ol.steps_list { list-style: none; margin: 0; padding: 0; }
 .pager a.next { text-align: right; align-items: flex-end; grid-column: 2; }
 
 .disclaimer { margin-top: 32px; font-size: 13px; line-height: 20px; color: var(--muted); display: flex; gap: 10px; }
-.disclaimer svg { flex: 0 0 auto; margin-top: 2px; color: var(--lilac); }
+.disclaimer svg { flex: 0 0 auto; margin-top: 2px; color: var(--lilac-ink); }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 1240px) {
@@ -260,15 +261,15 @@ ol.lesson_list, ol.steps_list { list-style: none; margin: 0; padding: 0; }
 .guide_toc { position: sticky; top: 100px; max-height: calc(100vh - 120px); overflow: auto; border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 12px 16px; background: var(--white); }
 .guide_toc h4 { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; font-weight: 600; padding: 0 8px 10px; }
 .guide_toc a:not(.btn3) { display: flex; gap: 10px; padding: 8px; border-radius: 8px; font-size: 14px; line-height: 20px; color: var(--body-text); }
-.guide_toc a:not(.btn3) span { font-size: 12px; font-weight: 600; color: var(--lilac); padding-top: 1px; }
+.guide_toc a:not(.btn3) span { font-size: 12px; font-weight: 600; color: var(--lilac-ink); padding-top: 1px; }
 .guide_toc a:not(.btn3):hover { background: var(--bg-soft); color: var(--navy); }
 .guide_toc a.active { background: var(--blue-10); color: var(--navy); font-weight: 500; }
-.guide_toc a.active span { color: var(--blue); }
+.guide_toc a.active span { color: var(--blue-ink); }
 .guide_toc .btn3 { width: 100%; margin-top: 12px; }
 
 .guide_content .chapter { scroll-margin-top: 100px; }
 .guide_content .chapter + .chapter { margin-top: 72px; padding-top: 56px; border-top: 1px solid var(--border); }
-.chapter_num { display: inline-block; font-size: 12px; font-weight: 600; color: var(--blue); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 6px; }
+.chapter_num { display: inline-block; font-size: 12px; font-weight: 600; color: var(--blue-ink); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 6px; }
 .guide_content .chapter > h2 { font-size: 34px; line-height: 42px; margin-bottom: 10px; }
 .chapter_lead { font-size: 19px; line-height: 30px; color: var(--muted); margin-bottom: 28px !important; }
 .lesson_content h3 { font-size: 22px; line-height: 30px; font-weight: 600; color: var(--navy); margin: 36px 0 12px; }

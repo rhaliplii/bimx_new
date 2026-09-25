@@ -86,5 +86,6 @@
     "niveluri de pregătire",
     "cursuri",
     "lecții interactive"
-  ]
+  ],
+  "print_pdf": "Tipărește / salvează ca PDF"
 }
