@@ -200,6 +200,18 @@
         }
         st.innerHTML = box.getAttribute('data-next') + (extra ? '<span class="bx-lt-days">' + extra + '</span>' : '');
       });
+      // mobil: progresul, „Etapa X din N”, lista pliată (ultima etapă finalizată + următoarea)
+      var ks = states(items), nxt = ks.indexOf('next'), lastDone = ks.lastIndexOf('done');
+      items.forEach(function (li, i) { li.classList.toggle('is-old', ks[i] === 'done' && i !== lastDone); });
+      box.querySelectorAll('.bx-lt-prog span').forEach(function (s, i) { s.className = 'is-' + (ks[i] || 'planned'); });
+      var of = box.querySelector('.bx-lt-of');
+      if (of) of.textContent = of.getAttribute('data-tpl').replace('{i}', nxt < 0 ? items.length : nxt + 1).replace('{n}', items.length);
+      var more = box.querySelector('.bx-lt-more');
+      if (more) more.addEventListener('click', function () {
+        var all = box.classList.toggle('is-all');
+        more.setAttribute('aria-expanded', all ? 'true' : 'false');
+        more.textContent = more.getAttribute(all ? 'data-less' : 'data-all');
+      });
     });
     // pagina calendarului
     document.querySelectorAll('.bx-timeline[data-done]').forEach(function (ol) {

@@ -29,6 +29,11 @@ TL_LABELS = {
     "en": {"title": "Launch calendar", "full": "View the full calendar", "done": "Completed", "next": "Next",
            "planned": "Planned", "day": "in 1 day", "days": "in {n} days", "today": "today"},
 }
+# numai pe mobil: bara de progres, „Etapa X din N” și lista pliată (ultima etapă finalizată + următoarea)
+M_LABELS = {
+    "ro": {"step": "Etapa {i} din {n} spre prima tranzacție", "all": "Vedeți toate etapele ({n})", "less": "Afișați mai puține etape"},
+    "en": {"step": "Step {i} of {n} towards the first trade", "all": "View all steps ({n})", "less": "Show fewer steps"},
+}
 LABELS = {"ro": {"calendar": "Calendar", "full": "Vizualizați calendarul"},
           "en": {"calendar": "Calendar", "full": "View calendar"}}
 ARROW = ('<svg width="16" height="16" viewBox="0 0 17 17" fill="none" aria-hidden="true"><path d="M3.5 8.4h9.8M8.4 3.5l4.9 4.9-4.9 4.9" '
@@ -55,14 +60,14 @@ NEXT_CTA = {"ro": ("Pregătiți dosarul de admitere", "atestarea-brokerilor/inde
             "en": ("Prepare your admission file", "atestarea-brokerilor/index.html")}
 # „Cum doriți să participați?” – înlocuiește blocul „Pentru cine este BIMx?” (text stabilit de BIMx, 25.09.2026)
 PATHS = {
-    "ro": ("Cum doriți să participați?", [
+    "ro": ("Cum puteți să participați?", [
         ("Emitenți", "Listați compania", "Criterii de admitere, costuri și calendarul primei listări.",
          "Verificați etapele", "procesul-de-listare/index.html", None),
         ("Brokeri și intermediari", "Deveniți membru BIMx", "Documente necesare, conectare tehnică la ARENA și termene.",
          "Aplicați pentru admitere", "atestarea-brokerilor/index.html", "Se deschide 28.09"),
         ("Investitori", "Investiți la BIMx", "Cum puteți cumpăra acțiuni și obligațiuni prin brokeri licențiați.",
          "Ghidul investitorului", "academy/publicatii/ghidul-investitorului-incepator.html", None)]),
-    "en": ("How would you like to take part?", [
+    "en": ("How can you take part?", [
         ("Issuers", "List your company", "Admission criteria, costs and the timeline for the first listing.",
          "Review the steps", "procesul-de-listare/index.html", None),
         ("Brokers and intermediaries", "Become a BIMx member", "Required documents, technical connection to ARENA and deadlines.",
@@ -84,8 +89,8 @@ def paths_section(pg):
         out.append(f'<article class="bx-part{" is-featured" if badge else ""}"><p class="bx-part-who">{who}{badge_html}</p>'
                    f'<h3>{h}</h3><p class="bx-part-desc">{desc}</p>'
                    f'<a class="bx-part-cta" href="{pg.link(href)}">{cta}{ARROW}</a></article>')
-    return (f'<div class="bx-participate" role="region" aria-labelledby="bx-part-h"><div class="container">'
-            f'<h2 id="bx-part-h">{title}</h2><div class="bx-part-grid">{"".join(out)}</div></div></div>')
+    return (f'<section class="bx-participate" aria-labelledby="bx-part-h"><div class="container">'
+            f'<h2 id="bx-part-h">{title}</h2><div class="bx-part-grid">{"".join(out)}</div></div></section>')
 
 
 # Știrile de pe prima pagină: titlu și categorie reale pentru fiecare articol (după adresă), în RO și EN
@@ -102,6 +107,14 @@ NEWS_EDIT = {
                                     ("Shareholders", "Shareholders confirm the auditor for the 2025–2026 financial year")),
     "comunicat-informativ-02-aprilie": (("Acționari", "Acționarii aprobă contractul SaaS pentru platforma ARENA"),
                                         ("Shareholders", "Shareholders approve the SaaS contract for the ARENA platform")),
+}
+
+# rezumatul complet al articolului principal (fără trunchiere „…”)
+NEWS_EXCERPT = {
+    "comunicat-de-presa": ("Bursa Internațională a Moldovei (BIMx) anunță obținerea licenței de operator de piață și a autorizațiilor "
+                           "pentru administrarea și exploatarea unei piețe reglementate și a unui sistem multilateral de tranzacționare.",
+                           "The Moldova International Stock Exchange (BIMx) announces that it has obtained its market operator licence "
+                           "and the authorisations to manage and operate a regulated market and a multilateral trading facility."),
 }
 
 
@@ -277,6 +290,15 @@ def restructure_home(text, pg):
         steps.append(f'<li class="bx-lt-step is-{kind}" data-date="{date.isoformat() if date else ""}"><span class="bx-lt-bar" aria-hidden="true"></span>'
                      f'<p class="bx-lt-status">{status}</p><time>{d}</time><p class="bx-lt-title">{title}</p>{cta_html}</li>')
     eyebrow, title, desc, (cta, cta_href) = INTRO[pg.lang]
+    M = M_LABELS[pg.lang]
+    n_steps = len(MILESTONES)
+    cur = next_i + 1 if next_i is not None else n_steps
+    kinds = ["done" if st == "done" else ("next" if i == next_i else "planned") for i, st in enumerate(states)]
+    m_prog = ('<div class="bx-lt-prog" aria-hidden="true">' + "".join(f'<span class="is-{k}"></span>' for k in kinds) + "</div>"
+              f'<p class="bx-lt-of" data-tpl="{M["step"]}">{M["step"].format(i=cur, n=n_steps)}</p>')
+    m_all = M["all"].format(n=n_steps)
+    m_more = (f'<button class="bx-lt-more" type="button" aria-expanded="false" data-all="{m_all}" data-less="{M["less"]}">'
+              f'{m_all}</button>')
     trust = "".join(
         f'<li><strong>{name}</strong>'
         + (f'<a class="bx-trust-link" href="{h if h.startswith("http") else pg.link(h)}"'
@@ -301,7 +323,9 @@ def restructure_home(text, pg):
          data-one="{L["day"]}" data-many="{L["days"]}" data-today="{L["today"]}">
       <div class="bx-lt-head"><h2 id="bx-lt-h">{L["title"]}</h2>
         <a href="{pg.link("trading-calendar/index.html")}">{L["full"]}{ARROW}</a></div>
+      {m_prog}
       <ol>{"".join(steps)}</ol>
+      {m_more}
     </div>
   </div>
 </section>
@@ -312,10 +336,12 @@ def restructure_home(text, pg):
     text = text[:m.start()] + new_hero + text[m.end():]
     # „Pentru cine este BIMx?” → „Cum doriți să participați?”
     who = re.search(r'<div class="container_fluid">\s*<div class="for_who_is">[\s\S]*?(?=<!--<div class="container_fluid">-->|</main>)', text)
-    if who:   # cardurile (căile de conversie) stau imediat sub hero, înaintea rândului de încredere
+    if who:   # cardurile (căile de conversie): secțiune separată sub rândul de încredere
         text = text[:who.start()] + text[who.end():]
-        # în interiorul hero-ului (fundalul navy), după calendar
-        text = text.replace('</section>\n<section class="bx-trust"', paths_section(pg) + '\n</section>\n<section class="bx-trust"', 1)
+        # secțiune proprie, imediat după rândul de încredere
+        i = text.find('<section class="bx-trust"')
+        j = text.find("</section>", i) + len("</section>")
+        text = text[:j] + "\n" + paths_section(pg) + text[j:]
     # știrile și anunțurile: ultima secțiune, înainte de subsol (compactă, fără imaginea mare – vezi site.css)
     news = re.search(r'<div class="container">\s*<div class="home_posts">[\s\S]*?(?=<!--<div class="container_fluid">-->|</main>)', text)
     if news:
@@ -328,6 +354,16 @@ def restructure_home(text, pg):
             cat, head = news_edit(mp.group(1), pg.lang)
             block = re.sub(r'(<div class="post-category[^"]*">)[^<]*(</div>\s*<h2>)[^<]*(</h2>)', rf'\g<1>{cat}\g<2>{head}\3', block, count=1)
             block = re.sub(r'(<div class="post-excerpt">\s*<p>)[\s\S]*?\d{2}\.\d{2}\.\d{4},\s*Chișinău\s*[–-]\s*', r"\1", block, count=1)
+            ex = next((v for k, v in NEWS_EXCERPT.items() if k in mp.group(1)), None)
+            if ex:
+                full = ex[0 if pg.lang == "ro" else 1]
+                block = re.sub(r'(<div class="post-excerpt">\s*<p>)[\s\S]*?(</p>)', lambda x: x.group(1) + full + x.group(2), block, count=1)
+        # data articolului principal urcă lângă categorie („Licență · 25 august 2026”); „Citiți mai mult” rămâne jos
+        dm = re.search(r'\s*<div class="post-date">([^<]*)</div>', block)
+        if dm:
+            block = block[:dm.start()] + block[dm.end():]
+            block = re.sub(r'(<div class="post-category[^"]*">[^<]*</div>)',
+                           lambda x: f'<div class="bx-post-meta">{x.group(1)}<time>{dm.group(1).strip()}</time></div>', block, count=1)
         # lista: titluri și categorii reale
         def item(m):
             ed = news_edit(m.group(1), pg.lang)
