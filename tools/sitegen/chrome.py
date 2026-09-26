@@ -263,6 +263,17 @@ def header(text, pg):
     return re.sub(r"<script>\s*\(function \(\) \{\s*function updateTime\(\)[\s\S]*?</script>", "", text, count=1)
 
 
+# nota despre traducere, după copyright (versiunea română e originalul; celelalte sunt traduse cu ajutorul IA)
+AI_NOTE = {"ro": "Versiunile în engleză, rusă și ucraineană ale site-ului sunt traduse cu ajutorul inteligenței artificiale.",
+           "en": "This version of the website was translated from Romanian using artificial intelligence.",
+           "ru": "Эта версия сайта переведена с румынского языка с помощью искусственного интеллекта.",
+           "uk": "Цю версію сайту перекладено з румунської мови за допомогою штучного інтелекту."}
+
+# site-urile partenerilor din subsol (doar cele confirmate; ceilalți apar fără link)
+PARTNER_URLS = {"brd": "https://brd.gov.md/", "eba-ro": "https://eba.md/", "eba-en": "https://eba.md/",
+                "frankfurt-school": "https://www.frankfurt-school.de/en"}
+
+
 def footer(text, pg):
     t = T[pg.lang]
     f0 = text.find('<footer id="colophon"')
@@ -272,7 +283,8 @@ def footer(text, pg):
     old = text[f0:f1]
     modal = re.search(r'<div class="contact_modal_overlay">[\s\S]*$', old)
     logo = re.search(r'<img src="([^"]*logo_2\.png)"', old)
-    imgs = {k: re.search(rf'<img src="([^"]*/{name})"', old) for k, name in (("invest", "Invest.png"), ("oda", "oda.png"), ("cnpf", "CNPF.png"))}
+    # partenerii din subsol: Invest Moldova și CNPF (ODA scos la cererea BIMx)
+    imgs = {k: re.search(rf'<img src="([^"]*/{name})"', old) for k, name in (("invest", "Invest.png"), ("cnpf", "CNPF.png"))}
     urls = {"invest": "https://invest.gov.md/", "oda": "https://oda.md/ro/", "cnpf": "https://www.cnpf.md/"}
     bottom = re.search(r'<div class="footer_bottom">\s*<p>([\s\S]*?)</p>', old)
 
@@ -284,9 +296,20 @@ def footer(text, pg):
         for title, links in t["cols"])
     resources = (f'<nav class="bx-f-resources" aria-label="{t["resources_h"]}"><span>{t["resources_h"]}</span>'
                  + "".join(f'<a href="{pg.link(h)}">{label}</a>' for label, h in t["resources"]) + "</nav>")
+    # CNPF și Invest Moldova (logo-urile din temă), apoi aceiași parteneri ca pe pagina Parteneri instituționali
+    from .fixes import PARTNER_CARDS, IDX as FIDX
+    items = []
+    if imgs.get("cnpf"):
+        items.append((urls["cnpf"], imgs["cnpf"].group(1), t["partner_names"]["cnpf"]))
+    if imgs.get("invest"):
+        items.append((urls["invest"], imgs["invest"].group(1), t["partner_names"]["invest"]))
+    for img, _w, _h, name, _desc in PARTNER_CARDS[1:]:
+        src = img if isinstance(img, str) else img[FIDX[pg.lang]]
+        items.append((PARTNER_URLS.get(src.rsplit("/", 1)[-1].split(".")[0]), pg.asset(src), name[FIDX[pg.lang]]))
     partners = "".join(
-        f'<a href="{urls[k]}" target="_blank" rel="noopener" class="bx-f-partner"><img src="{m.group(1)}" alt="{t["partner_names"][k]}"></a>'
-        for k, m in imgs.items() if m)
+        (f'<a href="{u}" target="_blank" rel="noopener" class="bx-f-partner">' if u else '<span class="bx-f-partner">')
+        + f'<img src="{src}" alt="{alt}" loading="lazy">' + ("</a>" if u else "</span>")
+        for u, src, alt in items)
     lang = (f'<nav class="bx-f-lang" aria-label="{t["lang"]}">'
             + "".join(f'<a href="{pg.alt(x)}" lang="{x}" hreflang="{x}"{CURRENT if x == pg.lang else ""}>{LANG_CODES[x]}</a>' for x in SITE_LANGS)
             + "</nav>")
@@ -313,7 +336,7 @@ def footer(text, pg):
     <div class="bx-f-partners"><h2>{t["partners"]}</h2><div>{partners}</div></div>
     <div class="bx-f-disclaimer">{ICON_INFO}<p><strong>{t["disclaimer_h"]}.</strong> {t["disclaimer"]}</p></div>
     <div class="bx-f-bottom">
-      <p>{bottom.group(1).strip() if bottom else ""}</p>
+      <p>{bottom.group(1).strip() if bottom else ""} <span class="bx-f-ai">{AI_NOTE[pg.lang]}</span></p>
       <div class="bx-f-bottom-links">{lang}</div>
     </div>
   </div>

@@ -712,18 +712,42 @@ TEXT_FIXES = [
      "Lista membrilor Bursei Internaționale a Moldovei va fi publicată pe această pagină după admiterea primilor membri (admiterea începe pe 28 septembrie 2026).",
      "The list of members of the Moldova International Stock Exchange is published on this page from 28 September 2026.",
      "The list of members of the Moldova International Stock Exchange will be published on this page once the first members are admitted (admission opens on 28 September 2026)."),
-    ("Toate cele trei categorii sunt admise la tranzacționare pe piețele BIMx începând cu 28 septembrie 2026.",
-     "Toate cele trei categorii pot fi admise la tranzacționare pe piețele BIMx; admiterea emitenților începe pe 28 septembrie 2026.",
-     "All three categories are admitted to trading on the BIMx markets from 28 September 2026.",
-     "All three categories can be admitted to trading on the BIMx markets; admission of issuers opens on 28 September 2026."),
+    # C-13: Prezentare generală afirma o preluare automată a tranzacționării de la BVM
+    ("La momentul operaționalizării, BIMx preia continuitatea tranzacționării pentru acțiunile și obligațiunile (corporative, municipale și de stat).",
+     "Emitenții și instrumentele tranzacționate în prezent la BVM pot fi admise pe piețele BIMx printr-un proces distinct de admitere, conform Regulilor BIMx; documentele existente pot fi reutilizate dacă sunt valabile și actualizate.",
+     "Upon becoming operational, BIMx assumes continuity of trading in shares and bonds (corporate, municipal and government).",
+     "Issuers and instruments currently traded on the BVM can be admitted to the BIMx markets through a separate admission process under the BIMx Rules; existing documents can be reused if they are valid and up to date."),
+    # C-11: pagina Obligațiuni afirma că toate categoriile sunt deja admise (data 28.09 și transferul de la BVM)
+    ("Bursa Internațională a Moldovei administrează tranzacționarea a trei categorii de instrumente cu venit fix aflate anterior în tranzacționare la Bursa de Valori a Moldovei",
+     "Bursa Internațională a Moldovei poate admite la tranzacționare trei categorii de instrumente cu venit fix: valori mobiliare de stat, obligațiuni municipale și obligațiuni corporative.",
+     "The Moldova International Stock Exchange operates trading in three categories of fixed-income instruments previously traded on the Moldova Stock Exchange",
+     "The Moldova International Stock Exchange can admit three categories of fixed-income instruments to trading: government securities, municipal bonds and corporate bonds."),
+    ("Emise de Ministerul Finanțelor al Republicii Moldova.",
+     "Emise de Ministerul Finanțelor al Republicii Moldova. Cele cu termen lung sunt admise de drept, la inițiativa Ministerului Finanțelor; bonurile de trezorerie nu intră în această procedură.",
+     "Issued by the Ministry of Finance of the Republic of Moldova.",
+     "Issued by the Ministry of Finance of the Republic of Moldova. Long-term securities are admitted by right, at the initiative of the Ministry of Finance; treasury bills are not covered by this procedure."),
+    ("Emise de autorități ale administrației publice locale.",
+     "Emise de autorități ale administrației publice locale. Pot fi admise pe Piața Reglementată printr-un dosar depus de un Participant inițiator.",
+     "Issued by local public authorities.",
+     "Issued by local public authorities. They can be admitted to the Regulated Market through a file submitted by an initiating participant."),
+    ("Toate cele trei categorii sunt admise la tranzacționare pe piețele BIMx începând cu 28 septembrie 2026. Filtrele din secțiunea „Cotații în timp real” permit selectarea instrumentelor pe tip de emitent, scadență și randament.",
+     "Obligațiunile municipale pot fi admise pe Piața Reglementată BIMx printr-un dosar depus de un Participant inițiator (decizia consiliului local, certificatul CNPF, Angajamentul de admitere și menținere, dovada tarifului, două persoane de legătură). Valorile mobiliare de stat cu termen lung sunt admise de drept, la inițiativa Ministerului Finanțelor; bonurile de trezorerie nu intră în această procedură. Admiterea la BIMx este un proces distinct, fără transfer automat de la BVM.",
+     "All three categories are admitted to trading on the BIMx markets from 28 September 2026. The filters in the “Real-Time Quotes” section allow instruments to be selected by issuer type, maturity and yield.",
+     "Municipal bonds can be admitted to the BIMx Regulated Market through a file submitted by an initiating participant (the local council decision, the CNPF certificate, the Admission and Maintenance Undertaking, proof of payment of the fee and two contact persons). Long-term government securities are admitted by right, at the initiative of the Ministry of Finance; treasury bills are not covered by this procedure. Admission to BIMx is a separate process, with no automatic transfer from the BVM."),
     ("Până la lansarea operațională (Septembrie 2026), fiecare categorie de participanți are deja un rol.",
      "Până la începerea tranzacționării, fiecare categorie de participanți are deja un rol.",
      "Ahead of the operational launch (September 2026), every category of participant already has a role to play.",
      "Ahead of the start of trading, every category of participant already has a role to play."),
     ("Bursa Internațională a Moldovei preia acțiuni aflate anterior în tranzacționare la Bursa de Valori a Moldovei (BVM) și le admite pe piețele administrate de BIMx.",
-     "Emitenții ale căror acțiuni s-au tranzacționat la Bursa de Valori a Moldovei (BVM) pot solicita admiterea pe piețele administrate de BIMx; nu există un transfer automat.",
+     "Emitenții ale căror acțiuni sunt tranzacționate la Bursa de Valori a Moldovei (BVM) pot solicita admiterea la BIMx; nu există un transfer automat.",
      "The Moldova International Stock Exchange is taking over shares previously traded on the Moldova Stock Exchange (BVM) and admitting them to the markets operated by BIMx.",
-     "Issuers whose shares were traded on the Moldova Stock Exchange (BVM) can apply for admission to the markets operated by BIMx; there is no automatic transfer."),
+     "Issuers whose shares are traded on the Moldova Stock Exchange (BVM) can apply for admission to BIMx; there is no automatic transfer."),
+    ("<h4>Companii noi</h4>", "<h4>Emitenți noi</h4>", "<h4>New companies</h4>", "<h4>New issuers</h4>"),
+    # C-06: cardul „Integrarea emitenților BVM” prezenta preluarea ca automată și certă
+    ("Integrarea emitenților BVM", "Admiterea emitenților BVM", "Integration of BVM issuers", "Admission of BVM issuers"),
+    ("Emitenții care au avut acțiuni admise la tranzacționare pe piețele BVM sunt integrați în cadrul BIMx printr-un proces de admitere structurat, care asigură continuitatea accesului investitorilor la aceste instrumente financiare.",
+     "Emitenții ale căror acțiuni sunt tranzacționate la BVM pot solicita admiterea la BIMx. Admiterea este un proces distinct, conform Regulilor BIMx; documentele existente pot fi reutilizate dacă sunt valabile și actualizate.",
+     "Issuers whose shares were admitted to trading on the BVM markets are being integrated into BIMx through a structured admission process that ensures investors retain continuous access to these financial instruments.", "Issuers whose shares are traded on the BVM can apply for admission to BIMx. Admission is a separate process under the BIMx Rules; existing documents can be reused if they are valid and up to date."),
     ("În paralel cu preluarea emitenților existenți,", "În paralel cu admiterea emitenților listați anterior la BVM,",
      "Alongside the takeover of existing issuers,", "Alongside the admission of issuers previously listed on the BVM,"),
     ("Aprintin", "Arpintin", "Aprintin", "Arpintin"),
@@ -776,6 +800,116 @@ FORMAL_RO = [(">Vezi toate", ">Vedeți toate"), (">Vezi pe hartă", ">Vedeți pe
              ('placeholder="Caută pe site..."', 'placeholder="Căutați pe site…"'), ('aria-label="Caută"', 'aria-label="Căutați"')]
 
 
+# C-05 (audit de conținut): articolul din 17.06.2026 indică un capital de 3.000.000 EUR; comunicatul BIMx (sursa de
+# adevăr) indică un capital social inițial de 29.475.000 lei (1,5 mil. EUR). Articolul fiind datat, textul original
+# rămâne, iar dedesubt se adaugă o notă „Actualizare:” cu cifra din comunicat.
+CAPITAL_ARTICLE = "bimx-depune-dosarul-pentru-obtinerea-licentei-de-operator-de-piata"
+CAPITAL_SENTENCE = re.compile(r"(3[.,\s\u00a0]000[.,\s\u00a0]000\s*(?:EUR|евро|євро)\.)(</p>)")
+CAPITAL_NOTE = {
+    "ro": ("Actualizare", "Capitalul social inițial al BIMx este de 29.475.000 de lei (1,5 milioane de euro)."),
+    "en": ("Update", "BIMx's initial share capital is MDL 29,475,000 (EUR 1.5 million)."),
+    "ru": ("Обновление", "Первоначальный уставный капитал BIMx составляет 29\u00a0475\u00a0000 леев (1,5 млн евро)."),
+    "uk": ("Оновлення", "Початковий статутний капітал BIMx становить 29\u00a0475\u00a0000 леїв (1,5 млн євро)."),
+}
+
+
+def fix_council_en(text, pg):
+    """EN, pagina Consiliul și Organul Executiv: „Exchange Council” → „BIMx Board” (titlu, funcții, biografii)."""
+    if pg.lang != "en" or pg.key != "consiliul-si-organul-executiv":
+        return text
+    text = text.replace("Exchange Council Member", "Board Member").replace("the Council members", "the Board members")
+    text = text.replace("Chair of the Exchange Council", "Chair of the Board")
+    return text.replace("Exchange Council", "BIMx Board")
+
+
+# Parteneri instituționali: CNPF (logo din subsol) și partenerii de dezvoltare (logo-urile din partners/, redimensionate)
+PARTNER_CARDS = [
+    ("wp-content/themes/victor-child/assets/img/CNPF.png", 154, 84,
+     ("CNPF – Comisia Națională a Pieței Financiare", "CNPF – National Commission for Financial Markets",
+      "НКФР — Национальная комиссия по финансовому рынку", "НКФР — Національна комісія з фінансового ринку"),
+     ("Autoritatea de reglementare și supraveghere a pieței financiare nebancare", "The regulatory and supervisory authority for the non-banking financial market",
+      "Орган регулирования и надзора за небанковским финансовым рынком", "Орган регулювання та нагляду за небанківським фінансовим ринком")),
+    ("assets/img/partners/canada.png", 456, 160,
+     ("Guvernul Canadei", "Government of Canada", "Правительство Канады", "Уряд Канади"),
+     ("Partener de dezvoltare internațional", "International development partner", "Международный партнёр по развитию",
+      "Міжнародний партнер із розвитку")),
+    ("assets/img/partners/un-women.png", 720, 125,
+     ("UN Women", "UN Women", "Структура «ООН-женщины»", "Структура ООН-Жінки"),
+     ("Entitatea ONU pentru egalitatea de gen și abilitarea femeilor", "The UN entity for gender equality and the empowerment of women",
+      "Структура ООН по вопросам гендерного равенства и расширения прав и возможностей женщин",
+      "Структура ООН з питань гендерної рівності та розширення прав і можливостей жінок")),
+    ("assets/img/partners/undp.png", 79, 160,
+     ("PNUD – Programul Națiunilor Unite pentru Dezvoltare", "UNDP – United Nations Development Programme",
+      "ПРООН — Программа развития Организации Объединённых Наций", "ПРООН — Програма розвитку Організації Об’єднаних Націй"),
+     ("Agenția ONU pentru dezvoltare durabilă", "The UN agency for sustainable development",
+      "Агентство ООН по устойчивому развитию", "Агентство ООН зі сталого розвитку")),
+    ("assets/img/partners/sparkassenstiftung.png", 720, 130,
+     ("German Sparkassenstiftung Moldova", "German Sparkassenstiftung Moldova", "German Sparkassenstiftung Moldova",
+      "German Sparkassenstiftung Moldova"),
+     ("Fundația germană a caselor de economii pentru cooperare internațională", "The German Savings Banks Foundation for International Cooperation",
+      "Фонд немецких сберегательных касс по международному сотрудничеству",
+      "Фонд німецьких ощадних кас з міжнародного співробітництва")),
+    ("assets/img/partners/brd.png", 463, 160,
+     ("BRD – Biroul Relații cu Diaspora", "BRD – Diaspora Relations Bureau", "BRD — Бюро по связям с диаспорой",
+      "BRD — Бюро зі зв’язків з діаспорою"),
+     ("Instituția guvernamentală responsabilă de relațiile cu diaspora Republicii Moldova",
+      "The government body responsible for relations with the diaspora of the Republic of Moldova",
+      "Государственное учреждение, ответственное за связи с диаспорой Республики Молдова",
+      "Державна установа, відповідальна за зв’язки з діаспорою Республіки Молдова")),
+    # logo (varianta RO pe pagina română, EN în rest) și descriere preluate de pe eba.md
+    (("assets/img/partners/eba-ro.png", "assets/img/partners/eba-en.png", "assets/img/partners/eba-en.png", "assets/img/partners/eba-en.png"), 349, 179,
+     ("EBA – Asociația Businessului European", "EBA – European Business Association", "EBA — Европейская бизнес-ассоциация",
+      "EBA — Європейська бізнес-асоціація"),
+     ("Organizație independentă, neguvernamentală, care urmărește alinierea economiei naționale și a legislației de business la standardele UE",
+      "An independent, non-governmental organisation aimed at aligning the national economy and business legislation with EU standards",
+      "Независимая неправительственная организация, стремящаяся привести национальную экономику и деловое законодательство в соответствие со стандартами ЕС",
+      "Незалежна неурядова організація, що прагне узгодити національну економіку та законодавство у сфері бізнесу зі стандартами ЄС")),
+    # logo și descriere preluate de pe frankfurt-school.de (fs_logo_blue.svg și descrierea paginii principale)
+    ("assets/img/partners/frankfurt-school.svg", 174, 75,
+     ("Frankfurt School of Finance &amp; Management",) * 4,
+     ("Una dintre principalele școli de business din Europa, care îmbină excelența academică cu relevanța practică",
+      "One of Europe’s leading business schools, combining academic excellence with practical relevance",
+      "Одна из ведущих бизнес-школ Европы, сочетающая академическое превосходство с практической направленностью",
+      "Одна з провідних бізнес-шкіл Європи, що поєднує академічну досконалість із практичною спрямованістю")),
+]
+
+# ordinea de afișare (după CNPF urmează Invest Moldova, cardul existent pe pagină): BRD, EBA, Canada, UN Women, PNUD, Frankfurt School, Sparkassenstiftung
+_ORDER = ("CNPF.png", "brd.png", "eba-", "canada.png", "un-women.png", "undp.png", "frankfurt-school.svg", "sparkassenstiftung.png")
+PARTNER_CARDS.sort(key=lambda c: next(i for i, n in enumerate(_ORDER) if n in (c[0] if isinstance(c[0], str) else c[0][0])))
+
+def fix_partners(text, pg):
+    """Parteneri instituționali: logo-ul Invest Moldova ca imagine (SVG-ul cu PNG încorporat nu se afișa); fără cardul ODA."""
+    if pg.key != "parteneri-institutionali" or "bx-partner-logo" in text:
+        return text
+    items = list(re.finditer(r'<div class="item">\s*<div class="icon">\s*<svg[\s\S]*?</svg>\s*</div>[\s\S]*?</div>', text))
+    if len(items) < 2:
+        return text
+    oda, invest = items[1], items[0]
+    text = text[:oda.start()] + text[oda.end():]                              # cardul ODA dispare
+    logo = (f'<div class="icon bx-partner-logo"><img src="{pg.asset("wp-content/themes/victor-child/assets/img/Invest.png")}" '
+            f'alt="Invest Moldova" width="154" height="84"></div>')
+    text = re.sub(r'<div class="icon">\s*<svg[\s\S]*?</svg>\s*</div>', lambda m: logo, text, count=1)
+    # cardurile noi (CNPF și partenerii de dezvoltare), după Invest Moldova
+    card = lambda img, w, h, name, desc: (
+        f'\n                <div class="item"><div class="icon bx-partner-logo"><img src="{pg.asset(img if isinstance(img, str) else img[IDX[pg.lang]])}" alt="{name[IDX[pg.lang]]}" '
+        f'width="{w}" height="{h}" loading="lazy"></div><h3>{name[IDX[pg.lang]]}</h3><p>{desc[IDX[pg.lang]]}</p></div>')
+    first = re.search(r'<div class="item">\s*<div class="icon bx-partner-logo">[\s\S]*?</p>\s*</div>', text)
+    if not first:
+        return text
+    # ordinea: CNPF, Invest Moldova, apoi partenerii de dezvoltare
+    before = card(*PARTNER_CARDS[0]) + "\n                "
+    after = "".join(card(*c) for c in PARTNER_CARDS[1:])
+    return text[:first.start()] + before + text[first.start():first.end()] + after + text[first.end():]
+
+
+def fix_capital(text, pg):
+    if CAPITAL_ARTICLE not in str(pg.rel) or "bx-update-note" in text:
+        return text
+    label, note = CAPITAL_NOTE[pg.lang]
+    return CAPITAL_SENTENCE.sub(
+        lambda m: f'{m.group(1)}{m.group(2)}\n<p class="bx-update-note"><strong>{label}:</strong> {note}</p>', text, count=1)
+
+
 def fix_content(text, pg):
     if pg.lang == "ro" and not pg.academy:
         for a, b in FORMAL_RO:
@@ -793,11 +927,13 @@ def fix_content(text, pg):
     # IDNO confirmat, cu link spre fișa companiei (app.gov.md); licența: fără numărul provizoriu „000123”
     text = re.sub(r"<b>1003600028020</b>",
                   f'<b><a href="{COMPANY_PAGE}" target="_blank" rel="noopener" class="bx-idno">{IDNO}</a></b>', text)
-    text = re.sub(r"<b>(?:CNPF, seri(?:a|es) CNPF N(?:r|o)\.|НКФР, сері[яї] CNPF №) 000123</b>",
-                  pick(pg.lang, "<b>Licență de operator de piață, CNPF (21 august 2026)</b>",
-                       "<b>Market operator licence, CNPF (21 August 2026)</b>",
-                       "<b>Лицензия оператора рынка, НКФР (21 августа 2026 г.)</b>",
-                       "<b>Ліцензія оператора ринку, НКФР (21 серпня 2026 р.)</b>"), text)
+    # licența: seria reală CNPF 000945 (în locul numărului provizoriu „000123” din copia bimx.md), cu data acordării
+    from .chrome import LICENCE_NO
+    text = re.sub(r"<b>(?:CNPF, seri(?:a|es) CNPF N(?:r|o)\.|НКФР, сери[яї] CNPF №|НКФР, сері[яї] CNPF №) 000123</b>",
+                  pick(pg.lang, f"<b>Licență de operator de piață CNPF, seria {LICENCE_NO} (21 august 2026)</b>",
+                       f"<b>CNPF market operator licence, series {LICENCE_NO} (21 August 2026)</b>",
+                       f"<b>Лицензия оператора рынка НКФР, серия {LICENCE_NO} (21 августа 2026 г.)</b>",
+                       f"<b>Ліцензія оператора ринку НКФР, серія {LICENCE_NO} (21 серпня 2026 р.)</b>"), text)
 
     def status(m):
         block = m.group(0)
@@ -1069,6 +1205,7 @@ def apply_fixes():
     (DIST / "assets" / "img").mkdir(parents=True, exist_ok=True)
     for name in ("og-bimx.png", "hero-x.webp", "bimx-logo.svg", "bimx-logo-light.svg"):
         shutil.copy2(SRC / "site" / "img" / name, DIST / "assets" / "img" / name)
+    shutil.copytree(SRC / "site" / "img" / "partners", DIST / "assets" / "img" / "partners", dirs_exist_ok=True)
     changed = 0
     for f in sorted(DIST.rglob("*.html")):
         rel = f.relative_to(DIST)
@@ -1084,6 +1221,9 @@ def apply_fixes():
         new = chrome.footer(new, pg)      # subsolul nou
         new = fix_common(new, pg)
         new = fix_content(new, pg)
+        new = fix_capital(new, pg)
+        new = fix_council_en(new, pg)
+        new = fix_partners(new, pg)
         if pg.home:
             new = fix_home(new, pg)
         new = fix_downloads(new, pg)

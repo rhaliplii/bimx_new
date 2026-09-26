@@ -23,9 +23,9 @@ MILESTONES = [
                                  ("28 September 2026", "Admission of brokers and issuers opens"),
                                  ("28 сентября 2026", "Начинается допуск брокеров и эмитентов"),
                                  ("28 вересня 2026", "Розпочинається допуск брокерів і емітентів")),
-    (datetime.date(2026, 10, 1), ("1 octombrie 2026", "Platforma ARENA, sistemul de tranzacționare BIMx, intră în producție"), ("1 October 2026", "ARENA, the BIMx trading system, goes live"),
-                                ("1 октября 2026", "Платформа ARENA, торговая система BIMx, вводится в эксплуатацию"),
-                                ("1 жовтня 2026", "Платформа ARENA, торговельна система BIMx, починає роботу")),
+    (datetime.date(2026, 10, 1), ("Octombrie 2026", "Platforma ARENA, sistemul de tranzacționare BIMx, intră în producție"), ("October 2026", "ARENA, the BIMx trading system, goes live"),
+                                ("Октябрь 2026", "Платформа ARENA, торговая система BIMx, вводится в эксплуатацию"),
+                                ("Жовтень 2026", "Платформа ARENA, торговельна система BIMx, починає роботу")),
     (None, ("Până la sfârșitul anului 2026", "Prima listare și prima ședință de tranzacționare"), ("By the end of 2026", "First listing and first trading session"),
            ("До конца 2026 года", "Первый листинг и первая торговая сессия"),
            ("До кінця 2026 року", "Перший лістинг і перша торгова сесія")),
@@ -78,16 +78,16 @@ def milestone_state(date):
 # ---------------------------------------------------------------- vizualul: semnul „x” BIMx ca nod al pieței
 
 INTRO = {  # eticheta din subsolul original; titlul și descrierea formulate de BIMx (25.09.2026)
-    "ro": ("Bursa Internațională a Moldovei (BIMx)", "Lansăm noua bursă a Moldovei",
+    "ro": ("Bursa Internațională a Moldovei (BIMx)", "Intrăm în etapa de lansare",
            "O piață reglementată care oferă capital pentru companii și oportunități pentru investitori.",
            ("Prezentare generală", "prezentare-generala/index.html")),
-    "uk": ("Міжнародна фондова біржа Молдови (BIMx)", "Запускаємо нову біржу Молдови",
+    "uk": ("Міжнародна фондова біржа Молдови (BIMx)", "Ми вступаємо в етап запуску",
            "Регульований ринок, що відкриває компаніям доступ до капіталу, а інвесторам — нові можливості.",
            ("Загальний огляд", "prezentare-generala/index.html")),
-    "ru": ("Международная фондовая биржа Молдовы (BIMx)", "Запускаем новую биржу Молдовы",
+    "ru": ("Международная фондовая биржа Молдовы (BIMx)", "Мы вступаем в этап запуска",
            "Регулируемый рынок, который открывает компаниям доступ к капиталу, а инвесторам — новые возможности.",
            ("Общий обзор", "prezentare-generala/index.html")),
-    "en": ("Moldova International Stock Exchange (BIMx)", "Launching Moldova's new stock exchange",
+    "en": ("Moldova International Stock Exchange (BIMx)", "Entering the launch phase",
            "A regulated market that provides capital for companies and opportunities for investors.",
            ("Overview", "prezentare-generala/index.html")),
 }
