@@ -395,6 +395,10 @@ def fix_header(text, pg):
     text = text.replace('<button class="sub-menu-toggle" aria-expanded="false"', '<button class="sub-menu-toggle" tabindex="-1" aria-hidden="true" aria-expanded="false"')
     # UI-28: logo-ul are nume
     text = re.sub(r'(<img[^>]*class="custom-logo"[^>]*?)alt=""', r'\1alt="BIMx"', text)
+    # logo-ul din antet: vectorial (SVG), clar la orice mărime și densitate, în locul PNG-ului de 242 × 72 px
+    text = re.sub(r'<img[^>]*class="custom-logo"[^>]*>',
+                  f'<img width="2048" height="587" src="{pg.asset("assets/img/bimx-logo.svg")}" class="custom-logo" alt="BIMx">',
+                  text, count=1)
     # Organigrama din meniu deschide pagina cu schema (nu direct PDF-ul)
     text = re.sub(r'(<li id="menu-item-599"[^>]*>)<a [^>]*>', lambda m: m.group(1) + f'<a href="{pg.link("organigrama/index.html")}">', text, count=1)
     # BIMx Academy: primul link duce la începutul paginii Academy (celelalte duc la secțiuni)
@@ -1059,7 +1063,7 @@ def retarget_links(text, here):
 def apply_fixes():
     transform_theme_css()
     (DIST / "assets" / "img").mkdir(parents=True, exist_ok=True)
-    for name in ("og-bimx.png", "hero-x.webp"):
+    for name in ("og-bimx.png", "hero-x.webp", "bimx-logo.svg", "bimx-logo-light.svg"):
         shutil.copy2(SRC / "site" / "img" / name, DIST / "assets" / "img" / name)
     changed = 0
     for f in sorted(DIST.rglob("*.html")):

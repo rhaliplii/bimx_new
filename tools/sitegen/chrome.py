@@ -295,7 +295,7 @@ def footer(text, pg):
   <div class="container">
     <div class="bx-f-top">
       <div class="bx-f-brand">
-        <a href="{pg.link("index.html")}" class="bx-f-logo" aria-label="BIMx">{WORDMARK}</a>
+        <a href="{pg.link("index.html")}" class="bx-f-logo"><img src="{pg.asset("assets/img/bimx-logo-light.svg")}" width="2048" height="587" alt="BIMx"></a>
         <p>{t["about"]}</p>
         <ul class="bx-f-contact">
           <li>{ICON_PIN}<span>{t["address"]}</span></li>

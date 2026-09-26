@@ -1705,8 +1705,8 @@ header.site-header .header_content .center nav ul.menu-wrapper li.menu-item-has-
   .bx-home-hero .bx-lt-more:hover { border-color: #fff; }
   .bx-home-hero .bx-lt-head a { order: 5; margin-top: 20px; font-size: 15px !important; font-weight: 700 !important; }
 }
-/* logo-ul din antet păstrează proporțiile originale (242 × 72) pe orice lățime – tema îi forța 100px lățime pe mobil */
-header.site-header .header_content .left_side img.custom-logo { width: auto !important; height: 36px !important; max-width: none !important; aspect-ratio: 242 / 72; object-fit: contain; }
+/* logo-ul din antet (SVG, cadru 2048 × 587) păstrează proporțiile pe orice lățime – tema îi forța 100px lățime pe mobil */
+header.site-header .header_content .left_side img.custom-logo { width: auto !important; height: 36px !important; max-width: none !important; aspect-ratio: 2048 / 587; object-fit: contain; }
 @media (max-width: 600px) { header.site-header .header_content .left_side img.custom-logo { height: 32px !important; } }
 /* căutarea: indicația de tastatură (Esc, /) doar pe dispozitivele cu mouse; pe ecranele tactile nu există Esc */
 @media (hover: none), (pointer: coarse) { .bx-search-hint { display: none !important; } }
@@ -1947,4 +1947,16 @@ header.site-header .header_content .center nav ul.menu-wrapper li.bx-menu-contac
   .bx-home-art-img img { max-width: 200px !important; max-height: 210px !important; }
   /* „Vizualizați calendarul complet →” în dreapta titlului calendarului, ca pe desktop */
   .bx-home-hero .bx-lt-head { flex-direction: row !important; align-items: center !important; justify-content: space-between !important; }
+}
+/* logo-ul din subsol: varianta deschisă (bimx-logo-light.svg), la aceeași înălțime ca logo-ul din antet */
+footer.site-footer.bx-footer .bx-f-logo img { display: block; height: 36px !important; width: auto !important; margin: 0 !important; }
+/* banda de cotații: butonul „Pauză / Porniți” decide singur starea (stilul original oprea banda la hover,
+   deci „Porniți” nu avea efect cât timp mouse-ul era pe buton); pe ecranele înguste butonul lipsește */
+@media (prefers-reduced-motion: no-preference) {
+  .bx-ticker:not(.paused) .bimx-ticker, .bx-ticker:not(.paused):hover .bimx-ticker { animation-play-state: running !important; }
+  .bx-ticker.paused .bimx-ticker { animation-play-state: paused !important; }
+}
+@media (max-width: 767px) {
+  .bx-ticker .bx-ticker-toggle { display: none !important; }
+  .bx-ticker.paused .bimx-ticker { animation-play-state: running !important; }
 }
