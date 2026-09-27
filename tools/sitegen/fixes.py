@@ -630,7 +630,7 @@ def fix_common(text, pg):
 
 RU_FONT = ('<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&amp;display=swap">\n')
 SITE_URL = "https://rhaliplii.github.io/bimx_new/"      # adresa publică a site-ului (pentru imaginea și linkurile de partajare)
-OG_IMAGE = "assets/img/og-bimx.png"
+OG_IMAGE = "assets/img/og-bimx-{lang}.png"          # câte o imagine pe limbă (tools/og_images.py)
 
 
 def fix_og(text, pg):
@@ -658,14 +658,14 @@ def fix_og(text, pg):
             f'\n<meta property="og:url" content="{e(url)}">'
             f'\n<meta property="og:locale" content="{locale}">'
             f'{alts}'
-            f'\n<meta property="og:image" content="{SITE_URL}{OG_IMAGE}">'
+            f'\n<meta property="og:image" content="{SITE_URL}{OG_IMAGE.format(lang=pg.lang)}">'
             f'\n<meta property="og:image:width" content="1200">'
             f'\n<meta property="og:image:height" content="630">'
             f'\n<meta property="og:image:alt" content="{pick(pg.lang, "BIMx – Bursa Internațională a Moldovei", "BIMx – Moldova International Stock Exchange", "BIMx — Международная фондовая биржа Молдовы", "BIMx — Міжнародна фондова біржа Молдови")}">'
             f'\n<meta name="twitter:card" content="summary_large_image">'
             f'\n<meta name="twitter:title" content="{e(title)}">'
             f'\n<meta name="twitter:description" content="{e(desc)}">'
-            f'\n<meta name="twitter:image" content="{SITE_URL}{OG_IMAGE}">\n')
+            f'\n<meta name="twitter:image" content="{SITE_URL}{OG_IMAGE.format(lang=pg.lang)}">\n')
     return head + tags + text[head_end:]
 
 
@@ -1320,7 +1320,7 @@ def retarget_links(text, here):
 def apply_fixes():
     transform_theme_css()
     (DIST / "assets" / "img").mkdir(parents=True, exist_ok=True)
-    for name in ("og-bimx.png", "hero-x.webp", "bimx-logo.svg", "bimx-logo-light.svg"):
+    for name in (*(f"og-bimx-{x}.png" for x in SITE_LANGS), "hero-x.webp", "bimx-logo.svg", "bimx-logo-light.svg"):
         shutil.copy2(SRC / "site" / "img" / name, DIST / "assets" / "img" / name)
     shutil.copytree(SRC / "site" / "img" / "partners", DIST / "assets" / "img" / "partners", dirs_exist_ok=True)
     changed = 0
