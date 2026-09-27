@@ -994,7 +994,7 @@ def fix_broker_ro(text, pg):
     return "".join(out)
 
 
-BROKER_KEEP = ("prin intermediul brokerului",)                       # formulări în care „broker” rămâne, la cererea BIMx
+BROKER_KEEP = ("prin intermediul brokerului", "Brokeri și intermediari")                      # formulări în care „broker” rămâne, la cererea BIMx
 
 
 def _broker_segment(seg):
