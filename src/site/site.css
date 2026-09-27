@@ -2008,3 +2008,6 @@ span.bx-f-partner:hover { transform: none; box-shadow: none; }
 }
 /* logo-urile partenerilor din subsol nu sunt clicabile: fără efect de hover */
 .bx-f-partner, .bx-f-partner:hover { transform: none !important; box-shadow: none !important; cursor: default; }
+/* subsol: avertizarea privind riscurile, lipită de notificarea despre datele de piață (un singur bloc legal) */
+footer.site-footer.bx-footer .bx-f-disclaimer:has(+ .bx-f-risk) { border-bottom: 0; padding-bottom: 8px; }
+footer.site-footer.bx-footer .bx-f-risk { padding-top: 8px; }

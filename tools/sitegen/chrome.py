@@ -61,6 +61,8 @@ T = {
         "resources_h": "Resurse",
         "partners": "Parteneri instituționali",
         "disclaimer_h": "Notificare privind datele de piață",
+        "risk_h": "Avertizare privind riscurile",
+        "risk": "Informațiile de pe acest site au caracter informativ și nu constituie consultanță de investiții, recomandare sau ofertă de vânzare ori cumpărare a instrumentelor financiare. Investițiile implică riscuri, inclusiv pierderea parțială sau totală a capitalului investit; rezultatele din trecut nu garantează rezultate viitoare.",
         "disclaimer": "Vă informăm că datele de piață prezentate pe această platformă au, în această etapă, caracter pur demonstrativ. "
                       "Valorile, indicii, variațiile procentuale și statisticile afișate sunt generate în scop ilustrativ, pentru a demonstra "
                       "funcționalitățile platformei, și nu reflectă tranzacții reale sau cotații în timp real ale valorilor mobiliare.",
@@ -97,6 +99,8 @@ T = {
         "resources_h": "Resources",
         "partners": "Institutional partners",
         "disclaimer_h": "Market data notice",
+        "risk_h": "Risk warning",
+        "risk": "The information on this website is provided for information purposes only and does not constitute investment advice, a recommendation or an offer to sell or buy financial instruments. Investing involves risks, including the partial or total loss of the capital invested; past performance is no guarantee of future results.",
         "disclaimer": "Please note that, at this stage, the market data shown on this platform is for demonstration purposes only. "
                       "The values, indices, percentage changes and statistics displayed are generated for illustrative purposes, to "
                       "demonstrate the platform's features, and do not reflect real transactions or real-time quotes of securities.",
@@ -133,6 +137,8 @@ T = {
         "resources_h": "Ресурсы",
         "partners": "Институциональные партнёры",
         "disclaimer_h": "Уведомление о рыночных данных",
+        "risk_h": "Предупреждение о рисках",
+        "risk": "Информация на этом сайте носит информационный характер и не является инвестиционной консультацией, рекомендацией или предложением о продаже либо покупке финансовых инструментов. Инвестиции сопряжены с рисками, включая частичную или полную потерю вложенного капитала; результаты, полученные в прошлом, не гарантируют будущих результатов.",
         "disclaimer": "Обращаем ваше внимание, что на данном этапе рыночные данные, представленные на этой платформе, носят исключительно "
                       "демонстрационный характер. Отображаемые значения, индексы, процентные изменения и статистика сформированы в "
                       "иллюстративных целях, чтобы продемонстрировать возможности платформы, и не отражают реальные сделки или котировки "
@@ -170,6 +176,8 @@ T = {
         "resources_h": "Ресурси",
         "partners": "Інституційні партнери",
         "disclaimer_h": "Повідомлення щодо ринкових даних",
+        "risk_h": "Попередження про ризики",
+        "risk": "Інформація на цьому сайті має інформаційний характер і не є інвестиційною консультацією, рекомендацією чи пропозицією щодо продажу або купівлі фінансових інструментів. Інвестиції пов’язані з ризиками, зокрема з частковою або повною втратою вкладеного капіталу; результати, отримані в минулому, не гарантують майбутніх результатів.",
         "disclaimer": "Звертаємо вашу увагу, що на цьому етапі ринкові дані, представлені на платформі, мають виключно "
                       "демонстраційний характер. Відображені значення, індекси, відсоткові зміни та статистика сформовані з "
                       "ілюстративною метою, щоб продемонструвати можливості платформи, і не відображають реальних угод чи котирувань "
@@ -333,6 +341,7 @@ def footer(text, pg):
     {resources}
     <div class="bx-f-partners"><h2>{t["partners"]}</h2><div>{partners}</div></div>
     <div class="bx-f-disclaimer">{ICON_INFO}<p><strong>{t["disclaimer_h"]}.</strong> {t["disclaimer"]}</p></div>
+    <div class="bx-f-disclaimer bx-f-risk">{ICON_INFO}<p><strong>{t["risk_h"]}:</strong> {t["risk"]}</p></div>
     <div class="bx-f-bottom">
       <p>{bottom.group(1).strip() if bottom else ""} <span class="bx-f-ai">{AI_NOTE[pg.lang]}</span></p>
       <div class="bx-f-bottom-links">{lang}</div>
