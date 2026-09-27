@@ -306,10 +306,8 @@ def footer(text, pg):
     for img, _w, _h, name, _desc in PARTNER_CARDS[1:]:
         src = img if isinstance(img, str) else img[FIDX[pg.lang]]
         items.append((PARTNER_URLS.get(src.rsplit("/", 1)[-1].split(".")[0]), pg.asset(src), name[FIDX[pg.lang]]))
-    partners = "".join(
-        (f'<a href="{u}" target="_blank" rel="noopener" class="bx-f-partner">' if u else '<span class="bx-f-partner">')
-        + f'<img src="{src}" alt="{alt}" loading="lazy">' + ("</a>" if u else "</span>")
-        for u, src, alt in items)
+    # logo-urile din subsol nu sunt linkuri (doar imagini)
+    partners = "".join(f'<span class="bx-f-partner"><img src="{src}" alt="{alt}" loading="lazy"></span>' for _u, src, alt in items)
     lang = (f'<nav class="bx-f-lang" aria-label="{t["lang"]}">'
             + "".join(f'<a href="{pg.alt(x)}" lang="{x}" hreflang="{x}"{CURRENT if x == pg.lang else ""}>{LANG_CODES[x]}</a>' for x in SITE_LANGS)
             + "</nav>")

@@ -190,7 +190,14 @@
     // calendarul din hero
     document.querySelectorAll('.bx-lt').forEach(function (box) {
       var items = [].slice.call(box.querySelectorAll('.bx-lt-step'));
-      states(items).forEach(function (k, i) {
+      if (box.hasAttribute('data-fixed')) {
+        // stări fixe: doar eticheta etapei curente se schimbă din „Urmează” în „Deschis” la data ei; fără numărătoare
+        items.forEach(function (li) {
+          if (!li.classList.contains('is-next')) return;
+          var d = dayOf(li.getAttribute('data-date')), st = li.querySelector('.bx-lt-status');
+          st.textContent = box.getAttribute(d && d <= today ? 'data-open' : 'data-next');
+        });
+      } else states(items).forEach(function (k, i) {
         var li = items[i], st = li.querySelector('.bx-lt-status');
         li.classList.remove('is-done', 'is-next', 'is-planned'); li.classList.add('is-' + k);
         if (k === 'done') { st.innerHTML = CHECK + box.getAttribute('data-done'); return; }
@@ -206,7 +213,10 @@
         st.innerHTML = box.getAttribute('data-next') + (extra ? '<span class="bx-lt-days">' + extra + '</span>' : '');
       });
       // mobil: progresul, „Etapa X din N”, lista pliată (ultima etapă finalizată + următoarea)
-      var ks = states(items), nxt = ks.indexOf('next'), lastDone = ks.lastIndexOf('done');
+      var ks = box.hasAttribute('data-fixed')
+        ? items.map(function (li) { return li.classList.contains('is-done') ? 'done' : li.classList.contains('is-next') ? 'next' : 'planned'; })
+        : states(items);
+      var nxt = ks.indexOf('next'), lastDone = ks.lastIndexOf('done');
       items.forEach(function (li, i) { li.classList.toggle('is-old', ks[i] === 'done' && i !== lastDone); });
       box.querySelectorAll('.bx-lt-prog span').forEach(function (s, i) { s.className = 'is-' + (ks[i] || 'planned'); });
       var of = box.querySelector('.bx-lt-of');

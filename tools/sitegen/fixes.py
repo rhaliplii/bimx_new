@@ -712,6 +712,8 @@ TEXT_FIXES = [
      "Lista membrilor Bursei Internaționale a Moldovei va fi publicată pe această pagină după admiterea primilor membri (admiterea începe pe 28 septembrie 2026).",
      "The list of members of the Moldova International Stock Exchange is published on this page from 28 September 2026.",
      "The list of members of the Moldova International Stock Exchange will be published on this page once the first members are admitted (admission opens on 28 September 2026)."),
+    ("Tranzacționați în timp real pe o platformă sigură", "Tranzacționați în timp real prin intermediul brokerului",
+     "Trade in real time on a secure platform", "Trade in real time through your broker"),
     # C-13: Prezentare generală afirma o preluare automată a tranzacționării de la BVM
     ("La momentul operaționalizării, BIMx preia continuitatea tranzacționării pentru acțiunile și obligațiunile (corporative, municipale și de stat).",
      "Emitenții și instrumentele tranzacționate în prezent la BVM pot fi admise pe piețele BIMx printr-un proces distinct de admitere, conform Regulilor BIMx; documentele existente pot fi reutilizate dacă sunt valabile și actualizate.",
@@ -813,6 +815,71 @@ CAPITAL_NOTE = {
 }
 
 
+# N-18 (audit de conținut): titlurile „COMUNICAT DE PRESĂ” / „COMUNICAT INFORMATIV <dată>” devin titluri descriptive,
+# scrise normal – aceleași ca în blocul de știri de pe prima pagină (home.NEWS_EDIT), în titlu, <title>, og/twitter și liste
+NEWS_TITLES = (   # (titlurile vechi RO, EN, RU, UK după traducere) → cheia din home.NEWS_EDIT
+    (("COMUNICAT DE PRESĂ", "PRESS RELEASE", "ПРЕСС-РЕЛИЗ", "ПРЕС-РЕЛІЗ"), "comunicat-de-presa"),
+    (("COMUNICAT INFORMATIV 11 iunie 2026", "INFORMATION NOTICE 11 June 2026", "ИНФОРМАЦИОННОЕ СООБЩЕНИЕ 11 июня 2026",
+      "ІНФОРМАЦІЙНЕ ПОВІДОМЛЕННЯ від 11 червня 2026"), "comunicat-informativ-11-iunie"),
+    (("COMUNICAT INFORMATIV 28 mai 2026", "INFORMATION NOTICE 28 May 2026", "ИНФОРМАЦИОННОЕ СООБЩЕНИЕ 28 мая 2026",
+      "ІНФОРМАЦІЙНЕ ПОВІДОМЛЕННЯ від 28 травня 2026"), "comunicat-informativ-28-mai"),
+    (("COMUNICAT INFORMATIV 02 aprilie 2026", "INFORMATION NOTICE 02 April 2026", "ИНФОРМАЦИОННОЕ СООБЩЕНИЕ 02 апреля 2026",
+      "ІНФОРМАЦІЙНЕ ПОВІДОМЛЕННЯ від 02 квітня 2026"), "comunicat-informativ-02-aprilie"),
+)
+
+
+def fix_news_titles(text, pg):
+    from .home import NEWS_EDIT
+    for olds, key in NEWS_TITLES:
+        old, new = olds[IDX[pg.lang]], NEWS_EDIT[key][IDX[pg.lang]][1]
+        text = re.sub(r'(>\s*|content="|» )' + re.escape(old) + r'(?=\s*(?:<|"|&#821[12];|–|—))', lambda m: m.group(1) + new, text)
+    return text
+
+
+# N-20 / N-22: eticheta meniului în română; diacriticele cu virgulă (ș, ț), nu cu sedilă (ş, ţ)
+CEDILLA = str.maketrans("şţŞŢ", "șțȘȚ")
+
+
+def fix_ro_text(text, pg):
+    text = text.translate(CEDILLA).replace("adunareagenerală", "adunarea generală")
+    if pg.lang == "ro":
+        text = text.replace('aria-label="Primary menu"', 'aria-label="Meniu principal"')
+        text = text.replace("<span>FEATURED</span>", "<span>RECOMANDAT</span>")
+    # C-27: forma juridică a acționarului, ca în comunicat și pe /fondatori/
+    return text.replace("Premier Energy S.A.", "Premier Energy PLC")
+
+
+# C-31: decontarea T+2 e prezentată ca funcțională, dar conectarea la DCU e în curs – notă de stare sub ciclul de decontare
+SETTLEMENT_NOTE = {
+    "ro": ("Stadiu", "Conectarea sistemului BIMx la sistemul Depozitarului Central Unic (DCU) este în curs. "
+                     "Ciclul de decontare T+2 urmează să fie confirmat prin Regulile BIMx."),
+    "en": ("Status", "The connection of the BIMx system to the Central Securities Depository (DCU) is in progress. "
+                     "The T+2 settlement cycle is to be confirmed in the BIMx Rules."),
+    "ru": ("Статус", "Подключение системы BIMx к системе Единого центрального депозитария (ЕЦД) находится в процессе. "
+                     "Расчётный цикл T+2 будет подтверждён Правилами BIMx."),
+    "uk": ("Статус", "Підключення системи BIMx до системи Єдиного центрального депозитарію (ЄЦД) триває. "
+                     "Розрахунковий цикл T+2 буде підтверджено Правилами BIMx."),
+}
+
+
+def fix_settlement(text, pg):
+    if pg.key != "compensare-si-decontare" or "bx-update-note" in text:
+        return text
+    label, note = SETTLEMENT_NOTE[pg.lang]
+    return re.sub(r'(<div class="date_section">[\s\S]*?<div class="right_side">\s*<p>[\s\S]*?</p>)',
+                  lambda m: f'{m.group(1)}\n<p class="bx-update-note"><strong>{label}:</strong> {note}</p>', text, count=1)
+
+
+# C-32: info@bimx.md nu apare în documente – adresa generală a site-ului (office@) și adresa de listing din documente
+LISTING_MAIL = {"ro": "Listing și operațiuni", "en": "Listing and operations", "ru": "Листинг и операции", "uk": "Лістинг і операції"}
+
+
+def fix_contact_mail(text, pg):
+    return re.sub(r'(<p><span>[^<]*</span>)<a href="mailto:info@bimx\.md">info@bimx\.md</a>\s*</p>',
+                  lambda m: f'{m.group(1)}<a href="mailto:office@bimx.md">office@bimx.md</a></p>\n'
+                            f'<p><span>{LISTING_MAIL[pg.lang]}</span><a href="mailto:listing@bimx.md">listing@bimx.md</a></p>', text)
+
+
 def fix_council_en(text, pg):
     """EN, pagina Consiliul și Organul Executiv: „Exchange Council” → „BIMx Board” (titlu, funcții, biografii)."""
     if pg.lang != "en" or pg.key != "consiliul-si-organul-executiv":
@@ -856,6 +923,11 @@ PARTNER_CARDS = [
       "The government body responsible for relations with the diaspora of the Republic of Moldova",
       "Государственное учреждение, ответственное за связи с диаспорой Республики Молдова",
       "Державна установа, відповідальна за зв’язки з діаспорою Республіки Молдова")),
+    # drapelul UE (desenat după specificațiile oficiale ale emblemei europene)
+    ("assets/img/partners/eu.svg", 810, 540,
+     ("Uniunea Europeană", "European Union", "Европейский союз", "Європейський Союз"),
+     ("Partener de dezvoltare al Republicii Moldova", "Development partner of the Republic of Moldova",
+      "Партнёр Республики Молдова по развитию", "Партнер Республіки Молдова з розвитку")),
     # logo (varianta RO pe pagina română, EN în rest) și descriere preluate de pe eba.md
     (("assets/img/partners/eba-ro.png", "assets/img/partners/eba-en.png", "assets/img/partners/eba-en.png", "assets/img/partners/eba-en.png"), 349, 179,
      ("EBA – Asociația Businessului European", "EBA – European Business Association", "EBA — Европейская бизнес-ассоциация",
@@ -873,8 +945,8 @@ PARTNER_CARDS = [
       "Одна з провідних бізнес-шкіл Європи, що поєднує академічну досконалість із практичною спрямованістю")),
 ]
 
-# ordinea de afișare (după CNPF urmează Invest Moldova, cardul existent pe pagină): BRD, EBA, Canada, UN Women, PNUD, Frankfurt School, Sparkassenstiftung
-_ORDER = ("CNPF.png", "brd.png", "eba-", "canada.png", "un-women.png", "undp.png", "frankfurt-school.svg", "sparkassenstiftung.png")
+# ordinea de afișare (după CNPF urmează Invest Moldova, cardul existent pe pagină): BRD, UE, PNUD, EBA, Canada, UN Women, Frankfurt School, Sparkassenstiftung
+_ORDER = ("CNPF.png", "brd.png", "eu.svg", "undp.png", "eba-", "canada.png", "un-women.png", "frankfurt-school.svg", "sparkassenstiftung.png")
 PARTNER_CARDS.sort(key=lambda c: next(i for i, n in enumerate(_ORDER) if n in (c[0] if isinstance(c[0], str) else c[0][0])))
 
 def fix_partners(text, pg):
@@ -900,6 +972,56 @@ def fix_partners(text, pg):
     before = card(*PARTNER_CARDS[0]) + "\n                "
     after = "".join(card(*c) for c in PARTNER_CARDS[1:])
     return text[:first.start()] + before + text[first.start():first.end()] + after + text[first.end():]
+
+
+# Doar în română: „broker” → „agent de bursă” în tot textul vizibil (inclusiv titluri, meniu, Academy, atribute
+# alt/title/aria-label/meta), la cererea BIMx; adresele (href/src, de ex. /atestarea-brokerilor/) rămân neschimbate.
+BROKER_RO = [("brokerilor", "agenților de bursă"), ("brokerului", "agentului de bursă"), ("brokerii", "agenții de bursă"),
+             ("brokerul", "agentul de bursă"), ("brokeri", "agenți de bursă"), ("broker", "agent de bursă")]
+_BROKER = re.compile(r"\b([Bb])(roker(?:ilor|ului|ii|ul|i)?)\b")
+_BROKER_MAP = dict(BROKER_RO)
+
+
+def _broker_word(m):
+    new = _BROKER_MAP["b" + m.group(2)]
+    return new[0].upper() + new[1:] if m.group(1) == "B" else new
+
+
+def fix_broker_ro(text, pg):
+    if pg.lang != "ro":
+        return text
+    out, pos = [], 0
+    for m in re.finditer(r"<(script|style)\b[\s\S]*?</\1>", text):             # scripturile și stilurile rămân
+        out.append(_broker_segment(text[pos:m.start()]))
+        out.append(m.group(0))
+        pos = m.end()
+    out.append(_broker_segment(text[pos:]))
+    return "".join(out)
+
+
+BROKER_KEEP = ("prin intermediul brokerului",)                       # formulări în care „broker” rămâne, la cererea BIMx
+
+
+def _broker_segment(seg):
+    for i, phrase in enumerate(BROKER_KEEP):
+        seg = seg.replace(phrase, f"\x00{i}\x00")
+    seg = _broker_replace(seg)
+    for i, phrase in enumerate(BROKER_KEEP):
+        seg = seg.replace(f"\x00{i}\x00", phrase)
+    return seg
+
+
+def _broker_replace(seg):
+    seg = re.sub(r">([^<]+)<", lambda m: ">" + _BROKER.sub(_broker_word, m.group(1)) + "<", seg)
+    return re.sub(r'(\s(?:alt|title|content|aria-label|placeholder|data-all|data-less)=")([^"]*)"',
+                  lambda m: m.group(1) + _BROKER.sub(_broker_word, m.group(2)) + '"', seg)
+
+
+def fix_identity(text, pg):
+    """Identitate: fără textul introductiv al secțiunii „Pentru cine este BIMx?” (paragraful de deasupra tabelului)."""
+    if pg.key != "identitate":
+        return text
+    return re.sub(r"(<h2>[^<]*</h2>)\s*<p>[^<]*</p>(\s*</div>\s*<table>)", r"\1\2", text, count=1)
 
 
 def fix_capital(text, pg):
@@ -1224,8 +1346,13 @@ def apply_fixes():
         new = fix_capital(new, pg)
         new = fix_council_en(new, pg)
         new = fix_partners(new, pg)
+        new = fix_identity(new, pg)
         if pg.home:
             new = fix_home(new, pg)
+        new = fix_news_titles(new, pg)
+        new = fix_ro_text(new, pg)
+        new = fix_settlement(new, pg)
+        new = fix_contact_mail(new, pg)
         new = fix_downloads(new, pg)
         new = fix_placeholder(new, pg)
         new = fix_meta(new, pg)
@@ -1238,6 +1365,7 @@ def apply_fixes():
             new = new.replace("</head>", RU_FONT + "</head>", 1)
         new = fix_headings(new)
         new = retarget_links(new, f.parent)
+        new = fix_broker_ro(new, pg)        # ultimul pas: toate textele (inclusiv prima pagină și paginile generate) sunt deja la locul lor
         if new != text:
             f.write_text(new, encoding="utf-8")
             changed += 1

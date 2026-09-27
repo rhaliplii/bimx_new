@@ -43,14 +43,14 @@ ICON_PHONE = ('<svg width="18" height="18" viewBox="0 0 24 24" fill="none" strok
               'stroke-linejoin="round" aria-hidden="true"><path d="M21.5 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 1.6 4.2 2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L7.5 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.7 2z"/></svg>')
 HERO_W, HERO_H = 1056, 1100      # dimensiunile imaginii hero-x.webp (BIMx-hero-X-sharp-3816x3936.png)
 TL_LABELS = {
-    "ro": {"title": "Calendarul lansării", "full": "Vizualizați calendarul complet", "done": "Finalizat", "next": "Urmează",
+    "ro": {"title": "Calendarul lansării", "full": "Vizualizați calendarul complet", "done": "Finalizat", "next": "Urmează", "open": "Deschis",
            "planned": "Planificat", "day": "în 1 zi", "days": "în {n} zile", "today": "astăzi"},
-    "en": {"title": "Launch calendar", "full": "View the full calendar", "done": "Completed", "next": "Next",
+    "en": {"title": "Launch calendar", "full": "View the full calendar", "done": "Completed", "next": "Next", "open": "Open",
            "planned": "Planned", "day": "in 1 day", "days": "in {n} days", "today": "today"},
-    "ru": {"title": "Календарь запуска", "full": "Смотреть полный календарь", "done": "Завершено", "next": "Следующий этап",
+    "ru": {"title": "Календарь запуска", "full": "Смотреть полный календарь", "done": "Завершено", "next": "Следующий этап", "open": "Открыт",
            "planned": "Запланировано", "day": "через {n} день", "days": "через {n} дней", "few": "через {n} дня",
            "today": "сегодня"},
-    "uk": {"title": "Календар запуску", "full": "Переглянути повний календар", "done": "Завершено", "next": "Наступний етап",
+    "uk": {"title": "Календар запуску", "full": "Переглянути повний календар", "done": "Завершено", "next": "Наступний етап", "open": "Відкрито",
            "planned": "Заплановано", "day": "через {n} день", "days": "через {n} днів", "few": "через {n} дні",
            "today": "сьогодні"},
 }
@@ -351,8 +351,10 @@ def restructure_home(text, pg):
     lines = [x.strip() for x in re.split(r"<br\s*/?>", p.group(1)) if x.strip()]
     lead, detail = lines[0], (lines[1] if len(lines) > 1 else "")
 
-    states = [milestone_state(row[0]) for row in MILESTONES]
-    next_i = next((i for i, st in enumerate(states) if st != "done"), None)
+    # stările sunt fixe (stabilite de BIMx): etapa 1 finalizată, etapa 2 în galben, etapele 3 și 4 planificate.
+    # Etapa 2 nu are numărătoare inversă; eticheta ei e „Urmează” până la 28.09 și „Deschis” de la 28.09 (replica.js).
+    states = ["done", "upcoming", "planned", "planned"]
+    next_i = 1
     cta_label, cta_path = NEXT_CTA[pg.lang]
     head, _, last = cta_label.rpartition(" ")     # săgeata rămâne lipită de ultimul cuvânt
     L = TL_LABELS[pg.lang]
@@ -366,7 +368,7 @@ def restructure_home(text, pg):
             status = f'{check}{L["done"]}'
         elif kind == "next":
             iso = date.isoformat() if date else ""
-            status = f'{L["next"]}<span class="bx-lt-days" data-date="{iso}" data-one="{L["day"]}" data-many="{L["days"]}" data-today="{L["today"]}"></span>'
+            status = L["open"] if date and date <= TODAY else L["next"]
         else:
             status = L["planned"]
         cta_html = (f'<a class="bx-tl-cta" href="{pg.link(cta_path)}">{head} <span class="bx-nowrap">{last}{ARROW}</span></a>'
@@ -403,7 +405,7 @@ def restructure_home(text, pg):
     </div>
   </div>
   <div class="container">
-    <div class="bx-lt" role="region" aria-labelledby="bx-lt-h" data-done="{L["done"]}" data-next="{L["next"]}" data-planned="{L["planned"]}"
+    <div class="bx-lt" role="region" aria-labelledby="bx-lt-h" data-done="{L["done"]}" data-next="{L["next"]}" data-open="{L["open"]}" data-planned="{L["planned"]}" data-fixed="1"
          data-one="{L["day"]}" data-many="{L["days"]}" data-few="{L.get("few", "")}" data-today="{L["today"]}">
       <div class="bx-lt-head"><h2 id="bx-lt-h">{L["title"]}</h2>
         <a href="{pg.link("trading-calendar/index.html")}">{L["full"]}{ARROW}</a></div>

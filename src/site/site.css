@@ -1993,8 +1993,18 @@ span.bx-f-partner:hover { transform: none; box-shadow: none; }
 }
 @media (min-width: 601px) and (max-width: 1199px) {
   .bx-f-partners { flex-direction: column; gap: 12px !important; }
-  .bx-f-partners > div { display: grid !important; grid-template-columns: repeat(9, minmax(0, 1fr)); gap: 8px !important; width: 100%; }
+  .bx-f-partners > div { display: grid !important; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 8px !important; width: 100%; }
   .bx-f-partner { width: auto !important; height: 42px !important; padding: 5px !important; }
   .bx-f-partner img { max-height: 28px !important; }
 }
 @media (min-width: 601px) and (max-width: 820px) { .bx-f-partners > div { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+/* subsol, desktop: eticheta pe două rânduri, logo-urile partenerilor în 2 rânduri a câte 5, pe toată lățimea rămasă */
+@media (min-width: 1200px) {
+  .bx-f-partners { flex-wrap: nowrap !important; gap: 24px !important; }
+  .bx-f-partners h2 { flex: 0 0 110px; line-height: 1.4; }
+  .bx-f-partners > div { display: grid !important; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px !important; flex: 1 1 auto; }
+  .bx-f-partner { width: auto !important; height: 48px !important; }
+  .bx-f-partner img { max-height: 32px !important; }
+}
+/* logo-urile partenerilor din subsol nu sunt clicabile: fără efect de hover */
+.bx-f-partner, .bx-f-partner:hover { transform: none !important; box-shadow: none !important; cursor: default; }
