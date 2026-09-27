@@ -203,19 +203,19 @@ TRUST = {
     "ro": [("CNPF", "Autoritate de supraveghere", None, False),
            ("Bursa de Valori București", "Acționar strategic", None, False),
            ("Agenția Proprietății Publice", "Acționar, 20%", None, False),
-           ("Bănci și companii de asigurări", "Structura acționariatului", "fondatori/index.html", True)],
+           ("Bănci și sectorul privat", "Structura acționariatului", "fondatori/index.html", True)],
     "uk": [("НКФР", "Наглядовий орган", None, False),
            ("Бухарестська фондова біржа", "Стратегічний акціонер", None, False),
            ("Агентство публічної власності", "Акціонер, 20 %", None, False),
-           ("Банки та страхові компанії", "Структура акціонерів", "fondatori/index.html", True)],
+           ("Банки та приватний сектор", "Структура акціонерів", "fondatori/index.html", True)],
     "ru": [("НКФР", "Надзорный орган", None, False),
            ("Бухарестская фондовая биржа", "Стратегический акционер", None, False),
            ("Агентство публичной собственности", "Акционер, 20 %", None, False),
-           ("Банки и страховые компании", "Структура акционеров", "fondatori/index.html", True)],
+           ("Банки и частный сектор", "Структура акционеров", "fondatori/index.html", True)],
     "en": [("CNPF", "Supervisory authority", None, False),
            ("Bucharest Stock Exchange", "Strategic shareholder", None, False),
            ("Public Property Agency", "Shareholder, 20%", None, False),
-           ("Banks and insurance companies", "Shareholder structure", "fondatori/index.html", True)],
+           ("Banks and the private sector", "Shareholder structure", "fondatori/index.html", True)],
 }
 
 

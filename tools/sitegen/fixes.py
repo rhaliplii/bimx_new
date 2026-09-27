@@ -870,14 +870,9 @@ def fix_settlement(text, pg):
                   lambda m: f'{m.group(1)}\n<p class="bx-update-note"><strong>{label}:</strong> {note}</p>', text, count=1)
 
 
-# C-32: info@bimx.md nu apare în documente – adresa generală a site-ului (office@) și adresa de listing din documente
-LISTING_MAIL = {"ro": "Listing și operațiuni", "en": "Listing and operations", "ru": "Листинг и операции", "uk": "Лістинг і операції"}
-
-
+# C-32: info@bimx.md nu apare în documente – adresa generală a site-ului, office@bimx.md
 def fix_contact_mail(text, pg):
-    return re.sub(r'(<p><span>[^<]*</span>)<a href="mailto:info@bimx\.md">info@bimx\.md</a>\s*</p>',
-                  lambda m: f'{m.group(1)}<a href="mailto:office@bimx.md">office@bimx.md</a></p>\n'
-                            f'<p><span>{LISTING_MAIL[pg.lang]}</span><a href="mailto:listing@bimx.md">listing@bimx.md</a></p>', text)
+    return text.replace('<a href="mailto:info@bimx.md">info@bimx.md</a>', '<a href="mailto:office@bimx.md">office@bimx.md</a>')
 
 
 def fix_council_en(text, pg):
