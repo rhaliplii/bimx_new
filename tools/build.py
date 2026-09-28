@@ -32,6 +32,7 @@ from sitegen.detach import detach  # noqa: E402
 from sitegen.fixes import apply_fixes  # noqa: E402
 from sitegen.pdf import build_pdfs  # noqa: E402
 from sitegen.search import build_search  # noqa: E402
+from sitegen.cachebust import cachebust  # noqa: E402
 from sitegen.config import ACADEMY_ASSETS, ACADEMY_SRC, DIST, LANGS, PUBLICATIONS, ROOT, SITE_LANGS  # noqa: E402
 from sitegen.mirror import build_snapshot, localize_links  # noqa: E402
 from sitegen.shell import write_scoped_css  # noqa: E402
@@ -66,6 +67,8 @@ def main():
     print(f"PDF-uri pentru ghiduri: {made} din {total}" + ("" if made == total else " (fără Chrome: butonul tipărește pagina)"))
     counts, injected = build_search()
     print("Căutare: " + ", ".join(f"{counts[l]} pagini {l.upper()}" for l in SITE_LANGS) + f" în index; scriptul adăugat pe {injected} pagini.")
+    pages_v, files_v = cachebust()
+    print(f"Versiuni în adrese (cache): {files_v} fișiere CSS/JS, pe {pages_v} pagini.")
     print(f"Gata. Deschideți {(DIST / 'index.html').relative_to(ROOT)}")
 
 
