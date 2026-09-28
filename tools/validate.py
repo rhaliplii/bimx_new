@@ -49,11 +49,9 @@ from sitegen import translate  # noqa: E402
 
 MIRROR = Path(__file__).resolve().parent.parent / "src" / "bimx-mirror"
 needed = {}
-# paginile din ro/ și paginile programate (scheduled/*/ro/), chiar dacă nu sunt încă publicate
-for base in [MIRROR / "ro"] + sorted((MIRROR / "scheduled").glob("*/ro")):
-    for page in sorted(base.rglob("*.html")):
-        for key in translate.extract(page.read_text(encoding="utf-8")):
-            needed.setdefault(key, page.relative_to(base))
+for page in sorted((MIRROR / "ro").rglob("*.html")):
+    for key in translate.extract(page.read_text(encoding="utf-8")):
+        needed.setdefault(key, page.relative_to(MIRROR / "ro"))
 for lang in ("en", "ru", "uk"):
     catalog = json.loads((MIRROR / "i18n" / f"{lang}.json").read_text(encoding="utf-8"))["text"]
     for key, page in needed.items():

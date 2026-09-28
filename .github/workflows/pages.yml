@@ -6,12 +6,6 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
-  # publicări programate (src/bimx-mirror/scheduled/): comunicatul din 28.09.2026 apare la 11:45 ora Moldovei (08:45 UTC);
-  # GitHub poate întârzia rulările programate cu câteva minute, de aceea mai sunt două rulări de rezervă
-  schedule:
-    - cron: "45 8 28 9 *"
-    - cron: "0 9 28 9 *"
-    - cron: "30 9 28 9 *"
 
 permissions:
   contents: read

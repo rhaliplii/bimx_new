@@ -5,7 +5,6 @@ bimx.md nu are alte versiuni de limbă (doar o pagină /en/home/ provizorie), a�
 generează din pagina RO corespunzătoare: aceleași căi (dist/X ↔ dist/en/X ↔ dist/ru/X ↔ dist/uk/X), texte din catalog, linkuri
 spre paginile din aceeași limbă și lang="en-GB" / "ru-RU". Resursele (wp-content, wp-includes) sunt comune.
 """
-import datetime
 import json
 import os
 import re
@@ -31,33 +30,6 @@ def load_catalog(lang):
         return {"text": {}, "js": {}}
     data = json.loads(f.read_text(encoding="utf-8"))
     return {"text": data.get("text", {}), "js": data.get("js", {})}
-
-
-SCHEDULED = MIRROR / "scheduled"          # scheduled/<AAAA-LL-ZZTHH-MMZ>/ro/…: pagini publicate de la ora dată (UTC)
-
-
-def published_overlays(now=None):
-    """Folderele programate a căror oră de publicare (UTC, în numele folderului) a trecut."""
-    if now is None and os.environ.get("BIMX_NOW"):       # test: BIMX_NOW=2026-09-28T08:45 (UTC)
-        now = datetime.datetime.fromisoformat(os.environ["BIMX_NOW"]).replace(tzinfo=datetime.timezone.utc)
-    now = now or datetime.datetime.now(datetime.timezone.utc)
-    out = []
-    for d in sorted(SCHEDULED.glob("*")) if SCHEDULED.exists() else []:
-        try:
-            when = datetime.datetime.strptime(d.name, "%Y-%m-%dT%H-%MZ").replace(tzinfo=datetime.timezone.utc)
-        except ValueError:
-            continue
-        if when <= now:
-            out.append(d / "ro")
-    return out
-
-
-def page_sources():
-    """{cale relativă: fișier sursă} – paginile din ro/, plus (sau în locul lor) paginile programate deja publicate."""
-    pages = {src.relative_to(RO_PAGES): src for src in RO_PAGES.rglob("*.html")}
-    for overlay in published_overlays():
-        pages.update({src.relative_to(overlay): src for src in overlay.rglob("*.html")})
-    return pages
 
 
 def page_dest(rest, lang):
@@ -184,9 +156,9 @@ def build_snapshot():
     catalogs = {lang: load_catalog(lang) for lang in SITE_LANGS if lang != "ro"}
     js_files = {lang: write_js_translations(cat["js"], lang) for lang, cat in catalogs.items()}
     pages, missing = 0, {lang: {} for lang in catalogs}
-    for rest, path in sorted(page_sources().items()):
-        src = RO_PAGES / rest                  # căile relative se rezolvă față de locul paginii în ro/
-        original = path.read_text(encoding="utf-8", errors="replace")
+    for src in sorted(RO_PAGES.rglob("*.html")):
+        rest = src.relative_to(RO_PAGES)
+        original = src.read_text(encoding="utf-8", errors="replace")
         for lang in SITE_LANGS:
             dest = page_dest(rest, lang)
             dest.parent.mkdir(parents=True, exist_ok=True)
