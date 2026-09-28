@@ -1423,7 +1423,7 @@ header.site-header .header_content .center nav ul.menu-wrapper li.menu-item-has-
 .bx-home-news .home_posts .head_section .left_side p { display: none; }   /* subtitlul repeta titlul */
 .bx-home-news .home_posts .head_section { align-items: center !important; margin-bottom: 18px !important; }
 
-.bx-part-badge.is-open { color: #7EE2B8; }
+/* „Deschis” (de la 28.09) rămâne galben, ca „Se deschide 28.09” */
 
 /* ---------- Mobil: vizualul „X” mult mai mic, ca vizitatorul să ajungă repede la calendar și carduri ---------- */
 @media (max-width: 600px) {
