@@ -2011,3 +2011,5 @@ span.bx-f-partner:hover { transform: none; box-shadow: none; }
 /* subsol: avertizarea privind riscurile, lipită de notificarea despre datele de piață (un singur bloc legal) */
 footer.site-footer.bx-footer .bx-f-disclaimer:has(+ .bx-f-risk) { border-bottom: 0; padding-bottom: 8px; }
 footer.site-footer.bx-footer .bx-f-risk { padding-top: 8px; }
+/* etapele numerotate (.stages): pătratul cu numărul nu se strânge când textul de alături e lung (Atestarea agenților de bursă) */
+.stages .stage > .number { flex: 0 0 40px !important; width: 40px !important; min-width: 40px; }
