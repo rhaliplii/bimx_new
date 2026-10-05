@@ -148,6 +148,14 @@ def paths_section(pg):
 
 # Știrile de pe prima pagină: titlu și categorie reale pentru fiecare articol (după adresă), în RO și EN
 NEWS_EDIT = {
+    "bimx-si-frankfurt-school": (("Parteneriat", "BIMx și Frankfurt School semnează un Memorandum de Înțelegere"),
+                                 ("Partnership", "BIMx and Frankfurt School sign a Memorandum of Understanding"),
+                                 ("Партнёрство", "BIMx и Frankfurt School подписали меморандум о взаимопонимании"),
+                                 ("Партнерство", "BIMx і Frankfurt School підписали меморандум про взаєморозуміння")),
+    "capital-market-forum-2026": (("Forum", "Capital Market Forum 2026: BIMx vrea să accelereze creșterea capitalizării bursiere"),
+                                  ("Forum", "Capital Market Forum 2026: BIMx aims to accelerate the growth of market capitalisation"),
+                                  ("Форум", "Capital Market Forum 2026: BIMx стремится ускорить рост рыночной капитализации"),
+                                  ("Форум", "Capital Market Forum 2026: BIMx прагне прискорити зростання ринкової капіталізації")),
     "bimx-a-initiat-procesul-de-admitere": (("Admitere", "BIMx a inițiat procesul de admitere a participanților la piața de capital"),
                                             ("Admission", "BIMx launches the admission process for capital market participants"),
                                             ("Допуск", "BIMx начала процедуру допуска участников рынка капитала"),
@@ -180,6 +188,24 @@ NEWS_EDIT = {
 
 # rezumatul complet al articolului principal (fără trunchiere „…”)
 NEWS_EXCERPT = {
+    "bimx-si-frankfurt-school": (
+        "Bursa Internațională a Moldovei (BIMx) și Școala de Finanțe și Management din Frankfurt au semnat un Memorandum de Înțelegere "
+        "care stabilește cadrul unei cooperări strategice pentru dezvoltarea pieței de capital și pregătirea profesională a specialiștilor.",
+        "International Stock Exchange of Moldova (BIMx) and Frankfurt School of Finance & Management have signed a Memorandum of "
+        "Understanding to establish a strategic framework for cooperation in market development, professional education and capacity building.",
+        "Международная фондовая биржа Молдовы (BIMx) и Франкфуртская школа финансов и менеджмента подписали меморандум о "
+        "взаимопонимании, который закладывает основу стратегического сотрудничества в развитии рынка капитала и подготовке специалистов.",
+        "Міжнародна фондова біржа Молдови (BIMx) і Франкфуртська школа фінансів та менеджменту підписали меморандум про "
+        "взаєморозуміння, що закладає основу стратегічної співпраці в розвитку ринку капіталу та підготовці фахівців."),
+    "capital-market-forum-2026": (
+        "Bursa Internațională a Moldovei (BIMx) își propune să contribuie la dezvoltarea pieței de capital din Republica Moldova "
+        "prin creșterea capitalizării bursiere, stimularea lichidității și dezvoltarea pieței secundare.",
+        "The Moldova International Stock Exchange (BIMx) aims to contribute to the development of the capital market in the Republic "
+        "of Moldova by increasing market capitalisation, stimulating liquidity and developing the secondary market.",
+        "Международная фондовая биржа Молдовы (BIMx) намерена содействовать развитию рынка капитала Республики Молдова за счёт "
+        "роста рыночной капитализации, повышения ликвидности и развития вторичного рынка.",
+        "Міжнародна фондова біржа Молдови (BIMx) має на меті сприяти розвитку ринку капіталу Республіки Молдова шляхом "
+        "зростання ринкової капіталізації, підвищення ліквідності та розвитку вторинного ринку."),
     "bimx-a-initiat-procesul-de-admitere": (
         "Bursa Internațională a Moldovei (BIMx) a început procesul de admitere a agenților de bursă și emitenților, ceea ce "
         "reprezintă etapa finală înainte de lansarea tranzacționării. Prima listare este planificată până la sfârșitul anului 2026.",
@@ -200,17 +226,23 @@ NEWS_EXCERPT = {
 }
 
 
-# articolul principal de pe prima pagină: cel mai recent comunicat (copia bimx.md are încă pe cel din 25.08.2026)
-LATEST = ("2026/09/28/bimx-a-initiat-procesul-de-admitere-a-participantilor/index.html",
-          ("28 septembrie 2026", "28 September 2026", "28 сентября 2026", "28 вересня 2026"))
+# comunicatele mai noi decât copia bimx.md (care are ca articol principal pe cel din 25.08.2026), în ordine cronologică:
+# ultimul devine articolul principal, celelalte trec, de la cel mai nou, în fruntea listei din dreapta
+LATEST = [("2026/09/28/bimx-a-initiat-procesul-de-admitere-a-participantilor/index.html",
+           ("28 septembrie 2026", "28 September 2026", "28 сентября 2026", "28 вересня 2026")),
+          ("2026/09/28/capital-market-forum-2026/index.html",
+           ("28 septembrie 2026", "28 September 2026", "28 сентября 2026", "28 вересня 2026")),
+          ("2026/10/05/bimx-si-frankfurt-school-semneaza-un-memorandum-de-intelegere/index.html",
+           ("5 octombrie 2026", "5 October 2026", "5 октября 2026", "5 жовтня 2026"))]
 
 
-def feature_latest(block, lang):
-    """Comunicatul cel mai recent devine articolul principal; fostul articol principal trece primul în lista din dreapta,
+def feature_latest(block, lang, latest):
+    """Comunicatul `latest` devine articolul principal; fostul articol principal trece primul în lista din dreapta,
     iar lista coboară cu o poziție (numărul de articole rămâne același)."""
+    path, dates = latest
     main = re.search(r'<div class="main_post">[\s\S]*?<div class="secondary_posts_list">', block)
     items = list(re.finditer(r'<a href="([^"]*)" class="list-item[^"]*">[\s\S]*?</a>', block))
-    if not main or not items or LATEST[0] in block:
+    if not main or not items or path in block:
         return block
     old = re.search(r'<a href="([^"]*)" class="read-more">', main.group(0)).group(1)
     date = re.search(r'<div class="post-date">([^<]*)</div>', main.group(0)).group(1).strip()
@@ -218,8 +250,8 @@ def feature_latest(block, lang):
     first = items[0].group(0).replace(items[0].group(1), old)
     first = re.sub(r'(<div class="post-date">)[^<]*(</div>)', lambda m: f"{m.group(1)}• {date}{m.group(2)}", first, count=1)
     prefix = old[:old.index("2026/")]                  # calea relativă spre rădăcina limbii (ex. „” sau „../”)
-    new_main = main.group(0).replace(old, prefix + LATEST[0])
-    new_main = re.sub(r'(<div class="post-date">)[^<]*(</div>)', lambda m: m.group(1) + LATEST[1][IDX[lang]] + m.group(2), new_main, count=1)
+    new_main = main.group(0).replace(old, prefix + path)
+    new_main = re.sub(r'(<div class="post-date">)[^<]*(</div>)', lambda m: m.group(1) + dates[IDX[lang]] + m.group(2), new_main, count=1)
     block = block[:items[-1].start()] + block[items[-1].end():]              # ultimul articol din listă iese
     block = block.replace(items[0].group(0), first + "\n" + items[0].group(0), 1)
     return block.replace(main.group(0), new_main, 1)
@@ -472,7 +504,8 @@ def restructure_home(text, pg):
         block = news.group(0)
         text = text[:news.start()] + text[news.end():]
         block = re.sub(r'\s*<a class="more-link"[\s\S]*?</a>', "", block)          # „Citește mai mult” din mijlocul rezumatului
-        block = feature_latest(block, pg.lang)
+        for latest in LATEST:
+            block = feature_latest(block, pg.lang, latest)
         # articolul principal: titlul real, categoria reală, rezumatul fără titlu și fără „24.08.2026, Chișinău –”
         mp = re.search(r'<div class="main_post">[\s\S]*?<a href="([^"]*)" class="read-more">', block)
         if mp and news_edit(mp.group(1), pg.lang):
