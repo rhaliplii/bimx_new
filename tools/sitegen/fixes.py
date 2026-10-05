@@ -870,6 +870,87 @@ def fix_settlement(text, pg):
                   lambda m: f'{m.group(1)}\n<p class="bx-update-note"><strong>{label}:</strong> {note}</p>', text, count=1)
 
 
+# Categoriile de știri: bara de filtre nu filtrează (o singură etichetă, linkuri spre aceeași pagină) – iese;
+# eticheta de pe carduri rămâne doar text; categoriile fără articole primesc o stare goală;
+# „Explorați și” nu mai trimite spre categoria curentă
+EMPTY_CATEGORY = {
+    "stiri": (("Încă nu există știri publicate.",
+               "Știrile de piață vor apărea aici după lansarea tranzacționării. Până atunci, urmăriți anunțurile BIMx."),
+              ("No news has been published yet.",
+               "Market news will appear here once trading begins. In the meantime, follow the BIMx announcements."),
+              ("Новостей пока нет.",
+               "Рыночные новости появятся здесь после запуска торгов. А пока следите за объявлениями BIMx."),
+              ("Новин поки немає.",
+               "Ринкові новини з’являться тут після запуску торгів. А поки стежте за оголошеннями BIMx.")),
+    "anunturi-ale-emitentilor": (("Încă nu există anunțuri ale emitenților.",
+                                  "Anunțurile companiilor listate vor apărea aici după primele listări, planificate până la sfârșitul "
+                                  "anului 2026. Până atunci, urmăriți anunțurile BIMx."),
+                                 ("No issuer announcements yet.",
+                                  "Announcements from listed companies will appear here after the first listings, planned by the end "
+                                  "of 2026. In the meantime, follow the BIMx announcements."),
+                                 ("Объявлений эмитентов пока нет.",
+                                  "Объявления листинговых компаний появятся здесь после первых листингов, запланированных до конца "
+                                  "2026 года. А пока следите за объявлениями BIMx."),
+                                 ("Оголошень емітентів поки немає.",
+                                  "Оголошення лістингових компаній з’являться тут після перших лістингів, запланованих до кінця "
+                                  "2026 року. А поки стежте за оголошеннями BIMx.")),
+}
+EMPTY_CTA = ("Vedeți anunțurile BIMx", "See BIMx announcements", "Смотреть объявления BIMx", "Переглянути оголошення BIMx")
+OTHER_CATEGORIES = ("Alte categorii", "Other categories", "Другие категории", "Інші категорії")
+ARROW_RIGHT = ('<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3.333 8h9.334M8 3.333 '
+               '12.667 8 8 12.667" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>')
+
+
+def fix_categories(text, pg):
+    if pg.key != "category" or len(pg.inner.parts) != 3:
+        return text
+    cat = pg.inner.parts[1]
+    bar = re.search(r'<div class="container_fluid">\s*<div class="filter_wrap">[\s\S]*?</div>\s*</div>\s*</div>', text)
+    if bar:
+        empty = ""
+        if cat in EMPTY_CATEGORY:
+            head, body = EMPTY_CATEGORY[cat][IDX[pg.lang]]
+            empty = (f'<div class="container"><section class="bx-empty"><h2>{head}</h2><p>{body}</p>'
+                     f'<a class="bx-empty-cta" href="{pg.link("category/anunturi-bimx/index.html")}">'
+                     f'{EMPTY_CTA[IDX[pg.lang]]}{ARROW_RIGHT}</a></section></div>')
+        text = text[:bar.start()] + empty + text[bar.end():]
+    # eticheta articolului: fără href nu mai e link (stilul temei, pe „ul li a”, rămâne)
+    text = re.sub(r'<a href="[^"]*" class="tag-link">', '<a class="tag-link">', text)
+    # „Explorați și”: fără cardul categoriei curente, titlu complet
+    text = re.sub(r'\s*<a href="index\.html" class="related-cat-card">[\s\S]*?</a>', "", text, count=1)
+    return re.sub(r'(<section class="related-categories-section">\s*<div class="container">\s*<h2>)[^<]*(</h2>)',
+                  lambda m: m.group(1) + OTHER_CATEGORIES[IDX[pg.lang]] + m.group(2), text, count=1)
+
+
+# Butoanele „Distribuie” din articole: aceleași iconițe pline și aceeași formă ca linkurile sociale din subsol,
+# logo-ul X în locul păsării Twitter, titluri și etichete accesibile în limba paginii
+ICON_X = ('<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 '
+          '8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 '
+          '4.126H5.117z"/></svg>')
+ICON_LINK = ('<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" '
+             'stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>'
+             '<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>')
+SHARE = {   # clasa butonului → (iconiță, eticheta RO, EN, RU, UK)
+    "facebook": (ICON_FACEBOOK, ("Distribuiți pe Facebook", "Share on Facebook", "Поделиться в Facebook", "Поширити у Facebook")),
+    "twitter-x": (ICON_X, ("Distribuiți pe X", "Share on X", "Поделиться в X", "Поширити в X")),
+    "linkedin": (ICON_LINKEDIN, ("Distribuiți pe LinkedIn", "Share on LinkedIn", "Поделиться в LinkedIn", "Поширити в LinkedIn")),
+    "copy-link": (ICON_LINK, ("Copiați linkul", "Copy link", "Скопировать ссылку", "Скопіювати посилання")),
+}
+
+
+def fix_share(text, pg):
+    if "share-buttons-list" not in text:
+        return text
+    text = text.replace("https://twitter.com/intent/tweet?", "https://x.com/intent/post?")
+
+    def btn(m):
+        icon, labels = SHARE[m.group(2)]
+        label = labels[IDX[pg.lang]]
+        head = re.sub(r'\s+title="[^"]*"', "", m.group(1))
+        return f'{head} title="{label}" aria-label="{label}">{icon}'
+    return re.sub(r'(<(?:a|button) [^>]*class="share-btn ([a-z-]+)"[^>]*?)>\s*<svg[\s\S]*?</svg>', btn, text)
+
+
 # C-32: info@bimx.md nu apare în documente – adresa generală a site-ului, office@bimx.md
 def fix_contact_mail(text, pg):
     return text.replace('<a href="mailto:info@bimx.md">info@bimx.md</a>', '<a href="mailto:office@bimx.md">office@bimx.md</a>')
@@ -1347,6 +1428,8 @@ def apply_fixes():
         new = fix_news_titles(new, pg)
         new = fix_ro_text(new, pg)
         new = fix_settlement(new, pg)
+        new = fix_categories(new, pg)
+        new = fix_share(new, pg)
         new = fix_contact_mail(new, pg)
         new = fix_downloads(new, pg)
         new = fix_placeholder(new, pg)

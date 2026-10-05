@@ -2013,3 +2013,21 @@ footer.site-footer.bx-footer .bx-f-disclaimer:has(+ .bx-f-risk) { border-bottom:
 footer.site-footer.bx-footer .bx-f-risk { padding-top: 8px; }
 /* etapele numerotate (.stages): pătratul cu numărul nu se strânge când textul de alături e lung (Atestarea agenților de bursă) */
 .stages .stage > .number { flex: 0 0 40px !important; width: 40px !important; min-width: 40px; }
+/* categoriile de știri: stare goală (Știri, Anunțuri ale emitenților) în locul barei de filtre */
+.bx-empty { margin: 48px 0; padding: 40px 32px; border: 1px dashed var(--bx-border); border-radius: var(--bx-radius-lg); text-align: center; }
+.bx-empty h2 { font-size: var(--bx-fs-xl); line-height: 1.3; font-weight: 700; color: var(--bx-navy); margin: 0 0 8px; }
+.bx-empty p { font-size: var(--bx-fs-base); line-height: 1.5; color: var(--bx-muted); max-width: 560px; margin: 0 auto 20px; }
+.bx-empty-cta { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; color: var(--bx-blue-ink); }
+.bx-empty-cta:hover { text-decoration: underline; }
+@media (max-width: 600px) { .bx-empty { margin: 32px 0; padding: 32px 20px; } }
+/* eticheta „Comunicat de presă” de pe carduri e doar informativă (fără href) */
+a.tag-link:not([href]) { cursor: default; }
+/* „Alte categorii”: două carduri (fără categoria curentă), aliniate la stânga, de lățimi egale */
+.related_categories .categories-links-grid { justify-content: flex-start; column-gap: 16px; }
+@media (min-width: 769px) { .related_categories .categories-links-grid .related-cat-card { flex: 1 1 0; width: auto; } }
+/* „Distribuie” în articole: aceeași formă și același hover ca linkurile sociale din subsol, pe fundal deschis */
+.single_anunturi_bimx .article-share-container .share-buttons-list { gap: 8px; }
+.single_anunturi_bimx .article-share-container .share-buttons-list li { width: auto; height: auto; border: 0; margin-right: 0; }
+.share-buttons-list .share-btn { width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center; padding: 0;
+  border: 0; border-radius: 10px; background: rgba(26, 34, 102, .06); color: var(--bx-navy) !important; transition: background .15s, color .15s; }
+.share-buttons-list .share-btn:hover { background: #1DB0F0; color: #fff !important; }
