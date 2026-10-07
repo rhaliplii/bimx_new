@@ -268,7 +268,15 @@ const UK = (document.documentElement.lang || '').indexOf('uk') === 0;
     if (want !== stuck) { if (want) cardH = wrap.offsetHeight; stuck = want; wrap.classList.toggle('is-stuck', want); more(); }
   };
   // indiciul că bara se derulează lateral: estompare albă pe dreapta, cât mai există taburi ascunse
-  const more = () => nav.classList.toggle('has-more', nav.scrollLeft + nav.clientWidth < nav.scrollWidth - 4);
+  const fade = document.createElement('span');
+  fade.className = 'bx-nav-fade'; fade.setAttribute('aria-hidden', 'true');
+  nav.after(fade);
+  const more = () => {
+    nav.classList.toggle('has-more', nav.scrollLeft + nav.clientWidth < nav.scrollWidth - 4);
+    // degradeul acoperă exact marginea interioară din dreapta a cardului (spațiul lateral diferă între desktop și mobil)
+    fade.style.right = (fade.parentNode.clientWidth - nav.offsetLeft - nav.offsetWidth + 1) + 'px';
+    fade.style.top = (nav.offsetTop + 1) + 'px'; fade.style.height = (nav.offsetHeight - 2) + 'px';
+  };
   place(); check();
   window.addEventListener('resize', () => { place(); check(); });
   window.addEventListener('scroll', check, { passive: true });

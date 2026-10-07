@@ -343,8 +343,14 @@ ol.lesson_list, ol.steps_list { list-style: none; margin: 0; padding: 0; }
   .section_nav_wrap { position: sticky; top: var(--bx-nav-top, 65px); z-index: 50;
     transition: background-color .15s ease, box-shadow .15s ease; }
   .section_nav { transition: padding .15s ease, box-shadow .15s ease, border-color .15s ease, background-color .15s ease; }
-  .section_nav.has-more { -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 48px), transparent);
+  /* indiciul că mai sunt taburi la dreapta: pe bara lipită, o mască (bara e transparentă, fundalul alb e dedesubt);
+     pe cardul de la locul lui, un degrade alb peste marginea din dreapta (o mască ar „șterge” și cardul alb) */
+  .section_nav_wrap.is-stuck .section_nav.has-more { -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 48px), transparent);
     mask-image: linear-gradient(90deg, #000 calc(100% - 48px), transparent); }
+  .section_nav_wrap > .container { position: relative; }
+  .section_nav_wrap:not(.is-stuck) .section_nav.has-more + .bx-nav-fade { opacity: 1; }
+  .bx-nav-fade { position: absolute; top: 1px; right: 21px; height: 48px; width: 56px; border-radius: 0 var(--radius) var(--radius) 0;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0), #fff 75%); pointer-events: none; opacity: 0; transition: opacity .15s; }
 
   .section_nav_wrap.is-stuck { background: #fff; box-shadow: 0 1px 0 var(--border), 0 6px 14px -12px rgba(26, 34, 102, .25);
     margin-bottom: var(--bx-nav-comp, 0px); }
