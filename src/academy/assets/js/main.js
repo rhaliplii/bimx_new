@@ -245,13 +245,41 @@ const UK = (document.documentElement.lang || '').indexOf('uk') === 0;
 
   const nav = document.getElementById('section-nav');
   if (!nav) return;
+  // navigarea e lipită sub antet: poziția urmează înălțimea vizibilă a antetului (bara de sus dispare la derulare).
+  // Când ajunge sub antet devine bara subțire (.is-stuck); ancorele se opresc sub bară (scroll-padding).
+  const hdr = document.querySelector('header.site-header');
+  const wrap = nav.closest('.section_nav_wrap');
+  const sentinel = document.createElement('div');
+  sentinel.setAttribute('aria-hidden', 'true');
+  wrap.parentNode.insertBefore(sentinel, wrap);
+  const slim = () => (window.matchMedia('(max-width: 768px)').matches ? 44 : 48);
+  let top = 65, cardH = 0, stuck = false;
+  const place = () => {
+    top = hdr ? hdr.offsetHeight + (parseFloat(getComputedStyle(hdr).top) || 0) : 65;
+    document.documentElement.style.setProperty('--bx-nav-top', top + 'px');
+    document.documentElement.style.scrollPaddingTop = (top + slim() + 16) + 'px';
+    if (!stuck) cardH = wrap.offsetHeight;
+    wrap.style.setProperty('--bx-nav-comp', Math.max(0, cardH - slim()) + 'px');
+    more();
+  };
+  const check = () => {
+    const margin = parseFloat(getComputedStyle(wrap).marginTop) || 0;      // cardul urcă peste hero (margin-top negativ)
+    const want = sentinel.getBoundingClientRect().top + margin <= top + .5;
+    if (want !== stuck) { if (want) cardH = wrap.offsetHeight; stuck = want; wrap.classList.toggle('is-stuck', want); more(); }
+  };
+  // indiciul că bara se derulează lateral: estompare albă pe dreapta, cât mai există taburi ascunse
+  const more = () => nav.classList.toggle('has-more', nav.scrollLeft + nav.clientWidth < nav.scrollWidth - 4);
+  place(); check();
+  window.addEventListener('resize', () => { place(); check(); });
+  window.addEventListener('scroll', check, { passive: true });
+  nav.addEventListener('scroll', more, { passive: true });
   const links = nav.querySelectorAll('a');
   const map = new Map([...links].map(a => [a.getAttribute('href').slice(1), a]));
   const spy = new IntersectionObserver(entries => entries.forEach(en => {
     if (en.isIntersecting) {
       links.forEach(l => l.classList.remove('active'));
       const a = map.get(en.target.id);
-      if (a) { a.classList.add('active'); nav.scrollLeft = a.offsetLeft - nav.clientWidth / 2 + a.offsetWidth / 2; }
+      if (a) { a.classList.add('active'); nav.scrollTo({ left: a.offsetLeft - nav.clientWidth / 2 + a.offsetWidth / 2, behavior: 'smooth' }); }
     }
   }), { rootMargin: '-45% 0px -50% 0px' });
   map.forEach((_, id) => { const s = document.getElementById(id); if (s) spy.observe(s); });

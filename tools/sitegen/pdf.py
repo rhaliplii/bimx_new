@@ -37,6 +37,7 @@ def print_pdf(chrome, html, pdf):
     with tempfile.TemporaryDirectory() as profile:
         cmd = [chrome, "--headless=new", "--disable-gpu", "--no-sandbox", "--no-first-run", "--hide-scrollbars",
                f"--user-data-dir={profile}", "--no-pdf-header-footer", "--run-all-compositor-stages-before-draw",
+               "--virtual-time-budget=8000",          # fonturile web (Prompt) se încarcă înainte de tipărire
                f"--print-to-pdf={pdf}", html.as_uri()]
         proc = subprocess.Popen(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         deadline, last = time.time() + 90, -1

@@ -33,6 +33,7 @@ from sitegen.fixes import apply_fixes  # noqa: E402
 from sitegen.pdf import build_pdfs  # noqa: E402
 from sitegen.search import build_search  # noqa: E402
 from sitegen.cachebust import cachebust  # noqa: E402
+from sitegen.communique import build_communiques  # noqa: E402
 from sitegen.config import ACADEMY_ASSETS, ACADEMY_SRC, DIST, LANGS, PUBLICATIONS, ROOT, SITE_LANGS  # noqa: E402
 from sitegen.mirror import build_snapshot, localize_links  # noqa: E402
 from sitegen.shell import write_scoped_css  # noqa: E402
@@ -65,6 +66,8 @@ def main():
     print(f"Corecturi din auditul UI/UX: {apply_fixes()} pagini ajustate.")
     made, total = build_pdfs()
     print(f"PDF-uri pentru ghiduri: {made} din {total}" + ("" if made == total else " (fără Chrome: butonul tipărește pagina)"))
+    pages_c, made_c = build_communiques()
+    print(f"Comunicate: pagina nouă pe {pages_c} pagini, {made_c} PDF-uri" + ("" if made_c == pages_c else " (fără Chrome: fără butonul PDF)"))
     counts, injected = build_search()
     print("Căutare: " + ", ".join(f"{counts[l]} pagini {l.upper()}" for l in SITE_LANGS) + f" în index; scriptul adăugat pe {injected} pagini.")
     pages_v, files_v = cachebust()

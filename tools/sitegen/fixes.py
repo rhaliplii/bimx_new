@@ -11,6 +11,10 @@ import shutil
 from pathlib import Path
 
 from . import chrome
+from .tariffs import build_tariffs_page, create_tariffs_pages, rename_cost_links
+from .gallery import build_gallery_page, create_gallery_pages
+from .menu import apply_menu
+from .news import article_photo, build_news_page, create_tab_pages, photo_for
 from .config import CYRILLIC, DIST, LANG_PREFIX, LOCALES, SITE_LANGS, SRC, lang_of, pick
 from .util import relto
 
@@ -27,11 +31,14 @@ TICKER_PAGES = {"cotatii-in-timp-real", "indicii-bursei", "actiuni", "obligatiun
                 "date-istorice", "rapoarte", "valori-mobiliare", "date-de-piata", "prezentare-generala"}
 
 # UI-13: rute duplicate → o singură adresă (redirecționare); UI-01: „Indici” → pagina existentă „Indicii Bursei”
+# Știrile au devenit pagina de ansamblu „Noutăți & Comunicate” (sitegen/news.py)
 REDIRECTS = {
-    "stiri": "category/stiri",
+    "stiri": "noutati",
+    "category/stiri": "noutati",
     "anunturi-bimx": "category/anunturi-bimx",
     "anunturi-ale-emitentilor": "category/anunturi-ale-emitentilor",
     "indici": "indicii-bursei",
+    "costuri": "tarifele-bursei",       # „Costuri” și „Tarifele Bursei” (PDF) sunt acum o singură pagină
 }
 
 # UI-26: documentele din Centrul de descărcare, în ordinea din pagină (identică în RO și EN); None = fișier inexistent
@@ -69,7 +76,7 @@ TXT = {
                   "Admiterea brokerilor: din 28 septembrie 2026"],
         "read_more": "Citiți mai mult", "pdf": "PDF", "new_tab": "(se deschide într-o filă nouă)",
         "doc_download": "Descărcați", "in_prep": "Pagina este în pregătire.",
-        "section": {"piata": "Piață", "despre": "Despre noi", "juridic": "Juridic și conformitate", "servicii": "Servicii"},
+        "section": {"piata": "Piață", "despre": "Despre noi", "juridic": "Juridic și conformitate", "servicii": "Servicii", "listare": "Listare"},
     },
     "en": {
         "prelaunch": "Pre-launch", "prelaunch_more": " · The ARENA trading platform goes live on 1 October 2026",
@@ -90,7 +97,7 @@ TXT = {
                   "Admission of brokers: from 28 September 2026"],
         "read_more": "Read more", "pdf": "PDF", "new_tab": "(opens in a new tab)",
         "doc_download": "Download", "in_prep": "This page is being prepared.",
-        "section": {"piata": "Market", "despre": "About us", "juridic": "Legal &amp; Compliance", "servicii": "Services"},
+        "section": {"piata": "Market", "despre": "About us", "juridic": "Legal &amp; Compliance", "servicii": "Services", "listare": "Listing"},
     },
     "ru": {
         "prelaunch": "Подготовка к запуску", "prelaunch_more": " · Торговая платформа ARENA вводится в эксплуатацию 1 октября 2026 г.",
@@ -111,7 +118,7 @@ TXT = {
                   "Допуск брокеров: с 28 сентября 2026 г."],
         "read_more": "Подробнее", "pdf": "PDF", "new_tab": "(откроется в новой вкладке)",
         "doc_download": "Скачать", "in_prep": "Страница находится в разработке.",
-        "section": {"piata": "Рынок", "despre": "О нас", "juridic": "Право и комплаенс", "servicii": "Услуги"},
+        "section": {"piata": "Рынок", "despre": "О нас", "juridic": "Право и комплаенс", "servicii": "Услуги", "listare": "Листинг"},
     },
     "uk": {
         "prelaunch": "Підготовка до запуску", "prelaunch_more": " · Торговельна платформа ARENA запрацює 1 жовтня 2026 р.",
@@ -132,7 +139,7 @@ TXT = {
                   "Допуск брокерів: з 28 вересня 2026 р."],
         "read_more": "Детальніше", "pdf": "PDF", "new_tab": "(відкриється в новій вкладці)",
         "doc_download": "Завантажити", "in_prep": "Сторінка готується.",
-        "section": {"piata": "Ринок", "despre": "Про нас", "juridic": "Право та комплаєнс", "servicii": "Послуги"},
+        "section": {"piata": "Ринок", "despre": "Про нас", "juridic": "Право та комплаєнс", "servicii": "Послуги", "listare": "Лістинг"},
     },
 }
 
@@ -274,7 +281,7 @@ ICON_FACEBOOK = ('<svg width="18" height="18" viewBox="0 0 24 24" fill="currentC
 
 # breadcrumbs care contraziceau meniul: secțiunea corectă (cheile din TXT[...]["section"])
 CRUMB_SECTION = {"regulamente-si-acte-normative": "despre", "parteneri-institutionali": "despre",
-                 "atestarea-brokerilor": "piata", "lista-societatilor": "piata"}
+                 "atestarea-brokerilor": "piata", "lista-societatilor": "piata", "tarifele-bursei": "listare"}
 
 
 # breadcrumbs: fiecare nivel de secțiune duce la pagina principală a secțiunii (etichete în toate limbile, fără majuscule)
@@ -282,17 +289,17 @@ SECTION_HUBS = {
     "despre noi": "identitate", "about us": "identitate",
     "piață": "prezentare-generala", "piaţă": "prezentare-generala", "market": "prezentare-generala",
     "listare": "procesul-de-listare", "listing": "procesul-de-listare",
-    "noutăți & comunicate": "category/anunturi-bimx", "news & announcements": "category/anunturi-bimx",
+    "noutăți & comunicate": "noutati", "news & announcements": "noutati",
     "participanți": "lista-societatilor", "participants": "lista-societatilor",
     "servicii": "servicii-de-listare", "services": "servicii-de-listare",
     "juridic și conformitate": "regulamente-si-acte-normative", "legal & compliance": "regulamente-si-acte-normative",
     # rusă
     "о нас": "identitate", "рынок": "prezentare-generala", "листинг": "procesul-de-listare",
-    "новости и объявления": "category/anunturi-bimx", "новости и сообщения": "category/anunturi-bimx",
+    "новости и объявления": "noutati", "новости и сообщения": "noutati",
     "участники": "lista-societatilor", "услуги": "servicii-de-listare", "право и комплаенс": "regulamente-si-acte-normative",
     # ucraineană
     "про нас": "identitate", "ринок": "prezentare-generala", "лістинг": "procesul-de-listare",
-    "новини та оголошення": "category/anunturi-bimx", "учасники": "lista-societatilor", "послуги": "servicii-de-listare",
+    "новини та оголошення": "noutati", "учасники": "lista-societatilor", "послуги": "servicii-de-listare",
     "право та комплаєнс": "regulamente-si-acte-normative",
 }
 
@@ -649,6 +656,14 @@ def fix_og(text, pg):
     e = lambda v: _html.escape(v, quote=True)
     locale = LOCALES[pg.lang][1]
     alts = "".join(f'\n<meta property="og:locale:alternate" content="{LOCALES[x][1]}">' for x in SITE_LANGS if x != pg.lang)
+    # imaginea de partajare: fotografia comunicatului, dacă are una; altfel imaginea BIMx pe limbă
+    image, img_w, img_h = SITE_URL + OG_IMAGE.format(lang=pg.lang), 1200, 630
+    img_alt = pick(pg.lang, "BIMx – Bursa Internațională a Moldovei", "BIMx – Moldova International Stock Exchange",
+                   "BIMx — Международная фондовая биржа Молдовы", "BIMx — Міжнародна фондова біржа Молдови")
+    photo = photo_for(pg)
+    if photo:
+        # copia JPG: LinkedIn și unele aplicații nu afișează WebP în previzualizări
+        image, img_w, img_h, img_alt = SITE_URL + photo[0].replace(".webp", ".jpg"), 1200, 705, photo[1]
     # scoatem meta-datele vechi (WordPress), ca să nu fie duble
     head = re.sub(r'\s*<meta (?:property="og:[^"]*"|name="twitter:[^"]*")[^>]*>', "", text[:head_end])
     tags = (f'\n<meta property="og:type" content="website">'
@@ -658,14 +673,14 @@ def fix_og(text, pg):
             f'\n<meta property="og:url" content="{e(url)}">'
             f'\n<meta property="og:locale" content="{locale}">'
             f'{alts}'
-            f'\n<meta property="og:image" content="{SITE_URL}{OG_IMAGE.format(lang=pg.lang)}">'
-            f'\n<meta property="og:image:width" content="1200">'
-            f'\n<meta property="og:image:height" content="630">'
-            f'\n<meta property="og:image:alt" content="{pick(pg.lang, "BIMx – Bursa Internațională a Moldovei", "BIMx – Moldova International Stock Exchange", "BIMx — Международная фондовая биржа Молдовы", "BIMx — Міжнародна фондова біржа Молдови")}">'
+            f'\n<meta property="og:image" content="{image}">'
+            f'\n<meta property="og:image:width" content="{img_w}">'
+            f'\n<meta property="og:image:height" content="{img_h}">'
+            f'\n<meta property="og:image:alt" content="{e(img_alt)}">'
             f'\n<meta name="twitter:card" content="summary_large_image">'
             f'\n<meta name="twitter:title" content="{e(title)}">'
             f'\n<meta name="twitter:description" content="{e(desc)}">'
-            f'\n<meta name="twitter:image" content="{SITE_URL}{OG_IMAGE.format(lang=pg.lang)}">\n')
+            f'\n<meta name="twitter:image" content="{image}">\n')
     return head + tags + text[head_end:]
 
 
@@ -799,7 +814,8 @@ LISTING_BLOCK = (("Admiterea emitenților", "Emitenții pot depune cererea de ad
 FORMAL_RO = [(">Vezi toate", ">Vedeți toate"), (">Vezi pe hartă", ">Vedeți pe hartă"), ("Contactează-ne!", "Contactați-ne!"),
              (">Descarcă PDF", ">Descărcați PDF"), (">Descarcă Nomenclatorul", ">Descărcați Nomenclatorul"), (">Descarcă<", ">Descărcați<"),
              ("Devino membru BIMx", "Deveniți membru BIMx"), (">Explorează și<", ">Explorați și<"), ("Urmărește-ne", "Urmăriți-ne"), ("Fii la curent", "Fiți la curent"),
-             ('placeholder="Caută pe site..."', 'placeholder="Căutați pe site…"'), ('aria-label="Caută"', 'aria-label="Căutați"')]
+             ('placeholder="Caută pe site..."', 'placeholder="Căutați pe site…"'), ('aria-label="Caută"', 'aria-label="Căutați"'),
+             (">Distribuie:<", ">Distribuiți:<")]
 
 
 # C-05 (audit de conținut): articolul din 17.06.2026 indică un capital de 3.000.000 EUR; comunicatul BIMx (sursa de
@@ -870,58 +886,6 @@ def fix_settlement(text, pg):
                   lambda m: f'{m.group(1)}\n<p class="bx-update-note"><strong>{label}:</strong> {note}</p>', text, count=1)
 
 
-# Categoriile de știri: bara de filtre nu filtrează (o singură etichetă, linkuri spre aceeași pagină) – iese;
-# eticheta de pe carduri rămâne doar text; categoriile fără articole primesc o stare goală;
-# „Explorați și” nu mai trimite spre categoria curentă
-EMPTY_CATEGORY = {
-    "stiri": (("Încă nu există știri publicate.",
-               "Știrile de piață vor apărea aici după lansarea tranzacționării. Până atunci, urmăriți anunțurile BIMx."),
-              ("No news has been published yet.",
-               "Market news will appear here once trading begins. In the meantime, follow the BIMx announcements."),
-              ("Новостей пока нет.",
-               "Рыночные новости появятся здесь после запуска торгов. А пока следите за объявлениями BIMx."),
-              ("Новин поки немає.",
-               "Ринкові новини з’являться тут після запуску торгів. А поки стежте за оголошеннями BIMx.")),
-    "anunturi-ale-emitentilor": (("Încă nu există anunțuri ale emitenților.",
-                                  "Anunțurile companiilor listate vor apărea aici după primele listări, planificate până la sfârșitul "
-                                  "anului 2026. Până atunci, urmăriți anunțurile BIMx."),
-                                 ("No issuer announcements yet.",
-                                  "Announcements from listed companies will appear here after the first listings, planned by the end "
-                                  "of 2026. In the meantime, follow the BIMx announcements."),
-                                 ("Объявлений эмитентов пока нет.",
-                                  "Объявления листинговых компаний появятся здесь после первых листингов, запланированных до конца "
-                                  "2026 года. А пока следите за объявлениями BIMx."),
-                                 ("Оголошень емітентів поки немає.",
-                                  "Оголошення лістингових компаній з’являться тут після перших лістингів, запланованих до кінця "
-                                  "2026 року. А поки стежте за оголошеннями BIMx.")),
-}
-EMPTY_CTA = ("Vedeți anunțurile BIMx", "See BIMx announcements", "Смотреть объявления BIMx", "Переглянути оголошення BIMx")
-OTHER_CATEGORIES = ("Alte categorii", "Other categories", "Другие категории", "Інші категорії")
-ARROW_RIGHT = ('<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3.333 8h9.334M8 3.333 '
-               '12.667 8 8 12.667" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>')
-
-
-def fix_categories(text, pg):
-    if pg.key != "category" or len(pg.inner.parts) != 3:
-        return text
-    cat = pg.inner.parts[1]
-    bar = re.search(r'<div class="container_fluid">\s*<div class="filter_wrap">[\s\S]*?</div>\s*</div>\s*</div>', text)
-    if bar:
-        empty = ""
-        if cat in EMPTY_CATEGORY:
-            head, body = EMPTY_CATEGORY[cat][IDX[pg.lang]]
-            empty = (f'<div class="container"><section class="bx-empty"><h2>{head}</h2><p>{body}</p>'
-                     f'<a class="bx-empty-cta" href="{pg.link("category/anunturi-bimx/index.html")}">'
-                     f'{EMPTY_CTA[IDX[pg.lang]]}{ARROW_RIGHT}</a></section></div>')
-        text = text[:bar.start()] + empty + text[bar.end():]
-    # eticheta articolului: fără href nu mai e link (stilul temei, pe „ul li a”, rămâne)
-    text = re.sub(r'<a href="[^"]*" class="tag-link">', '<a class="tag-link">', text)
-    # „Explorați și”: fără cardul categoriei curente, titlu complet
-    text = re.sub(r'\s*<a href="index\.html" class="related-cat-card">[\s\S]*?</a>', "", text, count=1)
-    return re.sub(r'(<section class="related-categories-section">\s*<div class="container">\s*<h2>)[^<]*(</h2>)',
-                  lambda m: m.group(1) + OTHER_CATEGORIES[IDX[pg.lang]] + m.group(2), text, count=1)
-
-
 # Butoanele „Distribuie” din articole: aceleași iconițe pline și aceeași formă ca linkurile sociale din subsol,
 # logo-ul X în locul păsării Twitter, titluri și etichete accesibile în limba paginii
 ICON_X = ('<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 '
@@ -954,6 +918,13 @@ def fix_share(text, pg):
 # C-32: info@bimx.md nu apare în documente – adresa generală a site-ului, office@bimx.md
 def fix_contact_mail(text, pg):
     return text.replace('<a href="mailto:info@bimx.md">info@bimx.md</a>', '<a href="mailto:office@bimx.md">office@bimx.md</a>')
+
+
+def fix_council_social(text, pg):
+    """Consiliul și Organul Executiv: fără linkurile sociale (LinkedIn, X, Facebook, Instagram) din biografiile membrilor."""
+    if pg.key != "consiliul-si-organul-executiv":
+        return text
+    return re.sub(r'\s*<div class="social">[\s\S]*?</div>', "", text)
 
 
 def fix_council_en(text, pg):
@@ -1019,10 +990,18 @@ PARTNER_CARDS = [
       "One of Europe’s leading business schools, combining academic excellence with practical relevance",
       "Одна из ведущих бизнес-школ Европы, сочетающая академическое превосходство с практической направленностью",
       "Одна з провідних бізнес-шкіл Європи, що поєднує академічну досконалість із практичною спрямованістю")),
+    # logo: „OECD logo.svg” (Wikimedia Commons, domeniu public), convertit în PNG; oecd.org blochează descărcările automate
+    ("assets/img/partners/oecd.png", 720, 184,
+     ("OCDE – Organizația pentru Cooperare și Dezvoltare Economică", "OECD – Organisation for Economic Co-operation and Development",
+      "ОЭСР — Организация экономического сотрудничества и развития", "ОЕСР — Організація економічного співробітництва та розвитку"),
+     ("Organizație internațională care elaborează politici mai bune pentru o viață mai bună",
+      "An international organisation that works to build better policies for better lives",
+      "Международная организация, которая разрабатывает более эффективную политику для лучшей жизни",
+      "Міжнародна організація, що розробляє кращу політику для кращого життя")),
 ]
 
-# ordinea de afișare (după CNPF urmează Invest Moldova, cardul existent pe pagină): BRD, UE, PNUD, EBA, Canada, UN Women, Frankfurt School, Sparkassenstiftung
-_ORDER = ("CNPF.png", "brd.png", "eu.svg", "undp.png", "eba-", "canada.png", "un-women.png", "frankfurt-school.svg", "sparkassenstiftung.png")
+# ordinea de afișare (după CNPF urmează Invest Moldova, cardul existent pe pagină): BRD, UE, PNUD, EBA, Canada, UN Women, Frankfurt School, Sparkassenstiftung, OCDE
+_ORDER = ("CNPF.png", "brd.png", "eu.svg", "undp.png", "eba-", "canada.png", "un-women.png", "frankfurt-school.svg", "sparkassenstiftung.png", "oecd.png")
 PARTNER_CARDS.sort(key=lambda c: next(i for i, n in enumerate(_ORDER) if n in (c[0] if isinstance(c[0], str) else c[0][0])))
 
 def fix_partners(text, pg):
@@ -1093,10 +1072,33 @@ def _broker_replace(seg):
                   lambda m: m.group(1) + _BROKER.sub(_broker_word, m.group(2)) + '"', seg)
 
 
+# Identitate: textul din hero (până acum identic cu „Viziunea”) și textul Viziunii („își propune să devină”, nu „devine”)
+IDENTITY = {   # limba: (textul actual – apare de două ori: hero, apoi Viziunea), hero nou, Viziunea nouă
+    "ro": ("BIMx devine infrastructura financiară de referință a Republicii Moldova și o platformă solidă de integrare cu piețele europene de capital. Promovăm o piață deschisă și aliniată dezvoltării durabile.",
+           "Bursa Internațională a Moldovei (BIMx) este o platformă strategică de dezvoltare a pieței de capital, concepută pentru a facilita accesul la finanțare și pentru a conecta economia națională la fluxurile internaționale de investiții.",
+           "BIMx își propune să devină infrastructura financiară de referință a Republicii Moldova și o platformă solidă de integrare cu piețele europene de capital. Promovăm o piață deschisă și aliniată dezvoltării durabile."),
+    "en": ("BIMx is becoming the benchmark financial infrastructure of the Republic of Moldova and a solid platform for integration with European capital markets. We promote an open market aligned with sustainable development.",
+           "The Moldova International Stock Exchange (BIMx) is a strategic platform for capital market development, designed to facilitate access to financing and to connect the national economy to international investment flows.",
+           "BIMx aims to become the benchmark financial infrastructure of the Republic of Moldova and a solid platform for integration with European capital markets. We promote an open market aligned with sustainable development."),
+    "ru": ("BIMx становится эталонной финансовой инфраструктурой Республики Молдова и надёжной платформой интеграции с европейскими рынками капитала. Мы развиваем открытый рынок, ориентированный на устойчивое развитие.",
+           "Международная фондовая биржа Молдовы (BIMx) — стратегическая платформа развития рынка капитала, созданная для того, чтобы облегчить доступ к финансированию и связать национальную экономику с международными инвестиционными потоками.",
+           "BIMx стремится стать эталонной финансовой инфраструктурой Республики Молдова и надёжной платформой интеграции с европейскими рынками капитала. Мы развиваем открытый рынок, ориентированный на устойчивое развитие."),
+    "uk": ("BIMx стає еталонною фінансовою інфраструктурою Республіки Молдова та надійною платформою інтеграції з європейськими ринками капіталу. Ми розвиваємо відкритий ринок, орієнтований на сталий розвиток.",
+           "Міжнародна фондова біржа Молдови (BIMx) — стратегічна платформа розвитку ринку капіталу, створена для того, щоб полегшити доступ до фінансування та поєднати національну економіку з міжнародними інвестиційними потоками.",
+           "BIMx прагне стати еталонною фінансовою інфраструктурою Республіки Молдова та надійною платформою інтеграції з європейськими ринками капіталу. Ми розвиваємо відкритий ринок, орієнтований на сталий розвиток."),
+}
+
+
 def fix_identity(text, pg):
-    """Identitate: fără textul introductiv al secțiunii „Pentru cine este BIMx?” (paragraful de deasupra tabelului)."""
+    """Identitate: textul din hero și al Viziunii; fără textul introductiv al secțiunii „Pentru cine este BIMx?”."""
     if pg.key != "identitate":
         return text
+    old, hero, vision = IDENTITY[pg.lang]
+    text = text.replace(old, hero, 1).replace(old, vision, 1)
+    if "bx-vision-art" not in text:            # Viziunea: semnul BIMx după photowall (sitegen/vision.py)
+        from .vision import vision_svg
+        art = vision_svg(pg.asset("assets/img/chisinau.jpg"), IDX[pg.lang])
+        text = re.sub(r'(<div class="vision">[\s\S]*?<div class="left_side">[\s\S]*?)(</div>)', lambda m: m.group(1) + art + m.group(2), text, count=1)
     return re.sub(r"(<h2>[^<]*</h2>)\s*<p>[^<]*</p>(\s*</div>\s*<table>)", r"\1\2", text, count=1)
 
 
@@ -1167,7 +1169,7 @@ def fix_home(text, pg):
     # UI-32: „Află mai multe” → procesul de listare (evenimentul pregătește primele listări)
     text = re.sub(r'(<div class="buttons">\s*<a href=")#(" class="btn2">)', rf'\g<1>{pg.link("procesul-de-listare/index.html")}\2', text, count=1)
     # UI-11: „Vezi toate” → toate anunțurile
-    text = re.sub(r'(<div class="home_posts">[\s\S]*?<a href=")#(" class="btn3">)', rf'\g<1>{pg.link("category/anunturi-bimx/index.html")}\2', text, count=1)
+    text = re.sub(r'(<div class="home_posts">[\s\S]*?<a href=")#(" class="btn3">)', rf'\g<1>{pg.link("noutati/index.html")}\2', text, count=1)
 
     # UI-36 / UI-37 / UI-38: cardurile „Pentru cine este BIMx?”
     blocks = iter(range(3))
@@ -1370,7 +1372,8 @@ def transform_theme_css():
 
 def redirect_page(dest, target_dir, lang):
     here = dest.parent
-    target = relto(DIST / (LANG_PREFIX[lang] + target_dir) / "index.html", here)
+    target_dir, _, query = target_dir.partition("?")
+    target = relto(DIST / (LANG_PREFIX[lang] + target_dir) / "index.html", here) + (f"?{query}" if query else "")
     dest.write_text(
         f'<!doctype html>\n<html lang="{LOCALES[lang][0]}"><head><meta charset="utf-8">'
         f'<meta http-equiv="refresh" content="0; url={target}"><link rel="canonical" href="{target}"><title>BIMx</title></head>'
@@ -1391,19 +1394,52 @@ def retarget_links(text, here):
         parts = target.parts
         lang = LANG_PREFIX[lang_of(parts)]
         rest = parts[1:] if lang else parts
-        if len(rest) == 2 and rest[0] in REDIRECTS and rest[1] == "index.html":
-            new = relto(DIST / (lang + REDIRECTS[rest[0]]) / "index.html", here) + (f"#{frag}" if frag else "")
+        route = "/".join(rest[:-1])
+        if rest and rest[-1] == "index.html" and route in REDIRECTS:
+            target_dir, _, query = REDIRECTS[route].partition("?")
+            new = relto(DIST / (lang + target_dir) / "index.html", here) + (f"?{query}" if query else "") + (f"#{frag}" if frag else "")
             return f'{attr}="{new}"'
         return m.group(0)
     return re.sub(r'(href)="([^"]*)"', fix, text)
 
 
+def square_member_photos():
+    """Pozele membrilor (m1–m7.png) au colțurile rotunjite „arse” în fișier (pixeli transparenți, raza ~10 px): în dist,
+    colțurile se completează cu fundalul pozei (culoarea pixelului opac cel mai apropiat pe același rând), ca imaginea
+    să fie dreptunghiulară; rotunjirea o dă, unde e cazul, cartela. Originalele din src/ rămân neschimbate."""
+    try:
+        from PIL import Image
+    except ImportError:
+        return
+    for path in sorted((DIST / "wp-content/uploads/2026/06").glob("m[0-9].png")):
+        im = Image.open(path).convert("RGBA")
+        w, h = im.size
+        px = im.load()
+        for y in list(range(min(16, h))) + list(range(max(0, h - 16), h)):
+            for xs in (range(0, min(16, w)), range(w - 1, max(-1, w - 17), -1)):
+                xs = list(xs)
+                solid = next((px[x, y] for x in (xs[-1::-1] if xs[0] == 0 else xs[::-1]) if px[x, y][3] == 255), None)
+                if solid is None:
+                    continue
+                for x in xs:
+                    r, g, b, a = px[x, y]
+                    if a < 255:   # amestec cu fundalul (pixelii de margine sunt parțial transparenți)
+                        k = a / 255
+                        px[x, y] = (round(r * k + solid[0] * (1 - k)), round(g * k + solid[1] * (1 - k)), round(b * k + solid[2] * (1 - k)), 255)
+        im.convert("RGB").save(path, optimize=True)
+
+
 def apply_fixes():
     transform_theme_css()
+    square_member_photos()
     (DIST / "assets" / "img").mkdir(parents=True, exist_ok=True)
-    for name in (*(f"og-bimx-{x}.png" for x in SITE_LANGS), "hero-x.webp", "bimx-logo.svg", "bimx-logo-light.svg"):
+    for name in (*(f"og-bimx-{x}.png" for x in SITE_LANGS), "hero-x.webp", "chisinau.jpg", "bimx-logo.svg", "bimx-logo-light.svg"):
         shutil.copy2(SRC / "site" / "img" / name, DIST / "assets" / "img" / name)
     shutil.copytree(SRC / "site" / "img" / "partners", DIST / "assets" / "img" / "partners", dirs_exist_ok=True)
+    shutil.copytree(SRC / "site" / "img" / "news", DIST / "assets" / "img" / "news", dirs_exist_ok=True)
+    create_tab_pages()                     # „Noutăți & Comunicate”: o pagină pentru fiecare tab
+    create_gallery_pages()                 # Galeria foto: albumele și arhivele ZIP
+    create_tariffs_pages()                 # „Tarifele Bursei”: tabelul din PDF (în locul paginii „Costuri”)
     changed = 0
     for f in sorted(DIST.rglob("*.html")):
         rel = f.relative_to(DIST)
@@ -1416,11 +1452,13 @@ def apply_fixes():
         new = fix_header(text, pg)
         new = fix_footer(new, pg)
         new = chrome.header(new, pg)      # antet compact, limba și contul în meniu, căutare ca dialog
+        new = apply_menu(new, pg)         # meniul principal: structura nouă (sitegen/menu.py)
         new = chrome.footer(new, pg)      # subsolul nou
         new = fix_common(new, pg)
         new = fix_content(new, pg)
         new = fix_capital(new, pg)
         new = fix_council_en(new, pg)
+        new = fix_council_social(new, pg)
         new = fix_partners(new, pg)
         new = fix_identity(new, pg)
         if pg.home:
@@ -1428,7 +1466,11 @@ def apply_fixes():
         new = fix_news_titles(new, pg)
         new = fix_ro_text(new, pg)
         new = fix_settlement(new, pg)
-        new = fix_categories(new, pg)
+        new = build_news_page(new, pg)
+        new = article_photo(new, pg)        # fotografia comunicatului, doar în articol
+        new = build_gallery_page(new, pg)
+        new = build_tariffs_page(new, pg)
+        new = rename_cost_links(new, pg)
         new = fix_share(new, pg)
         new = fix_contact_mail(new, pg)
         new = fix_downloads(new, pg)

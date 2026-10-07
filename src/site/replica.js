@@ -105,7 +105,7 @@
         if (top && top.firstElementChild) top.firstElementChild.focus();
         return;
       }
-      var member = [].slice.call(document.querySelectorAll('.modal_overlay')).filter(function (m) { return m.offsetParent !== null; })[0];
+      var member = [].slice.call(document.querySelectorAll('.modal_overlay')).filter(function (m) { return getComputedStyle(m).display !== 'none'; })[0];   // overlay-ul e fixed: offsetParent e mereu null
       if (member) { var c = member.querySelector('.close'); if (c) c.click(); return; }
       var contact = document.querySelector('.contact_modal_overlay.active .close');
       if (contact) { contact.click(); return; }
@@ -122,7 +122,31 @@
       d.setAttribute('aria-modal', 'true');
       var name = d.querySelector('h4, h3');
       if (name) d.setAttribute('aria-label', name.textContent.trim());
+      // numele și funcția lângă portret; biografia dedesubt, într-un bloc care pe desktop se derulează singur
+      if (!d.querySelector('.bx-member-text')) {
+        var head = document.createElement('div'), col = document.createElement('div');
+        head.className = 'bx-member-head'; col.className = 'bx-member-text';
+        [].slice.call(d.children).forEach(function (c) {
+          if (c.classList.contains('close') || c.classList.contains('img_wrap')) return;
+          (/^(H4|H3|SPAN)$/.test(c.tagName) && !col.children.length ? head : col).appendChild(c);
+        });
+        d.appendChild(head); d.appendChild(col);
+      }
     });
+    // toată cartela membrului e clicabilă (deschide biografia, ca „Detalii”)
+    document.querySelectorAll('.team .member').forEach(function (m) {
+      m.addEventListener('click', function (e) {
+        if (e.target.closest('.modal_overlay, button, a')) return;
+        var b = m.querySelector(':scope > .member_content button, button');
+        if (b) b.click();
+      });
+    });
+    // cât timp biografia e deschisă, pagina din spate nu se derulează
+    var lockObs = new MutationObserver(function () {
+      var open = [].slice.call(document.querySelectorAll('.team .modal_overlay')).some(function (o) { return getComputedStyle(o).display !== 'none'; });
+      document.documentElement.style.overflow = open ? 'hidden' : '';
+    });
+    document.querySelectorAll('.team .modal_overlay').forEach(function (o) { lockObs.observe(o, { attributes: true, attributeFilter: ['style'] }); });
     var lastOpener = null;
     document.addEventListener('click', function (e) {
       var btn = e.target.closest && e.target.closest('.member button');
@@ -318,6 +342,239 @@
     var fsync = function () { fcols.forEach(function (d) { d.open = !fmq.matches; }); };
     fsync();
     if (fmq.addEventListener) fmq.addEventListener('change', fsync);
+
+    // „Noutăți & Comunicate”: filtrele din pagină – categoria („Anunțuri BIMx”) și anul (toate paginile cu articole).
+    // Filtrele stau în adresă (?cat=…&an=…), ca linkul să poată fi trimis.
+    var news = document.querySelector('.bx-news');
+    // eticheta „Nou”: doar cât timp cel mai recent articol are cel mult data-days zile (pagina e generată static)
+    document.querySelectorAll('.bx-n-new').forEach(function (b) {
+      var age = (Date.now() - new Date(b.getAttribute('data-date') + 'T00:00:00').getTime()) / 864e5;
+      if (age > +b.getAttribute('data-days')) b.remove();
+    });
+    // pe mobil, taburile sunt un select: alegerea deschide pagina tabului
+    var tabSel = document.querySelector('.bx-news-tabbar select[data-nav="tab"]');
+    if (tabSel) tabSel.addEventListener('change', function () { location.href = tabSel.value; });
+    var yearSel = document.querySelector('.bx-news-tabbar select[data-filter="an"]');         // în rândul taburilor, doar dacă există mai mulți ani
+    var catSel = document.querySelector('.bx-news-tabbar select[data-filter="cat"]');          // doar la „Anunțuri BIMx”
+    if (news && (yearSel || catSel)) {
+      var items = [].slice.call(news.querySelectorAll('.bx-news-item'));
+      var none = news.querySelector('.bx-news-none');
+      var q = new URLSearchParams(location.search);
+      var yearDef = yearSel ? yearSel.getAttribute('data-default') : 'toate';   // implicit: cel mai recent an
+      var f = { cat: q.get('cat') || 'toate', an: q.get('an') || yearDef };
+      if (!catSel || ![].some.call(catSel.options, function (o) { return o.value === f.cat; })) f.cat = 'toate';
+      if (!yearSel || ![].some.call(yearSel.options, function (o) { return o.value === f.an; })) f.an = yearDef;
+      var render = function (save) {
+        if (catSel) catSel.value = f.cat;
+        if (yearSel) yearSel.value = f.an;
+        var n = 0;
+        items.forEach(function (it) {
+          var ok = (f.cat === 'toate' || it.getAttribute('data-cat') === f.cat) && (f.an === 'toate' || it.getAttribute('data-year') === f.an);
+          it.hidden = !ok;
+          if (ok) n++;
+        });
+        none.hidden = n > 0;
+        if (save) {
+          var p = new URLSearchParams();
+          if (f.cat !== 'toate') p.set('cat', f.cat);
+          if (f.an !== yearDef) p.set('an', f.an);
+          history.replaceState(null, '', location.pathname + (p.toString() ? '?' + p.toString() : '') + location.hash);
+        }
+      };
+      if (catSel) catSel.addEventListener('change', function () { f.cat = catSel.value; render(true); });
+      if (yearSel) yearSel.addEventListener('change', function () { f.an = yearSel.value; render(true); });
+      render(false);
+    }
+
+    // Umbra antetului după derulare: apare după 12 px și dispare abia sub 4 px (histerezis), ca derularea elastică
+    // a trackpadului lângă vârful paginii să nu o aprindă și stingă în buclă
+    var hdr = document.querySelector('header.site-header');
+    if (hdr) {
+      var shadowOn = false, onScroll = function () {
+        var y = Math.max(0, window.scrollY || window.pageYOffset || 0);
+        var want = shadowOn ? y > 4 : y > 12;
+        if (want !== shadowOn) { shadowOn = want; hdr.classList.toggle('bx-scrolled', want); }
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    }
+
+    // Meniul principal pe desktop: panoul se deschide la hover (cu o mică întârziere, ca trecerea mouse-ului peste meniu
+    // să nu deschidă panouri) și se închide la ieșirea din meniu; clicul pe un element doar deschide (nu închide) panoul.
+    // Pe ecranele tactile late (≥1200 px) atingerea deschide / închide panoul (tema), iar stările vizuale sunt aceleași.
+    var wide = window.matchMedia('(min-width: 1200px)');
+    var desk = window.matchMedia('(min-width: 1200px) and (hover: hover) and (pointer: fine)');
+    var calm = window.matchMedia('(prefers-reduced-motion: reduce)');
+    var menu = document.getElementById('primary-menu-list');
+    if (menu) {
+      var tops = [].slice.call(menu.querySelectorAll(':scope > li.bx-dd'));
+      var timer = null, stateTimer = null, shown = null;
+      // panoul și bara cyan pornesc exact de la marginea de jos a antetului (acoperă linia de 1 px)
+      var bar = document.querySelector('header.site-header .header_content');
+      var ind = document.createElement('span'); ind.className = 'bx-nav-ind'; ind.setAttribute('aria-hidden', 'true');
+      menu.appendChild(ind);
+      var shade = document.createElement('div'); shade.className = 'bx-nav-backdrop'; shade.setAttribute('aria-hidden', 'true');
+      document.body.appendChild(shade);
+      var panelOf = function (li) { return li && li.querySelector(':scope > ul.sub-menu'); };
+      var openLi = function () { return tops.filter(function (t) { var u = panelOf(t); return u && u.classList.contains('active'); })[0] || null; };
+      // indicatorul comun: poziția și lățimea elementului, relativ la listă (transform: translateX + scaleX)
+      var aim = function (li, jump) {
+        if (!li) return;
+        var m = menu.getBoundingClientRect(), r = li.getBoundingClientRect();
+        if (jump) { ind.classList.add('jump'); }
+        ind.style.setProperty('--bx-ind-x', (r.left - m.left) + 'px');
+        ind.style.setProperty('--bx-ind-w', r.width);
+        if (jump) { void ind.offsetWidth; ind.classList.remove('jump'); }
+      };
+      var place = function () {
+        if (!wide.matches || !bar) return;
+        var bottom = bar.getBoundingClientRect().bottom, mtop = menu.getBoundingClientRect().top;
+        tops.forEach(function (li) { li.style.setProperty('--bx-dd-top', (bottom - li.getBoundingClientRect().top - 1) + 'px'); });
+        ind.style.setProperty('--bx-ind-top', (bottom - mtop - 2) + 'px');
+        document.documentElement.style.setProperty('--bx-hdr-bottom', Math.max(0, bottom) + 'px');
+        if (shown) aim(shown, true);
+      };
+      place();
+      window.addEventListener('resize', place);
+      window.addEventListener('scroll', function () { if (shown) place(); }, { passive: true });
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(place);
+      // stările: prima deschidere (panoul alunecă, linkurile apar pe rând), trecere (doar conținutul se estompează), închidere
+      var mark = function (cls, ms) {
+        menu.classList.remove('bx-dd-opening', 'bx-dd-switching');
+        clearTimeout(stateTimer);
+        if (!cls) return;
+        void menu.offsetWidth;   // repornește animația linkurilor și la treceri rapide între meniuri
+        menu.classList.add.apply(menu.classList, cls.split(' '));
+        stateTimer = setTimeout(function () { menu.classList.remove('bx-dd-opening', 'bx-dd-switching'); }, ms);
+      };
+      var stagger = function (li) {
+        var items = [].slice.call(panelOf(li).querySelectorAll('li.not_click > ul.sub-menu > li, :scope > li.bx-dd-feature, :scope > li.bx-dd-foot'));
+        items.forEach(function (it, k) { it.style.setProperty('--bx-d', Math.min(k * 25, 175) + 'ms'); });
+      };
+      var sync = function () {
+        var li = openLi();
+        if (li === shown) return;
+        var prev = shown; shown = li;
+        if (!wide.matches) { mark(null); return; }
+        if (li && !prev) {
+          place(); stagger(li); mark(calm.matches ? null : 'bx-dd-opening', 560);
+          aim(li, true); void ind.offsetWidth;
+          ind.classList.add('on'); shade.classList.add('on');
+        } else if (li && prev) {
+          stagger(li); mark(calm.matches ? null : 'bx-dd-opening bx-dd-switching', 480);
+          aim(li, calm.matches);
+        } else {
+          mark(null);
+          ind.classList.remove('on'); shade.classList.remove('on');
+        }
+      };
+      tops.forEach(function (li) { var u = panelOf(li); if (u) new MutationObserver(sync).observe(u, { attributes: true, attributeFilter: ['class'] }); });
+      var openOnly = function (li) {
+        tops.forEach(function (t) {
+          var u = panelOf(t);
+          if (u) u.classList.toggle('active', t === li);
+        });
+      };
+      var links = function (li) {
+        return [].slice.call(panelOf(li).querySelectorAll('a')).filter(function (a) { return a.offsetParent !== null; });
+      };
+      tops.forEach(function (li) {
+        var trig = li.querySelector(':scope > a');
+        li.addEventListener('mouseenter', function () {
+          if (!desk.matches) return;
+          clearTimeout(timer);
+          // dacă un panou e deja deschis, trecerea la alt element e imediată; altfel o mică întârziere de intenție
+          if (shown === li) return;
+          timer = setTimeout(function () { openOnly(li); }, shown ? 40 : 90);
+        });
+        trig.addEventListener('click', function (e) {
+          if (!desk.matches) return;
+          e.preventDefault(); e.stopImmediatePropagation();
+          clearTimeout(timer);
+          var u = panelOf(li);
+          openOnly(u && u.classList.contains('active') && e.detail === 0 ? null : li);   // tastatura (Enter) comută; mouse-ul deschide
+        }, true);
+        // tastatura: Enter / Spațiu / ↓ pe element deschid panoul și mută focusul pe primul link; ←/→ între elemente
+        trig.addEventListener('keydown', function (e) {
+          if (!wide.matches) return;
+          var k = tops.indexOf(li);
+          if (e.key === 'ArrowDown' || e.key === ' ' || e.key === 'Enter') {
+            e.preventDefault(); e.stopImmediatePropagation();
+            clearTimeout(timer);
+            if (e.key === 'Enter' && panelOf(li).classList.contains('active')) { openOnly(null); return; }
+            openOnly(li);
+            var first = links(li)[0];
+            if (first) first.focus();
+          } else if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+            e.preventDefault();
+            var next = tops[(k + (e.key === 'ArrowRight' ? 1 : -1) + tops.length) % tops.length];
+            next.querySelector(':scope > a').focus();
+            if (shown) openOnly(next);
+          }
+        });
+        // în panou: ↑/↓ între linkuri (↑ de pe primul revine la element), Home / End
+        panelOf(li).addEventListener('keydown', function (e) {
+          if (['ArrowDown', 'ArrowUp', 'Home', 'End'].indexOf(e.key) < 0) return;
+          var all = links(li), i = all.indexOf(document.activeElement);
+          if (i < 0) return;
+          e.preventDefault();
+          if (e.key === 'Home') all[0].focus();
+          else if (e.key === 'End') all[all.length - 1].focus();
+          else if (e.key === 'ArrowDown') all[Math.min(i + 1, all.length - 1)].focus();
+          else if (i === 0) trig.focus();
+          else all[i - 1].focus();
+        });
+        // focusul de tastatură pe un element mută indicatorul, dacă un panou e deschis
+        trig.addEventListener('focus', function () { if (shown && shown !== li && wide.matches) { clearTimeout(timer); openOnly(li); } });
+      });
+      // revenirea în meniu (inclusiv în panou) anulează închiderea programată
+      menu.addEventListener('mouseenter', function () { if (desk.matches) clearTimeout(timer); });
+      menu.addEventListener('mouseleave', function () {
+        if (!desk.matches) return;
+        clearTimeout(timer);
+        timer = setTimeout(function () { openOnly(null); }, 280);
+      });
+      // focusul iese din meniu (Tab după ultimul link): panoul se închide
+      menu.addEventListener('focusout', function (e) {
+        if (wide.matches && e.relatedTarget && !menu.contains(e.relatedTarget)) openOnly(null);
+      });
+      // atingere / clic în afara meniului închide panoul
+      document.addEventListener('pointerdown', function (e) {
+        if (shown && wide.matches && !menu.contains(e.target)) openOnly(null);
+      });
+      var reset = function () { if (!wide.matches) { openOnly(null); ind.classList.remove('on'); shade.classList.remove('on'); shown = null; } else place(); };
+      if (wide.addEventListener) wide.addEventListener('change', reset);
+    }
+
+    // Galeria foto: fotografia mărită (dialog), cu săgeți ←/→, Escape și descărcare
+    var lb = document.querySelector('dialog.bx-lb');
+    var shots = [].slice.call(document.querySelectorAll('.bx-photo'));
+    if (lb && shots.length && lb.showModal) {
+      var lbImg = lb.querySelector('img'), lbCap = lb.querySelector('figcaption'), lbCount = lb.querySelector('.bx-lb-count'),
+          lbDl = lb.querySelector('.bx-lb-dl'), cur = 0, opener = null;
+      var show = function (k) {
+        cur = (k + shots.length) % shots.length;
+        var s = shots[cur];
+        lbImg.src = s.getAttribute('data-full'); lbImg.alt = s.getAttribute('data-alt');
+        lbImg.width = +s.getAttribute('data-w'); lbImg.height = +s.getAttribute('data-h');
+        lbCap.textContent = s.getAttribute('data-caption');
+        lbCount.textContent = (cur + 1) + ' / ' + shots.length;
+        lbDl.href = s.getAttribute('data-full');
+      };
+      shots.forEach(function (s, k) {
+        s.addEventListener('click', function () { opener = s; show(k); lb.showModal(); });
+      });
+      lb.querySelector('.bx-lb-prev').addEventListener('click', function () { show(cur - 1); });
+      lb.querySelector('.bx-lb-next').addEventListener('click', function () { show(cur + 1); });
+      lb.querySelector('.bx-lb-close').addEventListener('click', function () { lb.close(); });
+      lb.addEventListener('click', function (e) { if (e.target === lb) lb.close(); });   // clic pe fundal
+      lb.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowRight') { e.preventDefault(); show(cur + 1); }
+        if (e.key === 'ArrowLeft') { e.preventDefault(); show(cur - 1); }
+      });
+      lb.addEventListener('close', function () { if (opener) opener.focus(); });
+      if (shots.length < 2) lb.classList.add('single');
+    }
 
     // Tickerul: pauză / pornire
     document.querySelectorAll('.bx-ticker-toggle').forEach(function (b) {
