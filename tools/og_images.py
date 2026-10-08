@@ -30,7 +30,7 @@ X_PATHS = ('<path fill="#fff" d="M0 0h11l29 34H29z"/><path fill="#fff" d="M40 0H
            '<path fill="#1DB0F0" d="M9 6h10l11 11-11 11H9l11-11z"/>')
 
 TEMPLATE = """<!doctype html><html lang="{lang}"><head><meta charset="utf-8">
-<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@500;700&family=Montserrat:wght@500;700&display=block" rel="stylesheet">
+<link href="{fonts}" rel="stylesheet">
 <style>
 html,body{{margin:0;width:1200px;height:630px;overflow:hidden}}
 .c{{position:relative;width:1200px;height:630px;background:linear-gradient(120deg,#1A2266 0%,#232D80 60%,#2A3AA0 100%);color:#fff;overflow:hidden;font-family:{font},sans-serif}}
@@ -61,7 +61,7 @@ def main():
         for lang, (name, title, foot) in TEXTS.items():
             size = 72 if FONT[lang] == "Prompt" else 64      # Montserrat e mai lat
             page = Path(tmp) / f"og-{lang}.html"
-            page.write_text(TEMPLATE.format(lang=lang, font=FONT[lang], size=size, name=name,
+            page.write_text(TEMPLATE.format(fonts=(SRC / "site" / "fonts" / "fonts.css").as_uri(), lang=lang, font=FONT[lang], size=size, name=name,
                                             title=title.replace(" в ", " в&nbsp;"), foot=foot, x=X_PATHS),
                             encoding="utf-8")                  # prepoziția „в” nu rămâne singură la capăt de rând
             out = out_dir / f"og-bimx-{lang}.png"

@@ -14,9 +14,11 @@ import urllib.parse
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
-from .config import DIST, LANG_PREFIX, SITE_LANGS
+from .config import SRC, DIST, LANG_PREFIX, SITE_LANGS
 from .news import IDX, NEWS, SITE_URL
 from .pdf import find_chrome, print_pdf
+
+FONTS_CSS = (SRC / "site" / "fonts" / "fonts.css").as_uri()     # fonturile locale (nu Google Fonts), și pentru PDF-uri
 
 T = {   # textele, în ordinea ro, en, ru, uk
     "share": ("Distribuiți", "Share", "Поделиться", "Поділитися"),
@@ -235,7 +237,7 @@ def _print_html(text, lang, page_url, logo_svg):
     }
     licence = _t("licence", lang).replace("\\A", "\n")
     return (f'<!doctype html><html lang="{lang}"><head><meta charset="utf-8"><title>{title}</title>'
-            '<link href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;display=block" rel="stylesheet">'
+            f'<link href="{FONTS_CSS}" rel="stylesheet">'
             f'<style>{css}</style></head><body>'
             f'<header class="head"><img src="{_data_uri(logo_svg)}" alt="BIMx"><div>{_t("company", lang)}\n{licence}</div></header>'
             f'<div class="meta"><div class="place">{place}</div>' + (f'<div class="kind">{kind}</div>' if kind else "") + '</div>'

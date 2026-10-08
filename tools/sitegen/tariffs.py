@@ -6,8 +6,10 @@ Pagina se face din pagina temei costuri/ (aceeași adâncime), iar costuri/ devi
 """
 import re
 
-from .config import DIST, LANG_PREFIX, SITE_LANGS
+from .config import SRC, DIST, LANG_PREFIX, SITE_LANGS
 from .news import IDX, SITE_URL
+
+FONTS_CSS = (SRC / "site" / "fonts" / "fonts.css").as_uri()     # fonturile locale (nu Google Fonts), și pentru PDF-uri
 
 PATH = "tarifele-bursei/index.html"
 SOURCE = "costuri/index.html"
@@ -177,7 +179,7 @@ def print_html(lang, logo):
             rows.append(f'<tr><td class="nr">{n}</td><td>{desc[i]}</td><td class="val">{fee[i]}</td></tr>')
     css = PRINT_CSS % {"address": T["address"][i]}
     return (f'<!doctype html><html lang="{lang}"><head><meta charset="utf-8"><title>{T["table"][i]}</title>'
-            '<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;600;700&amp;display=block" rel="stylesheet">'
+            f'<link href="{FONTS_CSS}" rel="stylesheet">'
             f'<style>{css}</style></head><body><header class="head"><img src="{logo}" alt="BIMx">'
             f'<div>{T["company"][i]}  |  {T["capital"][i]}  |  IDNO 1025600073907</div></header>'
             f'<table><caption>{T["table"][i]}</caption><thead><tr><th class="nr">{T["nr"][i]}</th><th>{T["desc"][i]}</th>'

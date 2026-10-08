@@ -2593,4 +2593,53 @@ footer.site-footer.bx-footer .bx-f-risk { padding-top: 8px; }
   .team .team_section .modal_overlay .modal_content_member .bx-member-head h4 { font-size: 22px !important; line-height: 28px !important; }
   .team .team_section .modal_overlay .modal_content_member .close { position: fixed !important; background: rgba(255, 255, 255, .92); color: #1A2266; }
 }
+
+/* Contacte: harta Google se încarcă la clic (fixes.map_on_click); previzualizarea are aceeași înălțime ca harta */
+.form_section .map_side .map_description .bx-map { height: 385px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding: 24px; text-align: center;
+  border-bottom: 1px solid #E3E6EE; color: var(--bx-navy);
+  background: #F5F7FB url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48'%3E%3Cpath d='M0 47.5h48M47.5 0v48' stroke='%23E3E7F0' fill='none'/%3E%3C/svg%3E"); }
+.bx-map-pin { display: inline-flex; width: 56px; height: 56px; align-items: center; justify-content: center; border-radius: 50%; background: #fff; color: #1DB0F0;
+  box-shadow: 0 6px 16px -8px rgba(26, 34, 102, .35); }
+.bx-map-addr { font-size: 16px; font-weight: 600; }
+.bx-map-btn { height: 44px; padding: 0 20px; border: 0; border-radius: 8px; background: #1DB0F0; color: #fff; font: inherit; font-size: 15px; font-weight: 600;
+  cursor: pointer; transition: background-color .15s; }
+.bx-map-btn:hover { background: #0E9AD6; }
+.bx-map-btn:focus-visible { outline: 2px solid var(--bx-navy); outline-offset: 2px; }
+.bx-map-note { max-width: 340px; font-size: 13px; line-height: 1.5; color: #6A7181; }
+.form_section .map_side .map_description .bx-map-note a { display: inline; margin: 0; font-size: 13px; color: #0E8FCC; text-decoration: underline; }
+/* Politica de confidențialitate / Politica cookie (sitegen/legal.py) */
+.bx-legal { max-width: 820px; padding: 8px 0 24px; }
+.bx-legal h2 { margin: 32px 0 10px; font-size: 22px; line-height: 30px; font-weight: 700; color: var(--bx-navy); }
+.bx-legal h2:first-child { margin-top: 0; }
+.bx-legal p, .bx-legal li { font-size: 16px; line-height: 26px; color: rgba(26, 34, 102, .85); }
+.bx-legal p { margin: 0 0 12px; }
+.bx-legal ul { margin: 0 0 12px; padding-left: 20px; list-style: disc; }
+.bx-legal li { margin-bottom: 8px; }
+.bx-legal a { color: #0E8FCC; text-decoration: underline; text-underline-offset: 2px; }
+.bx-legal-date { margin-top: 28px !important; font-size: 14px !important; color: #6A7181 !important; }
+.bx-legal-table { overflow-x: auto; margin: 4px 0 16px; border: 1px solid #E3E6EE; border-radius: 12px; }
+.bx-legal-table table { width: 100%; border-collapse: collapse; font-size: 15px; line-height: 1.5; }
+.bx-legal-table th { padding: 12px 16px; background: #F5F6FA; text-align: left; font-size: 13px; font-weight: 600; color: #6A7181; border-bottom: 1px solid #E3E6EE; }
+.bx-legal-table td { padding: 12px 16px; vertical-align: top; color: #2F3550; border-bottom: 1px solid #EEF0F5; }
+.bx-legal-table tr:last-child td { border-bottom: 0; }
+.bx-legal-table code { font-size: 13px; background: #F2F4F8; padding: 2px 6px; border-radius: 4px; color: var(--bx-navy); white-space: nowrap; }
+@media (max-width: 600px) {
+  .bx-legal-table { border: 0; border-radius: 0; overflow: visible; }
+  .bx-legal-table thead { display: none; }
+  .bx-legal-table table, .bx-legal-table tbody, .bx-legal-table tr, .bx-legal-table td { display: block; width: auto; }
+  .bx-legal-table tr { margin-bottom: 12px; padding: 14px 16px; border: 1px solid #E3E6EE; border-radius: 12px; }
+  .bx-legal-table td { padding: 2px 0; border: 0 !important; }
+  .bx-legal-table td:first-child { margin-bottom: 6px; }
+  .bx-legal-table td:nth-child(2) { font-weight: 600; color: var(--bx-navy); }
+  .bx-legal-table td:last-child { margin-top: 6px; font-size: 14px; color: #6A7181; }
 }
+/* nota de sub formularul de contact: text continuu (cu link spre Politica de confidențialitate), nu coloane flex */
+.form_section .form_side form p.policy { display: block !important; line-height: 20px !important; }
+.form_section .form_side form p.policy a { color: #0E8FCC; text-decoration: underline; text-underline-offset: 2px; }
+
+/* cartelele de document (Tarifele Bursei, Organigrama, Statut…): toată cartela e clicabilă (linkul „Descărcați” o acoperă), cu hover */
+.bx-doc { position: relative; transition: border-color .15s, box-shadow .15s, background-color .15s; }
+.bx-doc .bx-doc-btn::after { content: ""; position: absolute; inset: 0; border-radius: inherit; }
+.bx-doc:hover { border-color: #1DB0F0; background: #F7FAFD; box-shadow: 0 12px 28px -18px rgba(20, 26, 61, .35); }
+.bx-doc:hover .bx-doc-btn { border-color: #1DB0F0; background: #1DB0F0; color: #fff; }
+.bx-doc:has(.bx-doc-btn:focus-visible) { outline: 2px solid #1DB0F0; outline-offset: 2px; }

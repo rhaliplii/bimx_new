@@ -587,3 +587,19 @@
     });
   });
 })();
+
+// Harta de pe Contacte (Google Maps): iframe-ul se creează doar la clic pe „Afișați harta” (fără cookie-uri Google înainte)
+(function () {
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest && e.target.closest('.bx-map .bx-map-btn');
+    if (!btn) return;
+    var box = btn.closest('.bx-map');
+    var f = document.createElement('iframe');
+    f.src = box.getAttribute('data-map');
+    f.title = box.getAttribute('data-title') || '';
+    f.width = '100%'; f.height = '385'; f.style.border = '0'; f.loading = 'lazy';
+    f.setAttribute('allowfullscreen', ''); f.referrerPolicy = 'no-referrer-when-downgrade';
+    box.replaceWith(f);
+    f.focus();
+  });
+})();

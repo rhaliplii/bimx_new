@@ -11,6 +11,7 @@ import shutil
 from pathlib import Path
 
 from . import chrome
+from .legal import LEAD as LEGAL_LEAD, legal_html
 from .tariffs import build_tariffs_page, create_tariffs_pages, rename_cost_links
 from .gallery import build_gallery_page, create_gallery_pages
 from .menu import apply_menu
@@ -186,13 +187,17 @@ PAGES = {
                                             "Операційна модель і платформа ARENA")},
     "servicii": {"section": "servicii", "ro": ("Servicii", ""), "en": ("Services", ""), "ru": ("Услуги", ""), "uk": ("Послуги", ""), "kind": "prep",
                  "see": ("servicii-de-listare/index.html", "Servicii de listare", "Listing services", "Услуги по листингу", "Послуги з лістингу")},
-    "politica-de-confidentialitate": {"section": "juridic", "ro": ("Politica de confidențialitate", ""),
-                                      "en": ("Privacy policy", ""), "ru": ("Политика конфиденциальности", ""),
-                                      "uk": ("Політика конфіденційності", ""), "kind": "prep",
-                                      "see": ("contacte/index.html", "Contacte", "Contacts", "Контакты", "Контакти")},
-    "politica-cookie": {"section": "juridic", "ro": ("Politica cookie", ""), "en": ("Cookie policy", ""),
-                        "ru": ("Политика использования файлов cookie", ""), "uk": ("Політика щодо файлів cookie", ""), "kind": "prep",
-                        "see": ("contacte/index.html", "Contacte", "Contacts", "Контакты", "Контакти")},
+    # conținutul în sitegen/legal.py (ce face site-ul în realitate: fără analytics, fonturi locale, harta la clic)
+    "politica-de-confidentialitate": {"section": "juridic", "kind": "text",
+                                      "ro": ("Politica de confidențialitate", LEGAL_LEAD["politica-de-confidentialitate"]["ro"]),
+                                      "en": ("Privacy policy", LEGAL_LEAD["politica-de-confidentialitate"]["en"]),
+                                      "ru": ("Политика конфиденциальности", LEGAL_LEAD["politica-de-confidentialitate"]["ru"]),
+                                      "uk": ("Політика конфіденційності", LEGAL_LEAD["politica-de-confidentialitate"]["uk"])},
+    "politica-cookie": {"section": "juridic", "kind": "text",
+                        "ro": ("Politica cookie", LEGAL_LEAD["politica-cookie"]["ro"]),
+                        "en": ("Cookie policy", LEGAL_LEAD["politica-cookie"]["en"]),
+                        "ru": ("Политика использования файлов cookie", LEGAL_LEAD["politica-cookie"]["ru"]),
+                        "uk": ("Політика щодо файлів cookie", LEGAL_LEAD["politica-cookie"]["uk"])},
 }
 
 # Etapele din calendar: (data exactă sau None, RO: (dată, titlu, detalii), EN: ...). Starea se calculează la build.
@@ -620,8 +625,8 @@ def fix_common(text, pg):
         text = text.replace(f'<a href="{LINKEDIN}" class="bx-social-btn">', f'<a href="{LINKEDIN}" class="bx-social-btn" target="_blank" rel="noopener" aria-label="LinkedIn">')
         text = re.sub(r'<a href="(https://www\.facebook\.com/[^"]*)" class="bx-social-btn">', r'<a href="\1" class="bx-social-btn" target="_blank" rel="noopener" aria-label="Facebook">', text)
 
-    # UI-24: iframe-ul hărții are titlu
-    text = re.sub(r'<iframe (src="https://www\.google\.com/maps[^"]*")', rf'<iframe title="{pick(pg.lang, "Harta sediului BIMx", "Map of the BIMx office", "Карта офиса BIMx", "Карта офісу BIMx")}" \1', text)
+    # Harta Google (Contacte) se încarcă doar la clic: până atunci Google nu primește nicio cerere și nu pune cookie-uri
+    text = map_on_click(text, pg)
     # UI-28: miniatura de 300 px nu mai e aleasă pentru carduri afișate la ~450 px
     text = re.sub(r',\s*[^",]*article_image-300x200\.png 300w', "", text)
 
@@ -635,7 +640,53 @@ def fix_common(text, pg):
     return text
 
 
-RU_FONT = ('<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&amp;display=swap">\n')
+# Fonturile (Prompt; Montserrat pentru chirilică) sunt găzduite local, în assets/fonts/ (src/site/fonts/): nicio cerere către
+# Google Fonts, deci adresa IP a vizitatorului nu ajunge la Google. Toate linkurile spre Google Fonts se înlocuiesc cu fonts.css.
+GOOGLE_FONT_LINK = re.compile(r'<link\b[^>]*https://fonts\.(?:googleapis|gstatic)\.com[^>]*>\s*')
+
+
+MAP_IFRAME = re.compile(r'<iframe\b[^>]*\bsrc="(https://www\.google\.com/maps/embed[^"]*)"[^>]*>\s*</iframe>')
+ICON_PIN = ('<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" '
+            'stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>')
+
+
+def map_on_click(text, pg):
+    """Harta sediului (Google Maps) înlocuită cu o previzualizare; iframe-ul se creează abia la clic (replica.js, [data-map])."""
+    def repl(m):
+        title = pick(pg.lang, "Harta sediului BIMx", "Map of the BIMx office", "Карта офиса BIMx", "Карта офісу BIMx")
+        btn = pick(pg.lang, "Afișați harta", "Show the map", "Показать карту", "Показати карту")
+        addr = pick(pg.lang, "str. Vlaicu Pârcălab 63, Chișinău", "63 Vlaicu Pârcălab St., Chișinău",
+                    "ул. Влайку Пыркэлаб, 63, Кишинэу", "вул. Влайку Пиркелаб, 63, Кишинеу")
+        note = pick(pg.lang, "Harta este furnizată de Google. La afișare, Google poate seta cookie-uri.",
+                    "The map is provided by Google. When shown, Google may set cookies.",
+                    "Карта предоставляется Google. При её показе Google может устанавливать файлы cookie.",
+                    "Карту надає Google. Під час її показу Google може встановлювати файли cookie.")
+        more = pick(pg.lang, "Detalii", "Details", "Подробнее", "Детальніше")
+        return (f'<div class="bx-map" data-map="{m.group(1)}" data-title="{title}">'
+                f'<span class="bx-map-pin">{ICON_PIN}</span><span class="bx-map-addr">{addr}</span>'
+                f'<button type="button" class="bx-map-btn">{btn}</button>'
+                f'<span class="bx-map-note">{note} <a href="{pg.link("politica-cookie/index.html")}">{more}</a></span></div>')
+    return MAP_IFRAME.sub(repl, text)
+
+
+PRIVACY_PHRASE = {"ro": "Politicii de Confidențialitate", "en": "Privacy Policy", "ru": "Политикой конфиденциальности",
+                  "uk": "Політики конфіденційності"}
+
+
+def privacy_links(text, pg):
+    """Nota de sub formulare („…conform Politicii de Confidențialitate”) trimite la pagina politicii."""
+    phrase = PRIVACY_PHRASE[pg.lang]
+    href = pg.link("politica-de-confidentialitate/index.html")
+    return re.sub(rf"(?<![>\w]){re.escape(phrase)}(?![^<]*</a>)", f'<a href="{href}">{phrase}</a>', text)
+
+
+def local_fonts(text, pg):
+    text = GOOGLE_FONT_LINK.sub("", text)
+    if "assets/fonts/fonts.css" in text:
+        return text
+    link = f'<link rel="stylesheet" href="{pg.asset("assets/fonts/fonts.css")}">\n'
+    m = re.search(r"<link\b[^>]*rel=[\"']stylesheet[\"']", text)
+    return text[:m.start()] + link + text[m.start():] if m else text.replace("</head>", link + "</head>", 1)
 SITE_URL = "https://rhaliplii.github.io/bimx_new/"      # adresa publică a site-ului (pentru imaginea și linkurile de partajare)
 OG_IMAGE = "assets/img/og-bimx-{lang}.png"          # câte o imagine pe limbă (tools/og_images.py)
 
@@ -1266,6 +1317,8 @@ def page_body(pg, spec):
                 f'<a class="bx-doc-btn" href="{pg.asset(path)}" target="_blank" rel="noopener">{t["doc_download"]}'
                 f'<span class="screen-reader-text"> {name} {t["new_tab"]}</span></a></li>')
         content = f'<ul class="bx-docs">{"".join(cards)}</ul>'
+    elif spec["kind"] == "text":
+        content = f'<div class="bx-legal">{legal_html(pg.key, lang, pg.link)}</div>'
     else:
         path, *names = spec["see"]
         see = pick(lang, "Până atunci, consultați: ", "In the meantime, see: ", "Пока вы можете ознакомиться с разделом ",
@@ -1354,6 +1407,7 @@ def transform_theme_css():
         if new != body:
             changes += 1
         return sel + "{" + new + "}"
+    css = re.sub(r'@import url\("https://fonts\.googleapis\.com[^)]*\);?\s*', "", css)   # fonturile vin din assets/fonts/fonts.css
     css = re.sub(r"([^{}]+)\{([^{}]*)\}", rule, css)
     # redesign: aceeași scară de spațiere, colțuri și umbre pe tot site-ul (tokenurile din src/site/site.css)
     for a, b in ((r"margin: 100px 0", "margin: 72px 0"), (r"margin: 85px 0", "margin: 72px 0"), (r"margin: 60px 0", "margin: 56px 0"),
@@ -1436,6 +1490,7 @@ def apply_fixes():
     for name in (*(f"og-bimx-{x}.png" for x in SITE_LANGS), "hero-x.webp", "chisinau.jpg", "bimx-logo.svg", "bimx-logo-light.svg"):
         shutil.copy2(SRC / "site" / "img" / name, DIST / "assets" / "img" / name)
     shutil.copytree(SRC / "site" / "img" / "partners", DIST / "assets" / "img" / "partners", dirs_exist_ok=True)
+    shutil.copytree(SRC / "site" / "fonts", DIST / "assets" / "fonts", dirs_exist_ok=True)
     shutil.copytree(SRC / "site" / "img" / "news", DIST / "assets" / "img" / "news", dirs_exist_ok=True)
     create_tab_pages()                     # „Noutăți & Comunicate”: o pagină pentru fiecare tab
     create_gallery_pages()                 # Galeria foto: albumele și arhivele ZIP
@@ -1481,8 +1536,8 @@ def apply_fixes():
             new, _ = apply_icons(new, pg.key, pg.lang)
         new = link_crumbs(new, pg)
         new = fix_og(new, pg)
-        if pg.lang in CYRILLIC and "family=Montserrat" not in new:     # fontul cu chirilică (vezi site.css)
-            new = new.replace("</head>", RU_FONT + "</head>", 1)
+        new = local_fonts(new, pg)          # fonturi locale, inclusiv Montserrat pentru chirilică (vezi site.css)
+        new = privacy_links(new, pg)
         new = fix_headings(new)
         new = retarget_links(new, f.parent)
         new = fix_broker_ro(new, pg)        # ultimul pas: toate textele (inclusiv prima pagină și paginile generate) sunt deja la locul lor
