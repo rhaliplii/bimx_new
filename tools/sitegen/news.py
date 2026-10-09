@@ -97,7 +97,6 @@ ISSUERS = []
 # taburile: cheie → pagina (calea în interiorul limbii)
 TABS = [("toate", "noutati/index.html"), ("bimx", "category/anunturi-bimx/index.html"),
         ("avize", "category/avize-de-piata/index.html"), ("emitenti", "category/anunturi-ale-emitentilor/index.html")]
-from .config import SITE_URL  # noqa: E402  (adresa publică: canonical și hreflang cer adrese complete)
 
 MONTHS = {  # (numele lunii în dată, abrevierea din insignă)
     "ro": [("ianuarie", "IAN."), ("februarie", "FEBR."), ("martie", "MART."), ("aprilie", "APR."), ("mai", "MAI"), ("iunie", "IUN."),
@@ -315,15 +314,8 @@ SEP = ('<li aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" f
 
 
 def head_links(pg, tab):
-    """canonical și hreflang cu adrese complete; noindex pe paginile fără conținut (se scoate singur la primul articol)."""
-    path = dict(TABS)[tab]
-    url = lambda lang: SITE_URL + LANG_PREFIX[lang] + path.replace("index.html", "")
-    links = [f'<link rel="canonical" href="{url(pg.lang)}">']
-    links += [f'<link rel="alternate" hreflang="{x}" href="{url(x)}">' for x in SITE_LANGS]
-    links.append(f'<link rel="alternate" hreflang="x-default" href="{url("ro")}">')
-    if not entries(tab):
-        links.append('<meta name="robots" content="noindex, follow">')
-    return "\n".join(links)
+    """noindex pe paginile fără conținut (se scoate singur la primul articol); canonical și hreflang: sitegen/seo.py."""
+    return "" if entries(tab) else '\n<meta name="robots" content="noindex, follow">'
 
 
 def build_news_page(text, pg):
@@ -356,8 +348,7 @@ def build_news_page(text, pg):
     text = re.sub(r'\s*<div class="related_categories">[\s\S]*?</section>\s*</div>', "", text, count=1)
     full = title if tab == "toate" else f'{title} – {T["title"][i]}'
     text = re.sub(r'<title>[^<]*</title>', f'<title>{full} – BIMx</title>', text, count=1)
-    text = re.sub(r'\s*<link rel="canonical"[^>]*>', "", text)
-    return text.replace("</title>", "</title>\n" + head_links(pg, tab), 1)
+    return text.replace("</title>", "</title>" + head_links(pg, tab), 1)
 
 
 URL_ATTR = re.compile(r'(\s(?:href|src|action)=(["\']))(.*?)(\2)|(\ssrcset=(["\']))(.*?)(\6)|(url\(\s*[\'"]?)([^\'")]+)')

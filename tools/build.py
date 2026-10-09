@@ -20,6 +20,7 @@ Rezultat (dist/):
   index.html, <pagină>/            – bimx.md în română
   en/index.html, en/<pagină>/      – bimx.md în engleză (aceleași căi ca în română)
   academy/, en/academy/            – BIMx Academy (programe/, publicatii/, assets/)
+  robots.txt, sitemap.xml, .htaccess, 404.html – SEO pentru https://bimx.md/ (sitegen/seo.py)
 """
 import shutil
 import sys
@@ -32,9 +33,10 @@ from sitegen.detach import detach  # noqa: E402
 from sitegen.fixes import apply_fixes  # noqa: E402
 from sitegen.pdf import build_pdfs  # noqa: E402
 from sitegen.search import build_search  # noqa: E402
+from sitegen.seo import apply_seo  # noqa: E402
 from sitegen.cachebust import cachebust  # noqa: E402
 from sitegen.communique import build_communiques  # noqa: E402
-from sitegen.config import ACADEMY_ASSETS, ACADEMY_SRC, DIST, LANGS, PUBLICATIONS, ROOT, SITE_LANGS  # noqa: E402
+from sitegen.config import ACADEMY_ASSETS, ACADEMY_SRC, DIST, LANGS, PUBLICATIONS, ROOT, SITE_LANGS, SITE_URL  # noqa: E402
 from sitegen.mirror import build_snapshot, localize_links  # noqa: E402
 from sitegen.shell import write_scoped_css  # noqa: E402
 
@@ -72,6 +74,9 @@ def main():
     print("Căutare: " + ", ".join(f"{counts[l]} pagini {l.upper()}" for l in SITE_LANGS) + f" în index; scriptul adăugat pe {injected} pagini.")
     pages_v, files_v = cachebust()
     print(f"Versiuni în adrese (cache): {files_v} fișiere CSS/JS, pe {pages_v} pagini.")
+    kinds, in_sitemap, redirects = apply_seo()
+    print(f"SEO ({SITE_URL}): {kinds['page']} pagini indexabile, {kinds['noindex']} cu noindex, {kinds['redirect']} redirecționări; "
+          f"sitemap.xml cu {in_sitemap} adrese, .htaccess cu {redirects} redirecționări 301, robots.txt, 404.html.")
     print(f"Gata. Deschideți {(DIST / 'index.html').relative_to(ROOT)}")
 
 

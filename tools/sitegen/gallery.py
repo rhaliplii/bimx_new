@@ -12,7 +12,7 @@ import re
 import zipfile
 
 from .config import DIST, LANG_PREFIX, SITE_LANGS
-from .news import IDX, PAGE, SEP, SITE_URL, date_parts, relocate
+from .news import IDX, PAGE, SEP, date_parts, relocate
 
 HUB = "galerie-foto/index.html"
 IMG = "assets/img/news/"
@@ -118,14 +118,6 @@ def album_html(pg, a):
     return f'<div class="container bx-gallery">{actions}<div class="bx-photos">{"".join(tiles)}</div>{lightbox}</div>'
 
 
-def head_links(pg, path):
-    url = lambda lang: SITE_URL + LANG_PREFIX[lang] + path.replace("index.html", "")
-    links = [f'<link rel="canonical" href="{url(pg.lang)}">']
-    links += [f'<link rel="alternate" hreflang="{x}" href="{url(x)}">' for x in SITE_LANGS]
-    links.append(f'<link rel="alternate" hreflang="x-default" href="{url("ro")}">')
-    return "\n".join(links)
-
-
 def build_gallery_page(text, pg):
     what = page_of(pg)
     if not what or "bx-gallery" in text:
@@ -158,8 +150,7 @@ def build_gallery_page(text, pg):
     text = re.sub(r'\s*<div class="related_categories">[\s\S]*?</section>\s*</div>', "", text, count=1)
     full_title = title if what == "hub" else f'{title} – {T["title"][i]}'
     text = re.sub(r'<title>[^<]*</title>', f'<title>{full_title} – BIMx</title>', text, count=1)
-    text = re.sub(r'\s*<link rel="canonical"[^>]*>', "", text)
-    return text.replace("</title>", "</title>\n" + head_links(pg, path), 1)
+    return text
 
 
 def create_gallery_pages():

@@ -1,4 +1,4 @@
-# Construiește site-ul din src/ și publică dist/ pe GitHub Pages la fiecare push pe main.
+# Construiește site-ul din src/ și publică dist/ pe GitHub Pages la fiecare push pe main – copie de previzualizare, cu noindex.
 # Necesită o singură dată: Settings → Pages → Build and deployment → Source: „GitHub Actions”.
 name: Deploy site
 
