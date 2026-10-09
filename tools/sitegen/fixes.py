@@ -16,7 +16,7 @@ from .tariffs import build_tariffs_page, create_tariffs_pages, rename_cost_links
 from .gallery import build_gallery_page, create_gallery_pages
 from .menu import apply_menu
 from .news import article_photo, build_news_page, create_tab_pages, photo_for
-from .config import CYRILLIC, DIST, LANG_PREFIX, LOCALES, SITE_LANGS, TEST_COPY, SITE_URL, SRC, lang_of, pick
+from .config import CYRILLIC, DIST, LANG_PREFIX, LOCALES, SITE_LANGS, SITE_URL, SRC, lang_of, pick
 from .util import relto
 
 IDX = {"ro": 0, "en": 1, "ru": 2, "uk": 3}  # poziția limbii în tuplurile (RO, EN, RU, UK) de mai jos
@@ -688,21 +688,6 @@ def local_fonts(text, pg):
     m = re.search(r"<link\b[^>]*rel=[\"']stylesheet[\"']", text)
     return text[:m.start()] + link + text[m.start():] if m else text.replace("</head>", link + "</head>", 1)
 OG_IMAGE = "assets/img/og-bimx-{lang}.png"          # câte o imagine pe limbă (tools/og_images.py)
-
-
-def fix_canonical(text, pg):
-    """canonical absolut spre adresa oficială (SITE_URL) pe fiecare pagină; pe copia de test (TEST_COPY), și noindex."""
-    head_end = text.find("</head>")
-    if head_end < 0:
-        return text
-    head = text[:head_end]
-    if not re.search(r'<link rel="canonical" href="https?://', head):
-        url = SITE_URL + str(pg.rel).replace("\\", "/").removesuffix("index.html")
-        head = re.sub(r'\s*<link rel=["\']canonical["\'][^>]*>', "", head)
-        head += f'\n<link rel="canonical" href="{url}">'
-    if TEST_COPY:
-        head = re.sub(r'\s*<meta name="robots"[^>]*>', "", head) + '\n<meta name="robots" content="noindex, nofollow">'
-    return head + text[head_end:]
 
 
 def fix_og(text, pg):
@@ -1499,8 +1484,6 @@ def square_member_photos():
 
 def apply_fixes():
     transform_theme_css()
-    if TEST_COPY:                          # copia de test: nimic de indexat (vezi config.TEST_COPY)
-        (DIST / "robots.txt").write_text("User-agent: *\nDisallow: /\n", encoding="utf-8")
     square_member_photos()
     (DIST / "assets" / "img").mkdir(parents=True, exist_ok=True)
     for name in (*(f"og-bimx-{x}.png" for x in SITE_LANGS), "hero-x.webp", "chisinau.jpg", "bimx-logo.svg", "bimx-logo-light.svg"):
@@ -1552,7 +1535,6 @@ def apply_fixes():
             new, _ = apply_icons(new, pg.key, pg.lang)
         new = link_crumbs(new, pg)
         new = fix_og(new, pg)
-        new = fix_canonical(new, pg)
         new = local_fonts(new, pg)          # fonturi locale, inclusiv Montserrat pentru chirilică (vezi site.css)
         new = privacy_links(new, pg)
         new = fix_headings(new)

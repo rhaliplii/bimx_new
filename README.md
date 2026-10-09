@@ -29,9 +29,9 @@ src/
   site/search.js                           căutarea din antet (index generat la build)
 tools/
   build.py                                 punctul de intrare al build-ului
-  sitegen/                                 codul build-ului (config, mirror, translate, shell, academy, detach, fixes, pdf, search, util, icons)
+  sitegen/                                 codul build-ului (config, mirror, translate, shell, academy, detach, fixes, pdf, search, seo, util, icons)
   validate.py                              verifică lecțiile și că fiecare text bimx.md are traducere EN
-  check_links.py                           verifică linkurile locale din dist/ și că nimic nu trimite spre bimx.md
+  check_links.py                           verifică linkurile locale din dist/, sitemap.xml și că nimic nu trimite spre copia GitHub
   mirror_bimx.py                           descarcă din nou bimx.md în src/bimx-mirror/
 docs/                                      audituri și corespondență — doar local, exclus din git
 dist/                                      rezultatul build-ului — generat, nu se editează
@@ -59,7 +59,9 @@ Butoanele RO/EN duc la aceeași pagină în cealaltă limbă. Meniul „BIMX ACA
 | Traducerea EN a unei pagini bimx.md | `src/bimx-mirror/i18n/en.json` — apoi `make validate` |
 | Copia bimx.md | `make mirror` (descarcă din nou tot de pe bimx.md), apoi `make validate` arată textele noi de tradus |
 
-Deploy: la fiecare push pe `main`, `.github/workflows/pages.yml` rulează `make check` și publică `dist/` pe GitHub Pages (https://rhaliplii.github.io/bimx/). Setare necesară o singură dată: Settings → Pages → Source: „GitHub Actions”. `dist/` merge pe orice server static: toate linkurile sunt relative, deci site-ul funcționează și dintr-un subdirector.
+Deploy: conținutul lui `dist/` (inclusiv `.htaccess`) se urcă în rădăcina bimx.md. Adresa publică e `SITE_URL` din `tools/sitegen/config.py` (https://bimx.md/): din ea se scriu canonical, hreflang, Open Graph, sitemap.xml și robots.txt.
+
+Copia de test: la fiecare push pe `main`, `.github/workflows/pages.yml` rulează `make check` cu `BIMX_MIRROR=1` și publică `dist/` pe GitHub Pages. Toate paginile ei au `noindex, nofollow`, robots.txt are `Disallow: /`, nu există sitemap.xml, iar canonical trimite spre bimx.md, așa că motoarele de căutare nu o indexează. Setare necesară o singură dată: Settings → Pages → Source: „GitHub Actions”. Linkurile din `dist/` sunt relative, deci site-ul funcționează și dintr-un subdirector; local se deschide cu `make serve` (linkurile duc la directoare, `…/`, nu la `…/index.html`).
 
 ## Versiunea engleză
 
@@ -89,6 +91,19 @@ Paginile bimx.md vin neschimbate din `src/bimx-mirror/`, iar corecturile se apli
 - `tools/sitegen/pdf.py` — PDF-urile ghidurilor Academy, generate cu Chrome headless (dacă Chrome lipsește, butonul tipărește pagina; calea se poate da prin `CHROME=`).
 
 Fiecare corectură e etichetată în cod cu numărul problemei din audit (UI-xx).
+
+## SEO
+
+Ultimul pas al build-ului (`tools/sitegen/seo.py`) lucrează peste paginile terminate:
+
+- fiecare pagină are un singur canonical cu adresă completă pe https://bimx.md/ și hreflang (`ro`, `en`, `uk`, `ru`, `x-default`) spre variantele ei indexabile; og:url și sitemap.xml folosesc aceleași adrese;
+- linkurile interne `…/index.html` devin `…/`, iar `.htaccess` redirecționează (301) `…/index.html` → `…/`: o singură adresă pe pagină;
+- noindex pe paginile „în pregătire” (`bx-prep`), pe categoriile de știri fără articole și pe autentificare; ele nu apar în sitemap și nici în hreflang-ul altor pagini, iar noindex dispare singur când pagina primește conținut;
+- prima pagină are titlul complet al bursei și datele organizației (JSON-LD: nume, logo, adresă, e-mail, LinkedIn, Facebook);
+- rutele vechi (`stiri/`, `costuri/`, `glosar/`, `en/home/` …) rămân pagini cu redirecționare meta, dar pe server au 301 în `.htaccess`, generate din aceleași pagini; sitemap-urile WordPress (`wp-sitemap*.xml`) duc la `sitemap.xml`;
+- `robots.txt`, `sitemap.xml` (cu variantele de limbă) și `404.html` (antetul și subsolul site-ului, adrese de la rădăcină) se generează la fiecare build.
+
+HTTPS și redirecționarea www → bimx.md sunt setate în panoul găzduirii, nu în `.htaccess`.
 
 ## Limitări
 

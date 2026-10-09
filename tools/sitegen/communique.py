@@ -14,8 +14,8 @@ import urllib.parse
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
-from .config import SRC, DIST, LANG_PREFIX, SITE_LANGS
-from .news import IDX, NEWS, SITE_URL
+from .config import SRC, DIST, LANG_PREFIX, SITE_LANGS, SITE_URL
+from .news import IDX, NEWS
 from .pdf import find_chrome, print_pdf
 
 FONTS_CSS = (SRC / "site" / "fonts" / "fonts.css").as_uri()     # fonturile locale (nu Google Fonts), și pentru PDF-uri

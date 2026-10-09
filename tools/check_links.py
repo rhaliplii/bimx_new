@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Verifică dist/: fiecare link local duce la un fișier existent și nicio pagină nu trimite spre bimx.md.
+"""Verifică dist/: fiecare link local duce la un fișier existent, linkurile rămân relative și nimic nu trimite spre copia GitHub.
 
 Adresele de email @bimx.md, mențiunile „bimx.md” din text și adresele oficiale din <head> (canonical, hreflang,
-Open Graph) sunt permise.
+Open Graph, JSON-LD) sunt permise, ca și sitemap.xml și robots.txt. Fiecare adresă din sitemap.xml trebuie să fie o pagină din dist/.
 """
 import os
 import re
@@ -20,10 +20,15 @@ KNOWN_BROKEN = {
 }
 # URL spre bimx.md: absolut, fără protocol, escapat în JSON sau codificat într-un parametru (share).
 ORIGIN = re.compile(r"(?:https?:(?:\\?/){2}|https?%3A%2F%2F|(?<![\w@.])//)(?:www\.)?bimx\.md[^\"'\s<>)]*", re.I)
-# Excepție: adresele oficiale din <head> (canonical, hreflang, Open Graph / Twitter) trimit intenționat absolut la bimx.md,
-# ca motoarele de căutare și rețelele sociale să indice site-ul oficial (config.SITE_URL), nu copia de test.
-DECLARED = re.compile(r'<link rel="(?:canonical|alternate)"[^>]*>|<meta (?:property="og:[^"]*"|name="twitter:[^"]*")[^>]*>')
+# Excepție: adresele oficiale din <head> (canonical, hreflang, Open Graph / Twitter, JSON-LD) trimit intenționat absolut
+# la bimx.md, ca motoarele de căutare și rețelele sociale să indice site-ul oficial (config.SITE_URL), nu copia de test.
+DECLARED = re.compile(r'<link rel="(?:canonical|alternate)"[^>]*>|<meta (?:property="og:[^"]*"|name="twitter:[^"]*")[^>]*>'
+                      r'|<script type="application/ld\+json">[\s\S]*?</script>')
 EXTERNAL = ("#", "http:", "https:", "//", "mailto:", "tel:", "javascript:", "data:", "{")
+# copia de previzualizare de pe GitHub Pages (rhaliplii.github.io/bimx_new): nicio referință, în niciun fișier text
+MIRROR = re.compile(r"rhaliplii|bimx_new", re.I)
+TEXT_FILES = (".html", ".css", ".js", ".json", ".xml", ".txt", ".htaccess")
+SITEMAP_LOC = re.compile(r"<loc>https://bimx\.md/([^<]*)</loc>")
 
 
 def targets(text, css):
@@ -40,8 +45,11 @@ def targets(text, css):
 def main():
     if not DIST.exists():
         raise SystemExit("Lipsește dist/ (rulați tools/build.py)")
-    broken, checked, origin = {}, 0, {}
+    broken, checked, origin, mirror = {}, 0, {}, {}
     for f in sorted(DIST.rglob("*")):
+        if f.suffix in TEXT_FILES or f.name in TEXT_FILES:
+            for m in MIRROR.finditer(f.read_text(encoding="utf-8", errors="replace")):
+                mirror.setdefault(str(f.relative_to(DIST)), set()).add(m.group(0))
         if f.suffix not in (".html", ".css"):
             continue
         text = f.read_text(encoding="utf-8", errors="replace")
@@ -51,7 +59,8 @@ def main():
             path = unquote(url.split("#")[0].split("?")[0])
             if not path:
                 continue
-            target = Path(os.path.normpath(f.parent / path))
+            # adresele de la rădăcină („/assets/…”) apar doar în 404.html, servită la orice adresă
+            target = Path(os.path.normpath(DIST / path.lstrip("/") if path.startswith("/") else f.parent / path))
             if target.is_dir():
                 target = target / "index.html"
             checked += 1
@@ -69,10 +78,18 @@ def main():
         print(f"{page}: trimite spre bimx.md")
         for url in sorted(urls):
             print(f"    {url}")
+    for page, urls in sorted(mirror.items()):
+        print(f"{page}: trimite spre copia GitHub ({', '.join(sorted(urls))})")
+    sitemap = DIST / "sitemap.xml"
+    locs = SITEMAP_LOC.findall(sitemap.read_text(encoding="utf-8")) if sitemap.exists() else []
+    missing = [loc for loc in locs if not (DIST / unquote(loc) / ("index.html" if loc.endswith("/") or not loc else "")).is_file()]
+    for loc in missing:
+        print(f"sitemap.xml: pagina lipsește: {loc}")
     total = sum(len(u) for u in broken.values())
     print(f"{checked} linkuri verificate, {total} rupte în {len(broken)} fișiere.")
-    print(f"Referințe spre bimx.md: {sum(len(u) for u in origin.values())} în {len(origin)} fișiere.")
-    sys.exit(1 if broken or origin else 0)
+    print(f"Referințe spre bimx.md în afara meta-datelor SEO: {sum(len(u) for u in origin.values())} în {len(origin)} fișiere.")
+    print(f"Referințe spre copia GitHub: {len(mirror)} fișiere. sitemap.xml: {len(locs)} adrese, {len(missing)} fără pagină.")
+    sys.exit(1 if broken or origin or mirror or missing else 0)
 
 
 if __name__ == "__main__":

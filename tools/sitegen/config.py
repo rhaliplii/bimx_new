@@ -64,9 +64,9 @@ HOME_COURSES = CATALOG["home_courses"]
 PUBLICATIONS = CATALOG["publications"]
 
 
-# Adresa publică oficială: canonical, hreflang și etichetele de partajare (Open Graph) trimit absolut aici.
+# Adresa publică oficială: canonical, hreflang, Open Graph, sitemap.xml și linkurile din PDF-urile comunicatelor (sitegen/seo.py).
 SITE_URL = "https://bimx.md/"
-# Copia de test (GitHub Pages) se construiește cu BIMX_MIRROR=1: toate paginile primesc noindex și robots.txt blochează
-# indexarea, ca motoarele de căutare să nu o trateze drept site-ul original.
+# Copia de test (GitHub Pages) se construiește cu BIMX_MIRROR=1: toate paginile primesc noindex, robots.txt blochează
+# indexarea și nu se scrie sitemap.xml, ca motoarele de căutare să nu o trateze drept site-ul original.
 import os as _os
 TEST_COPY = _os.environ.get("BIMX_MIRROR") == "1"

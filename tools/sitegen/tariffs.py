@@ -7,7 +7,7 @@ Pagina se face din pagina temei costuri/ (aceeași adâncime), iar costuri/ devi
 import re
 
 from .config import SRC, DIST, LANG_PREFIX, SITE_LANGS
-from .news import IDX, SITE_URL
+from .news import IDX
 
 FONTS_CSS = (SRC / "site" / "fonts" / "fonts.css").as_uri()     # fonturile locale (nu Google Fonts), și pentru PDF-uri
 
@@ -192,14 +192,6 @@ def pdf_path(lang):
     return own if lang != "ro" and (DIST / own).exists() else PDF
 
 
-def head_links(pg):
-    url = lambda lang: SITE_URL + LANG_PREFIX[lang] + PATH.replace("index.html", "")
-    links = [f'<link rel="canonical" href="{url(pg.lang)}">']
-    links += [f'<link rel="alternate" hreflang="{x}" href="{url(x)}">' for x in SITE_LANGS]
-    links.append(f'<link rel="alternate" hreflang="x-default" href="{url("ro")}">')
-    return "\n".join(links)
-
-
 def build_tariffs_page(text, pg):
     if str(pg.inner) != PATH or "bx-fees" in text:
         return text
@@ -223,8 +215,7 @@ def build_tariffs_page(text, pg):
     body = f'<div class="container bx-fees-page">{table_html(pg)}{doc}</div>\n    <hr>\n    '
     text = text[:start] + body + text[end:]
     text = re.sub(r'<title>[^<]*</title>', f'<title>{title} – BIMx</title>', text, count=1)
-    text = re.sub(r'\s*<link rel="canonical"[^>]*>', "", text)
-    return text.replace("</title>", "</title>\n" + head_links(pg), 1)
+    return text
 
 
 def create_tariffs_pages():
