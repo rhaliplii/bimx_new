@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Verifică dist/: fiecare link local duce la un fișier existent și nicio pagină nu trimite spre bimx.md.
 
-Adresele de email @bimx.md și mențiunile „bimx.md” din text sunt permise.
+Adresele de email @bimx.md, mențiunile „bimx.md” din text și adresele oficiale din <head> (canonical, hreflang,
+Open Graph) sunt permise.
 """
 import os
 import re
@@ -19,6 +20,9 @@ KNOWN_BROKEN = {
 }
 # URL spre bimx.md: absolut, fără protocol, escapat în JSON sau codificat într-un parametru (share).
 ORIGIN = re.compile(r"(?:https?:(?:\\?/){2}|https?%3A%2F%2F|(?<![\w@.])//)(?:www\.)?bimx\.md[^\"'\s<>)]*", re.I)
+# Excepție: adresele oficiale din <head> (canonical, hreflang, Open Graph / Twitter) trimit intenționat absolut la bimx.md,
+# ca motoarele de căutare și rețelele sociale să indice site-ul oficial (config.SITE_URL), nu copia de test.
+DECLARED = re.compile(r'<link rel="(?:canonical|alternate)"[^>]*>|<meta (?:property="og:[^"]*"|name="twitter:[^"]*")[^>]*>')
 EXTERNAL = ("#", "http:", "https:", "//", "mailto:", "tel:", "javascript:", "data:", "{")
 
 
@@ -41,7 +45,7 @@ def main():
         if f.suffix not in (".html", ".css"):
             continue
         text = f.read_text(encoding="utf-8", errors="replace")
-        for m in ORIGIN.finditer(text):
+        for m in ORIGIN.finditer(DECLARED.sub("", text)):
             origin.setdefault(str(f.relative_to(DIST)), set()).add(m.group(0))
         for url in targets(text, f.suffix == ".css"):
             path = unquote(url.split("#")[0].split("?")[0])

@@ -97,7 +97,7 @@ ISSUERS = []
 # taburile: cheie → pagina (calea în interiorul limbii)
 TABS = [("toate", "noutati/index.html"), ("bimx", "category/anunturi-bimx/index.html"),
         ("avize", "category/avize-de-piata/index.html"), ("emitenti", "category/anunturi-ale-emitentilor/index.html")]
-SITE_URL = "https://rhaliplii.github.io/bimx_new/"   # adresa publică (canonical și hreflang cer adrese complete)
+from .config import SITE_URL  # noqa: E402  (adresa publică: canonical și hreflang cer adrese complete)
 
 MONTHS = {  # (numele lunii în dată, abrevierea din insignă)
     "ro": [("ianuarie", "IAN."), ("februarie", "FEBR."), ("martie", "MART."), ("aprilie", "APR."), ("mai", "MAI"), ("iunie", "IUN."),

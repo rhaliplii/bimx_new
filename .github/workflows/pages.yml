@@ -28,6 +28,8 @@ jobs:
         run: pip install pillow
       - name: Validează, construiește și verifică linkurile
         run: make check
+        env:
+          BIMX_MIRROR: "1"     # copia de pe GitHub Pages: noindex + robots.txt; canonical și partajarea trimit la bimx.md
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
