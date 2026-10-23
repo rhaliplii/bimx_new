@@ -148,6 +148,10 @@ def paths_section(pg):
 
 # Știrile de pe prima pagină: titlu și categorie reale pentru fiecare articol (după adresă), în RO și EN
 NEWS_EDIT = {
+    "bimx-anunta-listarea": (("Listare", "BIMx anunță listarea a două emisiuni de obligațiuni de stat"),
+                         ("Listing", "BIMx announces the listing of two government bond issues"),
+                         ("Листинг", "BIMx объявляет о листинге двух выпусков государственных облигаций"),
+                         ("Лістинг", "BIMx оголошує про лістинг двох випусків державних облігацій")),
     "bimx-si-frankfurt-school": (("Parteneriat", "BIMx și Frankfurt School semnează un Memorandum de Înțelegere"),
                                  ("Partnership", "BIMx and Frankfurt School sign a Memorandum of Understanding"),
                                  ("Партнёрство", "BIMx и Frankfurt School подписали меморандум о взаимопонимании"),
@@ -188,6 +192,15 @@ NEWS_EDIT = {
 
 # rezumatul complet al articolului principal (fără trunchiere „…”)
 NEWS_EXCERPT = {
+    "bimx-anunta-listarea": (
+        "Bursa Internațională a Moldovei (BIMx) anunță admiterea la tranzacționare, pe piața reglementată, a două emisiuni de valori "
+        "mobiliare de stat (VMS), cu un volum total de peste 14,2 milioane de lei.",
+        "The Moldova International Stock Exchange (BIMx) announces the admission to trading on the regulated market of two issues of "
+        "government securities (GS) with a total volume of over MDL 14.2 million.",
+        "Международная фондовая биржа Молдовы (BIMx) объявляет о допуске к торгам на регулируемом рынке двух выпусков государственных "
+        "ценных бумаг (ГЦБ) общим объёмом более 14,2 млн леев.",
+        "Міжнародна фондова біржа Молдови (BIMx) оголошує про допуск до торгів на регульованому ринку двох випусків державних "
+        "цінних паперів (ДЦП) загальним обсягом понад 14,2 млн леїв."),
     "bimx-si-frankfurt-school": (
         "Bursa Internațională a Moldovei (BIMx) și Școala de Finanțe și Management din Frankfurt au semnat un Memorandum de Înțelegere "
         "care stabilește cadrul unei cooperări strategice pentru dezvoltarea pieței de capital și pregătirea profesională a specialiștilor.",
@@ -233,7 +246,9 @@ LATEST = [("2026/09/28/bimx-a-initiat-procesul-de-admitere-a-participantilor/ind
           ("2026/09/28/capital-market-forum-2026/index.html",
            ("28 septembrie 2026", "28 September 2026", "28 сентября 2026", "28 вересня 2026")),
           ("2026/10/05/bimx-si-frankfurt-school-semneaza-un-memorandum-de-intelegere/index.html",
-           ("5 octombrie 2026", "5 October 2026", "5 октября 2026", "5 жовтня 2026"))]
+           ("5 octombrie 2026", "5 October 2026", "5 октября 2026", "5 жовтня 2026")),
+          ("2026/10/23/bimx-anunta-listarea-a-doua-emisiuni-de-obligatiuni-de-stat/index.html",
+           ("23 octombrie 2026", "23 October 2026", "23 октября 2026", "23 жовтня 2026"))]
 
 
 def feature_latest(block, lang, latest):

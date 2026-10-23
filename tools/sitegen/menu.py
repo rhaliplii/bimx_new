@@ -87,11 +87,15 @@ L = {   # eticheta: (RO, EN, RU, UK)
                  "Лицензия оператора рынка НКФР, серия 000945", "Ліцензія оператора ринку НКФР, серія 000945"),
 }
 
+# linia de context din bara de jos, ca link
+FOOT_LINK = {"f_despre": "regulamente-si-acte-normative#licente"}
+
 # (cheie, pagină, PDF)
 def _l(key, path, pdf=False):
     return (key, path, pdf)
 
 
+# „Date Istorice” e ascunsă deocamdată (vezi fixes.REDIRECTS); pentru a o readuce: _l("istorice", "date-istorice") în „g_analiza”
 # meniurile, în ordinea din bară: (cheie, id, tipar, grupuri, context, acțiune[, card de deasupra listei: titlu, subtitlu, pagină])
 # BIMx Academy: în locul barei de jos, un card „Explorează BIMx Academy” deasupra listei (ca în machetă)
 # grupuri: [(titlu, [linkuri], (coloană, rând) pe desktop)]; la „Listă” titlul grupului e eticheta meniului (vizibil doar pe mobil)
@@ -104,7 +108,7 @@ MENUS = [
     ], "f_despre", ("prezentare", "identitate")),
     ("piata", "408", "cols", [
         ("g_real", [_l("cotatii", "cotatii-in-timp-real"), _l("indici", "indicii-bursei")], (1, 1)),
-        ("g_analiza", [_l("istorice", "date-istorice"), _l("rapoarte", "rapoarte"), _l("datepiata", "date-de-piata")], (1, 2)),
+        ("g_analiza", [_l("rapoarte", "rapoarte"), _l("datepiata", "date-de-piata")], (1, 2)),
         ("g_instr", [_l("actiuni", "actiuni"), _l("oblig", "obligatiuni"), _l("fise", "fise-detaliate")], (2, 1)),
         ("g_tranz", [_l("program", "program-de-tranzactionare"), _l("calendar", "trading-calendar"), _l("platforma", "platforma-de-tranzactionare"),
                      _l("compensare", "compensare-si-decontare"), _l("model", "model-operational")], (3, 1)),
@@ -173,7 +177,10 @@ def build_menu(text, pg, toggle, back):
         if cta:
             action = f'<a class="bx-dd-cta" href="{_href(pg, cta[1])}">{L[cta[0]][i]}{ARR}</a>'
         if foot:                                   # fără context și fără acțiune: fără bară de jos
-            cols.append(f'<li class="bx-dd-foot menu-item"><span>{L[foot][i]}</span>{action}</li>')
+            ctx = L[foot][i]
+            if foot in FOOT_LINK:                  # contextul poate duce spre pagina lui (ex. licența → Regulamente)
+                ctx = f'<a class="bx-dd-foot-link" href="{_href(pg, FOOT_LINK[foot])}">{ctx}</a>'
+            cols.append(f'<li class="bx-dd-foot menu-item"><span>{ctx}</span>{action}</li>')
         # secțiunea curentă: o pagină din meniu, plus Academy și paginile de noutăți / articolele
         inner = str(pg.inner)
         active |= (key == "academy" and pg.academy) or (key == "noutati" and inner.startswith(("noutati/", "category/", "galerie-foto/", "2026/")))

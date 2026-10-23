@@ -94,6 +94,10 @@ h1 { margin: 10pt 0 14pt; font-size: 16.5pt; line-height: 1.3; font-weight: 700;
 .text h2, .text h3 { font-size: 11pt; color: #1A2266; margin: 14pt 0 6pt; break-after: avoid; }
 .text ul, .text ol { margin: 0 0 8pt; padding-left: 18pt; }
 .text li { margin-bottom: 3pt; }
+.text figure { margin: 6pt 0 10pt; }
+.text table { width: 100%%; border-collapse: collapse; font-size: 7.6pt; line-height: 1.35; text-align: center; break-inside: avoid; }
+.text th { background: #F3F5F8; color: #1A2266; font-weight: 600; padding: 4pt 3pt; border: .5pt solid #C9CEDA; }
+.text td { padding: 4pt 3pt; border: .5pt solid #C9CEDA; }
 .text blockquote { margin: 10pt 0; padding-left: 12pt; border-left: 2pt solid #1DB0F0; }
 .text p.bx-quote { margin: 12pt 0; padding-left: 11pt; border-left: 1.5pt solid #1DB0F0; break-inside: avoid; }
 .text p.bx-quote em, .text blockquote p { font-style: italic; }
@@ -206,7 +210,7 @@ def _body(text, page_url):
     m = re.search(r'<div class="ev_description">([\s\S]*?)</div>\s*</div>\s*<div class="ev_sidebar">', text)
     if not m:
         return None
-    body = re.sub(r"<figure[\s\S]*?</figure>|<img[^>]*>|<!--[\s\S]*?-->", "", m.group(1))
+    body = re.sub(r"<figure(?![^>]*wp-block-table)[\s\S]*?</figure>|<img[^>]*>|<!--[\s\S]*?-->", "", m.group(1))   # tabelele rămân
     body = re.sub(r'\s(?:class|style|id|data-[a-z-]+)="[^"]*"', "", body)
 
     def absolute(m):

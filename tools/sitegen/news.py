@@ -27,11 +27,17 @@ CATS = {
     "admitere": (("Admitere", "Admission", "Допуск", "Допуск"), ("Admitere", "Admission", "Допуск", "Допуск")),
     "licenta": (("Licență", "Licence", "Лицензия", "Ліцензія"), ("Licență", "Licence", "Лицензия", "Ліцензія")),
     "actionari": (("Acționari", "Shareholders", "Акционеры", "Акціонери"), ("Acționari", "Shareholders", "Акционеры", "Акціонери")),
+    "listare": (("Listare", "Listing", "Листинг", "Лістинг"), ("Listare", "Listing", "Листинг", "Лістинг")),
 }
 
 # comunicatele BIMx, de la cel mai nou: (cale, dată, categorie, cheia din home.NEWS_EDIT, rezumat RO/EN/RU/UK, fotografie)
 # fotografia (fișier, text alternativ, legendă) apare doar în articol și ca imagine de partajare, nu în listă
 NEWS = [
+    ("2026/10/23/bimx-anunta-listarea-a-doua-emisiuni-de-obligatiuni-de-stat", "2026-10-23", "listare", "bimx-anunta-listarea",
+     ("Două emisiuni de obligațiuni de stat, cu un volum total de peste 14,2 milioane de lei, sunt admise la tranzacționare pe piața reglementată.",
+      "Two government bond issues with a total volume of over MDL 14.2 million have been admitted to trading on the regulated market.",
+      "Два выпуска государственных облигаций общим объёмом более 14,2 млн леев допущены к торгам на регулируемом рынке.",
+      "Два випуски державних облігацій загальним обсягом понад 14,2 млн леїв допущено до торгів на регульованому ринку."), None),
     ("2026/10/05/bimx-si-frankfurt-school-semneaza-un-memorandum-de-intelegere", "2026-10-05", "parteneriat", "bimx-si-frankfurt-school",
      ("Cooperarea vizează dezvoltarea pieței de capital, pregătirea profesională a specialiștilor și consolidarea capacităților participanților la piață.",
       "The cooperation covers capital market development, professional education and capacity building for market participants.",

@@ -2643,3 +2643,50 @@ footer.site-footer.bx-footer .bx-f-risk { padding-top: 8px; }
 .bx-doc:hover { border-color: #1DB0F0; background: #F7FAFD; box-shadow: 0 12px 28px -18px rgba(20, 26, 61, .35); }
 .bx-doc:hover .bx-doc-btn { border-color: #1DB0F0; background: #1DB0F0; color: #fff; }
 .bx-doc:has(.bx-doc-btn:focus-visible) { outline: 2px solid #1DB0F0; outline-offset: 2px; }
+
+/* tabele în textul comunicatelor (ex. caracteristicile emisiunilor de VMS): încap în coloana de text; pe mobil, derulare orizontală */
+.bx-pr-text figure.wp-block-table { margin: 8px 0 28px; overflow-x: auto; border: 1px solid #E3E6EE; border-radius: 12px; -webkit-overflow-scrolling: touch; }
+.bx-pr-text figure.wp-block-table table { width: 100%; border-collapse: collapse; font-size: 12px; line-height: 16px; color: #2F3550; margin: 0; }
+.bx-pr-text figure.wp-block-table th { padding: 9px 5px; background: #F5F6FA; border-bottom: 1px solid #E3E6EE; font-size: 11.5px; line-height: 15px;
+  font-weight: 600; color: #1A2266; text-align: center; vertical-align: middle; text-transform: none !important; letter-spacing: 0 !important; }
+.bx-pr-text figure.wp-block-table td { padding: 9px 5px; border-bottom: 1px solid #EEF0F5; text-align: center; vertical-align: middle; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.bx-pr-text figure.wp-block-table td:first-child { text-align: left; font-weight: 600; color: #1A2266; white-space: normal; min-width: 92px; padding-left: 10px; }
+.bx-pr-text figure.wp-block-table tbody tr:last-child td { border-bottom: 0; }
+.bx-pr-text h3.wp-block-heading { margin: 32px 0 14px; font-size: 22px; line-height: 30px; }
+@media (max-width: 900px) { .bx-pr-text figure.wp-block-table table { min-width: 760px; } }
+
+/* Regulamente: „Licențe și autorizații” – trei carduri pe un rând (desktop); iconița deasupra titlului, ca titlurile lungi să încapă pe două rânduri */
+@media (min-width: 992px) {
+  main.site-main .regulamente .documents.bx-lic .items_documents .item { width: calc((100% - 40px) / 3); }
+  main.site-main .regulamente .documents.bx-lic .items_documents .item .icon { flex-direction: column; align-items: flex-start; justify-content: flex-start; gap: 16px; }
+  main.site-main .regulamente .documents.bx-lic .items_documents .item .icon b { margin: 0; width: 100%; min-height: 60px; }
+}
+main.site-main .regulamente .documents.bx-lic { scroll-margin-top: 100px; }
+
+/* Meniu: linia de context „Licență de operator de piață…” ca link spre Licențe și autorizații */
+header.site-header ul.sub-menu > li.bx-dd-foot > span > a.bx-dd-foot-link {
+  display: inline !important; padding: 0 !important; margin: 0 !important; background: none !important;
+  font: inherit !important; color: inherit !important; text-decoration: underline !important; text-decoration-color: rgba(138,144,163,.5) !important;
+  text-underline-offset: 3px; transition: color .2s, text-decoration-color .2s;
+}
+header.site-header ul.sub-menu > li.bx-dd-foot > span > a.bx-dd-foot-link:hover { color: #1DB0F0 !important; text-decoration-color: currentColor !important; }
+header.site-header ul.sub-menu > li.bx-dd-foot > span > a.bx-dd-foot-link::after, header.site-header ul.sub-menu > li.bx-dd-foot > span > a.bx-dd-foot-link::before { content: none !important; }
+
+/* Regulamente: butonul „Descărcați PDF” la același nivel în toate cardurile; hover ca la cardul Organigramei */
+main.site-main .regulamente .documents .items_documents .item { display: flex; flex-direction: column; background: #fff; }
+main.site-main .regulamente .documents .items_documents .item > a { margin-top: auto; transition: background .2s, border-color .2s, color .2s; }
+main.site-main .regulamente .documents .items_documents .item:hover { border-color: #1DB0F0; background: #F7FAFD; box-shadow: 0 12px 28px -18px rgba(20, 26, 61, .35); }
+main.site-main .regulamente .documents .items_documents .item:hover > a { border-color: #1DB0F0; background: #1DB0F0; color: #fff; }
+main.site-main .regulamente .documents .items_documents .item:hover > a svg path { stroke: #fff; }
+main.site-main .regulamente .documents .items_documents .item:hover > a .bx-file { color: rgba(255, 255, 255, .85); }
+main.site-main .regulamente .documents .items_documents .item > a .bx-file { transition: color .2s; }
+main.site-main .regulamente .documents .items_documents .item > .bx-soon { margin-top: auto; align-self: flex-start; }
+main.site-main .regulamente .documents .items_documents .item:not(:has(> a)):hover { border-color: #E5E7EB; background: #fff; box-shadow: none; }
+
+/* Cotații în timp real: nota despre Mecanismul oficial de stocare a informației (MSI), sub bandă */
+.bx-msi-note { position: relative; margin: 20px 0 0; padding: 14px 18px 14px 46px; border: 1px solid #E3E6EE; border-radius: 12px; background: #F7FAFD;
+  font-size: 14px; line-height: 21px; color: #5B6178; }
+.bx-msi-note::before { content: "i"; position: absolute; left: 16px; top: 15px; width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid #1DB0F0;
+  color: #1DB0F0; font: 700 11px/16px Georgia, serif; text-align: center; box-sizing: border-box; }
+.bx-msi-note a { color: #1A2266; font-weight: 600; text-decoration: underline; text-decoration-color: rgba(29,176,240,.5); text-underline-offset: 3px; word-break: break-word; }
+.bx-msi-note a:hover { color: #1DB0F0; }

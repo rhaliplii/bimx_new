@@ -40,11 +40,15 @@ REDIRECTS = {
     "anunturi-ale-emitentilor": "category/anunturi-ale-emitentilor",
     "indici": "indicii-bursei",
     "costuri": "tarifele-bursei",       # „Costuri” și „Tarifele Bursei” (PDF) sunt acum o singură pagină
+    "date-istorice": "cotatii-in-timp-real",   # pagina „Date Istorice” e ascunsă deocamdată (scoasă și din meniu)
 }
 
 # UI-26: documentele din Centrul de descărcare, în ordinea din pagină (identică în RO și EN); None = fișier inexistent
 DOWNLOADS = [
     f"{UPLOADS}/2026/06/Statut-BIMx.pdf",
+    f"{UPLOADS}/2026/10/Licenta-operator-de-piata-CNPF-000945.pdf",
+    f"{UPLOADS}/2026/10/Autorizatie-piata-reglementata.pdf",
+    f"{UPLOADS}/2026/10/Autorizatie-sistem-multilateral-de-tranzactionare.pdf",
     f"{UPLOADS}/2026/06/Organigrama-Final.pdf",
     f"{UPLOADS}/2026/06/Situatii-financiare-BIMx-anul-2025.pdf",
     None,                                                    # Raport anual BIMx
