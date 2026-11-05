@@ -33,6 +33,11 @@ CATS = {
 # comunicatele BIMx, de la cel mai nou: (cale, dată, categorie, cheia din home.NEWS_EDIT, rezumat RO/EN/RU/UK, fotografie)
 # fotografia (fișier, text alternativ, legendă) apare doar în articol și ca imagine de partajare, nu în listă
 NEWS = [
+    ("2026/10/30/aviz-privind-rezultatul-votului-la-adunarea-generala-extraordinara-a-actionarilor", "2026-10-30", "actionari", "aviz-privind-rezultatul-votului",
+     ("Rezultatul votului la adunarea generală extraordinară a acționarilor din 30 octombrie 2026: toate hotărârile, adoptate cu 100% din voturi.",
+      "Voting results of the extraordinary general meeting of shareholders of 30 October 2026: all resolutions adopted with 100% of the votes.",
+      "Итоги голосования на внеочередном общем собрании акционеров от 30 октября 2026 г.: все решения приняты 100 % голосов.",
+      "Результати голосування на позачергових загальних зборах акціонерів від 30 жовтня 2026 р.: усі рішення ухвалено 100 % голосів."), None),
     ("2026/10/23/bimx-anunta-listarea-a-doua-emisiuni-de-obligatiuni-de-stat", "2026-10-23", "listare", "bimx-anunta-listarea",
      ("Două emisiuni de obligațiuni de stat, cu un volum total de peste 14,2 milioane de lei, sunt admise la tranzacționare pe piața reglementată.",
       "Two government bond issues with a total volume of over MDL 14.2 million have been admitted to trading on the regulated market.",
@@ -106,7 +111,7 @@ TABS = [("toate", "noutati/index.html"), ("bimx", "category/anunturi-bimx/index.
 
 MONTHS = {  # (numele lunii în dată, abrevierea din insignă)
     "ro": [("ianuarie", "IAN."), ("februarie", "FEBR."), ("martie", "MART."), ("aprilie", "APR."), ("mai", "MAI"), ("iunie", "IUN."),
-           ("iulie", "IUL."), ("august", "AUG."), ("septembrie", "SEPT."), ("octombrie", "OCT."), ("noiembrie", "NOIEMBR."), ("decembrie", "DEC.")],
+           ("iulie", "IUL."), ("august", "AUG."), ("septembrie", "SEPT."), ("octombrie", "OCT."), ("noiembrie", "NOI."), ("decembrie", "DEC.")],
     "en": [("January", "JAN"), ("February", "FEB"), ("March", "MAR"), ("April", "APR"), ("May", "MAY"), ("June", "JUN"),
            ("July", "JUL"), ("August", "AUG"), ("September", "SEP"), ("October", "OCT"), ("November", "NOV"), ("December", "DEC")],
     "ru": [("января", "ЯНВ."), ("февраля", "ФЕВР."), ("марта", "МАРТА"), ("апреля", "АПР."), ("мая", "МАЯ"), ("июня", "ИЮН."),

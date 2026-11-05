@@ -148,6 +148,10 @@ def paths_section(pg):
 
 # Știrile de pe prima pagină: titlu și categorie reale pentru fiecare articol (după adresă), în RO și EN
 NEWS_EDIT = {
+    "aviz-privind-rezultatul-votului": (("Acționari", "Acționarii aprobă modificarea Statutului și majorarea capitalului social"),
+                                             ("Shareholders", "Shareholders approve amendments to the Articles of Association and a share capital increase"),
+                                             ("Акционеры", "Акционеры одобряют изменения в Уставе и увеличение уставного капитала"),
+                                             ("Акціонери", "Акціонери схвалюють зміни до Статуту та збільшення статутного капіталу")),
     "bimx-anunta-listarea": (("Listare", "BIMx anunță listarea a două emisiuni de obligațiuni de stat"),
                          ("Listing", "BIMx announces the listing of two government bond issues"),
                          ("Листинг", "BIMx объявляет о листинге двух выпусков государственных облигаций"),
@@ -192,6 +196,15 @@ NEWS_EDIT = {
 
 # rezumatul complet al articolului principal (fără trunchiere „…”)
 NEWS_EXCERPT = {
+    "aviz-privind-rezultatul-votului": (
+        "Acționarii Bursei Internaționale a Moldovei (BIMx) au aprobat, la adunarea generală extraordinară din 30 octombrie 2026, "
+        "modificarea Statutului și majorarea capitalului social până la 58 950 000 lei prin emisiune suplimentară închisă de acțiuni.",
+        "At the extraordinary general meeting of 30 October 2026, the shareholders of the Moldova International Stock Exchange (BIMx) "
+        "approved amendments to the Articles of Association and a share capital increase to MDL 58,950,000 through a closed additional share issue.",
+        "На внеочередном общем собрании 30 октября 2026 г. акционеры Международной фондовой биржи Молдовы (BIMx) одобрили "
+        "изменения в Уставе и увеличение уставного капитала до 58 950 000 леев путём закрытой дополнительной эмиссии акций.",
+        "На позачергових загальних зборах 30 жовтня 2026 р. акціонери Міжнародної фондової біржі Молдови (BIMx) схвалили "
+        "зміни до Статуту та збільшення статутного капіталу до 58 950 000 леїв шляхом закритої додаткової емісії акцій."),
     "bimx-anunta-listarea": (
         "Bursa Internațională a Moldovei (BIMx) anunță admiterea la tranzacționare, pe piața reglementată, a două emisiuni de valori "
         "mobiliare de stat (VMS), cu un volum total de peste 14,2 milioane de lei.",
@@ -248,7 +261,9 @@ LATEST = [("2026/09/28/bimx-a-initiat-procesul-de-admitere-a-participantilor/ind
           ("2026/10/05/bimx-si-frankfurt-school-semneaza-un-memorandum-de-intelegere/index.html",
            ("5 octombrie 2026", "5 October 2026", "5 октября 2026", "5 жовтня 2026")),
           ("2026/10/23/bimx-anunta-listarea-a-doua-emisiuni-de-obligatiuni-de-stat/index.html",
-           ("23 octombrie 2026", "23 October 2026", "23 октября 2026", "23 жовтня 2026"))]
+           ("23 octombrie 2026", "23 October 2026", "23 октября 2026", "23 жовтня 2026")),
+          ("2026/10/30/aviz-privind-rezultatul-votului-la-adunarea-generala-extraordinara-a-actionarilor/index.html",
+           ("30 octombrie 2026", "30 October 2026", "30 октября 2026", "30 жовтня 2026"))]
 
 
 def feature_latest(block, lang, latest):
