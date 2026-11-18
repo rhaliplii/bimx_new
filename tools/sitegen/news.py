@@ -33,6 +33,11 @@ CATS = {
 # comunicatele BIMx, de la cel mai nou: (cale, dată, categorie, cheia din home.NEWS_EDIT, rezumat RO/EN/RU/UK, fotografie)
 # fotografia (fișier, text alternativ, legendă) apare doar în articol și ca imagine de partajare, nu în listă
 NEWS = [
+    ("2026/11/18/bimx-anunta-listarea-unei-noi-emisiuni-de-obligatiuni-de-stat", "2026-11-18", "listare", "bimx-anunta-listarea-unei-noi",
+     ("O emisiune de obligațiuni de stat, cu un volum total de 210.000 de lei, este admisă la tranzacționare pe piața reglementată.",
+      "A government bond issue with a total volume of MDL 210,000 has been admitted to trading on the regulated market.",
+      "Выпуск государственных облигаций общим объёмом 210 000 леев допущен к торгам на регулируемом рынке.",
+      "Випуск державних облігацій загальним обсягом 210 000 леїв допущено до торгів на регульованому ринку."), None),
     ("2026/10/30/aviz-privind-rezultatul-votului-la-adunarea-generala-extraordinara-a-actionarilor", "2026-10-30", "actionari", "aviz-privind-rezultatul-votului",
      ("Rezultatul votului la adunarea generală extraordinară a acționarilor din 30 octombrie 2026: toate hotărârile, adoptate cu 100% din voturi.",
       "Voting results of the extraordinary general meeting of shareholders of 30 October 2026: all resolutions adopted with 100% of the votes.",

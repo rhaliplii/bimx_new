@@ -98,6 +98,9 @@ h1 { margin: 10pt 0 14pt; font-size: 16.5pt; line-height: 1.3; font-weight: 700;
 .text table { width: 100%%; border-collapse: collapse; font-size: 7.6pt; line-height: 1.35; text-align: center; break-inside: avoid; }
 .text th { background: #F3F5F8; color: #1A2266; font-weight: 600; padding: 4pt 3pt; border: .5pt solid #C9CEDA; }
 .text td { padding: 4pt 3pt; border: .5pt solid #C9CEDA; }
+/* tabelul vertical (o singură emisiune): denumirea pe rând (th în tbody), valoarea alături, aliniate la stânga */
+.text tbody th { width: 38%%; padding: 5pt 8pt; text-align: left; font-size: 9pt; line-height: 1.4; }
+.text tbody th + td { padding: 5pt 8pt; text-align: left; font-size: 9.5pt; line-height: 1.45; }
 .text blockquote { margin: 10pt 0; padding-left: 12pt; border-left: 2pt solid #1DB0F0; }
 .text p.bx-quote { margin: 12pt 0; padding-left: 11pt; border-left: 1.5pt solid #1DB0F0; break-inside: avoid; }
 .text p.bx-quote em, .text blockquote p { font-style: italic; }

@@ -148,6 +148,10 @@ def paths_section(pg):
 
 # Știrile de pe prima pagină: titlu și categorie reale pentru fiecare articol (după adresă), în RO și EN
 NEWS_EDIT = {
+    "bimx-anunta-listarea-unei-noi": (("Listare", "BIMx anunță listarea unei noi emisiuni de obligațiuni de stat"),
+                                      ("Listing", "BIMx announces the listing of a new government bond issue"),
+                                      ("Листинг", "BIMx объявляет о листинге нового выпуска государственных облигаций"),
+                                      ("Лістинг", "BIMx оголошує про лістинг нового випуску державних облігацій")),
     "aviz-privind-rezultatul-votului": (("Acționari", "Acționarii aprobă modificarea Statutului și majorarea capitalului social"),
                                              ("Shareholders", "Shareholders approve amendments to the Articles of Association and a share capital increase"),
                                              ("Акционеры", "Акционеры одобряют изменения в Уставе и увеличение уставного капитала"),
@@ -196,6 +200,15 @@ NEWS_EDIT = {
 
 # rezumatul complet al articolului principal (fără trunchiere „…”)
 NEWS_EXCERPT = {
+    "bimx-anunta-listarea-unei-noi": (
+        "Bursa Internațională a Moldovei (BIMx) anunță admiterea la tranzacționare, pe piața reglementată, a unei emisiuni de valori "
+        "mobiliare de stat (VMS), cu un volum total de 210.000 de lei.",
+        "The Moldova International Stock Exchange (BIMx) announces the admission to trading on the regulated market of an issue of "
+        "government securities (GS) with a total volume of MDL 210,000.",
+        "Международная фондовая биржа Молдовы (BIMx) объявляет о допуске к торгам на регулируемом рынке выпуска государственных "
+        "ценных бумаг (ГЦБ) общим объёмом 210 000 леев.",
+        "Міжнародна фондова біржа Молдови (BIMx) оголошує про допуск до торгів на регульованому ринку випуску державних "
+        "цінних паперів (ДЦП) загальним обсягом 210 000 леїв."),
     "aviz-privind-rezultatul-votului": (
         "Acționarii Bursei Internaționale a Moldovei (BIMx) au aprobat, la adunarea generală extraordinară din 30 octombrie 2026, "
         "modificarea Statutului și majorarea capitalului social până la 58 950 000 lei prin emisiune suplimentară închisă de acțiuni.",
@@ -263,7 +276,9 @@ LATEST = [("2026/09/28/bimx-a-initiat-procesul-de-admitere-a-participantilor/ind
           ("2026/10/23/bimx-anunta-listarea-a-doua-emisiuni-de-obligatiuni-de-stat/index.html",
            ("23 octombrie 2026", "23 October 2026", "23 октября 2026", "23 жовтня 2026")),
           ("2026/10/30/aviz-privind-rezultatul-votului-la-adunarea-generala-extraordinara-a-actionarilor/index.html",
-           ("30 octombrie 2026", "30 October 2026", "30 октября 2026", "30 жовтня 2026"))]
+           ("30 octombrie 2026", "30 October 2026", "30 октября 2026", "30 жовтня 2026")),
+          ("2026/11/18/bimx-anunta-listarea-unei-noi-emisiuni-de-obligatiuni-de-stat/index.html",
+           ("18 noiembrie 2026", "18 November 2026", "18 ноября 2026", "18 листопада 2026"))]
 
 
 def feature_latest(block, lang, latest):

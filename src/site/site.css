@@ -2654,6 +2654,11 @@ footer.site-footer.bx-footer .bx-f-risk { padding-top: 8px; }
 .bx-pr-text figure.wp-block-table tbody tr:last-child td { border-bottom: 0; }
 .bx-pr-text h3.wp-block-heading { margin: 32px 0 14px; font-size: 22px; line-height: 30px; }
 @media (max-width: 900px) { .bx-pr-text figure.wp-block-table table { min-width: 760px; } }
+/* varianta verticală (o singură emisiune): denumirea în stânga, valoarea în dreapta, ca în comunicatul oficial */
+.bx-pr-text figure.wp-block-table table.bx-vms-v th { width: 42%; padding: 11px 16px; text-align: left; background: #F5F6FA; border-bottom: 1px solid #E3E6EE; border-right: 1px solid #E3E6EE; font-size: 15px; line-height: 21px; }
+.bx-pr-text figure.wp-block-table table.bx-vms-v td { padding: 11px 16px; text-align: left; font-size: 15px; line-height: 23px; white-space: normal; font-weight: 400; color: #2F3550; min-width: 0; }
+.bx-pr-text figure.wp-block-table table.bx-vms-v tbody tr:last-child th { border-bottom: 0; }
+@media (max-width: 900px) { .bx-pr-text figure.wp-block-table table.bx-vms-v { min-width: 0; } .bx-pr-text figure.wp-block-table table.bx-vms-v th { width: 45%; padding: 10px 12px; } .bx-pr-text figure.wp-block-table table.bx-vms-v td { padding: 10px 12px; } }
 
 /* Regulamente: „Licențe și autorizații” – trei carduri pe un rând (desktop); iconița deasupra titlului, ca titlurile lungi să încapă pe două rânduri */
 @media (min-width: 992px) {
