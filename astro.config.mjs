@@ -35,6 +35,8 @@ function filePages() {
         if (missing) console.log(`press release PDFs: ${made} of ${missing} printed` + (made < missing ? ' (Chrome missing or failed: set CHROME=…)' : ''));
         const [gMade, gMissing] = await writeMissingGuidePdfs(root);
         if (gMissing) console.log(`Academy guide PDFs: ${gMade} of ${gMissing} printed` + (gMade < gMissing ? ' (Chrome missing or failed: set CHROME=…)' : ''));
+        // on GitHub Actions a missing PDF must not be published as a broken button (or delete a published PDF)
+        if (process.env.CI && (made < missing || gMade < gMissing)) throw new Error('PDFs could not be printed (Chrome missing or failed)');
         const { problems, summary } = checkSite(root);
         console.log(summary);
         if (problems.length) throw new Error('Site check failed:\n  ' + problems.join('\n  '));

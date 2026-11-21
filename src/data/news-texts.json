@@ -381,6 +381,12 @@
    "Questions about BIMx announcements and interview requests.",
    "Вопросы об объявлениях BIMx и запросы на интервью.",
    "Запитання щодо повідомлень BIMx і запити на інтерв’ю."
+  ],
+  "type_emitent": [
+   "Anunț al emitentului",
+   "Issuer announcement",
+   "Объявление эмитента",
+   "Оголошення емітента"
   ]
  },
  "CT": {

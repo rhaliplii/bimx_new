@@ -10,6 +10,7 @@
 // From these the build makes the press release pages, the news lists and the news on the home page.
 // Ported from tools/sitegen/communique.py, news.py and home.py.
 import { LANG_PREFIX, link } from './links.mjs';
+import { escapeHtml, unescapeHtml } from './seo.mjs';
 
 export const IDX = { ro: 0, en: 1, ru: 2, uk: 3 };
 
@@ -97,7 +98,7 @@ export function renderArticle(item, lang, ctx) {
   ].join(SEP);
   const kind = T.crumbs.kind[i];
   const meta = kind ? `<div class="bx-pr-meta"><span class="bx-pr-kind">${kind}</span></div>` : '';
-  const xText = item.shareText?.[lang] ?? quotePlus(item.title[lang]);
+  const xText = item.shareText?.[lang] ?? quotePlus(unescapeHtml(item.title[lang]));
   const share = ctx.templates[`${lang}/news-share`].replaceAll('{{xText}}', xText);
   // the PDF button appears when the PDF exists in public/ or the build can print it (ctx.pdfAvailable, site.mjs)
   const pdfFile = ctx.pdfAvailable ? (ctx.pdfAvailable(item, lang) ? pdfName(item) : null) : item.pdf;
@@ -120,7 +121,10 @@ export function renderArticle(item, lang, ctx) {
     + `<a href="tel:+37322897700">${ICON_PHONE}+373 22 89 77 00</a></div>`
     + `<p>${ICON_CLOCK}<span><strong>${T.CP.hours_t[i]}:</strong> ${T.CP.hours[i]}</span></p></div></div></section>`;
   // links in the text are written from the site root ("/assets/img/…"); on the page they are relative
-  const body = item.body[lang].replace(/(\s(?:href|src)=")(\/(?!\/)[^"]*)(")/g, (_, a, abs, b) => a + href(abs) + b);
+  const rootPath = (u) => (u.startsWith('/') && !u.startsWith('//') ? href(u) : u);
+  const body = item.body[lang]
+    .replace(/(\s(?:href|src|data-src|poster)=)(["'])(\/(?!\/)[^"']*)\2/g, (_, a, q, abs) => a + q + href(abs) + q)
+    .replace(/(\ssrcset=)(["'])([^"']*)\2/g, (_, a, q, v) => a + q + v.split(',').map((c) => c.replace(/^(\s*)(\S+)/, (m, sp, u) => sp + rootPath(u))).join(',') + q);
   const article = `<section class="bx-pr-head"><div class="container"><nav class="bx-pr-crumbs" aria-label="Breadcrumb">${crumbs}</nav>${meta}`
     + `<h1>${item.title[lang]}</h1><p class="bx-pr-lead">${item.summary[lang]}</p><p class="bx-pr-byline"><span>${place}</span></p></div></section>`
     + `<div class="container bx-pr-main"><article class="bx-pr-article"><div class="bx-pr-text">${body}</div>${about}</article>${aside}</div>`
@@ -130,11 +134,11 @@ export function renderArticle(item, lang, ctx) {
 
 /** Search engine description when news.json has none: the first real paragraph of the text, up to 160 characters. */
 export function autoDescription(item, lang) {
-  const strip = (h) => h.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
-  const ps = [...item.body[lang].matchAll(/<p\b[^>]*>([\s\S]*?)<\/p>/g)].map((m) => strip(m[1]));
-  let d = ps.find((p) => p.length > 60) ?? item.summary[lang];
+  const text = (h) => unescapeHtml(h.replace(/<[^>]+>/g, '')).replace(/\s+/g, ' ').trim();
+  const ps = [...item.body[lang].matchAll(/<p\b[^>]*>([\s\S]*?)<\/p>/g)].map((m) => text(m[1]));
+  let d = ps.find((p) => p.length > 60) ?? text(item.summary[lang]);
   if (d.length > 160) d = d.slice(0, 157).replace(/\s+\S*$/, '') + '…';
-  return d.replace(/&/g, '&amp;').replace(/"/g, '&quot;');
+  return escapeHtml(d);
 }
 
 /** Page fields of a press release (shell templates, title, description, sharing image). */
@@ -145,14 +149,17 @@ export function articlePage(item, lang, ctx) {
     route, lang, inner: item.path + '/',
     parts: { ...ctx.defaults.parts, ...(legacy.parts?.[lang] ?? legacy.parts ?? {}) },
     title: item.pageTitle?.[lang] ?? `${item.title[lang]} – BIMx`,
-    description: item.description?.[lang] ?? autoDescription(item, lang),
+    // goes into content="…": written as text in news.json, escaped here (entities in news.json are fine too)
+    description: item.description?.[lang] !== undefined ? escapeHtml(unescapeHtml(item.description[lang])) : autoDescription(item, lang),
     bodyAttrs: ctx.defaults.bodyAttrs.replace('{{postId}}', legacy.postId ?? '0'),
     body: renderArticle(item, lang, ctx),
   };
   if (legacy.wpPost) page.wpPost = legacy.wpPost;
   if (legacy.wpContainer) page.wpContainer = legacy.wpContainer;
   if (item.photo) {
-    page.ogImage = { url: 'https://bimx.md/' + item.photo.src.replace(/\.webp$/, '.jpg'), width: 1200, height: 705, alt: item.photo.alt[lang] };
+    // sharing image: the JPG copy of the photo (LinkedIn and some apps do not show WebP); alt is escaped by seo.mjs
+    const src = item.photo.src.replace(/^\/+/, '');
+    page.ogImage = { url: 'https://bimx.md/' + src.replace(/\.webp$/, '.jpg'), width: 1200, height: 705, alt: unescapeHtml(item.photo.alt[lang]) };
   }
   return page;
 }
@@ -186,7 +193,7 @@ function itemHtml({ e, src }, lang, pos, showType, ctx, href) {
   const T = ctx.texts.T;
   const { full, day, abbr } = dateParts(e.date, lang, ctx.texts);
   const isNew = pos === 0 ? `<span class="bx-n-new" data-date="${e.date}" data-days="${NEW_DAYS}">${T.new[i]}</span>` : '';
-  const kind = showType ? `<span class="bx-n-type">${T[src === 'aviz' ? 'type_aviz' : 'type_bimx'][i]}</span>` : '';
+  const kind = showType ? `<span class="bx-n-type">${T[{ aviz: 'type_aviz', emitent: 'type_emitent' }[src] ?? 'type_bimx'][i]}</span>` : '';
   return `<a class="bx-news-item" href="${href('/' + LANG_PREFIX[lang] + e.path + '/')}" data-source="${src}" data-cat="${e.category}" data-year="${e.date.slice(0, 4)}">`
     + `<time class="bx-n-date" datetime="${e.date}" title="${full}"><span class="bx-n-day">${day}</span><span class="bx-n-mon">${abbr}</span></time>`
     + '<span class="bx-n-body">'
@@ -320,6 +327,7 @@ export function validateNews(items, categories) {
     const where = `src/content/news/${it.folder ?? it.path}`;
     const need = (cond, msg) => { if (!cond) errors.push(`${where}: ${msg}`); };
     need(typeof it.path === 'string' && /^[a-z0-9-]+(\/[a-z0-9-]+)*$/.test(it.path), '"path" must be an address like "2026/12/05/short-name" (lowercase, digits, -)');
+    need(!/^(en|uk|ru)\//.test(it.path ?? ''), '"path" must not start with a language folder (en/, uk/, ru/): the build adds it');
     need(!paths.has(it.path), `"path" ${it.path} is used by another press release`);
     paths.add(it.path);
     need(/^\d{4}-\d{2}-\d{2}$/.test(it.date ?? ''), '"date" must look like "2026-12-05"');
@@ -329,6 +337,11 @@ export function validateNews(items, categories) {
       for (const lang of LANG_LIST) need(typeof it[field]?.[lang] === 'string' && it[field][lang].trim(), `"${field}" has no ${lang.toUpperCase()} text`);
     }
     for (const lang of LANG_LIST) need(typeof it.body?.[lang] === 'string' && it.body[lang].trim(), `${lang}.html is missing or empty`);
+    if (it.description) for (const lang of LANG_LIST) need(typeof it.description[lang] === 'string', `"description" has no ${lang.toUpperCase()} text (remove "description" to use the first paragraph)`);
+    if (it.photo) {
+      need(typeof it.photo.src === 'string' && /\.(webp|jpg|png)$/.test(it.photo.src), '"photo.src" must be an image path like "/assets/img/news/name.webp"');
+      for (const lang of LANG_LIST) need(typeof it.photo.alt?.[lang] === 'string', `"photo.alt" has no ${lang.toUpperCase()} text`);
+    }
   }
   if (errors.length) throw new Error('News data:\n  ' + errors.join('\n  '));
 }

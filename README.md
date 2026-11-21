@@ -53,7 +53,12 @@ BIMX_MIRROR=1 npm run build   # test copy: every page noindex, robots.txt blocks
    - `category`: one of the keys in `categories.json` (`parteneriat`, `evenimente`, `admitere`, `licenta`, `actionari`, `listare`).
    - `summary`: one or two sentences, shown under the title and in the lists.
    - Optional: `description` (for search engines; otherwise the first paragraph), `cardTitle` (shorter title for lists and
-     the home page), `crumb` (breadcrumb), `homeExcerpt` (text on the home page), `photo`.
+     the home page), `crumb` (breadcrumb), `homeExcerpt` (text on the home page).
+   - Two press releases on the same day: give the one that should come first (home page headline, "New" label)
+     `"order": 0` and the other `"order": 1`.
+   - Photo (shown only in the article and as the sharing image):
+     `"photo": { "src": "/assets/img/news/name.webp", "alt": { "ro": "…", … }, "caption": { "ro": "…", … } }`,
+     with `public/assets/img/news/name.webp` and a JPG copy `name.jpg` next to it (1200 × 705).
 
 2. Add the text in four files next to it: `ro.html`, `en.html`, `uk.html`, `ru.html` — paragraphs, lists, tables in HTML.
    Links and images inside the site are written from the root: `<a href="/procesul-de-listare/">`, `<img src="/assets/img/news/x.webp">`.

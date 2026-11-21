@@ -62,6 +62,26 @@ const withNews = (p) => {
   return p;
 };
 export const pages = [...contentPages.map(withNews), ...newsPages, ...academyPages()];
+
+// Every address is built once: a press release, a page or an old address that redirects must not share a route
+// (Astro would keep only one of them and the build would still pass).
+{
+  const seen = new Map();
+  const problems = [];
+  const where = (p) => (p.path ? `src/content/news/${p.folder}` : p.redirect ? 'src/data/redirect-pages.json' : p.academy ? 'Academy' : `src/content/pages/${p.lang}/${p.inner || 'index.html'}`);
+  for (const p of [...pages.map((x) => ({ ...x, folder: news.find((n) => x.inner === n.path + '/')?.folder, path: news.some((n) => x.inner === n.path + '/') })),
+    ...redirectList.map((r) => ({ route: r.route, redirect: true }))]) {
+    const key = p.route.replace(/index\.html$/, '');
+    if (seen.has(key)) problems.push(`/${key} is built twice: ${seen.get(key)} and ${where(p)}`);
+    else seen.set(key, where(p));
+  }
+  for (const item of news) {
+    if (item.photo && !fs.existsSync(path.resolve('public', item.photo.src.replace(/^\/+/, '')))) problems.push(`src/content/news/${item.folder}: photo ${item.photo.src} is not in public/`);
+    if (item.photo && /\.webp$/.test(item.photo.src) && !fs.existsSync(path.resolve('public', item.photo.src.replace(/^\/+/, '').replace(/\.webp$/, '.jpg'))))
+      problems.push(`src/content/news/${item.folder}: the JPG copy of ${item.photo.src} (used for sharing) is not in public/`);
+  }
+  if (problems.length) throw new Error('Addresses:\n  ' + problems.join('\n  '));
+}
 shell.seoIndex = seoIndex(pages);
 
 export const redirects = redirectList;

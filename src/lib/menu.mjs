@@ -143,7 +143,8 @@ function target(lang, path) {
 /** Section of the menu that contains the page, besides direct links (Academy, news pages and articles). */
 function inSection(key, page) {
   if (key === 'academy') return page.inner === 'academy/' || page.inner.startsWith('academy/');
-  if (key === 'noutati') return ['noutati/', 'category/', 'galerie-foto/', '2026/'].some((p) => page.inner.startsWith(p));
+  // news pages and press releases (their address starts with the date: 2026/11/18/…)
+  if (key === 'noutati') return ['noutati/', 'category/', 'galerie-foto/'].some((p) => page.inner.startsWith(p)) || /^\d{4}\/\d{2}\/\d{2}\//.test(page.inner);
   return false;
 }
 

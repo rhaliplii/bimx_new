@@ -23,6 +23,10 @@ concurrency:
 permissions:
   contents: read
 
+defaults:
+  run:
+    shell: bash   # bash -eo pipefail: a failing command in a pipe fails the step
+
 env:
   HOST: ${{ secrets.HOSTINGER_HOST }}
   PORT: ${{ secrets.HOSTINGER_PORT || '65002' }}
@@ -90,6 +94,9 @@ jobs:
           KEY: ${{ secrets.HOSTINGER_SSH_KEY }}
         run: |
           if [[ -z "$HOST" || -z "$USER" || -z "$KEY" ]]; then
+            if [[ "${{ needs.build.outputs.target }}" == production ]]; then
+              echo "::error::Hostinger secrets are not set (see deploy/README.md): the release was not published."; exit 1
+            fi
             echo "::warning::Hostinger secrets are not set (see deploy/README.md): the site was built but not published."
             echo "ok=false" >> "$GITHUB_OUTPUT"
           else
@@ -111,6 +118,10 @@ jobs:
           TARGET_PATH: ${{ needs.build.outputs.target == 'production' && vars.PROD_PATH || vars.STAGING_PATH }}
         run: |
           [[ -n "$TARGET_PATH" ]] || { echo "::error::Set the repository variable PROD_PATH / STAGING_PATH (deploy/README.md)"; exit 1; }
+          [[ "${{ vars.STAGING_PATH }}" != "${{ vars.PROD_PATH }}" ]] || { echo "::error::STAGING_PATH and PROD_PATH are the same folder"; exit 1; }
+          if [[ "${{ needs.build.outputs.target }}" == staging && -z "${{ vars.STAGING_HTPASSWD }}" ]]; then
+            echo "::error::Set STAGING_HTPASSWD: the staging copy is never published without a password"; exit 1
+          fi
           [[ "$TARGET_PATH" != *..* && "$TARGET_PATH" != "~"* && "$TARGET_PATH" != "/" ]] || { echo "::error::Unsafe target path: $TARGET_PATH"; exit 1; }
           # the upload deletes what is not part of the site: only into a folder that holds a site already, or an empty one
           ssh bimx "mkdir -p '$TARGET_PATH' && cd '$TARGET_PATH' && { [ -f index.html ] || [ -z \"\$(ls -A)\" ]; }" \
@@ -126,7 +137,9 @@ jobs:
       - name: Backup of the current site
         if: steps.ready.outputs.ok == 'true' && needs.build.outputs.target == 'production' && !inputs.dry_run
         run: |
-          ssh bimx "mkdir -p ~/backups && tar czf ~/backups/bimx-\$(date +%Y%m%d-%H%M%S)-${GITHUB_REF_NAME}.tar.gz -C '${{ vars.PROD_PATH }}' . \
+          # named after the release it holds (from its version.txt), before ${GITHUB_REF_NAME} replaces it; staging/ is left out
+          ssh bimx "cd '${{ vars.PROD_PATH }}' && v=\$(cut -d' ' -f1 version.txt 2>/dev/null || echo unknown) && mkdir -p ~/backups \
+            && tar czf ~/backups/bimx-\$(date +%Y%m%d-%H%M%S)-\$v.tar.gz --exclude=./staging . \
             && ls -1t ~/backups/bimx-*.tar.gz | tail -n +11 | xargs -r rm --"
       - name: Upload
         if: steps.ready.outputs.ok == 'true' && !inputs.dry_run

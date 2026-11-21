@@ -32,7 +32,7 @@ export function checkSite(dist) {
   const files = [];
   const walk = (d) => fs.readdirSync(d, { withFileTypes: true }).forEach((e) => (e.isDirectory() ? walk(path.join(d, e.name)) : files.push(path.join(d, e.name))));
   walk(dist);
-  const broken = new Map(), origin = new Map(), mirror = new Map();
+  const broken = new Map(), origin = new Map(), mirror = new Map(), rootLinks = new Map();
   const add = (map, k, v) => (map.get(k) ?? map.set(k, new Set()).get(k)).add(v);
   let checked = 0;
   for (const f of files) {
@@ -47,7 +47,9 @@ export function checkSite(dist) {
       let p;
       try { p = decodeURIComponent(url.split('#')[0].split('?')[0]); } catch { p = url; }
       if (!p) continue;
-      // addresses from the root ("/assets/…") appear only in 404.html, which is served at any address
+      // addresses from the root ("/assets/…") are allowed only in 404.html, which is served at any address;
+      // elsewhere they break the copies of the site in a sub-folder (GitHub Pages preview)
+      if (p.startsWith('/') && rel !== '404.html' && !KNOWN_BROKEN.has(rel)) add(rootLinks, rel, url);
       let target = p.startsWith('/') ? path.join(dist, p) : path.resolve(path.dirname(f), p);
       if (fs.existsSync(target) && fs.statSync(target).isDirectory()) target = path.join(target, 'index.html');
       checked++;
@@ -65,6 +67,7 @@ export function checkSite(dist) {
   for (const [page, urls] of broken) problems.push(`${page}: broken link${urls.size > 1 ? 's' : ''} ${[...urls].join(', ')}`);
   for (const [page, urls] of origin) problems.push(`${page}: links to bimx.md instead of a relative link: ${[...urls].join(', ')}`);
   for (const [page, urls] of mirror) problems.push(`${page}: refers to the GitHub preview copy (${[...urls].join(', ')})`);
+  for (const [page, urls] of rootLinks) problems.push(`${page}: link from the site root instead of a relative link: ${[...urls].join(', ')}`);
   for (const loc of missing) problems.push(`sitemap.xml: no page for ${loc}`);
   const summary = `links: ${checked} checked, ${[...broken.values()].reduce((n, s) => n + s.size, 0)} broken`
     + (knownCount ? `; ${knownCount} images missing in the WordPress theme CSS (known, as on the old site)` : '')

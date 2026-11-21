@@ -1,4 +1,7 @@
-# Builds the site and publishes dist/ on GitHub Pages on every push to main – a preview copy, with noindex.
+# Builds the site and publishes dist/ on GitHub Pages – a public preview copy, with noindex.
+# Runs on every push to main only until the password-protected staging copy is configured (repository variable
+# STAGING_URL, see deploy/README.md); after that only by hand (Actions → Run workflow), so that a press release
+# merged for review is not public before its release.
 # Needs once: Settings → Pages → Build and deployment → Source: "GitHub Actions".
 name: Preview on GitHub Pages
 
@@ -18,6 +21,7 @@ concurrency:
 
 jobs:
   build:
+    if: github.event_name == 'workflow_dispatch' || vars.STAGING_URL == ''
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
