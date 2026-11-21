@@ -7,8 +7,15 @@ The bimx.md site (4 languages: RO at the root, `/en/`, `/uk/`, `/ru/`) and BIMx 
 npm install
 npm run dev        # http://localhost:4321/ — live preview while editing
 npm run build      # dist/ — the site to publish (Chrome is used to print PDFs of new press releases)
+npm run release    # publish main on bimx.md (see Publishing)
 BIMX_MIRROR=1 npm run build   # test copy: every page noindex, robots.txt blocks everything, no sitemap
 ```
+
+## Publishing
+
+- Every push to `main` is built and published on the **staging** copy (password, noindex): check the change there.
+- `npm run release` publishes the current `main` on **bimx.md** (creates the release tag `vYYYY.MM.DD`).
+- Rollback, backups and the one-time hosting setup: [deploy/README.md](deploy/README.md).
 
 ## Where to change what
 

@@ -1,0 +1,10 @@
+# Added in front of the site's .htaccess on the staging copy only (deploy.yml): password and no indexing.
+# {{HTPASSWD}} is replaced with the path of the password file on the server (repository variable STAGING_HTPASSWD).
+AuthType Basic
+AuthName "BIMx staging"
+AuthUserFile {{HTPASSWD}}
+Require valid-user
+<IfModule mod_headers.c>
+Header set X-Robots-Tag "noindex, nofollow"
+</IfModule>
+

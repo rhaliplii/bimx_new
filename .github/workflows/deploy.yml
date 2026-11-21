@@ -1,0 +1,129 @@
+# Publishing to Hostinger.
+#   push to main            → build the test copy and publish it on the staging site (password, noindex)
+#   push of a tag v…        → build the site from that tag and publish it on bimx.md (backup first, check after)
+#   Run workflow on a tag   → publish that tag again (rollback to an earlier release)
+# Create a release tag with `npm run release` (see README). One-time setup: deploy/README.md.
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-${{ startsWith(github.ref, 'refs/tags/') && 'production' || 'staging' }}
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+env:
+  HOST: ${{ secrets.HOSTINGER_HOST }}
+  PORT: ${{ secrets.HOSTINGER_PORT || '65002' }}
+  USER: ${{ secrets.HOSTINGER_USER }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      target: ${{ steps.target.outputs.target }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - id: target
+        name: Staging or production
+        run: |
+          if [[ "$GITHUB_REF" == refs/tags/v* ]]; then
+            # a release must be a commit of main (it has been on staging)
+            git merge-base --is-ancestor "$GITHUB_SHA" origin/main || { echo "::error::Tag ${GITHUB_REF_NAME} is not on main"; exit 1; }
+            echo "target=production" >> "$GITHUB_OUTPUT"
+          elif [[ "$GITHUB_REF" == refs/heads/main ]]; then
+            echo "target=staging" >> "$GITHUB_OUTPUT"
+          else
+            echo "::error::Deploy runs only for main (staging) or a v… tag (production)"; exit 1
+          fi
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Build
+        run: npm run build
+        env:
+          BIMX_MIRROR: ${{ steps.target.outputs.target == 'staging' && '1' || '' }}
+      - name: Version file
+        run: printf '%s %s %s\n' "$GITHUB_REF_NAME" "$GITHUB_SHA" "$(date -u +%Y-%m-%dT%H:%M:%SZ)" > dist/version.txt
+      - name: Staging extras
+        if: steps.target.outputs.target == 'staging' && vars.STAGING_HTPASSWD != ''
+        run: |
+          sed "s#{{HTPASSWD}}#${{ vars.STAGING_HTPASSWD }}#" deploy/staging.htaccess > /tmp/staging.htaccess
+          cat /tmp/staging.htaccess dist/.htaccess > /tmp/htaccess && mv /tmp/htaccess dist/.htaccess
+      - uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: dist
+          include-hidden-files: true
+          retention-days: 90
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: ${{ needs.build.outputs.target }}
+      url: ${{ needs.build.outputs.target == 'production' && 'https://bimx.md/' || vars.STAGING_URL }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: site
+          path: dist
+      - id: ready
+        name: Hosting access configured?
+        env:
+          KEY: ${{ secrets.HOSTINGER_SSH_KEY }}
+        run: |
+          if [[ -z "$HOST" || -z "$USER" || -z "$KEY" ]]; then
+            echo "::warning::Hostinger secrets are not set (see deploy/README.md): the site was built but not published."
+            echo "ok=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "ok=true" >> "$GITHUB_OUTPUT"
+          fi
+      - name: SSH key
+        if: steps.ready.outputs.ok == 'true'
+        env:
+          KEY: ${{ secrets.HOSTINGER_SSH_KEY }}
+          KNOWN_HOSTS: ${{ secrets.HOSTINGER_KNOWN_HOSTS }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$KEY" > ~/.ssh/id_deploy && chmod 600 ~/.ssh/id_deploy
+          printf '%s\n' "$KNOWN_HOSTS" > ~/.ssh/known_hosts
+          printf 'Host bimx\n  HostName %s\n  Port %s\n  User %s\n  IdentityFile ~/.ssh/id_deploy\n  StrictHostKeyChecking yes\n' "$HOST" "$PORT" "$USER" > ~/.ssh/config
+      - name: Backup of the current site
+        if: steps.ready.outputs.ok == 'true' && needs.build.outputs.target == 'production'
+        run: |
+          ssh bimx "mkdir -p ~/backups && tar czf ~/backups/bimx-\$(date +%Y%m%d-%H%M%S)-${GITHUB_REF_NAME}.tar.gz -C '${{ vars.PROD_PATH }}' . \
+            && ls -1t ~/backups/bimx-*.tar.gz | tail -n +11 | xargs -r rm --"
+      - name: Upload
+        if: steps.ready.outputs.ok == 'true'
+        env:
+          TARGET_PATH: ${{ needs.build.outputs.target == 'production' && vars.PROD_PATH || vars.STAGING_PATH }}
+        run: |
+          [[ -n "$TARGET_PATH" ]] || { echo "::error::Set the repository variable PROD_PATH / STAGING_PATH (deploy/README.md)"; exit 1; }
+          # --delay-updates: new files are switched in at the end; --delete removes pages that no longer exist
+          rsync -rlcz --delete --delay-updates --exclude-from=deploy/keep.txt dist/ "bimx:${TARGET_PATH%/}/"
+      - name: Check the published site
+        if: steps.ready.outputs.ok == 'true'
+        env:
+          BASE: ${{ needs.build.outputs.target == 'production' && 'https://bimx.md/' || vars.STAGING_URL }}
+          AUTH: ${{ needs.build.outputs.target == 'staging' && secrets.STAGING_AUTH || '' }}
+        run: |
+          base="${BASE%/}/"; auth=(); [[ -n "$AUTH" ]] && auth=(-u "$AUTH")
+          curl -fsS "${auth[@]}" "${base}version.txt" | grep -q "$GITHUB_SHA" || { echo "::error::version.txt does not show this commit"; exit 1; }
+          for p in "" en/ noutati/ academy/ sitemap.xml robots.txt; do
+            [[ "${{ needs.build.outputs.target }}" == staging && "$p" == sitemap.xml ]] && continue
+            code=$(curl -s -o /dev/null -w '%{http_code}' "${auth[@]}" "${base}${p}"); echo "$code /$p"; [[ "$code" == 200 ]] || exit 1
+          done
+          code=$(curl -s -o /dev/null -w '%{http_code}' "${auth[@]}" "${base}noutati/index.html"); echo "$code /noutati/index.html (301 expected)"; [[ "$code" == 301 ]] || exit 1
+          code=$(curl -s -o /dev/null -w '%{http_code}' "${auth[@]}" "${base}no-such-page-$RANDOM/"); echo "$code missing page (404 expected)"; [[ "$code" == 404 ]] || exit 1
