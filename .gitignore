@@ -1,14 +1,14 @@
 # build
 /dist/
-__pycache__/
-*.pyc
+/.astro/
+node_modules/
 
-# sistem / editor
+# system / editor
 .DS_Store
 .vscode/
 .idea/
 
-# documente de lucru (audituri, corespondență): păstrate doar local, nu în repository
+# working documents (audits, correspondence): kept locally only, not in the repository
 /docs/
 /audits/
 /exports/
