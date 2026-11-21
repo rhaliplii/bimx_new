@@ -1,9 +1,10 @@
 // Files at the site root built from the page list: sitemap.xml, robots.txt and the Apache .htaccess.
 import { pages, redirects, shell } from '../lib/site.mjs';
-import { htaccess, robotsTxt, sitemapXml } from '../lib/seo.mjs';
+import { TEST_COPY, htaccess, robotsTxt, sitemapXml } from '../lib/seo.mjs';
 
+// the test copy (BIMX_MIRROR=1) has no sitemap
 const FILES = {
-  'sitemap.xml': () => sitemapXml(pages, shell.seoIndex),
+  ...(TEST_COPY ? {} : { 'sitemap.xml': () => sitemapXml(pages, shell.seoIndex) }),
   'robots.txt': () => robotsTxt(),
   '.htaccess': () => htaccess(redirects),
 };

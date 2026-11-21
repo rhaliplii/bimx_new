@@ -6,6 +6,9 @@
 import { LANGS, LANG_PREFIX } from './links.mjs';
 
 export const SITE_URL = 'https://bimx.md/';
+// Test copy (staging, GitHub Pages preview): built with BIMX_MIRROR=1. Every page gets noindex, nofollow, robots.txt
+// blocks everything and there is no sitemap.xml; canonical and sharing still point to https://bimx.md/.
+export const TEST_COPY = process.env.BIMX_MIRROR === '1';
 const LOCALE_OG = { ro: 'ro_RO', en: 'en_GB', uk: 'uk_UA', ru: 'ru_RU' };
 const LOCALE = { ro: 'ro-RO', en: 'en-GB', uk: 'uk-UA', ru: 'ru-RU' };
 const NOINDEX_KEYS = ['autentificare'];
@@ -34,7 +37,7 @@ export function escapeHtml(s) {
 }
 
 export function isIndexable(page) {
-  if (page.noindex) return false;
+  if (TEST_COPY || page.noindex) return false;
   if (page.body.includes('class="bx-prep"')) return false;
   return !NOINDEX_KEYS.includes(page.inner.split('/')[0]);
 }
@@ -81,7 +84,11 @@ function organization(page, ogTitle) {
 
 /** Tags at the end of <head>: sharing, canonical, hreflang, robots and (home page) organisation data. */
 export function seoBlock(page, index) {
-  if (page.seoRaw !== undefined) return page.seoRaw;
+  if (page.seoRaw !== undefined) {
+    if (!TEST_COPY || page.inner === '404.html') return page.seoRaw; // 404 always has its own plain noindex
+    return page.seoRaw.replace(/<link rel="alternate" hreflang="[^"]*" href="[^"]*">\n/g, '')
+      .replace(/<meta name="robots" content="[^"]*">/, '<meta name="robots" content="noindex, nofollow">');
+  }
   const home = page.inner === '';
   const title = home ? HOME_TITLE[page.lang] : unescapeHtml(page.title ?? 'BIMx').trim();
   const desc = page.description !== undefined ? unescapeHtml(page.description) : '';
@@ -108,7 +115,7 @@ export function seoBlock(page, index) {
   ];
   const indexable = index.indexable.has(page.route);
   if (indexable) tags.push(...alternates(page, index).map(([x, u]) => `<link rel="alternate" hreflang="${x}" href="${u}">`));
-  tags.push(`<meta name="robots" content="${indexable ? 'max-image-preview:large' : 'noindex, follow'}">`);
+  tags.push(`<meta name="robots" content="${TEST_COPY ? 'noindex, nofollow' : indexable ? 'max-image-preview:large' : 'noindex, follow'}">`);
   if (home) tags.push(organization(page, e(title)));
   return tags.join('\n') + '\n';
 }
@@ -132,6 +139,7 @@ export function sitemapXml(pages, index) {
 }
 
 export function robotsTxt() {
+  if (TEST_COPY) return 'User-agent: *\nDisallow: /\n';
   return `User-agent: *\nAllow: /\n\nSitemap: ${SITE_URL}sitemap.xml\n`;
 }
 

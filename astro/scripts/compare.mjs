@@ -7,6 +7,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
+import { execFileSync } from 'node:child_process';
 import { parse, serialize } from 'parse5';
 
 const args = process.argv.slice(2);
@@ -23,6 +24,10 @@ const hash = (f) => crypto.createHash('sha1').update(fs.readFileSync(f)).digest(
 const normalize = (html) => serialize(parse(html.replace(/\?v=[0-9a-f]{6,}/g, '?v=H')))
   .replace(/>\s+</g, '><').replace(/\s+/g, ' ');
 
+// PDF text through Python + pypdf when PDF_PYTHON points to such an interpreter (optional)
+const pdfText = process.env.PDF_PYTHON ? (f) => execFileSync(process.env.PDF_PYTHON,
+  ['-c', 'import sys\nfrom pypdf import PdfReader\nprint("\\n".join(p.extract_text() for p in PdfReader(sys.argv[1]).pages))', f], { encoding: 'utf8' }) : null;
+
 const a = new Set(walk(BASE).filter((f) => !f.endsWith('.DS_Store')));
 const b = new Set(walk(DIST).filter((f) => !f.endsWith('.DS_Store')));
 const missing = [...a].filter((f) => !b.has(f));
@@ -38,6 +43,10 @@ for (const f of [...a].filter((f) => b.has(f)).sort()) {
     let k = 0;
     while (na[k] === nb[k]) k++;
     diffs.push({ f, at: k, exp: na.slice(Math.max(0, k - 60), k + 120), got: nb.slice(Math.max(0, k - 60), k + 120) });
+  } else if (f.endsWith('.pdf') && pdfText) {
+    // PDFs printed again differ in their creation date: compare their text instead
+    if (pdfText(fa) === pdfText(fb)) { normSame++; continue; }
+    diffs.push({ f, binary: true });
   } else diffs.push({ f, binary: true });
 }
 console.log(`files: baseline ${a.size}, astro ${b.size}; identical ${same}, equal after normalizing ${normSame}, different ${diffs.length}, missing ${missing.length}, extra ${extra.length}`);
