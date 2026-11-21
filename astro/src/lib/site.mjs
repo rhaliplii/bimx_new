@@ -1,7 +1,7 @@
 // Loads the site sources for the Astro build: page bodies with their fields, shell templates and menus.
 import { LANGS, splitLang } from './links.mjs';
 import { seoIndex } from './seo.mjs';
-import { articlePage, sortNews } from './news.mjs';
+import { applyList, articlePage, homeNews, sortNews } from './news.mjs';
 import newsTexts from '../data/news-texts.json';
 import newsDefaults from '../data/news-defaults.json';
 import categories from '../content/news/categories.json';
@@ -45,7 +45,13 @@ export const news = sortNews(Object.entries(newsData).map(([file, data]) => {
 export const newsCtx = { news, categories, texts: newsTexts, templates: shell.templates, defaults: newsDefaults };
 const newsPages = news.flatMap((item) => LANGS.map((lang) => articlePage(item, lang, newsCtx)));
 
-export const pages = [...contentPages, ...newsPages];
+// pages that show news: the news lists ({{newsHero}}, {{newsList}}) and the home pages ({{homeNews}})
+const withNews = (p) => {
+  if (p.newsTab) return applyList(p, newsCtx);
+  if (p.body.includes('{{homeNews}}')) return { ...p, body: p.body.replace('{{homeNews}}', () => homeNews(p.lang, p.route, newsCtx)) };
+  return p;
+};
+export const pages = [...contentPages.map(withNews), ...newsPages];
 shell.seoIndex = seoIndex(pages);
 
 export const redirects = redirectList;

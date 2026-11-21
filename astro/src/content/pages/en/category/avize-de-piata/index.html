@@ -3,8 +3,8 @@ route: "en/category/avize-de-piata/"
 parts: {"open":"open-news","head":"head-news-2","mid":"mid-news","pre":"pre-news","header":"header-news","footer":"footer-page","tail":"tail-news-list"}
 title: "Market notices – News & Announcements – BIMx"
 description: "BIMx operational notices: rule changes, fees, the trading calendar, admitted members and instruments admitted or suspended."
-noindex: true
 bodyAttrs: " class=\"archive category category-anunturi-bimx category-39 wp-custom-logo wp-embed-responsive wp-theme-victor wp-child-theme-victor-child is-light-theme no-js hfeed has-main-navigation\""
+newsTab: "avize"
 ---
 <!-- #masthead -->
     <div id="content" class="site-content">
@@ -13,9 +13,7 @@ bodyAttrs: " class=\"archive category category-anunturi-bimx category-39 wp-cust
     <div class="container_fluid">
         <div class="archive_main_section bx-news-hero">
             <div class="container">
-                <nav aria-label="Breadcrumb"><ul class="breadcrumbs"><li><a href="../../">Home</a></li><li aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5.25 10.5L8.75 7L5.25 3.5" stroke="white" stroke-opacity="0.6" stroke-width="1.16667" stroke-linecap="round" stroke-linejoin="round"/></svg></li><li><a href="../../noutati/">News & Announcements</a></li><li aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5.25 10.5L8.75 7L5.25 3.5" stroke="white" stroke-opacity="0.6" stroke-width="1.16667" stroke-linecap="round" stroke-linejoin="round"/></svg></li><li><span aria-current="page">Market notices</span></li></ul></nav>
-                <h1>Market notices</h1>
-                <p>BIMx operational notices: rule changes, fees, the trading calendar, admitted members and instruments admitted or suspended.</p><div class="bx-news-tabbar"><nav class="bx-news-tabs" aria-label="Publication type"><a class="bx-news-tab" href="../../noutati/">All</a><a class="bx-news-tab" href="../anunturi-bimx/">BIMx announcements</a><a class="bx-news-tab" href="./" aria-current="page">Market notices</a><a class="bx-news-tab" href="../anunturi-ale-emitentilor/">Issuer announcements</a></nav><label class="bx-news-year bx-news-tabsel"><span class="bx-vh">Publication type</span><select data-nav="tab"><option value="../../noutati/">All</option><option value="../anunturi-bimx/">BIMx announcements</option><option value="./" selected>Market notices</option><option value="../anunturi-ale-emitentilor/">Issuer announcements</option></select></label></div>
+                <nav aria-label="Breadcrumb">{{newsHero}}
             </div>
         </div>
     </div>
@@ -93,7 +91,7 @@ bodyAttrs: " class=\"archive category category-anunturi-bimx category-39 wp-cust
     }
 </style>    
 
-    <div class="container bx-news"><section class="bx-empty bx-news-empty" aria-labelledby="bx-empty-h"><span class="bx-news-empty-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/></svg></span><h2 id="bx-empty-h">No market notices yet</h2><p>Market notices will be published here: rule changes, fees, the trading calendar and non-trading days, admitted members and instruments admitted or suspended. The first notices will appear when the first members are admitted.</p><div class="bx-news-empty-actions"><a class="bx-btn-primary" href="../anunturi-bimx/">See BIMx announcements</a><a class="bx-btn-secondary" href="../../trading-calendar/">Trading calendar</a></div></section><section class="bx-news-press" aria-labelledby="bx-news-press-h"><div><h2 id="bx-news-press-h">Press contact</h2><p>Questions about BIMx announcements and interview requests.</p></div><div class="bx-news-press-links"><a href="mailto:office@bimx.md">office@bimx.md</a><a href="tel:+37322897700">+373 22 89 77 00</a></div></section></div><div class="container_fluid">
+    {{newsList}}<div class="container_fluid">
         <div class="container">
             <div class="newsletter">
                 <h3>Get BIMx announcements</h3>

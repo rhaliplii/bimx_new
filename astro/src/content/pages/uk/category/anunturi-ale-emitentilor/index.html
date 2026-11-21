@@ -3,8 +3,8 @@ route: "uk/category/anunturi-ale-emitentilor/"
 parts: {"open":"open-news","head":"head-news-2","mid":"mid-news","pre":"pre-news","header":"header-news","footer":"footer-page","tail":"tail-news-list"}
 title: "Оголошення емітентів – Новини та Оголошення – BIMx"
 description: "Поточні звіти, фінансові звіти та рішення загальних зборів, які публікують емітенти, допущені до торгів."
-noindex: true
 bodyAttrs: " class=\"archive category category-anunturi-bimx category-39 wp-custom-logo wp-embed-responsive wp-theme-victor wp-child-theme-victor-child is-light-theme no-js hfeed has-main-navigation\""
+newsTab: "emitenti"
 ---
 <!-- #masthead -->
     <div id="content" class="site-content">
@@ -13,9 +13,7 @@ bodyAttrs: " class=\"archive category category-anunturi-bimx category-39 wp-cust
     <div class="container_fluid">
         <div class="archive_main_section bx-news-hero">
             <div class="container">
-                <nav aria-label="Навігаційний ланцюжок"><ul class="breadcrumbs"><li><a href="../../">Головна</a></li><li aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5.25 10.5L8.75 7L5.25 3.5" stroke="white" stroke-opacity="0.6" stroke-width="1.16667" stroke-linecap="round" stroke-linejoin="round"/></svg></li><li><a href="../../noutati/">Новини та Оголошення</a></li><li aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5.25 10.5L8.75 7L5.25 3.5" stroke="white" stroke-opacity="0.6" stroke-width="1.16667" stroke-linecap="round" stroke-linejoin="round"/></svg></li><li><span aria-current="page">Оголошення емітентів</span></li></ul></nav>
-                <h1>Оголошення емітентів</h1>
-                <p>Поточні звіти, фінансові звіти та рішення загальних зборів, які публікують емітенти, допущені до торгів.</p><div class="bx-news-tabbar"><nav class="bx-news-tabs" aria-label="Тип публікації"><a class="bx-news-tab" href="../../noutati/">Усі</a><a class="bx-news-tab" href="../anunturi-bimx/">Оголошення BIMx</a><a class="bx-news-tab" href="../avize-de-piata/">Ринкові повідомлення</a><a class="bx-news-tab" href="./" aria-current="page">Оголошення емітентів</a></nav><label class="bx-news-year bx-news-tabsel"><span class="bx-vh">Тип публікації</span><select data-nav="tab"><option value="../../noutati/">Усі</option><option value="../anunturi-bimx/">Оголошення BIMx</option><option value="../avize-de-piata/">Ринкові повідомлення</option><option value="./" selected>Оголошення емітентів</option></select></label></div>
+                <nav aria-label="Навігаційний ланцюжок">{{newsHero}}
             </div>
         </div>
     </div>
@@ -93,7 +91,7 @@ bodyAttrs: " class=\"archive category category-anunturi-bimx category-39 wp-cust
     }
 </style>    
 
-    <div class="container bx-news"><section class="bx-empty bx-news-empty" aria-labelledby="bx-empty-h"><span class="bx-news-empty-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg></span><h2 id="bx-empty-h">Оголошень емітентів поки немає</h2><p>Оголошення компаній, допущених до торгів (поточні звіти, фінансові звіти та рішення загальних зборів), публікуватимуться тут після перших лістингів, запланованих до кінця 2026 року.</p><p class="bx-news-empty-hint">Їх можна буде фільтрувати за емітентом, типом звіту та періодом.</p><div class="bx-news-empty-actions"><a class="bx-btn-primary" href="../anunturi-bimx/">Переглянути оголошення BIMx</a><a class="bx-btn-secondary" href="../../procesul-de-listare/">Процес лістингу</a></div></section><section class="bx-news-press" aria-labelledby="bx-news-press-h"><div><h2 id="bx-news-press-h">Контакти для преси</h2><p>Запитання щодо повідомлень BIMx і запити на інтерв’ю.</p></div><div class="bx-news-press-links"><a href="mailto:office@bimx.md">office@bimx.md</a><a href="tel:+37322897700">+373 22 89 77 00</a></div></section></div><div class="container_fluid">
+    {{newsList}}<div class="container_fluid">
         <div class="container">
             <div class="newsletter">
                 <h3>Отримуйте оголошення BIMx</h3>

@@ -123,6 +123,15 @@ export function renderArticle(item, lang, ctx) {
   return ctx.templates[`${lang}/news-article`].replace('{{article}}', () => article);
 }
 
+/** Search engine description when news.json has none: the first real paragraph of the text, up to 160 characters. */
+export function autoDescription(item, lang) {
+  const strip = (h) => h.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+  const ps = [...item.body[lang].matchAll(/<p\b[^>]*>([\s\S]*?)<\/p>/g)].map((m) => strip(m[1]));
+  let d = ps.find((p) => p.length > 60) ?? item.summary[lang];
+  if (d.length > 160) d = d.slice(0, 157).replace(/\s+\S*$/, '') + '…';
+  return d.replace(/&/g, '&amp;').replace(/"/g, '&quot;');
+}
+
 /** Page fields of a press release (shell templates, title, description, sharing image). */
 export function articlePage(item, lang, ctx) {
   const route = newsRoute(item, lang);
@@ -131,7 +140,7 @@ export function articlePage(item, lang, ctx) {
     route, lang, inner: item.path + '/',
     parts: { ...ctx.defaults.parts, ...(legacy.parts?.[lang] ?? legacy.parts ?? {}) },
     title: item.pageTitle?.[lang] ?? `${item.title[lang]} – BIMx`,
-    description: item.description[lang],
+    description: item.description?.[lang] ?? autoDescription(item, lang),
     bodyAttrs: ctx.defaults.bodyAttrs.replace('{{postId}}', legacy.postId ?? '0'),
     body: renderArticle(item, lang, ctx),
   };
@@ -141,4 +150,154 @@ export function articlePage(item, lang, ctx) {
     page.ogImage = { url: 'https://bimx.md/' + item.photo.src.replace(/\.webp$/, '.jpg'), width: 1200, height: 705, alt: item.photo.alt[lang] };
   }
   return page;
+}
+
+// ---------------------------------------------------------------- news lists (Noutăți & Comunicate)
+
+// tabs: key → page inside the language. "toate" shows every section, newest first.
+export const TABS = [['toate', 'noutati/'], ['bimx', 'category/anunturi-bimx/'], ['avize', 'category/avize-de-piata/'], ['emitenti', 'category/anunturi-ale-emitentilor/']];
+const SOURCE = { bimx: 'bimx', avize: 'aviz', emitenti: 'emitent' };
+const NEW_DAYS = 30; // the "New" label stays on the newest item at most this many days (replica.js hides it later)
+
+const LIST_ARROW = '<svg class="bx-n-arr" width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3.3 8h9.4M8 3.3 12.7 8 8 12.7" '
+  + 'stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const ICON_BUILDING = '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" '
+  + 'stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg>';
+const ICON_CHART = '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" '
+  + 'stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/></svg>';
+const CRUMB_SEP = '<li aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5.25 10.5L8.75 7L5.25 3.5" '
+  + 'stroke="white" stroke-opacity="0.6" stroke-width="1.16667" stroke-linecap="round" stroke-linejoin="round"/></svg></li>';
+
+/** Items shown on a tab, with their source ("bimx" / "aviz" / "emitent"). */
+export function entries(tab, ctx) {
+  const rows = ctx.news.filter((e) => tab === 'toate' || e.section === tab).map((e) => ({ e, src: SOURCE[e.section] }));
+  return tab === 'toate' ? rows : rows; // ctx.news is already newest first
+}
+
+const tabLabel = (tab, i, T) => (tab === 'toate' ? T.title[i] : T[{ bimx: 'tab_bimx', avize: 'tab_avize', emitenti: 'tab_issuers' }[tab]][i]);
+
+function itemHtml({ e, src }, lang, pos, showType, ctx, href) {
+  const i = IDX[lang];
+  const T = ctx.texts.T;
+  const { full, day, abbr } = dateParts(e.date, lang, ctx.texts);
+  const isNew = pos === 0 ? `<span class="bx-n-new" data-date="${e.date}" data-days="${NEW_DAYS}">${T.new[i]}</span>` : '';
+  const kind = showType ? `<span class="bx-n-type">${T[src === 'aviz' ? 'type_aviz' : 'type_bimx'][i]}</span>` : '';
+  return `<a class="bx-news-item" href="${href('/' + LANG_PREFIX[lang] + e.path + '/')}" data-source="${src}" data-cat="${e.category}" data-year="${e.date.slice(0, 4)}">`
+    + `<time class="bx-n-date" datetime="${e.date}" title="${full}"><span class="bx-n-day">${day}</span><span class="bx-n-mon">${abbr}</span></time>`
+    + '<span class="bx-n-body">'
+    + `<span class="bx-n-meta">${kind}<span class="bx-n-cat">${ctx.categories[e.category].one[i]}</span>${isNew}</span>`
+    + `<span class="bx-n-title" role="heading" aria-level="2">${cardTitle(e, lang)}</span>`
+    + `<span class="bx-n-ex">${e.summary[lang]}</span>`
+    + `</span>${LIST_ARROW}</a>`;
+}
+
+function emptyHtml(tab, lang, ctx, href) {
+  const i = IDX[lang];
+  const T = ctx.texts.T;
+  const root = '/' + LANG_PREFIX[lang];
+  const [icon, head, body, hint, second] = tab === 'avize'
+    ? [ICON_CHART, T.avize_empty_h[i], T.avize_empty_p[i], '', [T.calendar[i], 'trading-calendar/']]
+    : [ICON_BUILDING, T.empty_h[i], T.empty_p[i], T.empty_hint[i], [T.empty_listing[i], 'procesul-de-listare/']];
+  return '<section class="bx-empty bx-news-empty" aria-labelledby="bx-empty-h">'
+    + `<span class="bx-news-empty-icon">${icon}</span><h2 id="bx-empty-h">${head}</h2><p>${body}</p>${hint ? `<p class="bx-news-empty-hint">${hint}</p>` : ''}`
+    + `<div class="bx-news-empty-actions"><a class="bx-btn-primary" href="${href(root + TABS[1][1])}">${T.empty_bimx[i]}</a>`
+    + `<a class="bx-btn-secondary" href="${href(root + second[1])}">${second[0]}</a></div></section>`;
+}
+
+function catFilter(tab, lang, ctx) {
+  if (tab !== 'bimx') return '';
+  const i = IDX[lang];
+  const T = ctx.texts.T;
+  const opts = [`<option value="toate" selected>${T.cat_all[i]}</option>`];
+  for (const [k, c] of Object.entries(ctx.categories)) {
+    const n = ctx.news.filter((e) => e.section === 'bimx' && e.category === k).length;
+    if (n) opts.push(`<option value="${k}">${c.many[i]} (${n})</option>`);
+  }
+  return `<label class="bx-news-year bx-news-cat"><span>${T.cat[i]}</span><select data-filter="cat">${opts.join('')}</select></label>`;
+}
+
+function yearFilter(tab, lang, ctx) {
+  const i = IDX[lang];
+  const T = ctx.texts.T;
+  const years = [...new Set(entries(tab, ctx).map(({ e }) => e.date.slice(0, 4)))].sort().reverse();
+  if (!years.length) return '';
+  const opts = years.map((y, n) => `<option value="${y}"${n === 0 ? ' selected' : ''}>${y}</option>`).join('');
+  return `<label class="bx-news-year"><span>${T.year[i]}</span><select data-filter="an" data-default="${years[0]}">`
+    + `${opts}<option value="toate">${T.year_all[i]}</option></select></label>`;
+}
+
+function tabsHtml(tab, lang, ctx, href) {
+  const i = IDX[lang];
+  const T = ctx.texts.T;
+  const labels = { toate: T.tab_all[i], bimx: T.tab_bimx[i], avize: T.tab_avize[i], emitenti: T.tab_issuers[i] };
+  const root = '/' + LANG_PREFIX[lang];
+  let nav = `<nav class="bx-news-tabs" aria-label="${T.tabs_label[i]}">`
+    + TABS.map(([k, p]) => `<a class="bx-news-tab" href="${href(root + p)}"${k === tab ? ' aria-current="page"' : ''}>${labels[k]}</a>`).join('') + '</nav>';
+  // on mobile the tabs become a select that navigates on change (replica.js)
+  const opts = TABS.map(([k, p]) => `<option value="${href(root + p)}"${k === tab ? ' selected' : ''}>${labels[k]}</option>`).join('');
+  nav += `<label class="bx-news-year bx-news-tabsel"><span class="bx-vh">${T.tabs_label[i]}</span><select data-nav="tab">${opts}</select></label>`;
+  const filters = catFilter(tab, lang, ctx) + yearFilter(tab, lang, ctx);
+  return `<div class="bx-news-tabbar">${nav}${filters ? `<div class="bx-news-filters">${filters}</div>` : ''}</div>`;
+}
+
+/** Breadcrumb, title, lead and tabs at the top of a news list page. */
+export function listHero(tab, lang, route, ctx) {
+  const i = IDX[lang];
+  const T = ctx.texts.T;
+  const href = (abs) => link(route, abs);
+  const root = '/' + LANG_PREFIX[lang];
+  const title = tabLabel(tab, i, T);
+  const crumbs = [`<li><a href="${href(root)}">${ctx.texts.crumbs.home[i]}</a></li>`, CRUMB_SEP];
+  if (tab === 'toate') crumbs.push(`<li><span aria-current="page">${T.title[i]}</span></li>`);
+  else crumbs.push(`<li><a href="${href(root + TABS[0][1])}">${T.title[i]}</a></li>`, CRUMB_SEP, `<li><span aria-current="page">${title}</span></li>`);
+  return `<ul class="breadcrumbs">${crumbs.join('')}</ul></nav>\n                <h1>${title}</h1>\n                <p>${T['lead_' + tab][i]}</p>${tabsHtml(tab, lang, ctx, href)}`;
+}
+
+/** The list (or the empty state) and the press contact of a news list page. */
+export function listBody(tab, lang, route, ctx) {
+  const i = IDX[lang];
+  const T = ctx.texts.T;
+  const href = (abs) => link(route, abs);
+  const rows = entries(tab, ctx);
+  // the type of publication is shown only on "toate", and only when several sources are mixed
+  const showType = tab === 'toate' && new Set(rows.map((r) => r.src)).size > 1;
+  const listing = rows.length
+    ? `<div class="bx-news-list">${rows.map((r, n) => itemHtml(r, lang, n, showType, ctx, href)).join('')}</div><p class="bx-news-none" hidden>${T.none[i]}</p>`
+    : emptyHtml(tab, lang, ctx, href);
+  const press = `<section class="bx-news-press" aria-labelledby="bx-news-press-h"><div><h2 id="bx-news-press-h">${T.press_h[i]}</h2>`
+    + `<p>${T.press_p[i]}</p></div><div class="bx-news-press-links"><a href="mailto:office@bimx.md">office@bimx.md</a>`
+    + '<a href="tel:+37322897700">+373 22 89 77 00</a></div></section>';
+  return `<div class="container bx-news">${listing}${press}</div>`;
+}
+
+/** Fill a news list page: markers {{newsHero}} and {{newsList}} in its body; noindex while the tab is empty. */
+export function applyList(page, ctx) {
+  const tab = page.newsTab;
+  return {
+    ...page,
+    noindex: entries(tab, ctx).length === 0 || undefined,
+    body: page.body.replace('{{newsHero}}', () => listHero(tab, page.lang, page.route, ctx)).replace('{{newsList}}', () => listBody(tab, page.lang, page.route, ctx)),
+  };
+}
+
+// ---------------------------------------------------------------- news on the home page
+
+const HOME_LIST = 5; // items in the list next to the main article
+
+/**
+ * The news block of the home page: the newest press release as the main article, the next ones in the list.
+ * Markup: src/shell/<lang>/home-news.html and home-news-item.html (placeholders in double braces).
+ */
+export function homeNews(lang, route, ctx) {
+  const href = (abs) => link(route, abs);
+  const [main, ...rest] = ctx.news;
+  const fillT = (tpl, vals) => tpl.replace(/\{\{(\w+)\}\}/g, (all, k) => (k in vals ? vals[k] : all));
+  const vals = (e) => ({
+    href: href('/' + LANG_PREFIX[lang] + e.path + '/'),
+    cat: ctx.categories[e.category].one[IDX[lang]],
+    date: dateParts(e.date, lang, ctx.texts).full,
+    title: cardTitle(e, lang),
+  });
+  const list = rest.slice(0, HOME_LIST).map((e) => fillT(ctx.templates[`${lang}/home-news-item`], vals(e))).join('\n');
+  return fillT(ctx.templates[`${lang}/home-news`], { ...vals(main), excerpt: main.homeExcerpt?.[lang] ?? main.summary[lang], list });
 }
