@@ -1,0 +1,942 @@
+{
+  "slug": "esg-finantare-verde",
+  "num": "04",
+  "title": "ESG and Green Finance",
+  "short": "Sustainability standards and instruments designed to finance green projects.",
+  "level": "Intermediate",
+  "audience": "Issuers and investors",
+  "intro": "This track explains what ESG means, how companies report sustainability information, and how green, social and sustainability bonds work. You will walk through the practical steps of a green bond issue from the issuer's perspective, then look at the same topics through the eyes of an investor who wants to avoid greenwashing. The content is for educational purposes only and does not constitute investment advice.",
+  "outcomes": [
+    "Explain the E, S and G pillars and the concept of double materiality with concrete examples.",
+    "Recognize the main international reporting frameworks: GRI, IFRS S1/S2 (ISSB) and ESRS in the context of the CSRD.",
+    "Distinguish between Scope 1, 2 and 3 emissions and calculate simple indicators such as emissions intensity.",
+    "Compare green bonds, social bonds, sustainability bonds and sustainability-linked bonds.",
+    "Describe the steps of issuing a green bond: the financing framework, external review, allocation of proceeds and reporting.",
+    "Apply ESG investment strategies and identify the typical warning signs of greenwashing."
+  ],
+  "prerequisites": "It helps to know the basics of bonds and financial statements, but the lessons explain the key terms from scratch.",
+  "courses": [
+    {
+      "code": "BA-202",
+      "title": "ESG and Green Bonds",
+      "description": "From ESG concepts and sustainability reporting to issuing and analyzing green, social and sustainability bonds. The course combines the issuer's perspective with the investor's.",
+      "lessons": [
+        {
+          "slug": "ce-inseamna-esg",
+          "title": "What ESG means",
+          "summary": "The environmental, social and governance pillars, why they matter to companies and investors, and what double materiality means.",
+          "minutes": 12,
+          "sections": [
+            {
+              "heading": "The three letters: E, S and G",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "<strong>ESG</strong> stands for <em>Environmental, Social, Governance</em>. It describes a set of non-financial factors that can affect both a company's long-term performance and the effects the company has on people and the environment. ESG is not a single rule or a specific standard, but an analytical lens used by companies, investors, banks and public authorities."
+                },
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "ESG",
+                  "text": "An analytical framework that assesses how an organization manages risks and opportunities related to the <strong>environment</strong> (E), its relationships with <strong>people and the community</strong> (S), and <strong>the way it is run and controlled</strong> (G)."
+                },
+                {
+                  "type": "table",
+                  "headers": [
+                    "Pillar",
+                    "What it covers",
+                    "Example topics and indicators"
+                  ],
+                  "rows": [
+                    [
+                      "E – Environmental",
+                      "Impact on the climate and natural resources",
+                      "Greenhouse gas emissions, energy and water use, waste, pollution, biodiversity"
+                    ],
+                    [
+                      "S – Social",
+                      "Relationships with employees, customers, suppliers and the community",
+                      "Occupational health and safety, fair pay, professional training, customer data protection, human rights in the supply chain"
+                    ],
+                    [
+                      "G – Governance",
+                      "How the company is managed, controlled and overseen",
+                      "Board independence, executive pay, shareholder rights, anti-corruption policies, audit and internal control, transparency"
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "heading": "Why ESG matters",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "For a <strong>company</strong>, ESG topics are often “hidden” financial risks: a drought can cut production, a workplace accident can halt operations, and weak governance can lead to fraud or a loss of trust among partners. Managing them carefully can lower costs, ease access to financing and strengthen the company's reputation."
+                },
+                {
+                  "type": "p",
+                  "text": "For an <strong>investor</strong>, ESG information complements traditional financial analysis. It helps identify risks that do not yet appear on the balance sheet, as well as companies that are better prepared for changes in regulation, technology or consumer preferences."
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "<strong>Access to capital:</strong> more and more international lenders and institutional investors ask for ESG data before granting loans or buying securities.",
+                    "<strong>Supply chains:</strong> large customers, including those in the European Union, may ask suppliers for information on emissions or working conditions.",
+                    "<strong>Risk management:</strong> extreme weather events, energy prices and regulatory changes directly affect costs.",
+                    "<strong>Reputation and talent:</strong> employees and consumers pay increasing attention to how responsibly companies behave."
+                  ]
+                }
+              ]
+            },
+            {
+              "heading": "Double materiality, explained simply",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "A topic is <em>material</em> if it is important enough to be managed and reported. In sustainability, importance can be viewed from two directions, hence the term <strong>double materiality</strong>."
+                },
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "Double materiality",
+                  "text": "The principle that a sustainability topic is relevant either because it <strong>affects the company financially</strong> (financial materiality, the “outside-in” perspective), or because <strong>the company's activities have a significant impact on people or the environment</strong> (impact materiality, the “inside-out” perspective), or both."
+                },
+                {
+                  "type": "table",
+                  "headers": [
+                    "Perspective",
+                    "Key question",
+                    "Main users"
+                  ],
+                  "rows": [
+                    [
+                      "Financial materiality",
+                      "How does this topic affect the company's revenue, costs, assets or access to financing?",
+                      "Investors and creditors"
+                    ],
+                    [
+                      "Impact materiality",
+                      "How does the company affect people, the community and the environment?",
+                      "Society, employees, communities, authorities, and investors too"
+                    ]
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Hypothetical example: “Podgoria Verde SA”",
+                  "text": "A winery with revenue of MDL 120 million is assessing the topic of <strong>water</strong>. Financial materiality: a severe drought could cut the harvest by 20%, meaning revenue about MDL 24 million lower. Impact materiality: the company uses 150,000 m³ of water a year for irrigation in an area where local wells are running low. The topic is material from both perspectives, so the company should manage and report it. All figures are illustrative."
+                }
+              ]
+            },
+            {
+              "heading": "Useful clarifications",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "ESG is not philanthropy: sponsorships are welcome, but what really matters is how the company runs its core business.",
+                    "Material topics differ from one sector to another: for a bank, governance and data protection may weigh more than water use.",
+                    "A good ESG score does not guarantee higher returns, and a poor score does not automatically mean a bad investment.",
+                    "The pillars are interconnected: strong governance makes environmental and social commitments more credible."
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "tip",
+                  "title": "The first practical step",
+                  "text": "Start with a short list of 5–10 topics that may be relevant to your sector and assess each one from both perspectives of double materiality. Involve employees, customers and lenders in the discussion."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "ESG stands for environmental (E), social (S) and governance (G), and it is an analytical lens, not a single standard.",
+            "ESG topics can represent real financial risks and opportunities for companies.",
+            "Double materiality combines the topic's impact on the company with the company's impact on people and the environment.",
+            "Material topics depend on the sector, and governance gives credibility to the other two pillars."
+          ],
+          "quiz": [
+            {
+              "q": "Which pillar does board independence mainly belong to?",
+              "options": [
+                "Environmental (E)",
+                "Governance (G)",
+                "Social (S)"
+              ],
+              "answer": 1,
+              "explanation": "The structure and independence of the board relate to how the company is run and controlled, which is the governance pillar."
+            },
+            {
+              "q": "What does impact materiality describe?",
+              "options": [
+                "The effect of a topic on the company's share price",
+                "The cost of publishing a sustainability report",
+                "The effect of the company's activities on people and the environment",
+                "The interest rate paid on loans"
+              ],
+              "answer": 2,
+              "explanation": "Impact materiality looks “inside-out”: how the company affects people, the community and the environment."
+            },
+            {
+              "q": "Under double materiality, a topic is relevant if:",
+              "options": [
+                "it is significant from a financial perspective, from an impact perspective, or both",
+                "it is significant from both perspectives at the same time, never from just one",
+                "a specific investor explicitly asks for it"
+              ],
+              "answer": 0,
+              "explanation": "It is enough for the topic to be material from one perspective; if it is material from both, there is all the more reason to manage and report it."
+            }
+          ]
+        },
+        {
+          "slug": "raportare-sustenabilitate",
+          "title": "Sustainability reporting",
+          "summary": "The main international reporting frameworks, Scope 1, 2 and 3 emissions, and the indicators used to measure ESG performance.",
+          "minutes": 14,
+          "sections": [
+            {
+              "heading": "What a sustainability report is",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "ESG information becomes useful only if it is <strong>comparable, verifiable and consistent</strong> from one year to the next. That is why companies use reporting frameworks that set out which topics to disclose, how to measure indicators, and how to explain strategy, risks and targets."
+                },
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "Sustainability reporting",
+                  "text": "The structured, usually annual, disclosure of information about an organization's impacts, risks, opportunities, policies, targets and indicators in the environmental, social and governance areas. It can be a separate report or a section of the annual report."
+                },
+                {
+                  "type": "p",
+                  "text": "A good report is not limited to success stories. It also explains where the company missed its targets, what methodology it used for its calculations and what data is still missing."
+                }
+              ]
+            },
+            {
+              "heading": "The main international frameworks",
+              "blocks": [
+                {
+                  "type": "table",
+                  "headers": [
+                    "Framework",
+                    "Who develops it",
+                    "Main focus",
+                    "Intended users"
+                  ],
+                  "rows": [
+                    [
+                      "GRI Standards",
+                      "Global Reporting Initiative, an independent international organization",
+                      "The organization's impact on the economy, the environment and people; organized into universal, sector and topic standards",
+                      "A broad range of stakeholders"
+                    ],
+                    [
+                      "IFRS S1 and IFRS S2",
+                      "International Sustainability Standards Board (ISSB), part of the IFRS Foundation",
+                      "Financially relevant sustainability information; S1 sets the general requirements, S2 focuses on climate-related risks and opportunities",
+                      "Investors, creditors and other providers of capital"
+                    ],
+                    [
+                      "ESRS (in the context of the CSRD)",
+                      "European standards developed with technical support from EFRAG and adopted by the European Commission",
+                      "Reporting based on double materiality, applied to companies within the scope of the Corporate Sustainability Reporting Directive (CSRD)",
+                      "Investors and a broad range of stakeholders"
+                    ]
+                  ]
+                },
+                {
+                  "type": "p",
+                  "text": "The ISSB standards build on the structure of the recommendations of the TCFD (Task Force on Climate-related Financial Disclosures), organized into four areas:"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "<strong>Governance</strong> – who oversees sustainability risks and opportunities;",
+                    "<strong>Strategy</strong> – how they affect the company's business model and plans;",
+                    "<strong>Risk management</strong> – how they are identified, assessed and monitored;",
+                    "<strong>Metrics and targets</strong> – what is measured and what goals the company has committed to."
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "warning",
+                  "title": "Applicability varies by jurisdiction",
+                  "text": "The fact that a framework exists does not mean it is mandatory for every company. Each jurisdiction decides whether and how to adopt these standards, and requirements can change over time. Always check the applicable legislation and the specific requirements of your lenders or partners."
+                }
+              ]
+            },
+            {
+              "heading": "Greenhouse gas emissions: Scope 1, 2 and 3",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "The most widely used environmental indicator is the carbon footprint, expressed in tonnes of CO₂ equivalent (tCO₂e). The classification of emissions into three “scopes” comes from the <strong>GHG Protocol</strong>, the greenhouse gas accounting standard that is widely used, including by the reporting frameworks above."
+                },
+                {
+                  "type": "table",
+                  "headers": [
+                    "Category",
+                    "What it includes",
+                    "Examples"
+                  ],
+                  "rows": [
+                    [
+                      "Scope 1 – direct emissions",
+                      "Emissions from sources owned or controlled by the company",
+                      "Burning natural gas in the company's own boilers, fuel for its own fleet, industrial processes"
+                    ],
+                    [
+                      "Scope 2 – indirect emissions from energy",
+                      "Emissions associated with energy purchased and consumed",
+                      "Purchased electricity, heat or steam"
+                    ],
+                    [
+                      "Scope 3 – other indirect emissions",
+                      "Emissions from the value chain, upstream and downstream",
+                      "Production of purchased raw materials, transportation by third parties, employee travel, use of sold products"
+                    ]
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "tip",
+                  "title": "Scope 3 is often the largest",
+                  "text": "For many companies, value chain emissions far exceed direct emissions, but they are also the hardest to measure because they depend on data from suppliers and customers. Estimates should be accompanied by an explanation of the methodology."
+                }
+              ]
+            },
+            {
+              "heading": "Indicators and a numerical example",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "<strong>Environmental:</strong> Scope 1, 2 and 3 emissions; energy use (MWh) and the share of renewable energy; water use (m³); waste generated and recycled (tonnes).",
+                    "<strong>Social:</strong> number of employees and staff turnover; workplace accident rate; training hours per employee; gender pay gap.",
+                    "<strong>Governance:</strong> share of independent board members; existence of anti-corruption policies and whistleblowing channels; compliance incidents."
+                  ]
+                },
+                {
+                  "type": "formula",
+                  "label": "Emissions intensity",
+                  "expr": "Intensity = Emissions (tCO₂e) / Revenue (MDL million)",
+                  "note": "Relating emissions to revenue makes it possible to compare companies of different sizes and to track progress even as the business grows."
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Hypothetical example: “Termo-Plast SA”",
+                  "text": "A packaging manufacturer has revenue of MDL 250 million. Its estimated emissions are: Scope 1 = 3,000 tCO₂e (natural gas and its own fleet), Scope 2 = 2,000 tCO₂e (electricity), Scope 3 = 15,000 tCO₂e (raw materials and transportation). Scope 1+2 intensity is 5,000 / 250 = <strong>20 tCO₂e per MDL million</strong>. Total emissions are 20,000 tCO₂e, of which Scope 3 accounts for 75%. If next year revenue rises to MDL 300 million while Scope 1+2 emissions stay at 5,000 tCO₂e, intensity falls to about 16.7 tCO₂e per MDL million. The figures are illustrative."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "Sustainability reporting makes ESG information comparable, verifiable and consistent over time.",
+            "GRI focuses on impact, IFRS S1/S2 on information relevant to investors, and ESRS, in the context of the CSRD, on double materiality.",
+            "Scope 1 = direct emissions, Scope 2 = purchased energy, Scope 3 = the rest of the value chain.",
+            "Intensity indicators, such as emissions per MDL million of revenue, allow comparisons across years and between companies.",
+            "Whether a standard applies depends on the jurisdiction and on the specific requirements of lenders."
+          ],
+          "quiz": [
+            {
+              "q": "Emissions from generating the electricity a company purchases fall under:",
+              "options": [
+                "Scope 1",
+                "Scope 3",
+                "Scope 2",
+                "They are not reported"
+              ],
+              "answer": 2,
+              "explanation": "Scope 2 covers indirect emissions associated with the electricity, heat or steam purchased and consumed by the company."
+            },
+            {
+              "q": "Which framework is aimed mainly at investors and creditors and includes a dedicated climate standard?",
+              "options": [
+                "The ISSB's IFRS S1 and S2",
+                "The GRI Standards",
+                "None of these"
+              ],
+              "answer": 0,
+              "explanation": "The ISSB standards target sustainability information that is financially relevant to providers of capital; IFRS S2 focuses on climate-related matters."
+            },
+            {
+              "q": "A company has Scope 1+2 emissions of 4,000 tCO₂e and revenue of MDL 200 million. What is its emissions intensity?",
+              "options": [
+                "0.05 tCO₂e per MDL million",
+                "200 tCO₂e per MDL million",
+                "800 tCO₂e per MDL million",
+                "20 tCO₂e per MDL million"
+              ],
+              "answer": 3,
+              "explanation": "Intensity = 4,000 / 200 = 20 tCO₂e per MDL million of revenue."
+            }
+          ]
+        },
+        {
+          "slug": "obligatiuni-verzi-sociale",
+          "title": "Green, social and sustainability bonds",
+          "summary": "The types of labeled bonds, the four components of the ICMA Green Bond Principles and the categories of eligible projects.",
+          "minutes": 14,
+          "sections": [
+            {
+              "heading": "Labeled bonds: the basic idea",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Legally and financially, a green bond works like any other bond: the issuer receives money from investors, pays coupons and repays the face value at maturity. The difference lies in the <strong>commitment on the use of proceeds</strong> and in the <strong>transparency</strong> the issuer takes on."
+                },
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "Green bond",
+                  "text": "A debt security whose proceeds are used exclusively to finance or refinance, in whole or in part, <strong>eligible projects with clear environmental benefits</strong>, following a transparent process of selection, management and reporting."
+                },
+                {
+                  "type": "p",
+                  "text": "As a rule, the credit risk of a green bond is the issuer's risk, not the risk of the financed project: the investor is paid from the cash flows of the company as a whole. The exceptions are special structures, such as asset-backed bonds or project finance, where payment may depend on specific assets."
+                }
+              ]
+            },
+            {
+              "heading": "Four main types",
+              "blocks": [
+                {
+                  "type": "table",
+                  "headers": [
+                    "Type",
+                    "What it finances",
+                    "Key mechanism",
+                    "ICMA reference guidance"
+                  ],
+                  "rows": [
+                    [
+                      "Green",
+                      "Projects with environmental benefits",
+                      "Use of proceeds",
+                      "Green Bond Principles"
+                    ],
+                    [
+                      "Social",
+                      "Projects with positive social outcomes for target populations",
+                      "Use of proceeds",
+                      "Social Bond Principles"
+                    ],
+                    [
+                      "Sustainability",
+                      "A mix of green and social projects",
+                      "Use of proceeds",
+                      "Sustainability Bond Guidelines"
+                    ],
+                    [
+                      "Sustainability-linked",
+                      "General corporate purposes",
+                      "Financial characteristics (for example, the coupon) depend on meeting performance targets",
+                      "Sustainability-Linked Bond Principles"
+                    ]
+                  ]
+                },
+                {
+                  "type": "p",
+                  "text": "The first three types are <em>use of proceeds</em> instruments: what matters is what the money is spent on. <strong>Sustainability-linked</strong> bonds work differently: the money can be used for any general purpose, but the issuer commits to key performance indicators (KPIs) and sustainability performance targets. If the targets are not met, the coupon usually increases."
+                },
+                {
+                  "type": "formula",
+                  "label": "Additional cost of a sustainability-linked bond",
+                  "expr": "Additional annual cost = Issue size × Coupon step-up",
+                  "note": "The coupon step-up applies only if the target is not met by the observation date set out in the prospectus."
+                }
+              ]
+            },
+            {
+              "heading": "The ICMA Green Bond Principles",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "<strong>ICMA</strong> (International Capital Market Association) publishes the <em>Green Bond Principles</em>, voluntary guidelines widely used in international markets. They are not law, but good practices that increase transparency and investor confidence. The principles have four core components:"
+                },
+                {
+                  "type": "steps",
+                  "items": [
+                    {
+                      "title": "Use of proceeds",
+                      "text": "Proceeds are allocated to eligible green projects, clearly described in the issue documentation, with environmental benefits that are assessed and, where possible, quantified."
+                    },
+                    {
+                      "title": "Process for project evaluation and selection",
+                      "text": "The issuer explains its environmental objectives, its eligibility criteria and how it identifies and manages the social and environmental risks of the projects."
+                    },
+                    {
+                      "title": "Management of proceeds",
+                      "text": "The net proceeds are tracked separately (in a sub-account, sub-portfolio or through an equivalent internal mechanism), and the issuer states how it temporarily invests any amounts not yet allocated."
+                    },
+                    {
+                      "title": "Reporting",
+                      "text": "The issuer publishes up-to-date information on the use of proceeds, at least annually until full allocation, as well as on the expected impact of the projects."
+                    }
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "tip",
+                  "title": "Two key recommendations",
+                  "text": "In addition to the four components, the principles recommend that the issuer publish a <strong>green financing framework</strong> (Green Bond Framework) and obtain an <strong>external review</strong>, for example a second-party opinion. Both are covered in detail in the next lesson."
+                }
+              ]
+            },
+            {
+              "heading": "Eligible project categories",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "The ICMA principles provide an indicative, non-exhaustive list of green project categories. They include:"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "renewable energy (for example, solar or wind farms);",
+                    "energy efficiency (building renovation, equipment upgrades, smart grids);",
+                    "pollution prevention and control;",
+                    "sustainable management of living natural resources and land use (including sustainable agriculture);",
+                    "terrestrial and aquatic biodiversity conservation;",
+                    "clean transportation (electric, public and non-motorized transport);",
+                    "sustainable water and wastewater management;",
+                    "climate change adaptation;",
+                    "circular economy adapted products, production technologies and processes;",
+                    "green buildings certified to recognized standards."
+                  ]
+                },
+                {
+                  "type": "p",
+                  "text": "For social bonds, typical categories include affordable basic infrastructure, access to essential services such as healthcare and education, affordable housing, employment generation (including through SME financing), food security and socioeconomic advancement and empowerment."
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Hypothetical example: “EnergoSud SA”",
+                  "text": "The company issues <strong>MDL 50 million</strong> in green bonds and allocates the proceeds as follows: MDL 30 million for a solar farm (renewable energy), MDL 15 million for energy efficiency upgrades at a factory and MDL 5 million for electric delivery vehicles (clean transportation). Alternatively, it could issue an MDL 50 million sustainability-linked bond with a 9% coupon that rises by 0.25 percentage points if it does not cut emissions by 30% by the observation date: the additional cost would be 50,000,000 × 0.0025 = <strong>MDL 125,000 per year</strong>. The figures are illustrative."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "Green, social and sustainability bonds are defined by their use of proceeds; sustainability-linked bonds are defined by performance targets tied to their financial characteristics.",
+            "The credit risk of a standard green bond is, as a rule, the issuer's risk.",
+            "The Green Bond Principles have four components: use of proceeds, project evaluation and selection, management of proceeds, and reporting.",
+            "The ICMA principles are voluntary and recommend a green financing framework and an external review.",
+            "Eligible categories include renewable energy, energy efficiency, clean transportation, water, green buildings and the circular economy."
+          ],
+          "quiz": [
+            {
+              "q": "What mainly distinguishes a sustainability-linked bond from a green bond?",
+              "options": [
+                "The proceeds can be used for general purposes, and the financial terms depend on meeting sustainability targets",
+                "It never pays a coupon",
+                "It can be issued only by governments",
+                "The proceeds must be used exclusively for social projects"
+              ],
+              "answer": 0,
+              "explanation": "Sustainability-linked bonds are not use of proceeds instruments; they tie features such as the coupon to KPIs and performance targets."
+            },
+            {
+              "q": "Which of the following is NOT one of the four core components of the Green Bond Principles?",
+              "options": [
+                "Use of proceeds",
+                "Management of proceeds",
+                "Reporting",
+                "Guaranteeing a minimum return for investors"
+              ],
+              "answer": 3,
+              "explanation": "The four components are use of proceeds, the process for project evaluation and selection, management of proceeds, and reporting. The principles do not guarantee returns."
+            },
+            {
+              "q": "A company issues MDL 80 million in sustainability-linked bonds, with a coupon step-up of 0.5 percentage points if it misses its target. What is the additional annual cost in that case?",
+              "options": [
+                "MDL 40,000",
+                "MDL 400,000",
+                "MDL 4,000,000"
+              ],
+              "answer": 1,
+              "explanation": "80,000,000 × 0.005 = MDL 400,000 per year."
+            }
+          ]
+        },
+        {
+          "slug": "emiterea-obligatiunii-verzi",
+          "title": "Issuing a green bond",
+          "summary": "The practical steps of a green bond issue: the financing framework, the second-party opinion, allocation of proceeds, and allocation and impact reports.",
+          "minutes": 15,
+          "sections": [
+            {
+              "heading": "Preparation: from strategy to a project portfolio",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "A credible green bond starts from the <strong>company's strategy</strong>, not from a desire to obtain a label. Investors will ask how the financed projects fit into the issuer's overall environmental objectives and whether the rest of its business contradicts the green message."
+                },
+                {
+                  "type": "p",
+                  "text": "The first concrete step is to take stock of existing and planned projects that could be eligible: investments in renewable energy, energy efficiency, water or clean transportation. For each project, you estimate the cost, the timeline and the measurable environmental benefits."
+                },
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "Green financing framework (Green Bond Framework)",
+                  "text": "A public document in which the issuer describes its sustainability strategy and how it applies the four components of the principles: eligible project categories, the selection process, management of proceeds and reporting commitments. A single framework can cover several successive issues."
+                }
+              ]
+            },
+            {
+              "heading": "The steps of an issue",
+              "blocks": [
+                {
+                  "type": "steps",
+                  "items": [
+                    {
+                      "title": "1. Internal decision and project team",
+                      "text": "Management approves the initiative and sets up a team from finance, sustainability, legal and operations. It is decided who determines project eligibility (usually an internal committee)."
+                    },
+                    {
+                      "title": "2. Identifying eligible projects",
+                      "text": "Projects that match the green categories are selected and the required amount is estimated, including any refinancing of completed projects, with a disclosed look-back period."
+                    },
+                    {
+                      "title": "3. Drafting the green financing framework",
+                      "text": "The document is drafted to explain the eligibility criteria, exclusions, management of proceeds and the impact indicators that will be reported."
+                    },
+                    {
+                      "title": "4. External review",
+                      "text": "An independent reviewer analyzes the framework and issues an opinion on its alignment with market principles and the credibility of the environmental benefits."
+                    },
+                    {
+                      "title": "5. Issue documentation and approvals",
+                      "text": "The prospectus or offering document is prepared, with a reference to the green framework, and the approvals required by the capital market legislation applicable to the issuer are obtained."
+                    },
+                    {
+                      "title": "6. Placement with investors",
+                      "text": "The issuer and intermediaries present the issue to investors, explaining both the credit profile and the green projects."
+                    },
+                    {
+                      "title": "7. Allocation of proceeds and reporting",
+                      "text": "Proceeds are tracked separately and allocated to projects, and the issuer periodically publishes allocation and impact reports."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "heading": "External review and the second-party opinion",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Under the voluntary principles, an external review is usually not mandatory, but it is strongly recommended: for many investors, its absence is a red flag. The most common form is the <strong>second-party opinion</strong> (SPO), an opinion issued by an institution with sustainability expertise that is independent of the advisers who prepared the framework."
+                },
+                {
+                  "type": "table",
+                  "headers": [
+                    "Type of review",
+                    "What it provides",
+                    "When it usually happens"
+                  ],
+                  "rows": [
+                    [
+                      "Second-party opinion",
+                      "Assesses the framework's alignment with the principles and the relevance of its environmental objectives",
+                      "Before the issue"
+                    ],
+                    [
+                      "Verification",
+                      "Confirms, against set criteria, aspects such as allocation of proceeds or impact data",
+                      "Before or after the issue"
+                    ],
+                    [
+                      "Certification",
+                      "Attests compliance with a recognized external standard",
+                      "Before and often after the issue"
+                    ],
+                    [
+                      "Scoring or rating",
+                      "Assigns a score or grade to the framework or the issue, using its own methodology",
+                      "Before or after the issue"
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "heading": "After issuance: allocation and impact",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "The issue does not end once the money is received. Investors follow two types of reports: the <strong>allocation report</strong>, which shows how much money went to each project category and how much remains unallocated, and the <strong>impact report</strong>, which shows the environmental results achieved or expected, together with the calculation methodology."
+                },
+                {
+                  "type": "formula",
+                  "label": "Allocation rate",
+                  "expr": "Allocation rate (%) = Proceeds allocated to eligible projects / Net proceeds raised × 100",
+                  "note": "Amounts not yet allocated are temporarily invested according to the policy set out in the financing framework, for example in cash or deposits."
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Hypothetical example: “AquaNord SA”",
+                  "text": "The company raises net proceeds of <strong>MDL 80 million</strong> through green bonds. After the first year, it has allocated MDL 40 million to a wastewater treatment plant and MDL 16 million to energy-efficient pumps, MDL 56 million in total. Allocation rate = 56 / 80 × 100 = <strong>70%</strong>, and MDL 24 million remains temporarily in deposits. In its impact report, the company estimates savings of 4,000 MWh a year; using a hypothetical emission factor of 0.4 tCO₂e/MWh, avoided emissions are 4,000 × 0.4 = <strong>1,600 tCO₂e per year</strong>. The figures are illustrative."
+                },
+                {
+                  "type": "callout",
+                  "variant": "warning",
+                  "title": "Reputational risk",
+                  "text": "If proceeds are allocated to projects that do not match the framework, or if reports are late or missing, the issuer risks accusations of greenwashing and a loss of investor trust, even if it pays its coupons on time."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "A credible green bond starts from the company's strategy and a clear portfolio of eligible projects.",
+            "The green financing framework publicly describes the criteria, selection, management of proceeds and reporting.",
+            "The second-party opinion assesses the framework's alignment with market principles before the issue.",
+            "After issuance, allocation and impact reports are published together with the calculation methodology.",
+            "Failing to honor green commitments creates reputational risk even when the bond is paid on time."
+          ],
+          "quiz": [
+            {
+              "q": "Which public document describes the issuer's eligible project categories, selection process and reporting commitments?",
+              "options": [
+                "The financial audit report",
+                "The collective labor agreement",
+                "The green financing framework",
+                "The shareholder register"
+              ],
+              "answer": 2,
+              "explanation": "The green financing framework (Green Bond Framework) publicly sets out how the issuer applies the components of the principles."
+            },
+            {
+              "q": "An issuer raised net proceeds of MDL 60 million and allocated MDL 45 million to eligible projects. What is the allocation rate?",
+              "options": [
+                "45%",
+                "75%",
+                "133%",
+                "15%"
+              ],
+              "answer": 1,
+              "explanation": "45 / 60 × 100 = 75%."
+            },
+            {
+              "q": "What does an impact report mainly show?",
+              "options": [
+                "The environmental results achieved or expected from the financed projects",
+                "The market price of the bond each day",
+                "The list of investors who bought the bonds"
+              ],
+              "answer": 0,
+              "explanation": "The impact report presents the environmental benefits, such as energy saved or emissions avoided, together with the calculation methodology."
+            }
+          ]
+        },
+        {
+          "slug": "esg-perspectiva-investitorului",
+          "title": "ESG from the investor's perspective",
+          "summary": "ESG investment strategies, ESG ratings and their limitations, and the signs that help you recognize greenwashing.",
+          "minutes": 15,
+          "sections": [
+            {
+              "heading": "ESG investment strategies",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "There is no single way to “invest ESG.” Investors combine several approaches depending on their goals: reducing risk, aligning the portfolio with personal or institutional values, or achieving measurable impact."
+                },
+                {
+                  "type": "table",
+                  "headers": [
+                    "Strategy",
+                    "How it works",
+                    "Example"
+                  ],
+                  "rows": [
+                    [
+                      "Negative screening (exclusion)",
+                      "Removes certain sectors, companies or practices from the investment universe",
+                      "Excluding tobacco producers or companies involved in serious human rights violations"
+                    ],
+                    [
+                      "Positive screening (best-in-class)",
+                      "Selects the companies with the best ESG performance in each sector",
+                      "Choosing the most energy-efficient companies in an industrial sector"
+                    ],
+                    [
+                      "ESG integration",
+                      "Systematically includes ESG factors in financial analysis, alongside traditional indicators",
+                      "Adjusting cost estimates for future energy prices or drought risk"
+                    ],
+                    [
+                      "Thematic investing",
+                      "Focuses on sustainability-related themes",
+                      "A portfolio focused on renewable energy or water"
+                    ],
+                    [
+                      "Impact investing",
+                      "Intentionally seeks measurable social or environmental impact alongside a financial return",
+                      "Financing affordable housing projects and reporting the number of families who benefit"
+                    ],
+                    [
+                      "Shareholder engagement",
+                      "Dialogue with management and voting at general meetings to improve practices",
+                      "Asking for emissions reduction targets"
+                    ]
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "Impact investment",
+                  "text": "An investment made with the <strong>intention</strong> of generating a positive, <strong>measurable</strong> social or environmental impact in addition to a financial return. Simply avoiding “problematic” companies is not, in itself, impact investing."
+                }
+              ]
+            },
+            {
+              "heading": "ESG ratings and their limitations",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "ESG ratings are assessments issued by specialized providers that try to summarize a company's ESG performance or exposure to ESG risks in a score or grade. They are useful as a starting point, but should be used with caution."
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "<strong>Different methodologies:</strong> providers choose different topics, weightings and data sources, so the same company can receive very different scores.",
+                    "<strong>What exactly is measured:</strong> some ratings assess ESG risk to the company, others the company's impact on the world; the two are not the same.",
+                    "<strong>Incomplete data:</strong> many scores rely on information reported by the company itself or on estimates.",
+                    "<strong>Size matters:</strong> large companies with dedicated reporting teams may get better scores simply because they publish more information.",
+                    "<strong>Scores are not credit ratings:</strong> a high ESG score says nothing directly about the issuer's ability to repay its debts."
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Hypothetical example: two scores, one company",
+                  "text": "“LogiTrans SA” receives 72 out of 100 from provider A, which focuses on policies and governance, and 41 out of 100 from provider B, which focuses on fleet emissions. An investor with MDL 1 million to allocate should not pick the convenient score, but read the methodologies and check the underlying data, for example emissions of 12,000 tCO₂e against revenue of MDL 400 million, or 30 tCO₂e per MDL million. The figures are illustrative."
+                }
+              ]
+            },
+            {
+              "heading": "Greenwashing: how to recognize it",
+              "blocks": [
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "Greenwashing",
+                  "text": "The practice of presenting a company, product, fund or financial instrument as more sustainable than it really is, through vague, exaggerated, selective or unverifiable claims."
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "Vague terms such as “eco-friendly,” “nature-friendly” or “climate neutral,” with no data and no methodology.",
+                    "A focus on a small, visible project while the core business remains highly polluting and has no transition plan.",
+                    "Very long-term targets with no interim targets, allocated budget or designated owners.",
+                    "No external review, or allocation and impact reports that are late or missing.",
+                    "A fund's name suggests a green theme, but the portfolio holds few assets related to that theme.",
+                    "Emissions offsetting presented as the main solution instead of actual emission reductions."
+                  ]
+                },
+                {
+                  "type": "formula",
+                  "label": "Share of assets related to the stated theme",
+                  "expr": "Share (%) = Value of theme-aligned assets / Total portfolio value × 100",
+                  "note": "A low share in a product that claims a green theme in its name or marketing materials warrants further questions."
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Hypothetical example: the “Verde Plus” fund",
+                  "text": "A hypothetical fund with <strong>MDL 100 million</strong> in assets markets itself as a “green investment.” Looking at its list of holdings, you find that only MDL 12 million is invested in green bonds or renewable energy companies. The share is 12 / 100 × 100 = <strong>12%</strong>. The remaining MDL 88 million is in ordinary securities with no explicit ESG criteria. The gap between the message and the content is a classic sign of greenwashing."
+                }
+              ]
+            },
+            {
+              "heading": "An investor checklist",
+              "blocks": [
+                {
+                  "type": "steps",
+                  "items": [
+                    {
+                      "title": "Clarify your goal",
+                      "text": "Do you want to reduce risk, avoid certain sectors or achieve measurable impact? The right strategy depends on your answer."
+                    },
+                    {
+                      "title": "Analyze the credit first",
+                      "text": "With a green bond, the label does not replace analysis of the issuer's financial position, the maturity, the coupon and the liquidity."
+                    },
+                    {
+                      "title": "Read the green documents",
+                      "text": "Check the financing framework, the second-party opinion and the eligible project categories, including exclusions."
+                    },
+                    {
+                      "title": "Follow the reporting",
+                      "text": "Check whether allocation and impact reports are published on time, with concrete figures and an explained methodology."
+                    },
+                    {
+                      "title": "Look at the big picture",
+                      "text": "Compare the financed projects with the issuer's strategy and core business, and do not rely on a single ESG rating."
+                    }
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "warning",
+                  "title": "Educational content",
+                  "text": "The examples in this lesson are hypothetical and do not constitute investment advice. Before making any decision, consult the issuer's official documents and, where appropriate, a licensed adviser."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "ESG strategies include negative and positive screening, ESG integration, thematic investing, impact investing and shareholder engagement.",
+            "Impact investing requires intention and measurable impact, not just exclusions.",
+            "ESG ratings differ between providers because of their methodologies, and they do not replace credit analysis.",
+            "Greenwashing can be recognized by vague claims, missing data, the lack of an external review and gaps between message and content.",
+            "A green label complements, but does not replace, financial analysis of the issuer."
+          ],
+          "quiz": [
+            {
+              "q": "An investor removes all coal-producing companies from their portfolio. Which strategy are they applying?",
+              "options": [
+                "Impact investing",
+                "Positive screening",
+                "ESG integration",
+                "Negative screening (exclusion)"
+              ],
+              "answer": 3,
+              "explanation": "Removing certain sectors or companies from the investment universe is negative screening."
+            },
+            {
+              "q": "Why can the same company receive very different ESG scores from two providers?",
+              "options": [
+                "Because providers use different methodologies, weightings and data sources",
+                "Because one of the providers is always wrong",
+                "Because ESG scores are identical to credit ratings"
+              ],
+              "answer": 0,
+              "explanation": "Differences in methodology, topics analyzed and data explain why scores can vary significantly between providers."
+            },
+            {
+              "q": "Which of the following is the clearest sign of greenwashing?",
+              "options": [
+                "The issuer publishes annual allocation and impact reports with a methodology",
+                "The issuer has obtained a second-party opinion on its green framework",
+                "A fund with a “green” name has only a small portion of its assets related to the stated theme",
+                "The company sets interim targets with a budget and designated owners"
+              ],
+              "answer": 2,
+              "explanation": "A large gap between the marketing message and the actual content of the portfolio is a typical sign of greenwashing; the other options are good practices."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1722 @@
+{
+  "slug": "analiza-financiara",
+  "num": "03",
+  "title": "Financial Analysis for Investors",
+  "short": "Tools for evaluating and interpreting issuers' financial reports.",
+  "level": "Advanced",
+  "audience": "Investors",
+  "intro": "This program gives investors a rigorous framework for reading and interpreting issuers' financial statements, from the balance sheet to the cash flow statement. Building on that foundation, you learn to apply profitability ratios, market multiples and the discounted cash flow (DCF) method, and then to integrate your analysis into a portfolio that is built and managed with discipline. All examples are hypothetical and intended for educational purposes only.",
+  "outcomes": [
+    "Read and connect an issuer's balance sheet, income statement and cash flow statement.",
+    "Calculate and interpret profitability, leverage and liquidity ratios, including the DuPont breakdown of ROE.",
+    "Apply market multiples (P/E, P/BV, EV/EBITDA) and understand the limits of comparables analysis.",
+    "Build a simplified DCF model and test how sensitive the result is to key assumptions.",
+    "Measure portfolio risk using volatility, beta, maximum drawdown and the Sharpe ratio.",
+    "Draft an investment policy and choose a rebalancing rule that fits your risk profile."
+  ],
+  "prerequisites": "We recommend completing the introductory programs on the capital market and financial instruments first, and being comfortable with basic arithmetic and percentages.",
+  "courses": [
+    {
+      "code": "BA-301",
+      "title": "Financial Statement Analysis",
+      "description": "This course explains the structure and logic of the three main financial statements and how they complement one another. The focus is on interpreting the figures from an investor's point of view.",
+      "lessons": [
+        {
+          "slug": "bilantul",
+          "title": "The Balance Sheet: Assets, Liabilities and Equity",
+          "summary": "You learn to read an issuer's balance sheet, assess its liquidity and calculate working capital.",
+          "minutes": 14,
+          "sections": [
+            {
+              "heading": "What the balance sheet shows",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "The balance sheet (in IFRS terminology, the <em>statement of financial position</em>) is a snapshot of the resources a company controls and the sources used to finance them, at a specific date — usually the end of the financial year. Unlike the income statement, which covers a period, the balance sheet captures a single moment."
+                },
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "The fundamental balance sheet equation",
+                  "text": "<strong>Assets</strong> are resources controlled by the entity that are expected to generate future economic benefits. <strong>Liabilities</strong> are present obligations that will result in an outflow of resources. <strong>Equity</strong> is the shareholders' residual interest in the assets after deducting all liabilities."
+                },
+                {
+                  "type": "formula",
+                  "label": "The balance sheet identity",
+                  "expr": "Total assets = Liabilities + Equity",
+                  "note": "The equation always holds; any change in assets is matched by a change in liabilities or equity."
+                },
+                {
+                  "type": "p",
+                  "text": "For an investor, the balance sheet answers three questions: <strong>what the company owns</strong>, <strong>how much it owes and when</strong>, and <strong>how much is left for shareholders</strong> in accounting terms. Public-interest issuers generally report under international standards (IFRS), which makes balance sheet structures comparable across companies."
+                }
+              ]
+            },
+            {
+              "heading": "The structure of assets and funding sources",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Items are classified by time horizon: <em>current</em> (realizable or due within 12 months or one operating cycle) and <em>non-current</em> (long-term)."
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "<strong>Fixed (non-current) assets:</strong> land, buildings, equipment, intangible assets, long-term financial investments.",
+                    "<strong>Current assets:</strong> inventories, trade receivables, other receivables, cash and cash equivalents.",
+                    "<strong>Long-term liabilities:</strong> bank loans and bonds maturing in more than one year, long-term provisions.",
+                    "<strong>Current liabilities:</strong> trade payables to suppliers, the current portion of loans, taxes and wages payable.",
+                    "<strong>Equity:</strong> share capital, reserves, retained earnings."
+                  ]
+                },
+                {
+                  "type": "p",
+                  "text": "Balance sheet figures are largely accounting values: many assets are carried at historical cost less depreciation, so <em>book value</em> can differ substantially from market value. Internally developed brands or know-how often do not appear on the balance sheet at all."
+                }
+              ]
+            },
+            {
+              "heading": "Liquidity and working capital",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Liquidity describes a company's ability to meet its short-term obligations. A profitable issuer can still run into trouble if its current assets do not cover its current liabilities when they fall due."
+                },
+                {
+                  "type": "formula",
+                  "label": "Net working capital",
+                  "expr": "Working capital = Current assets − Current liabilities",
+                  "note": "A positive value means short-term assets exceed short-term obligations."
+                },
+                {
+                  "type": "formula",
+                  "label": "Current ratio and quick ratio",
+                  "expr": "Current ratio = Current assets ÷ Current liabilities;  Quick ratio = (Current assets − Inventories) ÷ Current liabilities",
+                  "note": "The quick ratio excludes inventories, which are the hardest to turn into cash quickly."
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Illustrative example: Nistru Agro SA (MDL thousand)",
+                  "text": "The hypothetical company Nistru Agro SA has fixed assets of 42,000 and current assets of 18,000 (inventories 9,500, receivables 6,200, cash 2,300), for total assets of 60,000. Funding sources: equity 30,000, long-term liabilities 18,000, current liabilities 12,000 — a total of 60,000. Working capital = 18,000 − 12,000 = <strong>MDL 6,000 thousand</strong>. Current ratio = 18,000 ÷ 12,000 = <strong>1.5</strong>. Quick ratio = (18,000 − 9,500) ÷ 12,000 = 8,500 ÷ 12,000 ≈ <strong>0.71</strong>. With 2,000,000 shares outstanding, book value per share = 30,000,000 ÷ 2,000,000 = <strong>MDL 15</strong>. The figures are illustrative."
+                },
+                {
+                  "type": "p",
+                  "text": "Interpretation: a current ratio of 1.5 looks comfortable, but a quick ratio below 1 shows that coverage depends on selling inventories. For an agricultural company with seasonal production this may be normal; for a services company it could be a warning sign."
+                }
+              ]
+            },
+            {
+              "heading": "Common pitfalls when reading a balance sheet",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "Comparing ratios across sectors with different operating cycles.",
+                    "Ignoring asset quality: old receivables may be hard to collect, and inventories may be impaired.",
+                    "Analyzing a single balance sheet, without the multi-year trend and without the notes.",
+                    "Assuming that the book value of equity equals the true value of the business."
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "tip",
+                  "title": "Read the notes",
+                  "text": "The notes to the financial statements detail accounting policies, debt maturities, guarantees given and contingent liabilities. Information that is essential for assessing risk is often found there, not on the face of the balance sheet."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "The balance sheet shows the financial position at a specific date: Total assets = Liabilities + Equity.",
+            "Classifying items as current and non-current lets you assess liquidity and the funding structure.",
+            "Working capital and liquidity ratios show the ability to meet short-term obligations.",
+            "Book value often differs from market value; sound analysis requires a multi-year trend and reading the notes."
+          ],
+          "quiz": [
+            {
+              "q": "A company has current assets of MDL 18,000 thousand, including inventories of MDL 9,500 thousand, and current liabilities of MDL 12,000 thousand. What is its quick ratio?",
+              "options": [
+                "1.50",
+                "0.79",
+                "0.71",
+                "1.26"
+              ],
+              "answer": 2,
+              "explanation": "Quick ratio = (18,000 − 9,500) ÷ 12,000 = 8,500 ÷ 12,000 ≈ 0.71."
+            },
+            {
+              "q": "What does equity represent on the balance sheet?",
+              "options": [
+                "The company's available cash",
+                "The shareholders' residual interest in the assets after deducting liabilities",
+                "The market value of the shares at the balance sheet date"
+              ],
+              "answer": 1,
+              "explanation": "Equity = Assets − Liabilities; it is an accounting figure, not the company's market value."
+            },
+            {
+              "q": "Why does the quick ratio exclude inventories?",
+              "options": [
+                "Because inventories are usually the least liquid current asset",
+                "Because inventories are non-current assets",
+                "Because inventories are already included in current liabilities",
+                "Because IFRS prohibits reporting inventories on the balance sheet"
+              ],
+              "answer": 0,
+              "explanation": "Inventories are current assets, but converting them into cash depends on sales and may take time or require price discounts."
+            }
+          ]
+        },
+        {
+          "slug": "contul-de-profit",
+          "title": "The Income Statement",
+          "summary": "You analyze an issuer's revenue, margins, EBITDA, net profit and earnings per share.",
+          "minutes": 14,
+          "sections": [
+            {
+              "heading": "The cascading logic of the income statement",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "The income statement (profit and loss account) describes a company's performance <strong>over a period</strong> (quarter, half-year, year). It is structured as a cascade: starting from revenue, successive categories of expenses are deducted, producing intermediate profit levels that each tell you something different about the business."
+                },
+                {
+                  "type": "steps",
+                  "items": [
+                    {
+                      "title": "Revenue (turnover)",
+                      "text": "Amounts earned from selling goods and services, recognized when the obligation to the customer is fulfilled, not necessarily when the cash is received."
+                    },
+                    {
+                      "title": "Gross profit",
+                      "text": "Revenue minus cost of sales; it reflects production efficiency and pricing power."
+                    },
+                    {
+                      "title": "Operating profit (EBIT)",
+                      "text": "Gross profit minus distribution, administrative and other operating expenses, including depreciation and amortization."
+                    },
+                    {
+                      "title": "Profit before tax",
+                      "text": "EBIT plus finance income minus finance costs (mainly interest)."
+                    },
+                    {
+                      "title": "Net profit",
+                      "text": "Profit before tax minus income tax; this is the result attributable to shareholders."
+                    }
+                  ]
+                },
+                {
+                  "type": "p",
+                  "text": "Each step of the cascade isolates a different type of decision. Gross profit mainly reflects production and pricing policy, operating profit adds the efficiency of the overhead cost structure, and net profit includes the effect of financing decisions and taxation. That is why an analyst does not stop at the bottom line: two companies with the same net profit may have very different operating businesses, offset by different financing structures. Comparing all the intermediate levels over several years shows where value is created and where it is lost."
+                }
+              ]
+            },
+            {
+              "heading": "Margins and EBITDA",
+              "blocks": [
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "EBITDA",
+                  "text": "<strong>EBITDA</strong> (<em>Earnings Before Interest, Taxes, Depreciation and Amortization</em>) is profit before interest, taxes, depreciation and amortization. It is used to compare the operating profitability of companies with different financing structures and depreciation policies. It is not defined by IFRS, so the calculation method may vary from one issuer to another."
+                },
+                {
+                  "type": "formula",
+                  "label": "Profit margins",
+                  "expr": "Margin X = Profit at level X ÷ Revenue × 100%;  EBITDA = EBIT + Depreciation and amortization",
+                  "note": "You calculate the gross margin, EBITDA margin, operating margin and net margin, each relative to the same revenue."
+                },
+                {
+                  "type": "p",
+                  "text": "Margins let you compare companies of different sizes and track changes over time. A falling gross margin may signal pricing pressure or rising raw material costs; a falling net margin with a stable operating margin may point to a higher cost of debt."
+                },
+                {
+                  "type": "callout",
+                  "variant": "warning",
+                  "title": "EBITDA is not cash",
+                  "text": "EBITDA ignores the investment needed to maintain assets, interest, taxes and changes in working capital. A company with high EBITDA can still have weak cash flows. Always check how the issuer defines its \"adjusted\" metrics."
+                }
+              ]
+            },
+            {
+              "heading": "A complete example and earnings per share",
+              "blocks": [
+                {
+                  "type": "table",
+                  "headers": [
+                    "Item (MDL thousand)",
+                    "Amount",
+                    "Margin on revenue"
+                  ],
+                  "rows": [
+                    [
+                      "Revenue",
+                      "50,000",
+                      "100%"
+                    ],
+                    [
+                      "Cost of sales",
+                      "(32,000)",
+                      "—"
+                    ],
+                    [
+                      "Gross profit",
+                      "18,000",
+                      "36.0%"
+                    ],
+                    [
+                      "Distribution and administrative expenses (including depreciation of 3,000)",
+                      "(8,000)",
+                      "—"
+                    ],
+                    [
+                      "Operating profit (EBIT)",
+                      "10,000",
+                      "20.0%"
+                    ],
+                    [
+                      "EBITDA = 10,000 + 3,000",
+                      "13,000",
+                      "26.0%"
+                    ],
+                    [
+                      "Interest expense",
+                      "(2,000)",
+                      "—"
+                    ],
+                    [
+                      "Profit before tax",
+                      "8,000",
+                      "16.0%"
+                    ],
+                    [
+                      "Income tax (illustrative rate of 12%)",
+                      "(960)",
+                      "—"
+                    ],
+                    [
+                      "Net profit",
+                      "7,040",
+                      "14.08%"
+                    ]
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Calculating EPS for Nistru Agro SA (illustrative)",
+                  "text": "Net profit is MDL 7,040 thousand, or MDL 7,040,000. The company has 2,000,000 ordinary shares outstanding and no preferred shares. EPS = 7,040,000 ÷ 2,000,000 = <strong>MDL 3.52 per share</strong>. Tax: 8,000 × 12% = MDL 960 thousand; net profit: 8,000 − 960 = MDL 7,040 thousand."
+                },
+                {
+                  "type": "formula",
+                  "label": "Earnings per share (EPS)",
+                  "expr": "EPS = (Net profit − Preferred dividends) ÷ Weighted average number of ordinary shares outstanding",
+                  "note": "Diluted EPS also takes into account instruments that could be converted into shares (for example, convertible bonds or options)."
+                }
+              ]
+            },
+            {
+              "heading": "Earnings quality",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Not all profit is equally valuable to an investor. <strong>Recurring</strong> profit from the core business is more relevant for valuation than <strong>non-recurring</strong> gains, such as the sale of land or the reversal of a provision."
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "Separate exceptional items from the result of the core business.",
+                    "Compare revenue growth with growth in receivables: if receivables grow much faster, the quality of revenue may be questionable.",
+                    "Track margins over at least three to five years, not just in a single financial year.",
+                    "Compare net profit with cash flow from operating activities."
+                  ]
+                },
+                {
+                  "type": "p",
+                  "text": "Also check whether the number of shares changed during the period through new issues or buybacks. EPS growth achieved only by reducing the share count does not mean the same thing as growth in net profit generated by the core business."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "The income statement describes performance over a period, cascading from revenue down to net profit.",
+            "Margins express each profit level relative to revenue and allow comparisons over time and across companies.",
+            "EBITDA = EBIT + depreciation and amortization; it is useful for comparisons but is not the same as cash generated.",
+            "EPS relates the profit attributable to ordinary shareholders to the weighted average number of shares.",
+            "Recurring profit matters more for valuation than exceptional gains."
+          ],
+          "quiz": [
+            {
+              "q": "A company has EBIT of MDL 10,000 thousand and depreciation and amortization of MDL 3,000 thousand. What is its EBITDA?",
+              "options": [
+                "MDL 7,000 thousand",
+                "MDL 13,000 thousand",
+                "MDL 10,000 thousand",
+                "MDL 30,000 thousand"
+              ],
+              "answer": 1,
+              "explanation": "EBITDA = EBIT + depreciation and amortization = 10,000 + 3,000 = MDL 13,000 thousand."
+            },
+            {
+              "q": "Net profit is MDL 7,040,000 and the weighted average number of ordinary shares is 2,000,000. There are no preferred shares. What is EPS?",
+              "options": [
+                "MDL 3.52",
+                "MDL 2.84",
+                "MDL 35.20"
+              ],
+              "answer": 0,
+              "explanation": "EPS = 7,040,000 ÷ 2,000,000 = MDL 3.52 per share."
+            },
+            {
+              "q": "A company's operating margin stays stable, but its net margin falls significantly. Which of the options below is the most plausible explanation?",
+              "options": [
+                "A lower selling price for its products",
+                "Higher raw material costs",
+                "Higher administrative expenses",
+                "Higher interest expense"
+              ],
+              "answer": 3,
+              "explanation": "The first three options would also affect the operating margin. Interest is deducted after EBIT, so it can reduce the net margin without changing the operating margin."
+            }
+          ]
+        },
+        {
+          "slug": "fluxurile-de-numerar",
+          "title": "The Cash Flow Statement",
+          "summary": "You understand how cash is generated and used, and why accounting profit is not the same as cash received.",
+          "minutes": 15,
+          "sections": [
+            {
+              "heading": "Why cash matters",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Profit is calculated using <em>accrual accounting</em>: revenue and expenses are recognized when they are earned or incurred, not when cash is received or paid. That is why a company can report a profit and run out of cash at the same time. The cash flow statement reconciles these two perspectives."
+                },
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "The three categories of cash flows",
+                  "text": "<strong>Operating activities</strong> cover receipts and payments from the core business. <strong>Investing activities</strong> cover purchases and sales of long-term assets. <strong>Financing activities</strong> cover raising and repaying loans, share issues and dividend payments."
+                },
+                {
+                  "type": "p",
+                  "text": "For an investor, the cash flow statement is often the hardest of the three reports to \"adjust,\" because cash coming in or going out can be verified. It shows whether the core business funds its own investments, how far the company depends on new loans or shareholder contributions, and whether dividends are backed by the cash it generates. Read together with the balance sheet and the income statement, it completes the economic picture of the issuer."
+                }
+              ]
+            },
+            {
+              "heading": "The indirect method for operating activities",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Most issuers present operating cash flow using the indirect method: they start from net profit and adjust it for non-cash items and for changes in working capital."
+                },
+                {
+                  "type": "steps",
+                  "items": [
+                    {
+                      "title": "Start from net profit",
+                      "text": "This is the starting point of the reconciliation."
+                    },
+                    {
+                      "title": "Add back non-cash items",
+                      "text": "Depreciation and amortization reduce profit but do not involve a cash outflow in the current period."
+                    },
+                    {
+                      "title": "Adjust for working capital",
+                      "text": "An increase in receivables or inventories consumes cash (deducted); an increase in trade payables to suppliers keeps cash in the company (added)."
+                    },
+                    {
+                      "title": "Arrive at cash flow from operating activities",
+                      "text": "The result shows how much cash the core business actually generated."
+                    }
+                  ]
+                },
+                {
+                  "type": "p",
+                  "text": "The classification of some items, such as interest paid or dividends received, may differ between issuers, because IFRS allows certain choices. In the example below, interest is included in operating cash flow."
+                }
+              ]
+            },
+            {
+              "heading": "Example: from profit to cash",
+              "blocks": [
+                {
+                  "type": "table",
+                  "headers": [
+                    "Nistru Agro SA — item (MDL thousand, illustrative)",
+                    "Amount"
+                  ],
+                  "rows": [
+                    [
+                      "Net profit",
+                      "7,040"
+                    ],
+                    [
+                      "+ Depreciation and amortization",
+                      "3,000"
+                    ],
+                    [
+                      "− Increase in receivables",
+                      "(1,200)"
+                    ],
+                    [
+                      "− Increase in inventories",
+                      "(800)"
+                    ],
+                    [
+                      "+ Increase in trade payables",
+                      "460"
+                    ],
+                    [
+                      "<strong>Cash flow from operating activities</strong>",
+                      "<strong>8,500</strong>"
+                    ],
+                    [
+                      "− Purchases of equipment (CAPEX)",
+                      "(5,000)"
+                    ],
+                    [
+                      "+ Proceeds from the sale of equipment",
+                      "300"
+                    ],
+                    [
+                      "<strong>Cash flow from investing activities</strong>",
+                      "<strong>(4,700)</strong>"
+                    ],
+                    [
+                      "− Loan repayments",
+                      "(2,500)"
+                    ],
+                    [
+                      "− Dividends paid",
+                      "(1,000)"
+                    ],
+                    [
+                      "<strong>Cash flow from financing activities</strong>",
+                      "<strong>(3,500)</strong>"
+                    ],
+                    [
+                      "<strong>Net change in cash</strong>",
+                      "<strong>300</strong>"
+                    ],
+                    [
+                      "Cash at the beginning of the year",
+                      "2,000"
+                    ],
+                    [
+                      "Cash at the end of the year",
+                      "2,300"
+                    ]
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Checking the calculations",
+                  "text": "Operating cash flow: 7,040 + 3,000 − 1,200 − 800 + 460 = 8,500. Investing cash flow: −5,000 + 300 = −4,700. Financing cash flow: −2,500 − 1,000 = −3,500. Net change: 8,500 − 4,700 − 3,500 = 300, so cash rises from 2,000 to MDL 2,300 thousand — exactly the balance shown on the balance sheet. Free cash flow = 8,500 − 5,000 = <strong>MDL 3,500 thousand</strong>."
+                }
+              ]
+            },
+            {
+              "heading": "Free cash flow and warning signs",
+              "blocks": [
+                {
+                  "type": "formula",
+                  "label": "Free cash flow (FCF)",
+                  "expr": "FCF = Cash flow from operating activities − Capital expenditure (CAPEX)",
+                  "note": "This is a simplified, widely used definition. Valuation uses more precise variants, such as free cash flow to the firm (FCFF), discussed in the lesson on DCF."
+                },
+                {
+                  "type": "p",
+                  "text": "FCF shows the cash left after maintaining and expanding the asset base, available for repaying debt, paying dividends or buying back shares. In the example, the company generated MDL 3,500 thousand of FCF and used MDL 3,500 thousand for financing, keeping its cash position almost unchanged."
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "Net profit rising while operating cash flow falls for several consecutive years.",
+                    "Dividends consistently funded by new borrowing rather than free cash flow.",
+                    "Receivables systematically growing faster than revenue.",
+                    "CAPEX below depreciation over the long term, which may indicate underinvestment."
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "tip",
+                  "title": "The cash-to-profit ratio",
+                  "text": "Compare operating cash flow with net profit over several years. A ratio consistently above 1 (here 8,500 ÷ 7,040 ≈ 1.21) usually suggests good-quality earnings, but the interpretation depends on the sector and on capital intensity."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "Accounting profit and cash differ because of non-cash items and changes in working capital.",
+            "Cash flows are split into operating, investing and financing activities; their sum is the net change in cash.",
+            "Increases in receivables and inventories consume cash; an increase in trade payables keeps it in the company.",
+            "FCF = operating cash flow − CAPEX shows the cash available to creditors and shareholders.",
+            "Profit that does not turn into cash over the long term is a warning sign."
+          ],
+          "quiz": [
+            {
+              "q": "How does an increase in trade receivables affect cash flow from operating activities (indirect method)?",
+              "options": [
+                "It increases it, because revenue goes up",
+                "It has no effect, since it is a balance sheet item",
+                "It reduces it, because the sales have not yet been collected"
+              ],
+              "answer": 2,
+              "explanation": "An increase in receivables means revenue has been recognized but not collected; the adjustment is deducted from net profit."
+            },
+            {
+              "q": "Operating cash flow is MDL 8,500 thousand, CAPEX is MDL 5,000 thousand and dividends paid are MDL 1,000 thousand. What is FCF under the simplified definition?",
+              "options": [
+                "MDL 2,500 thousand",
+                "MDL 3,500 thousand",
+                "MDL 13,500 thousand",
+                "MDL 9,500 thousand"
+              ],
+              "answer": 1,
+              "explanation": "FCF = 8,500 − 5,000 = MDL 3,500 thousand. Dividends are a use of FCF and are not deducted when calculating it."
+            },
+            {
+              "q": "Which category does the repayment of a bank loan fall into?",
+              "options": [
+                "Financing activities",
+                "Operating activities",
+                "Investing activities",
+                "It does not appear in the cash flow statement"
+              ],
+              "answer": 0,
+              "explanation": "Raising and repaying loans changes the financing structure and is presented under financing activities."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "BA-302",
+      "title": "Valuing Listed Companies",
+      "description": "This course presents the main valuation tools investors use: financial ratios, market multiples and the discounted cash flow (DCF) method. Each method is presented together with its limitations.",
+      "lessons": [
+        {
+          "slug": "rentabilitate-indatorare",
+          "title": "Profitability and Leverage Ratios",
+          "summary": "You calculate and interpret ROE, ROA, net margin, the debt ratio, interest coverage and the current ratio.",
+          "minutes": 15,
+          "sections": [
+            {
+              "heading": "Profitability: how much the company earns on its resources",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Profitability ratios relate profit to the resource base that generated it. They answer the question: <em>how efficiently does the company turn capital into profit?</em> To avoid distortions, the denominator usually uses average values for the period, because profit builds up over the whole year."
+                },
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "ROE and ROA",
+                  "text": "<strong>ROE</strong> (<em>Return on Equity</em>) shows the net profit earned on each leu of shareholders' capital. <strong>ROA</strong> (<em>Return on Assets</em>) shows the net profit earned on each leu of assets, regardless of how they are financed."
+                },
+                {
+                  "type": "formula",
+                  "label": "Profitability ratios",
+                  "expr": "ROE = Net profit ÷ Average equity × 100%;  ROA = Net profit ÷ Average total assets × 100%;  Net margin = Net profit ÷ Revenue × 100%",
+                  "note": "Some analysts use profit before interest for ROA to neutralize the effect of financing; what matters is applying the same definition consistently."
+                }
+              ]
+            },
+            {
+              "heading": "The DuPont breakdown",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "A high ROE can come from very different sources: high margins, intensive use of assets or high leverage. The DuPont breakdown separates these three sources."
+                },
+                {
+                  "type": "formula",
+                  "label": "ROE in three factors",
+                  "expr": "ROE = (Net profit ÷ Revenue) × (Revenue ÷ Average assets) × (Average assets ÷ Average equity)",
+                  "note": "The factors are: net margin × asset turnover × equity multiplier (financial leverage)."
+                },
+                {
+                  "type": "callout",
+                  "variant": "warning",
+                  "title": "A high ROE does not automatically mean quality",
+                  "text": "If ROE rises mainly because of leverage, shareholder returns become more sensitive to falling profit and rising interest rates. Always analyze where ROE comes from, not just its level."
+                }
+              ]
+            },
+            {
+              "heading": "Leverage and solvency",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "<strong>Financial debt/equity</strong> — how much the company relies on creditors relative to shareholders.",
+                    "<strong>Net debt</strong> — financial debt minus cash; later used to calculate enterprise value.",
+                    "<strong>Interest coverage ratio</strong> — how many times operating profit covers interest expense.",
+                    "<strong>Current ratio</strong> — current assets relative to current liabilities, an indicator of short-term ability to pay."
+                  ]
+                },
+                {
+                  "type": "formula",
+                  "label": "Leverage ratios",
+                  "expr": "Debt/Equity = Financial debt ÷ Equity;  Interest coverage = EBIT ÷ Interest expense",
+                  "note": "Some analyses use total liabilities rather than only interest-bearing debt; check the definition before comparing values."
+                },
+                {
+                  "type": "p",
+                  "text": "There are no universal thresholds: a utility with stable revenue can sustain higher leverage than a cyclical company. The trend over time and the comparison with similar companies are more informative than a single value in isolation."
+                },
+                {
+                  "type": "p",
+                  "text": "Financial leverage works in both directions. As long as the return on assets exceeds the cost of debt, borrowing increases shareholder returns. When operating profit falls or interest rates rise, the same debt amplifies the decline in ROE and can put pressure on liquidity, especially if loan maturities are concentrated in a short period."
+                }
+              ]
+            },
+            {
+              "heading": "An integrated example",
+              "blocks": [
+                {
+                  "type": "table",
+                  "headers": [
+                    "Nistru Agro SA (MDL thousand, illustrative)",
+                    "Beginning of year",
+                    "End of year",
+                    "Average"
+                  ],
+                  "rows": [
+                    [
+                      "Total assets",
+                      "52,000",
+                      "60,000",
+                      "56,000"
+                    ],
+                    [
+                      "Equity",
+                      "23,960",
+                      "30,000",
+                      "26,980"
+                    ],
+                    [
+                      "Financial debt (loans)",
+                      "—",
+                      "22,000",
+                      "—"
+                    ],
+                    [
+                      "Cash",
+                      "2,000",
+                      "2,300",
+                      "—"
+                    ]
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Calculating the ratios",
+                  "text": "Data: net profit 7,040, revenue 50,000, EBIT 10,000, interest 2,000. Opening equity: 30,000 − 7,040 + 1,000 (dividends) = 23,960. <strong>ROE</strong> = 7,040 ÷ 26,980 ≈ 26.1%. <strong>ROA</strong> = 7,040 ÷ 56,000 ≈ 12.6%. <strong>Net margin</strong> = 7,040 ÷ 50,000 = 14.08%. DuPont: 0.1408 × (50,000 ÷ 56,000 ≈ 0.893) × (56,000 ÷ 26,980 ≈ 2.076) ≈ 26.1%. <strong>Financial debt/equity</strong> (long-term loans of 18,000 plus the current portion of 4,000, included in current liabilities) = 22,000 ÷ 30,000 ≈ 0.73. <strong>Net debt</strong> = 22,000 − 2,300 = 19,700. <strong>Interest coverage</strong> = 10,000 ÷ 2,000 = 5.0. <strong>Current ratio</strong> = 18,000 ÷ 12,000 = 1.5."
+                },
+                {
+                  "type": "p",
+                  "text": "Interpretation: the ROE of about 26% is supported by a solid net margin, but also by an equity multiplier of roughly 2.1. Interest coverage of 5 times provides a reasonable safety margin: EBIT could fall by 80% before interest would no longer be covered by operating profit."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "ROE, ROA and net margin measure how efficiently the company turns resources into profit.",
+            "The DuPont breakdown shows whether ROE comes from margins, asset turnover or leverage.",
+            "The debt ratio and interest coverage measure the financial risk the company takes on.",
+            "Values must be interpreted in context: sector, multi-year trend and comparable companies."
+          ],
+          "quiz": [
+            {
+              "q": "Two companies have the same ROE of 20%. Company A has an equity multiplier of 1.2, and company B has 3.5. Which conclusion is correct?",
+              "options": [
+                "Company B is necessarily more profitable operationally",
+                "Company B's ROE depends to a greater extent on leverage",
+                "The two companies have the same risk profile",
+                "Company A definitely has a lower net margin"
+              ],
+              "answer": 1,
+              "explanation": "A higher equity multiplier means a larger share of assets is financed with debt, so B's ROE depends more on leverage."
+            },
+            {
+              "q": "EBIT is MDL 10,000 thousand and interest expense is MDL 2,000 thousand. What is the interest coverage ratio?",
+              "options": [
+                "0.2",
+                "8.0",
+                "5.0"
+              ],
+              "answer": 2,
+              "explanation": "Interest coverage = EBIT ÷ interest = 10,000 ÷ 2,000 = 5.0."
+            },
+            {
+              "q": "Why is average equity usually used to calculate ROE?",
+              "options": [
+                "Because profit is earned over the whole period, not at a single date",
+                "Because IFRS does not publish year-end values",
+                "So that ROE is always higher",
+                "To remove the effect of dividends on profit"
+              ],
+              "answer": 0,
+              "explanation": "Profit is a flow measured over a period, while equity is a stock measured at a point in time; the average approximates the capital employed over the whole period."
+            }
+          ]
+        },
+        {
+          "slug": "multiplicatori-de-piata",
+          "title": "Market Multiples",
+          "summary": "You apply P/E, P/BV, EV/EBITDA and dividend yield for relative valuation and understand the limits of comparables.",
+          "minutes": 15,
+          "sections": [
+            {
+              "heading": "Relative valuation",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Multiples relate the market price to a financial measure of the company: profit, equity, EBITDA or dividends. The idea behind relative valuation is that similar assets should trade at similar multiples. The method is quick and reflects current market conditions, but it depends critically on the choice of comparables."
+                },
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "Market capitalization and enterprise value",
+                  "text": "<strong>Market capitalization</strong> = share price × number of shares outstanding; it represents the market value of equity. <strong>Enterprise value (EV)</strong> = market capitalization + financial debt − cash (in simplified form); it represents the value of the whole business, for all providers of capital."
+                },
+                {
+                  "type": "p",
+                  "text": "The distinction between market capitalization and EV is essential. Two companies with the same market capitalization can have very different enterprise values if one has large debts and the other holds a lot of cash. A buyer of the whole business would take on the debt but would also benefit from the existing cash; that is why EV is the right measure when comparing businesses with different financing structures. In more complete forms, EV also includes preferred shares and non-controlling interests."
+                }
+              ]
+            },
+            {
+              "heading": "The main multiples",
+              "blocks": [
+                {
+                  "type": "formula",
+                  "label": "Equity multiples",
+                  "expr": "P/E = Price per share ÷ EPS;  P/BV = Price per share ÷ Book value per share;  Dividend yield = Dividend per share ÷ Price × 100%",
+                  "note": "P/E can be calculated on the last 12 months of earnings (trailing) or on estimated earnings (forward); do not mix the two in a comparison."
+                },
+                {
+                  "type": "formula",
+                  "label": "Enterprise-level multiple",
+                  "expr": "EV = Market capitalization + Financial debt − Cash;  EV/EBITDA = EV ÷ EBITDA",
+                  "note": "The numerator and denominator must be consistent: EV and EBITDA both relate to all providers of capital, while price and EPS relate only to shareholders."
+                },
+                {
+                  "type": "table",
+                  "headers": [
+                    "Multiple",
+                    "When it is useful",
+                    "Main limitations"
+                  ],
+                  "rows": [
+                    [
+                      "P/E",
+                      "Profitable companies with stable earnings",
+                      "Unusable when there are losses; sensitive to non-recurring items and leverage"
+                    ],
+                    [
+                      "P/BV",
+                      "Banks, companies with mainly financial or tangible assets",
+                      "Less relevant for businesses built on intangible assets"
+                    ],
+                    [
+                      "EV/EBITDA",
+                      "Comparing companies with different levels of debt",
+                      "Ignores CAPEX, taxes and changes in working capital"
+                    ],
+                    [
+                      "Dividend yield",
+                      "Investors focused on current income",
+                      "A high yield may reflect a falling price or an unsustainable dividend"
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "heading": "Example: multiples and comparables",
+              "blocks": [
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Nistru Agro SA at an illustrative price of MDL 35",
+                  "text": "Market capitalization = 35 × 2,000,000 = MDL 70,000,000 (MDL 70,000 thousand). EV = 70,000 + 22,000 − 2,300 = <strong>MDL 89,700 thousand</strong>. P/E = 35 ÷ 3.52 ≈ <strong>9.9</strong>. P/BV = 35 ÷ 15 ≈ <strong>2.33</strong>. EV/EBITDA = 89,700 ÷ 13,000 = <strong>6.9</strong>. With a dividend of MDL 0.50 per share, dividend yield = 0.50 ÷ 35 ≈ <strong>1.43%</strong>."
+                },
+                {
+                  "type": "table",
+                  "headers": [
+                    "Hypothetical comparable company",
+                    "P/E",
+                    "EV/EBITDA"
+                  ],
+                  "rows": [
+                    [
+                      "Comparable A",
+                      "8.5",
+                      "6.0"
+                    ],
+                    [
+                      "Comparable B",
+                      "11.0",
+                      "7.5"
+                    ],
+                    [
+                      "Comparable C",
+                      "12.5",
+                      "8.0"
+                    ],
+                    [
+                      "<strong>Median</strong>",
+                      "<strong>11.0</strong>",
+                      "<strong>7.5</strong>"
+                    ]
+                  ]
+                },
+                {
+                  "type": "p",
+                  "text": "Applying the median P/E: implied price = 11.0 × 3.52 = <strong>MDL 38.72</strong>. Applying the median EV/EBITDA: implied EV = 7.5 × 13,000 = MDL 97,500 thousand; equity value = 97,500 − 19,700 (net debt) = MDL 77,800 thousand; per share = 77,800,000 ÷ 2,000,000 = <strong>MDL 38.90</strong>. Both values are above the illustrative price of MDL 35, but the difference must be explained before drawing any conclusion."
+                },
+                {
+                  "type": "callout",
+                  "variant": "tip",
+                  "title": "The median, not the mean",
+                  "text": "The median is less influenced by extreme values than the arithmetic mean, which matters when the sample of comparables is small."
+                }
+              ]
+            },
+            {
+              "heading": "The limits of multiples",
+              "blocks": [
+                {
+                  "type": "callout",
+                  "variant": "warning",
+                  "title": "A low multiple does not automatically mean a \"cheap\" stock",
+                  "text": "A low P/E may reflect weaker expected growth, higher risk, temporarily inflated earnings or low trading liquidity in the stock. Relative valuation only tells you how a company is priced relative to others, not whether the whole group is fairly valued. The examples are for educational purposes only and do not constitute investment recommendations."
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "Comparables should be similar in sector, size, growth, risk and accounting policies.",
+                    "In markets with few listed companies or thin trading, prices may not reflect fundamental value.",
+                    "Non-recurring items should be removed from earnings before calculating multiples.",
+                    "Multiples should be cross-checked against other methods, such as DCF."
+                  ]
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "Multiples relate price to earnings, equity, EBITDA or dividends and enable relative valuation.",
+            "EV = market capitalization + financial debt − cash; it is paired with firm-wide measures such as EBITDA.",
+            "Implied value comes from applying the comparables' median to the metrics of the company being analyzed.",
+            "The quality of the analysis depends on how truly comparable the companies are and on adjusting for non-recurring items.",
+            "A low multiple is not, on its own, an argument for investing."
+          ],
+          "quiz": [
+            {
+              "q": "A company has a market capitalization of MDL 70,000 thousand, financial debt of MDL 22,000 thousand and cash of MDL 2,300 thousand. What is its EV?",
+              "options": [
+                "MDL 94,300 thousand",
+                "MDL 70,000 thousand",
+                "MDL 47,700 thousand",
+                "MDL 89,700 thousand"
+              ],
+              "answer": 3,
+              "explanation": "EV = 70,000 + 22,000 − 2,300 = MDL 89,700 thousand."
+            },
+            {
+              "q": "Why is EV/EBITDA often preferred to P/E when comparing companies with very different levels of debt?",
+              "options": [
+                "Because EV and EBITDA are both independent of the financing structure",
+                "Because EBITDA includes CAPEX",
+                "Because EV/EBITDA is always lower than P/E"
+              ],
+              "answer": 0,
+              "explanation": "EV captures the value for all providers of capital, and EBITDA is calculated before interest, so the comparison is less distorted by leverage."
+            },
+            {
+              "q": "The comparables' median P/E is 11.0, and the analyzed company's EPS is MDL 3.52. What is the implied price?",
+              "options": [
+                "MDL 31.25",
+                "MDL 38.72",
+                "MDL 14.52",
+                "MDL 35.20"
+              ],
+              "answer": 1,
+              "explanation": "Implied price = P/E × EPS = 11.0 × 3.52 = MDL 38.72."
+            }
+          ]
+        },
+        {
+          "slug": "metoda-dcf",
+          "title": "The Discounted Cash Flow (DCF) Method",
+          "summary": "You build a simplified DCF valuation with WACC, a terminal value and a sensitivity analysis.",
+          "minutes": 18,
+          "sections": [
+            {
+              "heading": "The principle of intrinsic value",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "The DCF method (<em>Discounted Cash Flow</em>) starts from the idea that the value of a business equals the present value of the cash flows it will generate in the future. One leu received five years from now is worth less than one leu today, because of both opportunity cost and risk. That is why future cash flows are discounted at a rate that reflects their risk."
+                },
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "Free cash flow to the firm (FCFF)",
+                  "text": "<strong>FCFF</strong> is the cash generated by operating activities after taxes, capital expenditure and changes in working capital, available to <em>all</em> providers of capital — shareholders and creditors. Because it is calculated before interest, it is discounted at the weighted average cost of capital (WACC)."
+                },
+                {
+                  "type": "formula",
+                  "label": "Free cash flow to the firm",
+                  "expr": "FCFF = EBIT × (1 − t) + Depreciation and amortization − CAPEX − Increase in working capital",
+                  "note": "t is the income tax rate. For Nistru Agro SA in the current year: 10,000 × 0.88 + 3,000 − 5,000 − 1,540 = MDL 5,260 thousand (illustrative)."
+                }
+              ]
+            },
+            {
+              "heading": "The discount rate: a simplified WACC",
+              "blocks": [
+                {
+                  "type": "formula",
+                  "label": "Weighted average cost of capital",
+                  "expr": "WACC = wE × kE + wD × kD × (1 − t)",
+                  "note": "wE and wD are the weights of equity and debt in the financing structure (preferably at market or target values); kE is the cost of equity and kD is the pre-tax cost of debt."
+                },
+                {
+                  "type": "p",
+                  "text": "The cost of debt can be estimated from the interest rate at which the company borrows. The cost of equity is harder to observe: it is the return shareholders require and is usually estimated as a risk-free rate plus a risk premium appropriate to the company. For investors working in Moldovan lei (MDL), the rates must be expressed in the same currency as the cash flows."
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Illustrative WACC",
+                  "text": "Assume kE = 14%, kD = 10%, t = 12%, wE = 80% and wD = 20%. After-tax cost of debt = 10% × 0.88 = 8.8%. WACC = 0.80 × 14% + 0.20 × 8.8% = 11.2% + 1.76% = <strong>12.96%</strong>, rounded to <strong>13%</strong> for the example."
+                }
+              ]
+            },
+            {
+              "heading": "Terminal value and the full calculation",
+              "blocks": [
+                {
+                  "type": "formula",
+                  "label": "Terminal value (Gordon growth model)",
+                  "expr": "TV(n) = FCFF(n) × (1 + g) ÷ (WACC − g);  Present value = Cash flow(t) ÷ (1 + WACC)^t",
+                  "note": "g is the perpetual growth rate and must be strictly lower than WACC; over the long term, it should not exceed the plausible nominal growth of the economy."
+                },
+                {
+                  "type": "table",
+                  "headers": [
+                    "Item (MDL thousand, illustrative)",
+                    "Year 1",
+                    "Year 2",
+                    "Year 3"
+                  ],
+                  "rows": [
+                    [
+                      "Projected FCFF",
+                      "6,000",
+                      "6,500",
+                      "7,000"
+                    ],
+                    [
+                      "Discount factor at 13%",
+                      "0.8850",
+                      "0.7831",
+                      "0.6931"
+                    ],
+                    [
+                      "Present value",
+                      "5,309.7",
+                      "5,090.5",
+                      "4,851.4"
+                    ]
+                  ]
+                },
+                {
+                  "type": "steps",
+                  "items": [
+                    {
+                      "title": "Sum of the explicit present values",
+                      "text": "5,309.7 + 5,090.5 + 4,851.4 ≈ MDL 15,251.5 thousand (the difference of 0.1 is due to rounding)."
+                    },
+                    {
+                      "title": "Terminal value at the end of year 3",
+                      "text": "With g = 4%: 7,000 × 1.04 ÷ (0.13 − 0.04) = 7,280 ÷ 0.09 ≈ MDL 80,888.9 thousand."
+                    },
+                    {
+                      "title": "Discounting the terminal value",
+                      "text": "80,888.9 × 0.6931 ≈ MDL 56,060.1 thousand (calculated with the exact factor 1 ÷ 1.13³)."
+                    },
+                    {
+                      "title": "Enterprise value",
+                      "text": "EV = 15,251.5 + 56,060.1 = MDL 71,311.6 thousand."
+                    },
+                    {
+                      "title": "Value per share",
+                      "text": "Equity = 71,311.6 − 19,700 (net debt) = MDL 51,611.6 thousand; per share = 51,611,600 ÷ 2,000,000 ≈ MDL 25.81."
+                    }
+                  ]
+                },
+                {
+                  "type": "p",
+                  "text": "Notice that the discounted terminal value accounts for roughly 56,060.1 ÷ 71,311.6 ≈ 78.6% of EV. Such a large share is typical and shows why long-term assumptions matter more than detailed forecasts for the first few years. In practice, the explicit forecast period is usually five to ten years; three years are used here for simplicity."
+                }
+              ]
+            },
+            {
+              "heading": "Sensitivity analysis",
+              "blocks": [
+                {
+                  "type": "table",
+                  "headers": [
+                    "Value per share (MDL)",
+                    "g = 3%",
+                    "g = 4%",
+                    "g = 5%"
+                  ],
+                  "rows": [
+                    [
+                      "WACC = 12%",
+                      "26.42",
+                      "30.30",
+                      "35.28"
+                    ],
+                    [
+                      "WACC = 13%",
+                      "22.76",
+                      "25.81",
+                      "29.61"
+                    ],
+                    [
+                      "WACC = 14%",
+                      "19.77",
+                      "22.21",
+                      "25.21"
+                    ]
+                  ]
+                },
+                {
+                  "type": "p",
+                  "text": "Changes of just ±1 percentage point in WACC and g move the estimated value from about MDL 19.77 to MDL 35.28 per share — a difference of more than 78%. In addition, net debt amplifies the variation at the equity level. That is why a DCF result should be presented as a range, not as a single value."
+                },
+                {
+                  "type": "callout",
+                  "variant": "warning",
+                  "title": "Apparent precision, real uncertainty",
+                  "text": "A DCF model is only as good as its assumptions. Optimistic forecasts, an underestimated WACC or an unrealistic growth rate g can produce any value you want. The gap between the DCF result (around MDL 25.81) and the illustrative price of MDL 35 is not, in itself, a sell or buy signal; it calls for checking the assumptions. The example is for educational purposes only."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "DCF estimates intrinsic value by discounting future cash flows at a rate that reflects their risk.",
+            "FCFF is discounted at WACC; net debt is subtracted from EV to arrive at equity value.",
+            "The terminal value often makes up most of the total value, so long-term assumptions are critical.",
+            "The perpetual growth rate must be lower than WACC and economically plausible.",
+            "The result should be presented as a range, accompanied by a sensitivity analysis."
+          ],
+          "quiz": [
+            {
+              "q": "What is the terminal value at the end of year 3 if FCFF in year 3 is MDL 7,000 thousand, WACC = 13% and g = 4%?",
+              "options": [
+                "MDL 53,846.2 thousand",
+                "MDL 77,777.8 thousand",
+                "MDL 80,888.9 thousand",
+                "MDL 56,000.0 thousand"
+              ],
+              "answer": 2,
+              "explanation": "TV = 7,000 × 1.04 ÷ (0.13 − 0.04) = 7,280 ÷ 0.09 ≈ MDL 80,888.9 thousand."
+            },
+            {
+              "q": "kE = 14%, kD = 10%, t = 12%, wE = 80%, wD = 20%. What is WACC?",
+              "options": [
+                "12.96%",
+                "13.20%",
+                "12.00%"
+              ],
+              "answer": 0,
+              "explanation": "WACC = 0.80 × 14% + 0.20 × 10% × (1 − 0.12) = 11.2% + 1.76% = 12.96%."
+            },
+            {
+              "q": "What happens to the DCF-estimated value if WACC rises, with all other assumptions unchanged?",
+              "options": [
+                "It rises, because the required return is higher",
+                "It stays the same, because the cash flows do not change",
+                "Only the terminal value rises",
+                "It falls, because future cash flows are discounted more heavily"
+              ],
+              "answer": 3,
+              "explanation": "A higher discount rate reduces the present value of all cash flows, including the terminal value."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "BA-303",
+      "title": "Portfolio Management",
+      "description": "This course shows how to combine financial instruments into a portfolio consistent with the investor's objectives and risk tolerance. It covers diversification, risk measurement and disciplined rebalancing.",
+      "lessons": [
+        {
+          "slug": "diversificare-alocare",
+          "title": "Diversification and Asset Allocation",
+          "summary": "You understand how asset classes, correlation and risk profile shape the structure of a portfolio.",
+          "minutes": 14,
+          "sections": [
+            {
+              "heading": "Asset allocation as the main decision",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Asset allocation means dividing capital among asset classes with different return and risk characteristics. For a diversified portfolio, this strategic decision usually has a greater influence on the variability of long-term results than the choice of individual securities."
+                },
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "Asset class",
+                  "text": "An <strong>asset class</strong> is a group of instruments with similar economic, risk and regulatory characteristics that tend to respond in similar ways to the same factors. The main classes are equities, fixed-income instruments (bonds, deposits), cash and alternative assets (for example, real estate)."
+                },
+                {
+                  "type": "table",
+                  "headers": [
+                    "Asset class",
+                    "Role in the portfolio",
+                    "Main risks"
+                  ],
+                  "rows": [
+                    [
+                      "Equities",
+                      "Long-term capital growth, dividends",
+                      "High volatility, issuer-specific risk"
+                    ],
+                    [
+                      "Bonds",
+                      "Relatively predictable income, stabilization",
+                      "Interest rate risk, credit risk, inflation"
+                    ],
+                    [
+                      "Cash and deposits",
+                      "Liquidity, a reserve for opportunities and emergencies",
+                      "Low or negative real return in inflationary periods"
+                    ],
+                    [
+                      "Alternative assets",
+                      "Additional diversification",
+                      "Low liquidity, difficult valuation, costs"
+                    ]
+                  ]
+                },
+                {
+                  "type": "p",
+                  "text": "Strategic allocation sets the long-term target weights, while any temporary deviations from those weights based on market views fall under tactical allocation. For most individual investors, a clear strategic allocation that is followed consistently matters more than attempts to predict short-term market movements."
+                }
+              ]
+            },
+            {
+              "heading": "Correlation and the diversification effect",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Correlation (ρ) measures how closely the returns of two assets move together and ranges from −1 to +1. The lower the correlation, the more often declines in one asset tend to be offset by the other, and the portfolio's risk falls below the weighted average of the individual risks."
+                },
+                {
+                  "type": "formula",
+                  "label": "Risk of a two-asset portfolio",
+                  "expr": "σp = √(w1² × σ1² + w2² × σ2² + 2 × w1 × w2 × ρ × σ1 × σ2)",
+                  "note": "w are the weights, σ are the standard deviations of returns and ρ is the correlation. The portfolio's expected return is the weighted average: E(Rp) = w1 × E(R1) + w2 × E(R2)."
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Illustrative MDL 500,000 portfolio",
+                  "text": "MDL 300,000 is invested in equities (w1 = 60%, expected return 12%, σ1 = 20%) and MDL 200,000 in bonds (w2 = 40%, expected return 7%, σ2 = 6%). Expected return = 0.6 × 12% + 0.4 × 7% = <strong>10%</strong>. With ρ = 0.2: variance = 0.36 × 400 + 0.16 × 36 + 2 × 0.6 × 0.4 × 0.2 × 20 × 6 = 144 + 5.76 + 11.52 = 161.28, so σp = √161.28 ≈ <strong>12.70%</strong>. If ρ were 1, σp would be 0.6 × 20% + 0.4 × 6% = 14.4%. All values are hypothetical."
+                },
+                {
+                  "type": "table",
+                  "headers": [
+                    "Correlation ρ",
+                    "Variance (%²)",
+                    "Portfolio σp"
+                  ],
+                  "rows": [
+                    [
+                      "+1.0",
+                      "207.36",
+                      "14.40%"
+                    ],
+                    [
+                      "+0.2",
+                      "161.28",
+                      "12.70%"
+                    ],
+                    [
+                      "0.0",
+                      "149.76",
+                      "12.24%"
+                    ],
+                    [
+                      "−0.2",
+                      "138.24",
+                      "11.76%"
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "heading": "Specific risk and systematic risk",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Diversification reduces <strong>specific risk</strong> (tied to an issuer or a sector), but it cannot eliminate <strong>systematic risk</strong> (market risk), which affects most assets at the same time: recessions, interest rate shocks, liquidity crises."
+                },
+                {
+                  "type": "callout",
+                  "variant": "warning",
+                  "title": "Correlations are not constant",
+                  "text": "During crises, correlations between many assets tend to rise, and the benefit of diversification may shrink precisely when it is needed most. Historical correlations do not guarantee future behavior."
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "Diversify across asset classes, not just across securities within the same class.",
+                    "Avoid excessive concentration in a single issuer, sector or currency.",
+                    "Take the liquidity of instruments into account: in thinly traded markets, exiting a position can take time."
+                  ]
+                }
+              ]
+            },
+            {
+              "heading": "The investor's risk profile",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "The right allocation depends on your <strong>capacity</strong> to bear losses (time horizon, income, obligations) and on your psychological <strong>tolerance</strong> for volatility. An investor with a long horizon and stable income generally has a greater capacity to absorb fluctuations than one who will need the money in two years."
+                },
+                {
+                  "type": "table",
+                  "headers": [
+                    "Illustrative profile",
+                    "Typical horizon",
+                    "Allocation characteristics"
+                  ],
+                  "rows": [
+                    [
+                      "Conservative",
+                      "Short",
+                      "Predominantly fixed-income instruments and cash"
+                    ],
+                    [
+                      "Balanced",
+                      "Medium",
+                      "A relatively even mix of equities and fixed-income instruments"
+                    ],
+                    [
+                      "Dynamic",
+                      "Long",
+                      "Predominantly equities, accepting high volatility"
+                    ]
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "tip",
+                  "title": "Review your profile",
+                  "text": "Your risk profile changes with age, family situation and goals. The structures above are indicative and educational, not individual recommendations."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "Allocation across asset classes is the main strategic decision for a diversified portfolio.",
+            "The lower the correlation between assets, the further portfolio risk falls below the weighted average of individual risks.",
+            "Diversification reduces specific risk, but not systematic risk.",
+            "Allocation should reflect the investor's horizon, risk capacity and risk tolerance."
+          ],
+          "quiz": [
+            {
+              "q": "A portfolio holds 60% equities with an expected return of 12% and 40% bonds with an expected return of 7%. What is the portfolio's expected return?",
+              "options": [
+                "9.5%",
+                "10.0%",
+                "19.0%",
+                "11.0%"
+              ],
+              "answer": 1,
+              "explanation": "E(Rp) = 0.6 × 12% + 0.4 × 7% = 7.2% + 2.8% = 10.0%."
+            },
+            {
+              "q": "When is the risk of a two-asset portfolio equal to the weighted average of the individual risks?",
+              "options": [
+                "When the correlation is 0",
+                "When the correlation is −1",
+                "When the correlation is +1"
+              ],
+              "answer": 2,
+              "explanation": "At ρ = +1 there is no diversification benefit, and σp = w1σ1 + w2σ2."
+            },
+            {
+              "q": "Which type of risk CANNOT be eliminated through diversification?",
+              "options": [
+                "Systematic (market) risk",
+                "Risk specific to an issuer",
+                "Risk specific to a narrow sector",
+                "Concentration risk in a single security"
+              ],
+              "answer": 0,
+              "explanation": "Systematic risk affects most assets at the same time and remains present even in a well-diversified portfolio."
+            }
+          ]
+        },
+        {
+          "slug": "masurarea-riscului",
+          "title": "Measuring Risk",
+          "summary": "You calculate volatility, beta, maximum drawdown and the Sharpe ratio to compare portfolios.",
+          "minutes": 16,
+          "sections": [
+            {
+              "heading": "Volatility: the standard deviation of returns",
+              "blocks": [
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "Volatility",
+                  "text": "<strong>Volatility</strong> is the standard deviation of the returns of an asset or portfolio and measures how far individual returns deviate from their average. The higher the volatility, the more dispersed and less predictable the results."
+                },
+                {
+                  "type": "formula",
+                  "label": "Sample standard deviation",
+                  "expr": "σ = √[ Σ (Ri − R̄)² ÷ (n − 1) ]",
+                  "note": "Ri are the period returns, R̄ is their average and n is the number of observations. To annualize monthly volatility: annual σ ≈ monthly σ × √12."
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Illustrative portfolio A: five years of returns",
+                  "text": "Annual returns: 12%, −4%, 18%, 6%, 8%. Average = 40% ÷ 5 = <strong>8%</strong>. Deviations: 4, −12, 10, −2, 0; squares: 16, 144, 100, 4, 0; sum = 264. Sample variance = 264 ÷ 4 = 66, so σ = √66 ≈ <strong>8.12%</strong>. Separately, a monthly volatility of 3% corresponds to an annual volatility of roughly 3% × √12 ≈ 10.39%."
+                },
+                {
+                  "type": "p",
+                  "text": "Standard deviation treats upward and downward deviations the same way and implicitly assumes that returns are distributed fairly symmetrically. In reality, markets often experience extreme events more frequently than a normal distribution suggests, so volatility should be supplemented with other measures."
+                }
+              ]
+            },
+            {
+              "heading": "Beta: sensitivity to the market",
+              "blocks": [
+                {
+                  "type": "formula",
+                  "label": "The beta coefficient",
+                  "expr": "β = Cov(Ri, Rm) ÷ Var(Rm)",
+                  "note": "Ri is the asset's return and Rm is the return of the benchmark market index. β = 1 means the asset tends to move in line with the market."
+                },
+                {
+                  "type": "p",
+                  "text": "Beta measures only systematic risk. For example, if the covariance between a stock's returns and the market's returns is 0.018 and the market variance is 0.015, then β = 0.018 ÷ 0.015 = 1.2. On average, if the market falls by 10%, the systematic component of the stock's return would be about −12%, plus any company-specific moves."
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "<strong>β above 1</strong>: the asset is more sensitive than the market (for example, cyclical sectors).",
+                    "<strong>β between 0 and 1</strong>: the asset is less sensitive than the market (for example, utilities).",
+                    "Estimated beta depends on the period, data frequency and index chosen; for infrequently traded stocks, the estimate can be unreliable."
+                  ]
+                }
+              ]
+            },
+            {
+              "heading": "Maximum drawdown",
+              "blocks": [
+                {
+                  "type": "formula",
+                  "label": "Maximum drawdown (MDD)",
+                  "expr": "MDD = (Lowest value after the peak − Peak value) ÷ Peak value × 100%",
+                  "note": "It is calculated for the largest decline from a peak to a subsequent low, before a new peak is reached."
+                },
+                {
+                  "type": "p",
+                  "text": "An illustrative portfolio starts at MDL 1,000,000, rises to a peak of MDL 1,250,000, then falls to MDL 950,000 and recovers to MDL 1,100,000. Maximum drawdown = (950,000 − 1,250,000) ÷ 1,250,000 = −300,000 ÷ 1,250,000 = <strong>−24%</strong>. Getting back to the peak from the low requires a gain of 1,250,000 ÷ 950,000 − 1 ≈ <strong>31.6%</strong>."
+                },
+                {
+                  "type": "callout",
+                  "variant": "tip",
+                  "title": "The asymmetry of losses",
+                  "text": "A 50% loss requires a 100% gain to recover. Maximum drawdown shows concretely what an investor would have had to endure and is often more intuitive than standard deviation."
+                }
+              ]
+            },
+            {
+              "heading": "Risk-adjusted return: the Sharpe ratio",
+              "blocks": [
+                {
+                  "type": "formula",
+                  "label": "The Sharpe ratio",
+                  "expr": "Sharpe = (Rp − Rf) ÷ σp",
+                  "note": "Rp is the portfolio's average return, Rf is the risk-free rate and σp is the portfolio's volatility, all for the same period and in the same currency."
+                },
+                {
+                  "type": "table",
+                  "headers": [
+                    "Illustrative portfolio",
+                    "Average return",
+                    "Volatility",
+                    "Sharpe (Rf = 5%)"
+                  ],
+                  "rows": [
+                    [
+                      "A",
+                      "8%",
+                      "8.12%",
+                      "(8 − 5) ÷ 8.12 ≈ 0.37"
+                    ],
+                    [
+                      "B",
+                      "10%",
+                      "14%",
+                      "(10 − 5) ÷ 14 ≈ 0.36"
+                    ]
+                  ]
+                },
+                {
+                  "type": "p",
+                  "text": "Although portfolio B has the higher return, A delivers slightly more excess return over the risk-free rate per unit of volatility. The Sharpe ratio thus lets you compare strategies with different levels of risk."
+                },
+                {
+                  "type": "callout",
+                  "variant": "warning",
+                  "title": "Historical data has limits",
+                  "text": "All of the risk measures above are calculated from past data. Past performance and volatility do not guarantee future results, and a short observation period can underestimate rare but severe risks."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "Volatility (standard deviation) measures the dispersion of returns and is annualized using the square root of time.",
+            "Beta measures sensitivity to the market and reflects only systematic risk.",
+            "Maximum drawdown shows the largest peak-to-trough loss; large losses require proportionally larger gains to recover.",
+            "The Sharpe ratio compares the excess return over the risk-free rate with the volatility taken on.",
+            "Historical measures should be interpreted with caution and used together."
+          ],
+          "quiz": [
+            {
+              "q": "A portfolio grew from MDL 1,000,000 to a peak of MDL 1,250,000, then fell to MDL 950,000. What is the maximum drawdown?",
+              "options": [
+                "−5%",
+                "−31.6%",
+                "−30%",
+                "−24%"
+              ],
+              "answer": 3,
+              "explanation": "MDD = (950,000 − 1,250,000) ÷ 1,250,000 = −24%. It is measured relative to the peak, not the initial value."
+            },
+            {
+              "q": "A stock has β = 1.2. What does this mean?",
+              "options": [
+                "The stock will certainly rise 20% more than the market",
+                "The stock's return tends to amplify market movements, on average by a factor of about 1.2",
+                "The stock's total risk is 1.2 times lower than the market's"
+              ],
+              "answer": 1,
+              "explanation": "Beta describes the average sensitivity to the market (systematic risk); it is neither a guarantee nor a measure of total risk."
+            },
+            {
+              "q": "A portfolio has an average return of 10%, volatility of 14%, and the risk-free rate is 5%. What is its Sharpe ratio?",
+              "options": [
+                "≈ 0.36",
+                "≈ 0.71",
+                "≈ 1.40",
+                "≈ 0.50"
+              ],
+              "answer": 0,
+              "explanation": "Sharpe = (10% − 5%) ÷ 14% ≈ 0.36."
+            }
+          ]
+        },
+        {
+          "slug": "construire-rebalansare",
+          "title": "Building and Rebalancing a Portfolio",
+          "summary": "You draft an investment policy, compare rebalancing rules and learn to avoid behavioral mistakes.",
+          "minutes": 15,
+          "sections": [
+            {
+              "heading": "The investment policy",
+              "blocks": [
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "Investment policy statement",
+                  "text": "An <strong>investment policy</strong> is a written document, drafted before you invest, that sets out your objectives, time horizon, risk tolerance, target asset allocation, permitted limits, and rules for monitoring and rebalancing. Its purpose is to turn emotional decisions into rule-based ones."
+                },
+                {
+                  "type": "steps",
+                  "items": [
+                    {
+                      "title": "Define your objectives",
+                      "text": "What you want to achieve (capital growth, regular income, capital preservation) and by when."
+                    },
+                    {
+                      "title": "Assess your constraints",
+                      "text": "Liquidity needs, horizon, tax considerations, knowledge and experience, personal preferences."
+                    },
+                    {
+                      "title": "Set the target allocation",
+                      "text": "Weights by asset class, consistent with your risk profile — for example, 60% equities and 40% bonds."
+                    },
+                    {
+                      "title": "Set limits and rules",
+                      "text": "Tolerance bands, maximum weights per issuer, review frequency and rebalancing method."
+                    },
+                    {
+                      "title": "Implement and monitor",
+                      "text": "Select the instruments, track results against your objectives and revise the policy only when your circumstances genuinely change."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "heading": "Why and how to rebalance",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Different returns across asset classes shift the portfolio's weights over time. After a period of rising equity prices, the portfolio becomes riskier than originally intended. Rebalancing brings the weights back to target and maintains the chosen risk profile; its main purpose is not to maximize returns."
+                },
+                {
+                  "type": "formula",
+                  "label": "Current weight and deviation from target",
+                  "expr": "Current weight = Value of the asset class ÷ Total portfolio value × 100%;  Amount to trade = Current value − Target weight × Total value",
+                  "note": "A positive amount means selling from that asset class; a negative amount means buying."
+                },
+                {
+                  "type": "table",
+                  "headers": [
+                    "Criterion",
+                    "Periodic rebalancing",
+                    "Threshold rebalancing"
+                  ],
+                  "rows": [
+                    [
+                      "Trigger",
+                      "At fixed intervals (for example, annually)",
+                      "When a weight moves outside its tolerance band (for example, ±5 percentage points)"
+                    ],
+                    [
+                      "Advantages",
+                      "Simple, predictable, easy to follow",
+                      "Trades only when the deviation is significant"
+                    ],
+                    [
+                      "Disadvantages",
+                      "Can generate unnecessary trades or miss large deviations between dates",
+                      "Requires continuous monitoring"
+                    ],
+                    [
+                      "Costs",
+                      "May be incurred at every date, regardless of the deviation",
+                      "Generally fewer trades"
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "heading": "A numerical rebalancing example",
+              "blocks": [
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Illustrative MDL 1,000,000 portfolio, 60/40 target",
+                  "text": "Initially: MDL 600,000 in equities and MDL 400,000 in bonds. After one year, equities gain 25% and bonds 5%: equities MDL 750,000, bonds MDL 420,000, total MDL 1,170,000. Equity weight = 750,000 ÷ 1,170,000 ≈ <strong>64.10%</strong>. Target for equities = 60% × 1,170,000 = MDL 702,000, so you sell MDL 750,000 − 702,000 = <strong>MDL 48,000</strong> of equities and buy MDL 48,000 of bonds, bringing them to MDL 468,000 (40%). At an illustrative cost of 0.5% of the amount traded: 0.005 × (48,000 + 48,000) = <strong>MDL 480</strong>."
+                },
+                {
+                  "type": "p",
+                  "text": "The rule you choose matters: with <strong>annual</strong> rebalancing, the trade above is executed. With a tolerance band of <strong>±5 percentage points</strong> (55%–65%), the 64.10% weight is still inside the band, so nothing is traded. An alternative that avoids selling is to direct new contributions: if the investor adds MDL 50,000 to bonds only, bonds reach MDL 470,000, the total reaches MDL 1,220,000 and the equity weight falls to 750,000 ÷ 1,220,000 ≈ 61.48%."
+                },
+                {
+                  "type": "callout",
+                  "variant": "tip",
+                  "title": "Keep costs in mind",
+                  "text": "Commissions, the spread between buying and selling prices, any capital gains taxes and the low liquidity of some instruments can make very frequent rebalancing cost more than it delivers."
+                }
+              ]
+            },
+            {
+              "heading": "Discipline and behavioral mistakes",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "By its nature, rebalancing requires you to sell what has gone up and buy what has gone down — exactly the opposite of your emotional impulse. That is why a rule set in advance is more valuable than a decision made under market pressure."
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "<strong>Loss aversion:</strong> losses are felt more strongly than equivalent gains, which leads to panic selling.",
+                    "<strong>The disposition effect:</strong> the tendency to sell winning securities too early and hold on to losing ones for too long.",
+                    "<strong>Overconfidence:</strong> overestimating your own ability to predict the market, leading to excessive trading.",
+                    "<strong>Herd behavior:</strong> following the decisions of the majority instead of your own analysis.",
+                    "<strong>Anchoring:</strong> basing decisions on an irrelevant reference price, such as the purchase price."
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "warning",
+                  "title": "No rule eliminates risk",
+                  "text": "Rebalancing and an investment policy keep the portfolio consistent, but they do not guarantee gains or protect against losses. Past results do not guarantee future results. This content is for educational purposes and does not constitute an investment recommendation."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "A written investment policy sets out objectives, the target allocation, limits and rules before you invest.",
+            "Rebalancing brings the portfolio back to the chosen risk profile; its main purpose is risk control.",
+            "Periodic rebalancing is simple, while threshold rebalancing trades only when deviations are significant.",
+            "Trading costs and taxes influence the optimal rebalancing frequency.",
+            "Rules set in advance help you avoid behavioral mistakes."
+          ],
+          "quiz": [
+            {
+              "q": "An MDL 1,170,000 portfolio holds MDL 750,000 in equities, and the equity target is 60%. How much equity must be sold to return to target?",
+              "options": [
+                "MDL 30,000",
+                "MDL 150,000",
+                "MDL 48,000",
+                "MDL 702,000"
+              ],
+              "answer": 2,
+              "explanation": "Target = 0.60 × 1,170,000 = MDL 702,000; amount to sell: 750,000 − 702,000 = MDL 48,000."
+            },
+            {
+              "q": "The equity target is 60%, with a tolerance band of ±5 percentage points. The current weight is 64.10%. What does the threshold rule require?",
+              "options": [
+                "No trade, because the weight is within the 55%–65% band",
+                "Sell equities down to 55%",
+                "Sell equities down to 60%, because the weight differs from the target"
+              ],
+              "answer": 0,
+              "explanation": "The threshold rule triggers rebalancing only when the weight moves outside the band; 64.10% is below the 65% limit."
+            },
+            {
+              "q": "What is the main purpose of rebalancing?",
+              "options": [
+                "Maximizing short-term returns",
+                "Predicting market movements",
+                "Reducing trading costs to zero",
+                "Maintaining the risk profile set in the investment policy"
+              ],
+              "answer": 3,
+              "explanation": "Rebalancing brings the weights back to the target allocation, preserving the chosen level of risk; it is not a tool for predicting the market."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

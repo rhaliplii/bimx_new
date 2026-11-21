@@ -1,0 +1,768 @@
+{
+  "slug": "esg-finantare-verde",
+  "num": "04",
+  "title": "ESG și finanțarea verde",
+  "short": "Standarde de sustenabilitate și instrumente dedicate finanțării proiectelor verzi.",
+  "level": "Intermediar",
+  "audience": "Emitenți și investitori",
+  "intro": "Programul explică ce înseamnă ESG, cum raportează companiile informațiile de sustenabilitate și cum funcționează obligațiunile verzi, sociale și sustenabile. Parcurgi pașii practici ai unei emisiuni verzi din perspectiva emitentului, apoi privești aceleași teme prin ochii investitorului care vrea să evite greenwashingul. Conținutul are scop exclusiv educațional și nu constituie recomandare de investiții.",
+  "outcomes": [
+    "Explici pilonii E, S și G și conceptul de dublă materialitate cu exemple concrete.",
+    "Recunoști principalele cadre internaționale de raportare: GRI, IFRS S1/S2 (ISSB) și ESRS în contextul CSRD.",
+    "Deosebești emisiile Scope 1, 2 și 3 și calculezi indicatori simpli, precum intensitatea emisiilor.",
+    "Compari obligațiunile verzi, sociale, sustenabile și cele legate de sustenabilitate (sustainability-linked).",
+    "Descrii pașii emiterii unei obligațiuni verzi: cadrul de finanțare, evaluarea externă, alocarea fondurilor și raportarea.",
+    "Aplici strategii ESG de investiții și identifici semnalele tipice de greenwashing."
+  ],
+  "prerequisites": "Este util să cunoști noțiunile de bază despre obligațiuni și situații financiare, dar lecțiile explică termenii-cheie de la zero.",
+  "courses": [
+    {
+      "code": "BA-202",
+      "title": "ESG și obligațiunile verzi",
+      "description": "De la conceptele ESG și raportarea de sustenabilitate la emiterea și analiza obligațiunilor verzi, sociale și sustenabile. Cursul combină perspectiva emitentului cu cea a investitorului.",
+      "lessons": [
+        {
+          "slug": "ce-inseamna-esg",
+          "title": "Ce înseamnă ESG",
+          "summary": "Pilonii de mediu, sociali și de guvernanță, de ce contează pentru companii și investitori și ce înseamnă dubla materialitate.",
+          "minutes": 12,
+          "sections": [
+            {
+              "heading": "Cele trei litere: E, S și G",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Acronimul <strong>ESG</strong> provine din engleză: <em>Environmental, Social, Governance</em>, adică mediu, social și guvernanță. El descrie un set de aspecte nefinanciare care pot influența atât performanța pe termen lung a unei companii, cât și efectele pe care compania le are asupra oamenilor și a mediului. ESG nu este o regulă unică sau un standard anume, ci o grilă de analiză folosită de companii, investitori, bănci și autorități."
+                },
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "ESG",
+                  "text": "Cadru de analiză care evaluează modul în care o organizație gestionează riscurile și oportunitățile legate de <strong>mediu</strong> (E), de relațiile cu <strong>oamenii și comunitatea</strong> (S) și de <strong>modul în care este condusă și controlată</strong> (G)."
+                },
+                {
+                  "type": "table",
+                  "headers": ["Pilon", "Ce acoperă", "Exemple de teme și indicatori"],
+                  "rows": [
+                    ["E – Mediu", "Impactul asupra climei și a resurselor naturale", "Emisii de gaze cu efect de seră, consum de energie și apă, deșeuri, poluare, biodiversitate"],
+                    ["S – Social", "Relațiile cu angajații, clienții, furnizorii și comunitatea", "Sănătate și securitate în muncă, salarizare echitabilă, formare profesională, protecția datelor clienților, drepturile omului în lanțul de aprovizionare"],
+                    ["G – Guvernanță", "Modul de conducere, control și supraveghere", "Independența consiliului, remunerarea conducerii, drepturile acționarilor, politici anticorupție, audit și control intern, transparență"]
+                  ]
+                }
+              ]
+            },
+            {
+              "heading": "De ce contează ESG",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Pentru o <strong>companie</strong>, temele ESG sunt adesea riscuri financiare „ascunse”: o secetă poate reduce producția, un accident de muncă poate opri activitatea, iar o guvernanță slabă poate duce la fraude sau la pierderea încrederii partenerilor. Gestionarea lor atentă poate reduce costurile, poate facilita accesul la finanțare și poate îmbunătăți reputația."
+                },
+                {
+                  "type": "p",
+                  "text": "Pentru un <strong>investitor</strong>, informațiile ESG completează analiza financiară clasică. Ele ajută la identificarea riscurilor care nu apar încă în bilanț și a companiilor mai bine pregătite pentru schimbări de reglementare, tehnologie sau preferințe ale consumatorilor."
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "<strong>Accesul la capital:</strong> tot mai mulți finanțatori internaționali și investitori instituționali cer date ESG înainte de a acorda credite sau de a cumpăra titluri.",
+                    "<strong>Lanțurile de aprovizionare:</strong> clienții mari, inclusiv din Uniunea Europeană, pot solicita furnizorilor informații despre emisii sau condițiile de muncă.",
+                    "<strong>Gestionarea riscurilor:</strong> fenomenele climatice extreme, prețul energiei și schimbările de reglementare afectează direct costurile.",
+                    "<strong>Reputația și talentele:</strong> angajații și consumatorii acordă o atenție crescută comportamentului responsabil al companiilor."
+                  ]
+                }
+              ]
+            },
+            {
+              "heading": "Dubla materialitate, explicată simplu",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Un subiect este <em>material</em> dacă este suficient de important pentru a fi gestionat și raportat. În sustenabilitate, importanța se poate privi din două direcții, de unde și expresia <strong>dublă materialitate</strong>."
+                },
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "Dubla materialitate",
+                  "text": "Principiul conform căruia o temă de sustenabilitate este relevantă fie pentru că <strong>afectează financiar compania</strong> (materialitate financiară, perspectiva „din afară spre interior”), fie pentru că <strong>activitatea companiei are un impact semnificativ asupra oamenilor sau mediului</strong> (materialitatea impactului, perspectiva „dinăuntru spre exterior”), fie din ambele motive."
+                },
+                {
+                  "type": "table",
+                  "headers": ["Perspectivă", "Întrebarea-cheie", "Cui folosește în principal"],
+                  "rows": [
+                    ["Materialitate financiară", "Cum influențează această temă veniturile, costurile, activele sau accesul la finanțare ale companiei?", "Investitori și creditori"],
+                    ["Materialitatea impactului", "Cum influențează compania oamenii, comunitatea și mediul?", "Societate, angajați, comunități, autorități, dar și investitori"]
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Exemplu ipotetic: „Podgoria Verde SA”",
+                  "text": "O companie vinicolă cu o cifră de afaceri de 120 mil. lei analizează tema <strong>apei</strong>. Materialitate financiară: o secetă severă ar putea reduce recolta cu 20%, adică venituri mai mici cu aproximativ 24 mil. lei. Materialitatea impactului: compania consumă 150.000 m³ de apă pe an pentru irigare într-o zonă unde fântânile locale scad. Tema este materială din ambele perspective, deci compania ar trebui să o gestioneze și să o raporteze. Toate cifrele sunt ilustrative."
+                }
+              ]
+            },
+            {
+              "heading": "Clarificări utile",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "ESG nu înseamnă filantropie: sponsorizările sunt binevenite, dar esențial este modul în care compania își desfășoară activitatea de bază.",
+                    "Temele materiale diferă de la un sector la altul: pentru o bancă, guvernanța și protecția datelor pot cântări mai mult decât consumul de apă.",
+                    "Un scor ESG bun nu garantează randamente mai mari, iar un scor slab nu înseamnă automat o investiție proastă.",
+                    "Pilonii sunt legați între ei: o guvernanță solidă face mai credibile angajamentele de mediu și sociale."
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "tip",
+                  "title": "Primul pas practic",
+                  "text": "Începe cu o listă scurtă de 5–10 teme posibil relevante pentru sectorul tău și evaluează fiecare temă din ambele perspective ale dublei materialități. Implică angajați, clienți și finanțatori în discuție."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "ESG înseamnă mediu (E), social (S) și guvernanță (G) și este o grilă de analiză, nu un standard unic.",
+            "Temele ESG pot reprezenta riscuri și oportunități financiare reale pentru companii.",
+            "Dubla materialitate combină impactul temei asupra companiei cu impactul companiei asupra oamenilor și mediului.",
+            "Temele materiale depind de sector, iar guvernanța dă credibilitate celorlalți doi piloni."
+          ],
+          "quiz": [
+            {
+              "q": "Căruia dintre piloni îi aparține în principal independența consiliului de administrație?",
+              "options": ["Mediu (E)", "Guvernanță (G)", "Social (S)"],
+              "answer": 1,
+              "explanation": "Structura și independența consiliului țin de modul în care compania este condusă și controlată, adică de pilonul guvernanță."
+            },
+            {
+              "q": "Ce descrie materialitatea impactului?",
+              "options": [
+                "Efectul unei teme asupra prețului acțiunilor companiei",
+                "Costul emiterii unui raport de sustenabilitate",
+                "Efectul activității companiei asupra oamenilor și mediului",
+                "Nivelul dobânzii plătite pe credite"
+              ],
+              "answer": 2,
+              "explanation": "Materialitatea impactului privește „dinăuntru spre exterior”: cum influențează compania oamenii, comunitatea și mediul."
+            },
+            {
+              "q": "O temă este relevantă conform dublei materialități dacă:",
+              "options": [
+                "este semnificativă din perspectivă financiară, din perspectiva impactului sau din ambele",
+                "este semnificativă simultan din ambele perspective, niciodată doar din una",
+                "este cerută explicit de un investitor anume"
+              ],
+              "answer": 0,
+              "explanation": "Este suficient ca tema să fie materială dintr-o singură perspectivă; dacă este materială din ambele, cu atât mai mult trebuie gestionată și raportată."
+            }
+          ]
+        },
+        {
+          "slug": "raportare-sustenabilitate",
+          "title": "Raportarea de sustenabilitate",
+          "summary": "Principalele cadre internaționale de raportare, emisiile Scope 1, 2 și 3 și indicatorii folosiți pentru a măsura performanța ESG.",
+          "minutes": 14,
+          "sections": [
+            {
+              "heading": "Ce este un raport de sustenabilitate",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Informațiile ESG devin utile doar dacă sunt <strong>comparabile, verificabile și consecvente</strong> de la un an la altul. De aceea, companiile folosesc cadre de raportare care stabilesc ce teme se prezintă, cum se măsoară indicatorii și cum se explică strategia, riscurile și țintele."
+                },
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "Raportarea de sustenabilitate",
+                  "text": "Prezentarea structurată, de regulă anuală, a informațiilor despre impactul, riscurile, oportunitățile, politicile, țintele și indicatorii unei organizații în domeniile mediu, social și guvernanță. Poate fi un raport separat sau o secțiune a raportului anual."
+                },
+                {
+                  "type": "p",
+                  "text": "Un raport de calitate nu se limitează la povești de succes. El explică și unde compania nu și-a atins țintele, ce metodologie a folosit pentru calcule și ce date lipsesc încă."
+                }
+              ]
+            },
+            {
+              "heading": "Cadrele internaționale principale",
+              "blocks": [
+                {
+                  "type": "table",
+                  "headers": ["Cadru", "Cine îl elaborează", "Accent principal", "Utilizatori vizați"],
+                  "rows": [
+                    ["Standardele GRI", "Global Reporting Initiative, organizație internațională independentă", "Impactul organizației asupra economiei, mediului și oamenilor; structurate în standarde universale, sectoriale și tematice", "Un public larg de părți interesate"],
+                    ["IFRS S1 și IFRS S2", "International Sustainability Standards Board (ISSB), din cadrul Fundației IFRS", "Informații de sustenabilitate relevante financiar; S1 stabilește cerințele generale, S2 se concentrează pe riscurile și oportunitățile legate de climă", "Investitori, creditori și alți furnizori de capital"],
+                    ["ESRS (în contextul CSRD)", "Standarde europene elaborate cu sprijinul tehnic al EFRAG și adoptate de Comisia Europeană", "Raportare bazată pe dubla materialitate, aplicată companiilor care intră sub incidența Directivei privind raportarea de sustenabilitate a întreprinderilor (CSRD)", "Investitori și părți interesate largi"]
+                  ]
+                },
+                {
+                  "type": "p",
+                  "text": "Standardele ISSB preiau structura recomandărilor TCFD (grupul de lucru pentru prezentarea informațiilor financiare legate de climă), organizate pe patru arii:"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "<strong>Guvernanță</strong> – cine supraveghează riscurile și oportunitățile de sustenabilitate;",
+                    "<strong>Strategie</strong> – cum afectează acestea modelul de afaceri și planurile companiei;",
+                    "<strong>Gestionarea riscurilor</strong> – cum sunt identificate, evaluate și monitorizate;",
+                    "<strong>Indicatori și ținte</strong> – ce se măsoară și ce obiective și-a asumat compania."
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "warning",
+                  "title": "Aplicabilitatea diferă de la o jurisdicție la alta",
+                  "text": "Faptul că un cadru există nu înseamnă că este obligatoriu pentru orice companie. Fiecare jurisdicție decide dacă și cum adoptă aceste standarde, iar cerințele se pot modifica în timp. Verifică întotdeauna legislația aplicabilă și cerințele concrete ale finanțatorilor sau partenerilor tăi."
+                }
+              ]
+            },
+            {
+              "heading": "Emisiile de gaze cu efect de seră: Scope 1, 2 și 3",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Cel mai răspândit indicator de mediu este amprenta de carbon, exprimată în tone de CO₂ echivalent (tCO₂e). Clasificarea emisiilor pe trei „scope-uri” provine din <strong>GHG Protocol</strong>, standardul de contabilizare a gazelor cu efect de seră folosit pe scară largă și de cadrele de raportare de mai sus."
+                },
+                {
+                  "type": "table",
+                  "headers": ["Categorie", "Ce include", "Exemple"],
+                  "rows": [
+                    ["Scope 1 – emisii directe", "Emisii din surse deținute sau controlate de companie", "Arderea gazului natural în cazane proprii, combustibilul flotei proprii, procese industriale"],
+                    ["Scope 2 – emisii indirecte din energie", "Emisii asociate energiei cumpărate și consumate", "Energie electrică, căldură sau abur achiziționate"],
+                    ["Scope 3 – alte emisii indirecte", "Emisii din lanțul valoric, în amonte și în aval", "Producția materiilor prime cumpărate, transportul realizat de terți, deplasările angajaților, utilizarea produselor vândute"]
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "tip",
+                  "title": "Scope 3 este adesea cel mai mare",
+                  "text": "Pentru multe companii, emisiile din lanțul valoric depășesc cu mult emisiile directe, dar sunt și cel mai greu de măsurat, deoarece depind de datele furnizorilor și clienților. Estimările trebuie însoțite de explicarea metodologiei."
+                }
+              ]
+            },
+            {
+              "heading": "Indicatori și un exemplu numeric",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "<strong>Mediu:</strong> emisii Scope 1, 2 și 3; consum de energie (MWh) și ponderea energiei regenerabile; consum de apă (m³); deșeuri generate și reciclate (tone).",
+                    "<strong>Social:</strong> număr de angajați și fluctuația personalului; rata accidentelor de muncă; ore de formare per angajat; diferența de remunerare între femei și bărbați.",
+                    "<strong>Guvernanță:</strong> ponderea membrilor independenți în consiliu; existența politicilor anticorupție și a canalelor de raportare a neregulilor; incidente de conformitate."
+                  ]
+                },
+                {
+                  "type": "formula",
+                  "label": "Intensitatea emisiilor",
+                  "expr": "Intensitate = Emisii (tCO₂e) / Venituri (mil. lei)",
+                  "note": "Raportarea emisiilor la venituri permite compararea companiilor de dimensiuni diferite și urmărirea progresului chiar dacă activitatea crește."
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Exemplu ipotetic: „Termo-Plast SA”",
+                  "text": "Un producător de ambalaje are venituri de 250 mil. lei. Emisiile estimate sunt: Scope 1 = 3.000 tCO₂e (gaz natural și flota proprie), Scope 2 = 2.000 tCO₂e (energie electrică), Scope 3 = 15.000 tCO₂e (materii prime și transport). Intensitatea Scope 1+2 este 5.000 / 250 = <strong>20 tCO₂e per mil. lei</strong>. Emisiile totale sunt 20.000 tCO₂e, iar Scope 3 reprezintă 75% din ele. Dacă anul următor veniturile cresc la 300 mil. lei, iar emisiile Scope 1+2 rămân 5.000 tCO₂e, intensitatea scade la aproximativ 16,7 tCO₂e per mil. lei. Cifrele sunt ilustrative."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "Raportarea de sustenabilitate face informațiile ESG comparabile, verificabile și consecvente în timp.",
+            "GRI pune accent pe impact, IFRS S1/S2 pe informațiile relevante pentru investitori, iar ESRS, în contextul CSRD, pe dubla materialitate.",
+            "Scope 1 = emisii directe, Scope 2 = energie cumpărată, Scope 3 = restul lanțului valoric.",
+            "Indicatorii de intensitate, precum emisiile per milion de lei venituri, permit comparații între ani și între companii.",
+            "Aplicabilitatea standardelor depinde de jurisdicție și de cerințele concrete ale finanțatorilor."
+          ],
+          "quiz": [
+            {
+              "q": "Emisiile generate de producția energiei electrice cumpărate de o companie se încadrează în:",
+              "options": ["Scope 1", "Scope 3", "Scope 2", "Nu se raportează"],
+              "answer": 2,
+              "explanation": "Scope 2 cuprinde emisiile indirecte asociate energiei electrice, căldurii sau aburului cumpărate și consumate de companie."
+            },
+            {
+              "q": "Care cadru se adresează în principal investitorilor și creditorilor și include un standard dedicat climei?",
+              "options": ["IFRS S1 și S2 ale ISSB", "Standardele GRI", "Niciunul dintre acestea"],
+              "answer": 0,
+              "explanation": "Standardele ISSB vizează informațiile de sustenabilitate relevante financiar pentru furnizorii de capital; IFRS S2 se concentrează pe aspectele legate de climă."
+            },
+            {
+              "q": "O companie are emisii Scope 1+2 de 4.000 tCO₂e și venituri de 200 mil. lei. Care este intensitatea emisiilor?",
+              "options": ["0,05 tCO₂e per mil. lei", "200 tCO₂e per mil. lei", "800 tCO₂e per mil. lei", "20 tCO₂e per mil. lei"],
+              "answer": 3,
+              "explanation": "Intensitatea = 4.000 / 200 = 20 tCO₂e per milion de lei venituri."
+            }
+          ]
+        },
+        {
+          "slug": "obligatiuni-verzi-sociale",
+          "title": "Obligațiuni verzi, sociale și sustenabile",
+          "summary": "Tipurile de obligațiuni etichetate, cele patru componente ale Principiilor ICMA pentru obligațiuni verzi și categoriile de proiecte eligibile.",
+          "minutes": 14,
+          "sections": [
+            {
+              "heading": "Obligațiunile etichetate: ideea de bază",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Din punct de vedere juridic și financiar, o obligațiune verde funcționează ca orice altă obligațiune: emitentul primește bani de la investitori, plătește cupoane și rambursează valoarea nominală la scadență. Diferența constă în <strong>angajamentul privind utilizarea fondurilor</strong> și în <strong>transparența</strong> pe care emitentul și-o asumă."
+                },
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "Obligațiune verde",
+                  "text": "Titlu de datorie ale cărui fonduri atrase sunt folosite exclusiv pentru finanțarea sau refinanțarea, integrală ori parțială, a unor <strong>proiecte eligibile cu beneficii clare de mediu</strong>, conform unui proces transparent de selecție, gestionare și raportare."
+                },
+                {
+                  "type": "p",
+                  "text": "De regulă, riscul de credit al unei obligațiuni verzi este riscul emitentului, nu al proiectului finanțat: investitorul este plătit din fluxurile companiei în ansamblu. Excepție fac structurile speciale, precum obligațiunile garantate cu active sau finanțările de proiect, unde plata poate depinde de active anume."
+                }
+              ]
+            },
+            {
+              "heading": "Patru tipuri principale",
+              "blocks": [
+                {
+                  "type": "table",
+                  "headers": ["Tip", "Ce finanțează", "Mecanism-cheie", "Ghid ICMA de referință"],
+                  "rows": [
+                    ["Verde (green)", "Proiecte cu beneficii de mediu", "Utilizarea fondurilor (use of proceeds)", "Green Bond Principles"],
+                    ["Socială (social)", "Proiecte cu rezultate sociale pozitive pentru populații-țintă", "Utilizarea fondurilor", "Social Bond Principles"],
+                    ["Sustenabilă (sustainability)", "Un mix de proiecte verzi și sociale", "Utilizarea fondurilor", "Sustainability Bond Guidelines"],
+                    ["Legată de sustenabilitate (sustainability-linked)", "Scopuri generale ale companiei", "Caracteristicile financiare (de exemplu cuponul) depind de atingerea unor ținte de performanță", "Sustainability-Linked Bond Principles"]
+                  ]
+                },
+                {
+                  "type": "p",
+                  "text": "Primele trei tipuri sunt instrumente de tip <em>use of proceeds</em>: contează pe ce se cheltuiesc banii. Obligațiunile <strong>sustainability-linked</strong> funcționează diferit: banii pot fi folosiți pentru orice scop general, dar emitentul se angajează la indicatori-cheie de performanță (KPI) și la ținte de performanță în sustenabilitate. Dacă țintele nu sunt atinse, de obicei crește cuponul."
+                },
+                {
+                  "type": "formula",
+                  "label": "Costul suplimentar la o obligațiune sustainability-linked",
+                  "expr": "Cost suplimentar anual = Valoarea emisiunii × Majorarea cuponului",
+                  "note": "Majorarea cuponului (step-up) se aplică doar dacă ținta nu este atinsă la data de observație stabilită în prospect."
+                }
+              ]
+            },
+            {
+              "heading": "Principiile ICMA pentru obligațiuni verzi",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "<strong>ICMA</strong> (International Capital Market Association) publică <em>Green Bond Principles</em>, ghiduri voluntare folosite pe scară largă pe piețele internaționale. Ele nu sunt lege, ci bune practici care cresc transparența și încrederea investitorilor. Principiile au patru componente de bază:"
+                },
+                {
+                  "type": "steps",
+                  "items": [
+                    {
+                      "title": "Utilizarea fondurilor",
+                      "text": "Fondurile se alocă unor proiecte verzi eligibile, descrise clar în documentația emisiunii, cu beneficii de mediu evaluate și, pe cât posibil, cuantificate."
+                    },
+                    {
+                      "title": "Procesul de evaluare și selecție a proiectelor",
+                      "text": "Emitentul explică obiectivele de mediu, criteriile de eligibilitate și modul în care identifică și gestionează riscurile sociale și de mediu ale proiectelor."
+                    },
+                    {
+                      "title": "Gestionarea fondurilor",
+                      "text": "Sumele nete atrase sunt urmărite separat (într-un subcont, subportofoliu sau printr-un mecanism intern echivalent), iar emitentul precizează cum plasează temporar sumele încă nealocate."
+                    },
+                    {
+                      "title": "Raportarea",
+                      "text": "Emitentul publică informații actualizate despre utilizarea fondurilor, cel puțin anual până la alocarea integrală, precum și despre impactul estimat al proiectelor."
+                    }
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "tip",
+                  "title": "Două recomandări-cheie",
+                  "text": "Pe lângă cele patru componente, principiile recomandă ca emitentul să publice un <strong>cadru de finanțare verde</strong> (Green Bond Framework) și să obțină o <strong>evaluare externă</strong>, de exemplu o opinie independentă (second party opinion). Ambele sunt detaliate în lecția următoare."
+                }
+              ]
+            },
+            {
+              "heading": "Categorii eligibile de proiecte",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Principiile ICMA oferă o listă orientativă, nu exhaustivă, de categorii de proiecte verzi. Printre ele se numără:"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "energie regenerabilă (de exemplu parcuri solare sau eoliene);",
+                    "eficiență energetică (renovarea clădirilor, modernizarea echipamentelor, rețele inteligente);",
+                    "prevenirea și controlul poluării;",
+                    "gestionarea durabilă a resurselor naturale vii și a utilizării terenurilor (inclusiv agricultura sustenabilă);",
+                    "conservarea biodiversității terestre și acvatice;",
+                    "transport curat (transport electric, public, nemotorizat);",
+                    "gestionarea durabilă a apei și a apelor uzate;",
+                    "adaptarea la schimbările climatice;",
+                    "produse, tehnologii și procese adaptate economiei circulare;",
+                    "clădiri verzi, certificate conform unor standarde recunoscute."
+                  ]
+                },
+                {
+                  "type": "p",
+                  "text": "Pentru obligațiunile sociale, categoriile tipice includ infrastructura de bază accesibilă, accesul la servicii esențiale precum sănătatea și educația, locuințele accesibile, crearea de locuri de muncă (inclusiv prin finanțarea IMM-urilor), securitatea alimentară și incluziunea socio-economică."
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Exemplu ipotetic: „EnergoSud SA”",
+                  "text": "Compania emite obligațiuni verzi de <strong>50 mil. lei</strong> și alocă fondurile astfel: 30 mil. lei pentru un parc fotovoltaic (energie regenerabilă), 15 mil. lei pentru modernizarea eficienței energetice a unei fabrici și 5 mil. lei pentru vehicule electrice de livrare (transport curat). Alternativ, ar putea emite o obligațiune sustainability-linked de 50 mil. lei cu cupon de 9%, care crește cu 0,25 puncte procentuale dacă nu reduce emisiile cu 30% până la data de observație: costul suplimentar ar fi 50.000.000 × 0,0025 = <strong>125.000 lei pe an</strong>. Cifrele sunt ilustrative."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "Obligațiunile verzi, sociale și sustenabile se definesc prin utilizarea fondurilor; cele sustainability-linked, prin ținte de performanță legate de caracteristicile financiare.",
+            "Riscul de credit al unei obligațiuni verzi obișnuite este, de regulă, riscul emitentului.",
+            "Green Bond Principles au patru componente: utilizarea fondurilor, evaluarea și selecția proiectelor, gestionarea fondurilor și raportarea.",
+            "Principiile ICMA sunt voluntare și recomandă un cadru de finanțare verde și o evaluare externă.",
+            "Categoriile eligibile includ energia regenerabilă, eficiența energetică, transportul curat, apa, clădirile verzi și economia circulară."
+          ],
+          "quiz": [
+            {
+              "q": "Prin ce se deosebește în principal o obligațiune sustainability-linked de o obligațiune verde?",
+              "options": [
+                "Fondurile pot fi folosite în scopuri generale, iar condițiile financiare depind de atingerea unor ținte de sustenabilitate",
+                "Nu plătește niciodată cupon",
+                "Poate fi emisă doar de guverne",
+                "Fondurile trebuie folosite exclusiv pentru proiecte sociale"
+              ],
+              "answer": 0,
+              "explanation": "Obligațiunile sustainability-linked nu sunt de tip use of proceeds; ele leagă caracteristici precum cuponul de KPI-uri și ținte de performanță."
+            },
+            {
+              "q": "Care dintre următoarele NU este una dintre cele patru componente de bază ale Green Bond Principles?",
+              "options": [
+                "Utilizarea fondurilor",
+                "Gestionarea fondurilor",
+                "Raportarea",
+                "Garantarea unui randament minim pentru investitori"
+              ],
+              "answer": 3,
+              "explanation": "Cele patru componente sunt utilizarea fondurilor, procesul de evaluare și selecție a proiectelor, gestionarea fondurilor și raportarea. Principiile nu garantează randamente."
+            },
+            {
+              "q": "O companie emite obligațiuni sustainability-linked de 80 mil. lei, cu o majorare a cuponului de 0,5 puncte procentuale dacă ratează ținta. Cât este costul suplimentar anual în acest caz?",
+              "options": ["40.000 lei", "400.000 lei", "4.000.000 lei"],
+              "answer": 1,
+              "explanation": "80.000.000 × 0,005 = 400.000 lei pe an."
+            }
+          ]
+        },
+        {
+          "slug": "emiterea-obligatiunii-verzi",
+          "title": "Emiterea unei obligațiuni verzi",
+          "summary": "Pașii practici ai unei emisiuni verzi: cadrul de finanțare, opinia independentă, alocarea fondurilor și rapoartele de alocare și de impact.",
+          "minutes": 15,
+          "sections": [
+            {
+              "heading": "Pregătirea: de la strategie la portofoliul de proiecte",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "O obligațiune verde credibilă pornește din <strong>strategia companiei</strong>, nu din dorința de a obține o etichetă. Investitorii vor întreba cum se încadrează proiectele finanțate în obiectivele generale de mediu ale emitentului și dacă restul activității nu contrazice mesajul verde."
+                },
+                {
+                  "type": "p",
+                  "text": "Primul pas concret este inventarierea proiectelor existente și planificate care ar putea fi eligibile: investiții în energie regenerabilă, eficiență energetică, apă sau transport curat. Pentru fiecare proiect se estimează costul, calendarul și beneficiile de mediu măsurabile."
+                },
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "Cadrul de finanțare verde (Green Bond Framework)",
+                  "text": "Document public în care emitentul descrie strategia de sustenabilitate și modul în care aplică cele patru componente ale principiilor: categoriile de proiecte eligibile, procesul de selecție, gestionarea fondurilor și angajamentele de raportare. Un cadru poate acoperi mai multe emisiuni succesive."
+                }
+              ]
+            },
+            {
+              "heading": "Pașii emiterii",
+              "blocks": [
+                {
+                  "type": "steps",
+                  "items": [
+                    {
+                      "title": "1. Decizia internă și echipa de proiect",
+                      "text": "Conducerea aprobă inițiativa și formează o echipă din finanțe, sustenabilitate, juridic și operațiuni. Se stabilește cine decide eligibilitatea proiectelor (de regulă un comitet intern)."
+                    },
+                    {
+                      "title": "2. Identificarea proiectelor eligibile",
+                      "text": "Se selectează proiectele care corespund categoriilor verzi și se estimează suma necesară, inclusiv eventuala refinanțare a unor proiecte deja realizate, cu o perioadă de referință anunțată."
+                    },
+                    {
+                      "title": "3. Elaborarea cadrului de finanțare verde",
+                      "text": "Se redactează documentul care explică criteriile de eligibilitate, excluderile, gestionarea fondurilor și indicatorii de impact care vor fi raportați."
+                    },
+                    {
+                      "title": "4. Evaluarea externă",
+                      "text": "Un evaluator independent analizează cadrul și emite o opinie privind alinierea lui la principiile de piață și credibilitatea beneficiilor de mediu."
+                    },
+                    {
+                      "title": "5. Documentația și aprobările emisiunii",
+                      "text": "Se pregătesc prospectul sau documentul de ofertă, cu referire la cadrul verde, și se obțin aprobările cerute de legislația pieței de capital aplicabile emitentului."
+                    },
+                    {
+                      "title": "6. Plasamentul la investitori",
+                      "text": "Emitentul și intermediarii prezintă emisiunea investitorilor, explicând atât profilul de credit, cât și proiectele verzi."
+                    },
+                    {
+                      "title": "7. Alocarea fondurilor și raportarea",
+                      "text": "Fondurile se urmăresc separat și se alocă proiectelor, iar emitentul publică periodic rapoarte de alocare și de impact."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "heading": "Evaluarea externă și opinia independentă",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Evaluarea externă nu este, de regulă, obligatorie conform principiilor voluntare, dar este puternic recomandată: pentru mulți investitori, lipsa ei este un semnal de alarmă. Cea mai frecventă formă este <strong>second party opinion</strong> (SPO), o opinie emisă de o instituție cu expertiză în sustenabilitate, independentă de consultanții care au pregătit cadrul."
+                },
+                {
+                  "type": "table",
+                  "headers": ["Tip de evaluare", "Ce oferă", "Când apare de obicei"],
+                  "rows": [
+                    ["Opinie independentă (second party opinion)", "Evaluează alinierea cadrului la principii și relevanța obiectivelor de mediu", "Înainte de emisiune"],
+                    ["Verificare", "Confirmă, pe baza unor criterii stabilite, aspecte precum alocarea fondurilor sau datele de impact", "Înainte sau după emisiune"],
+                    ["Certificare", "Atestă conformitatea cu un standard extern recunoscut", "Înainte și, adesea, după emisiune"],
+                    ["Scoring sau rating", "Atribuie un scor sau un calificativ cadrului ori emisiunii, după o metodologie proprie", "Înainte sau după emisiune"]
+                  ]
+                }
+              ]
+            },
+            {
+              "heading": "După emitere: alocare și impact",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Emisiunea nu se încheie la încasarea banilor. Investitorii urmăresc două tipuri de rapoarte: <strong>raportul de alocare</strong>, care arată câți bani au mers către fiecare categorie de proiecte și câți au rămas nealocați, și <strong>raportul de impact</strong>, care arată rezultatele de mediu obținute sau estimate, cu metodologia de calcul."
+                },
+                {
+                  "type": "formula",
+                  "label": "Rata de alocare",
+                  "expr": "Rata de alocare (%) = Fonduri alocate proiectelor eligibile / Suma netă atrasă × 100",
+                  "note": "Sumele încă nealocate se plasează temporar conform politicii anunțate în cadrul de finanțare, de exemplu în numerar sau depozite."
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Exemplu ipotetic: „AquaNord SA”",
+                  "text": "Compania atrage net <strong>80 mil. lei</strong> prin obligațiuni verzi. După primul an, a alocat 40 mil. lei pentru o stație de epurare și 16 mil. lei pentru pompe eficiente energetic, deci 56 mil. lei în total. Rata de alocare = 56 / 80 × 100 = <strong>70%</strong>, iar 24 mil. lei rămân temporar în depozite. În raportul de impact, compania estimează o economie de 4.000 MWh pe an; folosind un factor de emisie ipotetic de 0,4 tCO₂e/MWh, emisiile evitate sunt 4.000 × 0,4 = <strong>1.600 tCO₂e pe an</strong>. Cifrele sunt ilustrative."
+                },
+                {
+                  "type": "callout",
+                  "variant": "warning",
+                  "title": "Riscul reputațional",
+                  "text": "Dacă fondurile sunt alocate unor proiecte care nu corespund cadrului sau dacă rapoartele întârzie ori lipsesc, emitentul riscă acuzații de greenwashing și pierderea încrederii investitorilor, chiar dacă plătește cupoanele la timp."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "O obligațiune verde credibilă pornește de la strategia companiei și de la un portofoliu clar de proiecte eligibile.",
+            "Cadrul de finanțare verde descrie public criteriile, selecția, gestionarea fondurilor și raportarea.",
+            "Opinia independentă (second party opinion) evaluează alinierea cadrului la principiile de piață înainte de emisiune.",
+            "După emitere se publică rapoarte de alocare și de impact, cu metodologia de calcul.",
+            "Nerespectarea angajamentelor verzi generează risc reputațional chiar și atunci când obligațiunea este plătită la timp."
+          ],
+          "quiz": [
+            {
+              "q": "Ce document public descrie categoriile de proiecte eligibile, procesul de selecție și angajamentele de raportare ale emitentului?",
+              "options": ["Raportul de audit financiar", "Contractul de muncă colectiv", "Cadrul de finanțare verde", "Registrul acționarilor"],
+              "answer": 2,
+              "explanation": "Cadrul de finanțare verde (Green Bond Framework) stabilește public modul în care emitentul aplică componentele principiilor."
+            },
+            {
+              "q": "Un emitent a atras net 60 mil. lei și a alocat 45 mil. lei proiectelor eligibile. Care este rata de alocare?",
+              "options": ["45%", "75%", "133%", "15%"],
+              "answer": 1,
+              "explanation": "45 / 60 × 100 = 75%."
+            },
+            {
+              "q": "Ce arată în principal un raport de impact?",
+              "options": [
+                "Rezultatele de mediu obținute sau estimate ale proiectelor finanțate",
+                "Prețul de piață al obligațiunii în fiecare zi",
+                "Lista investitorilor care au cumpărat obligațiunile"
+              ],
+              "answer": 0,
+              "explanation": "Raportul de impact prezintă beneficiile de mediu, de exemplu energia economisită sau emisiile evitate, împreună cu metodologia de calcul."
+            }
+          ]
+        },
+        {
+          "slug": "esg-perspectiva-investitorului",
+          "title": "ESG din perspectiva investitorului",
+          "summary": "Strategiile de investiții ESG, ratingurile ESG și limitele lor și semnalele care te ajută să recunoști greenwashingul.",
+          "minutes": 15,
+          "sections": [
+            {
+              "heading": "Strategii de investiții ESG",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Nu există un singur mod de a „investi ESG”. Investitorii combină mai multe abordări, în funcție de obiective: reducerea riscurilor, alinierea portofoliului la valori personale sau instituționale ori obținerea unui impact măsurabil."
+                },
+                {
+                  "type": "table",
+                  "headers": ["Strategie", "Cum funcționează", "Exemplu"],
+                  "rows": [
+                    ["Screening negativ (excludere)", "Elimină din universul de investiții anumite sectoare, companii sau practici", "Excluderea producătorilor de tutun sau a companiilor implicate în încălcări grave ale drepturilor omului"],
+                    ["Screening pozitiv (best-in-class)", "Selectează companiile cu cea mai bună performanță ESG din fiecare sector", "Alegerea celor mai eficiente energetic companii dintr-un sector industrial"],
+                    ["Integrare ESG", "Include sistematic factorii ESG în analiza financiară, alături de indicatorii clasici", "Ajustarea estimărilor de costuri pentru prețul viitor al energiei sau pentru riscul de secetă"],
+                    ["Investiții tematice", "Se concentrează pe teme legate de sustenabilitate", "Un portofoliu axat pe energie regenerabilă sau pe apă"],
+                    ["Investiții de impact", "Urmăresc intenționat un impact social sau de mediu măsurabil, alături de un randament financiar", "Finanțarea unor proiecte de locuințe accesibile, cu raportarea numărului de familii beneficiare"],
+                    ["Implicarea acționarului (engagement)", "Dialog cu conducerea și vot în adunările generale pentru a îmbunătăți practicile", "Solicitarea unor ținte de reducere a emisiilor"]
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "Investiție de impact",
+                  "text": "Investiție făcută cu <strong>intenția</strong> de a genera un impact social sau de mediu pozitiv și <strong>măsurabil</strong>, pe lângă un randament financiar. Simpla evitare a companiilor „problematice” nu înseamnă, în sine, investiție de impact."
+                }
+              ]
+            },
+            {
+              "heading": "Ratingurile ESG și limitele lor",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Ratingurile ESG sunt evaluări emise de furnizori specializați, care încearcă să sintetizeze performanța sau expunerea la riscuri ESG a unei companii într-un scor ori calificativ. Ele sunt utile ca punct de plecare, dar trebuie folosite cu precauție."
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "<strong>Metodologii diferite:</strong> furnizorii aleg teme, ponderi și surse de date diferite, astfel încât aceeași companie poate primi scoruri foarte diferite.",
+                    "<strong>Ce măsoară exact:</strong> unele ratinguri evaluează riscul ESG pentru companie, altele impactul companiei asupra lumii; cele două nu coincid.",
+                    "<strong>Date incomplete:</strong> multe scoruri se bazează pe informații raportate chiar de companie sau pe estimări.",
+                    "<strong>Dimensiunea contează:</strong> companiile mari, cu echipe dedicate de raportare, pot obține scoruri mai bune pur și simplu pentru că publică mai multe informații.",
+                    "<strong>Scorurile nu sunt ratinguri de credit:</strong> un scor ESG ridicat nu spune nimic direct despre capacitatea emitentului de a-și plăti datoriile."
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Exemplu ipotetic: două scoruri, aceeași companie",
+                  "text": "Compania „LogiTrans SA” primește 72 din 100 de la furnizorul A, care pune accent pe politici și guvernanță, și 41 din 100 de la furnizorul B, care pune accent pe emisiile flotei. Un investitor cu 1 mil. lei de alocat nu ar trebui să aleagă scorul convenabil, ci să citească metodologiile și să verifice datele de bază, de exemplu emisiile de 12.000 tCO₂e raportate la venituri de 400 mil. lei, adică 30 tCO₂e per mil. lei. Cifrele sunt ilustrative."
+                }
+              ]
+            },
+            {
+              "heading": "Greenwashing: cum îl recunoști",
+              "blocks": [
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "Greenwashing",
+                  "text": "Practica de a prezenta o companie, un produs, un fond sau un instrument financiar ca fiind mai sustenabil decât este în realitate, prin afirmații vagi, exagerate, selective sau imposibil de verificat."
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "Termeni vagi precum „ecologic”, „prietenos cu natura” sau „neutru climatic”, fără date și fără metodologie.",
+                    "Accent pe un proiect mic și vizibil, în timp ce activitatea principală rămâne puternic poluantă și fără plan de tranziție.",
+                    "Ținte pe termen foarte lung, fără ținte intermediare, buget alocat sau responsabili desemnați.",
+                    "Lipsa unei evaluări externe sau rapoarte de alocare și de impact care întârzie ori lipsesc.",
+                    "Numele unui fond sugerează o temă verde, dar portofoliul conține puține active legate de acea temă.",
+                    "Compensarea emisiilor prezentată ca soluție principală, în locul reducerii lor efective."
+                  ]
+                },
+                {
+                  "type": "formula",
+                  "label": "Ponderea activelor legate de tema declarată",
+                  "expr": "Pondere (%) = Valoarea activelor aliniate temei / Valoarea totală a portofoliului × 100",
+                  "note": "O pondere mică la un produs care își asumă o temă verde în nume sau în materialele de marketing merită întrebări suplimentare."
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Exemplu ipotetic: fondul „Verde Plus”",
+                  "text": "Un fond ipotetic cu active de <strong>100 mil. lei</strong> se promovează drept „investiție verde”. Analizând lista deținerilor, descoperi că doar 12 mil. lei sunt plasați în obligațiuni verzi sau în companii de energie regenerabilă. Ponderea este 12 / 100 × 100 = <strong>12%</strong>. Restul de 88 mil. lei sunt titluri obișnuite, fără criterii ESG explicite. Diferența dintre mesaj și conținut este un semnal clasic de greenwashing."
+                }
+              ]
+            },
+            {
+              "heading": "O listă de verificare pentru investitor",
+              "blocks": [
+                {
+                  "type": "steps",
+                  "items": [
+                    {
+                      "title": "Clarifică-ți obiectivul",
+                      "text": "Vrei să reduci riscurile, să eviți anumite sectoare sau să obții un impact măsurabil? Strategia potrivită depinde de răspuns."
+                    },
+                    {
+                      "title": "Analizează mai întâi creditul",
+                      "text": "La o obligațiune verde, eticheta nu înlocuiește analiza situației financiare a emitentului, a scadenței, a cuponului și a lichidității."
+                    },
+                    {
+                      "title": "Citește documentele verzi",
+                      "text": "Verifică cadrul de finanțare, opinia independentă și categoriile de proiecte eligibile, inclusiv excluderile."
+                    },
+                    {
+                      "title": "Urmărește raportarea",
+                      "text": "Verifică dacă rapoartele de alocare și de impact sunt publicate la timp, cu cifre concrete și metodologie explicată."
+                    },
+                    {
+                      "title": "Privește imaginea de ansamblu",
+                      "text": "Compară proiectele finanțate cu strategia și activitatea principală a emitentului și nu te baza pe un singur rating ESG."
+                    }
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "warning",
+                  "title": "Conținut educațional",
+                  "text": "Exemplele din această lecție sunt ipotetice și nu reprezintă recomandări de investiții. Înainte de orice decizie, consultă documentele oficiale ale emitentului și, dacă este cazul, un consultant autorizat."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "Strategiile ESG includ screeningul negativ și pozitiv, integrarea ESG, investițiile tematice, investițiile de impact și implicarea acționarului.",
+            "Investițiile de impact presupun intenție și impact măsurabil, nu doar excluderi.",
+            "Ratingurile ESG diferă între furnizori din cauza metodologiilor și nu înlocuiesc analiza de credit.",
+            "Greenwashingul se recunoaște prin afirmații vagi, date lipsă, lipsa evaluării externe și diferențe între mesaj și conținut.",
+            "Eticheta verde completează, dar nu înlocuiește, analiza financiară a emitentului."
+          ],
+          "quiz": [
+            {
+              "q": "Un investitor elimină din portofoliu toate companiile care produc cărbune. Ce strategie aplică?",
+              "options": ["Investiție de impact", "Screening pozitiv", "Integrare ESG", "Screening negativ (excludere)"],
+              "answer": 3,
+              "explanation": "Eliminarea unor sectoare sau companii din universul de investiții este screening negativ."
+            },
+            {
+              "q": "De ce aceeași companie poate primi scoruri ESG foarte diferite de la doi furnizori?",
+              "options": [
+                "Pentru că furnizorii folosesc metodologii, ponderi și surse de date diferite",
+                "Pentru că unul dintre furnizori greșește întotdeauna",
+                "Pentru că scorurile ESG sunt identice cu ratingurile de credit"
+              ],
+              "answer": 0,
+              "explanation": "Diferențele de metodologie, de teme analizate și de date explică de ce scorurile pot varia semnificativ între furnizori."
+            },
+            {
+              "q": "Care dintre următoarele este cel mai clar semnal de greenwashing?",
+              "options": [
+                "Emitentul publică anual rapoarte de alocare și de impact cu metodologie",
+                "Emitentul a obținut o opinie independentă pentru cadrul verde",
+                "Un fond cu nume „verde” are doar o mică parte din active legate de tema declarată",
+                "Compania stabilește ținte intermediare cu buget și responsabili"
+              ],
+              "answer": 2,
+              "explanation": "Diferența mare dintre mesajul de marketing și conținutul real al portofoliului este un semnal tipic de greenwashing; celelalte variante sunt bune practici."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,773 @@
+{
+  "slug": "femei-antreprenoare",
+  "num": "05",
+  "title": "Piața de capital pentru femei antreprenoare",
+  "short": "Program dedicat accesului antreprenoarelor la finanțarea prin piața de capital.",
+  "level": "Intermediar",
+  "audience": "Antreprenoare",
+  "intro": "Acest program te ajută să înțelegi toate opțiunile de finanțare a afacerii tale și locul pe care îl poate ocupa piața de capital în strategia de creștere. Pornim de la sursele clasice — fonduri proprii, granturi, credite — și ajungem pas cu pas la emisiunea de acțiuni sau obligațiuni. La final vei avea un plan concret de acțiune și o imagine clară despre cum îți pregătești afacerea pentru investitori.",
+  "outcomes": [
+    "Să compari sursele de finanțare și să alegi ce se potrivește etapei în care se află afacerea ta",
+    "Să înțelegi diferența dintre datorie și capital propriu și impactul fiecăreia asupra controlului",
+    "Să explici cum funcționează emisiunea de acțiuni și de obligațiuni corporative, prin ofertă publică sau plasament privat",
+    "Să pregătești documentele-cheie pentru investitori: plan de afaceri, model financiar, pitch deck",
+    "Să construiești o guvernanță transparentă și să gestionezi diluarea controlului",
+    "Să elaborezi un plan de acțiune în 90 de zile pentru accesarea finanțării"
+  ],
+  "prerequisites": "Este util să ai o afacere în funcțiune sau un proiect de afacere și noțiuni de bază despre situațiile financiare, dar nu ai nevoie de experiență anterioară cu investitorii.",
+  "courses": [
+    {
+      "code": "BA-203",
+      "title": "Capital pentru femei antreprenoare",
+      "description": "Un curs practic despre cum finanțezi creșterea afacerii tale, de la primele economii până la emisiunea de valori mobiliare. Înveți să te pregătești pentru investitori, să comunici transparent și să îți păstrezi viziunea asupra companiei.",
+      "lessons": [
+        {
+          "slug": "optiuni-de-finantare",
+          "title": "Finanțarea afacerii: opțiuni și etape",
+          "summary": "Descoperi principalele surse de finanțare, cum se potrivesc fiecărei etape a afacerii și ce înseamnă să alegi între datorie și capital propriu.",
+          "minutes": 14,
+          "sections": [
+            {
+              "heading": "De ce contează alegerea sursei de finanțare",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Orice afacere are nevoie de bani ca să pornească și să crească: pentru echipamente, stocuri, salarii, marketing sau extinderea pe piețe noi. Întrebarea nu este doar <strong>de unde</strong> iei banii, ci și <strong>cu ce cost</strong> și <strong>cu ce condiții</strong>. Fiecare sursă vine cu obligații diferite: unele trebuie rambursate cu dobândă, altele îți cer să împarți o parte din companie."
+                },
+                {
+                  "type": "p",
+                  "text": "O alegere bine gândită îți păstrează flexibilitatea și controlul, în timp ce o alegere grăbită poate pune presiune pe fluxul de numerar sau îți poate dilua proprietatea mai mult decât era necesar. De aceea, merită să cunoști întregul „meniu” de opțiuni înainte să decizi."
+                },
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "Datorie vs capital propriu",
+                  "text": "<strong>Finanțarea prin datorie</strong> înseamnă că împrumuți bani (credit bancar, leasing, obligațiuni) și îi returnezi cu dobândă, fără să cedezi din proprietate. <strong>Finanțarea prin capital propriu</strong> înseamnă că primești bani în schimbul unei cote din companie (acțiuni sau părți sociale); investitorul câștigă din creșterea valorii și din dividende, dar nu ai obligația fixă de rambursare."
+                }
+              ]
+            },
+            {
+              "heading": "Principalele surse de finanțare",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "<strong>Fonduri proprii</strong> — economiile tale sau ale cofondatorilor; îți păstrezi controlul integral, dar sumele sunt de obicei limitate.",
+                    "<strong>Granturi</strong> — finanțări nerambursabile oferite prin programe publice sau ale partenerilor de dezvoltare; au criterii de eligibilitate stricte, cer raportare și, adesea, cofinanțare.",
+                    "<strong>Credit bancar</strong> — sume rambursabile cu dobândă, de regulă cu garanții și cu cerința unui istoric financiar.",
+                    "<strong>Leasing</strong> — folosești un echipament sau un vehicul plătind rate, iar bunul servește adesea ca garanție.",
+                    "<strong>Business angels</strong> — persoane care investesc banii proprii în afaceri aflate la început și aduc frecvent experiență și contacte.",
+                    "<strong>Capital de risc</strong> — fonduri de investiții care finanțează companii cu potențial mare de creștere, în schimbul unei cote semnificative și al implicării în decizii.",
+                    "<strong>Piața de capital</strong> — atragi bani de la investitori prin emisiune de acțiuni sau obligațiuni, de obicei când afacerea este matură și transparentă."
+                  ]
+                },
+                {
+                  "type": "table",
+                  "headers": ["Etapa afacerii", "Surse potrivite de obicei", "Ce contează cel mai mult"],
+                  "rows": [
+                    ["Idee și lansare", "Fonduri proprii, familie, granturi, business angels", "Validarea produsului, costuri mici"],
+                    ["Primele vânzări", "Microcredite, leasing, granturi, business angels", "Flux de numerar stabil, primii clienți fideli"],
+                    ["Creștere", "Credit bancar, leasing, capital de risc", "Istoric financiar, capacitate de rambursare"],
+                    ["Maturitate și extindere", "Credite mai mari, obligațiuni corporative, emisiune de acțiuni", "Transparență, situații financiare auditate, guvernanță"]
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "tip",
+                  "title": "Combinația contează",
+                  "text": "Rareori o afacere se finanțează dintr-o singură sursă. Un mix echilibrat — de exemplu, fonduri proprii plus leasing pentru echipamente plus un credit pentru capital de lucru — îți reduce dependența de un singur finanțator."
+                }
+              ]
+            },
+            {
+              "heading": "Cum compari datoria cu capitalul propriu",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Datoria este, în general, mai ieftină atâta timp cât afacerea generează suficient numerar pentru rate, iar tu îți păstrezi 100% din proprietate. Capitalul propriu nu te obligă la plăți fixe, dar investitorul devine coproprietar și va participa la profituri pe termen lung. Un indicator simplu te ajută să vezi cât de îndatorată este deja firma."
+                },
+                {
+                  "type": "formula",
+                  "label": "Gradul de îndatorare",
+                  "expr": "Grad de îndatorare = Datorii totale ÷ Capital propriu",
+                  "note": "Exemplu ipotetic: datorii de 600 000 lei și capital propriu de 400 000 lei dau un grad de 1,5. Cu cât valoarea este mai mare, cu atât finanțatorii vor privi mai atent noi împrumuturi."
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "«Atelierul Ana» SRL alege între credit și investitor (exemplu ipotetic)",
+                  "text": "Ana are un atelier de croitorie cu profit net anual de 400 000 lei și are nevoie de 500 000 lei pentru mașini noi. <strong>Varianta A — credit</strong>: la o dobândă ipotetică de 12% pe an, dobânda din primul an este de aproximativ 500 000 × 12% = 60 000 lei, iar Ana rămâne proprietara întregii firme. <strong>Varianta B — investitor</strong>: un business angel oferă 500 000 lei pentru 20% din firmă. Dacă profitul de 400 000 lei s-ar distribui integral, investitorului i-ar reveni 400 000 × 20% = 80 000 lei pe an, iar cota lui rămâne și în anii următori. Varianta A e mai ieftină dacă fluxul de numerar acoperă ratele; varianta B e mai sigură dacă veniturile sunt nesigure și dacă investitorul aduce și expertiză."
+                },
+                {
+                  "type": "callout",
+                  "variant": "warning",
+                  "title": "Atenție la costul real",
+                  "text": "Compară întotdeauna costul total — dobânzi, comisioane, garanții, cote cedate — nu doar suma primită. Informațiile din această lecție au scop educațional și nu reprezintă consultanță financiară."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "Fiecare sursă de finanțare are un cost și condiții diferite; compară costul total, nu doar suma.",
+            "Datoria îți păstrează proprietatea, dar cere rambursare; capitalul propriu nu cere rate, dar împarți compania.",
+            "Etapa afacerii influențează ce surse îți sunt accesibile: piața de capital se potrivește, de regulă, afacerilor mature și transparente.",
+            "Un mix echilibrat de surse reduce dependența de un singur finanțator."
+          ],
+          "quiz": [
+            {
+              "q": "Care dintre următoarele este o formă de finanțare prin capital propriu?",
+              "options": [
+                "Un credit bancar pe 3 ani",
+                "Un contract de leasing pentru un utilaj",
+                "Vânzarea unei cote de 15% din firmă către un business angel",
+                "O emisiune de obligațiuni corporative"
+              ],
+              "answer": 2,
+              "explanation": "La finanțarea prin capital propriu primești bani în schimbul unei cote din companie. Creditul, leasingul și obligațiunile sunt forme de datorie."
+            },
+            {
+              "q": "O firmă are datorii totale de 300 000 lei și capital propriu de 600 000 lei. Care este gradul de îndatorare?",
+              "options": [
+                "0,5",
+                "2",
+                "1,5"
+              ],
+              "answer": 0,
+              "explanation": "Gradul de îndatorare = 300 000 ÷ 600 000 = 0,5."
+            },
+            {
+              "q": "În ce etapă a afacerii se potrivește, de regulă, finanțarea prin piața de capital?",
+              "options": [
+                "La stadiul de idee, înainte de primele vânzări",
+                "La maturitate, când afacerea are istoric, transparență și situații financiare solide",
+                "Doar când firma nu mai poate obține niciun alt tip de finanțare"
+              ],
+              "answer": 1,
+              "explanation": "Investitorii de pe piața de capital cer istoric financiar, transparență și guvernanță, de aceea această sursă se potrivește de obicei afacerilor mature."
+            }
+          ]
+        },
+        {
+          "slug": "piata-de-capital",
+          "title": "Piața de capital ca sursă de finanțare",
+          "summary": "Înțelegi cum poate afacerea ta să atragă bani prin acțiuni sau obligațiuni, prin ofertă publică ori plasament privat, și când este momentul potrivit.",
+          "minutes": 15,
+          "sections": [
+            {
+              "heading": "Ce este piața de capital pentru o companie",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Piața de capital este locul în care companiile atrag bani pe termen mediu și lung de la investitori — persoane fizice, companii sau investitori instituționali — prin emiterea de <strong>valori mobiliare</strong>. Pentru tine, ca antreprenoare, ea înseamnă acces la un cerc mai larg de finanțatori decât o singură bancă sau un singur investitor."
+                },
+                {
+                  "type": "p",
+                  "text": "Cele două instrumente principale sunt <strong>acțiunile</strong> și <strong>obligațiunile corporative</strong>. Ambele pot fi oferite fie publicului larg, fie unui grup restrâns de investitori. Procesul este reglementat, iar în Republica Moldova piața este supravegheată de Comisia Națională a Pieței Financiare; cerințele concrete le verifici întotdeauna în legislația în vigoare și cu un consultant autorizat."
+                },
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "Acțiune și obligațiune corporativă",
+                  "text": "<strong>Acțiunea</strong> este o parte din capitalul social al unei societăți pe acțiuni; cumpărătorul devine acționar, cu drept la dividende și, de regulă, la vot. <strong>Obligațiunea corporativă</strong> este un titlu de datorie: investitorul împrumută compania, primește o dobândă periodică numită <em>cupon</em> și își recuperează suma nominală la scadență, fără să devină coproprietar."
+                }
+              ]
+            },
+            {
+              "heading": "Acțiuni sau obligațiuni? Ofertă publică sau plasament privat?",
+              "blocks": [
+                {
+                  "type": "table",
+                  "headers": ["Criteriu", "Emisiune de acțiuni", "Emisiune de obligațiuni"],
+                  "rows": [
+                    ["Tip de finanțare", "Capital propriu", "Datorie"],
+                    ["Rambursare", "Nu există obligație de rambursare", "Suma nominală se rambursează la scadență"],
+                    ["Plăți către investitori", "Dividende, dacă se decide distribuirea", "Cupon fix sau variabil, conform prospectului"],
+                    ["Control", "Se diluează cota fondatoarei", "Controlul rămâne neschimbat"],
+                    ["Risc pentru companie", "Presiune mai mică pe numerar", "Plăți obligatorii, chiar și în ani mai slabi"]
+                  ]
+                },
+                {
+                  "type": "p",
+                  "text": "Printr-o <strong>ofertă publică</strong>, valorile mobiliare sunt propuse unui număr larg de investitori, pe baza unui document de ofertă (prospect) aprobat conform regulilor aplicabile. Printr-un <strong>plasament privat</strong>, oferta se adresează unui cerc restrâns de investitori, de obicei cu cerințe de documentare mai reduse, dar și cu acces la mai puțini finanțatori."
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "<strong>Avantaje</strong>: sume mai mari decât la un singur finanțator, termene mai lungi, vizibilitate și credibilitate, diversificarea surselor de finanțare.",
+                    "<strong>Cerințe</strong>: forma juridică potrivită (emisiunea de acțiuni presupune o societate pe acțiuni), situații financiare clare și, de regulă, auditate, raportare periodică, costuri cu consultanții, auditorii și intermediarii.",
+                    "<strong>Responsabilități</strong>: informare corectă și la timp a investitorilor pe toată durata instrumentului."
+                  ]
+                }
+              ]
+            },
+            {
+              "heading": "Cum arată o emisiune de obligațiuni în cifre",
+              "blocks": [
+                {
+                  "type": "formula",
+                  "label": "Cuponul anual al unei obligațiuni",
+                  "expr": "Cupon anual = Valoarea nominală × Rata cuponului",
+                  "note": "Exemplu ipotetic: pentru o obligațiune cu valoarea nominală de 1 000 lei și rata cuponului de 11%, investitorul primește 1 000 × 11% = 110 lei pe an."
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "«Atelierul Ana» SA emite obligațiuni (exemplu ipotetic)",
+                  "text": "După câțiva ani de creștere, firma Anei, reorganizată în societate pe acțiuni, vrea să deschidă o a doua linie de producție. Emite <strong>2 000 de obligațiuni</strong> cu valoarea nominală de <strong>1 000 lei</strong> fiecare, deci atrage 2 000 × 1 000 = <strong>2 000 000 lei</strong>. Cuponul este de 11% pe an, pe 3 ani. Costul anual al dobânzii: 2 000 000 × 11% = 220 000 lei. În 3 ani, firma plătește 3 × 220 000 = 660 000 lei dobândă, iar la scadență rambursează cei 2 000 000 lei. Ana își păstrează 100% din acțiuni, dar trebuie să se asigure că afacerea generează numerar suficient pentru cupoane și rambursare."
+                },
+                {
+                  "type": "callout",
+                  "variant": "warning",
+                  "title": "Nu confunda suma atrasă cu profitul",
+                  "text": "Banii din emisiune sunt o obligație față de investitori (la obligațiuni) sau o promisiune de creștere a valorii (la acțiuni). Planifică utilizarea lor cu aceeași grijă cu care ai planifica un credit."
+                }
+              ]
+            },
+            {
+              "heading": "Când este momentul potrivit",
+              "blocks": [
+                {
+                  "type": "steps",
+                  "items": [
+                    {
+                      "title": "Ai un istoric financiar convingător",
+                      "text": "Câțiva ani de venituri și, ideal, profituri documentate îi ajută pe investitori să evalueze riscul."
+                    },
+                    {
+                      "title": "Ai un proiect clar de utilizare a banilor",
+                      "text": "Extindere, echipamente, refinanțare — investitorii vor să știe exact unde merg banii și ce rezultate aduc."
+                    },
+                    {
+                      "title": "Suma necesară justifică costurile",
+                      "text": "Emisiunea presupune cheltuieli cu audit, consultanță și intermediere; pentru sume mici, un credit poate fi mai eficient."
+                    },
+                    {
+                      "title": "Ești pregătită pentru transparență",
+                      "text": "Raportarea periodică și comunicarea deschisă cu investitorii devin parte din rutina companiei."
+                    }
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "tip",
+                  "title": "Începe cu o discuție exploratorie",
+                  "text": "Înainte de orice decizie, discută cu un intermediar autorizat, cu un auditor și cu un jurist despre forma juridică, costuri și calendar. Această lecție are scop educațional și nu înlocuiește consultanța de specialitate."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "Acțiunile aduc capital propriu și diluează controlul; obligațiunile sunt datorie și îl păstrează neschimbat.",
+            "Oferta publică atinge mulți investitori, dar are cerințe mai mari; plasamentul privat se adresează unui cerc restrâns.",
+            "Cuponul anual = valoarea nominală × rata cuponului; planifică numerarul pentru cupoane și rambursare.",
+            "Momentul potrivit vine când ai istoric financiar, un proiect clar și pregătire pentru transparență."
+          ],
+          "quiz": [
+            {
+              "q": "Ce primește, de regulă, un investitor care cumpără obligațiuni corporative?",
+              "options": [
+                "Drept de vot în adunarea acționarilor",
+                "O cotă din capitalul social al companiei",
+                "Dividende stabilite anual de consiliu",
+                "Un cupon periodic și rambursarea valorii nominale la scadență"
+              ],
+              "answer": 3,
+              "explanation": "Obligațiunea este un titlu de datorie: investitorul primește dobândă (cupon) și își recuperează valoarea nominală la scadență, fără să devină coproprietar."
+            },
+            {
+              "q": "O companie emite 500 de obligațiuni cu valoarea nominală de 1 000 lei și cupon de 10% pe an. Cât plătește anual în cupoane?",
+              "options": [
+                "5 000 lei",
+                "50 000 lei",
+                "500 000 lei"
+              ],
+              "answer": 1,
+              "explanation": "Suma atrasă este 500 × 1 000 = 500 000 lei, iar cupoanele anuale sunt 500 000 × 10% = 50 000 lei."
+            },
+            {
+              "q": "Care este principala diferență dintre o ofertă publică și un plasament privat?",
+              "options": [
+                "Oferta publică se adresează unui număr larg de investitori, plasamentul privat unui cerc restrâns",
+                "Plasamentul privat se folosește doar pentru acțiuni, iar oferta publică doar pentru obligațiuni",
+                "La plasamentul privat banii nu trebuie niciodată rambursați"
+              ],
+              "answer": 0,
+              "explanation": "Diferența ține de cui se adresează oferta: publicului larg sau unui grup limitat de investitori. Ambele pot fi folosite pentru acțiuni sau obligațiuni."
+            }
+          ]
+        },
+        {
+          "slug": "pregatirea-pentru-investitori",
+          "title": "Pregătirea afacerii pentru investitori",
+          "summary": "Afli ce documente și cifre așteaptă investitorii, cum îți evaluezi simplu afacerea și ce presupune verificarea due diligence.",
+          "minutes": 16,
+          "sections": [
+            {
+              "heading": "Ce vor să vadă investitorii",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Un investitor își pune trei întrebări simple: <strong>Cât de mare este oportunitatea?</strong> <strong>Poate această echipă să o valorifice?</strong> <strong>Cât risc îmi asum și ce câștig?</strong> Documentele pe care le pregătești trebuie să răspundă clar, cu cifre verificabile, la toate trei."
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "<strong>Plan de afaceri</strong> — piața, clienții, produsul, concurența, strategia de vânzări și echipa.",
+                    "<strong>Model financiar</strong> — proiecții de venituri, cheltuieli, profit și flux de numerar pe 3–5 ani, cu ipoteze explicite.",
+                    "<strong>Situații financiare</strong> — bilanț, situația de profit și pierdere, fluxul de numerar; ideal auditate de un auditor independent.",
+                    "<strong>Pitch deck</strong> — o prezentare scurtă care spune povestea afacerii și ce ceri investitorilor.",
+                    "<strong>Documente juridice</strong> — actul de constituire, contracte importante, licențe, drepturi de proprietate."
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "Situații financiare auditate",
+                  "text": "Sunt rapoartele financiare ale firmei verificate de un <strong>auditor independent</strong>, care exprimă o opinie dacă ele prezintă fidel situația companiei. Auditul nu garantează succesul afacerii, dar crește încrederea investitorilor în cifrele pe care le prezinți."
+                }
+              ]
+            },
+            {
+              "heading": "Modelul financiar și pitch deck-ul",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Modelul financiar nu trebuie să fie complicat, dar trebuie să fie <strong>coerent</strong>. Pornește de la ipoteze pe care le poți explica: câți clienți, ce preț mediu, ce costuri pe unitate, ce cheltuieli fixe. Construiește trei scenarii — prudent, de bază și optimist — ca să arăți că ai analizat și riscurile."
+                },
+                {
+                  "type": "steps",
+                  "items": [
+                    {
+                      "title": "Problema și soluția",
+                      "text": "Ce nevoie reală rezolvi și de ce produsul tău o rezolvă mai bine."
+                    },
+                    {
+                      "title": "Piața și clienții",
+                      "text": "Cine cumpără, cât de mare este segmentul și cum ajungi la el."
+                    },
+                    {
+                      "title": "Tracțiunea",
+                      "text": "Vânzări, clienți recurenți, contracte — dovezi că afacerea funcționează."
+                    },
+                    {
+                      "title": "Modelul de afaceri și cifrele-cheie",
+                      "text": "Cum câștigi bani, marje, istoric și proiecții pe scurt."
+                    },
+                    {
+                      "title": "Echipa",
+                      "text": "Experiența ta și a colegilor, inclusiv consilieri sau mentori."
+                    },
+                    {
+                      "title": "Ce ceri și cum folosești banii",
+                      "text": "Suma, instrumentul (acțiuni, obligațiuni, împrumut) și destinația exactă a fondurilor."
+                    }
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "tip",
+                  "title": "Mai puțin, dar clar",
+                  "text": "Un pitch deck de 10–12 slide-uri, cu un mesaj principal pe fiecare slide, este mai convingător decât o prezentare lungă. Păstrează detaliile pentru anexe și pentru întrebările investitorilor."
+                }
+              ]
+            },
+            {
+              "heading": "Evaluarea afacerii, pe înțelesul tuturor",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Evaluarea răspunde la întrebarea „cât valorează compania?”. Există metode complexe, dar pentru o primă discuție poți folosi un <strong>multiplu de profit</strong>: valoarea firmei este estimată ca profitul anual înmulțit cu un coeficient care depinde de sector, creștere și risc. Rezultatul este un punct de plecare pentru negociere, nu un adevăr absolut."
+                },
+                {
+                  "type": "formula",
+                  "label": "Cota investitorului",
+                  "expr": "Cota investitorului = Suma investită ÷ (Valoarea înainte de investiție + Suma investită)",
+                  "note": "Valoarea înainte de investiție se numește „pre-money”, iar suma dintre ea și investiție se numește „post-money”."
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Cât valorează «Atelierul Ana» SRL? (exemplu ipotetic)",
+                  "text": "Firma are un profit net anual de 400 000 lei. Ana și investitorul convin asupra unui multiplu de 5, deci valoarea pre-money este 400 000 × 5 = <strong>2 000 000 lei</strong>. Investitorul aduce 500 000 lei, iar valoarea post-money devine 2 000 000 + 500 000 = <strong>2 500 000 lei</strong>. Cota investitorului: 500 000 ÷ 2 500 000 = <strong>20%</strong>, iar Ana păstrează 80%. Dacă Ana ar fi negociat un multiplu de 6 (pre-money 2 400 000 lei), aceeași investiție ar fi însemnat 500 000 ÷ 2 900 000 ≈ 17,2%."
+                }
+              ]
+            },
+            {
+              "heading": "Due diligence: verificarea înainte de investiție",
+              "blocks": [
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "Due diligence",
+                  "text": "Este analiza detaliată pe care investitorul o face înainte de a investi, pentru a confirma că informațiile prezentate sunt corecte: situația financiară, contractele, datoriile, obligațiile fiscale, aspectele juridice și echipa."
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "Organizează din timp o „cameră de date”: un dosar (fizic sau digital) cu toate documentele, ordonate pe categorii.",
+                    "Verifică să nu existe datorii restante sau litigii nedeclarate; dacă există, prezintă-le deschis, cu planul de rezolvare.",
+                    "Asigură-te că proprietatea asupra mărcii, echipamentelor și contractelor-cheie este pe numele firmei.",
+                    "Pregătește răspunsuri pentru întrebările dificile: ce se întâmplă dacă pierzi cel mai mare client?"
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "warning",
+                  "title": "Transparența câștigă încredere",
+                  "text": "O problemă descoperită de investitor în timpul due diligence afectează încrederea mult mai mult decât una prezentată de tine de la început. Conținutul lecției este educațional și nu constituie consultanță juridică sau de investiții."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "Investitorii caută răspunsuri clare despre oportunitate, echipă și risc, susținute de cifre verificabile.",
+            "Un model financiar coerent, cu ipoteze explicite și mai multe scenarii, valorează mai mult decât proiecții spectaculoase.",
+            "Cota investitorului = suma investită ÷ valoarea post-money; o evaluare mai mare înseamnă o cotă cedată mai mică.",
+            "Pregătește din timp documentele pentru due diligence și prezintă deschis eventualele probleme."
+          ],
+          "quiz": [
+            {
+              "q": "O firmă are valoarea pre-money de 1 500 000 lei, iar investitorul aduce 500 000 lei. Ce cotă primește investitorul?",
+              "options": [
+                "33,3%",
+                "20%",
+                "25%",
+                "50%"
+              ],
+              "answer": 2,
+              "explanation": "Valoarea post-money este 1 500 000 + 500 000 = 2 000 000 lei, iar cota investitorului este 500 000 ÷ 2 000 000 = 25%."
+            },
+            {
+              "q": "Ce este due diligence?",
+              "options": [
+                "Analiza detaliată pe care investitorul o face înainte de investiție pentru a verifica informațiile despre companie",
+                "Prezentarea scurtă cu care antreprenoarea își descrie afacerea",
+                "Plata periodică a dobânzii către deținătorii de obligațiuni",
+                "Raportul anual publicat după listarea la bursă"
+              ],
+              "answer": 0,
+              "explanation": "Due diligence este procesul de verificare a situației financiare, juridice și operaționale a companiei înainte ca investitorul să ia decizia finală."
+            },
+            {
+              "q": "De ce este util să construiești mai multe scenarii (prudent, de bază, optimist) în modelul financiar?",
+              "options": [
+                "Pentru că investitorii acceptă doar scenariul optimist",
+                "Pentru a arăta că ai analizat riscurile și cum reacționează afacerea în condiții diferite",
+                "Pentru că așa se evită auditul situațiilor financiare"
+              ],
+              "answer": 1,
+              "explanation": "Scenariile multiple arată realism și înțelegerea riscurilor, ceea ce crește credibilitatea în fața investitorilor."
+            }
+          ]
+        },
+        {
+          "slug": "guvernanta-si-investitori",
+          "title": "Guvernanță, transparență și relația cu investitorii",
+          "summary": "Înveți cum organizezi conducerea companiei, cum separi finanțele personale de cele ale firmei, cum comunici cu investitorii și cum gestionezi diluarea controlului.",
+          "minutes": 15,
+          "sections": [
+            {
+              "heading": "Guvernanța: regulile după care funcționează compania",
+              "blocks": [
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "Guvernanța corporativă",
+                  "text": "Reprezintă ansamblul de reguli, structuri și practici prin care o companie este condusă și controlată: cine ia deciziile, cum sunt verificate, cum se gestionează conflictele de interese și cum sunt protejați acționarii și investitorii."
+                },
+                {
+                  "type": "p",
+                  "text": "Când afacerea este mică, tu iei aproape toate deciziile. Pe măsură ce atragi investitori, ei vor dori să știe că există un sistem clar. Un <strong>consiliu</strong> (de administrație sau consultativ) aduce perspective diferite, disciplină în luarea deciziilor și încredere. Nu trebuie să fie mare: câțiva membri cu experiență complementară — financiară, juridică, din industrie — pot face o diferență reală."
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "Stabilește în scris cine aprobă ce: cheltuieli mari, contracte importante, angajarea de datorii noi.",
+                    "Include, dacă este posibil, cel puțin un membru independent în consiliu.",
+                    "Ține procese-verbale ale ședințelor și urmărește implementarea deciziilor.",
+                    "Adoptă o politică simplă privind conflictele de interese, de exemplu contractele cu rude sau cu firme apropiate."
+                  ]
+                }
+              ]
+            },
+            {
+              "heading": "Separă patrimoniul personal de cel al firmei",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Una dintre primele verificări ale investitorilor este dacă banii firmei sunt cu adevărat ai firmei. Plățile personale din contul companiei sau folosirea bunurilor firmei în scop personal fac cifrele greu de înțeles și pot crea probleme fiscale și juridice."
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Cheltuielile amestecate la «Studio Irina» SRL (exemplu ipotetic)",
+                  "text": "Irina conduce un studio de design. Firma raportează venituri de 1 200 000 lei și cheltuieli de 1 000 000 lei, deci un profit de 200 000 lei. La analiză se descoperă că 80 000 lei din cheltuieli au fost, de fapt, costuri personale plătite din contul firmei. Profitul real al activității ar fi 200 000 + 80 000 = 280 000 lei, dar investitorul nu mai are încredere în cifre și cere ajustări și clarificări. Dacă Irina ar fi separat conturile de la început, ar fi prezentat direct o marjă de 280 000 ÷ 1 200 000 ≈ 23,3%, în loc de aproximativ 16,7%."
+                },
+                {
+                  "type": "callout",
+                  "variant": "tip",
+                  "title": "Reguli simple care ajută",
+                  "text": "Folosește conturi și carduri separate pentru firmă, plătește-ți un salariu sau dividende stabilite formal, documentează orice împrumut între tine și firmă printr-un contract."
+                }
+              ]
+            },
+            {
+              "heading": "Raportarea și comunicarea cu investitorii",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Investitorii nu se așteaptă ca totul să meargă perfect, dar se așteaptă să fie informați <strong>corect, la timp și consecvent</strong>. Companiile care au emis valori mobiliare au obligații de raportare stabilite de legislație și de regulile pieței; dincolo de minimul obligatoriu, o comunicare bună construiește o relație pe termen lung."
+                },
+                {
+                  "type": "table",
+                  "headers": ["Tip de comunicare", "Frecvență orientativă", "Conținut"],
+                  "rows": [
+                    ["Raport financiar periodic", "Trimestrial sau semestrial", "Venituri, profit, flux de numerar, comparație cu planul"],
+                    ["Raport anual", "Anual", "Situații financiare auditate, activitate, strategie, riscuri"],
+                    ["Informare despre evenimente importante", "Imediat ce apar", "Contracte mari, schimbări în conducere, litigii, întârzieri"],
+                    ["Întâlnire cu investitorii", "Cel puțin o dată pe an", "Rezultate, planuri, răspunsuri la întrebări"]
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "warning",
+                  "title": "Veștile proaste nu se amână",
+                  "text": "Dacă apare o problemă, comunic-o prompt, împreună cu planul de rezolvare. Tăcerea sau informațiile incomplete pot încălca obligațiile legale de raportare și distrug încrederea."
+                }
+              ]
+            },
+            {
+              "heading": "Diluarea controlului și cum o gestionezi",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "De fiecare dată când emiți acțiuni noi pentru investitori, procentul pe care îl deții scade, chiar dacă numărul tău de acțiuni rămâne același. Acesta este fenomenul de <strong>diluare</strong>. Diluarea nu este neapărat rea: o cotă mai mică dintr-o companie mai valoroasă poate valora mai mult decât o cotă mare dintr-o firmă mică."
+                },
+                {
+                  "type": "formula",
+                  "label": "Cota după emisiune",
+                  "expr": "Cota ta = Acțiunile tale ÷ Total acțiuni după emisiune",
+                  "note": "Numărul tău de acțiuni nu se schimbă; se schimbă totalul, deci și procentul."
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Două runde de finanțare la «Atelierul Ana» SA (exemplu ipotetic)",
+                  "text": "Ana deține toate cele 1 000 de acțiuni. <strong>Runda 1</strong>: se emit 250 de acțiuni noi pentru un investitor; totalul devine 1 250, iar Ana are 1 000 ÷ 1 250 = <strong>80%</strong>. <strong>Runda 2</strong>: se emit încă 350 de acțiuni; totalul devine 1 600. Ana are 1 000 ÷ 1 600 = <strong>62,5%</strong>, primul investitor 250 ÷ 1 600 = 15,625%, iar al doilea 350 ÷ 1 600 = 21,875%. Ana rămâne acționar majoritar."
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "Planifică din timp câte runde de finanțare anticipezi și ce cotă vrei să păstrezi.",
+                    "Folosește datoria (inclusiv obligațiuni) pentru nevoi care nu justifică cedarea de proprietate.",
+                    "Negociază cu atenție drepturile investitorilor în acordul dintre acționari: drept de veto, locuri în consiliu, drept de preempțiune la emisiuni viitoare.",
+                    "Cere sprijinul unui jurist pentru documentele de investiție; lecția are scop educațional, nu de consultanță juridică."
+                  ]
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "Guvernanța clară — consiliu, reguli de aprobare, politici de conflict de interese — crește încrederea investitorilor.",
+            "Separarea strictă a finanțelor personale de cele ale firmei face cifrele credibile și ușor de verificat.",
+            "Comunică cu investitorii corect, la timp și consecvent, inclusiv atunci când veștile nu sunt bune.",
+            "Diluarea reduce procentul deținut, dar poate fi planificată și echilibrată cu finanțarea prin datorie."
+          ],
+          "quiz": [
+            {
+              "q": "Deții 800 de acțiuni dintr-un total de 800. Compania emite 200 de acțiuni noi pentru un investitor. Ce cotă deții după emisiune?",
+              "options": [
+                "75%",
+                "100%",
+                "90%",
+                "80%"
+              ],
+              "answer": 3,
+              "explanation": "Totalul devine 800 + 200 = 1 000 de acțiuni, iar cota ta este 800 ÷ 1 000 = 80%."
+            },
+            {
+              "q": "De ce este importantă separarea patrimoniului personal de cel al firmei?",
+              "options": [
+                "Pentru că permite plata cheltuielilor personale fără documente",
+                "Pentru că face cifrele firmei credibile și reduce riscurile fiscale și juridice",
+                "Pentru că elimină obligația de a întocmi situații financiare"
+              ],
+              "answer": 1,
+              "explanation": "Conturile separate arată rezultatele reale ale afacerii, facilitează verificarea de către investitori și reduc riscul de probleme fiscale sau juridice."
+            },
+            {
+              "q": "Ce ar trebui să faci dacă afacerea întâmpină o problemă importantă după ce ai atras investitori?",
+              "options": [
+                "Să informezi prompt investitorii, împreună cu planul de rezolvare",
+                "Să aștepți raportul anual ca să nu îi îngrijorezi",
+                "Să comunici doar dacă investitorii întreabă direct"
+              ],
+              "answer": 0,
+              "explanation": "Comunicarea promptă și transparentă respectă obligațiile de raportare și păstrează încrederea investitorilor."
+            }
+          ]
+        },
+        {
+          "slug": "pasii-urmatori",
+          "title": "Pașii următori și resurse de sprijin",
+          "summary": "Îți construiești un plan de acțiune în 90 de zile, afli ce tipuri de sprijin există și urmărești un studiu de caz complet, de la idee la emisiunea de obligațiuni.",
+          "minutes": 17,
+          "sections": [
+            {
+              "heading": "Planul tău de acțiune în 90 de zile",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Cunoștințele devin valoroase atunci când le transformi în pași concreți. Planul de mai jos este un punct de plecare pe care îl poți adapta la etapa în care se află afacerea ta — fie că abia ai început, fie că te gândești deja la investitori."
+                },
+                {
+                  "type": "steps",
+                  "items": [
+                    {
+                      "title": "Zilele 1–30: Clarifică-ți punctul de plecare",
+                      "text": "Separă conturile personale de cele ale firmei, adună situațiile financiare din ultimii ani, calculează gradul de îndatorare și stabilește cât ai nevoie, pentru ce și în ce termen."
+                    },
+                    {
+                      "title": "Zilele 31–60: Pregătește documentele",
+                      "text": "Actualizează planul de afaceri, construiește un model financiar cu trei scenarii, schițează un pitch deck și organizează dosarul de documente pentru o viitoare verificare due diligence."
+                    },
+                    {
+                      "title": "Zilele 61–90: Testează și conectează-te",
+                      "text": "Prezintă-ți planul unui mentor sau unui grup de antreprenoare, discută cu cel puțin doi finanțatori diferiți (de exemplu, o bancă și un intermediar de pe piața de capital) și decide următoarea sursă de finanțare potrivită."
+                    }
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "tip",
+                  "title": "Măsoară progresul",
+                  "text": "Stabilește pentru fiecare lună 2–3 rezultate verificabile, de exemplu „model financiar finalizat” sau „două întâlniri cu finanțatori”. Un obiectiv concret este mai ușor de atins decât unul general."
+                }
+              ]
+            },
+            {
+              "heading": "Rețele de mentorat, comunitate și resurse",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Nu trebuie să parcurgi acest drum singură. Există numeroase tipuri de sprijin care îți pot oferi cunoștințe, contacte și încredere. Caută-le în comunitatea ta și verifică-le credibilitatea înainte de a te implica."
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "<strong>Asociații de business</strong>, inclusiv cele dedicate antreprenoarelor — evenimente, schimb de experiență, parteneriate.",
+                    "<strong>Programe de mentorat</strong> — o antreprenoare sau un specialist cu experiență te poate ghida în decizii-cheie.",
+                    "<strong>Incubatoare și acceleratoare de afaceri</strong> — spațiu, instruire și, uneori, acces la investitori.",
+                    "<strong>Instituții financiare</strong> — bănci, companii de leasing, intermediari autorizați pe piața de capital, care oferă adesea consultații inițiale.",
+                    "<strong>Profesioniști</strong> — contabili, auditori, juriști și consultanți financiari pentru aspecte tehnice.",
+                    "<strong>Evenimentele BIMx Academy</strong> — lecții, seminare și întâlniri despre funcționarea pieței de capital."
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "Mentorat",
+                  "text": "Este o relație de sprijin pe termen mediu sau lung în care o persoană cu experiență (mentorul) îți împărtășește cunoștințe, îți pune întrebări care te ajută să gândești strategic și îți oferă feedback sincer. Spre deosebire de un consultant plătit pentru o sarcină anume, mentorul se concentrează pe dezvoltarea ta ca lideră."
+                }
+              ]
+            },
+            {
+              "heading": "Studiu de caz: de la idee la emisiunea de obligațiuni",
+              "blocks": [
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "«Livada Elenei» — un parcurs complet (exemplu ipotetic)",
+                  "text": "Elena pornește o afacere cu fructe uscate. Toate cifrele de mai jos sunt ipotetice și servesc doar pentru a ilustra cum se schimbă sursele de finanțare pe măsură ce afacerea crește."
+                },
+                {
+                  "type": "table",
+                  "headers": ["Etapa", "Nevoie de finanțare", "Sursa aleasă", "Rezultat"],
+                  "rows": [
+                    ["Anul 1 — lansare", "250 000 lei pentru uscător și ambalaje", "150 000 lei fonduri proprii + 100 000 lei grant", "Primele contracte cu magazine locale"],
+                    ["Anul 2 — primele vânzări stabile", "400 000 lei pentru un vehicul de livrare", "Leasing", "Distribuție în mai multe orașe"],
+                    ["Anul 3 — creștere", "600 000 lei pentru capital de lucru și depozit", "Credit bancar", "Venituri în creștere, primele exporturi"],
+                    ["Anul 4 — pregătire", "Costuri de audit și consultanță", "Fonduri proprii din profit", "Reorganizare în societate pe acțiuni, consiliu cu un membru independent, primul audit"],
+                    ["Anul 5 — piața de capital", "3 000 000 lei", "Emisiune de 3 000 de obligațiuni × 1 000 lei, cupon 10%", "1 000 000 lei pentru rambursarea creditelor, 2 000 000 lei pentru o linie de procesare"]
+                  ]
+                },
+                {
+                  "type": "formula",
+                  "label": "Gradul de acoperire a dobânzii",
+                  "expr": "Grad de acoperire = Profit operațional ÷ Cheltuieli cu dobânzile",
+                  "note": "Exemplu ipotetic: cupoanele anuale ale «Livada Elenei» sunt 3 000 000 × 10% = 300 000 lei. Cu un profit operațional de 1 200 000 lei, gradul de acoperire este 1 200 000 ÷ 300 000 = 4, adică profitul acoperă de 4 ori dobânzile — un semnal de confort pentru investitori."
+                },
+                {
+                  "type": "p",
+                  "text": "Observă logica parcursului: Elena nu a sărit direct la piața de capital. A folosit la început surse care nu îi cereau istoric financiar, și-a construit reputația cu finanțatorii și a investit în transparență <strong>înainte</strong> de a apela la investitori. Datorită obligațiunilor, și-a păstrat integral proprietatea asupra companiei."
+                }
+              ]
+            },
+            {
+              "heading": "Greșeli frecvente și cum le eviți",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "<strong>Căutarea finanțării fără un scop clar</strong> — definește exact pentru ce sunt banii și ce rezultate vor aduce.",
+                    "<strong>Subestimarea costurilor și a termenelor</strong> — auditul, consultanța și pregătirea documentelor cer timp și bani.",
+                    "<strong>Cedarea unei cote prea mari prea devreme</strong> — la început evaluarea este mică, iar diluarea costă mult pe termen lung.",
+                    "<strong>Îndatorarea peste capacitatea de plată</strong> — verifică gradul de acoperire a dobânzii în scenariul prudent, nu doar în cel optimist.",
+                    "<strong>Amestecarea finanțelor personale cu cele ale firmei</strong> — afectează credibilitatea în fața oricărui finanțator.",
+                    "<strong>Lipsa comunicării după atragerea banilor</strong> — relația cu investitorii începe, nu se încheie, în ziua finanțării."
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "warning",
+                  "title": "Decizii informate",
+                  "text": "Această lecție are scop exclusiv educațional și nu reprezintă consultanță de investiții, juridică sau fiscală. Înainte de orice decizie de finanțare, consultă specialiști autorizați și verifică cerințele legale în vigoare."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "Un plan în 90 de zile, cu rezultate lunare verificabile, transformă intenția în progres concret.",
+            "Asociațiile de business, mentoratul, incubatoarele, instituțiile financiare și evenimentele BIMx Academy îți pot sprijini parcursul.",
+            "Sursele de finanțare evoluează odată cu afacerea: de la fonduri proprii și granturi la credite și, apoi, la piața de capital.",
+            "Verifică întotdeauna capacitatea de plată în scenariul prudent și investește în transparență înainte de a atrage investitori."
+          ],
+          "quiz": [
+            {
+              "q": "O companie plătește anual 250 000 lei dobânzi și are un profit operațional de 1 000 000 lei. Care este gradul de acoperire a dobânzii?",
+              "options": [
+                "0,25",
+                "2,5",
+                "4",
+                "10"
+              ],
+              "answer": 2,
+              "explanation": "Gradul de acoperire = 1 000 000 ÷ 250 000 = 4, adică profitul operațional acoperă de 4 ori cheltuielile cu dobânzile."
+            },
+            {
+              "q": "În studiul de caz, de ce a ales Elena obligațiuni în loc de acțiuni în anul 5?",
+              "options": [
+                "Pentru că a vrut să atragă finanțare păstrându-și integral proprietatea asupra companiei",
+                "Pentru că obligațiunile nu trebuie rambursate niciodată",
+                "Pentru că obligațiunile nu cer nicio raportare către investitori"
+              ],
+              "answer": 0,
+              "explanation": "Obligațiunile sunt datorie: firma plătește cupoane și rambursează suma la scadență, dar proprietatea rămâne neschimbată."
+            },
+            {
+              "q": "Care dintre următoarele este o greșeală frecventă în căutarea finanțării?",
+              "options": [
+                "Verificarea capacității de plată în scenariul prudent",
+                "Cedarea unei cote prea mari din firmă într-o etapă timpurie",
+                "Pregătirea din timp a documentelor pentru due diligence",
+                "Discuția cu mai mulți finanțatori înainte de decizie"
+              ],
+              "answer": 1,
+              "explanation": "La început evaluarea afacerii este de obicei mică, așa că o cotă mare cedată devreme poate costa mult pe termen lung. Celelalte variante sunt practici bune."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

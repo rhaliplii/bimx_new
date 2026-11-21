@@ -1,0 +1,1618 @@
+{
+  "slug": "introducere-piata-de-capital",
+  "num": "01",
+  "title": "Introduction to the Capital Market",
+  "short": "The basics of financial instruments, trading mechanisms and the role of the stock exchange.",
+  "level": "Beginner",
+  "audience": "General public",
+  "intro": "This program is the starting point for anyone who wants to understand how the capital market works, with no prior knowledge of finance. You will learn what role the stock exchange plays in the economy, who the market participants are, how shares and bonds work, and what steps you take to open an account and place your first order. The explanations are simple, with illustrative numerical examples in MDL.",
+  "outcomes": [
+    "Explain what the capital market is and the difference between the primary and secondary markets.",
+    "Know what BIMx is, which markets it operates, how an order travels from the investor to the exchange, and what stage the trading launch has reached.",
+    "Understand how prices are formed on the exchange when buy and sell orders meet.",
+    "Identify the main market participants and the role of each, including the CNPF.",
+    "Tell shares apart from bonds and calculate basic returns: dividend, coupon, capital gain.",
+    "Understand the link between risk and return and why diversification and time horizon matter.",
+    "Know what to check when choosing a broker and how to use market, limit and stop orders."
+  ],
+  "prerequisites": "You do not need any prior knowledge of finance; being comfortable with simple arithmetic and percentages is enough.",
+  "courses": [
+    {
+      "code": "BA-101",
+      "title": "First Steps on the Stock Exchange",
+      "description": "An introductory course on what the capital market is, how a stock exchange works and who the players are that make it work, with a lesson dedicated to the Republic of Moldova's stock exchange, BIMx.",
+      "lessons": [
+        {
+          "slug": "ce-este-piata-de-capital",
+          "title": "What Is the Capital Market",
+          "summary": "Learn why the capital market exists, how the primary market differs from the secondary market and what role it plays in the economy.",
+          "minutes": 10,
+          "sections": [
+            {
+              "heading": "Why the capital market exists",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Every economy has two broad groups of participants: those who have spare money they do not need right away, and those who need money to start, expand or modernize a business. A family that saves part of its income each month has surplus resources; a company that wants to build a new factory needs financing. The <strong>capital market</strong> is where these two groups meet."
+                },
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "The capital market",
+                  "text": "The capital market is the set of mechanisms, institutions and rules through which medium- and long-term <strong>securities</strong>, such as shares and bonds, are issued and traded. Through it, investors' savings are channeled to companies and the state, which use them to finance projects."
+                },
+                {
+                  "type": "p",
+                  "text": "Unlike a bank loan, where the bank is the intermediary between depositors and borrowers, on the capital market the investor finances the issuer <em>directly</em>: they buy a part of the company (shares) or lend it money (bonds). In return, the investor also takes on the risks tied to how that issuer performs."
+                }
+              ]
+            },
+            {
+              "heading": "The primary market and the secondary market",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "The capital market has two \"floors\", and understanding the difference between them is essential for any beginner."
+                },
+                {
+                  "type": "table",
+                  "headers": [
+                    "Criterion",
+                    "Primary market",
+                    "Secondary market"
+                  ],
+                  "rows": [
+                    [
+                      "What happens",
+                      "Securities are issued and sold for the first time",
+                      "Securities already issued are resold between investors"
+                    ],
+                    [
+                      "Who receives the money",
+                      "The issuer (the company or the state)",
+                      "The investor who sells"
+                    ],
+                    [
+                      "Examples",
+                      "Initial public offering of shares, new bond issue",
+                      "Daily trades on the exchange"
+                    ],
+                    [
+                      "Main role",
+                      "Raising new financing",
+                      "Providing liquidity and price formation"
+                    ]
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Hypothetical example: from issue to resale",
+                  "text": "A fictional company, \"Agro Nord\" SA, issues 100,000 new shares at MDL 50 each and thereby raises MDL 5,000,000 for a production line. This is the <strong>primary market</strong>: the money goes to the company. A year later, Ana, who had bought 200 shares, sells them to Ion on the exchange at MDL 56 each, receiving MDL 11,200. This is the <strong>secondary market</strong>: the money passes from Ion to Ana, and the company receives nothing from this trade. The figures are illustrative."
+                },
+                {
+                  "type": "p",
+                  "text": "The two markets depend on each other. Few investors would buy shares at issue if they were not confident they could resell them later. It is precisely the ability to sell on the secondary market that makes the initial investment more attractive."
+                }
+              ]
+            },
+            {
+              "heading": "The role of the capital market in the economy",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "A well-functioning capital market benefits not only investors and companies but the economy as a whole. Its main functions are:"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "<strong>Mobilizing savings</strong> – it turns money that would otherwise sit idle into productive investment.",
+                    "<strong>Financing companies and the state</strong> – it offers an alternative or a complement to bank lending.",
+                    "<strong>Liquidity</strong> – it lets investors convert securities into cash relatively quickly.",
+                    "<strong>Transparent price formation</strong> – the price results from the supply and demand of many participants.",
+                    "<strong>Transparency and good governance</strong> – issuers whose securities are admitted to trading have reporting obligations, which instills discipline.",
+                    "<strong>Risk sharing</strong> – the risk of a project is spread across many investors rather than concentrated in a single institution."
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "tip",
+                  "title": "Think like an owner or a lender",
+                  "text": "When you buy a share, you become a co-owner of the company. When you buy a bond, you become a creditor of the issuer. This simple distinction will help you understand all the lessons that follow."
+                }
+              ]
+            },
+            {
+              "heading": "The capital market and other financial markets",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "The capital market is part of the wider financial system. Alongside it are the <strong>money market</strong>, where short-term instruments (usually under one year) are traded, the <strong>foreign exchange market</strong>, where currencies are exchanged, and the <strong>bank credit market</strong>. The capital market focuses on medium- and long-term financing."
+                },
+                {
+                  "type": "p",
+                  "text": "In the Republic of Moldova, the capital market is regulated and supervised by the <strong>National Commission for Financial Markets (CNPF)</strong>, and the Moldova International Stock Exchange (BIMx) is one of the infrastructures through which trading is organized. We will look at the role of each participant in detail in a separate lesson."
+                },
+                {
+                  "type": "callout",
+                  "variant": "warning",
+                  "title": "An investment is not a deposit",
+                  "text": "Unlike a bank deposit with a fixed interest rate, the value of shares and bonds can go up or down. You can lose part or even all of the amount you invest. The information in this program is for educational purposes only and does not constitute investment advice."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "The capital market connects those who have savings with those who need medium- and long-term financing.",
+            "On the primary market, securities are issued and the money goes to the issuer; on the secondary market, they are resold between investors.",
+            "The secondary market provides liquidity and forms the price, which makes investing on the primary market attractive.",
+            "In the Republic of Moldova, the capital market is supervised by the CNPF.",
+            "Investing on the capital market carries the risk of losing money, unlike a fixed-rate deposit."
+          ],
+          "quiz": [
+            {
+              "q": "A company issues new shares and sells them to investors to finance a project. On which market does this transaction take place?",
+              "options": [
+                "The secondary market",
+                "The primary market",
+                "The foreign exchange market",
+                "The money market"
+              ],
+              "answer": 1,
+              "explanation": "The issue and first-time sale of securities, with the money going to the issuer, takes place on the primary market."
+            },
+            {
+              "q": "Ana sells on the exchange the shares she bought two years ago. Who receives the money from this sale?",
+              "options": [
+                "The company that issued the shares",
+                "The exchange",
+                "Ana, the investor who is selling"
+              ],
+              "answer": 2,
+              "explanation": "On the secondary market, the trade takes place between investors, so the money goes to the seller, not to the issuer."
+            },
+            {
+              "q": "Which of the following is a main function of the secondary market?",
+              "options": [
+                "Providing liquidity and price formation",
+                "Guaranteeing investors a fixed return",
+                "Granting bank loans to companies",
+                "Setting the official exchange rate"
+              ],
+              "answer": 0,
+              "explanation": "The secondary market allows securities to be resold (liquidity) and forms the price through supply and demand; it does not guarantee returns."
+            }
+          ]
+        },
+        {
+          "slug": "cum-functioneaza-bursa",
+          "title": "How a Stock Exchange Works",
+          "summary": "Discover how the order book forms the price, how a trading session unfolds and what T+2 settlement means.",
+          "minutes": 12,
+          "sections": [
+            {
+              "heading": "The exchange as a meeting place for orders",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "A modern stock exchange is no longer a hall full of people shouting prices. Today, trading takes place in an <strong>electronic system</strong> that receives buy and sell orders sent by authorized intermediaries and matches them automatically according to clear rules that are the same for all participants."
+                },
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "The order book",
+                  "text": "The order book is the real-time list of all active buy and sell orders for a financial instrument, sorted by price. The highest price offered by buyers is called the <strong>bid price</strong> (bid), and the lowest price asked by sellers is called the <strong>ask price</strong> (ask)."
+                },
+                {
+                  "type": "p",
+                  "text": "The difference between the best ask price and the best bid price is called the <strong>spread</strong>. A narrow spread usually indicates a liquid instrument, with many active buyers and sellers."
+                }
+              ]
+            },
+            {
+              "heading": "How the price is formed",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "The price of a share on the exchange is set neither by the exchange nor by the company. It emerges when a buyer and a seller agree on the same price. As a rule, orders are executed according to <strong>price priority, then time priority</strong>: the best price comes first, and at an equal price, the order entered earlier."
+                },
+                {
+                  "type": "table",
+                  "headers": [
+                    "Buyers (bid)",
+                    "Quantity",
+                    "Sellers (ask)",
+                    "Quantity"
+                  ],
+                  "rows": [
+                    [
+                      "MDL 49.80",
+                      "300",
+                      "MDL 50.20",
+                      "150"
+                    ],
+                    [
+                      "MDL 49.70",
+                      "500",
+                      "MDL 50.40",
+                      "400"
+                    ],
+                    [
+                      "MDL 49.50",
+                      "1,000",
+                      "MDL 50.60",
+                      "250"
+                    ]
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Hypothetical example: how an order is executed",
+                  "text": "In the order book above (illustrative figures), the best bid price is MDL 49.80 and the best ask price is MDL 50.20, so the spread is MDL 0.40. If Mihai sends a \"market\" buy order for 200 shares, the system will first allocate him the 150 shares at MDL 50.20 (MDL 7,530), then 50 shares at MDL 50.40 (MDL 2,520). Total: MDL 10,050, which is an average price of MDL 50.25 per share. The last traded price becomes MDL 50.40."
+                },
+                {
+                  "type": "p",
+                  "text": "The example shows why the price changes continuously: each trade \"consumes\" orders from the book, and newly arriving orders shift the balance between supply and demand. If more buyers are willing to pay more, the price rises; if sellers dominate, the price falls."
+                }
+              ]
+            },
+            {
+              "heading": "The trading session",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Trading takes place during intervals set by each exchange's rules, called <strong>trading sessions</strong>. The exact schedule and phases differ from one exchange to another and are published by the market operator. In general, a trading day may include the following phases:"
+                },
+                {
+                  "type": "steps",
+                  "items": [
+                    {
+                      "title": "Pre-open",
+                      "text": "Participants can enter, modify or cancel orders, but these are not yet executed."
+                    },
+                    {
+                      "title": "Opening",
+                      "text": "On some markets, the system calculates an opening price that allows the largest possible volume of accumulated orders to be executed."
+                    },
+                    {
+                      "title": "Continuous trading",
+                      "text": "Matching orders are executed as soon as they appear, following the price-time priority rule."
+                    },
+                    {
+                      "title": "Closing",
+                      "text": "The closing price is set; it is often used as a reference for the next day and for valuing portfolios."
+                    }
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "tip",
+                  "title": "Check the market rules",
+                  "text": "Before you trade, review the schedule and rules published by the exchange and ask your broker how late in the day you can send orders."
+                },
+                {
+                  "type": "callout",
+                  "variant": "tip",
+                  "title": "Trading hours at BIMx",
+                  "text": "At the Moldova International Stock Exchange, the trading session runs on business days from 10:00 to 14:00 Moldova time and passes through seven market states, from Pre-open to Closed. The calendar of trading days is published on bimx.md before the first session."
+                }
+              ]
+            },
+            {
+              "heading": "Settlement: what happens after the trade",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "The moment your order is executed does not necessarily coincide with the moment you actually receive the shares or the money. The actual transfer is called <strong>settlement</strong> and is carried out through the post-trading infrastructure, where the central depository records the change of ownership."
+                },
+                {
+                  "type": "formula",
+                  "label": "The T+2 settlement cycle",
+                  "expr": "Settlement date = T (trade date) + 2 business days",
+                  "note": "T+2 is a cycle used on many markets; each market sets its own period, which may be shorter or longer. Check the period that applies on the market where you trade."
+                },
+                {
+                  "type": "p",
+                  "text": "For example, on a market with a T+2 cycle, if you buy shares on a Monday, settlement takes place on Wednesday: only then are the shares registered in your name and the money reaches the seller. If a weekend or a non-business day falls in between, the period is extended accordingly."
+                },
+                {
+                  "type": "callout",
+                  "variant": "warning",
+                  "title": "The displayed price is not a guarantee",
+                  "text": "The last traded price only shows the price at which the most recent trade was concluded. For instruments with few orders, a large order may be executed at significantly different prices."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "The stock exchange is an electronic system that matches buy and sell orders according to transparent rules.",
+            "The order book shows bid and ask prices; the difference between them is the spread.",
+            "The price is formed where supply meets demand, following price priority, then time priority.",
+            "Session hours and phases differ from one exchange to another and are set by the market rules.",
+            "Settlement is the actual transfer of money and securities; on many markets it takes place at T+2."
+          ],
+          "quiz": [
+            {
+              "q": "In the order book, the best bid price is MDL 30.00 and the best ask price is MDL 30.50. What is the spread?",
+              "options": [
+                "MDL 30.25",
+                "MDL 60.50",
+                "MDL 0.25",
+                "MDL 0.50"
+              ],
+              "answer": 3,
+              "explanation": "The spread is the difference between the best ask price and the best bid price: 30.50 − 30.00 = MDL 0.50."
+            },
+            {
+              "q": "Two buy orders have the same price. Which one is executed first under the price-time priority principle?",
+              "options": [
+                "The one with the larger quantity",
+                "The one entered earlier",
+                "The one sent by an institutional investor"
+              ],
+              "answer": 1,
+              "explanation": "At an equal price, priority goes to the order entered into the system earlier."
+            },
+            {
+              "q": "On a market with a T+2 settlement cycle, you buy shares on Tuesday (with no days off that week). When does settlement take place?",
+              "options": [
+                "Thursday",
+                "Tuesday",
+                "Wednesday",
+                "Friday"
+              ],
+              "answer": 0,
+              "explanation": "T is Tuesday; adding two business days (Wednesday and Thursday), settlement takes place on Thursday."
+            }
+          ]
+        },
+        {
+          "slug": "participantii-la-piata",
+          "title": "Market Participants",
+          "summary": "Get to know the players in the capital market – issuers, investors, brokers, the exchange, the central depository and the CNPF – and how they work together.",
+          "minutes": 11,
+          "sections": [
+            {
+              "heading": "Supply and demand for capital: issuers and investors",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "The capital market works like an ecosystem in which each participant has a well-defined role. At the two ends of the chain are those who need money and those who provide it."
+                },
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "The issuer",
+                  "text": "The issuer is the entity that issues securities to raise financing: a joint-stock company issuing shares or bonds, the state issuing government securities, or a local public authority issuing bonds. The issuer takes on obligations toward investors, including disclosure obligations."
+                },
+                {
+                  "type": "p",
+                  "text": "<strong>Investors</strong> are those who buy securities. They can be <em>individual investors</em> (people investing their savings) or <em>institutional investors</em> (banks, insurance companies, investment funds), which manage large sums and usually have specialized analysis teams."
+                },
+                {
+                  "type": "p",
+                  "text": "The interests of the two sides are complementary. The issuer seeks financing at the most reasonable cost possible, and the investor seeks a return that matches the risk taken. For investors to have confidence, issuers whose securities are offered to the public or admitted to trading must publish information about their activity and financial results. This information helps investors make informed decisions instead of relying on rumors."
+                },
+                {
+                  "type": "p",
+                  "text": "The same investor can play different roles over time: today they buy a company's shares, and a few years later they sell them to another investor on the secondary market. A company can also be, at the same time, the issuer of its own shares and an investor in other issuers' bonds."
+                }
+              ]
+            },
+            {
+              "heading": "Intermediaries: investment firms",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "An individual investor does not send orders directly into the exchange's system. They act through an <strong>investment firm</strong>, often called a <strong>broker</strong>, which holds the required license and is a member of the market."
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "Opens and manages the client's investment account.",
+                    "Receives the client's orders and sends them to the market for execution.",
+                    "Keeps records of the client's money and financial instruments.",
+                    "Assesses the investor's profile and informs the client about risks and costs.",
+                    "Depending on its license, may also offer other services, such as investment advice or intermediation of issues on the primary market."
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Hypothetical example: the cost of intermediation",
+                  "text": "Elena wants to buy MDL 20,000 worth of shares. Her broker charges an illustrative commission of 0.5% of the trade value. The commission is 20,000 × 0.5% = MDL 100, so Elena will pay MDL 20,100 in total. Actual commissions vary from broker to broker and may include other fees; the figures here are for illustration only."
+                }
+              ]
+            },
+            {
+              "heading": "Market infrastructure: the exchange and the central depository",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "For trades to be concluded correctly and safely, the market needs a shared infrastructure used by all participants."
+                },
+                {
+                  "type": "table",
+                  "headers": [
+                    "Institution",
+                    "Main role",
+                    "Simple analogy"
+                  ],
+                  "rows": [
+                    [
+                      "The exchange (market operator)",
+                      "Organizes trading, admits instruments, matches orders and publishes prices",
+                      "The organized marketplace where buyers and sellers meet"
+                    ],
+                    [
+                      "The central depository",
+                      "Keeps records of securities holders and settles trades",
+                      "The register that shows, at any moment, who owns what"
+                    ],
+                    [
+                      "The investment firm",
+                      "Provides clients with access to the market",
+                      "The investor's gateway"
+                    ]
+                  ]
+                },
+                {
+                  "type": "p",
+                  "text": "Today, securities exist in <strong>dematerialized</strong> form: they are no longer paper certificates but electronic records. That is why the central depository's role is essential – the entry in its records confirms who owns the securities after settlement."
+                },
+                {
+                  "type": "callout",
+                  "variant": "tip",
+                  "title": "The infrastructure in the Republic of Moldova",
+                  "text": "The market operator is the Moldova International Stock Exchange (BIMx), authorized by the CNPF on 21 August 2026 for the Regulated Market and the MTF. Securities records and trade settlement are handled by the Single Central Securities Depository (DCU), on a T+2 basis."
+                }
+              ]
+            },
+            {
+              "heading": "The supervisory authority: the CNPF",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Trust is the foundation of any financial market. In the Republic of Moldova, the <strong>National Commission for Financial Markets (CNPF)</strong> regulates and supervises the capital market. Broadly speaking, the supervisory authority's role includes:"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "Issuing the regulations that apply to market participants.",
+                    "Granting licenses and authorizations to intermediaries and market infrastructures.",
+                    "Supervising compliance with transparency and conduct rules.",
+                    "Protecting investors' rights and combating abusive market practices."
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "warning",
+                  "title": "Supervision does not remove investment risk",
+                  "text": "The fact that a broker is licensed and the market is supervised does not mean your investments are guaranteed. The authority monitors compliance with the rules, but share prices or an issuer's ability to pay its debts can move against you."
+                },
+                {
+                  "type": "callout",
+                  "variant": "tip",
+                  "title": "The path of an order, in brief",
+                  "text": "The investor sends the order to the broker → the broker enters it into the exchange's system → the order is executed when it finds a counterparty → the central depository records the transfer of securities at settlement → all under CNPF supervision."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "Issuers raise financing through securities, and investors – individual or institutional – buy them.",
+            "Individual investors access the exchange through licensed investment firms (brokers).",
+            "The exchange organizes trading, and the central depository keeps ownership records and handles settlement.",
+            "The CNPF regulates and supervises the capital market of the Republic of Moldova.",
+            "Supervision reduces the risk of abuse, but it does not guarantee gains or remove investment risk."
+          ],
+          "quiz": [
+            {
+              "q": "Which institution keeps records of securities holders?",
+              "options": [
+                "The issuer, through its marketing department",
+                "The investment firm, exclusively",
+                "The central depository",
+                "Any institutional investor"
+              ],
+              "answer": 2,
+              "explanation": "The central depository keeps records of securities holders and settles trades."
+            },
+            {
+              "q": "Through whom does an individual investor send orders to the exchange?",
+              "options": [
+                "Through a licensed investment firm (broker)",
+                "Directly into the exchange's system, without an intermediary",
+                "Through the CNPF"
+              ],
+              "answer": 0,
+              "explanation": "Individual investors access the market through licensed investment firms, which send the orders into the exchange's system."
+            },
+            {
+              "q": "Which statement about the CNPF is correct?",
+              "options": [
+                "It guarantees that investors will not lose money",
+                "It sets share prices every day",
+                "It issues shares on behalf of companies",
+                "It regulates and supervises the capital market of the Republic of Moldova"
+              ],
+              "answer": 3,
+              "explanation": "The CNPF regulates and supervises the market; it does not set prices, issue shares or guarantee investments."
+            }
+          ]
+        },
+        {
+          "slug": "bursa-din-republica-moldova",
+          "title": "BIMx: The Stock Exchange of the Republic of Moldova",
+          "summary": "Learn what the Moldova International Stock Exchange is, who supervises it, who its shareholders are and what stage the trading launch has reached.",
+          "minutes": 10,
+          "sections": [
+            {
+              "heading": "The authorized market operator",
+              "blocks": [
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "The market operator",
+                  "text": "The market operator is the entity authorized by the supervisory authority to manage and operate a capital market: it sets the rules, admits members and instruments to trading, and oversees the conduct of trading sessions. In the Republic of Moldova, this role is held by the Moldova International Stock Exchange (BIMx)."
+                },
+                {
+                  "type": "p",
+                  "text": "On <strong>21 August 2026</strong>, the National Commission for Financial Markets (CNPF) authorized BIMx to manage and operate two markets: the <strong>Regulated Market</strong> and the <strong>Multilateral Trading Facility (MTF)</strong>. Both operate under CNPF supervision, in accordance with Law No. 171/2012 on the Capital Market."
+                },
+                {
+                  "type": "table",
+                  "headers": [
+                    "Market",
+                    "Who it is designed for"
+                  ],
+                  "rows": [
+                    [
+                      "Regulated Market",
+                      "Issuers that meet the full admission and reporting requirements of the BIMx Rules"
+                    ],
+                    [
+                      "MTF",
+                      "Issuers for which the BIMx Rules provide adapted admission conditions, for example smaller companies or first-time issuers"
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "heading": "The infrastructure: platform, depository, brokers",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "<strong>Trading platform</strong>: ARENA Trading, developed by the Bucharest Stock Exchange (BVB) and used on a SaaS basis.",
+                    "<strong>Settlement</strong>: through the Single Central Securities Depository (DCU), on a T+2 basis, in Moldovan lei (MDL).",
+                    "<strong>Investor access</strong>: exclusively through brokers, that is, investment firms licensed by the CNPF and admitted as exchange members.",
+                    "<strong>Market data</strong>: public, with a 15-minute delay, on bimx.md."
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Hypothetical example: the path of an order at BIMx",
+                  "text": "Ana wants to buy 100 shares of a company listed on BIMx. She sends the order to her broker, an exchange member. A certified exchange trader enters it into ARENA Trading. The order is executed during the trading session, and two business days later the DCU registers the shares in Ana's name and transfers the money to the seller."
+                }
+              ]
+            },
+            {
+              "heading": "Who owns BIMx",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "BIMx is a public-private partnership. Its initial share capital is <strong>MDL 29,475,000</strong> (about EUR 1.5 million), and its shareholders are <strong>ten institutional entities</strong> from the Republic of Moldova and Romania, from key sectors of the economy and the financial market."
+                },
+                {
+                  "type": "table",
+                  "headers": [
+                    "Shareholder",
+                    "Stake"
+                  ],
+                  "rows": [
+                    [
+                      "Bucharest Stock Exchange",
+                      "26.67%"
+                    ],
+                    [
+                      "Public Property Agency",
+                      "20%"
+                    ],
+                    [
+                      "Donaris Vienna Insurance Group",
+                      "11.67%"
+                    ],
+                    [
+                      "maib",
+                      "10%"
+                    ],
+                    [
+                      "GRAWE Carat Asigurări",
+                      "10%"
+                    ],
+                    [
+                      "Moldindconbank",
+                      "6.67%"
+                    ],
+                    [
+                      "MK Kredit Company",
+                      "5%"
+                    ],
+                    [
+                      "OTP Bank Moldova, Moldcell, Premier Energy PLC",
+                      "3.33% each"
+                    ]
+                  ]
+                },
+                {
+                  "type": "p",
+                  "text": "Through the Public Property Agency, the state holds 20% of the shares. The Bucharest Stock Exchange is both a shareholder and a technical partner: it provides the trading platform."
+                }
+              ]
+            },
+            {
+              "heading": "What stage the launch has reached",
+              "blocks": [
+                {
+                  "type": "steps",
+                  "items": [
+                    {
+                      "title": "21 August 2026",
+                      "text": "CNPF authorization for the Regulated Market and the MTF."
+                    },
+                    {
+                      "title": "28 September 2026",
+                      "text": "The admission process for brokers and issuers begins, the final stage before trading is launched."
+                    },
+                    {
+                      "title": "1 October 2026",
+                      "text": "The ARENA platform goes into production, according to the current operational timetable."
+                    },
+                    {
+                      "title": "In parallel",
+                      "text": "Connection to the DCU system, setting the operating rules, training brokers on ARENA Trading, and trading simulations."
+                    },
+                    {
+                      "title": "By the end of 2026",
+                      "text": "The first planned listing."
+                    }
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "warning",
+                  "title": "Instruments from the BVM",
+                  "text": "Shares and bonds currently traded on the Moldova Stock Exchange (BVM) do not move to BIMx automatically. Each issuer goes through the BIMx admission process; the list of admitted instruments is published on bimx.md. If you hold such instruments, ask your broker what the issuer's plans are."
+                },
+                {
+                  "type": "callout",
+                  "variant": "tip",
+                  "title": "How to prepare as an investor",
+                  "text": "Until the first listing, work through the lessons on shares, orders and choosing a broker. When the list of BIMx members is published on bimx.md, check whether your broker is an exchange member."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "BIMx is the market operator authorized by the CNPF on 21 August 2026 for the Regulated Market and the MTF.",
+            "Trading takes place on ARENA Trading (developed by the BVB), and settlement goes through the DCU, at T+2.",
+            "Investors access the exchange only through brokers that are BIMx members.",
+            "BIMx has ten institutional shareholders from Moldova and Romania and an initial share capital of MDL 29,475,000.",
+            "Admission of brokers and issuers began on 28 September 2026; the first listing is planned by the end of 2026."
+          ],
+          "quiz": [
+            {
+              "q": "Which authority authorized BIMx to operate the Regulated Market and the MTF?",
+              "options": [
+                "The National Bank of Moldova",
+                "The Bucharest Stock Exchange",
+                "The National Commission for Financial Markets (CNPF)",
+                "The Ministry of Finance"
+              ],
+              "answer": 2,
+              "explanation": "The CNPF regulates and supervises the capital market and authorized BIMx on 21 August 2026."
+            },
+            {
+              "q": "Through whom can an individual investor buy shares on BIMx?",
+              "options": [
+                "Through a broker admitted as an exchange member",
+                "Directly, on the bimx.md website",
+                "Through the Single Central Securities Depository",
+                "Through any bank"
+              ],
+              "answer": 0,
+              "explanation": "Trading on BIMx takes place exclusively through investment firms licensed by the CNPF and admitted as exchange members."
+            },
+            {
+              "q": "What stage began on 28 September 2026?",
+              "options": [
+                "The first trading session",
+                "The issue of the first green bonds",
+                "The registration of BIMx as a company",
+                "The admission of brokers and issuers"
+              ],
+              "answer": 3,
+              "explanation": "On 28 September 2026, the admission process for brokers and issuers began, the final stage before trading is launched."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "BA-102",
+      "title": "Shares and Bonds Made Simple",
+      "description": "This course explains, in plain terms, the two basic instruments of the capital market and the link between return and risk.",
+      "lessons": [
+        {
+          "slug": "actiunile",
+          "title": "Shares",
+          "summary": "Understand what it means to own a share, what rights it gives you and how you can earn from dividends and price increases.",
+          "minutes": 12,
+          "sections": [
+            {
+              "heading": "What a share is",
+              "blocks": [
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "The share",
+                  "text": "A share is a security that represents a portion of the share capital of a joint-stock company. Its holder, called a <strong>shareholder</strong>, becomes a co-owner of the company in proportion to the number of shares held."
+                },
+                {
+                  "type": "p",
+                  "text": "If a company has 1,000,000 shares outstanding and you hold 10,000, you own 1% of the company. This does not mean you can take 1% of its buildings or equipment, but that you have proportional rights to its results and decisions, within the limits set by law and by the company's articles of association."
+                },
+                {
+                  "type": "p",
+                  "text": "An important feature is <strong>limited liability</strong>: as a shareholder, your risk is limited to the amount you invested. If the company runs into trouble, you can lose the value of your shares, but you are not liable with your personal assets for the company's debts."
+                },
+                {
+                  "type": "p",
+                  "text": "For the company, issuing shares is a way to raise capital without taking on debt: the money received from shareholders does not have to be repaid on a set date. In exchange, the company shares ownership and, by extension, future profits with the new shareholders."
+                }
+              ]
+            },
+            {
+              "heading": "Shareholder rights",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Owning shares gives you a set of rights. The exact content depends on the type of shares and the company's articles of association, but in general, for ordinary shares, they include:"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "<strong>The right to vote</strong> at the general meeting of shareholders, for example on electing the management bodies or approving the distribution of profit.",
+                    "<strong>The right to dividends</strong>, when the general meeting decides to distribute part of the profit.",
+                    "<strong>The right to information</strong> about the company's activity and financial position.",
+                    "<strong>The right to receive a share of the remaining assets</strong> in the event of liquidation, after all creditors have been paid."
+                  ]
+                },
+                {
+                  "type": "table",
+                  "headers": [
+                    "Feature",
+                    "Ordinary shares",
+                    "Preferred shares"
+                  ],
+                  "rows": [
+                    [
+                      "Voting rights",
+                      "Yes, as a rule",
+                      "Usually limited or none"
+                    ],
+                    [
+                      "Dividends",
+                      "Variable, depend on the shareholders' decision",
+                      "Usually have priority in payment, often in a preset amount"
+                    ],
+                    [
+                      "On liquidation",
+                      "Paid after creditors and after preferred shares",
+                      "Paid before ordinary shares"
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "heading": "How you earn from shares",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "The return on an investment in shares can come from two sources: <strong>dividends</strong> and <strong>capital gains</strong>."
+                },
+                {
+                  "type": "p",
+                  "text": "A <strong>dividend</strong> is the part of the profit distributed to shareholders. It is not guaranteed: the company may decide to reinvest the profit in growth, or it may make no profit at all. A <strong>capital gain</strong> arises when you sell shares at a higher price than you paid for them. If the price falls, you record a <em>capital loss</em>."
+                },
+                {
+                  "type": "formula",
+                  "label": "Total return on a share",
+                  "expr": "Total return (%) = (Selling price − Purchase price + Dividends received) ÷ Purchase price × 100",
+                  "note": "This simplified formula does not include commissions and taxes, which reduce the actual return."
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Hypothetical example: dividend and capital gain",
+                  "text": "Victor buys 100 shares at MDL 40 each, investing MDL 4,000. During the year, the company pays a dividend of MDL 2 per share, so Victor receives MDL 200. At year-end, he sells the shares at MDL 44, receiving MDL 4,400, a capital gain of MDL 400. The total return is (4,400 − 4,000 + 200) ÷ 4,000 × 100 = <strong>15%</strong>, before commissions and taxes. If the price had fallen to MDL 35, the result would have been (3,500 − 4,000 + 200) ÷ 4,000 × 100 = <strong>−7.5%</strong>. The figures are illustrative."
+                }
+              ]
+            },
+            {
+              "heading": "What influences share prices",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "In the short term, a share's price reflects the balance between supply and demand on the exchange. In the long term, it tends to be influenced by the company's performance and by investors' expectations about future profits. Factors that can matter include:"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "The company's financial results and growth prospects.",
+                    "The general economic situation, inflation and interest rates.",
+                    "Developments in the sector in which the company operates.",
+                    "The share's liquidity, that is, how easily it can be bought or sold.",
+                    "New information published by the issuer and overall investor sentiment."
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "warning",
+                  "title": "Past dividends do not guarantee future dividends",
+                  "text": "The fact that a company has paid dividends or that its share price has risen in the past does not guarantee the same will happen in the future. Past performance is not a reliable indicator of future results."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "A share represents a portion of a company's capital, and the shareholder becomes a co-owner.",
+            "Ordinary shares usually carry voting rights and the right to dividends; preferred shares have priority for dividends but usually limited voting rights.",
+            "Earnings from shares come from dividends and capital gains, but neither is guaranteed.",
+            "A shareholder's liability is limited to the amount invested.",
+            "Share prices depend on supply and demand, the company's results and the economic context."
+          ],
+          "quiz": [
+            {
+              "q": "You buy 50 shares at MDL 20, receive total dividends of MDL 50 and sell them at MDL 22. What is the total return, excluding commissions and taxes?",
+              "options": [
+                "10%",
+                "5%",
+                "15%",
+                "20%"
+              ],
+              "answer": 2,
+              "explanation": "Investment: MDL 1,000. Sale: MDL 1,100 (capital gain of MDL 100) plus dividends of MDL 50. Return: 150 ÷ 1,000 × 100 = 15%."
+            },
+            {
+              "q": "What does a shareholder's limited liability mean?",
+              "options": [
+                "The shareholder can lose at most the amount invested in the shares",
+                "The shareholder has limited voting rights",
+                "The shareholder receives dividends only once a year"
+              ],
+              "answer": 0,
+              "explanation": "The shareholder is not liable with personal assets for the company's debts; the maximum loss is the amount invested."
+            },
+            {
+              "q": "Which statement about dividends is correct?",
+              "options": [
+                "They are guaranteed by law for every share",
+                "They are paid by the exchange to all investors",
+                "They are paid only to shareholders who sell their shares",
+                "They are not guaranteed and depend on profit and on the general meeting's decision"
+              ],
+              "answer": 3,
+              "explanation": "Dividends are distributed from profit, based on the decision of the general meeting of shareholders, and are not guaranteed."
+            }
+          ]
+        },
+        {
+          "slug": "obligatiunile",
+          "title": "Bonds",
+          "summary": "Learn how a bond works – face value, coupon, maturity – and why its price falls when interest rates rise.",
+          "minutes": 13,
+          "sections": [
+            {
+              "heading": "What a bond is",
+              "blocks": [
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "The bond",
+                  "text": "A bond is a security through which the issuer borrows from investors. The issuer undertakes to pay periodic interest, called the <strong>coupon</strong>, and to repay the <strong>face value</strong> on a set date, called the <strong>maturity</strong>."
+                },
+                {
+                  "type": "p",
+                  "text": "If shares make you a co-owner, bonds make you a <strong>creditor</strong>. You have no voting rights and you do not share in the company's profit, but you are entitled to receive the promised payments, whether the company has a very good year or just an ordinary one. In the event of insolvency, creditors are usually paid before shareholders."
+                }
+              ]
+            },
+            {
+              "heading": "The elements of a bond",
+              "blocks": [
+                {
+                  "type": "table",
+                  "headers": [
+                    "Element",
+                    "What it means",
+                    "Illustrative example"
+                  ],
+                  "rows": [
+                    [
+                      "Face value",
+                      "The amount the issuer repays per bond at maturity",
+                      "MDL 1,000"
+                    ],
+                    [
+                      "Coupon rate",
+                      "The annual interest, expressed as a percentage of face value",
+                      "8% per year"
+                    ],
+                    [
+                      "Coupon frequency",
+                      "How often the coupon is paid",
+                      "Annually or semi-annually"
+                    ],
+                    [
+                      "Maturity",
+                      "The date on which the face value is repaid",
+                      "In 3 years"
+                    ],
+                    [
+                      "Issuer",
+                      "Who borrows and takes on the payment obligation",
+                      "The state or a company"
+                    ]
+                  ]
+                },
+                {
+                  "type": "formula",
+                  "label": "Annual coupon",
+                  "expr": "Annual coupon = Face value × Coupon rate",
+                  "note": "If the coupon is paid semi-annually, the annual amount is split into two equal payments."
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Hypothetical example: a bond's cash flows",
+                  "text": "Sergiu buys 10 bonds with a face value of MDL 1,000, an 8% annual coupon and a maturity of 3 years, paying MDL 10,000. In each of the three years he receives 10 × 1,000 × 8% = MDL 800. At maturity he also gets back the face value, MDL 10,000. In total, he receives MDL 2,400 in coupons plus MDL 10,000 in repayment, before taxes and commissions. The figures are illustrative."
+                }
+              ]
+            },
+            {
+              "heading": "Government bonds and corporate bonds",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Bonds differ first and foremost by issuer, and the issuer directly affects the level of risk."
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "<strong>Government bonds</strong> are issued by the state to finance the budget or refinance debt. They are generally considered among the least risky instruments on the domestic market, because the state has stable sources of revenue, but they are not completely risk-free either.",
+                    "<strong>Corporate bonds</strong> are issued by companies. Because the risk that a company cannot pay its debts is usually higher, they often offer higher coupons than government bonds with a similar maturity.",
+                    "<strong>Municipal bonds</strong> are issued by local public authorities for infrastructure or local projects."
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "warning",
+                  "title": "A high coupon often signals higher risk",
+                  "text": "If a bond offers a coupon well above that of similar bonds, the market is probably demanding compensation for higher risk. The main risk is credit risk: the issuer may delay or stop paying the coupons or the face value."
+                }
+              ]
+            },
+            {
+              "heading": "Bond prices and interest rates",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Bonds can be traded on the secondary market before maturity, and their price does not necessarily stay equal to face value. The basic rule is: <strong>when market interest rates rise, the price of existing bonds falls, and vice versa</strong>."
+                },
+                {
+                  "type": "p",
+                  "text": "The reason is simple. If you hold a bond with an 8% coupon and similar bonds are now being issued with a 10% coupon, nobody will pay the full face value for your less attractive bond. To sell it, you have to accept a lower price, so that the buyer earns a yield comparable to the market."
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Hypothetical example: current yield",
+                  "text": "A bond with a face value of MDL 1,000 pays an annual coupon of MDL 80 (8%). If market interest rates rise and its price falls to MDL 900, the buyer earns a <strong>current yield</strong> of 80 ÷ 900 × 100 ≈ 8.9%, and at maturity receives MDL 1,000, gaining another MDL 100 from the price difference. If interest rates fall and the price rises to MDL 1,050, the current yield becomes 80 ÷ 1,050 × 100 ≈ 7.6%. The figures are illustrative."
+                },
+                {
+                  "type": "callout",
+                  "variant": "tip",
+                  "title": "If you hold the bond to maturity",
+                  "text": "Price changes matter mainly if you sell before maturity. If you hold the bond to the end and the issuer meets its obligations, you will receive the promised coupons and the face value, regardless of price fluctuations along the way."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "A bond is a loan to the issuer; the investor becomes a creditor, not an owner.",
+            "The basic elements are face value, coupon rate, payment frequency and maturity.",
+            "Corporate bonds usually offer higher coupons than government bonds to compensate for higher credit risk.",
+            "The price of existing bonds moves in the opposite direction to market interest rates.",
+            "If you hold the bond to maturity and the issuer pays, price fluctuations do not affect your promised payments."
+          ],
+          "quiz": [
+            {
+              "q": "A bond has a face value of MDL 1,000 and a 6% annual coupon. How much does the investor receive in coupon payments in one year?",
+              "options": [
+                "MDL 6",
+                "MDL 600",
+                "MDL 1,060",
+                "MDL 60"
+              ],
+              "answer": 3,
+              "explanation": "The annual coupon is 1,000 × 6% = MDL 60."
+            },
+            {
+              "q": "Market interest rates rise significantly. What usually happens to the price of existing fixed-coupon bonds?",
+              "options": [
+                "It rises",
+                "It falls",
+                "It always stays equal to face value"
+              ],
+              "answer": 1,
+              "explanation": "The price of existing bonds moves opposite to interest rates: when rates rise, older bonds with lower coupons become less attractive and their price falls."
+            },
+            {
+              "q": "Why do corporate bonds usually offer higher coupons than government bonds with a similar maturity?",
+              "options": [
+                "To compensate for credit risk that is usually higher",
+                "Because they are guaranteed by the CNPF",
+                "Because they carry voting rights at the general meeting",
+                "Because they have no maturity"
+              ],
+              "answer": 0,
+              "explanation": "Investors demand extra compensation for the usually higher risk that a company cannot pay its debts."
+            }
+          ]
+        },
+        {
+          "slug": "randament-si-risc",
+          "title": "Return and Risk",
+          "summary": "Understand why a higher potential return comes with higher risk and how time horizon and diversification help you.",
+          "minutes": 13,
+          "sections": [
+            {
+              "heading": "The risk–return relationship",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "One of the most important ideas in finance is that <strong>there is no return without risk</strong>. Investors agree to take on more risk only if they have the prospect of a higher potential gain. That is why instruments that promise high returns are almost always riskier as well."
+                },
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "Return and risk",
+                  "text": "<strong>Return</strong> is the gain or loss on an investment over a given period, usually expressed as a percentage of the amount invested. <strong>Risk</strong> is the possibility that the actual outcome differs from the expected one, including the possibility of losing part or all of the amount invested."
+                },
+                {
+                  "type": "formula",
+                  "label": "Return on an investment",
+                  "expr": "Return (%) = (Final value − Initial value + Income received) ÷ Initial value × 100",
+                  "note": "Income received can be dividends or coupons. For a realistic picture, subtract commissions and taxes."
+                },
+                {
+                  "type": "table",
+                  "headers": [
+                    "Instrument",
+                    "Overall risk",
+                    "Potential return",
+                    "Value fluctuation"
+                  ],
+                  "rows": [
+                    [
+                      "Bank deposit",
+                      "Low",
+                      "Low",
+                      "Very small"
+                    ],
+                    [
+                      "Government bonds",
+                      "Low to moderate",
+                      "Low to moderate",
+                      "Small to moderate"
+                    ],
+                    [
+                      "Corporate bonds",
+                      "Moderate",
+                      "Moderate",
+                      "Moderate"
+                    ],
+                    [
+                      "Shares",
+                      "High",
+                      "High",
+                      "Large"
+                    ]
+                  ]
+                },
+                {
+                  "type": "p",
+                  "text": "The table above is a general, indicative comparison. In practice, risk depends on each individual issuer and instrument: a bond from a fragile company can be riskier than the shares of a solid one."
+                }
+              ]
+            },
+            {
+              "heading": "Types of risk",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "<strong>Market risk</strong> – prices fall because of general factors, such as an economic slowdown.",
+                    "<strong>Issuer-specific risk</strong> – a particular company runs into problems, for example it loses important customers.",
+                    "<strong>Credit risk</strong> – a bond issuer fails to pay the coupons or the face value.",
+                    "<strong>Liquidity risk</strong> – you cannot find buyers at a reasonable price when you want to sell.",
+                    "<strong>Interest rate risk</strong> – rising interest rates reduce the price of existing bonds.",
+                    "<strong>Currency risk</strong> – if you invest in another currency, changes in its exchange rate against the leu can reduce your gain.",
+                    "<strong>Inflation risk</strong> – rising prices reduce the purchasing power of the money you earn."
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "warning",
+                  "title": "Beware of promises of guaranteed gains",
+                  "text": "Any offer that promises high returns \"with no risk\" should be treated with great caution. On the capital market, gains are not guaranteed, and past performance does not guarantee future results."
+                }
+              ]
+            },
+            {
+              "heading": "Inflation and time horizon",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "The stated return on an investment is a <strong>nominal return</strong>. What really matters for your purchasing power is the <strong>real return</strong>, that is, the return after taking inflation into account."
+                },
+                {
+                  "type": "formula",
+                  "label": "Real return (approximation)",
+                  "expr": "Real return ≈ Nominal return − Inflation rate",
+                  "note": "The approximation works well for low values of inflation and return."
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Hypothetical example: the effect of inflation",
+                  "text": "You have MDL 10,000 and earn a nominal return of 7% in one year, or MDL 700. If inflation that year is 5%, the real return is approximately 7% − 5% = 2%. In other words, although you have MDL 10,700, your purchasing power has grown by only about MDL 200. Had you kept the money at home, the MDL 10,000 would have lost about 5% of its purchasing power. The figures are illustrative."
+                },
+                {
+                  "type": "p",
+                  "text": "Your <strong>time horizon</strong> is the period for which you can leave your money invested without needing it. The longer the horizon, the more time you have to ride out temporary price declines. Money you will need soon, for example for a planned expense in a few months, is usually better suited to instruments with small value fluctuations."
+                }
+              ]
+            },
+            {
+              "heading": "Diversification in brief",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "The saying \"don't put all your eggs in one basket\" sums up the idea of <strong>diversification</strong>: you spread your money across several instruments, issuers or sectors, so that a problem with one of them does not seriously hurt your whole portfolio."
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Hypothetical example: concentration vs. diversification",
+                  "text": "Maria invests MDL 10,000 in the shares of a single company, which fall by 40%: she loses MDL 4,000. Radu splits the same amount equally among 5 issuers from different sectors, MDL 2,000 each. If one of the investments falls by 40% and the other four keep their value, Radu loses MDL 800, or 8% of the portfolio. The figures are illustrative."
+                },
+                {
+                  "type": "callout",
+                  "variant": "tip",
+                  "title": "The limits of diversification",
+                  "text": "Diversification reduces issuer-specific risk, but it does not eliminate market risk: when the whole market falls, most instruments can fall at the same time."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "A higher potential return usually comes with higher risk.",
+            "The main risks are market, issuer-specific, credit, liquidity, interest rate, currency and inflation risk.",
+            "The real return is obtained, approximately, by subtracting inflation from the nominal return.",
+            "A longer time horizon gives you more room to ride out temporary declines.",
+            "Diversification reduces issuer-specific risk, but it does not eliminate market risk."
+          ],
+          "quiz": [
+            {
+              "q": "An investment delivers a nominal return of 9% in a year when inflation is 6%. What is the approximate real return?",
+              "options": [
+                "15%",
+                "3%",
+                "6%",
+                "9%"
+              ],
+              "answer": 1,
+              "explanation": "Real return ≈ nominal return − inflation = 9% − 6% = 3%."
+            },
+            {
+              "q": "Which type of risk does diversification across several issuers mainly reduce?",
+              "options": [
+                "Market risk",
+                "Inflation risk",
+                "Issuer-specific risk"
+              ],
+              "answer": 2,
+              "explanation": "Diversification limits the impact of problems at a single company, but it does not protect against a general market decline or inflation."
+            },
+            {
+              "q": "Someone promises you a very high return that is completely risk-free. Based on the risk–return relationship, how should you react?",
+              "options": [
+                "With great caution, because high returns usually involve high risks",
+                "Invest immediately, while the offer is available",
+                "Treat the offer as equivalent to a bank deposit",
+                "Invest all your savings to maximize the gain"
+              ],
+              "answer": 0,
+              "explanation": "Potentially high returns generally come with high risks; promises of high guaranteed gains are a red flag."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "BA-103",
+      "title": "How to Open an Account with a Broker",
+      "description": "A practical guide to choosing a broker, opening an investment account and placing your first orders on the exchange.",
+      "lessons": [
+        {
+          "slug": "alegerea-brokerului",
+          "title": "Choosing a Broker and Opening an Account",
+          "summary": "Learn what to check before choosing a broker and the steps you take to open your investment account.",
+          "minutes": 12,
+          "sections": [
+            {
+              "heading": "The broker's role for the beginner investor",
+              "blocks": [
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "The broker (investment firm)",
+                  "text": "A broker is a licensed investment firm that gives you access to the capital market: it opens your account, sends your orders for execution, keeps records of your money and financial instruments, and reports to you on the transactions carried out."
+                },
+                {
+                  "type": "p",
+                  "text": "Choosing a broker is one of an investor's first important decisions. It affects the safety of your transactions, the costs you will pay and the quality of your investing experience. It is worth comparing several options before signing a contract."
+                },
+                {
+                  "type": "p",
+                  "text": "An important aspect is how clients' money and financial instruments are held. Market rules generally require client assets to be kept separate from the broker's own assets. Ask how this segregation is applied and what periodic statements you will receive about your balance and holdings."
+                }
+              ]
+            },
+            {
+              "heading": "What to check before you choose",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "<strong>CNPF license</strong> – check on the CNPF's official website that the firm is licensed for the activities it offers you. Do not rely solely on claims made in advertising.",
+                    "<strong>BIMx membership</strong> – to buy instruments listed on the Moldova International Stock Exchange, the broker must be admitted as an exchange member. The list of members is published on bimx.md and is updated as brokers are admitted.",
+                    "<strong>Commissions and fees</strong> – the commission per trade, any minimum commission, account maintenance fees, and fees for deposits and withdrawals.",
+                    "<strong>Available markets and instruments</strong> – which markets you can trade on and what types of instruments are available to you.",
+                    "<strong>The platform and how orders are sent</strong> – online platform, mobile app, phone, or in person at the office.",
+                    "<strong>Transparency of information</strong> – the contract, the fee schedule and the risk disclosures should be clear and easy to find.",
+                    "<strong>Customer service</strong> – how easily you get answers, in what language and through which channels."
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Hypothetical example: comparing commissions",
+                  "text": "You want to make a trade of MDL 5,000. Broker A charges 0.6% of the value, with a minimum of MDL 50. Broker B charges 0.4%, with a minimum of MDL 40. At A, 0.6% of MDL 5,000 is MDL 30, but the minimum applies, so you pay MDL 50. At B, 0.4% is MDL 20, but the minimum of MDL 40 applies. For a trade of MDL 50,000, A would cost MDL 300 and B MDL 200. The figures are illustrative and do not reflect any real broker's fees."
+                },
+                {
+                  "type": "callout",
+                  "variant": "tip",
+                  "title": "Only through exchange members",
+                  "text": "Admission of brokers to BIMx began on 28 September 2026. A CNPF license does not automatically mean access to BIMx: ask your broker whether it is already an exchange member or what stage of admission it has reached."
+                },
+                {
+                  "type": "callout",
+                  "variant": "warning",
+                  "title": "Watch out for unlicensed entities",
+                  "text": "Avoid people or platforms that contact you unsolicited, promise guaranteed gains or ask you to transfer money to personal accounts. Always check the license with the CNPF before transferring any amount."
+                }
+              ]
+            },
+            {
+              "heading": "Steps to open an account",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "The exact procedure differs from one broker to another, but broadly speaking, opening an investment account involves the following steps:"
+                },
+                {
+                  "type": "steps",
+                  "items": [
+                    {
+                      "title": "Identification",
+                      "text": "You present a valid identity document, and the broker verifies your identity in line with know-your-customer and anti-money-laundering rules."
+                    },
+                    {
+                      "title": "Providing personal information",
+                      "text": "You provide contact details, information about the source of your funds and, if the broker requests them, other supporting documents."
+                    },
+                    {
+                      "title": "Investor profile assessment",
+                      "text": "You answer a questionnaire about your knowledge, experience, financial situation and investment objectives."
+                    },
+                    {
+                      "title": "Signing the contract",
+                      "text": "You carefully read the contract, the fee schedule and the risk disclosure, then sign."
+                    },
+                    {
+                      "title": "Funding the account",
+                      "text": "You transfer money to the account indicated by the broker, usually by bank transfer from an account in your own name."
+                    },
+                    {
+                      "title": "Platform access",
+                      "text": "You receive your login details and can track your balance and holdings and, later, send orders."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "heading": "The investor profile: why it matters",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "The profile questionnaire is not a mere formality. It helps the broker understand whether certain instruments or services are suitable for you, and it also helps you reflect on your own objectives and risk tolerance."
+                },
+                {
+                  "type": "table",
+                  "headers": [
+                    "Profile question",
+                    "Why it matters"
+                  ],
+                  "rows": [
+                    [
+                      "What is the goal of the investment?",
+                      "Long-term saving and quick gains call for different approaches"
+                    ],
+                    [
+                      "What is your time horizon?",
+                      "Money you will need soon should not be exposed to large fluctuations"
+                    ],
+                    [
+                      "What experience do you have?",
+                      "Complex instruments require additional knowledge"
+                    ],
+                    [
+                      "How much could you lose without affecting your standard of living?",
+                      "It shows your real capacity to bear losses"
+                    ]
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "tip",
+                  "title": "Answer honestly",
+                  "text": "Do not \"embellish\" your answers to gain access to more instruments. An accurate profile protects you. Invest only money you will not need in the short term, and keep a separate emergency fund."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "A broker is the licensed investment firm through which you access the capital market.",
+            "Before choosing, check the license on the CNPF website, the commissions, the platform and the transparency of information.",
+            "For instruments listed on BIMx, choose a broker admitted as an exchange member; the list of members is on bimx.md.",
+            "Compare costs for the amounts you plan to trade, taking minimum commissions into account.",
+            "Opening an account involves identification, an investor profile assessment, signing the contract and funding the account.",
+            "Fill in your investor profile honestly; it helps you avoid unsuitable instruments."
+          ],
+          "quiz": [
+            {
+              "q": "What is the most reliable way to check whether a broker is allowed to operate on the capital market of the Republic of Moldova?",
+              "options": [
+                "Read reviews on social media",
+                "Check the information published on the CNPF's official website",
+                "Ask the agent who called you",
+                "See whether it advertises on TV"
+              ],
+              "answer": 1,
+              "explanation": "The CNPF grants licenses on the capital market, so the CNPF's official information is the right source for verification."
+            },
+            {
+              "q": "A broker charges 0.5% of the trade value, with a minimum of MDL 40. How much do you pay for a trade of MDL 6,000?",
+              "options": [
+                "MDL 30",
+                "MDL 70",
+                "MDL 40"
+              ],
+              "answer": 2,
+              "explanation": "0.5% of MDL 6,000 is MDL 30, which is below the MDL 40 minimum, so the minimum commission of MDL 40 applies."
+            },
+            {
+              "q": "What is the main purpose of the investor profile questionnaire?",
+              "options": [
+                "To set the level of commissions",
+                "To guarantee a certain return",
+                "To replace the identity document",
+                "To assess whether instruments and services are suitable for the client"
+              ],
+              "answer": 3,
+              "explanation": "The questionnaire assesses the client's knowledge, experience, financial situation and objectives in order to determine what is suitable for them."
+            }
+          ]
+        },
+        {
+          "slug": "tipuri-de-ordine",
+          "title": "Order Types and Your First Trade",
+          "summary": "Learn the difference between market, limit and stop orders and walk through a first trade step by step, with all the costs.",
+          "minutes": 14,
+          "sections": [
+            {
+              "heading": "What an order is",
+              "blocks": [
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "The exchange order",
+                  "text": "An order is the instruction you give your broker to buy or sell a financial instrument. An order usually specifies the <strong>instrument</strong>, the <strong>side</strong> (buy or sell), the <strong>quantity</strong>, the <strong>order type</strong>, the <strong>price</strong> where applicable, and the <strong>validity period</strong>."
+                },
+                {
+                  "type": "p",
+                  "text": "The order type you choose determines how much control you have over the price and how certain it is that the order will be executed. There is no \"best\" order type for every situation; each has advantages and limitations. The order types available may differ depending on the market and the broker."
+                }
+              ]
+            },
+            {
+              "heading": "The main order types",
+              "blocks": [
+                {
+                  "type": "table",
+                  "headers": [
+                    "Order type",
+                    "How it works",
+                    "Advantage",
+                    "Limitation"
+                  ],
+                  "rows": [
+                    [
+                      "Market order",
+                      "Executed immediately at the best prices available in the order book",
+                      "Fast execution, if there is a counterparty",
+                      "You do not control the final price, especially on illiquid instruments"
+                    ],
+                    [
+                      "Limit order",
+                      "You buy at a price no higher than the limit or sell at a price no lower than the limit",
+                      "You control the price",
+                      "The order may remain unexecuted or be partially executed"
+                    ],
+                    [
+                      "Stop order",
+                      "Activated when the price reaches a set level (trigger price) and becomes a market or limit order, as applicable",
+                      "Can limit losses or automate a decision",
+                      "Once activated, the execution price may differ from the stop level"
+                    ]
+                  ]
+                },
+                {
+                  "type": "p",
+                  "text": "A common example of a stop order is the <em>stop-loss</em> order: you hold shares bought at MDL 50 and set a sell order with a trigger at MDL 45. If the price drops to MDL 45, the order is activated and tries to sell, limiting the loss. In a fast-moving market, however, the sale may take place below MDL 45."
+                },
+                {
+                  "type": "callout",
+                  "variant": "tip",
+                  "title": "The limit order, a beginner's friend",
+                  "text": "On instruments with few orders in the book and a wide spread, a limit order protects you from the surprise of an execution at a price very different from the one you expected."
+                }
+              ]
+            },
+            {
+              "heading": "Your first trade, step by step",
+              "blocks": [
+                {
+                  "type": "steps",
+                  "items": [
+                    {
+                      "title": "Check your available balance",
+                      "text": "Make sure you have enough money in your account for the trade value plus commissions."
+                    },
+                    {
+                      "title": "Analyze the instrument and the order book",
+                      "text": "Read the information published by the issuer, and look at the bid and ask prices and the quantities available."
+                    },
+                    {
+                      "title": "Choose the order type, price and quantity",
+                      "text": "Decide whether to use a market order or a limit order, and set the validity period."
+                    },
+                    {
+                      "title": "Review and send the order",
+                      "text": "Reread all the details, especially the side (buy/sell), the quantity and the price, then confirm."
+                    },
+                    {
+                      "title": "Track execution and confirmation",
+                      "text": "Check whether the order was executed fully, partially or not at all, and keep the confirmation you receive from the broker."
+                    },
+                    {
+                      "title": "Wait for settlement",
+                      "text": "After settlement, the instruments are registered in your name in the central depository's records."
+                    }
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Hypothetical example: buying with a limit order, with all the costs",
+                  "text": "Andrei has MDL 10,000 in his account. In the order book, the best ask price is MDL 31.00 and the best bid price is MDL 30.40. Andrei places a limit buy order for 300 shares at a maximum of MDL 30.80. The order is not executed immediately. Later, a seller accepts MDL 30.80, and the order is executed in full. Trade value: 300 × 30.80 = MDL 9,240. Illustrative commission of 0.5%: MDL 46.20. Total cost: <strong>MDL 9,286.20</strong>. Remaining balance: MDL 713.80. For the trade to be profitable after commissions, the price must rise enough to also cover the selling commission. The figures are illustrative."
+                }
+              ]
+            },
+            {
+              "heading": "Calculating costs and the break-even point",
+              "blocks": [
+                {
+                  "type": "formula",
+                  "label": "Total cost of a purchase",
+                  "expr": "Total cost = Quantity × Execution price + Commissions and fees",
+                  "note": "Check the broker's fee schedule for all applicable costs, including any minimum commissions."
+                },
+                {
+                  "type": "p",
+                  "text": "Continuing the example, if Andrei later sold the 300 shares at MDL 31.50, he would receive MDL 9,450, minus an illustrative selling commission of 0.5%, or MDL 47.25. Net amount: MDL 9,402.75. Net gain: 9,402.75 − 9,286.20 = <strong>MDL 116.55</strong>, before taxes. Without commissions, the gain would have been MDL 210; costs reduced the result by almost half."
+                },
+                {
+                  "type": "callout",
+                  "variant": "warning",
+                  "title": "Common mistakes with first orders",
+                  "text": "Among the most common mistakes are: confusing buy and sell, entering the wrong figure for quantity or price, using a market order on an instrument with a wide spread, and ignoring commissions on small trades. Double-check before confirming. This information is for educational purposes and does not constitute investment advice."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "An order specifies the instrument, the side, the quantity, the type, the price where applicable, and the validity.",
+            "A market order offers fast execution but does not control the price; a limit order controls the price but may remain unexecuted.",
+            "A stop order is activated when a trigger price is reached and can be used to limit losses, without guaranteeing the execution price.",
+            "The total cost of a trade includes commissions, which reduce the net gain, especially on small amounts.",
+            "Check each order carefully before sending it and keep the confirmations from your broker."
+          ],
+          "quiz": [
+            {
+              "q": "You want to buy shares but do not want to pay more than MDL 25 per share. Which order type fits best?",
+              "options": [
+                "Market order",
+                "Stop sell order",
+                "Limit buy order at MDL 25"
+              ],
+              "answer": 2,
+              "explanation": "A limit buy order is executed only at a price no higher than the set limit, that is, MDL 25 or less."
+            },
+            {
+              "q": "You buy 200 shares at MDL 15, and the broker charges an illustrative commission of 0.5%. What is the total cost?",
+              "options": [
+                "MDL 3,015",
+                "MDL 3,000",
+                "MDL 3,150",
+                "MDL 2,985"
+              ],
+              "answer": 0,
+              "explanation": "The trade value is 200 × 15 = MDL 3,000; the commission is 3,000 × 0.5% = MDL 15; the total cost is MDL 3,015."
+            },
+            {
+              "q": "Which statement about a stop-loss order is correct?",
+              "options": [
+                "It guarantees a sale exactly at the trigger price",
+                "It is activated when the trigger price is reached, but execution may take place at a different price",
+                "It is executed only if the price rises",
+                "It automatically cancels all other orders in the account"
+              ],
+              "answer": 1,
+              "explanation": "A stop order is activated when the set level is reached; in a fast-moving market, execution may take place at a worse price than the stop level."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
