@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1200" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <pattern id="dots" width="16" height="16" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.2" fill="#1A2266" fill-opacity=".08"/></pattern>
+    <linearGradient id="cov" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#232D80"/><stop offset="1" stop-color="#1A2266"/></linearGradient>
+    <radialGradient id="shine" cx=".85" cy=".1" r=".8"><stop offset="0" stop-color="#1EB1F1" stop-opacity=".45"/><stop offset="1" stop-color="#1EB1F1" stop-opacity="0"/></radialGradient>
+    <filter id="sh" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="0" dy="14" stdDeviation="14" flood-color="#1A2266" flood-opacity=".28"/></filter>
+    <filter id="sh2" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#1A2266" flood-opacity=".2"/></filter>
+    <clipPath id="clip"><rect x="120" y="38" width="160" height="224" rx="8"/></clipPath>
+  </defs>
+  <rect width="400" height="300" fill="#EEF3F8"/>
+  <rect width="400" height="300" fill="url(#dots)"/>
+  <circle cx="200" cy="150" r="118" fill="#1EB1F1" fill-opacity=".10"/>
+  <circle cx="200" cy="150" r="80" fill="#1EB1F1" fill-opacity=".08"/>
+  <g transform="rotate(9 230 150)" filter="url(#sh2)">
+    <rect x="152" y="46" width="156" height="216" rx="8" fill="#FFFFFF"/>
+    <rect x="172" y="70" width="80" height="6" rx="3" fill="#1A2266" fill-opacity=".7"/>
+    <rect x="172" y="90" width="116" height="4" rx="2" fill="#1A2266" fill-opacity=".12"/><rect x="172" y="100" width="104" height="4" rx="2" fill="#1A2266" fill-opacity=".12"/><rect x="172" y="110" width="112" height="4" rx="2" fill="#1A2266" fill-opacity=".12"/><rect x="172" y="120" width="90" height="4" rx="2" fill="#1A2266" fill-opacity=".12"/><rect x="172" y="140" width="116" height="4" rx="2" fill="#1A2266" fill-opacity=".12"/><rect x="172" y="150" width="98" height="4" rx="2" fill="#1A2266" fill-opacity=".12"/><rect x="172" y="160" width="108" height="4" rx="2" fill="#1A2266" fill-opacity=".12"/>
+  </g>
+  <g filter="url(#sh)">
+    <rect x="120" y="38" width="160" height="224" rx="8" fill="url(#cov)"/>
+    <g clip-path="url(#clip)">
+      <rect x="120" y="38" width="160" height="224" fill="url(#shine)"/>
+      <path d="M120 262 L280 150 L280 262Z" fill="#FFFFFF" fill-opacity=".03"/>
+    </g>
+    <rect x="120" y="38" width="12" height="224" rx="4" fill="#10164A" fill-opacity=".6"/>
+    <rect x="146" y="60" width="40" height="6" rx="3" fill="#1EB1F1"/>
+    <rect x="146" y="76" width="108" height="10" rx="5" fill="#FFFFFF"/>
+    <rect x="146" y="92" width="74" height="10" rx="5" fill="#FFFFFF"/>
+    <line x1="152" y1="190" x2="152" y2="218" stroke="#9195CF" stroke-width="2"/><rect x="146" y="196" width="12" height="16" rx="2.5" fill="#9195CF"/><line x1="172" y1="178" x2="172" y2="208" stroke="#1EB1F1" stroke-width="2"/><rect x="166" y="184" width="12" height="18" rx="2.5" fill="#1EB1F1"/><line x1="192" y1="180" x2="192" y2="204" stroke="#9195CF" stroke-width="2"/><rect x="186" y="186" width="12" height="12" rx="2.5" fill="#9195CF"/><line x1="212" y1="164" x2="212" y2="196" stroke="#1EB1F1" stroke-width="2"/><rect x="206" y="170" width="12" height="20" rx="2.5" fill="#1EB1F1"/><line x1="232" y1="154" x2="232" y2="184" stroke="#1EB1F1" stroke-width="2"/><rect x="226" y="160" width="12" height="18" rx="2.5" fill="#1EB1F1"/><line x1="252" y1="140" x2="252" y2="174" stroke="#1EB1F1" stroke-width="2"/><rect x="246" y="146" width="12" height="22" rx="2.5" fill="#1EB1F1"/><polyline points="146,206 172,193 192,192 212,180 232,169 256,150 266,140" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M256 138 l11 1 -2 11" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="146" y="246" font-family="Prompt, Arial, sans-serif" font-size="12" font-weight="700" fill="#FFFFFF">BIM<tspan fill="#1EB1F1">x</tspan><tspan font-weight="500" fill="#FFFFFF" fill-opacity=".6" font-size="9" dx="5">ACADEMY</tspan></text>
+  </g>
+  <g filter="url(#sh2)"><rect x="262" y="178" width="92" height="42" rx="10" fill="#FFFFFF"/><circle cx="283" cy="199" r="11" fill="#2BAB6F" fill-opacity=".15"/><path d="M278 202 l5 -5 5 5" fill="none" stroke="#2BAB6F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><rect x="300" y="191" width="40" height="6" rx="3" fill="#1A2266"/><rect x="300" y="202" width="26" height="5" rx="2.5" fill="#2BAB6F" fill-opacity=".6"/></g>
+</svg>

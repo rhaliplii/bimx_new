@@ -1,0 +1,202 @@
+---
+route: "uk/rapoarte/"
+parts: {"open":"open-page","head":"head-news-3","mid":"mid-news","pre":"pre-news","header":"header-news","footer":"footer-page","tail":"tail-page"}
+title: "Власні звіти BIMx — BIMx"
+description: "З початком роботи ринку Міжнародна фондова біржа Молдови публікує такі звіти."
+bodyAttrs: " class=\"wp-singular page-template page-template-rapoarte page-template-rapoarte-php page page-id-355 wp-custom-logo wp-embed-responsive wp-theme-victor wp-child-theme-victor-child is-light-theme no-js singular has-main-navigation\""
+seo: "<meta property=\"og:type\" content=\"website\">\n<meta property=\"og:site_name\" content=\"BIMx\">\n<meta property=\"og:title\" content=\"Власні звіти BIMx — BIMx\">\n<meta property=\"og:description\" content=\"З початком роботи ринку Міжнародна фондова біржа Молдови публікує такі звіти.\">\n<meta property=\"og:url\" content=\"https://bimx.md/uk/rapoarte/\">\n<meta property=\"og:locale\" content=\"uk_UA\">\n<meta property=\"og:locale:alternate\" content=\"ro_RO\">\n<meta property=\"og:locale:alternate\" content=\"en_GB\">\n<meta property=\"og:locale:alternate\" content=\"ru_RU\">\n<meta property=\"og:image\" content=\"https://bimx.md/assets/img/og-bimx-uk.png\">\n<meta property=\"og:image:width\" content=\"1200\">\n<meta property=\"og:image:height\" content=\"630\">\n<meta property=\"og:image:alt\" content=\"BIMx — Міжнародна фондова біржа Молдови\">\n<meta name=\"twitter:card\" content=\"summary_large_image\">\n<meta name=\"twitter:title\" content=\"Власні звіти BIMx — BIMx\">\n<meta name=\"twitter:description\" content=\"З початком роботи ринку Міжнародна фондова біржа Молдови публікує такі звіти.\">\n<meta name=\"twitter:image\" content=\"https://bimx.md/assets/img/og-bimx-uk.png\">\n<link rel=\"canonical\" href=\"https://bimx.md/uk/rapoarte/\">\n<link rel=\"alternate\" hreflang=\"ro\" href=\"https://bimx.md/rapoarte/\">\n<link rel=\"alternate\" hreflang=\"en\" href=\"https://bimx.md/en/rapoarte/\">\n<link rel=\"alternate\" hreflang=\"uk\" href=\"https://bimx.md/uk/rapoarte/\">\n<link rel=\"alternate\" hreflang=\"ru\" href=\"https://bimx.md/ru/rapoarte/\">\n<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://bimx.md/rapoarte/\">\n<meta name=\"robots\" content=\"max-image-preview:large\">\n"
+---
+<!-- #masthead -->
+    <div id="content" class="site-content">
+        <div id="primary" class="content-area">
+            <main id="main" class="site-main">
+<div class="container_fluid">
+    <div class="second_main_section">
+        <div class="container">
+            <div class="secont_main_section_content">
+                <nav aria-label="Навігаційний ланцюжок"><ul class="breadcrumbs">
+                    <li><a href="../">Головна</a></li>
+                    <li aria-hidden="true">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5.25 10.5L8.75 7L5.25 3.5" stroke="white" stroke-opacity="0.6"
+                                  stroke-width="1.16667" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </li>
+                    <li><a href="../prezentare-generala/">Ринок</a></li>
+                    <li aria-hidden="true">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5.25 10.5L8.75 7L5.25 3.5" stroke="white" stroke-opacity="0.6"
+                                  stroke-width="1.16667" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </li>
+                    <li><span aria-current="page">Власні звіти BIMx</span></li>
+                </ul></nav>
+                <h1 class="page_title">Звіти (джерело: НКФР + власні)</h1>
+                <div class="page_description">
+                    
+<p class="wp-block-paragraph">З початком роботи ринку Міжнародна фондова біржа Молдови публікує такі звіти.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bimx-ticker-wrap bx-ticker" role="region" aria-label="Рядок із демонстраційними котируваннями"><span class="bx-ticker-label">Демонстраційні дані</span><div class="bimx-ticker" id="bimx-ticker-content"></div><button type="button" class="bx-ticker-toggle" aria-pressed="false" data-pause="Пауза" data-play="Запустити">Пауза</button></div>
+<style>
+    .bimx-ticker-wrap {
+        width: 100%;
+        overflow: hidden; /* Ascunde ce iese din cadru */
+        background: #FFFFFF; /* Fundal închis conform stilului financiar */
+        padding: 10px 0;
+        border-bottom: 1px solid #E5E7EB;
+        position: relative;
+    }
+
+    .bimx-ticker {
+        display: flex;
+        white-space: nowrap;
+        width: max-content;
+        animation: ticker-scroll 20s linear infinite; /* Viteza de rulare */
+    }
+
+    /* Pauză la hover pentru a putea citi mai ușor */
+    .bimx-ticker-wrap:hover .bimx-ticker {
+        animation-play-state: paused;
+    }
+
+    .ticker-item {
+        display: flex;
+        align-items: center;
+        padding: 0 25px;
+    }
+
+    .t-symbol {
+        color: #1A2266;
+        margin-right: 8px;
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 16px;
+    }
+
+    .t-price {
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 16px;
+        color: #1A2266;
+    }
+
+    .t-pct {
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 16px;
+        margin-left: 8px;
+        color: #2BAB6F;
+    }
+
+    .t-pct.pos {
+        color: #10b981;
+    }
+
+    /* Verde */
+    .t-pct.neg {
+        color: #ef4444;
+    }
+
+    /* Roșu */
+
+    /* Animația de scroll infinit */
+    @keyframes ticker-scroll {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-50%);
+        }
+    }
+</style>    <div class="main_indicators_wrap">
+        <div class="container">
+            <div class="main_indicators">
+                <h2>Власні звіти BIMx</h2>
+                <p>З початком роботи ринку Міжнародна фондова біржа Молдови публікує такі звіти.</p>
+
+                <div class="items">
+                                                                        <div class="block">
+                                <div class="icon bx-ic"><svg class="bx-i" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8.5 17v-2M12 17v-4M15.5 17v-6"/></svg></div>
+                                <h4 aria-level="3">Щоденний звіт про торги</h4>
+                                <p>Підсумки поточної сесії: обсяги, вартість, кількість угод, динаміка за категоріями інструментів. Публікується після закриття кожної сесії.</p>
+                            </div>
+                                                    <div class="block">
+                                <div class="icon bx-ic"><svg class="bx-i" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 8h10M7 12h4M7 16h4"/><rect x="13" y="12" width="4" height="4" rx=".5"/></svg></div>
+                                <h4>Щомісячний ринковий бюлетень</h4>
+                                <p>Зведені дані за попередній місяць із ринковим коментарем, динамікою за сегментами та відповідними корпоративними подіями. Публікується до 10-го числа наступного місяця.</p>
+                            </div>
+                                                    <div class="block">
+                                <div class="icon bx-ic"><svg class="bx-i" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg></div>
+                                <h4>Річний звіт BIMx</h4>
+                                <p>Зведені дані за фінансовий рік, операційні показники, стратегічні напрями розвитку. Публікується відповідно до обов’язків щодо звітності, застосовних до операторів ринку.</p>
+                            </div>
+                                                            </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="publicatii_bimx">
+        <div class="main_indicators_wrap">
+            <div class="container">
+                <div class="main_indicators">
+                    <div class="table_wrap">
+                        <h2>Зовнішні звіти, що стосуються ринку капіталу</h2>
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>Звіт</th>
+                                <th style="text-align: left;">Джерело</th>
+
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td><b>Річний звіт НКФР</b></td>
+                                <td style="text-align: left;">Національна комісія з фінансового ринку</td>
+                            </tr>
+                            <tr>
+                                <td><b>Статистичний бюлетень НКФР</b></td>
+                                <td style="text-align: left;">Національна комісія з фінансового ринку</td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="container">
+        <div class="date_section bx-status-block">
+            <div class="left_side">
+                <div class="icon bx-ic"><svg class="bx-i" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4.5" width="18" height="16.5" rx="2"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4M8 14h.01M12 14h.01M16 14h.01M8 17.5h.01M12 17.5h.01"/></svg></div>
+                <div class="left_content">
+                    <h6 aria-level="3">Статус</h6>
+                    <h2>У підготовці</h2>
+                </div>
+            </div>
+            <div class="right_side"><p>Власні звіти BIMx стануть доступними після початку торгів.</p></div>
+        </div>
+    </div>
+    <hr>
+    <div class="container">
+    <div class="new_call_to_action">
+        <h6 aria-level="3"><span class="bx-ic-h6"><svg class="bx-i" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m3 6.5 9 6.5 9-6.5"/></svg></span>Контакти для уточнень</h6>
+        <h2>Додаткова інформація</h2>
+        <a href="mailto:office@bimx.md">office@bimx.md<svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3.50781 8.41553H13.3259" stroke="#1EB1F1" stroke-width="1.40259"
+                      stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M8.41797 3.50659L13.327 8.41564L8.41797 13.3247" stroke="#1EB1F1"
+                      stroke-width="1.40259" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </a>
+    </div>
+</div></div>
+</main><!-- #main -->
+</div><!-- #primary -->
+</div><!-- #content -->

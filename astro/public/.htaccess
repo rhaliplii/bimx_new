@@ -1,0 +1,71 @@
+# bimx.md – site static generat de tools/build.py (sitegen/seo.py). Nu se editează pe server.
+# HTTPS și www → bimx.md sunt setate în panoul găzduirii, nu aici.
+DirectoryIndex index.html
+ErrorDocument 404 /404.html
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+
+# rutele vechi, unite cu alte pagini (aceleași ca paginile cu redirecționare meta din dist/)
+RewriteRule ^anunturi\-ale\-emitentilor(?:/(?:index\.html)?)?$ /category/anunturi-ale-emitentilor/ [R=301,L,NE]
+RewriteRule ^anunturi\-bimx(?:/(?:index\.html)?)?$ /category/anunturi-bimx/ [R=301,L,NE]
+RewriteRule ^baza\-cunostintelor(?:/(?:index\.html)?)?$ /academy/#directii [R=301,L,NE]
+RewriteRule ^category/stiri(?:/(?:index\.html)?)?$ /noutati/ [R=301,L,NE]
+RewriteRule ^costuri(?:/(?:index\.html)?)?$ /tarifele-bursei/ [R=301,L,NE]
+RewriteRule ^date\-istorice(?:/(?:index\.html)?)?$ /cotatii-in-timp-real/ [R=301,L,NE]
+RewriteRule ^en/anunturi\-ale\-emitentilor(?:/(?:index\.html)?)?$ /en/category/anunturi-ale-emitentilor/ [R=301,L,NE]
+RewriteRule ^en/anunturi\-bimx(?:/(?:index\.html)?)?$ /en/category/anunturi-bimx/ [R=301,L,NE]
+RewriteRule ^en/baza\-cunostintelor(?:/(?:index\.html)?)?$ /en/academy/#directii [R=301,L,NE]
+RewriteRule ^en/category/stiri(?:/(?:index\.html)?)?$ /en/noutati/ [R=301,L,NE]
+RewriteRule ^en/costuri(?:/(?:index\.html)?)?$ /en/tarifele-bursei/ [R=301,L,NE]
+RewriteRule ^en/date\-istorice(?:/(?:index\.html)?)?$ /en/cotatii-in-timp-real/ [R=301,L,NE]
+RewriteRule ^en/evenimente(?:/(?:index\.html)?)?$ /en/academy/#evenimente [R=301,L,NE]
+RewriteRule ^en/formare(?:/(?:index\.html)?)?$ /en/academy/#formare [R=301,L,NE]
+RewriteRule ^en/glosar(?:/(?:index\.html)?)?$ /en/academy/#glosar [R=301,L,NE]
+RewriteRule ^en/home(?:/(?:index\.html)?)?$ /en/ [R=301,L,NE]
+RewriteRule ^en/indici(?:/(?:index\.html)?)?$ /en/indicii-bursei/ [R=301,L,NE]
+RewriteRule ^en/publicatii(?:/(?:index\.html)?)?$ /en/academy/#publicatii [R=301,L,NE]
+RewriteRule ^en/resurse\-educationale(?:/(?:index\.html)?)?$ /en/academy/#directii [R=301,L,NE]
+RewriteRule ^en/stiri(?:/(?:index\.html)?)?$ /en/noutati/ [R=301,L,NE]
+RewriteRule ^evenimente(?:/(?:index\.html)?)?$ /academy/#evenimente [R=301,L,NE]
+RewriteRule ^formare(?:/(?:index\.html)?)?$ /academy/#formare [R=301,L,NE]
+RewriteRule ^glosar(?:/(?:index\.html)?)?$ /academy/#glosar [R=301,L,NE]
+RewriteRule ^indici(?:/(?:index\.html)?)?$ /indicii-bursei/ [R=301,L,NE]
+RewriteRule ^publicatii(?:/(?:index\.html)?)?$ /academy/#publicatii [R=301,L,NE]
+RewriteRule ^resurse\-educationale(?:/(?:index\.html)?)?$ /academy/#directii [R=301,L,NE]
+RewriteRule ^ru/anunturi\-ale\-emitentilor(?:/(?:index\.html)?)?$ /ru/category/anunturi-ale-emitentilor/ [R=301,L,NE]
+RewriteRule ^ru/anunturi\-bimx(?:/(?:index\.html)?)?$ /ru/category/anunturi-bimx/ [R=301,L,NE]
+RewriteRule ^ru/baza\-cunostintelor(?:/(?:index\.html)?)?$ /ru/academy/#directii [R=301,L,NE]
+RewriteRule ^ru/category/stiri(?:/(?:index\.html)?)?$ /ru/noutati/ [R=301,L,NE]
+RewriteRule ^ru/costuri(?:/(?:index\.html)?)?$ /ru/tarifele-bursei/ [R=301,L,NE]
+RewriteRule ^ru/date\-istorice(?:/(?:index\.html)?)?$ /ru/cotatii-in-timp-real/ [R=301,L,NE]
+RewriteRule ^ru/evenimente(?:/(?:index\.html)?)?$ /ru/academy/#evenimente [R=301,L,NE]
+RewriteRule ^ru/formare(?:/(?:index\.html)?)?$ /ru/academy/#formare [R=301,L,NE]
+RewriteRule ^ru/glosar(?:/(?:index\.html)?)?$ /ru/academy/#glosar [R=301,L,NE]
+RewriteRule ^ru/indici(?:/(?:index\.html)?)?$ /ru/indicii-bursei/ [R=301,L,NE]
+RewriteRule ^ru/publicatii(?:/(?:index\.html)?)?$ /ru/academy/#publicatii [R=301,L,NE]
+RewriteRule ^ru/resurse\-educationale(?:/(?:index\.html)?)?$ /ru/academy/#directii [R=301,L,NE]
+RewriteRule ^ru/stiri(?:/(?:index\.html)?)?$ /ru/noutati/ [R=301,L,NE]
+RewriteRule ^stiri(?:/(?:index\.html)?)?$ /noutati/ [R=301,L,NE]
+RewriteRule ^uk/anunturi\-ale\-emitentilor(?:/(?:index\.html)?)?$ /uk/category/anunturi-ale-emitentilor/ [R=301,L,NE]
+RewriteRule ^uk/anunturi\-bimx(?:/(?:index\.html)?)?$ /uk/category/anunturi-bimx/ [R=301,L,NE]
+RewriteRule ^uk/baza\-cunostintelor(?:/(?:index\.html)?)?$ /uk/academy/#directii [R=301,L,NE]
+RewriteRule ^uk/category/stiri(?:/(?:index\.html)?)?$ /uk/noutati/ [R=301,L,NE]
+RewriteRule ^uk/costuri(?:/(?:index\.html)?)?$ /uk/tarifele-bursei/ [R=301,L,NE]
+RewriteRule ^uk/date\-istorice(?:/(?:index\.html)?)?$ /uk/cotatii-in-timp-real/ [R=301,L,NE]
+RewriteRule ^uk/evenimente(?:/(?:index\.html)?)?$ /uk/academy/#evenimente [R=301,L,NE]
+RewriteRule ^uk/formare(?:/(?:index\.html)?)?$ /uk/academy/#formare [R=301,L,NE]
+RewriteRule ^uk/glosar(?:/(?:index\.html)?)?$ /uk/academy/#glosar [R=301,L,NE]
+RewriteRule ^uk/indici(?:/(?:index\.html)?)?$ /uk/indicii-bursei/ [R=301,L,NE]
+RewriteRule ^uk/publicatii(?:/(?:index\.html)?)?$ /uk/academy/#publicatii [R=301,L,NE]
+RewriteRule ^uk/resurse\-educationale(?:/(?:index\.html)?)?$ /uk/academy/#directii [R=301,L,NE]
+RewriteRule ^uk/stiri(?:/(?:index\.html)?)?$ /uk/noutati/ [R=301,L,NE]
+
+# sitemap-urile vechi WordPress
+RewriteRule ^(?:wp-sitemap[^/]*|sitemap_index)\.xml$ /sitemap.xml [R=301,L]
+
+# o singură adresă pe pagină: /pagina/index.html → /pagina/
+RewriteCond %{THE_REQUEST} \s/+((?:[^?\s]*/)?)index\.html[?\s]
+RewriteRule ^ /%1 [R=301,L,NE]
+</IfModule>

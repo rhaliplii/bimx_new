@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="680" viewBox="0 0 400 170" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <radialGradient id="glow" cx="0.78" cy="0.3" r="0.6">
+      <stop offset="0" stop-color="#2BAB6F" stop-opacity=".35"/>
+      <stop offset="1" stop-color="#2BAB6F" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M20 0H0V20" fill="none" stroke="#FFFFFF" stroke-opacity=".05"/>
+    </pattern>
+    <linearGradient id="fade" x1="0" x2="1">
+      <stop offset="0" stop-color="#1A2266"/>
+      <stop offset=".45" stop-color="#1A2266" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#060a30" flood-opacity=".45"/>
+    </filter>
+    <filter id="soft"><feGaussianBlur stdDeviation="4"/></filter>
+  </defs>
+  <rect width="400" height="170" fill="#1A2266"/>
+  <rect width="400" height="170" fill="url(#grid)"/>
+  <rect width="400" height="170" fill="url(#glow)"/>
+  <rect width="400" height="170" fill="url(#fade)"/>
+  <line x1="180" y1="146" x2="390" y2="146" stroke="#FFFFFF" stroke-opacity=".15"/>
+  <line x1="180" y1="118" x2="390" y2="118" stroke="#FFFFFF" stroke-opacity=".06" stroke-dasharray="4 6"/>
+  <line x1="180" y1="90" x2="390" y2="90" stroke="#FFFFFF" stroke-opacity=".06" stroke-dasharray="4 6"/>
+  <line x1="180" y1="62" x2="390" y2="62" stroke="#FFFFFF" stroke-opacity=".06" stroke-dasharray="4 6"/>
+  <line x1="200" y1="102" x2="200" y2="136" stroke="#9195CF" stroke-width="2" stroke-linecap="round"/><rect x="193" y="110" width="14" height="18" rx="3" fill="#9195CF" fill-opacity="0.75"/><line x1="226" y1="92" x2="226" y2="124" stroke="#2BAB6F" stroke-width="2" stroke-linecap="round"/><rect x="219" y="100" width="14" height="18" rx="3" fill="#2BAB6F" fill-opacity="1"/><line x1="252" y1="98" x2="252" y2="120" stroke="#9195CF" stroke-width="2" stroke-linecap="round"/><rect x="245" y="104" width="14" height="10" rx="3" fill="#9195CF" fill-opacity="0.75"/><line x1="278" y1="76" x2="278" y2="112" stroke="#2BAB6F" stroke-width="2" stroke-linecap="round"/><rect x="271" y="84" width="14" height="22" rx="3" fill="#2BAB6F" fill-opacity="1"/><line x1="304" y1="70" x2="304" y2="98" stroke="#9195CF" stroke-width="2" stroke-linecap="round"/><rect x="297" y="78" width="14" height="14" rx="3" fill="#9195CF" fill-opacity="0.75"/><line x1="330" y1="52" x2="330" y2="90" stroke="#2BAB6F" stroke-width="2" stroke-linecap="round"/><rect x="323" y="60" width="14" height="24" rx="3" fill="#2BAB6F" fill-opacity="1"/><line x1="356" y1="36" x2="356" y2="72" stroke="#2BAB6F" stroke-width="2" stroke-linecap="round"/><rect x="349" y="44" width="14" height="22" rx="3" fill="#2BAB6F" fill-opacity="1"/>
+  <polyline points="200,119 226,109 252,109 278,95 304,85 330,72 356,55 378,42" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-opacity=".25" filter="url(#soft)"/>
+  <polyline points="200,119 226,109 252,109 278,95 304,85 330,72 356,55 378,42" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M368 38l12 2-4 11" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="356" cy="55" r="9" fill="#2BAB6F" fill-opacity=".3"/>
+  <circle cx="356" cy="55" r="4" fill="#FFFFFF"/>
+  <g filter="url(#shadow)">
+    <rect x="178" y="22" width="78" height="30" rx="8" fill="#FFFFFF"/>
+    <circle cx="192" cy="37" r="6" fill="#2BAB6F" fill-opacity=".18"/>
+    <path d="M189 39l3-3 3 3" fill="none" stroke="#2BAB6F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="204" y="31" width="40" height="5" rx="2.5" fill="#1A2266"/>
+    <rect x="204" y="40" width="26" height="4" rx="2" fill="#2BAB6F" fill-opacity=".6"/>
+  </g>
+</svg>

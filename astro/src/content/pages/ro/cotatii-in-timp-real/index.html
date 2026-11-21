@@ -1,0 +1,201 @@
+---
+route: "cotatii-in-timp-real/"
+parts: {"open":"open-news","head":"head-news-3","mid":"mid-news","pre":"pre-news","header":"header-news","footer":"footer-page","tail":"tail-page"}
+title: "Cotații în timp real &#8211; BIMx"
+description: "După începerea tranzacționării, Bursa Internațională a Moldovei va publica datele de piață pentru toate instrumentele admise la tranzacționare pe Piața…"
+bodyAttrs: " class=\"wp-singular page-template page-template-cotatii-in-timp-real page-template-cotatii-in-timp-real-php page page-id-343 wp-custom-logo wp-embed-responsive wp-theme-victor wp-child-theme-victor-child is-light-theme no-js singular has-main-navigation\""
+seo: "<meta property=\"og:type\" content=\"website\">\n<meta property=\"og:site_name\" content=\"BIMx\">\n<meta property=\"og:title\" content=\"Cotații în timp real – BIMx\">\n<meta property=\"og:description\" content=\"După începerea tranzacționării, Bursa Internațională a Moldovei va publica datele de piață pentru toate instrumentele admise la tranzacționare pe Piața…\">\n<meta property=\"og:url\" content=\"https://bimx.md/cotatii-in-timp-real/\">\n<meta property=\"og:locale\" content=\"ro_RO\">\n<meta property=\"og:locale:alternate\" content=\"en_GB\">\n<meta property=\"og:locale:alternate\" content=\"uk_UA\">\n<meta property=\"og:locale:alternate\" content=\"ru_RU\">\n<meta property=\"og:image\" content=\"https://bimx.md/assets/img/og-bimx-ro.png\">\n<meta property=\"og:image:width\" content=\"1200\">\n<meta property=\"og:image:height\" content=\"630\">\n<meta property=\"og:image:alt\" content=\"BIMx – Bursa Internațională a Moldovei\">\n<meta name=\"twitter:card\" content=\"summary_large_image\">\n<meta name=\"twitter:title\" content=\"Cotații în timp real – BIMx\">\n<meta name=\"twitter:description\" content=\"După începerea tranzacționării, Bursa Internațională a Moldovei va publica datele de piață pentru toate instrumentele admise la tranzacționare pe Piața…\">\n<meta name=\"twitter:image\" content=\"https://bimx.md/assets/img/og-bimx-ro.png\">\n<link rel=\"canonical\" href=\"https://bimx.md/cotatii-in-timp-real/\">\n<link rel=\"alternate\" hreflang=\"ro\" href=\"https://bimx.md/cotatii-in-timp-real/\">\n<link rel=\"alternate\" hreflang=\"en\" href=\"https://bimx.md/en/cotatii-in-timp-real/\">\n<link rel=\"alternate\" hreflang=\"uk\" href=\"https://bimx.md/uk/cotatii-in-timp-real/\">\n<link rel=\"alternate\" hreflang=\"ru\" href=\"https://bimx.md/ru/cotatii-in-timp-real/\">\n<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://bimx.md/cotatii-in-timp-real/\">\n<meta name=\"robots\" content=\"max-image-preview:large\">\n"
+---
+<!-- #masthead -->
+    <div id="content" class="site-content">
+        <div id="primary" class="content-area">
+            <main id="main" class="site-main">
+    <div class="container_fluid">
+        <div class="second_main_section">
+            <div class="container">
+                <div class="secont_main_section_content">
+                    <nav aria-label="Breadcrumb"><ul class="breadcrumbs">
+                        <li><a href="../">Acasă</a></li>
+                        <li aria-hidden="true">
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5.25 10.5L8.75 7L5.25 3.5" stroke="white" stroke-opacity="0.6"
+                                      stroke-width="1.16667" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </li>
+                        <li><a href="../prezentare-generala/">Piață</a></li>
+                        <li aria-hidden="true">
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5.25 10.5L8.75 7L5.25 3.5" stroke="white" stroke-opacity="0.6"
+                                      stroke-width="1.16667" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </li>
+                        <li><span aria-current="page">Cotații în timp real</span></li>
+                    </ul></nav>
+                    <h1 class="page_title">Cotații în timp real</h1>
+                    <div class="page_description">
+                        
+<p class="wp-block-paragraph">După începerea tranzacționării, Bursa Internațională a Moldovei va publica datele de piață pentru toate instrumentele admise la tranzacționare pe Piața Reglementată și pe Sistemul Multilateral de Tranzacționare (MTF).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bimx-ticker-wrap bx-ticker" role="region" aria-label="Bandă cu cotații demonstrative"><span class="bx-ticker-label">Date demonstrative</span><div class="bimx-ticker" id="bimx-ticker-content"></div><button type="button" class="bx-ticker-toggle" aria-pressed="false" data-pause="Pauză" data-play="Porniți">Pauză</button></div>
+<style>
+    .bimx-ticker-wrap {
+        width: 100%;
+        overflow: hidden; /* Ascunde ce iese din cadru */
+        background: #FFFFFF; /* Fundal închis conform stilului financiar */
+        padding: 10px 0;
+        border-bottom: 1px solid #E5E7EB;
+        position: relative;
+    }
+
+    .bimx-ticker {
+        display: flex;
+        white-space: nowrap;
+        width: max-content;
+        animation: ticker-scroll 20s linear infinite; /* Viteza de rulare */
+    }
+
+    /* Pauză la hover pentru a putea citi mai ușor */
+    .bimx-ticker-wrap:hover .bimx-ticker {
+        animation-play-state: paused;
+    }
+
+    .ticker-item {
+        display: flex;
+        align-items: center;
+        padding: 0 25px;
+    }
+
+    .t-symbol {
+        color: #1A2266;
+        margin-right: 8px;
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 16px;
+    }
+
+    .t-price {
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 16px;
+        color: #1A2266;
+    }
+
+    .t-pct {
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 16px;
+        margin-left: 8px;
+        color: #2BAB6F;
+    }
+
+    .t-pct.pos {
+        color: #10b981;
+    }
+
+    /* Verde */
+    .t-pct.neg {
+        color: #ef4444;
+    }
+
+    /* Roșu */
+
+    /* Animația de scroll infinit */
+    @keyframes ticker-scroll {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-50%);
+        }
+    }
+</style>        <div class="container"><p class="bx-msi-note">Conform Legii 171/2012 art. 118, societățile listate pe PR dezvăluie public informația aferentă guvernanței și activității acestora prin intermediul Mecanismului oficial de stocare a informației, care poate fi accesat aici <a href="https://emitent-msi.market.md" target="_blank" rel="noopener">https://emitent-msi.market.md</a></p></div>
+        <div class="container">
+            <div class="context_global">
+                <h2>Ce va fi disponibil</h2>
+                <p>Tabel unificat cu instrumentele admise, cu filtre și date afișate pentru fiecare instrument.</p>
+                <div class="lists">
+                    <div class="list">
+                        <h4 aria-level="3">Filtre disponibile</h4>
+                        <ul>
+<li>Tipul instrumentului (acțiuni, obligațiuni corporative, obligațiuni municipale, valori mobiliare de stat)</li>
+<li>Piața (PR / MTF)</li>
+<li>Sectorul de activitate al emitentului</li>
+<li>Moneda de tranzacționare</li>
+</ul>
+                    </div>
+                    <div class="list">
+                        <h4>Pentru fiecare instrument</h4>
+                        <ul>
+<li>Simbolul și denumirea emitentului</li>
+<li>Prețul de referință și ultimul preț</li>
+<li>Variația față de ședința precedentă</li>
+<li>Volumul și valoarea tranzacționate în ședința curentă</li>
+<li>Ora ultimei actualizări</li>
+</ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="main_indicators_wrap">
+            <div class="container">
+                <div class="main_indicators">
+                    <h2>Politica de acces la datele de piață</h2>
+                    <p></p>
+
+                    <div class="items">
+                                                                                    <div class="block">
+                                    <div class="icon bx-ic"><svg class="bx-i" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></div>
+                                    <h4 aria-level="3">Public</h4>
+                                    <p>Datele sunt publicate cu o întârziere de 15 minute față de fluxul de tranzacționare live, în conformitate cu practica europeană privind accesul gratuit la datele de piață.</p>
+                                </div>
+                                                            <div class="block">
+                                    <div class="icon bx-ic"><svg class="bx-i" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2.5" y="4" width="19" height="13" rx="2"/><path d="M8 21h8M12 17v4M6.5 13l3-3 3 2 4.5-4.5"/></svg></div>
+                                    <h4>Agenți de bursă și participanți instituționali</h4>
+                                    <p>Acces la datele în timp real (fără întârziere) prin abonament, direct din platforma ARENA.</p>
+                                </div>
+                                                            <div class="block">
+                                    <div class="icon bx-ic"><svg class="bx-i" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 18h18M7 18a5 5 0 0 1 10 0M12 3v6M9 6.5l3 3 3-3M4.5 11.5l1.5 1.5M19.5 11.5 18 13M3 21.5h18"/></svg></div>
+                                    <h4>Sfârșitul zilei (End of Day)</h4>
+                                    <p>Setul complet de date al ședinței este publicat gratuit la închiderea pieței și rămâne accesibil în secțiunea „Statistici de piață”.</p>
+                                </div>
+                                                                        </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="date_section bx-status-block">
+                <div class="left_side">
+                    <div class="icon bx-ic"><svg class="bx-i" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4.5" width="18" height="16.5" rx="2"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4M8 14h.01M12 14h.01M16 14h.01M8 17.5h.01M12 17.5h.01"/></svg></div>
+                    <div class="left_content">
+                        <h6 aria-level="5">Stare</h6>
+                        <h2>În pregătire</h2>
+                    </div>
+                </div>
+                <div class="right_side"><p>Cotațiile vor fi publicate după începerea tranzacționării, care urmează primei listări (planificată până la sfârșitul anului 2026).</p></div>
+            </div>
+        </div>
+        <hr>
+        <div class="container">
+    <div class="new_call_to_action">
+        <h6 aria-level="3"><span class="bx-ic-h6"><svg class="bx-i" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m3 6.5 9 6.5 9-6.5"/></svg></span>Contact pentru clarificări
+        </h6>
+        <h2>Informații suplimentare</h2>
+        <a href="mailto:office@bimx.md">office@bimx.md
+            <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3.50781 8.41553H13.3259" stroke="#1EB1F1" stroke-width="1.40259"
+                      stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M8.41797 3.50659L13.327 8.41564L8.41797 13.3247" stroke="#1EB1F1"
+                      stroke-width="1.40259" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </a>
+    </div>
+</div>    </div>
+</main><!-- #main -->
+</div><!-- #primary -->
+</div><!-- #content -->

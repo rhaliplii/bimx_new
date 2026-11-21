@@ -1,0 +1,239 @@
+[
+  {
+    "route": "anunturi-ale-emitentilor/",
+    "to": "/category/anunturi-ale-emitentilor/"
+  },
+  {
+    "route": "anunturi-bimx/",
+    "to": "/category/anunturi-bimx/"
+  },
+  {
+    "route": "baza-cunostintelor/",
+    "to": "/academy/#directii",
+    "template": "redirect"
+  },
+  {
+    "route": "category/stiri/",
+    "to": "/noutati/"
+  },
+  {
+    "route": "costuri/",
+    "to": "/tarifele-bursei/"
+  },
+  {
+    "route": "date-istorice/",
+    "to": "/cotatii-in-timp-real/"
+  },
+  {
+    "route": "en/anunturi-ale-emitentilor/",
+    "to": "/en/category/anunturi-ale-emitentilor/"
+  },
+  {
+    "route": "en/anunturi-bimx/",
+    "to": "/en/category/anunturi-bimx/"
+  },
+  {
+    "route": "en/baza-cunostintelor/",
+    "to": "/en/academy/#directii",
+    "template": "redirect"
+  },
+  {
+    "route": "en/category/stiri/",
+    "to": "/en/noutati/"
+  },
+  {
+    "route": "en/costuri/",
+    "to": "/en/tarifele-bursei/"
+  },
+  {
+    "route": "en/date-istorice/",
+    "to": "/en/cotatii-in-timp-real/"
+  },
+  {
+    "route": "en/evenimente/",
+    "to": "/en/academy/#evenimente",
+    "template": "redirect"
+  },
+  {
+    "route": "en/formare/",
+    "to": "/en/academy/#formare",
+    "template": "redirect"
+  },
+  {
+    "route": "en/glosar/",
+    "to": "/en/academy/#glosar",
+    "template": "redirect"
+  },
+  {
+    "route": "en/home/",
+    "to": "/en/",
+    "template": "redirect"
+  },
+  {
+    "route": "en/indici/",
+    "to": "/en/indicii-bursei/"
+  },
+  {
+    "route": "en/publicatii/",
+    "to": "/en/academy/#publicatii",
+    "template": "redirect"
+  },
+  {
+    "route": "en/resurse-educationale/",
+    "to": "/en/academy/#directii",
+    "template": "redirect"
+  },
+  {
+    "route": "en/stiri/",
+    "to": "/en/noutati/"
+  },
+  {
+    "route": "evenimente/",
+    "to": "/academy/#evenimente",
+    "template": "redirect"
+  },
+  {
+    "route": "formare/",
+    "to": "/academy/#formare",
+    "template": "redirect"
+  },
+  {
+    "route": "glosar/",
+    "to": "/academy/#glosar",
+    "template": "redirect"
+  },
+  {
+    "route": "indici/",
+    "to": "/indicii-bursei/"
+  },
+  {
+    "route": "publicatii/",
+    "to": "/academy/#publicatii",
+    "template": "redirect"
+  },
+  {
+    "route": "resurse-educationale/",
+    "to": "/academy/#directii",
+    "template": "redirect"
+  },
+  {
+    "route": "ru/anunturi-ale-emitentilor/",
+    "to": "/ru/category/anunturi-ale-emitentilor/"
+  },
+  {
+    "route": "ru/anunturi-bimx/",
+    "to": "/ru/category/anunturi-bimx/"
+  },
+  {
+    "route": "ru/baza-cunostintelor/",
+    "to": "/ru/academy/#directii",
+    "template": "redirect"
+  },
+  {
+    "route": "ru/category/stiri/",
+    "to": "/ru/noutati/"
+  },
+  {
+    "route": "ru/costuri/",
+    "to": "/ru/tarifele-bursei/"
+  },
+  {
+    "route": "ru/date-istorice/",
+    "to": "/ru/cotatii-in-timp-real/"
+  },
+  {
+    "route": "ru/evenimente/",
+    "to": "/ru/academy/#evenimente",
+    "template": "redirect"
+  },
+  {
+    "route": "ru/formare/",
+    "to": "/ru/academy/#formare",
+    "template": "redirect"
+  },
+  {
+    "route": "ru/glosar/",
+    "to": "/ru/academy/#glosar",
+    "template": "redirect"
+  },
+  {
+    "route": "ru/indici/",
+    "to": "/ru/indicii-bursei/"
+  },
+  {
+    "route": "ru/publicatii/",
+    "to": "/ru/academy/#publicatii",
+    "template": "redirect"
+  },
+  {
+    "route": "ru/resurse-educationale/",
+    "to": "/ru/academy/#directii",
+    "template": "redirect"
+  },
+  {
+    "route": "ru/stiri/",
+    "to": "/ru/noutati/"
+  },
+  {
+    "route": "stiri/",
+    "to": "/noutati/"
+  },
+  {
+    "route": "uk/anunturi-ale-emitentilor/",
+    "to": "/uk/category/anunturi-ale-emitentilor/"
+  },
+  {
+    "route": "uk/anunturi-bimx/",
+    "to": "/uk/category/anunturi-bimx/"
+  },
+  {
+    "route": "uk/baza-cunostintelor/",
+    "to": "/uk/academy/#directii",
+    "template": "redirect"
+  },
+  {
+    "route": "uk/category/stiri/",
+    "to": "/uk/noutati/"
+  },
+  {
+    "route": "uk/costuri/",
+    "to": "/uk/tarifele-bursei/"
+  },
+  {
+    "route": "uk/date-istorice/",
+    "to": "/uk/cotatii-in-timp-real/"
+  },
+  {
+    "route": "uk/evenimente/",
+    "to": "/uk/academy/#evenimente",
+    "template": "redirect"
+  },
+  {
+    "route": "uk/formare/",
+    "to": "/uk/academy/#formare",
+    "template": "redirect"
+  },
+  {
+    "route": "uk/glosar/",
+    "to": "/uk/academy/#glosar",
+    "template": "redirect"
+  },
+  {
+    "route": "uk/indici/",
+    "to": "/uk/indicii-bursei/"
+  },
+  {
+    "route": "uk/publicatii/",
+    "to": "/uk/academy/#publicatii",
+    "template": "redirect"
+  },
+  {
+    "route": "uk/resurse-educationale/",
+    "to": "/uk/academy/#directii",
+    "template": "redirect"
+  },
+  {
+    "route": "uk/stiri/",
+    "to": "/uk/noutati/"
+  }
+]
