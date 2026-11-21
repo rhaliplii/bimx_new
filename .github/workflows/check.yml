@@ -1,0 +1,22 @@
+# Builds the site for every pull request: the data checks (news, Academy) and the link checks run during the build,
+# so a broken press release or link shows up before it reaches main.
+name: Check
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - run: BIMX_MIRROR=1 npm run build

@@ -6,8 +6,10 @@ import { fileURLToPath } from 'node:url';
 import { writeSearchIndex } from './src/lib/search.mjs';
 import { writeMissingPdfs } from './src/lib/news-pdf.mjs';
 import { writeMissingGuidePdfs } from './src/lib/pdf.mjs';
+import { checkSite } from './src/lib/checks.mjs';
 
-// After the build: the search index (src/lib/search.mjs), PDFs of new press releases (src/lib/news-pdf.mjs), and pages that are files rather than directories (e.g. academy/programe/x/lesson.html) are emitted by Astro as
+// After the build: the search index (src/lib/search.mjs), PDFs of new press releases and guides (news-pdf.mjs, pdf.mjs),
+// the link checks (checks.mjs), and pages that are files rather than directories (e.g. academy/programe/x/lesson.html) are emitted by Astro as
 // lesson.html/index.html; move them to their real address after the build.
 function filePages() {
   return {
@@ -33,6 +35,9 @@ function filePages() {
         if (missing) console.log(`press release PDFs: ${made} of ${missing} printed` + (made < missing ? ' (Chrome missing or failed: set CHROME=…)' : ''));
         const [gMade, gMissing] = await writeMissingGuidePdfs(root);
         if (gMissing) console.log(`Academy guide PDFs: ${gMade} of ${gMissing} printed` + (gMade < gMissing ? ' (Chrome missing or failed: set CHROME=…)' : ''));
+        const { problems, summary } = checkSite(root);
+        console.log(summary);
+        if (problems.length) throw new Error('Site check failed:\n  ' + problems.join('\n  '));
       },
     },
   };
