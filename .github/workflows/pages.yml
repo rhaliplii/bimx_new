@@ -1,6 +1,9 @@
-# Construiește site-ul din src/ și publică dist/ pe GitHub Pages la fiecare push pe main – copie de previzualizare, cu noindex.
-# Necesită o singură dată: Settings → Pages → Build and deployment → Source: „GitHub Actions”.
-name: Deploy site
+# Builds the site and publishes dist/ on GitHub Pages – a public preview copy, with noindex.
+# Runs on every push to main only until the password-protected staging copy is configured (repository variable
+# STAGING_URL, see deploy/README.md); after that only by hand (Actions → Run workflow), so that a press release
+# merged for review is not public before its release.
+# Needs once: Settings → Pages → Build and deployment → Source: "GitHub Actions".
+name: Preview on GitHub Pages
 
 on:
   push:
@@ -18,18 +21,19 @@ concurrency:
 
 jobs:
   build:
+    if: github.event_name == 'workflow_dispatch' || vars.STAGING_URL == ''
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-node@v4
         with:
-          python-version: "3.12"
-      - name: Pillow (colțurile pozelor din Consiliu, sitegen/fixes.square_member_photos)
-        run: pip install pillow
-      - name: Validează, construiește și verifică linkurile
-        run: make check
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Build (test copy)
+        run: npm run build
         env:
-          BIMX_MIRROR: "1"     # copia de pe GitHub Pages: noindex + robots.txt; canonical și partajarea trimit la bimx.md
+          BIMX_MIRROR: "1"   # noindex on every page, robots.txt Disallow: /, no sitemap; canonical points to bimx.md
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist

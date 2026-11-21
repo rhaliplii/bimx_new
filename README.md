@@ -1,110 +1,102 @@
-# Site BIMx + BIMx Academy
+# bimx.md on Astro
 
-Site static: copia bimx.md și BIMx Academy, în română și în engleză. Totul se generează din `src/` în `dist/`.
-
-Cerințe: Python 3.9+ (doar biblioteca standard) și `make`.
-
-```
-make check     # validează lecțiile, construiește dist/ și verifică linkurile
-make serve     # construiește și pornește http://localhost:8000/
-```
-
-## Structura
+The bimx.md site (4 languages: RO at the root, `/en/`, `/uk/`, `/ru/`) and BIMx Academy, built as a static site with
+[Astro](https://astro.build). The output in `dist/` is plain HTML/CSS/JS for the existing Hostinger hosting.
 
 ```
-src/
-  academy/
-    content/ro/*.json, content/en/*.json   lecțiile (aceleași fișiere și slug-uri în ambele limbi)
-    i18n/ro.json, i18n/en.json             textele interfeței
-    catalog.json                           direcții, cursuri, publicații de pe prima pagină
-    templates/index.ro.html, index.en.html prima pagină (secțiunile BUILD se generează)
-    assets/                                css, js, imagini Academy
-  bimx-mirror/
-    ro/                                    paginile bimx.md (sursa ambelor limbi)
-    i18n/en.json                           traducerea EN: text RO → text EN
-    data/market.json                       datele de piață demonstrative (ticker, top-uri, grafic)
-    shared/                                wp-content, wp-includes (comune ambelor limbi)
-  site/replica.js                          formulare, partajare și accesibilitate (tastatură, Escape, aria-expanded)
-  site/site.css                            corecturile de stil peste tema bimx.md (audit UI/UX)
-  site/search.js                           căutarea din antet (index generat la build)
-tools/
-  build.py                                 punctul de intrare al build-ului
-  sitegen/                                 codul build-ului (config, mirror, translate, shell, academy, detach, fixes, pdf, search, seo, util, icons)
-  validate.py                              verifică lecțiile și că fiecare text bimx.md are traducere EN
-  check_links.py                           verifică linkurile locale din dist/, sitemap.xml și că nimic nu trimite spre copia GitHub
-  mirror_bimx.py                           descarcă din nou bimx.md în src/bimx-mirror/
-docs/                                      audituri și corespondență — doar local, exclus din git
-dist/                                      rezultatul build-ului — generat, nu se editează
+npm install
+npm run dev        # http://localhost:4321/ — live preview while editing
+npm run build      # dist/ — the site to publish (Chrome is used to print PDFs of new press releases)
+npm run release    # publish main on bimx.md (see Publishing)
+BIMX_MIRROR=1 npm run build   # test copy: every page noindex, robots.txt blocks everything, no sitemap
 ```
 
-## Ce e în `dist/`
+## Publishing
 
-| Adresă | Ce este |
+- Every push to `main` is built and published on the **staging** copy (password, noindex): check the change there.
+- `npm run release` publishes the current `main` on **bimx.md** (creates the release tag `vYYYY.MM.DD`).
+- Rollback, backups and the one-time hosting setup: [deploy/README.md](deploy/README.md).
+
+## Where to change what
+
+| What | Where |
 |---|---|
-| `index.html`, `identitate/`, `prezentare-generala/` … | bimx.md (RO) |
-| `en/index.html`, `en/identitate/` … | bimx.md (EN) — aceleași pagini, traduse |
-| `academy/`, `en/academy/` | BIMx Academy (RO / EN) |
+| **A new press release** | a new folder in `src/content/news/` (see below) |
+| Text of a press release | `src/content/news/<date>-<name>/ro.html`, `en.html`, `uk.html`, `ru.html` |
+| News categories | `src/content/news/categories.json` |
+| Texts of the news pages (tabs, labels, “About BIMx”) | `src/data/news-texts.json` |
+| An Academy lesson, course or guide | `src/content/academy/content/<lang>/*.json`, `catalog.json`, `i18n/<lang>.json` |
+| The main menu | `src/lib/menu.mjs` (labels in 4 languages + menu structure) |
+| Header, footer, `<head>` of the pages | `src/shell/<lang>/*.html` (one template per language; see below) |
+| Content of a regular page | `src/content/pages/<lang>/<page>/index.html` |
+| Styles and scripts | `public/assets/css/site.css`, `public/assets/js/*.js`, `public/wp-content/…` (WordPress theme) |
+| Images, PDFs, downloads | `public/` (published as they are, at the same address) |
+| Old addresses that redirect | `src/data/redirect-pages.json` |
 
-Butoanele RO/EN duc la aceeași pagină în cealaltă limbă. Meniul „BIMX ACADEMY” din bimx.md duce în Academy, iar paginile bimx.md înlocuite de Academy (`glosar/`, `formare/`, `publicatii/` …) redirecționează spre secțiunile corespunzătoare.
+## Adding a press release
 
-## Cum se actualizează
+1. Create `src/content/news/2026-12-05-short-name/news.json`:
 
-| Ce | Unde |
-|---|---|
-| O lecție | `src/academy/content/{ro,en}/NN-<program>.json` — apoi `make validate` |
-| Un text din interfață | `src/academy/i18n/{ro,en}.json` |
-| Cursurile / ghidurile de pe prima pagină | `src/academy/catalog.json` |
-| Conținutul fix al primei pagini Academy | `src/academy/templates/index.{ro,en}.html` |
-| Stiluri, scripturi, imagini Academy | `src/academy/assets/` |
-| Traducerea EN a unei pagini bimx.md | `src/bimx-mirror/i18n/en.json` — apoi `make validate` |
-| Copia bimx.md | `make mirror` (descarcă din nou tot de pe bimx.md), apoi `make validate` arată textele noi de tradus |
+   ```json
+   {
+     "path": "2026/12/05/short-name",
+     "date": "2026-12-05",
+     "section": "bimx",
+     "category": "listare",
+     "title":   { "ro": "…", "en": "…", "uk": "…", "ru": "…" },
+     "summary": { "ro": "…", "en": "…", "uk": "…", "ru": "…" }
+   }
+   ```
 
-Deploy: conținutul lui `dist/` (inclusiv `.htaccess`) se urcă în rădăcina bimx.md. Adresa publică e `SITE_URL` din `tools/sitegen/config.py` (https://bimx.md/): din ea se scriu canonical, hreflang, Open Graph, sitemap.xml și robots.txt.
+   - `path` is the page address (`https://bimx.md/2026/12/05/short-name/`).
+   - `section`: `bimx` (BIMx announcements), `avize` (market notices) or `emitenti` (issuer announcements).
+   - `category`: one of the keys in `categories.json` (`parteneriat`, `evenimente`, `admitere`, `licenta`, `actionari`, `listare`).
+   - `summary`: one or two sentences, shown under the title and in the lists.
+   - Optional: `description` (for search engines; otherwise the first paragraph), `cardTitle` (shorter title for lists and
+     the home page), `crumb` (breadcrumb), `homeExcerpt` (text on the home page).
+   - Two press releases on the same day: give the one that should come first (home page headline, "New" label)
+     `"order": 0` and the other `"order": 1`.
+   - Photo (shown only in the article and as the sharing image):
+     `"photo": { "src": "/assets/img/news/name.webp", "alt": { "ro": "…", … }, "caption": { "ro": "…", … } }`,
+     with `public/assets/img/news/name.webp` and a JPG copy `name.jpg` next to it (1200 × 705).
 
-Copia de test: la fiecare push pe `main`, `.github/workflows/pages.yml` rulează `make check` cu `BIMX_MIRROR=1` și publică `dist/` pe GitHub Pages. Toate paginile ei au `noindex, nofollow`, robots.txt are `Disallow: /`, nu există sitemap.xml, iar canonical trimite spre bimx.md, așa că motoarele de căutare nu o indexează. Setare necesară o singură dată: Settings → Pages → Source: „GitHub Actions”. Linkurile din `dist/` sunt relative, deci site-ul funcționează și dintr-un subdirector; local se deschide cu `make serve` (linkurile duc la directoare, `…/`, nu la `…/index.html`).
+2. Add the text in four files next to it: `ro.html`, `en.html`, `uk.html`, `ru.html` — paragraphs, lists, tables in HTML.
+   Links and images inside the site are written from the root: `<a href="/procesul-de-listare/">`, `<img src="/assets/img/news/x.webp">`.
 
-## Versiunea engleză
+3. `npm run build`. The press release gets its page in 4 languages, appears first on the home page, in the news lists
+   and filters, in “related press releases”, in the sitemap and in the site search, and its PDF is printed.
 
-bimx.md nu are versiune engleză (doar o pagină provizorie `/en/home/`), așa că fiecare pagină EN se generează din pagina RO: `tools/sitegen/translate.py` extrage textul fiecărui bloc (paragraf, titlu, link, celulă, atribute `alt`/`title`/`placeholder`), iar build-ul îl înlocuiește cu traducerea din `src/bimx-mirror/i18n/en.json`. Tag-urile din interiorul unui text apar în catalog ca marcaje `{1}`, `{2}` … și trebuie păstrate în traducere. Secțiunea `js` a catalogului traduce textele din scripturile temei.
+If the build stops with an error, it says which file and field is wrong (for example a missing translation).
 
-Un text fără traducere rămâne în română în pagina EN; `make validate` le listează. Documentele PDF rămân în română.
+## How the site is built
 
-## Independent de bimx.md
+- **Every page = shell + body.** The parts shared by all pages (head, header, footer, scripts) are templates in
+  `src/shell/<lang>/` with placeholders: `{{u:/path/}}` (link to a page, written relative on output), `{{alt:en}}`
+  (same page in another language), `{{menu}}`, `{{title}}`… The page body and fields (title, description) are in
+  `src/content/pages/` or are generated (news, Academy). `src/lib/shell.mjs` puts them together.
+- **Generated from data:** press releases, news lists, the news on the home page (`src/lib/news.mjs`), Academy pages
+  (`src/lib/academy.mjs`), the menu (`src/lib/menu.mjs`), SEO tags, `sitemap.xml`, `robots.txt`, `.htaccess`
+  (`src/lib/seo.mjs`), redirect pages, the search index and the `?v=` versions of CSS/JS files (after the build:
+  `src/lib/search.mjs`), PDFs of new press releases (`src/lib/news-pdf.mjs`).
+- **Links stay relative** (`../identitate/`), so the site also works from a sub-folder or a test copy.
+- **Data checks:** the build stops with a list of problems when a news folder or an Academy lesson is incomplete.
+- **PDFs:** published PDFs are files in `public/`. The build prints the missing ones with Chrome: new press releases and
+  new Academy guides. To reprint a changed one, delete it from `public/`.
 
-Niciun link, buton, formular sau resursă din `dist/` nu trimite spre bimx.md (pasul `sitegen/detach.py`; `make check` pică dacă apare vreunul):
+## Checking a change against the previous build
 
-- linkurile spre pagini copiate devin locale; linkurile rupte și pe bimx.md au echivalent local în `LINK_ALIASES` (ex. `/calendar` → `trading-calendar/`);
-- „Intra in cont” / „Log In” au fost scoase: autentificarea există doar pe serverul bimx.md;
-- formularul de contact validează câmpurile obligatorii, dar nu trimite date: afișează „Această funcție nu este disponibilă momentan.”; newsletterul MailPoet e înlocuit de linkuri spre LinkedIn și Facebook;
-- căutarea din antet funcționează local: la build, `tools/sitegen/search.py` indexează conținutul principal al paginilor (RO și EN, fără antet, subsol, secțiuni ascunse și pagini „În curând”) în `dist/assets/search/{ro,en}.js`, iar `src/site/search.js` caută în browser, fără diacritice, cu rezultatele pe măsură ce scrii;
-- butoanele de partajare (Facebook, X, LinkedIn, copiere link) folosesc adresa paginii curente.
-- tickerul folosește datele demonstrative din `src/bimx-mirror/data/market.json` (ca pe bimx.md, unde sunt tot simulate) și apare doar pe prima pagină și pe paginile de piață, marcat „Date demonstrative”.
+`scripts/compare.mjs` compares `dist/` with another build, file by file (HTML also after normalising, PDFs by text
+with `PDF_PYTHON=<python with pypdf>`). Useful before publishing a refactoring that should not change the pages:
 
-Adresele de email @bimx.md și mențiunile „bimx.md” din textul lecțiilor rămân.
+```
+git stash; npm run build; mv dist /tmp/before; git stash pop
+npm run build && node scripts/compare.mjs /tmp/before
+```
 
-## Corecturile din auditul UI/UX
+## History
 
-Paginile bimx.md vin neschimbate din `src/bimx-mirror/`, iar corecturile se aplică la build, ca un nou `make mirror` să nu le piardă:
+Until November 2026 the site was built by a Python generator (`tools/build.py`, removed in the commit that moved this
+project to the repository root; see the git history). The Astro build was checked against its output file by file:
+all 774 files identical, also in test copy mode (`BIMX_MIRROR=1`).
 
-- `tools/sitegen/fixes.py` — antet (pre-lansare în loc de „Market Open”, fără login, butoane accesibile), subsol (adresă, rețele sociale, fără pagini goale), breadcrumbs, prima pagină (butoane cu destinații reale, iconițe SVG, fără secțiunile de piață ascunse), Centrul de descărcare, paginile „În curând” transformate în pagini reale (Calendarul de tranzacționare, Statut, Organigrama, Situații financiare), redirecționări pentru rutele duplicate, skip-link, meta description, ierarhia titlurilor (`aria-level`), corpul de text mai mare în CSS-ul temei;
-- `src/site/site.css` — stilurile corecturilor și tokenurile comune `--bx-*` (folosite și de Academy);
-- `tools/sitegen/pdf.py` — PDF-urile ghidurilor Academy, generate cu Chrome headless (dacă Chrome lipsește, butonul tipărește pagina; calea se poate da prin `CHROME=`).
-
-Fiecare corectură e etichetată în cod cu numărul problemei din audit (UI-xx).
-
-## SEO
-
-Ultimul pas al build-ului (`tools/sitegen/seo.py`) lucrează peste paginile terminate:
-
-- fiecare pagină are un singur canonical cu adresă completă pe https://bimx.md/ și hreflang (`ro`, `en`, `uk`, `ru`, `x-default`) spre variantele ei indexabile; og:url și sitemap.xml folosesc aceleași adrese;
-- linkurile interne `…/index.html` devin `…/`, iar `.htaccess` redirecționează (301) `…/index.html` → `…/`: o singură adresă pe pagină;
-- noindex pe paginile „în pregătire” (`bx-prep`), pe categoriile de știri fără articole și pe autentificare; ele nu apar în sitemap și nici în hreflang-ul altor pagini, iar noindex dispare singur când pagina primește conținut;
-- prima pagină are titlul complet al bursei și datele organizației (JSON-LD: nume, logo, adresă, e-mail, LinkedIn, Facebook);
-- rutele vechi (`stiri/`, `costuri/`, `glosar/`, `en/home/` …) rămân pagini cu redirecționare meta, dar pe server au 301 în `.htaccess`, generate din aceleași pagini; sitemap-urile WordPress (`wp-sitemap*.xml`) duc la `sitemap.xml`;
-- `robots.txt`, `sitemap.xml` (cu variantele de limbă) și `404.html` (antetul și subsolul site-ului, adrese de la rădăcină) se generează la fiecare build.
-
-HTTPS și redirecționarea www → bimx.md sunt setate în panoul găzduirii, nu în `.htaccess`.
-
-## Limitări
-
-Formularele și autentificarea au nevoie de un server și nu funcționează în site-ul static. Câteva imagini din CSS-urile temei (slick, lightbox) lipsesc și de pe bimx.md; `check_links.py` le raportează doar ca avertisment.
+Known issues inherited from the old site are listed in the pull request that introduced Astro, together with their fixes.

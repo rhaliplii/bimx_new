@@ -1,0 +1,86 @@
+{
+  "parteneriat": {
+    "one": [
+      "Parteneriat",
+      "Partnership",
+      "Партнёрство",
+      "Партнерство"
+    ],
+    "many": [
+      "Parteneriate",
+      "Partnerships",
+      "Партнёрства",
+      "Партнерства"
+    ]
+  },
+  "evenimente": {
+    "one": [
+      "Evenimente",
+      "Events",
+      "События",
+      "Події"
+    ],
+    "many": [
+      "Evenimente",
+      "Events",
+      "События",
+      "Події"
+    ]
+  },
+  "admitere": {
+    "one": [
+      "Admitere",
+      "Admission",
+      "Допуск",
+      "Допуск"
+    ],
+    "many": [
+      "Admitere",
+      "Admission",
+      "Допуск",
+      "Допуск"
+    ]
+  },
+  "licenta": {
+    "one": [
+      "Licență",
+      "Licence",
+      "Лицензия",
+      "Ліцензія"
+    ],
+    "many": [
+      "Licență",
+      "Licence",
+      "Лицензия",
+      "Ліцензія"
+    ]
+  },
+  "actionari": {
+    "one": [
+      "Acționari",
+      "Shareholders",
+      "Акционеры",
+      "Акціонери"
+    ],
+    "many": [
+      "Acționari",
+      "Shareholders",
+      "Акционеры",
+      "Акціонери"
+    ]
+  },
+  "listare": {
+    "one": [
+      "Listare",
+      "Listing",
+      "Листинг",
+      "Лістинг"
+    ],
+    "many": [
+      "Listare",
+      "Listing",
+      "Листинг",
+      "Лістинг"
+    ]
+  }
+}

@@ -1,0 +1,554 @@
+{
+ "MONTHS": {
+  "ro": [
+   [
+    "ianuarie",
+    "IAN."
+   ],
+   [
+    "februarie",
+    "FEBR."
+   ],
+   [
+    "martie",
+    "MART."
+   ],
+   [
+    "aprilie",
+    "APR."
+   ],
+   [
+    "mai",
+    "MAI"
+   ],
+   [
+    "iunie",
+    "IUN."
+   ],
+   [
+    "iulie",
+    "IUL."
+   ],
+   [
+    "august",
+    "AUG."
+   ],
+   [
+    "septembrie",
+    "SEPT."
+   ],
+   [
+    "octombrie",
+    "OCT."
+   ],
+   [
+    "noiembrie",
+    "NOI."
+   ],
+   [
+    "decembrie",
+    "DEC."
+   ]
+  ],
+  "en": [
+   [
+    "January",
+    "JAN"
+   ],
+   [
+    "February",
+    "FEB"
+   ],
+   [
+    "March",
+    "MAR"
+   ],
+   [
+    "April",
+    "APR"
+   ],
+   [
+    "May",
+    "MAY"
+   ],
+   [
+    "June",
+    "JUN"
+   ],
+   [
+    "July",
+    "JUL"
+   ],
+   [
+    "August",
+    "AUG"
+   ],
+   [
+    "September",
+    "SEP"
+   ],
+   [
+    "October",
+    "OCT"
+   ],
+   [
+    "November",
+    "NOV"
+   ],
+   [
+    "December",
+    "DEC"
+   ]
+  ],
+  "ru": [
+   [
+    "января",
+    "ЯНВ."
+   ],
+   [
+    "февраля",
+    "ФЕВР."
+   ],
+   [
+    "марта",
+    "МАРТА"
+   ],
+   [
+    "апреля",
+    "АПР."
+   ],
+   [
+    "мая",
+    "МАЯ"
+   ],
+   [
+    "июня",
+    "ИЮН."
+   ],
+   [
+    "июля",
+    "ИЮЛ."
+   ],
+   [
+    "августа",
+    "АВГ."
+   ],
+   [
+    "сентября",
+    "СЕНТ."
+   ],
+   [
+    "октября",
+    "ОКТ."
+   ],
+   [
+    "ноября",
+    "НОЯБ."
+   ],
+   [
+    "декабря",
+    "ДЕК."
+   ]
+  ],
+  "uk": [
+   [
+    "січня",
+    "СІЧ."
+   ],
+   [
+    "лютого",
+    "ЛЮТ."
+   ],
+   [
+    "березня",
+    "БЕР."
+   ],
+   [
+    "квітня",
+    "КВІТ."
+   ],
+   [
+    "травня",
+    "ТРАВ."
+   ],
+   [
+    "червня",
+    "ЧЕРВ."
+   ],
+   [
+    "липня",
+    "ЛИП."
+   ],
+   [
+    "серпня",
+    "СЕРП."
+   ],
+   [
+    "вересня",
+    "ВЕР."
+   ],
+   [
+    "жовтня",
+    "ЖОВТ."
+   ],
+   [
+    "листопада",
+    "ЛИСТ."
+   ],
+   [
+    "грудня",
+    "ГРУД."
+   ]
+  ]
+ },
+ "T": {
+  "title": [
+   "Noutăți & Comunicate",
+   "News & Announcements",
+   "Новости и Объявления",
+   "Новини та Оголошення"
+  ],
+  "lead_toate": [
+   "Anunțurile Bursei Internaționale a Moldovei, avizele de piață și anunțurile emitenților admiși la tranzacționare.",
+   "Announcements of the Moldova International Stock Exchange, market notices and announcements by issuers admitted to trading.",
+   "Объявления Международной фондовой биржи Молдовы, рыночные уведомления и объявления эмитентов, допущенных к торгам.",
+   "Оголошення Міжнародної фондової біржі Молдови, ринкові повідомлення та оголошення емітентів, допущених до торгів."
+  ],
+  "lead_bimx": [
+   "Anunțurile oficiale ale Bursei Internaționale a Moldovei: licențiere, admitere, parteneriate, evenimente și hotărârile acționarilor.",
+   "Official announcements of the Moldova International Stock Exchange: licensing, admission, partnerships, events and shareholder resolutions.",
+   "Официальные объявления Международной фондовой биржи Молдовы: лицензирование, допуск, партнёрства, события и решения акционеров.",
+   "Офіційні оголошення Міжнародної фондової біржі Молдови: ліцензування, допуск, партнерства, події та рішення акціонерів."
+  ],
+  "lead_avize": [
+   "Avizele operaționale ale BIMx: modificări ale regulilor, comisioane, calendarul de tranzacționare, membri și instrumente admise sau suspendate.",
+   "BIMx operational notices: rule changes, fees, the trading calendar, admitted members and instruments admitted or suspended.",
+   "Операционные уведомления BIMx: изменения правил, комиссии, торговый календарь, допущенные участники и инструменты, допущенные или приостановленные.",
+   "Операційні повідомлення BIMx: зміни правил, комісії, торговельний календар, допущені учасники та інструменти, допущені або призупинені."
+  ],
+  "lead_emitenti": [
+   "Raportări curente, rapoarte financiare și hotărâri ale adunărilor generale publicate de emitenții admiși la tranzacționare.",
+   "Current reports, financial reports and general meeting resolutions published by issuers admitted to trading.",
+   "Текущие отчёты, финансовые отчёты и решения общих собраний, публикуемые эмитентами, допущенными к торгам.",
+   "Поточні звіти, фінансові звіти та рішення загальних зборів, які публікують емітенти, допущені до торгів."
+  ],
+  "tabs_label": [
+   "Tipul publicației",
+   "Publication type",
+   "Тип публикации",
+   "Тип публікації"
+  ],
+  "tab_all": [
+   "Toate",
+   "All",
+   "Все",
+   "Усі"
+  ],
+  "tab_bimx": [
+   "Anunțuri BIMx",
+   "BIMx announcements",
+   "Объявления BIMx",
+   "Оголошення BIMx"
+  ],
+  "tab_avize": [
+   "Avize de piață",
+   "Market notices",
+   "Рыночные уведомления",
+   "Ринкові повідомлення"
+  ],
+  "tab_issuers": [
+   "Anunțuri ale emitenților",
+   "Issuer announcements",
+   "Объявления эмитентов",
+   "Оголошення емітентів"
+  ],
+  "type_bimx": [
+   "Anunț BIMx",
+   "BIMx announcement",
+   "Объявление BIMx",
+   "Оголошення BIMx"
+  ],
+  "type_aviz": [
+   "Aviz de piață",
+   "Market notice",
+   "Рыночное уведомление",
+   "Ринкове повідомлення"
+  ],
+  "cat": [
+   "Categoria",
+   "Category",
+   "Категория",
+   "Категорія"
+  ],
+  "cat_all": [
+   "Toate categoriile",
+   "All categories",
+   "Все категории",
+   "Усі категорії"
+  ],
+  "year": [
+   "Anul",
+   "Year",
+   "Год",
+   "Рік"
+  ],
+  "year_all": [
+   "Toți anii",
+   "All years",
+   "Все годы",
+   "Усі роки"
+  ],
+  "none": [
+   "Nu există publicații pentru filtrele alese.",
+   "There are no publications for the selected filters.",
+   "Нет публикаций по выбранным фильтрам.",
+   "Немає публікацій за обраними фільтрами."
+  ],
+  "new": [
+   "Nou",
+   "New",
+   "Новое",
+   "Нове"
+  ],
+  "read": [
+   "Citiți comunicatul",
+   "Read the announcement",
+   "Читать сообщение",
+   "Читати повідомлення"
+  ],
+  "read_aviz": [
+   "Citiți avizul",
+   "Read the notice",
+   "Читать уведомление",
+   "Читати повідомлення"
+  ],
+  "empty_h": [
+   "Încă nu există anunțuri ale emitenților",
+   "No issuer announcements yet",
+   "Объявлений эмитентов пока нет",
+   "Оголошень емітентів поки немає"
+  ],
+  "empty_p": [
+   "Anunțurile companiilor admise la tranzacționare (raportări curente, rapoarte financiare și hotărâri ale adunărilor generale) vor fi publicate aici după primele listări, planificate până la sfârșitul anului 2026.",
+   "Announcements by companies admitted to trading (current reports, financial reports and general meeting resolutions) will be published here after the first listings, planned by the end of 2026.",
+   "Объявления компаний, допущенных к торгам (текущие отчёты, финансовые отчёты и решения общих собраний), будут публиковаться здесь после первых листингов, запланированных до конца 2026 года.",
+   "Оголошення компаній, допущених до торгів (поточні звіти, фінансові звіти та рішення загальних зборів), публікуватимуться тут після перших лістингів, запланованих до кінця 2026 року."
+  ],
+  "empty_hint": [
+   "Le veți putea filtra după emitent, tipul raportului și perioadă.",
+   "You will be able to filter them by issuer, report type and period.",
+   "Их можно будет фильтровать по эмитенту, типу отчёта и периоду.",
+   "Їх можна буде фільтрувати за емітентом, типом звіту та періодом."
+  ],
+  "avize_empty_h": [
+   "Încă nu există avize de piață",
+   "No market notices yet",
+   "Рыночных уведомлений пока нет",
+   "Ринкових повідомлень поки немає"
+  ],
+  "avize_empty_p": [
+   "Aici vor fi publicate avizele de piață: modificări ale regulilor, comisioane, calendarul de tranzacționare și zilele nelucrătoare, membrii admiși și instrumentele admise sau suspendate. Primele avize vor apărea odată cu admiterea primilor membri.",
+   "Market notices will be published here: rule changes, fees, the trading calendar and non-trading days, admitted members and instruments admitted or suspended. The first notices will appear when the first members are admitted.",
+   "Здесь будут публиковаться рыночные уведомления: изменения правил, комиссии, торговый календарь и неторговые дни, допущенные участники и инструменты, допущенные или приостановленные. Первые уведомления появятся с допуском первых участников.",
+   "Тут публікуватимуться ринкові повідомлення: зміни правил, комісії, торговельний календар і неторговельні дні, допущені учасники та інструменти, допущені або призупинені. Перші повідомлення з’являться з допуском перших учасників."
+  ],
+  "calendar": [
+   "Calendarul de tranzacționare",
+   "Trading calendar",
+   "Календарь торгов",
+   "Календар торгів"
+  ],
+  "empty_bimx": [
+   "Vedeți anunțurile BIMx",
+   "See BIMx announcements",
+   "Смотреть объявления BIMx",
+   "Переглянути оголошення BIMx"
+  ],
+  "empty_listing": [
+   "Procesul de listare",
+   "Listing process",
+   "Процесс листинга",
+   "Процес лістингу"
+  ],
+  "press_h": [
+   "Contact pentru presă",
+   "Press contact",
+   "Контакты для прессы",
+   "Контакти для преси"
+  ],
+  "press_p": [
+   "Întrebări despre anunțurile BIMx și solicitări de interviu.",
+   "Questions about BIMx announcements and interview requests.",
+   "Вопросы об объявлениях BIMx и запросы на интервью.",
+   "Запитання щодо повідомлень BIMx і запити на інтерв’ю."
+  ],
+  "type_emitent": [
+   "Anunț al emitentului",
+   "Issuer announcement",
+   "Объявление эмитента",
+   "Оголошення емітента"
+  ]
+ },
+ "CT": {
+  "share": [
+   "Distribuiți",
+   "Share",
+   "Поделиться",
+   "Поділитися"
+  ],
+  "rail": [
+   "Acțiuni pentru acest comunicat",
+   "Actions for this press release",
+   "Действия с пресс-релизом",
+   "Дії з прес-релізом"
+  ],
+  "pdf": [
+   "Deschideți comunicatul în format PDF (filă nouă)",
+   "Open the press release as PDF (new tab)",
+   "Открыть пресс-релиз в формате PDF (новая вкладка)",
+   "Відкрити прес-реліз у форматі PDF (нова вкладка)"
+  ],
+  "city": [
+   "Chișinău",
+   "Chișinău",
+   "Кишинэу",
+   "Кишинеу"
+  ],
+  "company": [
+   "Bursa Internațională a Moldovei",
+   "Moldova International Stock Exchange",
+   "Международная фондовая биржа Молдовы",
+   "Міжнародна фондова біржа Молдови"
+  ],
+  "company_sa": [
+   "Bursa Internațională a Moldovei S.A.",
+   "Moldova International Stock Exchange JSC",
+   "АО «Международная фондовая биржа Молдовы»",
+   "АТ «Міжнародна фондова біржа Молдови»"
+  ],
+  "licence": [
+   "Licență de operator de piață CNPF\\Aseria 000945 din 21.08.2026",
+   "CNPF market operator licence\\Aseries 000945 of 21.08.2026",
+   "Лицензия оператора рынка НКФР\\Aсерия 000945 от 21.08.2026",
+   "Ліцензія оператора ринку НКФР\\Aсерія 000945 від 21.08.2026"
+  ],
+  "address": [
+   "str. Vlaicu Pârcălab 63, MD-2012, Chișinău, Republica Moldova",
+   "63 Vlaicu Pârcălab St., MD-2012, Chișinău, Republic of Moldova",
+   "ул. Влайку Пыркэлаб, 63, MD-2012, Кишинэу, Республика Молдова",
+   "вул. Влайку Пиркелаб, 63, MD-2012, Кишинеу, Республіка Молдова"
+  ],
+  "ids": [
+   "IDNO 1025600073907 · Licență CNPF seria 000945",
+   "IDNO 1025600073907 · CNPF licence series 000945",
+   "IDNO 1025600073907 · Лицензия НКФР серия 000945",
+   "IDNO 1025600073907 · Ліцензія НКФР серія 000945"
+  ],
+  "page": [
+   "Pagina \" counter(page) \" din \" counter(pages)",
+   "Page \" counter(page) \" of \" counter(pages)",
+   "Страница \" counter(page) \" из \" counter(pages)",
+   "Сторінка \" counter(page) \" з \" counter(pages)"
+  ],
+  "about_t": [
+   "Despre BIMx",
+   "About BIMx",
+   "О BIMx",
+   "Про BIMx"
+  ],
+  "about": [
+   "Bursa Internațională a Moldovei (BIMx) este operator de piață licențiat de Comisia Națională a Pieței Financiare (CNPF) la 21 august 2026 pentru Piața Reglementată și sistemul multilateral de tranzacționare (MTF). Acționariatul reunește zece entități instituționale din Republica Moldova și România; Bursa de Valori București (BVB) este acționar și partener strategic.",
+   "Moldova International Stock Exchange (BIMx) is a market operator licensed by the National Commission for Financial Markets (CNPF) on 21 August 2026 for the Regulated Market and the multilateral trading facility (MTF). Its shareholders are ten institutional entities from the Republic of Moldova and Romania; the Bucharest Stock Exchange (BVB) is a shareholder and strategic partner.",
+   "Международная фондовая биржа Молдовы (BIMx) — оператор рынка, лицензированный Национальной комиссией по финансовому рынку (НКФР) 21 августа 2026 г. для регулируемого рынка и многосторонней торговой системы (MTF). Акционерами являются десять институциональных организаций из Республики Молдова и Румынии; Бухарестская фондовая биржа (BVB) — акционер и стратегический партнёр.",
+   "Міжнародна фондова біржа Молдови (BIMx) — оператор ринку, ліцензований Національною комісією з фінансового ринку (НКФР) 21 серпня 2026 р. для регульованого ринку та багатосторонньої торговельної системи (MTF). Акціонерами є десять інституційних організацій з Республіки Молдова та Румунії; Бухарестська фондова біржа (BVB) — акціонер і стратегічний партнер."
+  ]
+ },
+ "CP": {
+  "home": [
+   "Acasă",
+   "Home",
+   "Главная",
+   "Головна"
+  ],
+  "news": [
+   "Noutăți",
+   "News",
+   "Новости",
+   "Новини"
+  ],
+  "bimx": [
+   "Anunțuri BIMx",
+   "BIMx announcements",
+   "Объявления BIMx",
+   "Оголошення BIMx"
+  ],
+  "info": [
+   "Informații despre comunicat",
+   "About this press release",
+   "О пресс-релизе",
+   "Про прес-реліз"
+  ],
+  "pdf_btn": [
+   "Descărcați PDF",
+   "Download PDF",
+   "Скачать PDF",
+   "Завантажити PDF"
+  ],
+  "similar": [
+   "Comunicate similare",
+   "Related press releases",
+   "Похожие пресс-релизы",
+   "Схожі прес-релізи"
+  ],
+  "all": [
+   "Toate noutățile",
+   "All news",
+   "Все новости",
+   "Усі новини"
+  ],
+  "press_q": [
+   "Întrebări din partea presei?",
+   "Media enquiries?",
+   "Вопросы от прессы?",
+   "Запитання від преси?"
+  ],
+  "press": [
+   "Contact presă",
+   "Press contact",
+   "Контакт для прессы",
+   "Контакт для преси"
+  ],
+  "hours_t": [
+   "Program",
+   "Hours",
+   "График работы",
+   "Графік роботи"
+  ],
+  "hours": [
+   "Lun – Vin: 09:00 – 18:00 · Weekend și sărbători: închis",
+   "Mon – Fri: 09:00 – 18:00 · Weekends and public holidays: closed",
+   "Пн – Пт: 09:00 – 18:00 · Выходные и праздничные дни: закрыто",
+   "Пн – Пт: 09:00 – 18:00 · Вихідні та святкові дні: зачинено"
+  ]
+ },
+ "crumbs": {
+  "home": [
+   "Acasă",
+   "Home",
+   "Главная",
+   "Головна"
+  ],
+  "news": [
+   "Noutăți & Comunicate",
+   "News &amp; Announcements",
+   "Новости и Объявления",
+   "Новини та Оголошення"
+  ],
+  "kind": [
+   "Comunicat de presă",
+   "Press release",
+   "Пресс-релиз",
+   "Прес-реліз"
+  ]
+ }
+}

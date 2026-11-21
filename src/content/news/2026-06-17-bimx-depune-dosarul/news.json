@@ -1,0 +1,50 @@
+{
+  "path": "2026/06/17/bimx-depune-dosarul-pentru-obtinerea-licentei-de-operator-de-piata",
+  "date": "2026-06-17",
+  "section": "bimx",
+  "category": "licenta",
+  "order": 8,
+  "title": {
+    "ro": "BIMx depune dosarul pentru obținerea licenței de operator de piață",
+    "en": "BIMx submits its application for a market operator licence",
+    "uk": "BIMx подає документи для отримання ліцензії оператора ринку",
+    "ru": "BIMx подаёт документы для получения лицензии оператора рынка"
+  },
+  "cardTitle": {
+    "ro": "BIMx depune dosarul pentru obținerea licenței de operator de piață",
+    "en": "BIMx submits its application for a market operator licence",
+    "uk": "BIMx подає документи на отримання ліцензії оператора ринку",
+    "ru": "BIMx подаёт документы на получение лицензии оператора рынка"
+  },
+  "pageTitle": {
+    "ro": "BIMx depune dosarul pentru obținerea licenței de operator de piață  &#8211; BIMx",
+    "uk": "BIMx подає документи для отримання ліцензії оператора ринку — BIMx"
+  },
+  "summary": {
+    "ro": "BIMx a depus la Comisia Națională a Pieței Financiare dosarul pentru obținerea licenței de operator de piață.",
+    "en": "BIMx has filed its application for a market operator licence with the National Commission for Financial Markets.",
+    "uk": "BIMx подала до Національної комісії з фінансового ринку документи на отримання ліцензії оператора ринку.",
+    "ru": "BIMx подала в Национальную комиссию по финансовому рынку документы на получение лицензии оператора рынка."
+  },
+  "description": {
+    "ro": "17.06.2026, Chișinău – Bursa Internațională a Moldovei (BIMx) a depus marți, la Comisia Națională a Pieței Financiare (CNPF), dosarul pentru obținerea…",
+    "en": "17.06.2026, Chișinău – On Tuesday, the Moldova International Stock Exchange (BIMx) submitted its application for a market operator licence to the National…",
+    "uk": "17.06.2026, Кишинів — Міжнародна фондова біржа Молдови (BIMx) у вівторок подала до Національної комісії з фінансового ринку (НКФР) документи для отримання…",
+    "ru": "17.06.2026, Кишинёв — Международная фондовая биржа Молдовы (BIMx) во вторник подала в Национальную комиссию по финансовому рынку (НКФР) пакет документов для…"
+  },
+  "pdf": "BIMx-bimx-depune-dosarul.pdf",
+  "legacy": {
+    "postId": "1",
+    "wpPost": "1",
+    "wpContainer": "1",
+    "parts": {
+      "open": "open-news",
+      "head": "head-news-2",
+      "mid": "mid-news",
+      "pre": "pre-news",
+      "header": "header-news",
+      "footer": "footer-news",
+      "tail": "tail-news"
+    }
+  }
+}

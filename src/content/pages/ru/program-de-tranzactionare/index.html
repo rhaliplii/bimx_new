@@ -1,0 +1,209 @@
+---
+route: "ru/program-de-tranzactionare/"
+parts: {"open":"open-news","head":"head-news-3","mid":"mid-news","pre":"pre-news","header":"header-news","footer":"footer-page","tail":"tail-page"}
+title: "Расписание торгов – BIMx"
+description: "Торговая сессия на рынках, администрируемых Международной фондовой биржей Молдовы, проводится ежедневно по рабочим дням с 10:00 до 14:00 по времени Молдовы."
+bodyAttrs: " class=\"wp-singular page-template page-template-program-tranzactionare page-template-program-tranzactionare-php page page-id-854 wp-custom-logo wp-embed-responsive wp-theme-victor wp-child-theme-victor-child is-light-theme no-js singular has-main-navigation\""
+---
+<!-- #masthead -->
+    <div id="content" class="site-content">
+        <div id="primary" class="content-area">
+            <main id="main" class="site-main">
+<div class="container_fluid">
+    <div class="second_main_section">
+        <div class="container">
+            <div class="secont_main_section_content">
+                <nav aria-label="Навигационная цепочка"><ul class="breadcrumbs">
+                    <li><a href="../">Главная</a></li>
+                    <li aria-hidden="true">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5.25 10.5L8.75 7L5.25 3.5" stroke="white" stroke-opacity="0.6"
+                                  stroke-width="1.16667" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </li>
+                    <li><span aria-current="page">Расписание торгов</span></li>
+                </ul></nav>
+                <h1 class="page_title">Расписание торгов</h1>
+                <div class="page_description">
+                    
+<p class="wp-block-paragraph">Торговая сессия на рынках, администрируемых Международной фондовой биржей Молдовы, проводится ежедневно по рабочим дням с 10:00 до 14:00 по времени Молдовы.</p>
+
+
+
+<p class="wp-block-paragraph"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+<style>
+    .bimx-ticker-wrap {
+        width: 100%;
+        overflow: hidden; /* Ascunde ce iese din cadru */
+        background: #FFFFFF; /* Fundal închis conform stilului financiar */
+        padding: 10px 0;
+        border-bottom: 1px solid #E5E7EB;
+        position: relative;
+    }
+
+    .bimx-ticker {
+        display: flex;
+        white-space: nowrap;
+        width: max-content;
+        animation: ticker-scroll 20s linear infinite; /* Viteza de rulare */
+    }
+
+    /* Pauză la hover pentru a putea citi mai ușor */
+    .bimx-ticker-wrap:hover .bimx-ticker {
+        animation-play-state: paused;
+    }
+
+    .ticker-item {
+        display: flex;
+        align-items: center;
+        padding: 0 25px;
+    }
+
+    .t-symbol {
+        color: #1A2266;
+        margin-right: 8px;
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 16px;
+    }
+
+    .t-price {
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 16px;
+        color: #1A2266;
+    }
+
+    .t-pct {
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 16px;
+        margin-left: 8px;
+        color: #2BAB6F;
+    }
+
+    .t-pct.pos {
+        color: #10b981;
+    }
+
+    /* Verde */
+    .t-pct.neg {
+        color: #ef4444;
+    }
+
+    /* Roșu */
+
+    /* Animația de scroll infinit */
+    @keyframes ticker-scroll {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-50%);
+        }
+    }
+</style></div>
+<div class="container">
+
+    <div class="stages">
+        <div class="head">
+            <h2 style="margin-bottom: 12px;">Последовательность состояний рынка</h2>
+            <p>Каждая сессия последовательно проходит следующие состояния:</p>
+        </div>
+                                    <div class="stage">
+                    <div class="number">1</div>
+                    <div class="content">
+                        <h5 aria-level="3">Предоткрытие</h5>
+                        <p>В систему вводятся, изменяются или отзываются заявки без заключения сделок. Рассчитывается и отображается потенциальная цена открытия.</p>
+                    </div>
+                </div>
+                            <div class="stage">
+                    <div class="number">2</div>
+                    <div class="content">
+                        <h5 aria-level="4">Открытие</h5>
+                        <p>Цена открытия определяется на основе алгоритма фиксинга, и заключаются сделки по заявкам, накопленным в период предоткрытия.</p>
+                    </div>
+                </div>
+                            <div class="stage">
+                    <div class="number">3</div>
+                    <div class="content">
+                        <h5>Открыт</h5>
+                        <p>Непрерывные торги. Заявки исполняются на основе приоритета «цена — время».</p>
+                    </div>
+                </div>
+                            <div class="stage">
+                    <div class="number">4</div>
+                    <div class="content">
+                        <h5>Предзакрытие</h5>
+                        <p>Вводятся, изменяются или отзываются заявки без исполнения в рамках подготовки к закрытию. Рассчитывается потенциальная цена закрытия.</p>
+                    </div>
+                </div>
+                            <div class="stage">
+                    <div class="number">5</div>
+                    <div class="content">
+                        <h5>Закрытие</h5>
+                        <p>Цена закрытия определяется по алгоритму фиксинга, и заключаются сделки.</p>
+                    </div>
+                </div>
+                            <div class="stage">
+                    <div class="number">6</div>
+                    <div class="content">
+                        <h5>Торги по цене закрытия</h5>
+                        <p>Сделки могут заключаться исключительно по цене, определённой алгоритмом фиксинга.</p>
+                    </div>
+                </div>
+                            <div class="stage">
+                    <div class="number">7</div>
+                    <div class="content">
+                        <h5>Закрыт</h5>
+                        <p>Сессия завершена. Новые заявки не принимаются.</p>
+                    </div>
+                </div>
+                        </div>
+</div>
+<hr>
+<div class="container">
+    <div class="note">Подробная информация о состояниях рынка, типах заявок, принимаемых в каждом состоянии, и механизмах временной приостановки торгов содержится в Правилах биржи в отношении регулируемого рынка (раздел V) и Правилах биржи в отношении многосторонней торговой системы.</div>
+    <div class="calendar">
+        <div class="head">
+            <h2>Календарь на 2026 год</h2>
+<p>Торговым днём является любой рабочий день в Республике Молдова. Рынки BIMx закрыты в нерабочие дни и в официальные праздники, предусмотренные Трудовым кодексом Республики Молдова.</p>
+        </div>
+    </div>
+</div>
+<hr>
+<div class="container">
+    <div class="date_section bx-status-block">
+        <div class="left_side">
+            <div class="icon bx-ic"><svg class="bx-i" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4.5" width="18" height="16.5" rx="2"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4M8 14h.01M12 14h.01M16 14h.01M8 17.5h.01M12 17.5h.01"/></svg></div>
+            <div class="left_content">
+                <h6 aria-level="3">Статус</h6>
+                <h2>В подготовке</h2>
+            </div>
+        </div>
+        <div class="right_side"><p>Календарь торговых дней будет опубликован на этой странице до первой торговой сессии, которая последует за первым листингом.</p></div>
+    </div>
+</div>
+<hr>
+<div class="container">
+    <div class="new_call_to_action">
+        <h6 aria-level="3"><span class="bx-ic-h6"><svg class="bx-i" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m3 6.5 9 6.5 9-6.5"/></svg></span>Контакты для разъяснений</h6>
+        <h2>Дополнительная информация</h2>
+        <a href="mailto:office@bimx.md">office@bimx.md<svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3.50781 8.41553H13.3259" stroke="#1EB1F1" stroke-width="1.40259"
+                      stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M8.41797 3.50659L13.327 8.41564L8.41797 13.3247" stroke="#1EB1F1"
+                      stroke-width="1.40259" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </a>
+    </div>
+</div>
+</main><!-- #main -->
+</div><!-- #primary -->
+</div><!-- #content -->

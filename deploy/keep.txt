@@ -1,0 +1,6 @@
+# Files on the server that a deployment must never delete or overwrite (rsync --exclude-from).
+# One pattern per line, relative to the site folder; see https://download.samba.org/pub/rsync/rsync.1#FILTER_RULES
+.well-known/
+.htpasswd*
+cgi-bin/
+staging/

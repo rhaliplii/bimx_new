@@ -1,0 +1,22 @@
+---
+// Every page of the site: content pages (src/content/pages) inside the shared shell, and the old addresses
+// that redirect. The URL of each page is the same as in the previous generator.
+import { pages, redirects, shell } from '../lib/site.mjs';
+import { renderPage } from '../lib/shell.mjs';
+import { renderRedirect } from '../lib/redirects.mjs';
+import { splitLang } from '../lib/links.mjs';
+
+export function getStaticPaths() {
+  const param = (route) => (route === '' ? undefined : route.replace(/\/$/, ''));
+  return [
+    ...pages.map((page) => ({ params: { path: param(page.route) }, props: { page } })),
+    ...redirects.map((r) => ({ params: { path: param(r.route) }, props: { redirect: r } })),
+  ];
+}
+
+const { page, redirect } = Astro.props;
+const html = page
+  ? renderPage(page, shell)
+  : renderRedirect(redirect.route, redirect.to, redirect.template && shell.templates[`${splitLang(redirect.route).lang}/${redirect.template}`]);
+---
+<Fragment set:html={html} />
