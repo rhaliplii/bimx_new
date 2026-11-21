@@ -1,0 +1,41 @@
+/* Print style of the press release PDF (Chrome headless). {{…}} are filled by src/lib/news-pdf.mjs. */
+@page { size: A4; margin: 24mm 19mm 38mm 30mm;
+  @bottom-left { content: "{{foot}}"; white-space: pre; width: 72%; font: 7.8pt/1.5 Prompt, sans-serif; color: #3A3F52;
+    vertical-align: top; text-align: left; border-top: 1.5pt solid #1DB0F0; padding-top: 3mm; margin-top: 6mm; }
+  @bottom-right { content: url("{{social}}") "\A {{page}}; white-space: pre; width: 28%; font: 7.8pt/1.5 Prompt, sans-serif;
+    color: #4A4F63; vertical-align: top; text-align: right; border-top: 1.5pt solid #1DB0F0; padding-top: 3mm; margin-top: 6mm; }
+  @top-left { content: url("{{logo_small}}"); vertical-align: bottom; padding-bottom: 3mm; margin-bottom: 6mm; border-bottom: .75pt solid #C9CEDA; }
+  @top-right { content: "{{running}}"; font: 7.8pt Prompt, sans-serif; color: #4A4F63; vertical-align: bottom; padding-bottom: 3mm;
+    margin-bottom: 6mm; border-bottom: .75pt solid #C9CEDA; }
+}
+@page :first { @top-left { content: none; border: 0; } @top-right { content: none; border: 0; } }
+html, body { margin: 0; background: #fff; }
+body { font: 10.5pt/1.55 Prompt, sans-serif; color: #1F2333; }
+a { color: #0E5E8C; text-decoration: none; }
+.head { display: flex; justify-content: space-between; align-items: flex-start; gap: 18pt; }
+.head img { height: 30pt; width: auto; }
+.head div { text-align: right; font-size: 8.5pt; line-height: 1.5; color: #4A4F63; white-space: pre-line; }
+.meta { margin-top: 24pt; font-size: 9.5pt; line-height: 1.5; }
+.meta .place { color: #4A4F63; }
+.meta .kind { font-weight: 600; letter-spacing: .9pt; text-transform: uppercase; color: #1DB0F0; }
+h1 { margin: 10pt 0 14pt; font-size: 16.5pt; line-height: 1.3; font-weight: 700; color: #1A2266; text-wrap: balance; }
+.text { text-align: justify; hyphens: auto; }
+.text p { margin: 0 0 8pt; orphans: 3; widows: 3; }
+.text h2, .text h3 { font-size: 11pt; color: #1A2266; margin: 14pt 0 6pt; break-after: avoid; }
+.text ul, .text ol { margin: 0 0 8pt; padding-left: 18pt; }
+.text li { margin-bottom: 3pt; }
+.text figure { margin: 6pt 0 10pt; }
+.text table { width: 100%; border-collapse: collapse; font-size: 7.6pt; line-height: 1.35; text-align: center; break-inside: avoid; }
+.text th { background: #F3F5F8; color: #1A2266; font-weight: 600; padding: 4pt 3pt; border: .5pt solid #C9CEDA; }
+.text td { padding: 4pt 3pt; border: .5pt solid #C9CEDA; }
+/* tabelul vertical (o singură emisiune): denumirea pe rând (th în tbody), valoarea alături, aliniate la stânga */
+.text tbody th { width: 38%; padding: 5pt 8pt; text-align: left; font-size: 9pt; line-height: 1.4; }
+.text tbody th + td { padding: 5pt 8pt; text-align: left; font-size: 9.5pt; line-height: 1.45; }
+.text blockquote { margin: 10pt 0; padding-left: 12pt; border-left: 2pt solid #1DB0F0; }
+.text p.bx-quote { margin: 12pt 0; padding-left: 11pt; border-left: 1.5pt solid #1DB0F0; break-inside: avoid; }
+.text p.bx-quote em, .text blockquote p { font-style: italic; }
+.text p.bx-quote strong { font-weight: 600; color: #1A2266; }
+.text pre { margin: 10pt 0 0; font: 600 10pt/1.5 Prompt, sans-serif; color: #1A2266; white-space: pre-wrap; }
+.about { margin-top: 20pt; padding-top: 9pt; border-top: .75pt solid #C9CEDA; break-inside: avoid; }
+.about h2 { margin: 0 0 3pt; font-size: 8.5pt; font-weight: 700; letter-spacing: .8pt; text-transform: uppercase; color: #1A2266; }
+.about p { margin: 0; font-size: 9.3pt; line-height: 1.55; color: #3A3F52; text-align: justify; }

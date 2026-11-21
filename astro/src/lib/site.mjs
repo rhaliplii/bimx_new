@@ -1,10 +1,13 @@
 // Loads the site sources for the Astro build: page bodies with their fields, shell templates and menus.
 // BIMx Academy pages are not files in src/content/pages: they are generated from src/content/academy (academy.mjs).
 // Press releases are generated from src/content/news (news.mjs).
-import { LANGS, splitLang } from './links.mjs';
+import { LANGS, LANG_PREFIX, splitLang } from './links.mjs';
+import fs from 'node:fs';
+import path from 'node:path';
 import { seoIndex } from './seo.mjs';
+import { findChrome } from './news-pdf.mjs';
 import { academyPages } from './academy.mjs';
-import { applyList, articlePage, homeNews, sortNews } from './news.mjs';
+import { applyList, articlePage, homeNews, pdfName, sortNews } from './news.mjs';
 import newsTexts from '../data/news-texts.json';
 import newsDefaults from '../data/news-defaults.json';
 import categories from '../content/news/categories.json';
@@ -45,7 +48,10 @@ export const news = sortNews(Object.entries(newsData).map(([file, data]) => {
   const body = Object.fromEntries(LANGS.map((lang) => [lang, newsBodies[`${dir}/${lang}.html`]]));
   return { ...data, body };
 }));
-export const newsCtx = { news, categories, texts: newsTexts, templates: shell.templates, defaults: newsDefaults };
+// a press release PDF is either published in public/ or printed after the build (needs Chrome; src/lib/news-pdf.mjs)
+const canPrint = Boolean(findChrome());
+const pdfAvailable = (item, lang) => canPrint || fs.existsSync(path.resolve('public', LANG_PREFIX[lang] + item.path, pdfName(item)));
+export const newsCtx = { news, categories, texts: newsTexts, templates: shell.templates, defaults: newsDefaults, pdfAvailable };
 const newsPages = news.flatMap((item) => LANGS.map((lang) => articlePage(item, lang, newsCtx)));
 
 // pages that show news: the news lists ({{newsHero}}, {{newsList}}) and the home pages ({{homeNews}})

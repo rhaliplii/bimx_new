@@ -54,6 +54,9 @@ const ICON_CLOCK = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" 
 const ICON_BACK = '<svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M12.7 8H3.3M8 12.7 3.3 8 8 3.3" '
   + 'stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 
+/** File name of the PDF of a press release (news.json "pdf", or BIMx-<last part of the address>.pdf). */
+export const pdfName = (item) => item.pdf ?? `BIMx-${item.path.split('/').pop()}.pdf`;
+
 /** Short title used in lists, on the home page and in "related" cards (defaults to the title). */
 export const cardTitle = (item, lang) => item.cardTitle?.[lang] ?? item.title[lang];
 
@@ -96,8 +99,10 @@ export function renderArticle(item, lang, ctx) {
   const meta = kind ? `<div class="bx-pr-meta"><span class="bx-pr-kind">${kind}</span></div>` : '';
   const xText = item.shareText?.[lang] ?? quotePlus(item.title[lang]);
   const share = ctx.templates[`${lang}/news-share`].replaceAll('{{xText}}', xText);
-  const pdf = item.pdf
-    ? `<section class="bx-pr-box"><a class="bx-pr-pdf" href="${item.pdf}" target="_blank" rel="noopener" title="${T.CT.pdf[i]}">`
+  // the PDF button appears when the PDF exists in public/ or the build can print it (ctx.pdfAvailable, site.mjs)
+  const pdfFile = ctx.pdfAvailable ? (ctx.pdfAvailable(item, lang) ? pdfName(item) : null) : item.pdf;
+  const pdf = pdfFile
+    ? `<section class="bx-pr-box"><a class="bx-pr-pdf" href="${pdfFile}" target="_blank" rel="noopener" title="${T.CT.pdf[i]}">`
       + `${ICON_DOWNLOAD}<span>${T.CP.pdf_btn[i]}</span></a></section>`
     : '';
   const aside = `<aside class="bx-pr-aside" aria-label="${T.CP.info[i]}"><div class="bx-pr-card-box">${pdf}`
