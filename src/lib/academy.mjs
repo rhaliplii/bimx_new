@@ -19,7 +19,7 @@
 // The pages are page objects like the ones in src/content/pages (route, parts, title, description, bodyAttrs, body):
 // the shared shell (head, header, footer, scripts) comes from src/shell/<lang>/.
 import { LANGS, LANG_PREFIX, link, splitLang } from './links.mjs';
-import { escapeHtml as esc, seoBlock, seoIndex, unescapeHtml, urlOf } from './seo.mjs';
+import { escapeHtml as esc, unescapeHtml } from './seo.mjs';
 
 // ---------------------------------------------------------------- data
 
@@ -744,16 +744,5 @@ export function academyPages(src = academySources()) {
     return page;
   });
 
-  // Known bug kept for parity with the previous generator: the broker rename also changed og:url of the two RO
-  // pages whose address contains "broker" (…/alegerea-brokerului.html, …/ghidul-brokerului-bimx.html), so these
-  // pages carry their SEO tags as `seoRaw`. TODO: drop this block to publish the correct og:url.
-  // (hreflang only links the same Academy page in other languages, so an index of the Academy pages is enough.)
-  const index = seoIndex(out);
-  for (const page of out) {
-    if (page.lang !== 'ro') continue;
-    const url = esc(urlOf(page.route));
-    const broken = brokerWords(url);
-    if (broken !== url) page.seoRaw = seoBlock(page, index).replace(`<meta property="og:url" content="${url}">`, `<meta property="og:url" content="${broken}">`);
-  }
   return out;
 }

@@ -43,8 +43,7 @@ export function fill(template, page, ctx) {
     if (kind === 'u') return link(page.route, versioned(arg));
     if (kind === 'alt') return link(page.route, altTarget(page, arg));
     switch (field) {
-      // 404.html is built from the home page and keeps its logo state
-      case 'home': return page.inner === '' || page.inner === '404.html' ? ' aria-current="page"' : '';
+      case 'home': return page.inner === '' ? ' aria-current="page"' : '';
       case 'menu': return buildMenu(page, ctx.menu);
       case 'seo': return seoBlock(page, ctx.seoIndex);
       // root of the site for scripts (search.js data-root): "" on the home page, "../" one level down…
