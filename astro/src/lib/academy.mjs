@@ -708,7 +708,7 @@ function shellParts(lang, kind) {
     open: 'open-academy', head: 'head-academy', mid: 'mid-academy', pre: 'pre-academy',
     header: lang === 'ro' ? 'header-academy' : 'header-news',      // the RO header marks "BIMx Academy" as current
     footer: 'footer-academy',
-    tail: kind === 'home' ? 'tail-academy' : kind === 'guide' ? 'tail-academy-3' : 'tail-academy-2',
+    tail: kind === 'home' ? 'tail-academy' : 'tail-academy-2',
   };
 }
 

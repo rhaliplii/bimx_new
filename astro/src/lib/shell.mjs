@@ -4,6 +4,7 @@
 //   {{u:/abs/path}}   relative link from the current page to an absolute site path
 //   {{alt:xx}}        the same page in language xx (language switchers)
 //   {{home}}          aria-current="page" on the logo of the home page
+//   {{siteRoot}}      path from the page to the site root ("", "../", …), for scripts that load site files
 //   {{menu}}          main menu (src/lib/menu.mjs)
 //   {{title}} {{description}} {{seo}} {{wpPost}} {{wpContainer}}   page fields
 //
@@ -11,7 +12,7 @@
 import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
-import { LANG_PREFIX, link } from './links.mjs';
+import { LANG_PREFIX, absoluteLinks, link, routeDir } from './links.mjs';
 import { buildMenu } from './menu.mjs';
 import { seoBlock } from './seo.mjs';
 
@@ -34,7 +35,7 @@ export function altTarget(page, lang) {
   return '/' + LANG_PREFIX[lang] + page.inner;
 }
 
-const FIELD = /\{\{(u|alt):([^}]*)\}\}|\{\{(home|menu|title|description|seo|bodyAttrs|wpPost|wpContainer)\}\}/g;
+const FIELD = /\{\{(u|alt):([^}]*)\}\}|\{\{(home|menu|title|description|seo|bodyAttrs|wpPost|wpContainer|siteRoot)\}\}/g;
 
 /** Fill the placeholders of a shell template for a page. */
 export function fill(template, page, ctx) {
@@ -46,6 +47,8 @@ export function fill(template, page, ctx) {
       case 'home': return page.inner === '' || page.inner === '404.html' ? ' aria-current="page"' : '';
       case 'menu': return buildMenu(page, ctx.menu);
       case 'seo': return seoBlock(page, ctx.seoIndex);
+      // root of the site for scripts (search.js data-root): "" on the home page, "../" one level down…
+      case 'siteRoot': return absoluteLinks(page.route) ? '/' : '../'.repeat(routeDir(page.route).split('/').filter(Boolean).length);
       case 'wpPost': return page.wpPost ? `-p${page.wpPost}` : '';
       case 'wpContainer': return page.wpContainer || '0';
       default: return page[field] ?? '';
