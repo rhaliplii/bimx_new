@@ -658,6 +658,48 @@ const renameBrokerHtml = (html) => keepPhrases(html, (h) => h
   .replace(/>([^<]+)</g, (_, s) => '>' + brokerWords(s) + '<')
   .replace(/(\s(?:alt|title|content|aria-label|placeholder|data-all|data-less)=")([^"]*)"/g, (_, a, s) => a + brokerWords(s) + '"'));
 
+// ---------------------------------------------------------------- checks (ported from tools/validate.py)
+
+const BLOCK_FIELDS = { p: ['text'], list: ['items'], steps: ['items'], callout: ['variant', 'text'], table: ['headers', 'rows'], formula: ['expr'] };
+const PROGRAM_FIELDS = ['slug', 'num', 'title', 'short', 'level', 'audience', 'intro', 'outcomes', 'prerequisites', 'courses'];
+
+/** Stop the build with a clear list when a lesson file is incomplete or malformed. */
+export function validateAcademy(src) {
+  const errors = [];
+  for (const [lang, programs] of Object.entries(src.programs)) {
+    for (const d of programs) {
+      const file = `src/content/academy/content/${lang}/${d.num ?? '?'}-${d.slug ?? '?'}.json`;
+      for (const k of PROGRAM_FIELDS) if (!(k in d)) errors.push(`${file}: missing "${k}"`);
+      const slugs = new Set();
+      for (const c of d.courses ?? []) {
+        for (const l of c.lessons ?? []) {
+          const where = `${file} › ${l.slug}`;
+          if (!/^[a-z0-9-]+$/.test(l.slug ?? '') || slugs.has(l.slug) || l.slug === 'index') errors.push(`${where}: invalid or duplicate lesson slug`);
+          slugs.add(l.slug);
+          const kinds = new Set();
+          const text = [];
+          for (const sec of l.sections ?? []) {
+            for (const b of sec.blocks ?? []) {
+              if (!(b.type in BLOCK_FIELDS)) { errors.push(`${where}: unknown block type "${b.type}"`); continue; }
+              for (const f of BLOCK_FIELDS[b.type]) if (!(f in b)) errors.push(`${where}: "${b.type}" block without "${f}"`);
+              kinds.add(b.type === 'callout' ? `callout:${b.variant ?? ''}` : b.type);
+              text.push(JSON.stringify(b));
+              if (b.type === 'table' && (b.rows ?? []).some((r) => r.length !== b.headers.length)) errors.push(`${where}: table row with the wrong number of columns`);
+            }
+          }
+          for (const need of ['callout:definition', 'callout:example']) if (!kinds.has(need)) errors.push(`${where}: missing a ${need.replace(':', ' ')} block`);
+          if ((l.quiz ?? []).length !== 3) errors.push(`${where}: the quiz has ${(l.quiz ?? []).length} questions instead of 3`);
+          for (const q of l.quiz ?? []) if (!(q.answer >= 0 && q.answer < q.options.length)) errors.push(`${where}: quiz answer outside the options`);
+          const bad = text.join(' ').match(/<(?!\/?(?:strong|em)>)[^>]*>/g);
+          if (bad) errors.push(`${where}: tags not allowed in lesson text: ${[...new Set(bad)].join(' ')}`);
+          if (lang === 'ro' && /[şţŞŢ]/.test(text.join(' '))) errors.push(`${where}: cedilla letters (ş/ţ) instead of comma letters (ș/ț)`);
+        }
+      }
+    }
+  }
+  if (errors.length) throw new Error('Academy data:\n  ' + errors.join('\n  '));
+}
+
 // ---------------------------------------------------------------- all Academy pages
 
 /** Shell templates of an Academy page (src/shell/<lang>/). */
@@ -672,6 +714,7 @@ function shellParts(lang, kind) {
 
 /** Every Academy page in every language, as page objects for the shell (see site.mjs). */
 export function academyPages(src = academySources()) {
+  validateAcademy(src);
   const roSlugs = src.programs.ro.map((p) => p.slug).join();
   const pages = [];
   for (const lang of LANGS) {

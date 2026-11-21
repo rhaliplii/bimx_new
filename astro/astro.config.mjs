@@ -5,6 +5,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { writeSearchIndex } from './src/lib/search.mjs';
 import { writeMissingPdfs } from './src/lib/news-pdf.mjs';
+import { writeMissingGuidePdfs } from './src/lib/pdf.mjs';
 
 // After the build: the search index (src/lib/search.mjs), PDFs of new press releases (src/lib/news-pdf.mjs), and pages that are files rather than directories (e.g. academy/programe/x/lesson.html) are emitted by Astro as
 // lesson.html/index.html; move them to their real address after the build.
@@ -30,6 +31,8 @@ function filePages() {
         const texts = JSON.parse(fs.readFileSync('src/data/news-texts.json', 'utf8'));
         const [made, missing] = await writeMissingPdfs(root, texts);
         if (missing) console.log(`press release PDFs: ${made} of ${missing} printed` + (made < missing ? ' (Chrome missing or failed: set CHROME=…)' : ''));
+        const [gMade, gMissing] = await writeMissingGuidePdfs(root);
+        if (gMissing) console.log(`Academy guide PDFs: ${gMade} of ${gMissing} printed` + (gMade < gMissing ? ' (Chrome missing or failed: set CHROME=…)' : ''));
       },
     },
   };

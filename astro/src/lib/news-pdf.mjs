@@ -4,26 +4,17 @@
 //
 // PDFs already in public/ (the published ones) are kept as they are; the build prints only the missing ones, i.e. for
 // new press releases. After changing the text of a published press release, delete its PDF from public/ to reprint it.
-import { execFileSync, spawn } from 'node:child_process';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { LANGS, LANG_PREFIX } from './links.mjs';
 import { IDX, dateParts, pdfName, sortNews } from './news.mjs';
+import { findChrome, printPdf } from './pdf.mjs';
+
+export { findChrome };
 
 const ROOT = process.cwd();
-const CANDIDATES = ['google-chrome', 'google-chrome-stable', 'chromium', 'chromium-browser', 'chrome',
-  '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', '/Applications/Chromium.app/Contents/MacOS/Chromium'];
-
-export function findChrome() {
-  for (const c of [process.env.CHROME, ...CANDIDATES].filter(Boolean)) {
-    if (c.includes('/')) { if (fs.existsSync(c)) return c; continue; }
-    try { return execFileSync('which', [c], { encoding: 'utf8' }).trim() || null; } catch { /* not installed */ }
-  }
-  return null;
-}
-
 /** Read the news folders straight from disk (the Astro build uses import.meta.glob instead). */
 export function loadNews() {
   const dir = path.join(ROOT, 'src/content/news');
@@ -62,21 +53,6 @@ export function printHtml(item, lang, texts) {
     + `<div class="meta"><div class="place">${place}</div>${kind ? `<div class="kind">${kind}</div>` : ''}</div>`
     + `<h1>${item.title[lang]}</h1><div class="text">${printBody(item.body[lang], pageUrl)}</div>`
     + `<section class="about"><h2>${T.about_t[i]}</h2><p>${T.about[i]}</p></section></body></html>`;
-}
-
-function printPdf(chrome, htmlFile, pdfFile) {
-  return new Promise((resolve) => {
-    const profile = fs.mkdtempSync(path.join(os.tmpdir(), 'bimx-chrome-'));
-    const proc = spawn(chrome, ['--headless=new', '--disable-gpu', '--no-sandbox', '--no-first-run', '--hide-scrollbars', `--user-data-dir=${profile}`,
-      '--no-pdf-header-footer', '--run-all-compositor-stages-before-draw', '--virtual-time-budget=8000', `--print-to-pdf=${pdfFile}`,
-      pathToFileURL(htmlFile).href], { stdio: 'ignore' });
-    const timer = setTimeout(() => proc.kill(), 90_000);
-    proc.on('exit', () => {
-      clearTimeout(timer);
-      fs.rmSync(profile, { recursive: true, force: true });
-      resolve(fs.existsSync(pdfFile) && fs.statSync(pdfFile).size > 10_000);
-    });
-  });
 }
 
 /** Print the PDFs that are not in public/ yet into dist/. Returns [printed, missing]. */
