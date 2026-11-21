@@ -1,0 +1,50 @@
+{
+  "path": "2026/04/02/comunicat-informativ-02-aprilie-2026",
+  "date": "2026-04-02",
+  "section": "bimx",
+  "category": "actionari",
+  "order": 11,
+  "title": {
+    "ro": "Acționarii aprobă contractul SaaS pentru platforma ARENA",
+    "en": "Shareholders approve the SaaS contract for the ARENA platform",
+    "uk": "Акціонери схвалюють SaaS-договір на платформу ARENA",
+    "ru": "Акционеры одобряют SaaS-договор на платформу ARENA"
+  },
+  "pageTitle": {
+    "ro": "Acționarii aprobă contractul SaaS pentru platforma ARENA &#8211; BIMx",
+    "uk": "Акціонери схвалюють SaaS-договір на платформу ARENA — BIMx"
+  },
+  "summary": {
+    "ro": "Hotărârea adunării generale extraordinare a acționarilor din 2 aprilie 2026.",
+    "en": "Resolution of the extraordinary general meeting of shareholders of 2 April 2026.",
+    "uk": "Рішення позачергових загальних зборів акціонерів від 2 квітня 2026 р.",
+    "ru": "Решение внеочередного общего собрания акционеров от 2 апреля 2026 г."
+  },
+  "description": {
+    "ro": "O.P. „Bursa Internațională a Moldovei” S.A. anunță că la data de 02 aprilie 2026 a avut loc Adunarea Generală Extraordinară a acționarilor, ținută prin…",
+    "en": "O.P. &quot;Moldova International Stock Exchange&quot; S.A. announces that on 02 April 2026 an Extraordinary General Meeting of Shareholders was held by…",
+    "uk": "Оператор ринку АТ «Міжнародна фондова біржа Молдови» повідомляє, що 02 квітня 2026 р. відбулися позачергові загальні збори акціонерів, проведені в заочній…",
+    "ru": "Оператор рынка АО «Международная фондовая биржа Молдовы» сообщает, что 2 апреля 2026 г. состоялось внеочередное общее собрание акционеров, проведённое путём…"
+  },
+  "pdf": "BIMx-comunicat-informativ-02-aprilie.pdf",
+  "shareText": {
+    "ro": "COMUNICAT+INFORMATIV+02+aprilie+2026",
+    "en": "COMUNICAT+INFORMATIV+02+aprilie+2026",
+    "uk": "COMUNICAT+INFORMATIV+02+aprilie+2026",
+    "ru": "COMUNICAT+INFORMATIV+02+aprilie+2026"
+  },
+  "legacy": {
+    "postId": "724",
+    "wpPost": "724",
+    "wpContainer": "724",
+    "parts": {
+      "open": "open-news",
+      "head": "head-news",
+      "mid": "mid-news",
+      "pre": "pre-news",
+      "header": "header-news",
+      "footer": "footer-news",
+      "tail": "tail-news"
+    }
+  }
+}

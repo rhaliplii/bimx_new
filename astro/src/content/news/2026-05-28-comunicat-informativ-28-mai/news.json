@@ -1,0 +1,50 @@
+{
+  "path": "2026/05/28/comunicat-informativ-28-mai-2026",
+  "date": "2026-05-28",
+  "section": "bimx",
+  "category": "actionari",
+  "order": 10,
+  "title": {
+    "ro": "Acționarii confirmă auditorul pentru exercițiul 2025–2026",
+    "en": "Shareholders confirm the auditor for the 2025–2026 financial year",
+    "uk": "Акціонери затверджують аудитора на 2025–2026 фінансовий рік",
+    "ru": "Акционеры утверждают аудитора на 2025–2026 финансовый год"
+  },
+  "pageTitle": {
+    "ro": "Acționarii confirmă auditorul pentru exercițiul 2025–2026 &#8211; BIMx",
+    "uk": "Акціонери затверджують аудитора на 2025–2026 фінансовий рік — BIMx"
+  },
+  "summary": {
+    "ro": "Hotărârea adunării generale extraordinare a acționarilor din 28 mai 2026.",
+    "en": "Resolution of the extraordinary general meeting of shareholders of 28 May 2026.",
+    "uk": "Рішення позачергових загальних зборів акціонерів від 28 травня 2026 р.",
+    "ru": "Решение внеочередного общего собрания акционеров от 28 мая 2026 г."
+  },
+  "description": {
+    "ro": "O.P „Bursa Internațională a Moldovei” S.A. anunță că la data de 28.05.2026 a avut loc adunarea generală extraordinară a acționarilor, ținută prin…",
+    "en": "O.P. &quot;Moldova International Stock Exchange&quot; S.A. announces that on 28.05.2026 an extraordinary general meeting of shareholders was held by correspondence.…",
+    "uk": "Оператор ринку АТ «Міжнародна фондова біржа Молдови» повідомляє, що 28.05.2026 відбулися позачергові загальні збори акціонерів, проведені в заочній формі.…",
+    "ru": "Оператор рынка АО «Международная фондовая биржа Молдовы» сообщает, что 28.05.2026 состоялось внеочередное общее собрание акционеров, проведённое путём…"
+  },
+  "pdf": "BIMx-comunicat-informativ-28-mai.pdf",
+  "shareText": {
+    "ro": "COMUNICAT+INFORMATIV+28+mai+2026",
+    "en": "COMUNICAT+INFORMATIV+28+mai+2026",
+    "uk": "COMUNICAT+INFORMATIV+28+mai+2026",
+    "ru": "COMUNICAT+INFORMATIV+28+mai+2026"
+  },
+  "legacy": {
+    "postId": "718",
+    "wpPost": "718",
+    "wpContainer": "718",
+    "parts": {
+      "open": "open-news",
+      "head": "head-news",
+      "mid": "mid-news",
+      "pre": "pre-news",
+      "header": "header-news",
+      "footer": "footer-news",
+      "tail": "tail-news"
+    }
+  }
+}

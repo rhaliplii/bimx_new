@@ -1,0 +1,41 @@
+{
+  "path": "2026/08/25/comunicat-de-presa",
+  "date": "2026-08-25",
+  "section": "bimx",
+  "category": "licenta",
+  "order": 6,
+  "title": {
+    "ro": "BIMx a obținut licența de operator de piață de la CNPF",
+    "en": "BIMx obtains its market operator licence from the CNPF",
+    "uk": "BIMx отримала ліцензію оператора ринку від НКФР",
+    "ru": "BIMx получила лицензию оператора рынка от НКФР"
+  },
+  "pageTitle": {
+    "ro": "BIMx a obținut licența de operator de piață de la CNPF &#8211; BIMx",
+    "uk": "BIMx отримала ліцензію оператора ринку від НКФР — BIMx"
+  },
+  "summary": {
+    "ro": "Licența și autorizațiile permit administrarea unei piețe reglementate și a unui sistem multilateral de tranzacționare.",
+    "en": "The licence and authorisations allow BIMx to manage a regulated market and a multilateral trading facility.",
+    "uk": "Ліцензія та дозволи дають змогу управляти регульованим ринком і багатосторонньою торговельною системою.",
+    "ru": "Лицензия и разрешения позволяют управлять регулируемым рынком и многосторонней торговой системой."
+  },
+  "description": {
+    "ro": "BIMx a obținut licența de operator de piață de la CNPF – un pas decisiv pentru integrarea europeană a pieței de capital din Republica Moldova.",
+    "en": "BIMx has obtained a market operator licence from the CNPF – a decisive step towards the European integration of the Republic of Moldova&#x27;s capital market.",
+    "uk": "BIMx отримала ліцензію оператора ринку від НКФР — вирішальний крок до європейської інтеграції ринку капіталу Республіки Молдова.",
+    "ru": "BIMx получила лицензию оператора рынка от НКФР — решающий шаг к европейской интеграции рынка капитала Республики Молдова."
+  },
+  "pdf": "BIMx-comunicat-de-presa.pdf",
+  "shareText": {
+    "ro": "COMUNICAT+DE+PRES%C4%82",
+    "en": "COMUNICAT+DE+PRES%C4%82",
+    "uk": "COMUNICAT+DE+PRES%C4%82",
+    "ru": "COMUNICAT+DE+PRES%C4%82"
+  },
+  "legacy": {
+    "postId": "739",
+    "wpPost": "739",
+    "wpContainer": "739"
+  }
+}

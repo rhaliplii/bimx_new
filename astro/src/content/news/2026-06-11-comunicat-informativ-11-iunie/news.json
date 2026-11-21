@@ -1,0 +1,50 @@
+{
+  "path": "2026/06/11/comunicat-informativ-11-iunie-2026",
+  "date": "2026-06-11",
+  "section": "bimx",
+  "category": "actionari",
+  "order": 9,
+  "title": {
+    "ro": "Acționarii aprobă depunerea dosarului de licențiere la CNPF",
+    "en": "Shareholders approve filing the licence application with the CNPF",
+    "uk": "Акціонери схвалюють подання документів на ліцензування до НКФР",
+    "ru": "Акционеры одобряют подачу документов на лицензирование в НКФР"
+  },
+  "pageTitle": {
+    "ro": "Acționarii aprobă depunerea dosarului de licențiere la CNPF &#8211; BIMx",
+    "uk": "Акціонери схвалюють подання документів на ліцензування до НКФР — BIMx"
+  },
+  "summary": {
+    "ro": "Hotărârea adunării generale extraordinare a acționarilor din 11 iunie 2026.",
+    "en": "Resolution of the extraordinary general meeting of shareholders of 11 June 2026.",
+    "uk": "Рішення позачергових загальних зборів акціонерів від 11 червня 2026 р.",
+    "ru": "Решение внеочередного общего собрания акционеров от 11 июня 2026 г."
+  },
+  "description": {
+    "ro": "O.P „BURSA INTERNAȚIONALĂ A MOLDOVEI” S.A. anunță că la data de 11.06.2026 a avut loc adunarea generală extraordinară a acționarilor, ținută prin…",
+    "en": "O.P. &quot;MOLDOVA INTERNATIONAL STOCK EXCHANGE&quot; S.A. announces that on 11.06.2026 an extraordinary general meeting of shareholders was held by correspondence.…",
+    "uk": "Оператор ринку АТ «МІЖНАРОДНА ФОНДОВА БІРЖА МОЛДОВИ» повідомляє, що 11.06.2026 відбулися позачергові загальні збори акціонерів, проведені в заочній формі.…",
+    "ru": "Оператор рынка АО «МЕЖДУНАРОДНАЯ ФОНДОВАЯ БИРЖА МОЛДОВЫ» сообщает, что 11.06.2026 состоялось внеочередное общее собрание акционеров, проведённое путём…"
+  },
+  "pdf": "BIMx-comunicat-informativ-11-iunie.pdf",
+  "shareText": {
+    "ro": "COMUNICAT+INFORMATIV+11+iunie+2026",
+    "en": "COMUNICAT+INFORMATIV+11+iunie+2026",
+    "uk": "COMUNICAT+INFORMATIV+11+iunie+2026",
+    "ru": "COMUNICAT+INFORMATIV+11+iunie+2026"
+  },
+  "legacy": {
+    "postId": "720",
+    "wpPost": "720",
+    "wpContainer": "720",
+    "parts": {
+      "open": "open-news",
+      "head": "head-news",
+      "mid": "mid-news",
+      "pre": "pre-news",
+      "header": "header-news",
+      "footer": "footer-news",
+      "tail": "tail-news"
+    }
+  }
+}

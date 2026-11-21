@@ -1,0 +1,79 @@
+<!-- #masthead -->
+    <div id="content" class="site-content">
+        <div id="primary" class="content-area">
+            <main id="main" class="site-main">
+<div class="single_anunturi_bimx bx-pr"><style>
+    .bimx-ticker-wrap {
+        width: 100%;
+        overflow: hidden; /* Ascunde ce iese din cadru */
+        background: #FFFFFF; /* Fundal închis conform stilului financiar */
+        padding: 10px 0;
+        border-bottom: 1px solid #E5E7EB;
+        position: relative;
+    }
+
+    .bimx-ticker {
+        display: flex;
+        white-space: nowrap;
+        width: max-content;
+        animation: ticker-scroll 20s linear infinite; /* Viteza de rulare */
+    }
+
+    /* Pauză la hover pentru a putea citi mai ușor */
+    .bimx-ticker-wrap:hover .bimx-ticker {
+        animation-play-state: paused;
+    }
+
+    .ticker-item {
+        display: flex;
+        align-items: center;
+        padding: 0 25px;
+    }
+
+    .t-symbol {
+        color: #1A2266;
+        margin-right: 8px;
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 16px;
+    }
+
+    .t-price {
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 16px;
+        color: #1A2266;
+    }
+
+    .t-pct {
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 16px;
+        margin-left: 8px;
+        color: #2BAB6F;
+    }
+
+    .t-pct.pos {
+        color: #10b981;
+    }
+
+    /* Verde */
+    .t-pct.neg {
+        color: #ef4444;
+    }
+
+    /* Roșu */
+
+    /* Animația de scroll infinit */
+    @keyframes ticker-scroll {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-50%);
+        }
+    }
+</style>{{article}}</div>
+</main><!-- #main -->
+</div><!-- #primary -->
+</div><!-- #content -->

@@ -1,0 +1,12 @@
+{
+  "parts": {
+    "open": "open-news",
+    "head": "head-news-3",
+    "mid": "mid-news",
+    "pre": "pre-news",
+    "header": "header-news",
+    "footer": "footer-news",
+    "tail": "tail-news"
+  },
+  "bodyAttrs": " class=\"wp-singular post-template-default single single-post postid-{{postId}} single-format-standard wp-custom-logo wp-embed-responsive wp-theme-victor wp-child-theme-victor-child is-light-theme no-js singular has-main-navigation\""
+}
