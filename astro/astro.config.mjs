@@ -3,8 +3,9 @@ import { defineConfig } from 'astro/config';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { writeSearchIndex } from './src/lib/search.mjs';
 
-// Pages that are files rather than directories (e.g. academy/programe/x/lesson.html) are emitted by Astro as
+// After the build: the search index (src/lib/search.mjs), and pages that are files rather than directories (e.g. academy/programe/x/lesson.html) are emitted by Astro as
 // lesson.html/index.html; move them to their real address after the build.
 function filePages() {
   return {
@@ -23,6 +24,8 @@ function filePages() {
           } else walk(p);
         });
         walk(root);
+        const counts = writeSearchIndex(root);
+        console.log(`search index: ${Object.entries(counts).map(([l, n]) => `${n} ${l.toUpperCase()}`).join(', ')}`);
       },
     },
   };

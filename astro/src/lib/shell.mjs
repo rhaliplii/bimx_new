@@ -8,9 +8,27 @@
 //   {{title}} {{description}} {{seo}} {{wpPost}} {{wpContainer}}   page fields
 //
 // The same functions are used by the import script (round-trip check) and by the Astro page.
+import crypto from 'node:crypto';
+import fs from 'node:fs';
+import path from 'node:path';
 import { LANG_PREFIX, link } from './links.mjs';
 import { buildMenu } from './menu.mjs';
 import { seoBlock } from './seo.mjs';
+
+// Own CSS and JS files carry their content hash in the address (site.css?v=…), so browsers never mix an old cached
+// file with new pages. The hash is recomputed from public/ at build time.
+const PUBLIC = path.resolve(process.cwd(), 'public');
+const versions = new Map();
+function versioned(abs) {
+  const m = /^([^?#]+\.(?:css|js))\?v=[0-9a-f]+$/.exec(abs);
+  if (!m) return abs;
+  if (!versions.has(m[1])) {
+    const file = path.join(PUBLIC, m[1]);
+    versions.set(m[1], fs.existsSync(file) ? crypto.createHash('md5').update(fs.readFileSync(file)).digest('hex').slice(0, 10) : null);
+  }
+  const v = versions.get(m[1]);
+  return v ? `${m[1]}?v=${v}` : abs;
+}
 
 export function altTarget(page, lang) {
   return '/' + LANG_PREFIX[lang] + page.inner;
@@ -21,7 +39,7 @@ const FIELD = /\{\{(u|alt):([^}]*)\}\}|\{\{(home|menu|title|description|seo|body
 /** Fill the placeholders of a shell template for a page. */
 export function fill(template, page, ctx) {
   return template.replace(FIELD, (_, kind, arg, field) => {
-    if (kind === 'u') return link(page.route, arg);
+    if (kind === 'u') return link(page.route, versioned(arg));
     if (kind === 'alt') return link(page.route, altTarget(page, arg));
     switch (field) {
       // 404.html is built from the home page and keeps its logo state
