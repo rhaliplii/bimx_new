@@ -306,3 +306,29 @@ export function homeNews(lang, route, ctx) {
   const list = rest.slice(0, HOME_LIST).map((e) => fillT(ctx.templates[`${lang}/home-news-item`], vals(e))).join('\n');
   return fillT(ctx.templates[`${lang}/home-news`], { ...vals(main), excerpt: main.homeExcerpt?.[lang] ?? main.summary[lang], list });
 }
+
+// ---------------------------------------------------------------- checks
+
+const SECTIONS = ['bimx', 'avize', 'emitenti'];
+const LANG_LIST = ['ro', 'en', 'uk', 'ru'];
+
+/** Stop the build with a clear message when a news folder is incomplete. */
+export function validateNews(items, categories) {
+  const errors = [];
+  const paths = new Set();
+  for (const it of items) {
+    const where = `src/content/news/${it.folder ?? it.path}`;
+    const need = (cond, msg) => { if (!cond) errors.push(`${where}: ${msg}`); };
+    need(typeof it.path === 'string' && /^[a-z0-9-]+(\/[a-z0-9-]+)*$/.test(it.path), '"path" must be an address like "2026/12/05/short-name" (lowercase, digits, -)');
+    need(!paths.has(it.path), `"path" ${it.path} is used by another press release`);
+    paths.add(it.path);
+    need(/^\d{4}-\d{2}-\d{2}$/.test(it.date ?? ''), '"date" must look like "2026-12-05"');
+    need(SECTIONS.includes(it.section), `"section" must be one of ${SECTIONS.join(', ')}`);
+    need(it.category in categories, `"category" must be one of ${Object.keys(categories).join(', ')}`);
+    for (const field of ['title', 'summary']) {
+      for (const lang of LANG_LIST) need(typeof it[field]?.[lang] === 'string' && it[field][lang].trim(), `"${field}" has no ${lang.toUpperCase()} text`);
+    }
+    for (const lang of LANG_LIST) need(typeof it.body?.[lang] === 'string' && it.body[lang].trim(), `${lang}.html is missing or empty`);
+  }
+  if (errors.length) throw new Error('News data:\n  ' + errors.join('\n  '));
+}

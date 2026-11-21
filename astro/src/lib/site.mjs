@@ -7,7 +7,7 @@ import path from 'node:path';
 import { seoIndex } from './seo.mjs';
 import { findChrome } from './news-pdf.mjs';
 import { academyPages } from './academy.mjs';
-import { applyList, articlePage, homeNews, pdfName, sortNews } from './news.mjs';
+import { applyList, articlePage, homeNews, pdfName, sortNews, validateNews } from './news.mjs';
 import newsTexts from '../data/news-texts.json';
 import newsDefaults from '../data/news-defaults.json';
 import categories from '../content/news/categories.json';
@@ -46,8 +46,9 @@ export const shell = {
 export const news = sortNews(Object.entries(newsData).map(([file, data]) => {
   const dir = file.replace(/\/news\.json$/, '');
   const body = Object.fromEntries(LANGS.map((lang) => [lang, newsBodies[`${dir}/${lang}.html`]]));
-  return { ...data, body };
+  return { ...data, body, folder: dir.split('/').pop() };
 }));
+validateNews(news, categories);
 // a press release PDF is either published in public/ or printed after the build (needs Chrome; src/lib/news-pdf.mjs)
 const canPrint = Boolean(findChrome());
 const pdfAvailable = (item, lang) => canPrint || fs.existsSync(path.resolve('public', LANG_PREFIX[lang] + item.path, pdfName(item)));
