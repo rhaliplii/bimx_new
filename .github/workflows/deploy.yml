@@ -1,7 +1,7 @@
 # Publishing to Hostinger.
 #   push to main            → build the test copy and publish it on the staging site (password, noindex)
 #   push of a tag v…        → build the site from that tag and publish it on bimx.md (backup first, check after)
-#   Run workflow on a tag   → publish that tag again (rollback to an earlier release)
+#   Run workflow on a tag   → publish that tag again (rollback to an earlier release); with dry_run: only list changes
 # Create a release tag with `npm run release` (see README). One-time setup: deploy/README.md.
 name: Deploy
 
@@ -10,6 +10,11 @@ on:
     branches: [main]
     tags: ['v*']
   workflow_dispatch:
+    inputs:
+      dry_run:
+        description: Only show what would be uploaded and deleted on the server (use it before the first publication)
+        type: boolean
+        default: false
 
 concurrency:
   group: deploy-${{ startsWith(github.ref, 'refs/tags/') && 'production' || 'staging' }}
@@ -100,21 +105,38 @@ jobs:
           printf '%s\n' "$KEY" > ~/.ssh/id_deploy && chmod 600 ~/.ssh/id_deploy
           printf '%s\n' "$KNOWN_HOSTS" > ~/.ssh/known_hosts
           printf 'Host bimx\n  HostName %s\n  Port %s\n  User %s\n  IdentityFile ~/.ssh/id_deploy\n  StrictHostKeyChecking yes\n' "$HOST" "$PORT" "$USER" > ~/.ssh/config
-      - name: Backup of the current site
-        if: steps.ready.outputs.ok == 'true' && needs.build.outputs.target == 'production'
-        run: |
-          ssh bimx "mkdir -p ~/backups && tar czf ~/backups/bimx-\$(date +%Y%m%d-%H%M%S)-${GITHUB_REF_NAME}.tar.gz -C '${{ vars.PROD_PATH }}' . \
-            && ls -1t ~/backups/bimx-*.tar.gz | tail -n +11 | xargs -r rm --"
-      - name: Upload
+      - name: Safety check of the target folder
         if: steps.ready.outputs.ok == 'true'
         env:
           TARGET_PATH: ${{ needs.build.outputs.target == 'production' && vars.PROD_PATH || vars.STAGING_PATH }}
         run: |
           [[ -n "$TARGET_PATH" ]] || { echo "::error::Set the repository variable PROD_PATH / STAGING_PATH (deploy/README.md)"; exit 1; }
+          [[ "$TARGET_PATH" != *..* && "$TARGET_PATH" != "~"* && "$TARGET_PATH" != "/" ]] || { echo "::error::Unsafe target path: $TARGET_PATH"; exit 1; }
+          # the upload deletes what is not part of the site: only into a folder that holds a site already, or an empty one
+          ssh bimx "mkdir -p '$TARGET_PATH' && cd '$TARGET_PATH' && { [ -f index.html ] || [ -z \"\$(ls -A)\" ]; }" \
+            || { echo "::error::$TARGET_PATH has no index.html and is not empty: refusing to replace its content"; exit 1; }
+      - name: What would change (dry run)
+        if: steps.ready.outputs.ok == 'true' && inputs.dry_run
+        env:
+          TARGET_PATH: ${{ needs.build.outputs.target == 'production' && vars.PROD_PATH || vars.STAGING_PATH }}
+        run: |
+          rsync -rlcz --delete --dry-run --itemize-changes --exclude-from=deploy/keep.txt dist/ "bimx:${TARGET_PATH%/}/" | tee /tmp/changes.txt
+          echo "### Dry run: $(grep -c '^\*deleting' /tmp/changes.txt || true) files would be deleted, $(grep -c '^<' /tmp/changes.txt || true) uploaded" >> "$GITHUB_STEP_SUMMARY"
+          grep '^\*deleting' /tmp/changes.txt | head -200 | sed 's/^/    /' >> "$GITHUB_STEP_SUMMARY" || true
+      - name: Backup of the current site
+        if: steps.ready.outputs.ok == 'true' && needs.build.outputs.target == 'production' && !inputs.dry_run
+        run: |
+          ssh bimx "mkdir -p ~/backups && tar czf ~/backups/bimx-\$(date +%Y%m%d-%H%M%S)-${GITHUB_REF_NAME}.tar.gz -C '${{ vars.PROD_PATH }}' . \
+            && ls -1t ~/backups/bimx-*.tar.gz | tail -n +11 | xargs -r rm --"
+      - name: Upload
+        if: steps.ready.outputs.ok == 'true' && !inputs.dry_run
+        env:
+          TARGET_PATH: ${{ needs.build.outputs.target == 'production' && vars.PROD_PATH || vars.STAGING_PATH }}
+        run: |
           # --delay-updates: new files are switched in at the end; --delete removes pages that no longer exist
           rsync -rlcz --delete --delay-updates --exclude-from=deploy/keep.txt dist/ "bimx:${TARGET_PATH%/}/"
       - name: Check the published site
-        if: steps.ready.outputs.ok == 'true'
+        if: steps.ready.outputs.ok == 'true' && !inputs.dry_run
         env:
           BASE: ${{ needs.build.outputs.target == 'production' && 'https://bimx.md/' || vars.STAGING_URL }}
           AUTH: ${{ needs.build.outputs.target == 'staging' && secrets.STAGING_AUTH || '' }}

@@ -63,6 +63,14 @@ staging   A   45.84.207.239
 Optional: Settings → Environments → `production` → *Deployment branches and tags*: only tags `v*`, and, if wanted,
 *Required reviewers* (needs an organisation or admin rights on the repository).
 
+### 4. First publication
+
+1. Actions → Deploy → Run workflow → *Use workflow from*: `main`, tick **dry_run** → the run summary lists what would be
+   uploaded and deleted on staging. Then the same for production with a release tag.
+2. Check the list of deleted files on production (old WordPress files, `new_site/`…): anything that must stay goes to
+   `deploy/keep.txt` first.
+3. The upload only goes into a folder that already contains `index.html` or is empty; any other folder is refused.
+
 ## Publishing a release
 
 ```
