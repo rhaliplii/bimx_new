@@ -1,0 +1,1330 @@
+{
+  "slug": "infrastructura-bimx",
+  "num": "06",
+  "title": "BIMx Trading Infrastructure",
+  "short": "ARENA Trading, exchange trader certification, trading simulations, membership admission, and the broker's role in admitting issuers.",
+  "level": "Professional",
+  "audience": "Brokers and exchange traders",
+  "intro": "This program is for investment firms entering the admission process at the Moldova International Stock Exchange (BIMx), which opened on 28 September 2026, and for the people they designate as exchange traders. It explains how to work on the ARENA Trading platform, developed by the Bucharest Stock Exchange (BVB), how a trading session runs, how the certification procedure works, why trading simulations matter, and the steps to become an exchange member, including settlement through the Single Central Securities Depository (DCU). This material accompanies the training organized by BIMx and does not replace it.",
+  "outcomes": [
+    "Describe the BIMx operating model: what the Bucharest Stock Exchange does, what BIMx does, and what the broker does.",
+    "Explain the sequence of market states in a BIMx trading session and the price-time priority rule.",
+    "Know the requirements and stages of certification as an exchange trader, including the structure of the exam.",
+    "Understand the purpose of trading simulations and what to check before the first live session.",
+    "Go through the steps of becoming an exchange member and explain the T+2 settlement cycle through the DCU.",
+    "Act as an Initiating or Intermediary Participant and prepare issuers from the BVM for admission to BIMx."
+  ],
+  "prerequisites": "This program assumes you know the basics of the capital market and of order types (for example, from BIMx Academy track 01). It is intended for employees of investment firms licensed by the National Commission for Financial Markets (CNPF).",
+  "courses": [
+    {
+      "code": "BA-401",
+      "title": "The ARENA Trading Platform",
+      "description": "How the BIMx market is organized technically: the ARENA Trading platform provided by the BVB as SaaS, the role of each participant, and how a trading session runs from pre-open to close.",
+      "lessons": [
+        {
+          "slug": "arena-trading-si-modelul-operational",
+          "title": "ARENA Trading and the BIMx Operating Model",
+          "summary": "Learn who operates the platform, who runs the market, and what responsibilities a broker connected to the BIMx trading system has.",
+          "minutes": 11,
+          "sections": [
+            {
+              "heading": "A European platform for the Moldovan market",
+              "blocks": [
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "ARENA Trading",
+                  "text": "ARENA Trading is the electronic trading system used by the Moldova International Stock Exchange (BIMx). It is developed by the Bucharest Stock Exchange (BVB) and provided to BIMx as SaaS (software as a service): the platform runs on BVB infrastructure, and BIMx and brokers access it remotely."
+                },
+                {
+                  "type": "p",
+                  "text": "On 21 August 2026, BIMx received authorization from the CNPF to operate the <strong>Regulated Market</strong> and the <strong>Multilateral Trading Facility (MTF)</strong>. Both markets run on the same platform, ARENA Trading. For brokers, this means a single working environment, with rules specific to each market."
+                },
+                {
+                  "type": "p",
+                  "text": "Choosing a platform already used on a European market reduces the technical risk of the launch and brings processes in the Republic of Moldova closer to the practice of European Union markets. The BVB is also BIMx's largest shareholder, with 26.67% of its capital."
+                }
+              ]
+            },
+            {
+              "heading": "Who does what: the BVB, BIMx, and the broker",
+              "blocks": [
+                {
+                  "type": "table",
+                  "headers": [
+                    "Participant",
+                    "Role",
+                    "Example responsibilities"
+                  ],
+                  "rows": [
+                    [
+                      "Bucharest Stock Exchange",
+                      "Operates the platform",
+                      "Hosting, maintenance, updates, technical know-how"
+                    ],
+                    [
+                      "BIMx",
+                      "Runs the market",
+                      "Rules, admission of members and instruments, users, relations with the CNPF and the DCU, session surveillance"
+                    ],
+                    [
+                      "The broker (exchange member)",
+                      "Distributes market access",
+                      "Clients, order transmission, connectivity, certified exchange traders"
+                    ]
+                  ]
+                },
+                {
+                  "type": "p",
+                  "text": "The model is <strong>remote-first</strong>: brokers do not go to the exchange's premises to trade; they connect securely from their own offices. At launch, access is through the platform's graphical terminal (GUI). The BIMx technology plan then provides for a Gateway API and a data feed (year 2) and connectivity via the FIX protocol (year 3)."
+                }
+              ]
+            },
+            {
+              "heading": "What this means for the broker",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "<strong>Named users</strong>: each exchange trader receives their own ARENA user ID after certification. User IDs are not shared between colleagues.",
+                    "<strong>Access security</strong>: the initial password arrives through a secure channel and must be changed and kept in line with the rules on credential management.",
+                    "<strong>Own connectivity</strong>: the broker is responsible for the workstations and the connection used to access the platform.",
+                    "<strong>Real-time market data</strong>: brokers get undelayed data by subscription, directly in ARENA; the public sees data with a 15-minute delay."
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Hypothetical example: organizing access",
+                  "text": "An investment firm designates two exchange traders. After certification, each receives their own ARENA user ID. When one of them is on vacation, the other enters client orders under their own user ID; they do not use their colleague's account. This way, every order in the system can be clearly attributed to a certified person."
+                }
+              ]
+            },
+            {
+              "heading": "Where BIMx is in the launch timeline",
+              "blocks": [
+                {
+                  "type": "steps",
+                  "items": [
+                    {
+                      "title": "21 August 2026",
+                      "text": "The CNPF authorizes BIMx to operate the Regulated Market and the MTF."
+                    },
+                    {
+                      "title": "28 September 2026",
+                      "text": "The admission process for brokers and issuers begins, the final stage before trading launches."
+                    },
+                    {
+                      "title": "1 October 2026",
+                      "text": "The ARENA platform goes into production, according to the current operational timeline."
+                    },
+                    {
+                      "title": "In parallel",
+                      "text": "Connecting the BIMx system to the Single Central Securities Depository, setting the operating rules, training brokers on ARENA Trading, and running trading simulations."
+                    },
+                    {
+                      "title": "By the end of 2026",
+                      "text": "The first planned listing."
+                    }
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "tip",
+                  "title": "Follow official communications",
+                  "text": "Dates for training and simulation sessions are communicated directly to brokers in the admission process. For questions, write to office@bimx.md."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "ARENA Trading is BIMx's trading platform, developed by the Bucharest Stock Exchange and provided as SaaS.",
+            "The same platform serves both markets authorized by the CNPF: the Regulated Market and the MTF.",
+            "The BVB operates the platform, BIMx runs the market, and the broker distributes access to clients.",
+            "Access is remote-first, via the GUI terminal at launch, with API and FIX planned for the following years.",
+            "Each exchange trader has their own user ID; user IDs are not shared."
+          ],
+          "quiz": [
+            {
+              "q": "Who develops the ARENA Trading platform used by BIMx?",
+              "options": [
+                "The National Commission for Financial Markets",
+                "The Bucharest Stock Exchange",
+                "The Single Central Securities Depository",
+                "Each broker, separately"
+              ],
+              "answer": 1,
+              "explanation": "ARENA Trading is developed by the Bucharest Stock Exchange and provided to BIMx as SaaS."
+            },
+            {
+              "q": "In the BIMx operating model, who handles member admission and relations with the CNPF and the DCU?",
+              "options": [
+                "BIMx",
+                "The Bucharest Stock Exchange",
+                "The broker"
+              ],
+              "answer": 0,
+              "explanation": "BIMx runs the market: rules, users, admissions, and relations with the supervisory authority and the depository."
+            },
+            {
+              "q": "An exchange trader is absent, and their certified colleague needs to enter client orders. What is the correct approach?",
+              "options": [
+                "Use the absent colleague's ARENA user ID",
+                "Ask the exchange for a temporary shared user ID",
+                "Hold all orders until the colleague returns",
+                "Enter the orders under their own user ID"
+              ],
+              "answer": 3,
+              "explanation": "User IDs are individual and not shared, so every order can be attributed to a certified person."
+            }
+          ]
+        },
+        {
+          "slug": "sedinta-de-tranzactionare-bimx",
+          "title": "The BIMx Trading Session, State by State",
+          "summary": "Walk through the seven states of a BIMx trading session, learn how the opening and closing fixing auctions work, and see how price-time priority is applied.",
+          "minutes": 12,
+          "sections": [
+            {
+              "heading": "Session schedule",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "The trading session on the markets operated by BIMx takes place on business days, from <strong>10:00–14:00</strong> (Moldova time). The markets are closed on non-business days and public holidays. The full calendar of trading days, including any days with a special schedule, is published on bimx.md before the first session."
+                },
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "Market state",
+                  "text": "The market state is the phase the session is in at a given moment. It determines what an exchange trader can do: whether they can enter, modify, or cancel orders, and whether orders execute immediately, at a fixing price, or not at all."
+                }
+              ]
+            },
+            {
+              "heading": "The seven states",
+              "blocks": [
+                {
+                  "type": "steps",
+                  "items": [
+                    {
+                      "title": "Pre-open",
+                      "text": "Orders can be entered, modified, or canceled, but no trades are concluded. The system calculates and displays the potential opening price."
+                    },
+                    {
+                      "title": "Opening",
+                      "text": "The opening price is determined by the fixing auction algorithm, and trades are concluded with the orders accumulated during pre-open."
+                    },
+                    {
+                      "title": "Open",
+                      "text": "Continuous trading: matching orders execute immediately, based on price-time priority."
+                    },
+                    {
+                      "title": "Pre-close",
+                      "text": "Orders can be entered, modified, or canceled without execution, in preparation for the close. The potential closing price is calculated."
+                    },
+                    {
+                      "title": "Closing",
+                      "text": "The closing price is determined by a fixing auction, and trades are concluded."
+                    },
+                    {
+                      "title": "Trading at close",
+                      "text": "Trades can be concluded only at the price resulting from the closing fixing auction."
+                    },
+                    {
+                      "title": "Closed",
+                      "text": "The session has ended. No new orders are accepted."
+                    }
+                  ]
+                },
+                {
+                  "type": "p",
+                  "text": "The order types accepted in each state and the mechanisms for temporary trading suspension are described in the BIMx Rules for the Regulated Market (Title V) and the BIMx Rules for the MTF. For the certification exam, you need to know these rules in full."
+                }
+              ]
+            },
+            {
+              "heading": "Price-time priority",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "In the <em>Open</em> state, orders execute according to two criteria, in this order: first <strong>price</strong> (the highest buy price and the lowest sell price take priority), then <strong>time of entry</strong> (at the same price, the order entered first executes first)."
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Hypothetical example: who executes first",
+                  "text": "The order book contains three buy orders for the same share: A at MDL 101 (entered at 10:05), B at MDL 102 (10:07), and C at MDL 102 (10:06). A sell order arrives at MDL 100. C executes first: it has the best price (MDL 102), tied with B, but it was entered earlier. B follows, then A. The figures are illustrative."
+                }
+              ]
+            },
+            {
+              "heading": "Why the fixing auction matters",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "At the open and the close, orders are not executed one by one. Instead, they are pooled, and the system calculates a single price at which the largest volume can trade. This mechanism reduces the impact of any single order on the price at sensitive moments of the day, and the closing price becomes the reference for the next session."
+                },
+                {
+                  "type": "callout",
+                  "variant": "warning",
+                  "title": "Watch orders entered during pre-open",
+                  "text": "An order entered during pre-open does not execute immediately, but it can take part in the opening fixing auction. Before leaving it in the system, check the potential opening price displayed by the platform."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "The BIMx trading session takes place on business days, from 10:00–14:00 (Moldova time).",
+            "A session moves through seven states: pre-open, opening, open, pre-close, closing, trading at close, and closed.",
+            "Continuous trading applies price-time priority: price first, then time of entry.",
+            "Opening and closing prices are set by fixing auctions, based on the accumulated orders.",
+            "Details on permitted orders and suspensions are in the BIMx Rules for each market."
+          ],
+          "quiz": [
+            {
+              "q": "In which market state do orders execute immediately, based on price-time priority?",
+              "options": [
+                "Pre-open",
+                "Pre-close",
+                "Open",
+                "Closed"
+              ],
+              "answer": 2,
+              "explanation": "Continuous trading takes place in the Open state, and matching orders execute immediately according to price-time priority."
+            },
+            {
+              "q": "Two buy orders have the same price. Which one executes first?",
+              "options": [
+                "The one with the larger volume",
+                "The one entered earlier",
+                "The one from the larger broker",
+                "They are split equally"
+              ],
+              "answer": 1,
+              "explanation": "At the same price, the tie-breaker is time of entry: the order entered first has priority."
+            },
+            {
+              "q": "What happens in the “Trading at close” state?",
+              "options": [
+                "Trades can be concluded only at the price resulting from the closing fixing auction",
+                "Orders are entered without execution",
+                "The potential opening price is calculated",
+                "The market is suspended"
+              ],
+              "answer": 0,
+              "explanation": "In this state, trades can be concluded only at the price set by the closing fixing auction."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "BA-402",
+      "title": "Exchange Trader Certification",
+      "description": "The requirements and stages through which a person designated by a member broker becomes a BIMx exchange trader: the application file, the theoretical and technical exam, the Admission Decision, and receiving access credentials.",
+      "lessons": [
+        {
+          "slug": "cine-poate-deveni-agent-de-bursa",
+          "title": "Who Can Become an Exchange Trader",
+          "summary": "Learn what an exchange trader does, what requirements they must meet, and how the broker designates them for certification.",
+          "minutes": 9,
+          "sections": [
+            {
+              "heading": "The role of the exchange trader",
+              "blocks": [
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "Exchange trader",
+                  "text": "An exchange trader is an individual who enters orders and concludes trades in the BIMx trading system, in the name and on behalf of a broker that is an exchange member. This status can be obtained only through the certification procedure organized by BIMx."
+                },
+                {
+                  "type": "p",
+                  "text": "Certification checks two things: knowledge of the capital market regulatory framework and the practical ability to use the ARENA Trading platform. The procedure is set out in the BIMx Regulation on the Certification of Exchange Traders and detailed in the Procedure for Organising the Theoretical and Technical Assessment, both approved by the BIMx Executive Body and published on bimx.md."
+                }
+              ]
+            },
+            {
+              "heading": "Requirements, all of which must be met",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "Has full legal capacity.",
+                    "Is a citizen of the Republic of Moldova or, for foreign nationals, has the legal right to work in the Republic of Moldova.",
+                    "Is not in any situation of incompatibility or conflict of interest that would affect the exercise of this role.",
+                    "Is employed by a broker that is a BIMx member and has been designated by that broker for certification."
+                  ]
+                },
+                {
+                  "type": "p",
+                  "text": "Professional knowledge is not demonstrated through diplomas or certificates obtained elsewhere, but only through the exam provided for in the Regulation."
+                }
+              ]
+            },
+            {
+              "heading": "Designation by the broker",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Exchange trader status can be obtained only on the proposal of a member broker. The employing broker submits a <strong>certification file</strong>: the application signed by the legal representative, the compliance declarations, the candidate's identification documents, and the other documents required by the Regulation. The file is sent electronically, with a qualified electronic signature, to BIMx's official email address."
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Hypothetical example: an incomplete file",
+                  "text": "A broker sends a candidate's file without the compliance declaration on conflicts of interest. BIMx does not schedule the exam session until the file is complete. The broker sends the missing document, and once completeness is confirmed, BIMx communicates the exam date."
+                }
+              ]
+            },
+            {
+              "heading": "The link to the broker's admission",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Certifying exchange traders is one of the practical conditions for an admitted broker to actually trade: without at least one certified trader, the broker has no one to enter orders in ARENA Trading. That is why designating candidates should be planned together with the membership admission process, which began on 28 September 2026."
+                },
+                {
+                  "type": "callout",
+                  "variant": "tip",
+                  "title": "Plan ahead",
+                  "text": "Each exam session is individual, with the candidate directly supervised at a dedicated workstation. If you have several candidates, send the files early so there is time for scheduling."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "An exchange trader enters orders in the BIMx system on behalf of a member broker.",
+            "The status is obtained only through certification organized by BIMx, with a theoretical and a technical exam.",
+            "The requirements are cumulative: legal capacity, right to work, no incompatibilities, and employment with a member broker.",
+            "The broker submits the file electronically, with a qualified electronic signature.",
+            "A broker needs certified exchange traders to actually trade on ARENA Trading."
+          ],
+          "quiz": [
+            {
+              "q": "Who submits a candidate's certification file?",
+              "options": [
+                "The candidate, in their own name",
+                "The CNPF",
+                "The member broker that employs them",
+                "The Bucharest Stock Exchange"
+              ],
+              "answer": 2,
+              "explanation": "Exchange trader status is obtained only on the proposal of a member broker, which submits the certification file."
+            },
+            {
+              "q": "Which of the following is NOT a requirement for becoming a BIMx exchange trader?",
+              "options": [
+                "Being employed by a member broker",
+                "Having full legal capacity",
+                "Not having a conflict of interest",
+                "Holding BIMx shares"
+              ],
+              "answer": 3,
+              "explanation": "Holding shares in the exchange is not a requirement. The requirements are legal capacity, the right to work, no incompatibilities, and employment with a member broker."
+            },
+            {
+              "q": "How does a candidate demonstrate professional knowledge?",
+              "options": [
+                "Through the exam provided for in the Regulation on the Certification of Exchange Traders",
+                "Through a university degree",
+                "Through the broker's recommendation",
+                "Through years of work experience"
+              ],
+              "answer": 0,
+              "explanation": "Knowledge is assessed only through the examination procedure provided for in the Regulation."
+            }
+          ]
+        },
+        {
+          "slug": "examenul-de-atestare",
+          "title": "The Certification Exam and Access Credentials",
+          "summary": "Learn how the exam is scheduled and conducted, how the result is communicated, and what happens after the Admission Decision.",
+          "minutes": 11,
+          "sections": [
+            {
+              "heading": "Scheduling the session",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Once the file is confirmed as complete, BIMx schedules the exam session and informs the broker and the candidate of the date, time, and place, respecting the notice period set in the Regulation. Along with the schedule, the candidate receives preparation materials: the detailed syllabus, sample questions, and the ARENA Platform User Guide."
+                },
+                {
+                  "type": "callout",
+                  "variant": "warning",
+                  "title": "The materials are only a guide",
+                  "text": "The sample questions do not cover the whole exam. To pass it, you need to know the applicable regulatory framework in full."
+                }
+              ]
+            },
+            {
+              "heading": "The two parts of the exam",
+              "blocks": [
+                {
+                  "type": "table",
+                  "headers": [
+                    "Part",
+                    "What it tests"
+                  ],
+                  "rows": [
+                    [
+                      "Theoretical",
+                      "The BIMx Rules for the Regulated Market and the MTF, the relevant provisions on the Single Central Securities Depository, how the market works, order types, trading mechanisms, professional conduct, confidentiality, and the prevention of market abuse"
+                    ],
+                    [
+                      "Technical",
+                      "Using the ARENA platform in a test environment: entering, modifying, and canceling orders, using the order types in the BIMx Rules, interpreting market information, and following access and password security procedures"
+                    ]
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "No offsetting between parts",
+                  "text": "The exam takes place at BIMx's premises, and the two parts are consecutive and both mandatory. A very good result on the theoretical part does not make up for failing the technical part, or vice versa."
+                }
+              ]
+            },
+            {
+              "heading": "The Admission Decision and system access",
+              "blocks": [
+                {
+                  "type": "steps",
+                  "items": [
+                    {
+                      "title": "The minutes",
+                      "text": "The result is not announced on the spot. Minutes of the session are drawn up, and the Listing and Operations Department makes a proposal."
+                    },
+                    {
+                      "title": "The Admission Decision",
+                      "text": "The BIMx Executive Body issues the decision confirming which candidates passed. The decision is the sole act that completes the procedure: no individual certificates are issued."
+                    },
+                    {
+                      "title": "Communication",
+                      "text": "The decision is sent officially to the employing broker, which passes an extract on to the candidate."
+                    },
+                    {
+                      "title": "Access credentials",
+                      "text": "The exchange trader receives an individual ARENA user ID and an initial password through a secure channel and is entered in the Register of Exchange Traders kept by BIMx."
+                    },
+                    {
+                      "title": "Notifying the CNPF",
+                      "text": "BIMx notifies the CNPF of the certified exchange traders, as required by regulations."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "heading": "Retakes and the exam fee",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "The Regulation does not limit the number of attempts. A candidate who fails may submit a new application, with no restriction on timing or frequency, provided all requirements are met. The exam fee is set in the BIMx Schedule of Fees and Commissions and is paid for each session, including retakes."
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Hypothetical example: budgeting for certification",
+                  "text": "A broker designates three candidates. Two pass on the first try, and one on the second. The broker pays the exam fee for four sessions: three initial sessions and one retake. The fee amount comes from the BIMx Schedule of Fees and Commissions in force."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "When the exam is scheduled, the candidate receives the syllabus, sample questions, and the ARENA User Guide.",
+            "The exam has a theoretical and a technical part, both mandatory, with no offsetting between them.",
+            "The result is established by a decision of the Executive Body; no individual certificates are issued.",
+            "After the decision, the exchange trader receives an ARENA user ID and is entered in the Register of Exchange Traders.",
+            "The number of attempts is not limited, but the fee is paid for each session."
+          ],
+          "quiz": [
+            {
+              "q": "A candidate gets a perfect score on the theoretical part but fails the technical part. What is the result?",
+              "options": [
+                "They pass, because the average is high enough",
+                "They receive a provisional ARENA user ID",
+                "They fail, because there is no offsetting between parts",
+                "They retake only the theoretical part"
+              ],
+              "answer": 2,
+              "explanation": "Both parts are mandatory and do not offset each other, so failing the technical part means failing the exam."
+            },
+            {
+              "q": "Which document completes the certification procedure?",
+              "options": [
+                "The candidate's individual certificate",
+                "The Admission Decision issued by the BIMx Executive Body",
+                "The employment contract with the broker",
+                "The minutes of the session"
+              ],
+              "answer": 1,
+              "explanation": "The Admission Decision is the sole act that completes the procedure; no individual certificates are issued."
+            },
+            {
+              "q": "How many times can a candidate retake the certification exam?",
+              "options": [
+                "Only once",
+                "At most three times a year",
+                "Only after 6 months",
+                "Without limit, with a new application and the fee paid for each session"
+              ],
+              "answer": 3,
+              "explanation": "The Regulation sets no maximum number of attempts; each session requires a new application and payment of the fee."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "BA-403",
+      "title": "Trading Simulations",
+      "description": "Why BIMx organizes trading simulations before launch, what they test, and how a broker can prepare to draw useful conclusions from them.",
+      "lessons": [
+        {
+          "slug": "simulari-de-tranzactionare",
+          "title": "Simulations: The Dress Rehearsal Before the First Session",
+          "summary": "Learn what a trading simulation is, which scenarios are worth practicing, and what each broker should check before launch.",
+          "minutes": 10,
+          "sections": [
+            {
+              "heading": "Why simulations exist",
+              "blocks": [
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "Trading simulation",
+                  "text": "A trading simulation is a session held in a test environment, with fictitious instruments and orders, that reproduces a real trading day. Nothing traded in it has any legal or financial effect."
+                },
+                {
+                  "type": "p",
+                  "text": "According to the BIMx announcement of 28 September 2026, simulations are continuing in parallel with broker admission and the connection to the Single Central Securities Depository. The aim is for every participant to have already practiced the main workflows by the first live session, and for any technical or procedural issues to be identified early."
+                }
+              ]
+            },
+            {
+              "heading": "What is worth practicing",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "<strong>Connecting and logging in</strong>: each exchange trader from their own workstation, with their own user ID.",
+                    "<strong>The full order lifecycle</strong>: entry, modification, cancellation, partial and full execution.",
+                    "<strong>Moving through the market states</strong>: orders placed during pre-open, participation in the fixing auction, continuous trading, the close.",
+                    "<strong>Unusual situations</strong>: suspension of an instrument, a rejected order, a lost connection.",
+                    "<strong>The post-trade flow</strong>: the confirmations and report the broker receives after the session, in preparation for settlement."
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Hypothetical example: a simulation scenario",
+                  "text": "During pre-open, the exchange trader enters a buy order for 500 fictitious shares at MDL 20. The potential opening price displayed is MDL 19.80. At the open, the order executes in full at MDL 19.80, the fixing price, even though the limit was MDL 20. The trader then checks that the trade appears correctly in the day's confirmations."
+                }
+              ]
+            },
+            {
+              "heading": "How the broker prepares",
+              "blocks": [
+                {
+                  "type": "steps",
+                  "items": [
+                    {
+                      "title": "Before",
+                      "text": "Decide who will take part, check the workstations and the connection, and prepare a list of scenarios you want to test."
+                    },
+                    {
+                      "title": "During the simulation",
+                      "text": "Note the time and a description of any error or unclear point, with screenshots, and without any real client data."
+                    },
+                    {
+                      "title": "After",
+                      "text": "Send your observations to BIMx through the designated channel and update the firm's internal procedures."
+                    }
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "warning",
+                  "title": "Do not use real data",
+                  "text": "The test environment is no place for clients' personal data. Use only the fictitious data provided for the simulation."
+                }
+              ]
+            },
+            {
+              "heading": "The link to certification",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "The technical part of the certification exam also takes place in the ARENA test environment. Taking part in simulations is therefore good exam preparation too: the exchange trader gets used to the interface, the order types, and the security procedures before being assessed."
+                },
+                {
+                  "type": "callout",
+                  "variant": "tip",
+                  "title": "Simulation calendar",
+                  "text": "Simulation dates are communicated directly to brokers in the admission process. If your firm has not received an invitation, write to office@bimx.md."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "Simulations reproduce a trading day in a test environment, with no legal or financial effect.",
+            "BIMx runs simulations in parallel with broker admission and the connection to the DCU.",
+            "It is worth practicing login, the full order lifecycle, the market states, and unusual situations.",
+            "The broker records errors and reports them to BIMx, then updates its internal procedures.",
+            "Simulations also prepare traders for the technical part of the certification exam."
+          ],
+          "quiz": [
+            {
+              "q": "What effect does a trade concluded in a simulation have?",
+              "options": [
+                "It settles through the DCU at T+2",
+                "It has no legal or financial effect",
+                "It is reported to the CNPF as a real trade",
+                "It changes the reference price of the live session"
+              ],
+              "answer": 1,
+              "explanation": "The simulation takes place in a test environment, with fictitious instruments and orders, and has no legal or financial effect."
+            },
+            {
+              "q": "During the simulation, an error occurs when canceling an order. What is recommended?",
+              "options": [
+                "Note the time and a description of the error and send the observation to BIMx",
+                "Ignore the error, since it is only a test",
+                "Re-enter the order using a real client's data",
+                "Stop taking part in the simulation"
+              ],
+              "answer": 0,
+              "explanation": "The purpose of the simulation is to identify problems before launch, so errors must be documented and reported."
+            },
+            {
+              "q": "Which stage of certification is most directly linked to taking part in simulations?",
+              "options": [
+                "Submitting the file",
+                "Paying the exam fee",
+                "Notifying the CNPF",
+                "The technical part of the exam, held in the ARENA test environment"
+              ],
+              "answer": 3,
+              "explanation": "The technical part of the exam takes place in the ARENA test environment, which simulations help the exchange trader get familiar with."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "BA-404",
+      "title": "Becoming a BIMx Member",
+      "description": "The steps through which an investment firm licensed by the CNPF becomes an exchange member, and what happens after its clients trade: clearing and settlement through the Single Central Securities Depository.",
+      "lessons": [
+        {
+          "slug": "admiterea-ca-membru",
+          "title": "Becoming an Exchange Member, Step by Step",
+          "summary": "Learn who can become a BIMx member, which documents to submit, and what must be ready before the broker can actually trade.",
+          "minutes": 10,
+          "sections": [
+            {
+              "heading": "Who can become a member",
+              "blocks": [
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "Exchange member",
+                  "text": "An exchange member is an investment firm licensed by the CNPF and admitted by BIMx to trade on the markets operated by the exchange, on its own account or on behalf of clients. Trading on BIMx takes place only through members."
+                },
+                {
+                  "type": "p",
+                  "text": "The broker admission process at BIMx began on <strong>28 September 2026</strong> and is the final stage before trading launches. The list of licensed investment firms is published by the CNPF, and the list of BIMx members is updated on bimx.md as firms are admitted."
+                }
+              ]
+            },
+            {
+              "heading": "Stages of admission",
+              "blocks": [
+                {
+                  "type": "steps",
+                  "items": [
+                    {
+                      "title": "Membership Application",
+                      "text": "The standard form from the Download Centre on bimx.md, completed and signed by the legal representative."
+                    },
+                    {
+                      "title": "Participation Agreement",
+                      "text": "The standard agreement that sets out the member's rights and obligations toward the exchange."
+                    },
+                    {
+                      "title": "Connecting to ARENA Trading",
+                      "text": "Setting up access and workstations, and attending the training organized by BIMx."
+                    },
+                    {
+                      "title": "Certifying exchange traders",
+                      "text": "Designating and certifying the people who will enter orders (course BA-402)."
+                    },
+                    {
+                      "title": "Trading simulations",
+                      "text": "Practicing the workflows in the test environment before the first live session (course BA-403)."
+                    }
+                  ]
+                },
+                {
+                  "type": "p",
+                  "text": "Membership admission fees and annual ARENA platform access fees are set out in the BIMx Schedule of Fees and Commissions."
+                }
+              ]
+            },
+            {
+              "heading": "Checklist before the first session",
+              "blocks": [
+                {
+                  "type": "table",
+                  "headers": [
+                    "Item",
+                    "Check question"
+                  ],
+                  "rows": [
+                    [
+                      "Member status",
+                      "Do we have the Admission Decision and a signed Participation Agreement?"
+                    ],
+                    [
+                      "Exchange traders",
+                      "Do we have at least one certified trader with an active ARENA user ID, plus a backup?"
+                    ],
+                    [
+                      "Technical",
+                      "Have the workstations and connection been tested in simulations?"
+                    ],
+                    [
+                      "Settlement",
+                      "Are the workflows with the Single Central Securities Depository and the settlement accounts clear?"
+                    ],
+                    [
+                      "Clients",
+                      "Do client agreements and fees cover trading on BIMx?"
+                    ]
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Hypothetical example: the order of steps",
+                  "text": "A firm submits its Membership Application in the first week of October and, in parallel, sends certification files for two employees. The traders attend training and simulations and sit the exam, and after the Admission Decision and receipt of their ARENA user IDs, the firm is ready for the first session. Working in parallel shortens the timeline significantly."
+                }
+              ]
+            },
+            {
+              "heading": "Where to find the documents",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "Standard forms and agreements: the Download Centre on bimx.md.",
+                    "BIMx Rules for the Regulated Market and the MTF: the “Regulations and Legal Acts” page.",
+                    "Certification procedure: the “Broker Certification” page.",
+                    "Information about the admission process: office@bimx.md."
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "tip",
+                  "title": "Start with certification",
+                  "text": "Certifying exchange traders takes time, because each exam session is individual. Designate candidates when you submit the Membership Application."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "Trading on BIMx takes place only through members: investment firms licensed by the CNPF and admitted by the exchange.",
+            "Broker admission began on 28 September 2026 as the final stage before trading launches.",
+            "The steps: Membership Application, Participation Agreement, connecting to ARENA, certifying exchange traders, simulations.",
+            "Admission fees and ARENA access fees are in the BIMx Schedule of Fees and Commissions.",
+            "Working on admission and certification in parallel shortens the timeline to the first session."
+          ],
+          "quiz": [
+            {
+              "q": "Who can become a BIMx member?",
+              "options": [
+                "Any individual with investment experience",
+                "Any commercial bank",
+                "An investment firm licensed by the CNPF and admitted by BIMx",
+                "Any listed company"
+              ],
+              "answer": 2,
+              "explanation": "Exchange members are investment firms licensed by the CNPF and admitted by BIMx."
+            },
+            {
+              "q": "Where does a broker find the Membership Application form?",
+              "options": [
+                "In the Download Centre on bimx.md",
+                "On the Bucharest Stock Exchange website",
+                "At the Single Central Securities Depository",
+                "The form is not public"
+              ],
+              "answer": 0,
+              "explanation": "Standard forms and agreements, including the Membership Application, are in the Download Centre on bimx.md."
+            },
+            {
+              "q": "What is the most efficient way to prepare for admission?",
+              "options": [
+                "Wait for the Admission Decision, then designate exchange traders",
+                "Start with simulations, without a Membership Application",
+                "Submit only the Participation Agreement",
+                "Work in parallel: the Membership Application and the exchange traders' certification files"
+              ],
+              "answer": 3,
+              "explanation": "Certification takes time, so designating exchange traders in parallel with the Membership Application shortens the timeline."
+            }
+          ]
+        },
+        {
+          "slug": "decontarea-prin-dcu",
+          "title": "Clearing and Settlement Through the Single Central Securities Depository",
+          "summary": "Learn what happens after a trade is concluded on BIMx: reporting to the DCU, confirmation of instructions, and the simultaneous transfer of securities and cash at T+2.",
+          "minutes": 10,
+          "sections": [
+            {
+              "heading": "The role of the Single Central Securities Depository",
+              "blocks": [
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "Single Central Securities Depository (DCU)",
+                  "text": "The Single Central Securities Depository of the Republic of Moldova keeps records of securities and performs clearing and settlement of trades concluded on the markets operated by BIMx. Settlement means the actual transfer of securities to the buyer and of cash to the seller."
+                },
+                {
+                  "type": "p",
+                  "text": "According to the announcement of 28 September 2026, connecting the BIMx system to the DCU system is in its final stage, along with setting the operating rules. Settlement becomes operational when trading launches."
+                }
+              ]
+            },
+            {
+              "heading": "The T+2 cycle",
+              "blocks": [
+                {
+                  "type": "steps",
+                  "items": [
+                    {
+                      "title": "T+0: trade date",
+                      "text": "BIMx sends the DCU the consolidated report of trades executed during the session."
+                    },
+                    {
+                      "title": "T+1",
+                      "text": "The participants and the DCU confirm the settlement instructions."
+                    },
+                    {
+                      "title": "T+2",
+                      "text": "Securities and funds are transferred simultaneously, on a delivery versus payment basis."
+                    }
+                  ]
+                },
+                {
+                  "type": "p",
+                  "text": "Settlement is in the national currency (MDL), and T+2 means the second business day after the trade date. Non-business days are not counted."
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Hypothetical example: calculating the settlement date",
+                  "text": "A trade is concluded on Thursday. T+1 is Friday, and T+2 is Monday, if Monday is a business day. If the trade is concluded on Friday, T+1 is Monday and T+2 is Tuesday. The buyer becomes the registered owner of the securities on the settlement date, not on the trade date."
+                }
+              ]
+            },
+            {
+              "heading": "Delivery versus payment",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "The <strong>delivery versus payment</strong> (DvP) principle means that securities are transferred only if the cash is transferred at the same time. This way, neither party risks delivering without receiving the corresponding value."
+                },
+                {
+                  "type": "callout",
+                  "variant": "warning",
+                  "title": "The broker's responsibility",
+                  "text": "Member brokers ensure settlement of trades executed on behalf of clients, in line with the DCU Rules. Before sending an order, check that the client has the securities (for a sale) or the funds (for a purchase) needed for settlement."
+                }
+              ]
+            },
+            {
+              "heading": "What the investor sees",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "For the end client, settlement is usually invisible: they see the order executed on the trade date, and the securities appear in their account after settlement. The broker must be able to explain this time gap clearly, especially to beginner investors buying at a first listing."
+                },
+                {
+                  "type": "table",
+                  "headers": [
+                    "When",
+                    "What the client sees"
+                  ],
+                  "rows": [
+                    [
+                      "T+0",
+                      "Confirmation that the order was executed, with price and quantity"
+                    ],
+                    [
+                      "T+1",
+                      "The trade pending settlement"
+                    ],
+                    [
+                      "T+2",
+                      "The securities in the account (buyer) or the funds available (seller)"
+                    ]
+                  ]
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "The DCU keeps records of securities and settles trades concluded on BIMx.",
+            "The cycle is T+2: report to the DCU at T+0, confirmation of instructions at T+1, transfer at T+2.",
+            "Settlement is in MDL, and T+2 is counted in business days.",
+            "Delivery versus payment ensures securities and cash are transferred simultaneously.",
+            "The broker is responsible for settling clients' trades and checks available holdings before placing an order."
+          ],
+          "quiz": [
+            {
+              "q": "A trade on BIMx is concluded on Friday. When does settlement take place, assuming no public holidays?",
+              "options": [
+                "Saturday",
+                "Monday",
+                "Tuesday",
+                "Wednesday"
+              ],
+              "answer": 2,
+              "explanation": "T+2 is counted in business days: T+1 is Monday, T+2 is Tuesday."
+            },
+            {
+              "q": "What does the “delivery versus payment” principle mean?",
+              "options": [
+                "Securities and cash are transferred simultaneously",
+                "The buyer pays before the trade",
+                "The seller delivers the securities on the trade date",
+                "The broker personally guarantees payment"
+              ],
+              "answer": 0,
+              "explanation": "Delivery versus payment means a simultaneous transfer: securities move only if the cash moves too."
+            },
+            {
+              "q": "What does BIMx send to the DCU on the trade date (T+0)?",
+              "options": [
+                "The buyers' cash",
+                "The list of exchange members",
+                "The issuer's admission decision",
+                "The consolidated report of executed trades"
+              ],
+              "answer": 3,
+              "explanation": "At T+0, BIMx sends the DCU the consolidated report of trades executed during the session."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "BA-405",
+      "title": "The Broker's Role in Issuer Admission",
+      "description": "The investment firm's role as Initiating Participant on the Regulated Market and as Intermediary Participant on the MTF, plus practical steps for preparing issuers and municipal bond issues currently traded on the BVM.",
+      "lessons": [
+        {
+          "slug": "participant-initiator-si-intermediar",
+          "title": "Initiating Participant and Intermediary Participant",
+          "summary": "Learn what the broker does when accompanying an issuer to BIMx, how its role differs on the Regulated Market and the MTF, and which responsibilities remain with the issuer.",
+          "minutes": 11,
+          "sections": [
+            {
+              "heading": "Two roles, two markets",
+              "blocks": [
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "Initiating Participant and Intermediary Participant",
+                  "text": "The Initiating Participant is the member broker that helps the issuer prepare and submit its file on the Regulated Market; the role is optional for shares and mandatory for municipal bonds. The Intermediary Participant is the broker with which an issuer on the MTF must have an agreement, both at admission and for as long as its securities trade."
+                },
+                {
+                  "type": "table",
+                  "headers": [
+                    "",
+                    "Initiating Participant (Regulated Market)",
+                    "Intermediary Participant (MTF)"
+                  ],
+                  "rows": [
+                    [
+                      "Is it mandatory?",
+                      "No, for shares; yes, for municipal bonds",
+                      "Yes"
+                    ],
+                    [
+                      "Length of the relationship",
+                      "Until the first trading day is set",
+                      "For as long as the securities trade"
+                    ],
+                    [
+                      "Contact persons",
+                      "The issuer's",
+                      "At least one of the two comes from the Participant"
+                    ],
+                    [
+                      "Documents signed",
+                      "Assists with the file",
+                      "Signs the Memorandum together with the issuer"
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "heading": "What the Initiating Participant does",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "checks the eligibility requirements in the Rules together with the issuer;",
+                    "structures and reviews the file before submission for compliance with the BIMx Rules;",
+                    "coordinates clarifications and additions with the Listing and Operations Department;",
+                    "sends the requested answers and documents within the deadlines set by BIMx;",
+                    "acts as the operational link with BIMx until the first trading day is set."
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "warning",
+                  "title": "Responsibility stays with the issuer",
+                  "text": "Even when the file is submitted through the Initiating Participant, responsibility for the content of the documentation and for ongoing disclosure obligations remains with the issuer."
+                }
+              ]
+            },
+            {
+              "heading": "What the Intermediary Participant does on the MTF",
+              "blocks": [
+                {
+                  "type": "steps",
+                  "items": [
+                    {
+                      "title": "Stage 1: Agreement in Principle",
+                      "text": "The AP application, the decision of the statutory body, the extract from the Register of Legal Entities, the articles of association, the Memorandum signed by both parties, proof of payment of the processing fee, and the issuer–Participant agreement."
+                    },
+                    {
+                      "title": "Stage 2: formal admission",
+                      "text": "The final application, the DCU documents or confirmation, the financial statements, the final Memorandum, the CNPF certificate, the contact persons' declaration, and the BIMx–Issuer Agreement."
+                    },
+                    {
+                      "title": "After admission",
+                      "text": "Maintains the agreement with the issuer and provides one of the contact persons with BIMx for as long as the securities trade."
+                    }
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Hypothetical example: one broker, two roles",
+                  "text": "An investment firm has two issuer clients. For company A, with equity of over EUR 1 million, it prepares the Regulated Market file as Initiating Participant; after the first trading day, its role in the admission ends. For company B, which is smaller, it becomes Intermediary Participant on the MTF: it signs the Memorandum, designates one of the contact persons, and stays under agreement for as long as the shares trade."
+                }
+              ]
+            },
+            {
+              "heading": "Fees and estimates",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Fees differ by market (Regulated Market or MTF) and by instrument type, according to the BIMx Schedule of Fees and Commissions in force. At the Participant's request, BIMx can provide an <strong>estimate of admission costs</strong> for a specific issuer."
+                },
+                {
+                  "type": "callout",
+                  "variant": "tip",
+                  "title": "References",
+                  "text": "BIMx Rules for the Regulated Market and the MTF (bimx.md, “Regulations and Legal Acts”), the Schedule of Fees and Commissions (“Exchange Fees”), Law No. 171/2012 on the Capital Market. If anything in this lesson conflicts with them, the BIMx Rules prevail."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "On the Regulated Market, the broker can act as Initiating Participant; for municipal bonds, this role is mandatory.",
+            "On the MTF, an agreement with an Intermediary Participant is mandatory for as long as the securities trade.",
+            "The Initiating Participant checks eligibility, structures the file, and coordinates clarifications with BIMx.",
+            "Responsibility for the content of the documentation remains with the issuer.",
+            "On request, BIMx can provide an estimate of admission costs for a specific issuer."
+          ],
+          "quiz": [
+            {
+              "q": "For which type of instrument is an Initiating Participant mandatory on the Regulated Market?",
+              "options": [
+                "For shares",
+                "For municipal bonds",
+                "For government securities",
+                "For no instrument"
+              ],
+              "answer": 1,
+              "explanation": "For shares, the issuer may also apply directly; for municipal bonds, the Rules require the file to be submitted through an Initiating Participant."
+            },
+            {
+              "q": "How long does the relationship between the issuer and the Intermediary Participant on the MTF last?",
+              "options": [
+                "Until the Agreement in Principle is issued",
+                "Until the first trading day",
+                "One year from admission",
+                "For as long as the securities trade"
+              ],
+              "answer": 3,
+              "explanation": "The agreement with the Intermediary Participant is concluded and maintained for as long as the securities trade on the MTF."
+            },
+            {
+              "q": "An issuer's file was submitted through the Initiating Participant. Who is responsible for the content of the documentation?",
+              "options": [
+                "The issuer",
+                "The Initiating Participant",
+                "BIMx",
+                "The CNPF"
+              ],
+              "answer": 0,
+              "explanation": "Responsibility for the content of the documentation and ongoing disclosure obligations remains with the issuer."
+            }
+          ]
+        },
+        {
+          "slug": "pregatirea-emitentilor-de-la-bvm",
+          "title": "Preparing BVM Issuers and Municipal Bond Issues",
+          "summary": "Learn the steps a broker takes for issuer clients currently traded on the BVM, including the municipal bond issues it has arranged.",
+          "minutes": 10,
+          "sections": [
+            {
+              "heading": "The starting point: no automatic transfer",
+              "blocks": [
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "The transition from the BVM to BIMx",
+                  "text": "Instruments traded on the Moldova Stock Exchange (BVM) do not move to BIMx automatically. Each interested issuer goes through the admission process set out in the BIMx Rules, with the option of reusing existing documents that are valid, up to date, and compliant."
+                },
+                {
+                  "type": "p",
+                  "text": "Brokers know the issuers they serve best. That is why BIMx invites them to identify interested issuers and help them prepare, for either the Regulated Market or the MTF."
+                }
+              ]
+            },
+            {
+              "heading": "Steps for shares",
+              "blocks": [
+                {
+                  "type": "steps",
+                  "items": [
+                    {
+                      "title": "The preliminary list",
+                      "text": "Identify issuers whose instruments are on the BVM and clients considering a new admission, then send the preliminary list to BIMx."
+                    },
+                    {
+                      "title": "Dialogue with issuers",
+                      "text": "Discuss the Regulated Market and MTF options, without presenting the process as an automatic transfer."
+                    },
+                    {
+                      "title": "The documentation",
+                      "text": "Prepare the file for the chosen market: on the Regulated Market, directly or as Initiating Participant; on the MTF, under an Intermediary Participant agreement."
+                    },
+                    {
+                      "title": "The preliminary review",
+                      "text": "Work with the Listing and Operations Department to identify missing or outdated documents before formal submission."
+                    }
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "tip",
+                  "title": "Send an inventory",
+                  "text": "For each file, send an inventory of the available documents early, so BIMx can confirm what can be reused and what needs updating."
+                }
+              ]
+            },
+            {
+              "heading": "Steps for arranged municipal bonds",
+              "blocks": [
+                {
+                  "type": "steps",
+                  "items": [
+                    {
+                      "title": "The list of issues",
+                      "text": "Send BIMx the list of municipal issues for which you think a dialogue is worthwhile, with the issuers' contact details, to the extent your contractual relationship allows."
+                    },
+                    {
+                      "title": "Confirming interest",
+                      "text": "Confirm in writing, together with each local public authority, its interest in admission and the need for a local council decision."
+                    },
+                    {
+                      "title": "Inventory and review",
+                      "text": "Prepare the inventory of existing documents and coordinate the preliminary review with BIMx."
+                    },
+                    {
+                      "title": "Submission",
+                      "text": "Submit the file as Initiating Participant and coordinate the formalities until the trading start date is set."
+                    }
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Hypothetical example: a broker's portfolio",
+                  "text": "A broker has arranged three municipal bond issues traded on the BVM and has five issuer clients with shares. In the first week, it sends BIMx the list of all eight instruments. Two mayor's offices confirm their interest and schedule local council meetings; document inventories are prepared for three companies. The remaining issuers are still weighing their options."
+                }
+              ]
+            },
+            {
+              "heading": "The timeline",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "According to the current operational timeline, the ARENA platform goes into production on 1 October 2026. Preparation and the preliminary review can begin immediately; formal submission and the trading start date are coordinated according to the BIMx Rules and the operational timeline."
+                },
+                {
+                  "type": "callout",
+                  "variant": "warning",
+                  "title": "Communicate accurately with clients",
+                  "text": "Do not promise issuers or investors a trading date on BIMx before it has been set under the Rules. Contact for coordination: the Listing and Operations Department, office@bimx.md."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "Instruments on the BVM do not move to BIMx automatically; each issuer goes through admission.",
+            "The broker identifies interested issuers, sends the preliminary list, and starts the dialogue.",
+            "An inventory of existing documents lets BIMx quickly confirm what can be reused.",
+            "For arranged municipal bond issues, the broker submits the file as Initiating Participant.",
+            "The trading start date is set according to the Rules; it should not be promised in advance."
+          ],
+          "quiz": [
+            {
+              "q": "What is the first step suggested to brokers for issuers traded on the BVM?",
+              "options": [
+                "Submitting files directly",
+                "Telling clients the transfer is automatic",
+                "Identifying issuers and sending a preliminary list to BIMx",
+                "Requesting a new CNPF certificate"
+              ],
+              "answer": 2,
+              "explanation": "The first step is to identify interested issuers and send the preliminary list to BIMx."
+            },
+            {
+              "q": "Which document helps BIMx quickly confirm what can be reused from a BVM file?",
+              "options": [
+                "An inventory of the available documents",
+                "The exchange trader's employment contract",
+                "The BVM market report",
+                "The list of exchange members"
+              ],
+              "answer": 0,
+              "explanation": "An inventory of the available documents, sent early, lets BIMx confirm what can be reused and what needs updating."
+            },
+            {
+              "q": "A client asks when their bonds will start trading on BIMx. What is the correct answer before the date is formally set?",
+              "options": [
+                "Automatically, on 1 October 2026",
+                "On the same day the file is submitted",
+                "They will no longer be traded",
+                "The date is set after the file is submitted, according to the BIMx Rules"
+              ],
+              "answer": 3,
+              "explanation": "The trading start date is coordinated according to the BIMx Rules and the operational timeline; 1 October is when the platform goes into production, not an automatic transfer."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

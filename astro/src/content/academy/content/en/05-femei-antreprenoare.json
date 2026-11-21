@@ -1,0 +1,773 @@
+{
+  "slug": "femei-antreprenoare",
+  "num": "05",
+  "title": "The Capital Market for Women Entrepreneurs",
+  "short": "A dedicated program on how women entrepreneurs can access financing through the capital market.",
+  "level": "Intermediate",
+  "audience": "Women entrepreneurs",
+  "intro": "This program helps you understand every option for financing your business and the role the capital market can play in your growth strategy. We start with the classic sources — your own funds, grants, loans — and work step by step toward issuing shares or bonds. By the end, you will have a concrete action plan and a clear picture of how to prepare your business for investors.",
+  "outcomes": [
+    "Compare financing sources and choose the ones that fit your business's current stage",
+    "Understand the difference between debt and equity and how each affects control",
+    "Explain how share issues and corporate bond issues work, through a public offering or a private placement",
+    "Prepare the key documents for investors: business plan, financial model, pitch deck",
+    "Build transparent governance and manage dilution of control",
+    "Draw up a 90-day action plan for accessing financing"
+  ],
+  "prerequisites": "It helps to have an operating business or a business project and a basic understanding of financial statements, but you do not need any prior experience with investors.",
+  "courses": [
+    {
+      "code": "BA-203",
+      "title": "Capital for Women Entrepreneurs",
+      "description": "A practical course on how to finance your business's growth, from your first savings to issuing securities. You will learn how to prepare for investors, communicate transparently, and keep your vision for the company.",
+      "lessons": [
+        {
+          "slug": "optiuni-de-finantare",
+          "title": "Financing Your Business: Options and Stages",
+          "summary": "Discover the main sources of financing, how they fit each stage of a business, and what it means to choose between debt and equity.",
+          "minutes": 14,
+          "sections": [
+            {
+              "heading": "Why your choice of financing source matters",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Every business needs money to start and grow: for equipment, inventory, salaries, marketing, or expanding into new markets. The question is not only <strong>where</strong> you get the money, but also <strong>at what cost</strong> and <strong>on what terms</strong>. Each source comes with different obligations: some must be repaid with interest, others require you to give up part of the company."
+                },
+                {
+                  "type": "p",
+                  "text": "A well-considered choice preserves your flexibility and control, while a hasty one can strain your cash flow or dilute your ownership more than necessary. That is why it pays to know the full \"menu\" of options before you decide."
+                },
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "Debt vs. equity",
+                  "text": "<strong>Debt financing</strong> means you borrow money (a bank loan, a lease, bonds) and repay it with interest, without giving up any ownership. <strong>Equity financing</strong> means you receive money in exchange for a stake in the company (shares or ownership interests); the investor earns from the growth in value and from dividends, but you have no fixed obligation to repay."
+                }
+              ]
+            },
+            {
+              "heading": "The main sources of financing",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "<strong>Your own funds</strong> — your savings or those of your co-founders; you keep full control, but the amounts are usually limited.",
+                    "<strong>Grants</strong> — non-repayable financing offered through public programs or by development partners; they have strict eligibility criteria, require reporting, and often require co-financing.",
+                    "<strong>Bank loans</strong> — amounts repaid with interest, usually requiring collateral and a financial track record.",
+                    "<strong>Leasing</strong> — you use equipment or a vehicle by paying installments, and the asset itself often serves as collateral.",
+                    "<strong>Business angels</strong> — individuals who invest their own money in early-stage businesses and often bring experience and contacts.",
+                    "<strong>Venture capital</strong> — investment funds that finance companies with high growth potential in exchange for a significant stake and involvement in decisions.",
+                    "<strong>The capital market</strong> — you raise money from investors by issuing shares or bonds, usually once the business is mature and transparent."
+                  ]
+                },
+                {
+                  "type": "table",
+                  "headers": ["Business stage", "Typically suitable sources", "What matters most"],
+                  "rows": [
+                    ["Idea and launch", "Own funds, family, grants, business angels", "Validating the product, low costs"],
+                    ["First sales", "Microloans, leasing, grants, business angels", "Stable cash flow, first loyal customers"],
+                    ["Growth", "Bank loans, leasing, venture capital", "Financial track record, repayment capacity"],
+                    ["Maturity and expansion", "Larger loans, corporate bonds, share issues", "Transparency, audited financial statements, governance"]
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "tip",
+                  "title": "The mix matters",
+                  "text": "A business is rarely financed from a single source. A balanced mix — for example, your own funds plus leasing for equipment plus a loan for working capital — reduces your dependence on any one lender."
+                }
+              ]
+            },
+            {
+              "heading": "How to compare debt and equity",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Debt is generally cheaper as long as the business generates enough cash to cover the payments, and you keep 100% ownership. Equity does not commit you to fixed payments, but the investor becomes a co-owner and will share in the profits over the long term. A simple ratio helps you see how indebted the company already is."
+                },
+                {
+                  "type": "formula",
+                  "label": "Debt-to-equity ratio",
+                  "expr": "Debt-to-equity ratio = Total liabilities ÷ Equity",
+                  "note": "Hypothetical example: liabilities of MDL 600,000 and equity of MDL 400,000 give a ratio of 1.5. The higher the value, the more closely lenders will scrutinize any new borrowing."
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "«Atelierul Ana» SRL chooses between a loan and an investor (hypothetical example)",
+                  "text": "Ana runs a tailoring workshop with annual net profit of MDL 400,000 and needs MDL 500,000 for new machines. <strong>Option A — loan</strong>: at a hypothetical interest rate of 12% per year, first-year interest is roughly 500,000 × 12% = MDL 60,000, and Ana remains the sole owner of the company. <strong>Option B — investor</strong>: a business angel offers MDL 500,000 for 20% of the company. If the MDL 400,000 profit were distributed in full, the investor would receive 400,000 × 20% = MDL 80,000 per year, and the stake remains theirs in the years that follow. Option A is cheaper if cash flow covers the payments; Option B is safer if revenue is uncertain and the investor also brings expertise."
+                },
+                {
+                  "type": "callout",
+                  "variant": "warning",
+                  "title": "Watch the real cost",
+                  "text": "Always compare the total cost — interest, fees, collateral, equity given up — not just the amount you receive. The information in this lesson is for educational purposes and does not constitute financial advice."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "Each financing source has a different cost and different terms; compare the total cost, not just the amount.",
+            "Debt lets you keep ownership but must be repaid; equity requires no installments, but you share the company.",
+            "Your business's stage determines which sources are available to you: the capital market usually suits mature, transparent businesses.",
+            "A balanced mix of sources reduces your dependence on any one lender."
+          ],
+          "quiz": [
+            {
+              "q": "Which of the following is a form of equity financing?",
+              "options": [
+                "A 3-year bank loan",
+                "A lease agreement for a piece of machinery",
+                "Selling a 15% stake in the company to a business angel",
+                "A corporate bond issue"
+              ],
+              "answer": 2,
+              "explanation": "With equity financing, you receive money in exchange for a stake in the company. Loans, leases, and bonds are forms of debt."
+            },
+            {
+              "q": "A company has total liabilities of MDL 300,000 and equity of MDL 600,000. What is its debt-to-equity ratio?",
+              "options": [
+                "0.5",
+                "2",
+                "1.5"
+              ],
+              "answer": 0,
+              "explanation": "Debt-to-equity ratio = 300,000 ÷ 600,000 = 0.5."
+            },
+            {
+              "q": "At what stage of a business is capital market financing usually a good fit?",
+              "options": [
+                "At the idea stage, before the first sales",
+                "At maturity, when the business has a track record, transparency, and solid financial statements",
+                "Only when the company can no longer obtain any other type of financing"
+              ],
+              "answer": 1,
+              "explanation": "Capital market investors expect a financial track record, transparency, and governance, which is why this source usually suits mature businesses."
+            }
+          ]
+        },
+        {
+          "slug": "piata-de-capital",
+          "title": "The Capital Market as a Source of Financing",
+          "summary": "Understand how your business can raise money through shares or bonds, via a public offering or a private placement, and when the time is right.",
+          "minutes": 15,
+          "sections": [
+            {
+              "heading": "What the capital market means for a company",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "The capital market is where companies raise medium- and long-term money from investors — individuals, companies, or institutional investors — by issuing <strong>securities</strong>. For you as an entrepreneur, it means access to a wider circle of funders than a single bank or a single investor."
+                },
+                {
+                  "type": "p",
+                  "text": "The two main instruments are <strong>shares</strong> and <strong>corporate bonds</strong>. Both can be offered either to the general public or to a limited group of investors. The process is regulated, and in the Republic of Moldova the market is supervised by the National Commission for Financial Markets (CNPF); always check the specific requirements in the legislation in force and with a licensed advisor."
+                },
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "Share and corporate bond",
+                  "text": "A <strong>share</strong> is a portion of the share capital of a joint-stock company; the buyer becomes a shareholder, entitled to dividends and usually to vote. A <strong>corporate bond</strong> is a debt security: the investor lends money to the company, receives periodic interest called the <em>coupon</em>, and gets the face value back at maturity, without becoming a co-owner."
+                }
+              ]
+            },
+            {
+              "heading": "Shares or bonds? Public offering or private placement?",
+              "blocks": [
+                {
+                  "type": "table",
+                  "headers": ["Criterion", "Share issue", "Bond issue"],
+                  "rows": [
+                    ["Type of financing", "Equity", "Debt"],
+                    ["Repayment", "No obligation to repay", "Face value is repaid at maturity"],
+                    ["Payments to investors", "Dividends, if a distribution is approved", "Fixed or floating coupon, as set out in the prospectus"],
+                    ["Control", "The founder's stake is diluted", "Control remains unchanged"],
+                    ["Risk for the company", "Less pressure on cash", "Mandatory payments, even in weaker years"]
+                  ]
+                },
+                {
+                  "type": "p",
+                  "text": "In a <strong>public offering</strong>, securities are offered to a large number of investors on the basis of an offering document (prospectus) approved under the applicable rules. In a <strong>private placement</strong>, the offer is addressed to a limited circle of investors, usually with lighter documentation requirements but also with access to fewer funders."
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "<strong>Advantages</strong>: larger amounts than from a single funder, longer terms, visibility and credibility, diversified sources of financing.",
+                    "<strong>Requirements</strong>: the right legal form (issuing shares requires a joint-stock company), clear and usually audited financial statements, periodic reporting, and costs for advisors, auditors, and intermediaries.",
+                    "<strong>Responsibilities</strong>: accurate and timely disclosure to investors for the entire life of the instrument."
+                  ]
+                }
+              ]
+            },
+            {
+              "heading": "What a bond issue looks like in numbers",
+              "blocks": [
+                {
+                  "type": "formula",
+                  "label": "Annual coupon on a bond",
+                  "expr": "Annual coupon = Face value × Coupon rate",
+                  "note": "Hypothetical example: for a bond with a face value of MDL 1,000 and a coupon rate of 11%, the investor receives 1,000 × 11% = MDL 110 per year."
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "«Atelierul Ana» SA issues bonds (hypothetical example)",
+                  "text": "After several years of growth, Ana's company, now reorganized as a joint-stock company, wants to open a second production line. It issues <strong>2,000 bonds</strong> with a face value of <strong>MDL 1,000</strong> each, raising 2,000 × 1,000 = <strong>MDL 2,000,000</strong>. The coupon is 11% per year, for 3 years. Annual interest cost: 2,000,000 × 11% = MDL 220,000. Over 3 years, the company pays 3 × 220,000 = MDL 660,000 in interest, and at maturity it repays the MDL 2,000,000. Ana keeps 100% of the shares, but she must make sure the business generates enough cash for the coupons and the repayment."
+                },
+                {
+                  "type": "callout",
+                  "variant": "warning",
+                  "title": "Don't confuse the amount raised with profit",
+                  "text": "The money from an issue is an obligation to investors (for bonds) or a promise of growth in value (for shares). Plan how you will use it with the same care you would give to a loan."
+                }
+              ]
+            },
+            {
+              "heading": "When the time is right",
+              "blocks": [
+                {
+                  "type": "steps",
+                  "items": [
+                    {
+                      "title": "You have a convincing financial track record",
+                      "text": "Several years of documented revenue and, ideally, profits help investors assess the risk."
+                    },
+                    {
+                      "title": "You have a clear plan for using the money",
+                      "text": "Expansion, equipment, refinancing — investors want to know exactly where the money goes and what results it will deliver."
+                    },
+                    {
+                      "title": "The amount you need justifies the costs",
+                      "text": "An issue involves audit, advisory, and intermediary costs; for small amounts, a loan may be more efficient."
+                    },
+                    {
+                      "title": "You are ready for transparency",
+                      "text": "Periodic reporting and open communication with investors become part of the company's routine."
+                    }
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "tip",
+                  "title": "Start with an exploratory conversation",
+                  "text": "Before making any decision, talk to a licensed intermediary, an auditor, and a lawyer about legal form, costs, and timeline. This lesson is for educational purposes and does not replace professional advice."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "Shares bring in equity and dilute control; bonds are debt and leave control unchanged.",
+            "A public offering reaches many investors but has stricter requirements; a private placement targets a limited circle.",
+            "Annual coupon = face value × coupon rate; plan your cash for coupons and repayment.",
+            "The right time comes when you have a financial track record, a clear project, and readiness for transparency."
+          ],
+          "quiz": [
+            {
+              "q": "What does an investor who buys corporate bonds usually receive?",
+              "options": [
+                "Voting rights at the shareholders' meeting",
+                "A stake in the company's share capital",
+                "Dividends set annually by the board",
+                "A periodic coupon and repayment of the face value at maturity"
+              ],
+              "answer": 3,
+              "explanation": "A bond is a debt security: the investor receives interest (the coupon) and gets the face value back at maturity, without becoming a co-owner."
+            },
+            {
+              "q": "A company issues 500 bonds with a face value of MDL 1,000 and a coupon of 10% per year. How much does it pay in coupons each year?",
+              "options": [
+                "MDL 5,000",
+                "MDL 50,000",
+                "MDL 500,000"
+              ],
+              "answer": 1,
+              "explanation": "The amount raised is 500 × 1,000 = MDL 500,000, and the annual coupons are 500,000 × 10% = MDL 50,000."
+            },
+            {
+              "q": "What is the main difference between a public offering and a private placement?",
+              "options": [
+                "A public offering targets a large number of investors, a private placement a limited circle",
+                "A private placement is used only for shares, and a public offering only for bonds",
+                "In a private placement, the money never has to be repaid"
+              ],
+              "answer": 0,
+              "explanation": "The difference lies in who the offer is addressed to: the general public or a limited group of investors. Both can be used for shares or bonds."
+            }
+          ]
+        },
+        {
+          "slug": "pregatirea-pentru-investitori",
+          "title": "Preparing Your Business for Investors",
+          "summary": "Learn which documents and figures investors expect, how to value your business in simple terms, and what due diligence involves.",
+          "minutes": 16,
+          "sections": [
+            {
+              "heading": "What investors want to see",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "An investor asks three simple questions: <strong>How big is the opportunity?</strong> <strong>Can this team capture it?</strong> <strong>How much risk am I taking, and what do I stand to gain?</strong> The documents you prepare must answer all three clearly, with verifiable figures."
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "<strong>Business plan</strong> — the market, customers, product, competition, sales strategy, and team.",
+                    "<strong>Financial model</strong> — projections of revenue, expenses, profit, and cash flow over 3–5 years, with explicit assumptions.",
+                    "<strong>Financial statements</strong> — balance sheet, income statement, cash flow statement; ideally audited by an independent auditor.",
+                    "<strong>Pitch deck</strong> — a short presentation that tells the story of the business and what you are asking investors for.",
+                    "<strong>Legal documents</strong> — articles of incorporation, key contracts, licenses, property rights."
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "Audited financial statements",
+                  "text": "These are the company's financial reports checked by an <strong>independent auditor</strong>, who gives an opinion on whether they present the company's position fairly. An audit does not guarantee the business will succeed, but it increases investors' confidence in the figures you present."
+                }
+              ]
+            },
+            {
+              "heading": "The financial model and the pitch deck",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "The financial model does not have to be complicated, but it must be <strong>consistent</strong>. Start from assumptions you can explain: how many customers, what average price, what unit costs, what fixed expenses. Build three scenarios — conservative, base, and optimistic — to show that you have also analyzed the risks."
+                },
+                {
+                  "type": "steps",
+                  "items": [
+                    {
+                      "title": "The problem and the solution",
+                      "text": "What real need you address and why your product addresses it better."
+                    },
+                    {
+                      "title": "The market and customers",
+                      "text": "Who buys, how large the segment is, and how you reach it."
+                    },
+                    {
+                      "title": "Traction",
+                      "text": "Sales, repeat customers, contracts — evidence that the business works."
+                    },
+                    {
+                      "title": "The business model and key figures",
+                      "text": "How you make money, margins, track record, and projections in brief."
+                    },
+                    {
+                      "title": "The team",
+                      "text": "Your experience and that of your colleagues, including advisors or mentors."
+                    },
+                    {
+                      "title": "What you are asking for and how you will use the money",
+                      "text": "The amount, the instrument (shares, bonds, loan), and exactly where the funds will go."
+                    }
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "tip",
+                  "title": "Less, but clear",
+                  "text": "A pitch deck of 10–12 slides, with one main message per slide, is more convincing than a long presentation. Save the details for appendices and for investors' questions."
+                }
+              ]
+            },
+            {
+              "heading": "Business valuation, made simple",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Valuation answers the question \"what is the company worth?\" There are complex methods, but for an initial discussion you can use a <strong>profit multiple</strong>: the company's value is estimated as its annual profit multiplied by a factor that depends on the sector, growth, and risk. The result is a starting point for negotiation, not an absolute truth."
+                },
+                {
+                  "type": "formula",
+                  "label": "Investor's stake",
+                  "expr": "Investor's stake = Amount invested ÷ (Value before investment + Amount invested)",
+                  "note": "The value before the investment is called \"pre-money,\" and the sum of that value and the investment is called \"post-money.\""
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "What is «Atelierul Ana» SRL worth? (hypothetical example)",
+                  "text": "The company has annual net profit of MDL 400,000. Ana and the investor agree on a multiple of 5, so the pre-money value is 400,000 × 5 = <strong>MDL 2,000,000</strong>. The investor brings MDL 500,000, and the post-money value becomes 2,000,000 + 500,000 = <strong>MDL 2,500,000</strong>. The investor's stake: 500,000 ÷ 2,500,000 = <strong>20%</strong>, and Ana keeps 80%. Had Ana negotiated a multiple of 6 (pre-money of MDL 2,400,000), the same investment would have meant 500,000 ÷ 2,900,000 ≈ 17.2%."
+                }
+              ]
+            },
+            {
+              "heading": "Due diligence: the check before investing",
+              "blocks": [
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "Due diligence",
+                  "text": "This is the detailed review an investor carries out before investing to confirm that the information presented is accurate: the financial position, contracts, liabilities, tax obligations, legal matters, and the team."
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "Set up a \"data room\" early: a folder (physical or digital) with all the documents, organized by category.",
+                    "Make sure there are no overdue debts or undisclosed lawsuits; if there are, present them openly, along with your plan to resolve them.",
+                    "Make sure ownership of the brand, equipment, and key contracts is in the company's name.",
+                    "Prepare answers to the tough questions: what happens if you lose your largest customer?"
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "warning",
+                  "title": "Transparency earns trust",
+                  "text": "A problem the investor discovers during due diligence damages trust far more than one you disclose from the start. The content of this lesson is educational and does not constitute legal or investment advice."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "Investors look for clear answers about the opportunity, the team, and the risk, backed by verifiable figures.",
+            "A consistent financial model with explicit assumptions and multiple scenarios is worth more than spectacular projections.",
+            "Investor's stake = amount invested ÷ post-money value; a higher valuation means a smaller stake given up.",
+            "Prepare your due diligence documents early and disclose any problems openly."
+          ],
+          "quiz": [
+            {
+              "q": "A company has a pre-money value of MDL 1,500,000, and an investor brings MDL 500,000. What stake does the investor receive?",
+              "options": [
+                "33.3%",
+                "20%",
+                "25%",
+                "50%"
+              ],
+              "answer": 2,
+              "explanation": "The post-money value is 1,500,000 + 500,000 = MDL 2,000,000, and the investor's stake is 500,000 ÷ 2,000,000 = 25%."
+            },
+            {
+              "q": "What is due diligence?",
+              "options": [
+                "The detailed review an investor carries out before investing to verify information about the company",
+                "The short presentation an entrepreneur uses to describe their business",
+                "The periodic payment of interest to bondholders",
+                "The annual report published after listing on the exchange"
+              ],
+              "answer": 0,
+              "explanation": "Due diligence is the process of verifying the company's financial, legal, and operational position before the investor makes a final decision."
+            },
+            {
+              "q": "Why is it useful to build multiple scenarios (conservative, base, optimistic) in your financial model?",
+              "options": [
+                "Because investors accept only the optimistic scenario",
+                "To show that you have analyzed the risks and how the business responds under different conditions",
+                "Because it lets you avoid an audit of the financial statements"
+              ],
+              "answer": 1,
+              "explanation": "Multiple scenarios show realism and an understanding of risk, which increases your credibility with investors."
+            }
+          ]
+        },
+        {
+          "slug": "guvernanta-si-investitori",
+          "title": "Governance, Transparency, and Investor Relations",
+          "summary": "Learn how to organize the company's leadership, separate personal and business finances, communicate with investors, and manage dilution of control.",
+          "minutes": 15,
+          "sections": [
+            {
+              "heading": "Governance: the rules the company runs by",
+              "blocks": [
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "Corporate governance",
+                  "text": "The set of rules, structures, and practices by which a company is directed and controlled: who makes decisions, how they are checked, how conflicts of interest are managed, and how shareholders and investors are protected."
+                },
+                {
+                  "type": "p",
+                  "text": "When the business is small, you make nearly all the decisions. As you bring in investors, they will want to know there is a clear system. A <strong>board</strong> (of directors or advisory) brings different perspectives, discipline in decision-making, and trust. It does not have to be large: a few members with complementary experience — financial, legal, industry — can make a real difference."
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "Set out in writing who approves what: large expenses, major contracts, taking on new debt.",
+                    "If possible, include at least one independent member on the board.",
+                    "Keep minutes of meetings and track how decisions are implemented.",
+                    "Adopt a simple conflict-of-interest policy, for example on contracts with relatives or closely related companies."
+                  ]
+                }
+              ]
+            },
+            {
+              "heading": "Keep personal and business assets separate",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "One of the first things investors check is whether the company's money truly belongs to the company. Personal payments from the company account, or using company assets for personal purposes, make the figures hard to understand and can create tax and legal problems."
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Mixed expenses at «Studio Irina» SRL (hypothetical example)",
+                  "text": "Irina runs a design studio. The company reports revenue of MDL 1,200,000 and expenses of MDL 1,000,000, for a profit of MDL 200,000. A review reveals that MDL 80,000 of the expenses were actually personal costs paid from the company account. The business's real profit would be 200,000 + 80,000 = MDL 280,000, but the investor no longer trusts the figures and asks for adjustments and clarifications. Had Irina kept the accounts separate from the start, she could have shown a margin of 280,000 ÷ 1,200,000 ≈ 23.3% right away, instead of about 16.7%."
+                },
+                {
+                  "type": "callout",
+                  "variant": "tip",
+                  "title": "Simple rules that help",
+                  "text": "Use separate accounts and cards for the company, pay yourself a formally set salary or dividends, and document any loan between you and the company with a contract."
+                }
+              ]
+            },
+            {
+              "heading": "Reporting and communicating with investors",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Investors do not expect everything to go perfectly, but they do expect to be informed <strong>accurately, on time, and consistently</strong>. Companies that have issued securities have reporting obligations set by law and by market rules; beyond the required minimum, good communication builds a long-term relationship."
+                },
+                {
+                  "type": "table",
+                  "headers": ["Type of communication", "Indicative frequency", "Content"],
+                  "rows": [
+                    ["Periodic financial report", "Quarterly or semiannually", "Revenue, profit, cash flow, comparison with the plan"],
+                    ["Annual report", "Annually", "Audited financial statements, operations, strategy, risks"],
+                    ["Disclosure of material events", "As soon as they occur", "Large contracts, management changes, lawsuits, delays"],
+                    ["Investor meeting", "At least once a year", "Results, plans, answers to questions"]
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "warning",
+                  "title": "Don't delay bad news",
+                  "text": "If a problem arises, communicate it promptly, together with your plan to resolve it. Silence or incomplete information can breach legal reporting obligations and destroys trust."
+                }
+              ]
+            },
+            {
+              "heading": "Dilution of control and how to manage it",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Every time you issue new shares to investors, the percentage you own falls, even though your number of shares stays the same. This is called <strong>dilution</strong>. Dilution is not necessarily bad: a smaller stake in a more valuable company can be worth more than a large stake in a small one."
+                },
+                {
+                  "type": "formula",
+                  "label": "Stake after the issue",
+                  "expr": "Your stake = Your shares ÷ Total shares after the issue",
+                  "note": "Your number of shares does not change; the total does, and so does your percentage."
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Two funding rounds at «Atelierul Ana» SA (hypothetical example)",
+                  "text": "Ana owns all 1,000 shares. <strong>Round 1</strong>: 250 new shares are issued to an investor; the total becomes 1,250, and Ana holds 1,000 ÷ 1,250 = <strong>80%</strong>. <strong>Round 2</strong>: another 350 shares are issued; the total becomes 1,600. Ana holds 1,000 ÷ 1,600 = <strong>62.5%</strong>, the first investor 250 ÷ 1,600 = 15.625%, and the second 350 ÷ 1,600 = 21.875%. Ana remains the majority shareholder."
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "Plan ahead how many funding rounds you expect and what stake you want to keep.",
+                    "Use debt (including bonds) for needs that don't justify giving up ownership.",
+                    "Negotiate investors' rights carefully in the shareholders' agreement: veto rights, board seats, preemptive rights on future issues.",
+                    "Get a lawyer's help with the investment documents; this lesson is for educational purposes and is not legal advice."
+                  ]
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "Clear governance — a board, approval rules, conflict-of-interest policies — increases investor confidence.",
+            "Strictly separating personal and business finances makes the figures credible and easy to verify.",
+            "Communicate with investors accurately, on time, and consistently, including when the news is not good.",
+            "Dilution reduces the percentage you own, but it can be planned and balanced with debt financing."
+          ],
+          "quiz": [
+            {
+              "q": "You own 800 shares out of a total of 800. The company issues 200 new shares to an investor. What stake do you hold after the issue?",
+              "options": [
+                "75%",
+                "100%",
+                "90%",
+                "80%"
+              ],
+              "answer": 3,
+              "explanation": "The total becomes 800 + 200 = 1,000 shares, and your stake is 800 ÷ 1,000 = 80%."
+            },
+            {
+              "q": "Why is it important to keep personal and business assets separate?",
+              "options": [
+                "Because it lets you pay personal expenses without documentation",
+                "Because it makes the company's figures credible and reduces tax and legal risks",
+                "Because it removes the obligation to prepare financial statements"
+              ],
+              "answer": 1,
+              "explanation": "Separate accounts show the business's real results, make it easier for investors to verify them, and reduce the risk of tax or legal problems."
+            },
+            {
+              "q": "What should you do if your business runs into a significant problem after you have brought in investors?",
+              "options": [
+                "Inform investors promptly, together with your plan to resolve it",
+                "Wait for the annual report so as not to worry them",
+                "Communicate only if investors ask directly"
+              ],
+              "answer": 0,
+              "explanation": "Prompt, transparent communication meets reporting obligations and preserves investor trust."
+            }
+          ]
+        },
+        {
+          "slug": "pasii-urmatori",
+          "title": "Next Steps and Support Resources",
+          "summary": "Build a 90-day action plan, learn what kinds of support are available, and follow a complete case study, from idea to bond issue.",
+          "minutes": 17,
+          "sections": [
+            {
+              "heading": "Your 90-day action plan",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Knowledge becomes valuable when you turn it into concrete steps. The plan below is a starting point you can adapt to your business's stage — whether you are just starting out or already thinking about investors."
+                },
+                {
+                  "type": "steps",
+                  "items": [
+                    {
+                      "title": "Days 1–30: Clarify your starting point",
+                      "text": "Separate your personal and business accounts, gather your financial statements from recent years, calculate your debt-to-equity ratio, and determine how much you need, for what, and by when."
+                    },
+                    {
+                      "title": "Days 31–60: Prepare your documents",
+                      "text": "Update your business plan, build a financial model with three scenarios, draft a pitch deck, and organize your documents for a future due diligence review."
+                    },
+                    {
+                      "title": "Days 61–90: Test and connect",
+                      "text": "Present your plan to a mentor or a group of women entrepreneurs, talk to at least two different funders (for example, a bank and a capital market intermediary), and decide on your next suitable source of financing."
+                    }
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "tip",
+                  "title": "Measure your progress",
+                  "text": "Set 2–3 verifiable results for each month, for example \"financial model completed\" or \"two meetings with funders.\" A concrete goal is easier to achieve than a general one."
+                }
+              ]
+            },
+            {
+              "heading": "Mentoring networks, community, and resources",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "You don't have to make this journey alone. Many kinds of support can give you knowledge, contacts, and confidence. Look for them in your community and check their credibility before getting involved."
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "<strong>Business associations</strong>, including those dedicated to women entrepreneurs — events, experience sharing, partnerships.",
+                    "<strong>Mentoring programs</strong> — an experienced entrepreneur or specialist can guide you through key decisions.",
+                    "<strong>Business incubators and accelerators</strong> — space, training, and sometimes access to investors.",
+                    "<strong>Financial institutions</strong> — banks, leasing companies, and licensed capital market intermediaries, which often offer initial consultations.",
+                    "<strong>Professionals</strong> — accountants, auditors, lawyers, and financial advisors for technical matters.",
+                    "<strong>BIMx Academy events</strong> — lessons, seminars, and meetings about how the capital market works."
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "Mentoring",
+                  "text": "A medium- or long-term supportive relationship in which an experienced person (the mentor) shares knowledge, asks questions that help you think strategically, and gives you honest feedback. Unlike a consultant paid for a specific task, a mentor focuses on your development as a leader."
+                }
+              ]
+            },
+            {
+              "heading": "Case study: from idea to bond issue",
+              "blocks": [
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "«Livada Elenei» — the full journey (hypothetical example)",
+                  "text": "Elena starts a dried fruit business. All the figures below are hypothetical and serve only to illustrate how financing sources change as the business grows."
+                },
+                {
+                  "type": "table",
+                  "headers": ["Stage", "Financing need", "Source chosen", "Outcome"],
+                  "rows": [
+                    ["Year 1 — launch", "MDL 250,000 for a dryer and packaging", "MDL 150,000 own funds + MDL 100,000 grant", "First contracts with local stores"],
+                    ["Year 2 — first stable sales", "MDL 400,000 for a delivery vehicle", "Leasing", "Distribution in several cities"],
+                    ["Year 3 — growth", "MDL 600,000 for working capital and a warehouse", "Bank loan", "Growing revenue, first exports"],
+                    ["Year 4 — preparation", "Audit and advisory costs", "Own funds from profit", "Reorganization as a joint-stock company, a board with one independent member, first audit"],
+                    ["Year 5 — capital market", "MDL 3,000,000", "Issue of 3,000 bonds × MDL 1,000, 10% coupon", "MDL 1,000,000 to repay loans, MDL 2,000,000 for a processing line"]
+                  ]
+                },
+                {
+                  "type": "formula",
+                  "label": "Interest coverage ratio",
+                  "expr": "Interest coverage ratio = Operating profit ÷ Interest expense",
+                  "note": "Hypothetical example: the annual coupons for «Livada Elenei» are 3,000,000 × 10% = MDL 300,000. With operating profit of MDL 1,200,000, the coverage ratio is 1,200,000 ÷ 300,000 = 4, meaning profit covers interest 4 times over — a reassuring signal for investors."
+                },
+                {
+                  "type": "p",
+                  "text": "Notice the logic of the journey: Elena did not jump straight to the capital market. She started with sources that did not require a financial track record, built her reputation with funders, and invested in transparency <strong>before</strong> turning to investors. Thanks to the bonds, she kept full ownership of the company."
+                }
+              ]
+            },
+            {
+              "heading": "Common mistakes and how to avoid them",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "<strong>Seeking financing without a clear purpose</strong> — define exactly what the money is for and what results it will deliver.",
+                    "<strong>Underestimating costs and timelines</strong> — audits, advisory services, and document preparation take time and money.",
+                    "<strong>Giving up too large a stake too early</strong> — valuations are low at the start, and dilution is costly in the long run.",
+                    "<strong>Borrowing beyond your ability to pay</strong> — check the interest coverage ratio in the conservative scenario, not just the optimistic one.",
+                    "<strong>Mixing personal and business finances</strong> — this undermines your credibility with any funder.",
+                    "<strong>Not communicating after raising the money</strong> — your relationship with investors begins, rather than ends, on the day you are funded."
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "warning",
+                  "title": "Informed decisions",
+                  "text": "This lesson is for educational purposes only and does not constitute investment, legal, or tax advice. Before any financing decision, consult licensed professionals and check the legal requirements in force."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "A 90-day plan with verifiable monthly results turns intention into concrete progress.",
+            "Business associations, mentoring, incubators, financial institutions, and BIMx Academy events can all support your journey.",
+            "Financing sources evolve with the business: from own funds and grants to loans and, later, the capital market.",
+            "Always check your ability to pay in the conservative scenario, and invest in transparency before bringing in investors."
+          ],
+          "quiz": [
+            {
+              "q": "A company pays MDL 250,000 in interest each year and has operating profit of MDL 1,000,000. What is its interest coverage ratio?",
+              "options": [
+                "0.25",
+                "2.5",
+                "4",
+                "10"
+              ],
+              "answer": 2,
+              "explanation": "Coverage ratio = 1,000,000 ÷ 250,000 = 4, meaning operating profit covers interest expense 4 times over."
+            },
+            {
+              "q": "In the case study, why did Elena choose bonds rather than shares in Year 5?",
+              "options": [
+                "Because she wanted to raise financing while keeping full ownership of the company",
+                "Because bonds never have to be repaid",
+                "Because bonds require no reporting to investors"
+              ],
+              "answer": 0,
+              "explanation": "Bonds are debt: the company pays coupons and repays the principal at maturity, but ownership remains unchanged."
+            },
+            {
+              "q": "Which of the following is a common mistake when seeking financing?",
+              "options": [
+                "Checking your ability to pay in the conservative scenario",
+                "Giving up too large a stake in the company at an early stage",
+                "Preparing due diligence documents in advance",
+                "Talking to several funders before deciding"
+              ],
+              "answer": 1,
+              "explanation": "A business's valuation is usually low at the start, so giving up a large stake early can be costly in the long run. The other options are good practices."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

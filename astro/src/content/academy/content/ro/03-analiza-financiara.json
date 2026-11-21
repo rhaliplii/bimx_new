@@ -1,0 +1,1722 @@
+{
+  "slug": "analiza-financiara",
+  "num": "03",
+  "title": "Analiza financiară pentru investitori",
+  "short": "Instrumente de evaluare și interpretare a raportărilor financiare ale emitenților.",
+  "level": "Avansat",
+  "audience": "Investitori",
+  "intro": "Programul oferă investitorilor un cadru riguros pentru citirea și interpretarea situațiilor financiare ale emitenților, de la bilanț până la fluxurile de numerar. Pe această bază, cursanții învață să aplice indicatori de rentabilitate, multiplicatori de piață și metoda fluxurilor de numerar actualizate, apoi să integreze analiza într-un portofoliu construit și administrat disciplinat. Toate exemplele sunt ipotetice și au exclusiv scop educațional.",
+  "outcomes": [
+    "Să citești și să corelezi bilanțul, contul de profit și pierdere și situația fluxurilor de numerar ale unui emitent.",
+    "Să calculezi și să interpretezi indicatori de rentabilitate, îndatorare și lichiditate, inclusiv descompunerea DuPont a ROE.",
+    "Să aplici multiplicatori de piață (P/E, P/BV, EV/EBITDA) și să înțelegi limitele analizei prin comparabile.",
+    "Să construiești un model DCF simplificat și să testezi sensibilitatea rezultatului la ipotezele-cheie.",
+    "Să măsori riscul unui portofoliu prin volatilitate, beta, drawdown maxim și raportul Sharpe.",
+    "Să formulezi o politică investițională și să alegi o regulă de rebalansare adecvată profilului tău de risc."
+  ],
+  "prerequisites": "Se recomandă parcurgerea programelor introductive despre piața de capital și instrumentele financiare, precum și familiaritatea cu operațiile aritmetice de bază și cu procentele.",
+  "courses": [
+    {
+      "code": "BA-301",
+      "title": "Analiza situațiilor financiare",
+      "description": "Cursul explică structura și logica celor trei situații financiare principale și modul în care acestea se completează reciproc. Accentul cade pe interpretarea cifrelor din perspectiva investitorului.",
+      "lessons": [
+        {
+          "slug": "bilantul",
+          "title": "Bilanțul: active, datorii și capitaluri proprii",
+          "summary": "Înveți să citești bilanțul unui emitent, să evaluezi lichiditatea și să calculezi capitalul de lucru.",
+          "minutes": 14,
+          "sections": [
+            {
+              "heading": "Ce arată bilanțul",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Bilanțul (în terminologia IFRS, <em>situația poziției financiare</em>) este o fotografie a resurselor controlate de companie și a surselor din care acestea au fost finanțate, la o dată anume — de regulă sfârșitul exercițiului financiar. Spre deosebire de contul de profit și pierdere, care descrie o perioadă, bilanțul descrie un moment."
+                },
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "Ecuația fundamentală a bilanțului",
+                  "text": "<strong>Activele</strong> sunt resurse controlate de entitate din care se așteaptă beneficii economice viitoare. <strong>Datoriile</strong> sunt obligații prezente care vor genera ieșiri de resurse. <strong>Capitalurile proprii</strong> reprezintă interesul rezidual al acționarilor în active, după deducerea tuturor datoriilor."
+                },
+                {
+                  "type": "formula",
+                  "label": "Echilibrul bilanțier",
+                  "expr": "Total active = Datorii + Capitaluri proprii",
+                  "note": "Egalitatea este valabilă întotdeauna; orice modificare a activelor are o contrapartidă în datorii sau în capitaluri proprii."
+                },
+                {
+                  "type": "p",
+                  "text": "Pentru investitor, bilanțul răspunde la trei întrebări: <strong>ce deține compania</strong>, <strong>cât datorează și când</strong> și <strong>cât rămâne acționarilor</strong> în termeni contabili. Emitenții de interes public raportează, în general, conform standardelor internaționale (IFRS), ceea ce face structura bilanțului comparabilă între companii."
+                }
+              ]
+            },
+            {
+              "heading": "Structura activelor și a surselor de finanțare",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Elementele sunt clasificate în funcție de orizontul de timp: <em>curente</em> (realizabile sau exigibile în cel mult 12 luni ori într-un ciclu de exploatare) și <em>necurente</em> (pe termen lung)."
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "<strong>Active imobilizate (necurente):</strong> terenuri, clădiri, echipamente, imobilizări necorporale, investiții financiare pe termen lung.",
+                    "<strong>Active circulante (curente):</strong> stocuri, creanțe comerciale, alte creanțe, numerar și echivalente de numerar.",
+                    "<strong>Datorii pe termen lung:</strong> credite bancare și obligațiuni cu scadență de peste un an, provizioane pe termen lung.",
+                    "<strong>Datorii curente:</strong> datorii comerciale față de furnizori, porțiunea curentă a creditelor, impozite și salarii de plătit.",
+                    "<strong>Capitaluri proprii:</strong> capital social, rezerve, profit nerepartizat (rezultat reportat)."
+                  ]
+                },
+                {
+                  "type": "p",
+                  "text": "Valorile din bilanț sunt în mare parte contabile: multe active sunt înregistrate la cost istoric minus amortizare, deci <em>valoarea contabilă</em> poate diferi substanțial de valoarea de piață. Mărcile sau know-how-ul dezvoltate intern adesea nici nu apar în bilanț."
+                }
+              ]
+            },
+            {
+              "heading": "Lichiditatea și capitalul de lucru",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Lichiditatea descrie capacitatea companiei de a-și onora obligațiile pe termen scurt. Un emitent profitabil poate intra în dificultate dacă activele curente nu acoperă datoriile curente la momentul scadenței."
+                },
+                {
+                  "type": "formula",
+                  "label": "Capitalul de lucru net",
+                  "expr": "Capital de lucru = Active curente − Datorii curente",
+                  "note": "O valoare pozitivă indică faptul că activele pe termen scurt depășesc obligațiile pe termen scurt."
+                },
+                {
+                  "type": "formula",
+                  "label": "Lichiditatea curentă și rapidă",
+                  "expr": "Lichiditate curentă = Active curente ÷ Datorii curente;  Lichiditate rapidă = (Active curente − Stocuri) ÷ Datorii curente",
+                  "note": "Lichiditatea rapidă exclude stocurile, care sunt cel mai greu de transformat rapid în numerar."
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Exemplu ilustrativ: «Nistru Agro» SA (mii lei)",
+                  "text": "Compania ipotetică «Nistru Agro» SA are active imobilizate de 42 000 și active curente de 18 000 (stocuri 9 500, creanțe 6 200, numerar 2 300), deci total active 60 000. Sursele: capitaluri proprii 30 000, datorii pe termen lung 18 000, datorii curente 12 000 — total 60 000. Capitalul de lucru = 18 000 − 12 000 = <strong>6 000 mii lei</strong>. Lichiditatea curentă = 18 000 ÷ 12 000 = <strong>1,5</strong>. Lichiditatea rapidă = (18 000 − 9 500) ÷ 12 000 = 8 500 ÷ 12 000 ≈ <strong>0,71</strong>. Cu 2 000 000 de acțiuni emise, valoarea contabilă pe acțiune = 30 000 000 ÷ 2 000 000 = <strong>15 lei</strong>. Cifrele sunt ilustrative."
+                },
+                {
+                  "type": "p",
+                  "text": "Interpretarea: lichiditatea curentă de 1,5 pare confortabilă, dar lichiditatea rapidă sub 1 arată că acoperirea depinde de vânzarea stocurilor. Pentru o companie agricolă cu producție sezonieră, aceasta poate fi normală; pentru o companie de servicii ar putea fi un semnal de atenție."
+                }
+              ]
+            },
+            {
+              "heading": "Capcane frecvente în citirea bilanțului",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "Compararea indicatorilor între sectoare diferite, cu cicluri de exploatare diferite.",
+                    "Ignorarea calității activelor: creanțele vechi pot fi greu recuperabile, iar stocurile pot fi depreciate.",
+                    "Analiza unui singur bilanț, fără evoluția pe mai mulți ani și fără notele explicative.",
+                    "Presupunerea că valoarea contabilă a capitalurilor proprii este egală cu valoarea reală a afacerii."
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "tip",
+                  "title": "Citește notele explicative",
+                  "text": "Notele la situațiile financiare detaliază politicile contabile, scadențele datoriilor, garanțiile acordate și datoriile contingente. Informațiile esențiale pentru risc se află adesea acolo, nu în bilanțul propriu-zis."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "Bilanțul prezintă poziția financiară la o dată anume: Total active = Datorii + Capitaluri proprii.",
+            "Clasificarea în curent și necurent permite evaluarea lichidității și a structurii de finanțare.",
+            "Capitalul de lucru și indicatorii de lichiditate arată capacitatea de a onora obligațiile pe termen scurt.",
+            "Valoarea contabilă diferă adesea de valoarea de piață; analiza cere evoluție multianuală și citirea notelor."
+          ],
+          "quiz": [
+            {
+              "q": "O companie are active curente de 18 000 mii lei, din care stocuri de 9 500 mii lei, și datorii curente de 12 000 mii lei. Care este lichiditatea rapidă?",
+              "options": [
+                "1,50",
+                "0,79",
+                "0,71",
+                "1,26"
+              ],
+              "answer": 2,
+              "explanation": "Lichiditatea rapidă = (18 000 − 9 500) ÷ 12 000 = 8 500 ÷ 12 000 ≈ 0,71."
+            },
+            {
+              "q": "Ce reprezintă capitalurile proprii în bilanț?",
+              "options": [
+                "Numerarul disponibil al companiei",
+                "Interesul rezidual al acționarilor în active, după deducerea datoriilor",
+                "Valoarea de piață a acțiunilor la data bilanțului"
+              ],
+              "answer": 1,
+              "explanation": "Capitalurile proprii = Active − Datorii; ele sunt o mărime contabilă, nu valoarea de piață a companiei."
+            },
+            {
+              "q": "De ce lichiditatea rapidă exclude stocurile?",
+              "options": [
+                "Pentru că stocurile sunt de regulă cel mai puțin lichid activ curent",
+                "Pentru că stocurile sunt active necurente",
+                "Pentru că stocurile sunt incluse deja în datoriile curente",
+                "Pentru că IFRS interzice raportarea stocurilor în bilanț"
+              ],
+              "answer": 0,
+              "explanation": "Stocurile sunt active curente, dar transformarea lor în numerar depinde de vânzări și poate dura sau implica reduceri de preț."
+            }
+          ]
+        },
+        {
+          "slug": "contul-de-profit",
+          "title": "Contul de profit și pierdere",
+          "summary": "Analizezi veniturile, marjele, EBITDA, profitul net și profitul pe acțiune ale unui emitent.",
+          "minutes": 14,
+          "sections": [
+            {
+              "heading": "Logica în cascadă a contului de profit și pierdere",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Contul de profit și pierdere descrie performanța companiei <strong>pe o perioadă</strong> (trimestru, semestru, an). Structura lui funcționează ca o cascadă: pornind de la venituri, se scad succesiv categorii de cheltuieli, obținându-se niveluri intermediare de profit care spun lucruri diferite despre afacere."
+                },
+                {
+                  "type": "steps",
+                  "items": [
+                    {
+                      "title": "Venituri (cifra de afaceri)",
+                      "text": "Sumele obținute din vânzarea bunurilor și serviciilor, recunoscute atunci când obligația față de client este îndeplinită, nu neapărat când se încasează banii."
+                    },
+                    {
+                      "title": "Profit brut",
+                      "text": "Venituri minus costul vânzărilor; reflectă eficiența producției și puterea de stabilire a prețului."
+                    },
+                    {
+                      "title": "Profit operațional (EBIT)",
+                      "text": "Profit brut minus cheltuielile de distribuție, administrative și alte cheltuieli operaționale, inclusiv amortizarea."
+                    },
+                    {
+                      "title": "Profit înainte de impozitare",
+                      "text": "EBIT plus veniturile financiare minus cheltuielile financiare (în principal dobânzile)."
+                    },
+                    {
+                      "title": "Profit net",
+                      "text": "Profit înainte de impozitare minus impozitul pe profit; este rezultatul atribuibil acționarilor."
+                    }
+                  ]
+                },
+                {
+                  "type": "p",
+                  "text": "Fiecare treaptă a cascadei izolează un alt tip de decizie. Profitul brut reflectă în principal producția și politica de prețuri, profitul operațional adaugă eficiența structurii de costuri generale, iar profitul net include efectul deciziilor de finanțare și al fiscalității. Din acest motiv, analistul nu se oprește la ultima linie: două companii cu același profit net pot avea afaceri operaționale foarte diferite, dar structuri de finanțare care compensează aceste diferențe. Compararea tuturor nivelurilor intermediare pe mai mulți ani arată unde se creează și unde se pierde valoare."
+                }
+              ]
+            },
+            {
+              "heading": "Marje și EBITDA",
+              "blocks": [
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "EBITDA",
+                  "text": "<strong>EBITDA</strong> (<em>Earnings Before Interest, Taxes, Depreciation and Amortization</em>) este profitul înainte de dobânzi, impozite, depreciere și amortizare. Este un indicator folosit pentru a compara profitabilitatea operațională a companiilor cu structuri de finanțare și politici de amortizare diferite. Nu este un indicator definit de IFRS, deci modul de calcul poate varia între emitenți."
+                },
+                {
+                  "type": "formula",
+                  "label": "Marjele de profitabilitate",
+                  "expr": "Marja X = Profitul de nivel X ÷ Venituri × 100%;  EBITDA = EBIT + Amortizare și depreciere",
+                  "note": "Se calculează marja brută, marja EBITDA, marja operațională și marja netă, fiecare raportată la aceleași venituri."
+                },
+                {
+                  "type": "p",
+                  "text": "Marjele permit compararea companiilor de dimensiuni diferite și urmărirea evoluției în timp. O marjă brută în scădere poate semnala presiuni pe prețuri sau creșterea costurilor materiilor prime; o marjă netă în scădere, cu marja operațională stabilă, poate indica o creștere a costului datoriei."
+                },
+                {
+                  "type": "callout",
+                  "variant": "warning",
+                  "title": "EBITDA nu este numerar",
+                  "text": "EBITDA ignoră investițiile necesare pentru menținerea activelor, dobânzile, impozitele și variația capitalului de lucru. O companie cu EBITDA ridicat poate avea fluxuri de numerar slabe. Verifică întotdeauna cum își definește emitentul indicatorii «ajustați»."
+                }
+              ]
+            },
+            {
+              "heading": "Exemplu complet și profitul pe acțiune",
+              "blocks": [
+                {
+                  "type": "table",
+                  "headers": [
+                    "Element (mii lei)",
+                    "Valoare",
+                    "Marja din venituri"
+                  ],
+                  "rows": [
+                    [
+                      "Venituri",
+                      "50 000",
+                      "100%"
+                    ],
+                    [
+                      "Costul vânzărilor",
+                      "(32 000)",
+                      "—"
+                    ],
+                    [
+                      "Profit brut",
+                      "18 000",
+                      "36,0%"
+                    ],
+                    [
+                      "Cheltuieli de distribuție și administrative (inclusiv amortizare 3 000)",
+                      "(8 000)",
+                      "—"
+                    ],
+                    [
+                      "Profit operațional (EBIT)",
+                      "10 000",
+                      "20,0%"
+                    ],
+                    [
+                      "EBITDA = 10 000 + 3 000",
+                      "13 000",
+                      "26,0%"
+                    ],
+                    [
+                      "Cheltuieli cu dobânzile",
+                      "(2 000)",
+                      "—"
+                    ],
+                    [
+                      "Profit înainte de impozitare",
+                      "8 000",
+                      "16,0%"
+                    ],
+                    [
+                      "Impozit pe profit (cotă ilustrativă 12%)",
+                      "(960)",
+                      "—"
+                    ],
+                    [
+                      "Profit net",
+                      "7 040",
+                      "14,08%"
+                    ]
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Calculul EPS pentru «Nistru Agro» SA (ilustrativ)",
+                  "text": "Profitul net este 7 040 mii lei, adică 7 040 000 lei. Compania are 2 000 000 de acțiuni ordinare în circulație, fără acțiuni preferențiale. EPS = 7 040 000 ÷ 2 000 000 = <strong>3,52 lei pe acțiune</strong>. Impozitul: 8 000 × 12% = 960 mii lei; profitul net: 8 000 − 960 = 7 040 mii lei."
+                },
+                {
+                  "type": "formula",
+                  "label": "Profitul pe acțiune (EPS)",
+                  "expr": "EPS = (Profit net − Dividende preferențiale) ÷ Numărul mediu ponderat de acțiuni ordinare în circulație",
+                  "note": "EPS diluat ia în calcul și instrumentele care ar putea fi convertite în acțiuni (de exemplu, obligațiuni convertibile sau opțiuni)."
+                }
+              ]
+            },
+            {
+              "heading": "Calitatea profitului",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Nu orice profit are aceeași valoare pentru investitor. Profitul <strong>recurent</strong>, provenit din activitatea de bază, este mai relevant pentru evaluare decât câștigurile <strong>nerecurente</strong>, cum ar fi vânzarea unui teren sau reluarea unui provizion."
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "Separă elementele excepționale de rezultatul din activitatea de bază.",
+                    "Compară creșterea veniturilor cu creșterea creanțelor: dacă creanțele cresc mult mai repede, calitatea veniturilor poate fi îndoielnică.",
+                    "Urmărește evoluția marjelor pe cel puțin trei–cinci ani, nu doar într-un singur exercițiu.",
+                    "Confruntă profitul net cu fluxul de numerar din activitatea operațională."
+                  ]
+                },
+                {
+                  "type": "p",
+                  "text": "În plus, verifică dacă numărul de acțiuni s-a modificat în perioadă, prin emisiuni noi sau răscumpărări. O creștere a EPS obținută doar prin reducerea numărului de acțiuni nu are aceeași semnificație ca o creștere a profitului net generată de activitatea de bază."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "Contul de profit și pierdere descrie performanța pe o perioadă, în cascadă, de la venituri la profit net.",
+            "Marjele raportează fiecare nivel de profit la venituri și permit comparații în timp și între companii.",
+            "EBITDA = EBIT + amortizare; este util pentru comparații, dar nu este echivalent cu numerarul generat.",
+            "EPS raportează profitul atribuibil acționarilor ordinari la numărul mediu ponderat de acțiuni.",
+            "Profitul recurent contează mai mult pentru evaluare decât câștigurile excepționale."
+          ],
+          "quiz": [
+            {
+              "q": "O companie are EBIT de 10 000 mii lei și amortizare de 3 000 mii lei. Cât este EBITDA?",
+              "options": [
+                "7 000 mii lei",
+                "13 000 mii lei",
+                "10 000 mii lei",
+                "30 000 mii lei"
+              ],
+              "answer": 1,
+              "explanation": "EBITDA = EBIT + amortizare și depreciere = 10 000 + 3 000 = 13 000 mii lei."
+            },
+            {
+              "q": "Profitul net este de 7 040 000 lei, iar numărul mediu ponderat de acțiuni ordinare este de 2 000 000. Nu există acțiuni preferențiale. Care este EPS?",
+              "options": [
+                "3,52 lei",
+                "2,84 lei",
+                "35,20 lei"
+              ],
+              "answer": 0,
+              "explanation": "EPS = 7 040 000 ÷ 2 000 000 = 3,52 lei pe acțiune."
+            },
+            {
+              "q": "Marja operațională a unei companii rămâne stabilă, dar marja netă scade semnificativ. Care este cea mai plauzibilă explicație dintre variantele de mai jos?",
+              "options": [
+                "Scăderea prețului de vânzare al produselor",
+                "Creșterea costului materiilor prime",
+                "Creșterea cheltuielilor administrative",
+                "Creșterea cheltuielilor cu dobânzile"
+              ],
+              "answer": 3,
+              "explanation": "Primele trei variante ar afecta și marja operațională. Dobânzile se deduc după EBIT, deci pot reduce marja netă fără a modifica marja operațională."
+            }
+          ]
+        },
+        {
+          "slug": "fluxurile-de-numerar",
+          "title": "Situația fluxurilor de numerar",
+          "summary": "Înțelegi cum se generează și se utilizează numerarul și de ce profitul contabil nu este egal cu banii încasați.",
+          "minutes": 15,
+          "sections": [
+            {
+              "heading": "De ce contează numerarul",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Profitul se calculează pe baza <em>contabilității de angajamente</em>: veniturile și cheltuielile se recunosc când sunt câștigate sau suportate, nu când se încasează sau se plătesc. De aceea, o companie poate raporta profit și, în același timp, poate rămâne fără numerar. Situația fluxurilor de numerar reconciliază aceste două perspective."
+                },
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "Cele trei categorii de fluxuri",
+                  "text": "<strong>Activitatea operațională</strong> cuprinde încasările și plățile din activitatea de bază. <strong>Activitatea de investiții</strong> cuprinde achizițiile și vânzările de active pe termen lung. <strong>Activitatea de finanțare</strong> cuprinde atragerea și rambursarea creditelor, emisiunile de acțiuni și plata dividendelor."
+                },
+                {
+                  "type": "p",
+                  "text": "Pentru investitor, situația fluxurilor de numerar este adesea cea mai greu de «ajustat» dintre cele trei raportări, deoarece numerarul intrat sau ieșit este verificabil. Ea arată dacă activitatea de bază își finanțează singură investițiile, în ce măsură compania depinde de credite noi sau de aportul acționarilor și dacă dividendele sunt susținute de numerarul generat. Analizată împreună cu bilanțul și contul de profit și pierdere, ea completează imaginea economică a emitentului."
+                }
+              ]
+            },
+            {
+              "heading": "Metoda indirectă pentru activitatea operațională",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Majoritatea emitenților prezintă fluxul operațional prin metoda indirectă: pornesc de la profitul net și îl ajustează pentru elementele fără impact asupra numerarului și pentru variația capitalului de lucru."
+                },
+                {
+                  "type": "steps",
+                  "items": [
+                    {
+                      "title": "Pornește de la profitul net",
+                      "text": "Este punctul de plecare al reconcilierii."
+                    },
+                    {
+                      "title": "Adaugă elementele nemonetare",
+                      "text": "Amortizarea și deprecierea reduc profitul, dar nu presupun ieșiri de numerar în perioada curentă."
+                    },
+                    {
+                      "title": "Ajustează pentru capitalul de lucru",
+                      "text": "Creșterea creanțelor sau a stocurilor consumă numerar (se scade); creșterea datoriilor comerciale față de furnizori păstrează numerar în companie (se adaugă)."
+                    },
+                    {
+                      "title": "Obține fluxul din activitatea operațională",
+                      "text": "Rezultatul arată câți bani a generat efectiv activitatea de bază."
+                    }
+                  ]
+                },
+                {
+                  "type": "p",
+                  "text": "Clasificarea unor elemente, cum ar fi dobânzile plătite sau dividendele încasate, poate diferi între emitenți, deoarece IFRS permite anumite opțiuni. În exemplul de mai jos, dobânzile sunt incluse în fluxul operațional."
+                }
+              ]
+            },
+            {
+              "heading": "Exemplu: de la profit la numerar",
+              "blocks": [
+                {
+                  "type": "table",
+                  "headers": [
+                    "«Nistru Agro» SA — element (mii lei, ilustrativ)",
+                    "Valoare"
+                  ],
+                  "rows": [
+                    [
+                      "Profit net",
+                      "7 040"
+                    ],
+                    [
+                      "+ Amortizare și depreciere",
+                      "3 000"
+                    ],
+                    [
+                      "− Creșterea creanțelor",
+                      "(1 200)"
+                    ],
+                    [
+                      "− Creșterea stocurilor",
+                      "(800)"
+                    ],
+                    [
+                      "+ Creșterea datoriilor comerciale",
+                      "460"
+                    ],
+                    [
+                      "<strong>Flux din activitatea operațională</strong>",
+                      "<strong>8 500</strong>"
+                    ],
+                    [
+                      "− Achiziții de echipamente (CAPEX)",
+                      "(5 000)"
+                    ],
+                    [
+                      "+ Încasări din vânzarea unui echipament",
+                      "300"
+                    ],
+                    [
+                      "<strong>Flux din activitatea de investiții</strong>",
+                      "<strong>(4 700)</strong>"
+                    ],
+                    [
+                      "− Rambursarea creditelor",
+                      "(2 500)"
+                    ],
+                    [
+                      "− Dividende plătite",
+                      "(1 000)"
+                    ],
+                    [
+                      "<strong>Flux din activitatea de finanțare</strong>",
+                      "<strong>(3 500)</strong>"
+                    ],
+                    [
+                      "<strong>Variația netă a numerarului</strong>",
+                      "<strong>300</strong>"
+                    ],
+                    [
+                      "Numerar la începutul anului",
+                      "2 000"
+                    ],
+                    [
+                      "Numerar la sfârșitul anului",
+                      "2 300"
+                    ]
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Verificarea calculelor",
+                  "text": "Flux operațional: 7 040 + 3 000 − 1 200 − 800 + 460 = 8 500. Flux de investiții: −5 000 + 300 = −4 700. Flux de finanțare: −2 500 − 1 000 = −3 500. Variația netă: 8 500 − 4 700 − 3 500 = 300, deci numerarul crește de la 2 000 la 2 300 mii lei — exact soldul din bilanț. Fluxul de numerar liber = 8 500 − 5 000 = <strong>3 500 mii lei</strong>."
+                }
+              ]
+            },
+            {
+              "heading": "Fluxul de numerar liber și semnale de avertizare",
+              "blocks": [
+                {
+                  "type": "formula",
+                  "label": "Fluxul de numerar liber (FCF)",
+                  "expr": "FCF = Flux din activitatea operațională − Investiții de capital (CAPEX)",
+                  "note": "Aceasta este o definiție simplificată, frecvent utilizată. În evaluare se folosesc variante mai precise, de exemplu fluxul liber către firmă (FCFF), discutat în lecția despre DCF."
+                },
+                {
+                  "type": "p",
+                  "text": "FCF arată numerarul rămas după menținerea și extinderea bazei de active, disponibil pentru rambursarea datoriilor, dividende sau răscumpărări de acțiuni. În exemplu, compania a generat 3 500 mii lei FCF și a utilizat 3 500 mii lei pentru finanțare, păstrându-și poziția de numerar aproape neschimbată."
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "Profit net în creștere, dar flux operațional în scădere pe mai mulți ani consecutivi.",
+                    "Dividende finanțate constant din credite noi, nu din fluxul de numerar liber.",
+                    "Creanțe care cresc sistematic mai repede decât veniturile.",
+                    "CAPEX sub nivelul amortizării pe termen lung, ceea ce poate indica subinvestiție."
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "tip",
+                  "title": "Raportul numerar/profit",
+                  "text": "Compară fluxul operațional cu profitul net pe mai mulți ani. Un raport constant supraunitar (aici 8 500 ÷ 7 040 ≈ 1,21) sugerează, de regulă, un profit de calitate bună, însă interpretarea depinde de sector și de intensitatea capitalului."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "Profitul contabil și numerarul diferă din cauza elementelor nemonetare și a variației capitalului de lucru.",
+            "Fluxurile se împart în operaționale, de investiții și de finanțare; suma lor este variația netă a numerarului.",
+            "Creșterea creanțelor și a stocurilor consumă numerar; creșterea datoriilor comerciale îl păstrează.",
+            "FCF = flux operațional − CAPEX arată numerarul disponibil pentru creditori și acționari.",
+            "Un profit care nu se transformă în numerar pe termen lung este un semnal de avertizare."
+          ],
+          "quiz": [
+            {
+              "q": "Cum influențează creșterea creanțelor comerciale fluxul de numerar din activitatea operațională (metoda indirectă)?",
+              "options": [
+                "Îl crește, pentru că veniturile cresc",
+                "Nu îl influențează, fiind un element de bilanț",
+                "Îl reduce, pentru că vânzările nu au fost încă încasate"
+              ],
+              "answer": 2,
+              "explanation": "Creșterea creanțelor înseamnă venituri recunoscute, dar neîncasate; ajustarea se scade din profitul net."
+            },
+            {
+              "q": "Fluxul operațional este 8 500 mii lei, CAPEX este 5 000 mii lei, iar dividendele plătite sunt 1 000 mii lei. Care este FCF în definiția simplificată?",
+              "options": [
+                "2 500 mii lei",
+                "3 500 mii lei",
+                "13 500 mii lei",
+                "9 500 mii lei"
+              ],
+              "answer": 1,
+              "explanation": "FCF = 8 500 − 5 000 = 3 500 mii lei. Dividendele sunt o utilizare a FCF, nu se scad în calculul lui."
+            },
+            {
+              "q": "În ce categorie se încadrează rambursarea unui credit bancar?",
+              "options": [
+                "Activitatea de finanțare",
+                "Activitatea operațională",
+                "Activitatea de investiții",
+                "Nu apare în situația fluxurilor de numerar"
+              ],
+              "answer": 0,
+              "explanation": "Atragerea și rambursarea creditelor modifică structura de finanțare și se prezintă la activitatea de finanțare."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "BA-302",
+      "title": "Evaluarea companiilor listate",
+      "description": "Cursul prezintă principalele instrumente de evaluare utilizate de investitori: indicatori financiari, multiplicatori de piață și metoda fluxurilor de numerar actualizate. Fiecare metodă este însoțită de limitele ei.",
+      "lessons": [
+        {
+          "slug": "rentabilitate-indatorare",
+          "title": "Indicatori de rentabilitate și îndatorare",
+          "summary": "Calculezi și interpretezi ROE, ROA, marja netă, gradul de îndatorare, acoperirea dobânzilor și lichiditatea curentă.",
+          "minutes": 15,
+          "sections": [
+            {
+              "heading": "Rentabilitatea: cât câștigă compania din resursele sale",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Indicatorii de rentabilitate raportează profitul la baza de resurse care l-a generat. Ei răspund la întrebarea: <em>cât de eficient transformă compania capitalul în profit?</em> Pentru a evita distorsiunile, la numitor se folosesc de regulă valorile medii ale perioadei, deoarece profitul se acumulează pe parcursul întregului an."
+                },
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "ROE și ROA",
+                  "text": "<strong>ROE</strong> (<em>Return on Equity</em>, rentabilitatea capitalurilor proprii) arată profitul net obținut la fiecare leu de capital al acționarilor. <strong>ROA</strong> (<em>Return on Assets</em>, rentabilitatea activelor) arată profitul net obținut la fiecare leu de active, indiferent de modul de finanțare."
+                },
+                {
+                  "type": "formula",
+                  "label": "Indicatori de rentabilitate",
+                  "expr": "ROE = Profit net ÷ Capitaluri proprii medii × 100%;  ROA = Profit net ÷ Total active medii × 100%;  Marja netă = Profit net ÷ Venituri × 100%",
+                  "note": "Unii analiști folosesc la ROA profitul înainte de dobânzi, pentru a neutraliza efectul finanțării; important este să aplici consecvent aceeași definiție."
+                }
+              ]
+            },
+            {
+              "heading": "Descompunerea DuPont",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Un ROE ridicat poate proveni din surse foarte diferite: marje mari, utilizarea intensă a activelor sau îndatorare ridicată. Descompunerea DuPont separă aceste trei surse."
+                },
+                {
+                  "type": "formula",
+                  "label": "ROE în trei factori",
+                  "expr": "ROE = (Profit net ÷ Venituri) × (Venituri ÷ Active medii) × (Active medii ÷ Capitaluri proprii medii)",
+                  "note": "Factorii sunt: marja netă × rotația activelor × multiplicatorul capitalului propriu (levierul financiar)."
+                },
+                {
+                  "type": "callout",
+                  "variant": "warning",
+                  "title": "ROE mare nu înseamnă automat calitate",
+                  "text": "Dacă ROE crește în principal din cauza levierului, rentabilitatea acționarilor devine mai sensibilă la scăderea profitului și la creșterea dobânzilor. Analizează întotdeauna sursa ROE, nu doar nivelul lui."
+                }
+              ]
+            },
+            {
+              "heading": "Îndatorare și solvabilitate",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "<strong>Datorii financiare/capitaluri proprii</strong> — cât de mult se bazează compania pe creditori față de acționari.",
+                    "<strong>Datoria netă</strong> — datoriile financiare minus numerarul; utilizată ulterior în calculul valorii întreprinderii.",
+                    "<strong>Gradul de acoperire a dobânzilor</strong> — de câte ori profitul operațional acoperă cheltuielile cu dobânzile.",
+                    "<strong>Lichiditatea curentă</strong> — active curente raportate la datorii curente, indicator al capacității de plată pe termen scurt."
+                  ]
+                },
+                {
+                  "type": "formula",
+                  "label": "Indicatori de îndatorare",
+                  "expr": "Datorii/Capitaluri = Datorii financiare ÷ Capitaluri proprii;  Acoperirea dobânzilor = EBIT ÷ Cheltuieli cu dobânzile",
+                  "note": "Unele analize folosesc totalul datoriilor, nu doar datoriile purtătoare de dobândă; verifică definiția înainte de a compara valori."
+                },
+                {
+                  "type": "p",
+                  "text": "Nu există praguri universale: o companie de utilități, cu venituri stabile, poate susține un grad de îndatorare mai mare decât o companie ciclică. Tendința în timp și comparația cu companii similare sunt mai informative decât o valoare izolată."
+                },
+                {
+                  "type": "p",
+                  "text": "Levierul financiar funcționează în ambele direcții. Cât timp rentabilitatea activelor depășește costul datoriei, împrumuturile cresc rentabilitatea acționarilor. Când profitul operațional scade sau dobânzile cresc, aceeași datorie amplifică scăderea ROE și poate pune presiune pe lichiditate, mai ales dacă scadențele creditelor sunt concentrate într-o perioadă scurtă."
+                }
+              ]
+            },
+            {
+              "heading": "Exemplu integrat",
+              "blocks": [
+                {
+                  "type": "table",
+                  "headers": [
+                    "«Nistru Agro» SA (mii lei, ilustrativ)",
+                    "Început de an",
+                    "Sfârșit de an",
+                    "Medie"
+                  ],
+                  "rows": [
+                    [
+                      "Total active",
+                      "52 000",
+                      "60 000",
+                      "56 000"
+                    ],
+                    [
+                      "Capitaluri proprii",
+                      "23 960",
+                      "30 000",
+                      "26 980"
+                    ],
+                    [
+                      "Datorii financiare (credite)",
+                      "—",
+                      "22 000",
+                      "—"
+                    ],
+                    [
+                      "Numerar",
+                      "2 000",
+                      "2 300",
+                      "—"
+                    ]
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Calculul indicatorilor",
+                  "text": "Date: profit net 7 040, venituri 50 000, EBIT 10 000, dobânzi 2 000. Capitalurile proprii de început: 30 000 − 7 040 + 1 000 (dividende) = 23 960. <strong>ROE</strong> = 7 040 ÷ 26 980 ≈ 26,1%. <strong>ROA</strong> = 7 040 ÷ 56 000 ≈ 12,6%. <strong>Marja netă</strong> = 7 040 ÷ 50 000 = 14,08%. DuPont: 0,1408 × (50 000 ÷ 56 000 ≈ 0,893) × (56 000 ÷ 26 980 ≈ 2,076) ≈ 26,1%. <strong>Datorii financiare/capitaluri</strong> (credite de 18 000 pe termen lung plus porțiunea curentă de 4 000, inclusă în datoriile curente) = 22 000 ÷ 30 000 ≈ 0,73. <strong>Datoria netă</strong> = 22 000 − 2 300 = 19 700. <strong>Acoperirea dobânzilor</strong> = 10 000 ÷ 2 000 = 5,0. <strong>Lichiditatea curentă</strong> = 18 000 ÷ 12 000 = 1,5."
+                },
+                {
+                  "type": "p",
+                  "text": "Interpretare: ROE-ul de circa 26% este susținut de o marjă netă solidă, dar și de un multiplicator al capitalului de aproximativ 2,1. Acoperirea dobânzilor de 5 ori oferă o marjă de siguranță rezonabilă: EBIT ar putea scădea cu 80% înainte ca dobânzile să nu mai fie acoperite din profitul operațional."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "ROE, ROA și marja netă măsoară eficiența cu care compania transformă resursele în profit.",
+            "Descompunerea DuPont arată dacă ROE provine din marje, din rotația activelor sau din levier.",
+            "Gradul de îndatorare și acoperirea dobânzilor măsoară riscul financiar asumat.",
+            "Valorile se interpretează în context: sector, tendință multianuală și companii comparabile."
+          ],
+          "quiz": [
+            {
+              "q": "Două companii au același ROE de 20%. Compania A are multiplicatorul capitalului 1,2, iar compania B are 3,5. Ce concluzie este corectă?",
+              "options": [
+                "Compania B este în mod necesar mai profitabilă operațional",
+                "ROE-ul companiei B depinde într-o măsură mai mare de îndatorare",
+                "Cele două companii au același profil de risc",
+                "Compania A are cu siguranță o marjă netă mai mică"
+              ],
+              "answer": 1,
+              "explanation": "Un multiplicator al capitalului mai mare înseamnă că o parte mai mare a activelor este finanțată prin datorii, deci ROE-ul lui B este mai dependent de levier."
+            },
+            {
+              "q": "EBIT este 10 000 mii lei, iar cheltuielile cu dobânzile sunt 2 000 mii lei. Care este gradul de acoperire a dobânzilor?",
+              "options": [
+                "0,2",
+                "8,0",
+                "5,0"
+              ],
+              "answer": 2,
+              "explanation": "Acoperirea dobânzilor = EBIT ÷ dobânzi = 10 000 ÷ 2 000 = 5,0."
+            },
+            {
+              "q": "De ce se folosesc, de regulă, capitalurile proprii medii la calculul ROE?",
+              "options": [
+                "Pentru că profitul se obține pe parcursul întregii perioade, nu la o singură dată",
+                "Pentru că IFRS nu publică valorile de sfârșit de an",
+                "Pentru ca ROE să fie întotdeauna mai mare",
+                "Pentru a elimina efectul dividendelor asupra profitului"
+              ],
+              "answer": 0,
+              "explanation": "Profitul este o mărime de flux pe o perioadă, iar capitalurile proprii sunt o mărime de stoc; media aproximează capitalul utilizat pe întreaga perioadă."
+            }
+          ]
+        },
+        {
+          "slug": "multiplicatori-de-piata",
+          "title": "Multiplicatori de piață",
+          "summary": "Aplici P/E, P/BV, EV/EBITDA și randamentul dividendului pentru evaluarea relativă și înțelegi limitele comparabilelor.",
+          "minutes": 15,
+          "sections": [
+            {
+              "heading": "Evaluarea relativă",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Multiplicatorii raportează prețul pieței la o mărime financiară a companiei: profit, capitaluri proprii, EBITDA sau dividende. Ideea evaluării relative este că active similare ar trebui să se tranzacționeze la multiplicatori similari. Metoda este rapidă și reflectă condițiile actuale ale pieței, dar depinde critic de alegerea comparabilelor."
+                },
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "Capitalizare bursieră și valoarea întreprinderii",
+                  "text": "<strong>Capitalizarea bursieră</strong> = prețul acțiunii × numărul de acțiuni în circulație; reprezintă valoarea de piață a capitalurilor proprii. <strong>Valoarea întreprinderii (EV)</strong> = capitalizare bursieră + datorii financiare − numerar (în forma simplificată); reprezintă valoarea întregii afaceri, pentru toți finanțatorii."
+                },
+                {
+                  "type": "p",
+                  "text": "Distincția dintre capitalizare și EV este esențială. Două companii cu aceeași capitalizare bursieră pot avea valori ale întreprinderii foarte diferite dacă una are datorii mari, iar cealaltă deține mult numerar. Un cumpărător al întregii afaceri ar prelua și datoriile, dar ar beneficia și de numerarul existent; de aceea, EV este măsura potrivită atunci când se compară afaceri cu structuri de finanțare diferite. În formele mai complete, EV include și acțiunile preferențiale și interesele care nu controlează."
+                }
+              ]
+            },
+            {
+              "heading": "Principalii multiplicatori",
+              "blocks": [
+                {
+                  "type": "formula",
+                  "label": "Multiplicatori de capitaluri proprii",
+                  "expr": "P/E = Preț pe acțiune ÷ EPS;  P/BV = Preț pe acțiune ÷ Valoarea contabilă pe acțiune;  Randamentul dividendului = Dividend pe acțiune ÷ Preț × 100%",
+                  "note": "P/E poate fi calculat pe profitul ultimelor 12 luni (trailing) sau pe profitul estimat (forward); nu amesteca cele două variante într-o comparație."
+                },
+                {
+                  "type": "formula",
+                  "label": "Multiplicator la nivelul întreprinderii",
+                  "expr": "EV = Capitalizare bursieră + Datorii financiare − Numerar;  EV/EBITDA = EV ÷ EBITDA",
+                  "note": "Numărătorul și numitorul trebuie să fie consecvente: EV și EBITDA se referă ambele la toți finanțatorii, în timp ce prețul și EPS se referă doar la acționari."
+                },
+                {
+                  "type": "table",
+                  "headers": [
+                    "Multiplicator",
+                    "Când este util",
+                    "Limite principale"
+                  ],
+                  "rows": [
+                    [
+                      "P/E",
+                      "Companii profitabile, cu profit stabil",
+                      "Inutilizabil la pierderi; sensibil la elemente nerecurente și la levier"
+                    ],
+                    [
+                      "P/BV",
+                      "Bănci, companii cu active preponderent financiare sau corporale",
+                      "Relevanță redusă pentru afaceri bazate pe active necorporale"
+                    ],
+                    [
+                      "EV/EBITDA",
+                      "Comparații între companii cu îndatorări diferite",
+                      "Ignoră CAPEX, impozitele și variația capitalului de lucru"
+                    ],
+                    [
+                      "Randamentul dividendului",
+                      "Investitori orientați spre venit curent",
+                      "Un randament mare poate reflecta scăderea prețului sau un dividend nesustenabil"
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "heading": "Exemplu: multiplicatori și comparabile",
+              "blocks": [
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "«Nistru Agro» SA la prețul ilustrativ de 35 lei",
+                  "text": "Capitalizare = 35 × 2 000 000 = 70 000 000 lei (70 000 mii lei). EV = 70 000 + 22 000 − 2 300 = <strong>89 700 mii lei</strong>. P/E = 35 ÷ 3,52 ≈ <strong>9,9</strong>. P/BV = 35 ÷ 15 ≈ <strong>2,33</strong>. EV/EBITDA = 89 700 ÷ 13 000 = <strong>6,9</strong>. Cu un dividend de 0,50 lei pe acțiune, randamentul dividendului = 0,50 ÷ 35 ≈ <strong>1,43%</strong>."
+                },
+                {
+                  "type": "table",
+                  "headers": [
+                    "Companie ipotetică comparabilă",
+                    "P/E",
+                    "EV/EBITDA"
+                  ],
+                  "rows": [
+                    [
+                      "Comparabila A",
+                      "8,5",
+                      "6,0"
+                    ],
+                    [
+                      "Comparabila B",
+                      "11,0",
+                      "7,5"
+                    ],
+                    [
+                      "Comparabila C",
+                      "12,5",
+                      "8,0"
+                    ],
+                    [
+                      "<strong>Mediana</strong>",
+                      "<strong>11,0</strong>",
+                      "<strong>7,5</strong>"
+                    ]
+                  ]
+                },
+                {
+                  "type": "p",
+                  "text": "Aplicând mediana P/E: preț implicit = 11,0 × 3,52 = <strong>38,72 lei</strong>. Aplicând mediana EV/EBITDA: EV implicit = 7,5 × 13 000 = 97 500 mii lei; valoarea capitalurilor proprii = 97 500 − 19 700 (datoria netă) = 77 800 mii lei; pe acțiune = 77 800 000 ÷ 2 000 000 = <strong>38,90 lei</strong>. Ambele valori sunt peste prețul ilustrativ de 35 lei, dar diferența trebuie explicată înainte de a trage vreo concluzie."
+                },
+                {
+                  "type": "callout",
+                  "variant": "tip",
+                  "title": "Mediana, nu media",
+                  "text": "Mediana este mai puțin influențată de valorile extreme decât media aritmetică, ceea ce contează când eșantionul de comparabile este mic."
+                }
+              ]
+            },
+            {
+              "heading": "Limitele multiplicatorilor",
+              "blocks": [
+                {
+                  "type": "callout",
+                  "variant": "warning",
+                  "title": "Un multiplicator mic nu înseamnă automat o acțiune «ieftină»",
+                  "text": "Un P/E redus poate reflecta o creștere așteptată mai slabă, un risc mai mare, un profit temporar umflat sau o lichiditate scăzută a acțiunii. Evaluarea relativă spune doar cum este prețuită o companie față de altele, nu dacă întregul grup este corect evaluat. Exemplele au scop exclusiv educațional și nu constituie recomandări de investiții."
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "Comparabilele trebuie să fie similare ca sector, dimensiune, creștere, risc și politici contabile.",
+                    "Pe piețele cu puține companii listate sau cu tranzacționare redusă, prețurile pot să nu reflecte valoarea fundamentală.",
+                    "Elementele nerecurente trebuie eliminate din profit înainte de calculul multiplicatorilor.",
+                    "Multiplicatorii se triangulează cu alte metode, de exemplu DCF."
+                  ]
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "Multiplicatorii raportează prețul la profit, capitaluri proprii, EBITDA sau dividende și permit evaluarea relativă.",
+            "EV = capitalizare + datorii financiare − numerar; se asociază cu indicatori la nivelul întregii firme, precum EBITDA.",
+            "Valoarea implicită rezultă din aplicarea medianei comparabilelor la indicatorii companiei analizate.",
+            "Calitatea analizei depinde de comparabilitatea reală a companiilor și de ajustarea elementelor nerecurente.",
+            "Un multiplicator redus nu este, singur, un argument de investiție."
+          ],
+          "quiz": [
+            {
+              "q": "O companie are capitalizarea bursieră de 70 000 mii lei, datorii financiare de 22 000 mii lei și numerar de 2 300 mii lei. Care este EV?",
+              "options": [
+                "94 300 mii lei",
+                "70 000 mii lei",
+                "47 700 mii lei",
+                "89 700 mii lei"
+              ],
+              "answer": 3,
+              "explanation": "EV = 70 000 + 22 000 − 2 300 = 89 700 mii lei."
+            },
+            {
+              "q": "De ce EV/EBITDA este adesea preferat lui P/E când se compară companii cu niveluri de îndatorare foarte diferite?",
+              "options": [
+                "Pentru că EV și EBITDA sunt ambele independente de structura de finanțare",
+                "Pentru că EBITDA include CAPEX",
+                "Pentru că EV/EBITDA este întotdeauna mai mic decât P/E"
+              ],
+              "answer": 0,
+              "explanation": "EV cuprinde valoarea pentru toți finanțatorii, iar EBITDA este calculat înainte de dobânzi, deci comparația este mai puțin distorsionată de levier."
+            },
+            {
+              "q": "Mediana P/E a comparabilelor este 11,0, iar EPS-ul companiei analizate este 3,52 lei. Care este prețul implicit?",
+              "options": [
+                "31,25 lei",
+                "38,72 lei",
+                "14,52 lei",
+                "35,20 lei"
+              ],
+              "answer": 1,
+              "explanation": "Preț implicit = P/E × EPS = 11,0 × 3,52 = 38,72 lei."
+            }
+          ]
+        },
+        {
+          "slug": "metoda-dcf",
+          "title": "Metoda fluxurilor de numerar actualizate (DCF)",
+          "summary": "Construiești o evaluare DCF simplificată, cu WACC, valoare terminală și analiză de sensibilitate.",
+          "minutes": 18,
+          "sections": [
+            {
+              "heading": "Principiul valorii intrinseci",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Metoda DCF (<em>Discounted Cash Flow</em>) pornește de la ideea că valoarea unei afaceri este egală cu valoarea prezentă a fluxurilor de numerar pe care le va genera în viitor. Un leu primit peste cinci ani valorează mai puțin decât un leu astăzi, atât din cauza costului de oportunitate, cât și a riscului. De aceea, fluxurile viitoare se actualizează cu o rată care reflectă riscul lor."
+                },
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "Fluxul de numerar liber către firmă (FCFF)",
+                  "text": "<strong>FCFF</strong> este numerarul generat de activitatea operațională după impozite, investiții de capital și variația capitalului de lucru, disponibil pentru <em>toți</em> finanțatorii — acționari și creditori. Fiind calculat înainte de dobânzi, se actualizează cu costul mediu ponderat al capitalului (WACC)."
+                },
+                {
+                  "type": "formula",
+                  "label": "Fluxul de numerar liber către firmă",
+                  "expr": "FCFF = EBIT × (1 − t) + Amortizare − CAPEX − Creșterea capitalului de lucru",
+                  "note": "t este cota impozitului pe profit. Pentru «Nistru Agro» SA în anul curent: 10 000 × 0,88 + 3 000 − 5 000 − 1 540 = 5 260 mii lei (ilustrativ)."
+                }
+              ]
+            },
+            {
+              "heading": "Rata de actualizare: WACC simplificat",
+              "blocks": [
+                {
+                  "type": "formula",
+                  "label": "Costul mediu ponderat al capitalului",
+                  "expr": "WACC = wE × kE + wD × kD × (1 − t)",
+                  "note": "wE și wD sunt ponderile capitalurilor proprii și ale datoriilor în structura de finanțare (de preferat la valori de piață sau țintă); kE este costul capitalurilor proprii, iar kD este costul datoriei înainte de impozitare."
+                },
+                {
+                  "type": "p",
+                  "text": "Costul datoriei se poate estima pornind de la dobânda la care compania se împrumută. Costul capitalurilor proprii este mai greu de observat: el reprezintă randamentul cerut de acționari și se estimează, de regulă, ca rată fără risc plus o primă de risc adecvată companiei. Pentru investitorii care lucrează în lei, ratele trebuie exprimate în aceeași monedă ca fluxurile de numerar."
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "WACC ilustrativ",
+                  "text": "Presupunem kE = 14%, kD = 10%, t = 12%, wE = 80% și wD = 20%. Costul datoriei după impozitare = 10% × 0,88 = 8,8%. WACC = 0,80 × 14% + 0,20 × 8,8% = 11,2% + 1,76% = <strong>12,96%</strong>, rotunjit la <strong>13%</strong> pentru exemplu."
+                }
+              ]
+            },
+            {
+              "heading": "Valoarea terminală și calculul complet",
+              "blocks": [
+                {
+                  "type": "formula",
+                  "label": "Valoarea terminală (modelul Gordon)",
+                  "expr": "VT(n) = FCFF(n) × (1 + g) ÷ (WACC − g);  Valoarea prezentă = Flux(t) ÷ (1 + WACC)^t",
+                  "note": "g este rata de creștere perpetuă și trebuie să fie strict mai mică decât WACC; pe termen lung, ea nu ar trebui să depășească creșterea nominală plauzibilă a economiei."
+                },
+                {
+                  "type": "table",
+                  "headers": [
+                    "Element (mii lei, ilustrativ)",
+                    "Anul 1",
+                    "Anul 2",
+                    "Anul 3"
+                  ],
+                  "rows": [
+                    [
+                      "FCFF previzionat",
+                      "6 000",
+                      "6 500",
+                      "7 000"
+                    ],
+                    [
+                      "Factor de actualizare la 13%",
+                      "0,8850",
+                      "0,7831",
+                      "0,6931"
+                    ],
+                    [
+                      "Valoare prezentă",
+                      "5 309,7",
+                      "5 090,5",
+                      "4 851,4"
+                    ]
+                  ]
+                },
+                {
+                  "type": "steps",
+                  "items": [
+                    {
+                      "title": "Suma valorilor prezente explicite",
+                      "text": "5 309,7 + 5 090,5 + 4 851,4 ≈ 15 251,5 mii lei (diferența de 0,1 provine din rotunjiri)."
+                    },
+                    {
+                      "title": "Valoarea terminală la sfârșitul anului 3",
+                      "text": "Cu g = 4%: 7 000 × 1,04 ÷ (0,13 − 0,04) = 7 280 ÷ 0,09 ≈ 80 888,9 mii lei."
+                    },
+                    {
+                      "title": "Actualizarea valorii terminale",
+                      "text": "80 888,9 × 0,6931 ≈ 56 060,1 mii lei (calculat cu factorul exact 1 ÷ 1,13³)."
+                    },
+                    {
+                      "title": "Valoarea întreprinderii",
+                      "text": "EV = 15 251,5 + 56 060,1 = 71 311,6 mii lei."
+                    },
+                    {
+                      "title": "Valoarea pe acțiune",
+                      "text": "Capitaluri proprii = 71 311,6 − 19 700 (datoria netă) = 51 611,6 mii lei; pe acțiune = 51 611 600 ÷ 2 000 000 ≈ 25,81 lei."
+                    }
+                  ]
+                },
+                {
+                  "type": "p",
+                  "text": "Observă că valoarea terminală actualizată reprezintă aproximativ 56 060,1 ÷ 71 311,6 ≈ 78,6% din EV. Această pondere mare este tipică și arată de ce ipotezele pe termen lung contează mai mult decât previziunile detaliate pentru primii ani. În practică, perioada explicită are de obicei cinci–zece ani; aici s-au folosit trei ani pentru simplitate."
+                }
+              ]
+            },
+            {
+              "heading": "Analiza de sensibilitate",
+              "blocks": [
+                {
+                  "type": "table",
+                  "headers": [
+                    "Valoare pe acțiune (lei)",
+                    "g = 3%",
+                    "g = 4%",
+                    "g = 5%"
+                  ],
+                  "rows": [
+                    [
+                      "WACC = 12%",
+                      "26,42",
+                      "30,30",
+                      "35,28"
+                    ],
+                    [
+                      "WACC = 13%",
+                      "22,76",
+                      "25,81",
+                      "29,61"
+                    ],
+                    [
+                      "WACC = 14%",
+                      "19,77",
+                      "22,21",
+                      "25,21"
+                    ]
+                  ]
+                },
+                {
+                  "type": "p",
+                  "text": "Modificări de doar ±1 punct procentual în WACC și în g schimbă valoarea estimată de la aproximativ 19,77 la 35,28 lei pe acțiune — o diferență de peste 78%. În plus, efectul datoriei nete amplifică variația la nivelul capitalurilor proprii. De aceea, rezultatul unui DCF trebuie prezentat ca interval, nu ca valoare unică."
+                },
+                {
+                  "type": "callout",
+                  "variant": "warning",
+                  "title": "Precizie aparentă, incertitudine reală",
+                  "text": "Un model DCF este la fel de bun ca ipotezele sale. Previziuni optimiste, un WACC subestimat sau o rată g nerealistă pot produce orice valoare dorită. Diferența dintre rezultatul DCF (în jur de 25,81 lei) și prețul ilustrativ de 35 lei nu este, în sine, un semnal de vânzare sau cumpărare; ea cere verificarea ipotezelor. Exemplul are scop exclusiv educațional."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "DCF estimează valoarea intrinsecă prin actualizarea fluxurilor de numerar viitoare cu o rată care reflectă riscul.",
+            "FCFF se actualizează cu WACC; din EV se scade datoria netă pentru a obține valoarea capitalurilor proprii.",
+            "Valoarea terminală reprezintă adesea cea mai mare parte a valorii, deci ipotezele pe termen lung sunt critice.",
+            "Rata de creștere perpetuă trebuie să fie mai mică decât WACC și plauzibilă economic.",
+            "Rezultatul se prezintă ca interval, însoțit de o analiză de sensibilitate."
+          ],
+          "quiz": [
+            {
+              "q": "Care este valoarea terminală la sfârșitul anului 3 dacă FCFF în anul 3 este 7 000 mii lei, WACC = 13% și g = 4%?",
+              "options": [
+                "53 846,2 mii lei",
+                "77 777,8 mii lei",
+                "80 888,9 mii lei",
+                "56 000,0 mii lei"
+              ],
+              "answer": 2,
+              "explanation": "VT = 7 000 × 1,04 ÷ (0,13 − 0,04) = 7 280 ÷ 0,09 ≈ 80 888,9 mii lei."
+            },
+            {
+              "q": "kE = 14%, kD = 10%, t = 12%, wE = 80%, wD = 20%. Cât este WACC?",
+              "options": [
+                "12,96%",
+                "13,20%",
+                "12,00%"
+              ],
+              "answer": 0,
+              "explanation": "WACC = 0,80 × 14% + 0,20 × 10% × (1 − 0,12) = 11,2% + 1,76% = 12,96%."
+            },
+            {
+              "q": "Ce se întâmplă cu valoarea estimată prin DCF dacă WACC crește, celelalte ipoteze rămânând neschimbate?",
+              "options": [
+                "Crește, pentru că randamentul cerut este mai mare",
+                "Rămâne neschimbată, pentru că fluxurile de numerar nu se modifică",
+                "Crește doar valoarea terminală",
+                "Scade, pentru că fluxurile viitoare sunt actualizate mai puternic"
+              ],
+              "answer": 3,
+              "explanation": "O rată de actualizare mai mare reduce valoarea prezentă a tuturor fluxurilor, inclusiv a valorii terminale."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "BA-303",
+      "title": "Managementul portofoliului",
+      "description": "Cursul arată cum se combină instrumentele financiare într-un portofoliu coerent cu obiectivele și toleranța la risc a investitorului. Sunt tratate diversificarea, măsurarea riscului și rebalansarea disciplinată.",
+      "lessons": [
+        {
+          "slug": "diversificare-alocare",
+          "title": "Diversificare și alocarea activelor",
+          "summary": "Înțelegi cum clasele de active, corelația și profilul de risc determină structura unui portofoliu.",
+          "minutes": 14,
+          "sections": [
+            {
+              "heading": "Alocarea activelor ca decizie principală",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Alocarea activelor înseamnă împărțirea capitalului între clase de active cu caracteristici diferite de randament și risc. Pentru un portofoliu diversificat, această decizie strategică influențează de regulă mai mult variația rezultatelor pe termen lung decât alegerea unor titluri individuale."
+                },
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "Clasă de active",
+                  "text": "O <strong>clasă de active</strong> este un grup de instrumente cu caracteristici economice, de risc și de reglementare similare, care tind să reacționeze asemănător la aceiași factori. Principalele clase sunt acțiunile, instrumentele cu venit fix (obligațiuni, depozite), numerarul și activele alternative (de exemplu, imobiliare)."
+                },
+                {
+                  "type": "table",
+                  "headers": [
+                    "Clasa de active",
+                    "Rolul în portofoliu",
+                    "Riscuri principale"
+                  ],
+                  "rows": [
+                    [
+                      "Acțiuni",
+                      "Creștere a capitalului pe termen lung, dividende",
+                      "Volatilitate ridicată, riscul specific emitentului"
+                    ],
+                    [
+                      "Obligațiuni",
+                      "Venit relativ previzibil, stabilizare",
+                      "Riscul ratei dobânzii, riscul de credit, inflația"
+                    ],
+                    [
+                      "Numerar și depozite",
+                      "Lichiditate, rezervă pentru oportunități și urgențe",
+                      "Randament real redus sau negativ în perioade inflaționiste"
+                    ],
+                    [
+                      "Active alternative",
+                      "Diversificare suplimentară",
+                      "Lichiditate redusă, evaluare dificilă, costuri"
+                    ]
+                  ]
+                },
+                {
+                  "type": "p",
+                  "text": "Alocarea strategică stabilește ponderile-țintă pe termen lung, în timp ce eventualele abateri temporare de la aceste ponderi, făcute pe baza unor opinii despre piață, țin de alocarea tactică. Pentru majoritatea investitorilor individuali, o alocare strategică clară și respectată consecvent este mai importantă decât încercările de a anticipa evoluția pe termen scurt a piețelor."
+                }
+              ]
+            },
+            {
+              "heading": "Corelația și efectul de diversificare",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Corelația (ρ) măsoară cât de strâns evoluează împreună randamentele a două active și ia valori între −1 și +1. Cu cât corelația este mai mică, cu atât scăderile unui activ tind să fie compensate mai des de evoluția celuilalt, iar riscul portofoliului scade sub media ponderată a riscurilor individuale."
+                },
+                {
+                  "type": "formula",
+                  "label": "Riscul unui portofoliu cu două active",
+                  "expr": "σp = √(w1² × σ1² + w2² × σ2² + 2 × w1 × w2 × ρ × σ1 × σ2)",
+                  "note": "w sunt ponderile, σ sunt deviațiile standard ale randamentelor, iar ρ este corelația. Randamentul așteptat al portofoliului este media ponderată: E(Rp) = w1 × E(R1) + w2 × E(R2)."
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Portofoliu ilustrativ de 500 000 lei",
+                  "text": "Se investesc 300 000 lei în acțiuni (w1 = 60%, randament așteptat 12%, σ1 = 20%) și 200 000 lei în obligațiuni (w2 = 40%, randament așteptat 7%, σ2 = 6%). Randamentul așteptat = 0,6 × 12% + 0,4 × 7% = <strong>10%</strong>. Cu ρ = 0,2: varianța = 0,36 × 400 + 0,16 × 36 + 2 × 0,6 × 0,4 × 0,2 × 20 × 6 = 144 + 5,76 + 11,52 = 161,28, deci σp = √161,28 ≈ <strong>12,70%</strong>. Dacă ρ ar fi 1, σp ar fi 0,6 × 20% + 0,4 × 6% = 14,4%. Toate valorile sunt ipotetice."
+                },
+                {
+                  "type": "table",
+                  "headers": [
+                    "Corelația ρ",
+                    "Varianța (%²)",
+                    "σp portofoliu"
+                  ],
+                  "rows": [
+                    [
+                      "+1,0",
+                      "207,36",
+                      "14,40%"
+                    ],
+                    [
+                      "+0,2",
+                      "161,28",
+                      "12,70%"
+                    ],
+                    [
+                      "0,0",
+                      "149,76",
+                      "12,24%"
+                    ],
+                    [
+                      "−0,2",
+                      "138,24",
+                      "11,76%"
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "heading": "Riscul specific și riscul sistematic",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Diversificarea reduce <strong>riscul specific</strong> (legat de un emitent sau un sector), dar nu poate elimina <strong>riscul sistematic</strong> (de piață), care afectează simultan majoritatea activelor: recesiuni, șocuri de dobândă, crize de lichiditate."
+                },
+                {
+                  "type": "callout",
+                  "variant": "warning",
+                  "title": "Corelațiile nu sunt constante",
+                  "text": "În perioadele de criză, corelațiile dintre multe active tind să crească, iar beneficiul diversificării poate fi mai mic tocmai când ar fi cel mai necesar. Corelațiile istorice nu garantează comportamentul viitor."
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "Diversifică între clase de active, nu doar între titluri din aceeași clasă.",
+                    "Evită concentrarea excesivă pe un singur emitent, sector sau monedă.",
+                    "Ține cont de lichiditatea instrumentelor: pe piețele cu tranzacționare redusă, ieșirea dintr-o poziție poate dura."
+                  ]
+                }
+              ]
+            },
+            {
+              "heading": "Profilul de risc al investitorului",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Alocarea potrivită depinde de <strong>capacitatea</strong> de a suporta pierderi (orizont de timp, venituri, obligații) și de <strong>toleranța</strong> psihologică la volatilitate. Un investitor cu un orizont lung și venituri stabile are, în general, o capacitate mai mare de a absorbi fluctuații decât unul care va avea nevoie de bani în doi ani."
+                },
+                {
+                  "type": "table",
+                  "headers": [
+                    "Profil ilustrativ",
+                    "Orizont tipic",
+                    "Caracteristici ale alocării"
+                  ],
+                  "rows": [
+                    [
+                      "Conservator",
+                      "Scurt",
+                      "Pondere predominantă a instrumentelor cu venit fix și a numerarului"
+                    ],
+                    [
+                      "Echilibrat",
+                      "Mediu",
+                      "Combinație relativ echilibrată între acțiuni și instrumente cu venit fix"
+                    ],
+                    [
+                      "Dinamic",
+                      "Lung",
+                      "Pondere predominantă a acțiunilor, cu acceptarea unei volatilități ridicate"
+                    ]
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "tip",
+                  "title": "Profilul se revizuiește",
+                  "text": "Profilul de risc se schimbă odată cu vârsta, situația familială și obiectivele. Structurile de mai sus sunt orientative și educaționale, nu recomandări individuale."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "Alocarea între clase de active este decizia strategică principală a unui portofoliu diversificat.",
+            "Cu cât corelația dintre active este mai mică, cu atât riscul portofoliului scade mai mult sub media ponderată a riscurilor.",
+            "Diversificarea reduce riscul specific, dar nu și riscul sistematic.",
+            "Alocarea trebuie să reflecte orizontul, capacitatea și toleranța la risc ale investitorului."
+          ],
+          "quiz": [
+            {
+              "q": "Un portofoliu are 60% acțiuni cu randament așteptat de 12% și 40% obligațiuni cu randament așteptat de 7%. Care este randamentul așteptat al portofoliului?",
+              "options": [
+                "9,5%",
+                "10,0%",
+                "19,0%",
+                "11,0%"
+              ],
+              "answer": 1,
+              "explanation": "E(Rp) = 0,6 × 12% + 0,4 × 7% = 7,2% + 2,8% = 10,0%."
+            },
+            {
+              "q": "În ce situație riscul unui portofoliu cu două active este egal cu media ponderată a riscurilor individuale?",
+              "options": [
+                "Când corelația este 0",
+                "Când corelația este −1",
+                "Când corelația este +1"
+              ],
+              "answer": 2,
+              "explanation": "La ρ = +1 nu există niciun beneficiu de diversificare, iar σp = w1σ1 + w2σ2."
+            },
+            {
+              "q": "Ce tip de risc NU poate fi eliminat prin diversificare?",
+              "options": [
+                "Riscul sistematic (de piață)",
+                "Riscul specific unui emitent",
+                "Riscul specific unui sector restrâns",
+                "Riscul de concentrare pe un singur titlu"
+              ],
+              "answer": 0,
+              "explanation": "Riscul sistematic afectează simultan majoritatea activelor și rămâne prezent chiar într-un portofoliu bine diversificat."
+            }
+          ]
+        },
+        {
+          "slug": "masurarea-riscului",
+          "title": "Măsurarea riscului",
+          "summary": "Calculezi volatilitatea, beta, drawdown-ul maxim și raportul Sharpe pentru a compara portofolii.",
+          "minutes": 16,
+          "sections": [
+            {
+              "heading": "Volatilitatea: deviația standard a randamentelor",
+              "blocks": [
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "Volatilitate",
+                  "text": "<strong>Volatilitatea</strong> este deviația standard a randamentelor unui activ sau portofoliu și măsoară cât de mult se abat randamentele individuale de la media lor. Cu cât volatilitatea este mai mare, cu atât rezultatele sunt mai dispersate și mai greu de anticipat."
+                },
+                {
+                  "type": "formula",
+                  "label": "Deviația standard de selecție",
+                  "expr": "σ = √[ Σ (Ri − R̄)² ÷ (n − 1) ]",
+                  "note": "Ri sunt randamentele pe perioade, R̄ este media lor, iar n este numărul de observații. Pentru a anualiza volatilitatea lunară: σ anual ≈ σ lunar × √12."
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Portofoliul ilustrativ A: cinci ani de randamente",
+                  "text": "Randamente anuale: 12%, −4%, 18%, 6%, 8%. Media = 40% ÷ 5 = <strong>8%</strong>. Abaterile: 4, −12, 10, −2, 0; pătratele: 16, 144, 100, 4, 0; suma = 264. Varianța de selecție = 264 ÷ 4 = 66, deci σ = √66 ≈ <strong>8,12%</strong>. Separat, o volatilitate lunară de 3% corespunde unei volatilități anuale de aproximativ 3% × √12 ≈ 10,39%."
+                },
+                {
+                  "type": "p",
+                  "text": "Deviația standard tratează la fel abaterile în sus și în jos și presupune implicit că randamentele sunt distribuite relativ simetric. În realitate, piețele au adesea evenimente extreme mai frecvente decât sugerează o distribuție normală, așa că volatilitatea trebuie completată cu alte măsuri."
+                }
+              ]
+            },
+            {
+              "heading": "Beta: sensibilitatea față de piață",
+              "blocks": [
+                {
+                  "type": "formula",
+                  "label": "Coeficientul beta",
+                  "expr": "β = Cov(Ri, Rm) ÷ Var(Rm)",
+                  "note": "Ri este randamentul activului, iar Rm randamentul indicelui de piață de referință. β = 1 înseamnă că activul tinde să se miște în linie cu piața."
+                },
+                {
+                  "type": "p",
+                  "text": "Beta măsoară doar riscul sistematic. De exemplu, dacă covarianța dintre randamentele unei acțiuni și ale pieței este 0,018, iar varianța pieței este 0,015, atunci β = 0,018 ÷ 0,015 = 1,2. În medie, la o scădere a pieței cu 10%, componenta sistematică a randamentului acțiunii ar fi de aproximativ −12%, la care se adaugă mișcările specifice companiei."
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "<strong>β peste 1</strong>: activ mai sensibil decât piața (de exemplu, sectoare ciclice).",
+                    "<strong>β între 0 și 1</strong>: activ mai puțin sensibil decât piața (de exemplu, utilități).",
+                    "Beta estimat depinde de perioada, frecvența datelor și indicele ales; pentru acțiuni cu tranzacționare rară, estimarea poate fi nesigură."
+                  ]
+                }
+              ]
+            },
+            {
+              "heading": "Drawdown-ul maxim",
+              "blocks": [
+                {
+                  "type": "formula",
+                  "label": "Drawdown maxim (MDD)",
+                  "expr": "MDD = (Valoarea minimă după vârf − Valoarea de vârf) ÷ Valoarea de vârf × 100%",
+                  "note": "Se calculează pentru cea mai mare scădere de la un vârf la un minim ulterior, înainte de atingerea unui nou vârf."
+                },
+                {
+                  "type": "p",
+                  "text": "Un portofoliu ilustrativ pornește de la 1 000 000 lei, urcă la un vârf de 1 250 000 lei, coboară apoi la 950 000 lei și revine la 1 100 000 lei. Drawdown-ul maxim = (950 000 − 1 250 000) ÷ 1 250 000 = −300 000 ÷ 1 250 000 = <strong>−24%</strong>. Pentru a reveni la vârf de la minim este nevoie de un câștig de 1 250 000 ÷ 950 000 − 1 ≈ <strong>31,6%</strong>."
+                },
+                {
+                  "type": "callout",
+                  "variant": "tip",
+                  "title": "Asimetria pierderilor",
+                  "text": "O pierdere de 50% necesită un câștig de 100% pentru recuperare. Drawdown-ul maxim arată concret ce ar fi trebuit să suporte investitorul și este adesea mai intuitiv decât deviația standard."
+                }
+              ]
+            },
+            {
+              "heading": "Randamentul ajustat la risc: raportul Sharpe",
+              "blocks": [
+                {
+                  "type": "formula",
+                  "label": "Raportul Sharpe",
+                  "expr": "Sharpe = (Rp − Rf) ÷ σp",
+                  "note": "Rp este randamentul mediu al portofoliului, Rf rata fără risc, iar σp volatilitatea portofoliului, toate pentru aceeași perioadă și în aceeași monedă."
+                },
+                {
+                  "type": "table",
+                  "headers": [
+                    "Portofoliu ilustrativ",
+                    "Randament mediu",
+                    "Volatilitate",
+                    "Sharpe (Rf = 5%)"
+                  ],
+                  "rows": [
+                    [
+                      "A",
+                      "8%",
+                      "8,12%",
+                      "(8 − 5) ÷ 8,12 ≈ 0,37"
+                    ],
+                    [
+                      "B",
+                      "10%",
+                      "14%",
+                      "(10 − 5) ÷ 14 ≈ 0,36"
+                    ]
+                  ]
+                },
+                {
+                  "type": "p",
+                  "text": "Deși portofoliul B are randamentul mai mare, A oferă un randament suplimentar peste rata fără risc ușor mai mare pentru fiecare unitate de volatilitate. Raportul Sharpe permite astfel compararea unor strategii cu niveluri diferite de risc."
+                },
+                {
+                  "type": "callout",
+                  "variant": "warning",
+                  "title": "Datele istorice au limite",
+                  "text": "Toți indicatorii de risc de mai sus se calculează pe date trecute. Performanța și volatilitatea din trecut nu garantează rezultatele viitoare, iar o perioadă scurtă de observație poate subestima riscurile rare, dar severe."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "Volatilitatea (deviația standard) măsoară dispersia randamentelor și se anualizează cu rădăcina pătrată a timpului.",
+            "Beta măsoară sensibilitatea față de piață și reflectă doar riscul sistematic.",
+            "Drawdown-ul maxim arată cea mai mare pierdere de la vârf la minim; pierderile mari cer câștiguri proporțional mai mari pentru recuperare.",
+            "Raportul Sharpe compară randamentul suplimentar față de rata fără risc cu volatilitatea asumată.",
+            "Indicatorii istorici trebuie interpretați cu prudență și folosiți împreună."
+          ],
+          "quiz": [
+            {
+              "q": "Un portofoliu a crescut de la 1 000 000 lei la un vârf de 1 250 000 lei, apoi a scăzut la 950 000 lei. Care este drawdown-ul maxim?",
+              "options": [
+                "−5%",
+                "−31,6%",
+                "−30%",
+                "−24%"
+              ],
+              "answer": 3,
+              "explanation": "MDD = (950 000 − 1 250 000) ÷ 1 250 000 = −24%. Se raportează la vârf, nu la valoarea inițială."
+            },
+            {
+              "q": "O acțiune are β = 1,2. Ce înseamnă aceasta?",
+              "options": [
+                "Acțiunea va crește sigur cu 20% mai mult decât piața",
+                "Randamentul acțiunii tinde să amplifice mișcările pieței, în medie cu un factor de circa 1,2",
+                "Riscul total al acțiunii este de 1,2 ori mai mic decât al pieței"
+              ],
+              "answer": 1,
+              "explanation": "Beta descrie sensibilitatea medie față de piață (riscul sistematic), nu o garanție și nici riscul total."
+            },
+            {
+              "q": "Portofoliul are randament mediu de 10%, volatilitate de 14%, iar rata fără risc este 5%. Care este raportul Sharpe?",
+              "options": [
+                "≈ 0,36",
+                "≈ 0,71",
+                "≈ 1,40",
+                "≈ 0,50"
+              ],
+              "answer": 0,
+              "explanation": "Sharpe = (10% − 5%) ÷ 14% ≈ 0,36."
+            }
+          ]
+        },
+        {
+          "slug": "construire-rebalansare",
+          "title": "Construirea și rebalansarea portofoliului",
+          "summary": "Formulezi o politică investițională, compari regulile de rebalansare și înveți să eviți erorile comportamentale.",
+          "minutes": 15,
+          "sections": [
+            {
+              "heading": "Politica investițională",
+              "blocks": [
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "Declarația de politică investițională",
+                  "text": "O <strong>politică investițională</strong> este un document scris, redactat înainte de a investi, care stabilește obiectivele, orizontul de timp, toleranța la risc, alocarea-țintă a activelor, limitele admise și regulile de monitorizare și rebalansare. Rolul ei este să transforme deciziile emoționale în decizii bazate pe reguli."
+                },
+                {
+                  "type": "steps",
+                  "items": [
+                    {
+                      "title": "Definește obiectivele",
+                      "text": "Ce vrei să obții (acumulare de capital, venit periodic, conservarea capitalului) și în ce termen."
+                    },
+                    {
+                      "title": "Evaluează constrângerile",
+                      "text": "Nevoi de lichiditate, orizont, aspecte fiscale, cunoștințe și experiență, preferințe personale."
+                    },
+                    {
+                      "title": "Stabilește alocarea-țintă",
+                      "text": "Ponderile pe clase de active, coerente cu profilul de risc, de exemplu 60% acțiuni și 40% obligațiuni."
+                    },
+                    {
+                      "title": "Fixează limitele și regulile",
+                      "text": "Benzi de toleranță, ponderi maxime pe emitent, frecvența revizuirii și metoda de rebalansare."
+                    },
+                    {
+                      "title": "Implementează și monitorizează",
+                      "text": "Selectează instrumentele, urmărește rezultatele față de obiective și revizuiește politica doar la schimbări reale de situație."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "heading": "De ce și cum se rebalansează",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Randamentele diferite ale claselor de active modifică în timp ponderile portofoliului. După o perioadă de creștere a acțiunilor, portofoliul devine mai riscant decât s-a stabilit inițial. Rebalansarea readuce ponderile la țintă și menține profilul de risc asumat; ea nu are ca scop principal maximizarea randamentului."
+                },
+                {
+                  "type": "formula",
+                  "label": "Ponderea curentă și abaterea de la țintă",
+                  "expr": "Pondere curentă = Valoarea clasei ÷ Valoarea totală a portofoliului × 100%;  Suma de tranzacționat = Valoarea curentă − Pondere țintă × Valoarea totală",
+                  "note": "O sumă pozitivă indică vânzare din clasa respectivă, iar una negativă indică cumpărare."
+                },
+                {
+                  "type": "table",
+                  "headers": [
+                    "Criteriu",
+                    "Rebalansare periodică",
+                    "Rebalansare pe praguri"
+                  ],
+                  "rows": [
+                    [
+                      "Declanșare",
+                      "La intervale fixe (de exemplu, anual)",
+                      "Când o pondere iese din banda de toleranță (de exemplu, ±5 puncte procentuale)"
+                    ],
+                    [
+                      "Avantaje",
+                      "Simplă, previzibilă, ușor de respectat",
+                      "Tranzacționează doar când abaterea este semnificativă"
+                    ],
+                    [
+                      "Dezavantaje",
+                      "Poate genera tranzacții inutile sau poate ignora abateri mari între date",
+                      "Necesită monitorizare continuă"
+                    ],
+                    [
+                      "Costuri",
+                      "Pot apărea la fiecare dată, indiferent de abatere",
+                      "În general, mai puține tranzacții"
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "heading": "Exemplu numeric de rebalansare",
+              "blocks": [
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Portofoliu ilustrativ de 1 000 000 lei, țintă 60/40",
+                  "text": "Inițial: 600 000 lei acțiuni și 400 000 lei obligațiuni. După un an, acțiunile câștigă 25%, iar obligațiunile 5%: acțiuni 750 000 lei, obligațiuni 420 000 lei, total 1 170 000 lei. Ponderea acțiunilor = 750 000 ÷ 1 170 000 ≈ <strong>64,10%</strong>. Ținta pentru acțiuni = 60% × 1 170 000 = 702 000 lei, deci se vând acțiuni de 750 000 − 702 000 = <strong>48 000 lei</strong> și se cumpără obligațiuni de 48 000 lei, ajungând la 468 000 lei (40%). La un cost ilustrativ de 0,5% din valoarea tranzacționată: 0,005 × (48 000 + 48 000) = <strong>480 lei</strong>."
+                },
+                {
+                  "type": "p",
+                  "text": "Regula aleasă contează: cu rebalansare <strong>anuală</strong>, tranzacția de mai sus se execută. Cu o bandă de toleranță de <strong>±5 puncte procentuale</strong> (55%–65%), ponderea de 64,10% este încă în interiorul benzii, deci nu se tranzacționează nimic. O alternativă fără vânzări este direcționarea contribuțiilor noi: dacă investitorul adaugă 50 000 lei doar în obligațiuni, acestea ajung la 470 000 lei, totalul la 1 220 000 lei, iar ponderea acțiunilor scade la 750 000 ÷ 1 220 000 ≈ 61,48%."
+                },
+                {
+                  "type": "callout",
+                  "variant": "tip",
+                  "title": "Ține cont de costuri",
+                  "text": "Comisioanele, diferența dintre prețul de cumpărare și cel de vânzare, eventualele impozite pe câștiguri și lichiditatea redusă a unor instrumente pot face ca rebalansările foarte frecvente să coste mai mult decât beneficiul adus."
+                }
+              ]
+            },
+            {
+              "heading": "Disciplina și erorile comportamentale",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Rebalansarea cere, prin natura ei, să vinzi din ce a crescut și să cumperi din ce a scăzut — exact opusul impulsului emoțional. De aceea, o regulă stabilită dinainte este mai valoroasă decât o decizie luată sub presiunea pieței."
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "<strong>Aversiunea față de pierdere:</strong> pierderile se resimt mai puternic decât câștigurile echivalente, ceea ce duce la vânzări în panică.",
+                    "<strong>Efectul de dispoziție:</strong> tendința de a vinde prea devreme titlurile câștigătoare și de a le păstra prea mult pe cele în pierdere.",
+                    "<strong>Supraîncrederea:</strong> supraestimarea propriei capacități de a anticipa piața, cu tranzacționare excesivă.",
+                    "<strong>Comportamentul de turmă:</strong> urmarea deciziilor majorității în locul propriei analize.",
+                    "<strong>Ancorarea:</strong> raportarea deciziilor la un preț de referință irelevant, de exemplu prețul de cumpărare."
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "warning",
+                  "title": "Nicio regulă nu elimină riscul",
+                  "text": "Rebalansarea și politica investițională mențin coerența portofoliului, dar nu garantează câștiguri și nu protejează împotriva pierderilor. Rezultatele trecute nu garantează rezultatele viitoare. Conținutul are scop educațional și nu reprezintă o recomandare de investiții."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "O politică investițională scrisă stabilește obiectivele, alocarea-țintă, limitele și regulile înainte de a investi.",
+            "Rebalansarea readuce portofoliul la profilul de risc asumat; scopul ei principal este controlul riscului.",
+            "Rebalansarea periodică este simplă, iar cea pe praguri tranzacționează doar la abateri semnificative.",
+            "Costurile de tranzacționare și fiscalitatea influențează frecvența optimă a rebalansării.",
+            "Regulile stabilite dinainte ajută la evitarea erorilor comportamentale."
+          ],
+          "quiz": [
+            {
+              "q": "Un portofoliu de 1 170 000 lei are 750 000 lei în acțiuni, iar ținta pentru acțiuni este 60%. Ce sumă trebuie vândută din acțiuni pentru a reveni la țintă?",
+              "options": [
+                "30 000 lei",
+                "150 000 lei",
+                "48 000 lei",
+                "702 000 lei"
+              ],
+              "answer": 2,
+              "explanation": "Ținta = 0,60 × 1 170 000 = 702 000 lei; de vândut: 750 000 − 702 000 = 48 000 lei."
+            },
+            {
+              "q": "Ținta pentru acțiuni este 60%, cu o bandă de toleranță de ±5 puncte procentuale. Ponderea curentă este 64,10%. Ce prevede regula pe praguri?",
+              "options": [
+                "Nu se tranzacționează, deoarece ponderea se află în banda 55%–65%",
+                "Se vând acțiuni până la 55%",
+                "Se vând acțiuni până la 60%, deoarece ponderea diferă de țintă"
+              ],
+              "answer": 0,
+              "explanation": "Regula pe praguri declanșează rebalansarea doar când ponderea iese din bandă; 64,10% este sub limita de 65%."
+            },
+            {
+              "q": "Care este scopul principal al rebalansării?",
+              "options": [
+                "Maximizarea randamentului pe termen scurt",
+                "Anticiparea evoluției pieței",
+                "Reducerea la zero a costurilor de tranzacționare",
+                "Menținerea profilului de risc stabilit în politica investițională"
+              ],
+              "answer": 3,
+              "explanation": "Rebalansarea readuce ponderile la alocarea-țintă, păstrând nivelul de risc asumat; ea nu este un instrument de anticipare a pieței."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

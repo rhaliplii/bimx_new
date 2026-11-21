@@ -1,0 +1,1330 @@
+{
+  "slug": "infrastructura-bimx",
+  "num": "06",
+  "title": "Infrastructura de tranzacționare BIMx",
+  "short": "ARENA Trading, atestarea agenților, simulările, admiterea ca membru și rolul brokerului în admiterea emitenților.",
+  "level": "Profesional",
+  "audience": "Brokeri și agenți de bursă",
+  "intro": "Program destinat societăților de investiții care intră în procesul de admitere la Bursa Internațională a Moldovei, început la 28 septembrie 2026, și persoanelor pe care acestea le desemnează ca agenți de bursă. Explică modul de lucru pe platforma ARENA Trading, dezvoltată de Bursa de Valori București, desfășurarea unei ședințe de tranzacționare, procedura de atestare, rolul simulărilor și pașii de admitere ca membru, inclusiv decontarea prin Depozitarul Central Unic. Materialul însoțește instruirea organizată de BIMx și nu o înlocuiește.",
+  "outcomes": [
+    "Să descrii modelul operațional BIMx: ce face Bursa de Valori București, ce face BIMx și ce face brokerul.",
+    "Să explici succesiunea stărilor pieței într-o ședință BIMx și regula de prioritate preț-timp.",
+    "Să cunoști condițiile și etapele atestării ca agent de bursă, inclusiv structura examenului.",
+    "Să înțelegi scopul simulărilor de tranzacționare și ce trebuie verificat înainte de prima ședință reală.",
+    "Să parcurgi pașii de admitere ca membru al bursei și să explici ciclul de decontare T+2 prin DCU.",
+    "Să îndeplinești rolul de Participant inițiator sau intermediar și să pregătești emitenții de la BVM pentru admiterea la BIMx."
+  ],
+  "prerequisites": "Programul presupune cunoașterea noțiunilor de bază despre piața de capital și despre tipurile de ordine (de exemplu, din direcția 01 BIMx Academy) și este destinat angajaților societăților de investiții licențiate de CNPF.",
+  "courses": [
+    {
+      "code": "BA-401",
+      "title": "Platforma ARENA Trading",
+      "description": "Cum este organizată tehnic piața BIMx: platforma ARENA Trading furnizată de BVB în regim SaaS, rolurile fiecărui participant și desfășurarea unei ședințe de tranzacționare, de la pre-deschidere până la închidere.",
+      "lessons": [
+        {
+          "slug": "arena-trading-si-modelul-operational",
+          "title": "ARENA Trading și modelul operațional BIMx",
+          "summary": "Afli cine operează platforma, cine administrează piața și ce responsabilități are brokerul conectat la sistemul de tranzacționare BIMx.",
+          "minutes": 11,
+          "sections": [
+            {
+              "heading": "O platformă europeană pentru piața din Moldova",
+              "blocks": [
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "ARENA Trading",
+                  "text": "ARENA Trading este sistemul electronic de tranzacționare folosit de Bursa Internațională a Moldovei. Este dezvoltat de Bursa de Valori București (BVB) și furnizat BIMx în regim SaaS (software ca serviciu): platforma rulează în infrastructura BVB, iar BIMx și brokerii o accesează de la distanță."
+                },
+                {
+                  "type": "p",
+                  "text": "BIMx a obținut de la CNPF, la 21 august 2026, autorizația de a administra și exploata <strong>Piața Reglementată</strong> și <strong>Sistemul Multilateral de Tranzacționare (MTF)</strong>. Ambele piețe funcționează pe aceeași platformă, ARENA Trading. Pentru broker, aceasta înseamnă un singur mediu de lucru, cu reguli specifice fiecărei piețe."
+                },
+                {
+                  "type": "p",
+                  "text": "Alegerea unei platforme deja folosite pe o piață europeană reduce riscul tehnic al lansării și apropie procesele din Republica Moldova de practica piețelor din Uniunea Europeană. BVB este, totodată, cel mai mare acționar al BIMx, cu 26,67% din capital."
+                }
+              ]
+            },
+            {
+              "heading": "Cine ce face: BVB, BIMx și brokerul",
+              "blocks": [
+                {
+                  "type": "table",
+                  "headers": [
+                    "Participant",
+                    "Rol",
+                    "Exemple de responsabilități"
+                  ],
+                  "rows": [
+                    [
+                      "Bursa de Valori București",
+                      "Operează platforma",
+                      "Găzduire, mentenanță, actualizări, know-how tehnic"
+                    ],
+                    [
+                      "BIMx",
+                      "Administrează piața",
+                      "Reguli, admiterea membrilor și a instrumentelor, utilizatori, relația cu CNPF și DCU, supravegherea ședinței"
+                    ],
+                    [
+                      "Brokerul (membru al bursei)",
+                      "Distribuie accesul la piață",
+                      "Clienți, transmiterea ordinelor, conectivitate, agenți de bursă atestați"
+                    ]
+                  ]
+                },
+                {
+                  "type": "p",
+                  "text": "Modelul este de tip <strong>remote-first</strong>: brokerii nu se deplasează la sediul bursei pentru a tranzacționa, ci se conectează securizat din propriul sediu. La lansare, accesul se face prin terminalul grafic (GUI) al platformei. Planul tehnologic BIMx prevede apoi o interfață Gateway API și un flux de date (anul 2) și conectarea prin protocolul FIX (anul 3)."
+                }
+              ]
+            },
+            {
+              "heading": "Ce înseamnă asta pentru broker",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "<strong>Utilizatori nominali</strong>: fiecare agent de bursă primește propriul cod de utilizator ARENA, după atestare. Codurile nu se împart între colegi.",
+                    "<strong>Securitatea accesului</strong>: parola inițială vine pe un canal securizat și trebuie schimbată și păstrată conform regulilor privind gestionarea credențialelor.",
+                    "<strong>Conectivitate proprie</strong>: brokerul răspunde de stațiile de lucru și de conexiunea prin care accesează platforma.",
+                    "<strong>Date de piață în timp real</strong>: brokerii au acces la date fără întârziere, prin abonament, direct din ARENA; publicul vede datele cu o întârziere de 15 minute."
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Exemplu ipotetic: organizarea accesului",
+                  "text": "O societate de investiții desemnează doi agenți de bursă. După atestare, fiecare primește un cod ARENA propriu. Când unul dintre ei este în concediu, celălalt introduce ordinele clienților de pe propriul cod; nu folosește contul colegului. Astfel, fiecare ordin din sistem poate fi atribuit clar unei persoane atestate."
+                }
+              ]
+            },
+            {
+              "heading": "Unde se află BIMx în calendarul lansării",
+              "blocks": [
+                {
+                  "type": "steps",
+                  "items": [
+                    {
+                      "title": "21 august 2026",
+                      "text": "CNPF autorizează BIMx să administreze Piața Reglementată și MTF."
+                    },
+                    {
+                      "title": "28 septembrie 2026",
+                      "text": "Începe procesul de admitere a brokerilor și a emitenților, etapa finală înainte de lansarea tranzacționării."
+                    },
+                    {
+                      "title": "1 octombrie 2026",
+                      "text": "Platforma ARENA intră în producție, potrivit calendarului operațional actual."
+                    },
+                    {
+                      "title": "În paralel",
+                      "text": "Conectarea sistemului BIMx la Depozitarul Central Unic, stabilirea regulilor de operare, instruirea brokerilor pe ARENA Trading și simulările de tranzacționare."
+                    },
+                    {
+                      "title": "Până la sfârșitul anului 2026",
+                      "text": "Prima listare planificată."
+                    }
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "tip",
+                  "title": "Urmăriți comunicările oficiale",
+                  "text": "Datele sesiunilor de instruire și de simulare se comunică direct brokerilor aflați în procesul de admitere. Pentru întrebări, scrieți la office@bimx.md."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "ARENA Trading este platforma de tranzacționare a BIMx, dezvoltată de Bursa de Valori București și furnizată în regim SaaS.",
+            "Aceeași platformă deservește ambele piețe autorizate de CNPF: Piața Reglementată și MTF.",
+            "BVB operează platforma, BIMx administrează piața, brokerul distribuie accesul către clienți.",
+            "Accesul este remote-first, prin terminal GUI la lansare, cu API și FIX planificate în anii următori.",
+            "Fiecare agent de bursă are propriul cod de utilizator; codurile nu se partajează."
+          ],
+          "quiz": [
+            {
+              "q": "Cine dezvoltă platforma ARENA Trading folosită de BIMx?",
+              "options": [
+                "Comisia Națională a Pieței Financiare",
+                "Bursa de Valori București",
+                "Depozitarul Central Unic",
+                "Fiecare broker, separat"
+              ],
+              "answer": 1,
+              "explanation": "ARENA Trading este dezvoltată de Bursa de Valori București și furnizată BIMx în regim SaaS."
+            },
+            {
+              "q": "În modelul operațional BIMx, cine se ocupă de admiterea membrilor și de relația cu CNPF și DCU?",
+              "options": [
+                "BIMx",
+                "Bursa de Valori București",
+                "Brokerul"
+              ],
+              "answer": 0,
+              "explanation": "BIMx administrează piața: reguli, utilizatori, admiteri și relația cu autoritatea de supraveghere și cu depozitarul."
+            },
+            {
+              "q": "Un agent de bursă lipsește, iar colegul său atestat trebuie să introducă ordinele clienților. Ce este corect?",
+              "options": [
+                "Folosește codul ARENA al colegului absent",
+                "Cere bursei un cod temporar comun",
+                "Amână toate ordinele până revine colegul",
+                "Introduce ordinele de pe propriul cod de utilizator"
+              ],
+              "answer": 3,
+              "explanation": "Codurile de utilizator sunt individuale și nu se partajează, astfel încât fiecare ordin poate fi atribuit unei persoane atestate."
+            }
+          ]
+        },
+        {
+          "slug": "sedinta-de-tranzactionare-bimx",
+          "title": "Ședința de tranzacționare BIMx, stare cu stare",
+          "summary": "Parcurgi cele șapte stări ale unei ședințe BIMx, afli cum funcționează fixing-ul la deschidere și la închidere și cum se aplică prioritatea preț-timp.",
+          "minutes": 12,
+          "sections": [
+            {
+              "heading": "Programul ședinței",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Ședința de tranzacționare pe piețele administrate de BIMx are loc în zilele lucrătoare, în intervalul <strong>10:00 – 14:00</strong>, ora Moldovei. Piețele sunt închise în zilele nelucrătoare și în sărbătorile legale. Calendarul complet al zilelor de tranzacționare, cu eventualele zile cu program special, se publică pe bimx.md înainte de prima ședință."
+                },
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "Starea pieței",
+                  "text": "Starea pieței este faza în care se află ședința la un moment dat. Ea determină ce poate face agentul de bursă: dacă poate introduce, modifica sau retrage ordine și dacă ordinele se execută imediat, la un preț de fixing sau deloc."
+                }
+              ]
+            },
+            {
+              "heading": "Cele șapte stări",
+              "blocks": [
+                {
+                  "type": "steps",
+                  "items": [
+                    {
+                      "title": "Pre-deschidere",
+                      "text": "Se introduc, se modifică sau se retrag ordine, fără a se încheia tranzacții. Sistemul calculează și afișează prețul potențial de deschidere."
+                    },
+                    {
+                      "title": "Deschidere",
+                      "text": "Se determină prețul de deschidere prin algoritmul de fixing și se încheie tranzacțiile cu ordinele acumulate în pre-deschidere."
+                    },
+                    {
+                      "title": "Deschisă",
+                      "text": "Tranzacționare continuă: ordinele compatibile se execută imediat, pe baza priorității preț-timp."
+                    },
+                    {
+                      "title": "Pre-închisă",
+                      "text": "Se introduc, se modifică sau se retrag ordine, fără executare, pentru pregătirea închiderii. Se calculează prețul potențial de închidere."
+                    },
+                    {
+                      "title": "Închidere",
+                      "text": "Se determină prețul de închidere prin fixing și se încheie tranzacțiile."
+                    },
+                    {
+                      "title": "Tranzacționare la închidere",
+                      "text": "Se pot încheia tranzacții exclusiv la prețul rezultat din fixing-ul de închidere."
+                    },
+                    {
+                      "title": "Închisă",
+                      "text": "Ședința s-a încheiat. Nu se acceptă ordine noi."
+                    }
+                  ]
+                },
+                {
+                  "type": "p",
+                  "text": "Tipurile de ordine acceptate în fiecare stare și mecanismele de suspendare temporară a tranzacționării sunt descrise în Regulile BIMx privind Piața Reglementată (Titlul V) și în Regulile BIMx privind MTF. Pentru examenul de atestare, aceste reguli se cunosc integral."
+                }
+              ]
+            },
+            {
+              "heading": "Prioritatea preț-timp",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "În starea <em>Deschisă</em>, ordinele se execută după două criterii, în această ordine: mai întâi <strong>prețul</strong> (cel mai mare preț de cumpărare și cel mai mic preț de vânzare au prioritate), apoi <strong>momentul introducerii</strong> (la preț egal, ordinul introdus primul se execută primul)."
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Exemplu ipotetic: cine se execută primul",
+                  "text": "În registrul de ordine există trei ordine de cumpărare pentru aceeași acțiune: A la 101 lei (introdus la 10:05), B la 102 lei (10:07) și C la 102 lei (10:06). Sosește un ordin de vânzare la 100 lei. Primul executat este C: are prețul cel mai bun (102 lei), la egalitate cu B, dar a fost introdus mai devreme. Urmează B, apoi A. Cifrele sunt ilustrative."
+                }
+              ]
+            },
+            {
+              "heading": "De ce contează fixing-ul",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "La deschidere și la închidere, ordinele nu se execută unul câte unul, ci se adună, iar sistemul calculează un singur preț la care se poate tranzacționa cel mai mare volum. Acest mecanism reduce impactul unui singur ordin asupra prețului în momentele sensibile ale zilei, iar prețul de închidere devine reperul pentru ședința următoare."
+                },
+                {
+                  "type": "callout",
+                  "variant": "warning",
+                  "title": "Atenție la ordinele introduse în pre-deschidere",
+                  "text": "Un ordin introdus în pre-deschidere nu se execută imediat, dar poate participa la fixing-ul de deschidere. Înainte de a-l lăsa în sistem, verificați prețul potențial de deschidere afișat de platformă."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "Ședința BIMx are loc în zilele lucrătoare, între 10:00 și 14:00, ora Moldovei.",
+            "O ședință parcurge șapte stări: pre-deschidere, deschidere, deschisă, pre-închisă, închidere, tranzacționare la închidere și închisă.",
+            "În tranzacționarea continuă se aplică prioritatea preț-timp: întâi prețul, apoi ora introducerii.",
+            "Prețurile de deschidere și de închidere se stabilesc prin fixing, pe baza ordinelor acumulate.",
+            "Detaliile privind ordinele admise și suspendările sunt în Regulile BIMx pentru fiecare piață."
+          ],
+          "quiz": [
+            {
+              "q": "În ce stare a pieței se execută ordinele imediat, pe baza priorității preț-timp?",
+              "options": [
+                "Pre-deschidere",
+                "Pre-închisă",
+                "Deschisă",
+                "Închisă"
+              ],
+              "answer": 2,
+              "explanation": "În starea Deschisă are loc tranzacționarea continuă, iar ordinele compatibile se execută imediat, după prioritatea preț-timp."
+            },
+            {
+              "q": "Două ordine de cumpărare au același preț. Care se execută primul?",
+              "options": [
+                "Cel cu volumul mai mare",
+                "Cel introdus mai devreme",
+                "Cel al brokerului mai mare",
+                "Se împart egal"
+              ],
+              "answer": 1,
+              "explanation": "La preț egal, criteriul de departajare este momentul introducerii: ordinul introdus primul are prioritate."
+            },
+            {
+              "q": "Ce se întâmplă în starea „Tranzacționare la închidere”?",
+              "options": [
+                "Se pot încheia tranzacții doar la prețul rezultat din fixing-ul de închidere",
+                "Se introduc ordine fără executare",
+                "Se calculează prețul potențial de deschidere",
+                "Piața este suspendată"
+              ],
+              "answer": 0,
+              "explanation": "În această stare se pot încheia tranzacții exclusiv la prețul stabilit prin fixing-ul de închidere."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "BA-402",
+      "title": "Atestarea agentului de bursă",
+      "description": "Condițiile și etapele prin care o persoană desemnată de un broker membru devine agent de bursă BIMx: dosarul, examenul teoretic și tehnic, decizia de admitere și primirea codurilor de acces.",
+      "lessons": [
+        {
+          "slug": "cine-poate-deveni-agent-de-bursa",
+          "title": "Cine poate deveni agent de bursă",
+          "summary": "Afli ce face un agent de bursă, ce condiții trebuie să îndeplinească și cum îl desemnează brokerul pentru atestare.",
+          "minutes": 9,
+          "sections": [
+            {
+              "heading": "Rolul agentului de bursă",
+              "blocks": [
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "Agentul de bursă",
+                  "text": "Agentul de bursă este persoana fizică ce introduce ordinele și încheie tranzacțiile în sistemul de tranzacționare al BIMx, în numele și pe seama unui broker membru al bursei. Calitatea se dobândește exclusiv prin procedura de atestare organizată de BIMx."
+                },
+                {
+                  "type": "p",
+                  "text": "Atestarea verifică două lucruri: cunoașterea cadrului normativ al pieței de capital și capacitatea practică de a utiliza platforma ARENA Trading. Procedura este stabilită prin Regulamentul de atestare a agenților de bursă BIMx și detaliată prin Procedura de organizare a evaluării teoretice și tehnice, ambele aprobate de Organul Executiv al BIMx și publicate pe bimx.md."
+                }
+              ]
+            },
+            {
+              "heading": "Condițiile, îndeplinite cumulativ",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "Are capacitate de exercițiu deplină.",
+                    "Este cetățean al Republicii Moldova sau, în cazul cetățenilor străini, are drept legal de muncă în Republica Moldova.",
+                    "Nu se află în situații de incompatibilitate sau de conflict de interese care ar afecta exercitarea acestei calități.",
+                    "Este angajat al unui broker membru al BIMx și este desemnat de acesta pentru atestare."
+                  ]
+                },
+                {
+                  "type": "p",
+                  "text": "Cunoștințele profesionale nu se dovedesc prin diplome sau certificate obținute în altă parte, ci exclusiv prin examenul prevăzut în Regulament."
+                }
+              ]
+            },
+            {
+              "heading": "Desemnarea de către broker",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Calitatea de agent de bursă se dobândește numai la propunerea unui broker membru. Brokerul angajator depune un <strong>dosar de atestare</strong>: cererea de înscriere semnată de reprezentantul legal, declarațiile de conformitate, actele de identificare ale candidatului și celelalte documente prevăzute în Regulament. Dosarul se transmite electronic, cu semnătură electronică calificată, la adresa oficială de e-mail a BIMx."
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Exemplu ipotetic: un dosar incomplet",
+                  "text": "Un broker trimite dosarul unui candidat fără declarația de conformitate privind conflictele de interese. BIMx nu programează sesiunea de examinare până la completarea dosarului. Brokerul trimite documentul lipsă, iar după confirmarea completitudinii, BIMx comunică data examenului."
+                }
+              ]
+            },
+            {
+              "heading": "Legătura cu admiterea brokerului",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Atestarea agenților este una dintre condițiile practice pentru ca un broker admis să poată tranzacționa efectiv: fără cel puțin un agent atestat, brokerul nu are cine să introducă ordinele în ARENA Trading. De aceea, desemnarea candidaților se planifică odată cu procesul de admitere ca membru, început la 28 septembrie 2026."
+                },
+                {
+                  "type": "callout",
+                  "variant": "tip",
+                  "title": "Planificați din timp",
+                  "text": "Fiecare sesiune de examinare este individuală, cu supravegherea directă a candidatului pe o stație de lucru dedicată. Dacă aveți mai mulți candidați, trimiteți dosarele devreme, ca să aveți timp pentru programare."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "Agentul de bursă introduce ordinele în sistemul BIMx în numele unui broker membru.",
+            "Calitatea se obține doar prin atestarea organizată de BIMx, cu examen teoretic și tehnic.",
+            "Condițiile sunt cumulative: capacitate de exercițiu, drept de muncă, lipsa incompatibilităților, angajarea la un broker membru.",
+            "Dosarul se depune de broker, electronic, cu semnătură electronică calificată.",
+            "Un broker are nevoie de agenți atestați pentru a tranzacționa efectiv pe ARENA Trading."
+          ],
+          "quiz": [
+            {
+              "q": "Cine depune dosarul de atestare al unui candidat?",
+              "options": [
+                "Candidatul, în nume propriu",
+                "CNPF",
+                "Brokerul membru care îl angajează",
+                "Bursa de Valori București"
+              ],
+              "answer": 2,
+              "explanation": "Calitatea de agent de bursă se dobândește exclusiv la propunerea unui broker membru, care depune dosarul de atestare."
+            },
+            {
+              "q": "Care dintre următoarele NU este o condiție pentru a deveni agent de bursă BIMx?",
+              "options": [
+                "Să fie angajat al unui broker membru",
+                "Să aibă capacitate de exercițiu deplină",
+                "Să nu fie în conflict de interese",
+                "Să dețină acțiuni ale BIMx"
+              ],
+              "answer": 3,
+              "explanation": "Deținerea de acțiuni ale bursei nu este o condiție. Condițiile sunt capacitatea de exercițiu, dreptul de muncă, lipsa incompatibilităților și angajarea la un broker membru."
+            },
+            {
+              "q": "Cum se dovedesc cunoștințele profesionale ale candidatului?",
+              "options": [
+                "Prin examenul prevăzut în Regulamentul de atestare",
+                "Prin diploma universitară",
+                "Prin recomandarea brokerului",
+                "Prin vechimea în muncă"
+              ],
+              "answer": 0,
+              "explanation": "Verificarea cunoștințelor se face exclusiv prin procedura de examinare prevăzută în Regulament."
+            }
+          ]
+        },
+        {
+          "slug": "examenul-de-atestare",
+          "title": "Examenul de atestare și codurile de acces",
+          "summary": "Afli cum se programează și cum se desfășoară examenul, cum se comunică rezultatul și ce se întâmplă după decizia de admitere.",
+          "minutes": 11,
+          "sections": [
+            {
+              "heading": "Programarea sesiunii",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "După confirmarea completitudinii dosarului, BIMx programează sesiunea de examinare și comunică brokerului și candidatului data, ora și locul, cu respectarea termenului de preaviz din Regulament. Odată cu programarea, candidatul primește materialele de pregătire: tematica detaliată, exemple orientative de întrebări și Ghidul de utilizare a platformei ARENA."
+                },
+                {
+                  "type": "callout",
+                  "variant": "warning",
+                  "title": "Materialele sunt orientative",
+                  "text": "Exemplele de întrebări nu acoperă tot examenul. Susținerea lui presupune cunoașterea integrală a cadrului normativ aplicabil."
+                }
+              ]
+            },
+            {
+              "heading": "Cele două componente ale examenului",
+              "blocks": [
+                {
+                  "type": "table",
+                  "headers": [
+                    "Componenta",
+                    "Ce verifică"
+                  ],
+                  "rows": [
+                    [
+                      "Teoretică",
+                      "Regulile BIMx privind Piața Reglementată și MTF, prevederile relevante privind Depozitarul Central Unic, principiile de funcționare a pieței, tipurile de ordine, mecanismele de tranzacționare, conduita profesională, confidențialitatea și prevenirea abuzului de piață"
+                    ],
+                    [
+                      "Tehnică",
+                      "Utilizarea platformei ARENA în mediu de test: introducerea, modificarea și retragerea ordinelor, folosirea tipurilor de ordine din Regulile BIMx, interpretarea informațiilor de piață, respectarea procedurilor de securitate a accesului și a parolei"
+                    ]
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "Fără compensare între componente",
+                  "text": "Examenul se desfășoară la sediul BIMx, iar cele două componente sunt consecutive și ambele obligatorii. Un rezultat foarte bun la partea teoretică nu compensează nepromovarea părții tehnice și nici invers."
+                }
+              ]
+            },
+            {
+              "heading": "Decizia de admitere și accesul în sistem",
+              "blocks": [
+                {
+                  "type": "steps",
+                  "items": [
+                    {
+                      "title": "Procesul-verbal",
+                      "text": "Rezultatul nu se comunică pe loc. Se întocmește procesul-verbal al sesiunii, iar Departamentul Listing și Operațiuni formulează o propunere."
+                    },
+                    {
+                      "title": "Decizia de admitere",
+                      "text": "Organul Executiv al BIMx emite decizia prin care constată candidații promovați. Decizia este actul unic de finalizare: nu se emit certificate individuale."
+                    },
+                    {
+                      "title": "Comunicarea",
+                      "text": "Decizia se transmite oficial brokerului angajator, care transmite candidatului un extras."
+                    },
+                    {
+                      "title": "Codurile de acces",
+                      "text": "Agentul primește codul individual de utilizator ARENA și parola inițială, pe canal securizat, și este înscris în Registrul Agenților de Bursă ținut de BIMx."
+                    },
+                    {
+                      "title": "Notificarea CNPF",
+                      "text": "BIMx notifică CNPF cu privire la agenții atestați, conform reglementărilor."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "heading": "Retentative și taxa de examinare",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Regulamentul nu limitează numărul de tentative. Un candidat care nu promovează poate depune o nouă cerere, fără restricție de termen sau frecvență, cu îndeplinirea integrală a condițiilor. Taxa de examinare este prevăzută în Nomenclatorul tarifelor și comisioanelor BIMx și se plătește pentru fiecare sesiune, inclusiv pentru reluări."
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Exemplu ipotetic: bugetarea atestării",
+                  "text": "Un broker desemnează trei candidați. Doi promovează din prima, unul la a doua încercare. Brokerul plătește taxa de examinare pentru patru sesiuni: trei inițiale și una reluată. Valoarea taxei se ia din Nomenclatorul BIMx în vigoare."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "Candidatul primește la programare tematica, exemple de întrebări și Ghidul de utilizare ARENA.",
+            "Examenul are o componentă teoretică și una tehnică, ambele obligatorii, fără compensare între ele.",
+            "Rezultatul se stabilește prin decizia Organului Executiv; nu se emit certificate individuale.",
+            "După decizie, agentul primește codul ARENA și este înscris în Registrul Agenților de Bursă.",
+            "Numărul de tentative nu este limitat, dar taxa se plătește pentru fiecare sesiune."
+          ],
+          "quiz": [
+            {
+              "q": "Un candidat obține punctaj maxim la partea teoretică, dar nu promovează partea tehnică. Care este rezultatul?",
+              "options": [
+                "Promovează, pentru că media este suficientă",
+                "Primește un cod ARENA provizoriu",
+                "Nu promovează, pentru că nu există compensare între componente",
+                "Reia doar partea teoretică"
+              ],
+              "answer": 2,
+              "explanation": "Ambele componente sunt obligatorii și nu se compensează între ele, deci nepromovarea părții tehnice înseamnă nepromovarea examenului."
+            },
+            {
+              "q": "Ce document finalizează procedura de atestare?",
+              "options": [
+                "Certificatul individual al candidatului",
+                "Decizia de admitere emisă de Organul Executiv al BIMx",
+                "Contractul de muncă cu brokerul",
+                "Procesul-verbal al sesiunii"
+              ],
+              "answer": 1,
+              "explanation": "Decizia de admitere este actul unic de finalizare a procedurii; nu se emit certificate individuale."
+            },
+            {
+              "q": "De câte ori poate relua un candidat examenul de atestare?",
+              "options": [
+                "O singură dată",
+                "De cel mult trei ori pe an",
+                "Doar după 6 luni",
+                "Fără limită, cu o nouă cerere și plata taxei pentru fiecare sesiune"
+              ],
+              "answer": 3,
+              "explanation": "Regulamentul nu impune un număr maxim de tentative; fiecare sesiune presupune o nouă cerere și plata taxei."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "BA-403",
+      "title": "Simulări de tranzacționare",
+      "description": "De ce organizează BIMx simulări de tranzacționare înainte de lansare, ce se verifică în ele și cum se pregătește un broker pentru a trage concluzii utile.",
+      "lessons": [
+        {
+          "slug": "simulari-de-tranzactionare",
+          "title": "Simulările: repetiția generală înainte de prima ședință",
+          "summary": "Afli ce este o simulare de tranzacționare, ce scenarii merită exersate și ce ar trebui să verifice fiecare broker înainte de lansare.",
+          "minutes": 10,
+          "sections": [
+            {
+              "heading": "De ce există simulări",
+              "blocks": [
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "Simularea de tranzacționare",
+                  "text": "O simulare de tranzacționare este o ședință organizată într-un mediu de test, cu instrumente și ordine fictive, care reproduce desfășurarea unei zile reale de bursă. Nimic din ce se tranzacționează nu produce efecte juridice sau financiare."
+                },
+                {
+                  "type": "p",
+                  "text": "Conform comunicatului BIMx din 28 septembrie 2026, simulările continuă în paralel cu admiterea brokerilor și cu conectarea la Depozitarul Central Unic. Scopul lor este ca, la prima ședință reală, fiecare participant să fi exersat deja fluxurile principale și ca eventualele probleme tehnice sau de procedură să fi fost identificate din timp."
+                }
+              ]
+            },
+            {
+              "heading": "Ce merită exersat",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "<strong>Conectarea și autentificarea</strong> fiecărui agent de pe propria stație de lucru, cu propriul cod.",
+                    "<strong>Ciclul complet al unui ordin</strong>: introducere, modificare, retragere, executare parțială și totală.",
+                    "<strong>Trecerea prin stările pieței</strong>: ordine plasate în pre-deschidere, participarea la fixing, tranzacționarea continuă, închiderea.",
+                    "<strong>Situațiile neobișnuite</strong>: suspendarea unui instrument, un ordin respins, pierderea conexiunii.",
+                    "<strong>Fluxul post-tranzacționare</strong>: confirmările și raportul pe care îl primește brokerul după ședință, în pregătirea decontării."
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Exemplu ipotetic: un scenariu de simulare",
+                  "text": "În pre-deschidere, agentul introduce un ordin de cumpărare pentru 500 de acțiuni fictive la 20 lei. Prețul potențial de deschidere afișat este 19,80 lei. La deschidere, ordinul se execută integral la 19,80 lei, prețul de fixing, deși limita era 20 lei. Agentul verifică apoi că tranzacția apare corect în confirmările zilei."
+                }
+              ]
+            },
+            {
+              "heading": "Cum se pregătește brokerul",
+              "blocks": [
+                {
+                  "type": "steps",
+                  "items": [
+                    {
+                      "title": "Înainte",
+                      "text": "Stabiliți cine participă, verificați stațiile de lucru și conexiunea, pregătiți o listă de scenarii pe care vreți să le testați."
+                    },
+                    {
+                      "title": "În timpul simulării",
+                      "text": "Notați ora și descrierea oricărei erori sau neclarități, cu capturi de ecran, fără date reale ale clienților."
+                    },
+                    {
+                      "title": "După",
+                      "text": "Transmiteți observațiile către BIMx pe canalul indicat și actualizați procedurile interne ale societății."
+                    }
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "warning",
+                  "title": "Nu folosiți date reale",
+                  "text": "Mediul de test nu este locul pentru datele personale ale clienților. Folosiți numai datele fictive puse la dispoziție pentru simulare."
+                }
+              ]
+            },
+            {
+              "heading": "Legătura cu atestarea",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Componenta tehnică a examenului de atestare se desfășoară tot în mediul de test ARENA. Participarea la simulări este, de aceea, și o bună pregătire pentru examen: agentul se obișnuiește cu interfața, cu tipurile de ordine și cu procedurile de securitate înainte de a fi evaluat."
+                },
+                {
+                  "type": "callout",
+                  "variant": "tip",
+                  "title": "Calendarul simulărilor",
+                  "text": "Datele simulărilor se comunică direct brokerilor aflați în procesul de admitere. Dacă societatea dumneavoastră nu a primit invitația, scrieți la office@bimx.md."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "Simulările reproduc o zi de bursă în mediu de test, fără efecte juridice sau financiare.",
+            "BIMx organizează simulări în paralel cu admiterea brokerilor și cu conectarea la DCU.",
+            "Merită exersate autentificarea, ciclul complet al ordinelor, stările pieței și situațiile neobișnuite.",
+            "Brokerul notează erorile și le transmite BIMx, apoi își actualizează procedurile interne.",
+            "Simulările pregătesc și componenta tehnică a examenului de atestare."
+          ],
+          "quiz": [
+            {
+              "q": "Ce efect are o tranzacție încheiată într-o simulare?",
+              "options": [
+                "Se decontează prin DCU în T+2",
+                "Nu produce efecte juridice sau financiare",
+                "Se raportează la CNPF ca tranzacție reală",
+                "Modifică prețul de referință al ședinței reale"
+              ],
+              "answer": 1,
+              "explanation": "Simularea are loc într-un mediu de test, cu instrumente și ordine fictive, fără efecte juridice sau financiare."
+            },
+            {
+              "q": "În timpul simulării apare o eroare la retragerea unui ordin. Ce este recomandat?",
+              "options": [
+                "Notați ora și descrierea erorii și transmiteți observația către BIMx",
+                "Ignorați eroarea, fiindcă e doar un test",
+                "Reintroduceți ordinul folosind datele unui client real",
+                "Opriți participarea la simulare"
+              ],
+              "answer": 0,
+              "explanation": "Scopul simulării este identificarea problemelor înainte de lansare, deci erorile trebuie documentate și comunicate."
+            },
+            {
+              "q": "Cu ce etapă a atestării se leagă cel mai direct participarea la simulări?",
+              "options": [
+                "Depunerea dosarului",
+                "Plata taxei de examinare",
+                "Notificarea CNPF",
+                "Componenta tehnică a examenului, desfășurată în mediul de test ARENA"
+              ],
+              "answer": 3,
+              "explanation": "Componenta tehnică a examenului se desfășoară în mediul de test ARENA, cu care simulările îl familiarizează pe agent."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "BA-404",
+      "title": "Admiterea ca membru BIMx",
+      "description": "Pașii prin care o societate de investiții licențiată de CNPF devine membru al bursei și ce se întâmplă după ce clienții ei tranzacționează: compensarea și decontarea prin Depozitarul Central Unic.",
+      "lessons": [
+        {
+          "slug": "admiterea-ca-membru",
+          "title": "Admiterea ca membru al bursei, pas cu pas",
+          "summary": "Afli cine poate deveni membru BIMx, ce documente se depun și ce trebuie să fie gata înainte ca brokerul să poată tranzacționa efectiv.",
+          "minutes": 10,
+          "sections": [
+            {
+              "heading": "Cine poate deveni membru",
+              "blocks": [
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "Membru al bursei",
+                  "text": "Membrul bursei este o societate de investiții licențiată de CNPF și admisă de BIMx să tranzacționeze pe piețele administrate de bursă, în nume propriu sau în numele clienților. Tranzacționarea pe BIMx se face exclusiv prin membri."
+                },
+                {
+                  "type": "p",
+                  "text": "Procesul de admitere a brokerilor la BIMx a început la <strong>28 septembrie 2026</strong> și reprezintă etapa finală înainte de lansarea tranzacționării. Lista societăților de investiții licențiate este publicată de CNPF, iar lista membrilor BIMx se completează pe bimx.md pe măsură ce societățile sunt admise."
+                }
+              ]
+            },
+            {
+              "heading": "Etapele admiterii",
+              "blocks": [
+                {
+                  "type": "steps",
+                  "items": [
+                    {
+                      "title": "Cererea de admitere ca membru",
+                      "text": "Formularul tipizat din Centrul de descărcare de pe bimx.md, completat și semnat de reprezentantul legal."
+                    },
+                    {
+                      "title": "Contractul de participare",
+                      "text": "Contractul tipizat care stabilește drepturile și obligațiile membrului față de bursă."
+                    },
+                    {
+                      "title": "Conectarea la ARENA Trading",
+                      "text": "Configurarea accesului, a stațiilor de lucru și participarea la instruirea organizată de BIMx."
+                    },
+                    {
+                      "title": "Atestarea agenților de bursă",
+                      "text": "Desemnarea și atestarea persoanelor care vor introduce ordinele (cursul BA-402)."
+                    },
+                    {
+                      "title": "Simulări de tranzacționare",
+                      "text": "Exersarea fluxurilor în mediul de test înainte de prima ședință reală (cursul BA-403)."
+                    }
+                  ]
+                },
+                {
+                  "type": "p",
+                  "text": "Taxele de admitere ca membru și taxele anuale de acces la platforma ARENA sunt prevăzute în Nomenclatorul comisioanelor și tarifelor BIMx."
+                }
+              ]
+            },
+            {
+              "heading": "Lista de verificare înainte de prima ședință",
+              "blocks": [
+                {
+                  "type": "table",
+                  "headers": [
+                    "Element",
+                    "Întrebarea de control"
+                  ],
+                  "rows": [
+                    [
+                      "Statut de membru",
+                      "Avem decizia de admitere și contractul de participare semnat?"
+                    ],
+                    [
+                      "Agenți",
+                      "Avem cel puțin un agent atestat, cu cod ARENA activ, și un înlocuitor?"
+                    ],
+                    [
+                      "Tehnic",
+                      "Stațiile de lucru și conexiunea au fost testate în simulări?"
+                    ],
+                    [
+                      "Decontare",
+                      "Sunt clare fluxurile cu Depozitarul Central Unic și conturile de decontare?"
+                    ],
+                    [
+                      "Clienți",
+                      "Contractele și tarifele pentru clienți includ tranzacționarea pe BIMx?"
+                    ]
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Exemplu ipotetic: ordinea pașilor",
+                  "text": "O societate depune cererea de admitere în prima săptămână de octombrie și, în paralel, trimite dosarele de atestare pentru doi angajați. Agenții participă la instruire și la simulări, susțin examenul, iar după decizia de admitere și primirea codurilor ARENA, societatea este pregătită pentru prima ședință. Lucrul în paralel scurtează semnificativ calendarul."
+                }
+              ]
+            },
+            {
+              "heading": "Unde găsiți documentele",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "Formularele și contractele tipizate: Centrul de descărcare de pe bimx.md.",
+                    "Regulile BIMx privind Piața Reglementată și MTF: pagina „Regulamente și acte normative”.",
+                    "Procedura de atestare: pagina „Atestarea brokerilor”.",
+                    "Informații despre procesul de admitere: office@bimx.md."
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "tip",
+                  "title": "Începeți cu atestarea",
+                  "text": "Atestarea agenților durează, pentru că fiecare sesiune de examinare este individuală. Desemnați candidații odată cu depunerea cererii de admitere."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "Pe BIMx se tranzacționează exclusiv prin membri: societăți de investiții licențiate de CNPF și admise de bursă.",
+            "Admiterea brokerilor a început la 28 septembrie 2026, ca etapă finală înainte de lansarea tranzacționării.",
+            "Pașii: cererea de admitere, contractul de participare, conectarea la ARENA, atestarea agenților, simulările.",
+            "Taxele de admitere și de acces la ARENA sunt în Nomenclatorul BIMx.",
+            "Lucrul în paralel la admitere și atestare scurtează calendarul până la prima ședință."
+          ],
+          "quiz": [
+            {
+              "q": "Cine poate deveni membru al BIMx?",
+              "options": [
+                "Orice persoană fizică cu experiență în investiții",
+                "Orice bancă comercială",
+                "O societate de investiții licențiată de CNPF, admisă de BIMx",
+                "Orice companie listată"
+              ],
+              "answer": 2,
+              "explanation": "Membrii bursei sunt societăți de investiții licențiate de CNPF și admise de BIMx."
+            },
+            {
+              "q": "Unde găsește un broker formularul de cerere de admitere ca membru?",
+              "options": [
+                "În Centrul de descărcare de pe bimx.md",
+                "Pe site-ul Bursei de Valori București",
+                "La Depozitarul Central Unic",
+                "Formularul nu este public"
+              ],
+              "answer": 0,
+              "explanation": "Formularele și contractele tipizate, inclusiv cererea de admitere ca membru, sunt în Centrul de descărcare de pe bimx.md."
+            },
+            {
+              "q": "Care este cel mai eficient mod de a pregăti admiterea?",
+              "options": [
+                "Se așteaptă decizia de admitere, apoi se desemnează agenții",
+                "Se începe cu simulările, fără cerere de admitere",
+                "Se depune doar contractul de participare",
+                "Se lucrează în paralel: cererea de admitere și dosarele de atestare ale agenților"
+              ],
+              "answer": 3,
+              "explanation": "Atestarea durează, deci desemnarea agenților în paralel cu cererea de admitere scurtează calendarul."
+            }
+          ]
+        },
+        {
+          "slug": "decontarea-prin-dcu",
+          "title": "Compensarea și decontarea prin Depozitarul Central Unic",
+          "summary": "Afli ce se întâmplă după încheierea unei tranzacții pe BIMx: raportarea către DCU, confirmarea instrucțiunilor și transferul simultan al titlurilor și al banilor în T+2.",
+          "minutes": 10,
+          "sections": [
+            {
+              "heading": "Rolul Depozitarului Central Unic",
+              "blocks": [
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "Depozitarul Central Unic (DCU)",
+                  "text": "Depozitarul Central Unic al Republicii Moldova ține evidența valorilor mobiliare și realizează compensarea și decontarea tranzacțiilor încheiate pe piețele administrate de BIMx. Decontarea înseamnă transferul efectiv al titlurilor către cumpărător și al banilor către vânzător."
+                },
+                {
+                  "type": "p",
+                  "text": "Conform comunicatului din 28 septembrie 2026, conectarea sistemului BIMx la sistemul DCU se află în etapa finală, alături de stabilirea regulilor de operare. Decontarea devine operațională odată cu lansarea tranzacționării."
+                }
+              ]
+            },
+            {
+              "heading": "Ciclul T+2",
+              "blocks": [
+                {
+                  "type": "steps",
+                  "items": [
+                    {
+                      "title": "T+0: ziua tranzacției",
+                      "text": "BIMx transmite către DCU raportul consolidat al tranzacțiilor executate în ședință."
+                    },
+                    {
+                      "title": "T+1",
+                      "text": "Participanții și DCU confirmă instrucțiunile de decontare."
+                    },
+                    {
+                      "title": "T+2",
+                      "text": "Are loc transferul simultan al valorilor mobiliare și al fondurilor, după principiul livrare contra plată."
+                    }
+                  ]
+                },
+                {
+                  "type": "p",
+                  "text": "Decontarea se face în monedă națională (MDL), iar T+2 înseamnă a doua zi lucrătoare după data tranzacției. Zilele nelucrătoare nu se numără."
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Exemplu ipotetic: calculul datei de decontare",
+                  "text": "O tranzacție se încheie joi. T+1 este vineri, iar T+2 este luni, dacă luni este zi lucrătoare. Dacă tranzacția se încheie vineri, T+1 este luni și T+2 este marți. Cumpărătorul devine proprietarul titlurilor în registru la data decontării, nu în ziua tranzacției."
+                }
+              ]
+            },
+            {
+              "heading": "Livrare contra plată",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Principiul <strong>livrare contra plată</strong> (DvP) înseamnă că titlurile se transferă doar dacă se transferă și banii, simultan. Astfel, niciuna dintre părți nu riscă să livreze fără să primească contravaloarea."
+                },
+                {
+                  "type": "callout",
+                  "variant": "warning",
+                  "title": "Responsabilitatea brokerului",
+                  "text": "Brokerii membri asigură decontarea tranzacțiilor executate în numele clienților, conform Regulilor DCU. Înainte de a transmite un ordin, verificați că clientul are titlurile (la vânzare) sau fondurile (la cumpărare) necesare pentru decontare."
+                }
+              ]
+            },
+            {
+              "heading": "Ce vede investitorul",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Pentru clientul final, decontarea este de obicei invizibilă: el vede ordinul executat în ziua tranzacției, iar titlurile apar în contul său după decontare. Brokerul trebuie să poată explica clar această diferență de timp, mai ales investitorilor începători care cumpără la prima listare."
+                },
+                {
+                  "type": "table",
+                  "headers": [
+                    "Moment",
+                    "Ce vede clientul"
+                  ],
+                  "rows": [
+                    [
+                      "T+0",
+                      "Confirmarea execuției ordinului, cu prețul și cantitatea"
+                    ],
+                    [
+                      "T+1",
+                      "Tranzacția în curs de decontare"
+                    ],
+                    [
+                      "T+2",
+                      "Titlurile în cont (cumpărător) sau banii disponibili (vânzător)"
+                    ]
+                  ]
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "DCU ține evidența valorilor mobiliare și decontează tranzacțiile încheiate pe BIMx.",
+            "Ciclul este T+2: raport către DCU în T+0, confirmarea instrucțiunilor în T+1, transferul în T+2.",
+            "Decontarea se face în MDL, iar T+2 se calculează în zile lucrătoare.",
+            "Livrarea contra plată asigură transferul simultan al titlurilor și al banilor.",
+            "Brokerul răspunde de decontarea tranzacțiilor clienților și verifică disponibilul înainte de ordin."
+          ],
+          "quiz": [
+            {
+              "q": "O tranzacție pe BIMx se încheie vineri. Când are loc decontarea, dacă nu sunt sărbători legale?",
+              "options": [
+                "Sâmbătă",
+                "Luni",
+                "Marți",
+                "Miercuri"
+              ],
+              "answer": 2,
+              "explanation": "T+2 se calculează în zile lucrătoare: T+1 este luni, T+2 este marți."
+            },
+            {
+              "q": "Ce înseamnă principiul „livrare contra plată”?",
+              "options": [
+                "Titlurile și banii se transferă simultan",
+                "Cumpărătorul plătește înainte de tranzacție",
+                "Vânzătorul livrează titlurile în ziua tranzacției",
+                "Brokerul garantează personal plata"
+              ],
+              "answer": 0,
+              "explanation": "Livrarea contra plată înseamnă transfer simultan: titlurile se mută doar dacă se mută și banii."
+            },
+            {
+              "q": "Ce transmite BIMx către DCU în ziua tranzacției (T+0)?",
+              "options": [
+                "Banii cumpărătorilor",
+                "Lista membrilor bursei",
+                "Decizia de admitere a emitentului",
+                "Raportul consolidat al tranzacțiilor executate"
+              ],
+              "answer": 3,
+              "explanation": "În T+0, BIMx transmite DCU raportul consolidat al tranzacțiilor executate în ședință."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "BA-405",
+      "title": "Brokerul în admiterea emitenților",
+      "description": "Rolul societății de investiții ca Participant inițiator pe Piața Reglementată și ca Participant intermediar pe MTF, plus pașii concreți pentru pregătirea emitenților și a emisiunilor municipale tranzacționate în prezent la BVM.",
+      "lessons": [
+        {
+          "slug": "participant-initiator-si-intermediar",
+          "title": "Participant inițiator și Participant intermediar",
+          "summary": "Afli ce face brokerul atunci când însoțește un emitent la BIMx, cum diferă rolul său pe Piața Reglementată și pe MTF și ce responsabilități rămân emitentului.",
+          "minutes": 11,
+          "sections": [
+            {
+              "heading": "Două roluri, două piețe",
+              "blocks": [
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "Participantul inițiator și Participantul intermediar",
+                  "text": "Participantul inițiator este brokerul membru care asistă emitentul la pregătirea și depunerea dosarului pe Piața Reglementată; rolul este opțional pentru acțiuni și obligatoriu pentru obligațiunile municipale. Participantul intermediar este brokerul cu care emitentul are obligatoriu contract pe MTF, atât la admitere, cât și pe toată durata tranzacționării."
+                },
+                {
+                  "type": "table",
+                  "headers": [
+                    "",
+                    "Participant inițiator (Piața Reglementată)",
+                    "Participant intermediar (MTF)"
+                  ],
+                  "rows": [
+                    [
+                      "Este obligatoriu?",
+                      "Nu, pentru acțiuni; da, pentru obligațiunile municipale",
+                      "Da"
+                    ],
+                    [
+                      "Durata relației",
+                      "Până la stabilirea primei zile de tranzacționare",
+                      "Pe toată durata tranzacționării"
+                    ],
+                    [
+                      "Persoane de legătură",
+                      "Ale emitentului",
+                      "Cel puțin una din cele două vine de la Participant"
+                    ],
+                    [
+                      "Documente semnate",
+                      "Asistă la dosar",
+                      "Semnează Memorandumul împreună cu emitentul"
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "heading": "Ce face Participantul inițiator",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "verifică împreună cu emitentul condițiile de eligibilitate din Reguli;",
+                    "structurează și verifică dosarul înainte de depunere, din perspectiva conformității cu Regulile BIMx;",
+                    "coordonează cu Departamentul Listing și Operațiuni clarificările și completările;",
+                    "transmite răspunsurile și documentele solicitate în termenele comunicate de BIMx;",
+                    "asigură legătura operațională cu BIMx până la stabilirea primei zile de tranzacționare."
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "warning",
+                  "title": "Responsabilitatea rămâne a emitentului",
+                  "text": "Chiar dacă dosarul se depune prin Participantul inițiator, responsabilitatea pentru conținutul documentației și pentru obligațiile de informare continuă rămâne a emitentului."
+                }
+              ]
+            },
+            {
+              "heading": "Ce face Participantul intermediar pe MTF",
+              "blocks": [
+                {
+                  "type": "steps",
+                  "items": [
+                    {
+                      "title": "Etapa 1: Acordul de principiu",
+                      "text": "Cererea de AP, decizia organului statutar, extrasul din Registrul persoanelor juridice, actul constitutiv, Memorandumul semnat de ambele părți, dovada tarifului de procesare și contractul emitent–Participant."
+                    },
+                    {
+                      "title": "Etapa 2: admiterea efectivă",
+                      "text": "Cererea finală, documentele sau confirmarea DCU, raportările financiare, Memorandumul final, certificatul CNPF, declarația persoanelor de contact și Contractul BIMx–Emitent."
+                    },
+                    {
+                      "title": "După admitere",
+                      "text": "Menține contractul cu emitentul și una dintre persoanele de legătură cu BIMx pe toată durata tranzacționării."
+                    }
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Exemplu ipotetic: același broker, două roluri",
+                  "text": "O societate de investiții are doi clienți emitenți. Pentru compania A, cu capitaluri proprii de peste 1 milion EUR, pregătește ca Participant inițiator dosarul pentru Piața Reglementată; după prima zi de tranzacționare, rolul său în admitere se încheie. Pentru compania B, mai mică, devine Participant intermediar pe MTF: semnează Memorandumul, desemnează una dintre persoanele de legătură și rămâne în contract cât timp acțiunile se tranzacționează."
+                }
+              ]
+            },
+            {
+              "heading": "Tarife și estimări",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Tarifele diferă după piață (Piața Reglementată sau MTF) și după tipul instrumentului, conform Nomenclatorului taxelor și comisioanelor BIMx în vigoare. La cererea Participantului, BIMx poate transmite o <strong>estimare a costurilor de admitere</strong> pentru un emitent concret."
+                },
+                {
+                  "type": "callout",
+                  "variant": "tip",
+                  "title": "Referințe",
+                  "text": "Regulile BIMx privind Piața Reglementată și MTF (bimx.md, „Regulamente și acte normative”), Nomenclatorul („Tarifele Bursei”), Legea nr. 171/2012. În caz de neconcordanță cu această lecție, prevalează Regulile BIMx."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "Pe Piața Reglementată, brokerul poate fi Participant inițiator; pentru obligațiunile municipale, rolul este obligatoriu.",
+            "Pe MTF, contractul cu un Participant intermediar este obligatoriu pe toată durata tranzacționării.",
+            "Participantul inițiator verifică eligibilitatea, structurează dosarul și coordonează clarificările cu BIMx.",
+            "Responsabilitatea pentru conținutul documentației rămâne a emitentului.",
+            "BIMx poate transmite, la cerere, o estimare a costurilor de admitere pentru un emitent concret."
+          ],
+          "quiz": [
+            {
+              "q": "Pentru ce tip de instrument este obligatoriu Participantul inițiator pe Piața Reglementată?",
+              "options": [
+                "Pentru acțiuni",
+                "Pentru obligațiunile municipale",
+                "Pentru valorile mobiliare de stat",
+                "Pentru niciun instrument"
+              ],
+              "answer": 1,
+              "explanation": "Pentru acțiuni, emitentul poate depune și direct; pentru obligațiunile municipale, Regulile prevăd depunerea prin Participant inițiator."
+            },
+            {
+              "q": "Cât durează relația dintre emitent și Participantul intermediar pe MTF?",
+              "options": [
+                "Până la emiterea Acordului de principiu",
+                "Până la prima zi de tranzacționare",
+                "Un an de la admitere",
+                "Pe toată durata tranzacționării"
+              ],
+              "answer": 3,
+              "explanation": "Contractul cu Participantul intermediar se încheie și se menține pe toată durata tranzacționării pe MTF."
+            },
+            {
+              "q": "Dosarul unui emitent a fost depus prin Participantul inițiator. Cine răspunde pentru conținutul documentației?",
+              "options": [
+                "Emitentul",
+                "Participantul inițiator",
+                "BIMx",
+                "CNPF"
+              ],
+              "answer": 0,
+              "explanation": "Responsabilitatea pentru conținutul documentației și obligațiile de informare continuă rămân ale emitentului."
+            }
+          ]
+        },
+        {
+          "slug": "pregatirea-emitentilor-de-la-bvm",
+          "title": "Pregătirea emitenților și a emisiunilor municipale de la BVM",
+          "summary": "Afli ce pași are brokerul pentru clienții emitenți tranzacționați în prezent la BVM, inclusiv pentru emisiunile de obligațiuni municipale pe care le-a intermediat.",
+          "minutes": 10,
+          "sections": [
+            {
+              "heading": "Punctul de plecare: fără transfer automat",
+              "blocks": [
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "Tranziția de la BVM la BIMx",
+                  "text": "Instrumentele tranzacționate la Bursa de Valori a Moldovei nu trec automat la BIMx. Pentru fiecare emitent interesat se parcurge procesul de admitere prevăzut de Regulile BIMx, cu posibilitatea de a reutiliza documentele existente care sunt valabile, actualizate și conforme."
+                },
+                {
+                  "type": "p",
+                  "text": "Brokerii cunosc cel mai bine emitenții pe care îi deservesc. De aceea, BIMx îi invită să identifice emitenții interesați și să îi ajute să se pregătească, pe Piața Reglementată sau pe MTF."
+                }
+              ]
+            },
+            {
+              "heading": "Pașii pentru acțiuni",
+              "blocks": [
+                {
+                  "type": "steps",
+                  "items": [
+                    {
+                      "title": "Lista preliminară",
+                      "text": "Identificați emitenții ale căror instrumente sunt la BVM și clienții care analizează o nouă admitere, apoi transmiteți lista preliminară către BIMx."
+                    },
+                    {
+                      "title": "Dialogul cu emitenții",
+                      "text": "Discutați opțiunile Pieței Reglementate și ale MTF, fără a prezenta procesul ca pe un transfer automat."
+                    },
+                    {
+                      "title": "Documentația",
+                      "text": "Pregătiți dosarul potrivit pieței alese: pe Piața Reglementată direct sau ca Participant inițiator; pe MTF, cu contract de Participant intermediar."
+                    },
+                    {
+                      "title": "Verificarea preliminară",
+                      "text": "Coordonați cu Departamentul Listing și Operațiuni identificarea documentelor lipsă sau neactualizate înainte de depunerea formală."
+                    }
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "tip",
+                  "title": "Trimiteți un inventar",
+                  "text": "Pentru fiecare dosar, transmiteți din timp un inventar al documentelor disponibile, astfel încât BIMx să confirme ce poate fi reutilizat și ce trebuie actualizat."
+                }
+              ]
+            },
+            {
+              "heading": "Pașii pentru obligațiunile municipale intermediate",
+              "blocks": [
+                {
+                  "type": "steps",
+                  "items": [
+                    {
+                      "title": "Lista emisiunilor",
+                      "text": "Transmiteți BIMx lista emisiunilor municipale pentru care considerați oportun dialogul, cu datele de contact ale emitenților, în măsura permisă de relația contractuală."
+                    },
+                    {
+                      "title": "Confirmarea interesului",
+                      "text": "Confirmați în scris, împreună cu fiecare autoritate locală, interesul pentru admitere și necesitatea deciziei consiliului local."
+                    },
+                    {
+                      "title": "Inventarul și verificarea",
+                      "text": "Pregătiți inventarul documentelor existente și coordonați verificarea preliminară cu BIMx."
+                    },
+                    {
+                      "title": "Depunerea",
+                      "text": "Depuneți dosarul ca Participant inițiator și coordonați formalitățile până la stabilirea datei de începere a tranzacționării."
+                    }
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Exemplu ipotetic: portofoliul unui broker",
+                  "text": "Un broker a intermediat trei emisiuni municipale tranzacționate la BVM și are cinci clienți emitenți de acțiuni. În prima săptămână trimite BIMx lista cu cele opt instrumente. Două primării confirmă interesul și programează ședințe ale consiliului local; pentru trei companii se pregătesc inventarele de documente. Restul emitenților analizează încă opțiunile."
+                }
+              ]
+            },
+            {
+              "heading": "Calendarul",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Potrivit calendarului operațional actual, platforma ARENA intră în producție la 1 octombrie 2026. Pregătirea și verificarea preliminară pot începe imediat; depunerea formală și data începerii tranzacționării se coordonează după Regulile BIMx și calendarul operațional."
+                },
+                {
+                  "type": "callout",
+                  "variant": "warning",
+                  "title": "Comunicați corect cu clienții",
+                  "text": "Nu promiteți emitenților sau investitorilor o dată de tranzacționare la BIMx înainte ca aceasta să fie stabilită conform Regulilor. Contact pentru coordonare: Departamentul Listing și Operațiuni, office@bimx.md."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "Instrumentele de la BVM nu trec automat la BIMx; pentru fiecare emitent se parcurge admiterea.",
+            "Brokerul identifică emitenții interesați, transmite lista preliminară și inițiază dialogul.",
+            "Un inventar al documentelor existente permite BIMx să confirme rapid ce se reutilizează.",
+            "Pentru emisiunile municipale intermediate, brokerul depune dosarul ca Participant inițiator.",
+            "Data începerii tranzacționării se stabilește conform Regulilor; nu se promite în avans."
+          ],
+          "quiz": [
+            {
+              "q": "Care este primul pas propus brokerilor pentru emitenții tranzacționați la BVM?",
+              "options": [
+                "Depunerea directă a dosarelor",
+                "Anunțarea clienților că transferul este automat",
+                "Identificarea emitenților și transmiterea unei liste preliminare către BIMx",
+                "Solicitarea unui nou certificat CNPF"
+              ],
+              "answer": 2,
+              "explanation": "Primul pas este identificarea emitenților interesați și transmiterea listei preliminare către BIMx."
+            },
+            {
+              "q": "Ce document ajută BIMx să confirme rapid ce se poate reutiliza dintr-un dosar BVM?",
+              "options": [
+                "Un inventar al documentelor disponibile",
+                "Contractul de muncă al agentului",
+                "Raportul de piață al BVM",
+                "Lista membrilor bursei"
+              ],
+              "answer": 0,
+              "explanation": "Inventarul documentelor disponibile, transmis din timp, permite BIMx să confirme ce se reutilizează și ce trebuie actualizat."
+            },
+            {
+              "q": "Un client întreabă când vor începe să se tranzacționeze obligațiunile sale la BIMx. Ce răspuns este corect înainte de stabilirea formală?",
+              "options": [
+                "Automat, la 1 octombrie 2026",
+                "În aceeași zi cu depunerea dosarului",
+                "Nu vor mai fi tranzacționate",
+                "Data se stabilește după depunerea dosarului, conform Regulilor BIMx"
+              ],
+              "answer": 3,
+              "explanation": "Data începerii tranzacționării se coordonează după Regulile BIMx și calendarul operațional; 1 octombrie este data intrării platformei în producție, nu un transfer automat."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

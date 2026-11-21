@@ -1,6 +1,9 @@
 // Loads the site sources for the Astro build: page bodies with their fields, shell templates and menus.
+// BIMx Academy pages are not files in src/content/pages: they are generated from src/content/academy (academy.mjs).
+// Press releases are generated from src/content/news (news.mjs).
 import { LANGS, splitLang } from './links.mjs';
 import { seoIndex } from './seo.mjs';
+import { academyPages } from './academy.mjs';
 import { applyList, articlePage, homeNews, sortNews } from './news.mjs';
 import newsTexts from '../data/news-texts.json';
 import newsDefaults from '../data/news-defaults.json';
@@ -51,7 +54,7 @@ const withNews = (p) => {
   if (p.body.includes('{{homeNews}}')) return { ...p, body: p.body.replace('{{homeNews}}', () => homeNews(p.lang, p.route, newsCtx)) };
   return p;
 };
-export const pages = [...contentPages.map(withNews), ...newsPages];
+export const pages = [...contentPages.map(withNews), ...newsPages, ...academyPages()];
 shell.seoIndex = seoIndex(pages);
 
 export const redirects = redirectList;

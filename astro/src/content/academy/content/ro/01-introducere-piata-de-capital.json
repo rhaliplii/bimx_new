@@ -1,0 +1,1618 @@
+{
+  "slug": "introducere-piata-de-capital",
+  "num": "01",
+  "title": "Introducere în piața de capital",
+  "short": "Noțiuni de bază despre instrumentele financiare, mecanismele de tranzacționare și rolul bursei.",
+  "level": "Începător",
+  "audience": "Public larg",
+  "intro": "Acest program este punctul de plecare pentru oricine vrea să înțeleagă cum funcționează piața de capital, fără cunoștințe prealabile de finanțe. Vei afla ce rol are bursa în economie, cine sunt participanții la piață, cum funcționează acțiunile și obligațiunile și ce pași urmezi pentru a deschide un cont și a plasa primul ordin. Explicațiile sunt simple, cu exemple numerice ilustrative în lei.",
+  "outcomes": [
+    "Să explici ce este piața de capital și diferența dintre piața primară și cea secundară.",
+    "Să știi ce este BIMx, ce piețe administrează, cum ajunge un ordin de la investitor la bursă și în ce etapă se află lansarea tranzacționării.",
+    "Să înțelegi cum se formează prețul pe bursă prin întâlnirea ordinelor de cumpărare și de vânzare.",
+    "Să identifici principalii participanți la piață și rolul fiecăruia, inclusiv al CNPF.",
+    "Să deosebești acțiunile de obligațiuni și să calculezi câștigurile de bază: dividend, cupon, câștig de capital.",
+    "Să înțelegi legătura dintre risc și randament și de ce contează diversificarea și orizontul de timp.",
+    "Să știi ce verifici la alegerea unui broker și cum folosești ordinele la piață, limită și stop."
+  ],
+  "prerequisites": "Nu ai nevoie de cunoștințe anterioare de finanțe; este suficient să fii familiarizat cu operații aritmetice simple și cu procentele.",
+  "courses": [
+    {
+      "code": "BA-101",
+      "title": "Primii pași pe bursă",
+      "description": "Un curs introductiv despre ce este piața de capital, cum funcționează o bursă și cine sunt actorii care o fac să funcționeze, cu o lecție dedicată bursei din Republica Moldova, BIMx.",
+      "lessons": [
+        {
+          "slug": "ce-este-piata-de-capital",
+          "title": "Ce este piața de capital",
+          "summary": "Afli de ce există piața de capital, cum se deosebește piața primară de cea secundară și ce rol are în economie.",
+          "minutes": 10,
+          "sections": [
+            {
+              "heading": "De ce există piața de capital",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Orice economie are două mari categorii de participanți: cei care au bani disponibili pe care nu îi folosesc imediat și cei care au nevoie de bani pentru a crea, extinde sau moderniza o activitate. O familie care economisește lunar o parte din venit are resurse în plus; o companie care vrea să construiască o nouă fabrică are nevoie de finanțare. <strong>Piața de capital</strong> este locul în care aceste două categorii se întâlnesc."
+                },
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "Piața de capital",
+                  "text": "Piața de capital este ansamblul de mecanisme, instituții și reguli prin care se emit și se tranzacționează <strong>valori mobiliare</strong> pe termen mediu și lung, cum sunt acțiunile și obligațiunile. Prin ea, economiile investitorilor sunt direcționate către companii și stat, care le folosesc pentru finanțarea proiectelor."
+                },
+                {
+                  "type": "p",
+                  "text": "Spre deosebire de un credit bancar, unde banca este intermediarul dintre deponenți și debitori, pe piața de capital investitorul finanțează <em>direct</em> emitentul: cumpără o parte din companie (acțiuni) sau îi împrumută bani (obligațiuni). În schimb, investitorul își asumă și riscurile legate de evoluția acelui emitent."
+                }
+              ]
+            },
+            {
+              "heading": "Piața primară și piața secundară",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Piața de capital are două „etaje”, iar înțelegerea diferenței dintre ele este esențială pentru orice începător."
+                },
+                {
+                  "type": "table",
+                  "headers": [
+                    "Criteriu",
+                    "Piața primară",
+                    "Piața secundară"
+                  ],
+                  "rows": [
+                    [
+                      "Ce se întâmplă",
+                      "Valorile mobiliare sunt emise și vândute pentru prima dată",
+                      "Valorile mobiliare deja emise se revând între investitori"
+                    ],
+                    [
+                      "Cine primește banii",
+                      "Emitentul (compania sau statul)",
+                      "Investitorul care vinde"
+                    ],
+                    [
+                      "Exemple",
+                      "Ofertă publică inițială de acțiuni, emisiune nouă de obligațiuni",
+                      "Tranzacții zilnice pe bursă"
+                    ],
+                    [
+                      "Rol principal",
+                      "Atragerea de finanțare nouă",
+                      "Asigurarea lichidității și formarea prețului"
+                    ]
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Exemplu ipotetic: de la emisiune la revânzare",
+                  "text": "O companie fictivă, „Agro Nord” SA, emite 100 000 de acțiuni noi la prețul de 50 lei fiecare și atrage astfel 5 000 000 lei pentru o linie de producție. Aceasta este <strong>piața primară</strong>: banii ajung la companie. Un an mai târziu, Ana, care cumpărase 200 de acțiuni, le vinde lui Ion pe bursă la 56 lei bucata, încasând 11 200 lei. Aceasta este <strong>piața secundară</strong>: banii trec de la Ion la Ana, iar compania nu primește nimic din această tranzacție. Cifrele sunt ilustrative."
+                },
+                {
+                  "type": "p",
+                  "text": "Cele două piețe depind una de alta. Puțini investitori ar cumpăra acțiuni la emisiune dacă nu ar avea certitudinea că le pot revinde ulterior. Tocmai posibilitatea de a vinde pe piața secundară face ca investiția inițială să fie mai atractivă."
+                }
+              ]
+            },
+            {
+              "heading": "Rolul pieței de capital în economie",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "O piață de capital funcțională aduce beneficii nu doar investitorilor și companiilor, ci întregii economii. Principalele sale funcții sunt:"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "<strong>Mobilizarea economiilor</strong> – transformă banii care altfel ar sta nefolosiți în investiții productive.",
+                    "<strong>Finanțarea companiilor și a statului</strong> – oferă o alternativă sau o completare la creditul bancar.",
+                    "<strong>Lichiditatea</strong> – permite investitorilor să transforme relativ rapid valorile mobiliare în bani.",
+                    "<strong>Formarea transparentă a prețului</strong> – prețul rezultă din cererea și oferta a numeroși participanți.",
+                    "<strong>Transparența și buna guvernanță</strong> – emitenții ale căror valori mobiliare sunt admise la tranzacționare au obligații de raportare, ceea ce îi disciplinează.",
+                    "<strong>Distribuirea riscului</strong> – riscul unui proiect este împărțit între mai mulți investitori, nu concentrat la o singură instituție."
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "tip",
+                  "title": "Gândește ca un proprietar sau ca un creditor",
+                  "text": "Când cumperi o acțiune, devii coproprietar al companiei. Când cumperi o obligațiune, devii creditorul emitentului. Această distincție simplă te va ajuta să înțelegi toate lecțiile următoare."
+                }
+              ]
+            },
+            {
+              "heading": "Piața de capital și alte piețe financiare",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Piața de capital face parte din sistemul financiar mai larg. Alături de ea există <strong>piața monetară</strong>, unde se tranzacționează instrumente pe termen scurt (de regulă sub un an), <strong>piața valutară</strong>, unde se schimbă monede, și <strong>piața creditului bancar</strong>. Piața de capital se concentrează pe finanțarea pe termen mediu și lung."
+                },
+                {
+                  "type": "p",
+                  "text": "În Republica Moldova, piața de capital este reglementată și supravegheată de <strong>Comisia Națională a Pieței Financiare (CNPF)</strong>, iar Bursa Internațională a Moldovei (BIMx) este una dintre infrastructurile prin care se organizează tranzacționarea. Vom detalia rolul fiecărui participant într-o lecție separată."
+                },
+                {
+                  "type": "callout",
+                  "variant": "warning",
+                  "title": "Investiția nu este un depozit",
+                  "text": "Spre deosebire de un depozit bancar cu dobândă fixă, valoarea acțiunilor și a obligațiunilor poate crește sau scădea. Poți pierde o parte sau chiar toată suma investită. Informațiile din acest program au scop exclusiv educațional și nu reprezintă recomandări de investiții."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "Piața de capital leagă cei care au economii de cei care au nevoie de finanțare pe termen mediu și lung.",
+            "Pe piața primară valorile mobiliare sunt emise și banii ajung la emitent; pe piața secundară ele se revând între investitori.",
+            "Piața secundară oferă lichiditate și formează prețul, ceea ce face atractivă investiția pe piața primară.",
+            "În Republica Moldova, piața de capital este supravegheată de CNPF.",
+            "Investițiile pe piața de capital implică riscul de a pierde bani, spre deosebire de un depozit cu dobândă fixă."
+          ],
+          "quiz": [
+            {
+              "q": "O companie emite acțiuni noi și le vinde investitorilor pentru a finanța un proiect. Pe ce piață are loc tranzacția?",
+              "options": [
+                "Piața secundară",
+                "Piața primară",
+                "Piața valutară",
+                "Piața monetară"
+              ],
+              "answer": 1,
+              "explanation": "Emisiunea și vânzarea pentru prima dată a valorilor mobiliare, cu banii ajungând la emitent, are loc pe piața primară."
+            },
+            {
+              "q": "Ana vinde pe bursă acțiunile cumpărate acum doi ani. Cine primește banii din această vânzare?",
+              "options": [
+                "Compania care a emis acțiunile",
+                "Bursa",
+                "Ana, investitorul care vinde"
+              ],
+              "answer": 2,
+              "explanation": "Pe piața secundară tranzacția are loc între investitori, deci banii ajung la vânzător, nu la emitent."
+            },
+            {
+              "q": "Care dintre următoarele este o funcție principală a pieței secundare?",
+              "options": [
+                "Asigurarea lichidității și formarea prețului",
+                "Garantarea unui randament fix investitorilor",
+                "Acordarea de credite bancare companiilor",
+                "Stabilirea cursului valutar oficial"
+              ],
+              "answer": 0,
+              "explanation": "Piața secundară permite revânzarea valorilor mobiliare (lichiditate) și formează prețul prin cerere și ofertă; ea nu garantează randamente."
+            }
+          ]
+        },
+        {
+          "slug": "cum-functioneaza-bursa",
+          "title": "Cum funcționează o bursă",
+          "summary": "Descoperi cum registrul de ordine formează prețul, cum decurge o sesiune de tranzacționare și ce înseamnă decontarea T+2.",
+          "minutes": 12,
+          "sections": [
+            {
+              "heading": "Bursa ca loc de întâlnire a ordinelor",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "O bursă modernă nu mai este o sală plină de oameni care strigă prețuri. Astăzi, tranzacționarea are loc într-un <strong>sistem electronic</strong> care primește ordinele de cumpărare și de vânzare transmise de intermediari autorizați și le potrivește automat după reguli clare, aceleași pentru toți participanții."
+                },
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "Registrul de ordine",
+                  "text": "Registrul de ordine (în engleză <em>order book</em>) este lista, actualizată în timp real, a tuturor ordinelor de cumpărare și de vânzare active pentru un instrument financiar, ordonate după preț. Cel mai mare preț oferit de cumpărători se numește <strong>preț de cerere</strong> (bid), iar cel mai mic preț cerut de vânzători se numește <strong>preț de ofertă</strong> (ask)."
+                },
+                {
+                  "type": "p",
+                  "text": "Diferența dintre cel mai bun preț de ofertă și cel mai bun preț de cerere se numește <strong>spread</strong>. Un spread mic indică de obicei un instrument lichid, cu mulți cumpărători și vânzători activi."
+                }
+              ]
+            },
+            {
+              "heading": "Cum se formează prețul",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Prețul unei acțiuni pe bursă nu este fixat de bursă și nici de companie. El apare atunci când un cumpărător și un vânzător sunt de acord asupra aceluiași preț. De regulă, ordinele se execută după principiul <strong>prioritate preț, apoi prioritate timp</strong>: are întâietate cel mai bun preț, iar la preț egal, ordinul introdus mai devreme."
+                },
+                {
+                  "type": "table",
+                  "headers": [
+                    "Cumpărători (cerere)",
+                    "Cantitate",
+                    "Vânzători (ofertă)",
+                    "Cantitate"
+                  ],
+                  "rows": [
+                    [
+                      "49,80 lei",
+                      "300",
+                      "50,20 lei",
+                      "150"
+                    ],
+                    [
+                      "49,70 lei",
+                      "500",
+                      "50,40 lei",
+                      "400"
+                    ],
+                    [
+                      "49,50 lei",
+                      "1 000",
+                      "50,60 lei",
+                      "250"
+                    ]
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Exemplu ipotetic: cum se execută un ordin",
+                  "text": "În registrul de mai sus (cifre ilustrative), cel mai bun preț de cerere este 49,80 lei, iar cel mai bun preț de ofertă este 50,20 lei, deci spread-ul este 0,40 lei. Dacă Mihai transmite un ordin de cumpărare pentru 200 de acțiuni „la piață”, sistemul îi va aloca mai întâi cele 150 de acțiuni la 50,20 lei (7 530 lei), apoi 50 de acțiuni la 50,40 lei (2 520 lei). Total: 10 050 lei, adică un preț mediu de 50,25 lei pe acțiune. Ultimul preț de tranzacționare devine 50,40 lei."
+                },
+                {
+                  "type": "p",
+                  "text": "Exemplul arată de ce prețul se schimbă continuu: fiecare tranzacție „consumă” ordine din registru, iar noile ordine sosite modifică echilibrul dintre cerere și ofertă. Dacă sunt mai mulți cumpărători dornici să plătească mai mult, prețul urcă; dacă predomină vânzătorii, prețul coboară."
+                }
+              ]
+            },
+            {
+              "heading": "Sesiunea de tranzacționare",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Tranzacționarea se desfășoară în intervale stabilite prin regulile fiecărei burse, numite <strong>sesiuni de tranzacționare</strong>. Programul exact și etapele diferă de la o bursă la alta și sunt publicate de operatorul pieței. În general, o zi de tranzacționare poate include următoarele etape:"
+                },
+                {
+                  "type": "steps",
+                  "items": [
+                    {
+                      "title": "Pre-deschidere",
+                      "text": "Participanții pot introduce, modifica sau anula ordine, dar acestea nu se execută încă."
+                    },
+                    {
+                      "title": "Deschidere",
+                      "text": "Pe unele piețe, sistemul calculează un preț de deschidere care permite executarea celui mai mare volum posibil de ordine acumulate."
+                    },
+                    {
+                      "title": "Tranzacționare continuă",
+                      "text": "Ordinele compatibile se execută imediat ce apar, după regula prioritate preț – prioritate timp."
+                    },
+                    {
+                      "title": "Închidere",
+                      "text": "Se stabilește prețul de închidere, folosit adesea ca referință pentru ziua următoare și pentru evaluarea portofoliilor."
+                    }
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "tip",
+                  "title": "Verifică regulile pieței",
+                  "text": "Înainte de a tranzacționa, consultă programul și regulile publicate de bursă și întreabă-ți brokerul până la ce oră poți transmite ordine într-o zi."
+                },
+                {
+                  "type": "callout",
+                  "variant": "tip",
+                  "title": "Programul la BIMx",
+                  "text": "La Bursa Internațională a Moldovei, ședința are loc în zilele lucrătoare, între 10:00 și 14:00, ora Moldovei, și parcurge șapte stări, de la pre-deschidere până la închidere. Calendarul zilelor de tranzacționare se publică pe bimx.md înainte de prima ședință."
+                }
+              ]
+            },
+            {
+              "heading": "Decontarea: ce se întâmplă după tranzacție",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Momentul în care ordinul tău este executat nu coincide neapărat cu momentul în care primești efectiv acțiunile sau banii. Transferul propriu-zis se numește <strong>decontare</strong> și este realizat prin infrastructura post-tranzacționare, în care depozitarul central înregistrează schimbarea proprietarului."
+                },
+                {
+                  "type": "formula",
+                  "label": "Ciclul de decontare T+2",
+                  "expr": "Data decontării = T (ziua tranzacției) + 2 zile lucrătoare",
+                  "note": "T+2 este un ciclu folosit pe multe piețe; fiecare piață își stabilește propriul termen, care poate fi mai scurt sau mai lung. Verifică termenul aplicabil pe piața pe care tranzacționezi."
+                },
+                {
+                  "type": "p",
+                  "text": "De exemplu, pe o piață cu ciclu T+2, dacă cumperi acțiuni într-o zi de luni, decontarea are loc miercuri: abia atunci acțiunile sunt înregistrate pe numele tău, iar banii ajung la vânzător. Dacă între timp intervine un weekend sau o zi nelucrătoare, termenul se prelungește corespunzător."
+                },
+                {
+                  "type": "callout",
+                  "variant": "warning",
+                  "title": "Prețul afișat nu este o garanție",
+                  "text": "Ultimul preț de tranzacționare arată doar la ce preț s-a încheiat cea mai recentă tranzacție. Pe instrumentele cu puține ordine, un ordin mare poate fi executat la prețuri semnificativ diferite."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "Bursa este un sistem electronic care potrivește ordinele de cumpărare și de vânzare după reguli transparente.",
+            "Registrul de ordine arată prețurile de cerere și de ofertă; diferența dintre ele este spread-ul.",
+            "Prețul se formează din întâlnirea cererii cu oferta, după principiul prioritate preț, apoi prioritate timp.",
+            "Programul și etapele sesiunii diferă de la o bursă la alta și sunt stabilite prin regulile pieței.",
+            "Decontarea este transferul efectiv al banilor și al titlurilor; pe multe piețe are loc la T+2."
+          ],
+          "quiz": [
+            {
+              "q": "În registrul de ordine, cel mai bun preț de cerere este 30,00 lei, iar cel mai bun preț de ofertă este 30,50 lei. Cât este spread-ul?",
+              "options": [
+                "30,25 lei",
+                "60,50 lei",
+                "0,25 lei",
+                "0,50 lei"
+              ],
+              "answer": 3,
+              "explanation": "Spread-ul este diferența dintre cel mai bun preț de ofertă și cel mai bun preț de cerere: 30,50 − 30,00 = 0,50 lei."
+            },
+            {
+              "q": "Două ordine de cumpărare au același preț. Care se execută primul, conform principiului prioritate preț – prioritate timp?",
+              "options": [
+                "Cel cu cantitatea mai mare",
+                "Cel introdus mai devreme",
+                "Cel transmis de un investitor instituțional"
+              ],
+              "answer": 1,
+              "explanation": "La preț egal, prioritatea o are ordinul introdus mai devreme în sistem."
+            },
+            {
+              "q": "Pe o piață cu ciclu de decontare T+2, cumperi acțiuni marți (fără zile libere în săptămâna respectivă). Când are loc decontarea?",
+              "options": [
+                "Joi",
+                "Marți",
+                "Miercuri",
+                "Vineri"
+              ],
+              "answer": 0,
+              "explanation": "T este marți; adăugând două zile lucrătoare (miercuri și joi), decontarea are loc joi."
+            }
+          ]
+        },
+        {
+          "slug": "participantii-la-piata",
+          "title": "Participanții la piață",
+          "summary": "Cunoști actorii pieței de capital – emitenți, investitori, brokeri, bursa, depozitarul central și CNPF – și felul în care colaborează.",
+          "minutes": 11,
+          "sections": [
+            {
+              "heading": "Cererea și oferta de capital: emitenții și investitorii",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Piața de capital funcționează ca un ecosistem în care fiecare participant are un rol bine definit. La capetele lanțului se află cei care au nevoie de bani și cei care îi oferă."
+                },
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "Emitentul",
+                  "text": "Emitentul este entitatea care emite valori mobiliare pentru a atrage finanțare: o societate pe acțiuni care emite acțiuni sau obligațiuni, statul care emite titluri de stat ori o autoritate publică locală care emite obligațiuni. Emitentul își asumă obligații față de investitori, inclusiv obligații de informare."
+                },
+                {
+                  "type": "p",
+                  "text": "<strong>Investitorii</strong> sunt cei care cumpără valorile mobiliare. Ei pot fi <em>investitori individuali</em> (persoane fizice care își investesc economiile) sau <em>investitori instituționali</em> (bănci, companii de asigurări, fonduri de investiții), care administrează sume mari și au, de regulă, echipe specializate de analiză."
+                },
+                {
+                  "type": "p",
+                  "text": "Interesele celor două părți sunt complementare. Emitentul caută finanțare la un cost cât mai rezonabil, iar investitorul caută un câștig potrivit cu riscul asumat. Pentru ca investitorii să aibă încredere, emitenții ale căror valori mobiliare sunt oferite public sau admise la tranzacționare trebuie să publice informații despre activitatea și rezultatele lor financiare. Aceste informații îi ajută pe investitori să ia decizii în cunoștință de cauză, în loc să se bazeze pe zvonuri."
+                },
+                {
+                  "type": "p",
+                  "text": "Același investitor poate avea roluri diferite în timp: astăzi cumpără acțiuni ale unei companii, iar peste câțiva ani le vinde altui investitor pe piața secundară. Și o companie poate fi, simultan, emitent al propriilor acțiuni și investitor în obligațiunile altor emitenți."
+                }
+              ]
+            },
+            {
+              "heading": "Intermediarii: societățile de investiții",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Un investitor individual nu transmite ordinele direct în sistemul bursei. El acționează prin intermediul unei <strong>societăți de investiții</strong>, numită frecvent <strong>broker</strong>, care deține licența necesară și este membru al pieței."
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "Deschide și administrează contul de investiții al clientului.",
+                    "Primește ordinele clientului și le transmite spre executare pe piață.",
+                    "Păstrează evidența banilor și a instrumentelor financiare ale clientului.",
+                    "Evaluează profilul investitorului și informează clientul despre riscuri și costuri.",
+                    "Poate oferi, în funcție de licență, și alte servicii, precum consultanța de investiții sau intermedierea emisiunilor pe piața primară."
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Exemplu ipotetic: costul intermedierii",
+                  "text": "Elena vrea să cumpere acțiuni în valoare de 20 000 lei. Brokerul ei percepe un comision ilustrativ de 0,5% din valoarea tranzacției. Comisionul este 20 000 × 0,5% = 100 lei, deci Elena va plăti în total 20 100 lei. Comisioanele reale diferă de la broker la broker și pot include și alte taxe; cifrele de aici sunt doar pentru exemplificare."
+                }
+              ]
+            },
+            {
+              "heading": "Infrastructura pieței: bursa și depozitarul central",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Pentru ca tranzacțiile să fie încheiate corect și în siguranță, piața are nevoie de o infrastructură comună, folosită de toți participanții."
+                },
+                {
+                  "type": "table",
+                  "headers": [
+                    "Instituție",
+                    "Rol principal",
+                    "Analogie simplă"
+                  ],
+                  "rows": [
+                    [
+                      "Bursa (operatorul pieței)",
+                      "Organizează tranzacționarea, admite instrumentele, potrivește ordinele și publică prețurile",
+                      "Piața organizată unde se întâlnesc cumpărătorii și vânzătorii"
+                    ],
+                    [
+                      "Depozitarul central",
+                      "Ține evidența deținătorilor de valori mobiliare și asigură decontarea tranzacțiilor",
+                      "Registrul care arată, în orice moment, cine deține ce"
+                    ],
+                    [
+                      "Societatea de investiții",
+                      "Intermediază accesul clienților la piață",
+                      "Poarta de acces a investitorului"
+                    ]
+                  ]
+                },
+                {
+                  "type": "p",
+                  "text": "În prezent, valorile mobiliare există în formă <strong>dematerializată</strong>: nu mai sunt certificate pe hârtie, ci înregistrări electronice. De aceea, rolul depozitarului central este esențial – înregistrarea în evidența sa confirmă cine este proprietarul titlurilor după decontare."
+                },
+                {
+                  "type": "callout",
+                  "variant": "tip",
+                  "title": "Infrastructura în Republica Moldova",
+                  "text": "Operatorul de piață este Bursa Internațională a Moldovei (BIMx), autorizată de CNPF la 21 august 2026 pentru Piața Reglementată și MTF. Evidența valorilor mobiliare și decontarea tranzacțiilor se fac prin Depozitarul Central Unic (DCU), în regim T+2."
+                }
+              ]
+            },
+            {
+              "heading": "Autoritatea de supraveghere: CNPF",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Încrederea este fundamentul oricărei piețe financiare. În Republica Moldova, <strong>Comisia Națională a Pieței Financiare (CNPF)</strong> reglementează și supraveghează piața de capital. Rolul autorității de supraveghere include, în linii mari:"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "Emiterea reglementărilor aplicabile participanților la piață.",
+                    "Acordarea licențelor și autorizațiilor pentru intermediari și infrastructurile pieței.",
+                    "Supravegherea respectării regulilor de transparență și de conduită.",
+                    "Protejarea drepturilor investitorilor și combaterea practicilor abuzive pe piață."
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "warning",
+                  "title": "Supravegherea nu elimină riscul investițional",
+                  "text": "Faptul că un broker este licențiat și că piața este supravegheată nu înseamnă că investițiile tale sunt garantate. Autoritatea urmărește respectarea regulilor, dar prețul acțiunilor sau capacitatea unui emitent de a-și plăti datoriile pot evolua nefavorabil."
+                },
+                {
+                  "type": "callout",
+                  "variant": "tip",
+                  "title": "Traseul unui ordin, pe scurt",
+                  "text": "Investitorul transmite ordinul brokerului → brokerul îl introduce în sistemul bursei → ordinul se execută când găsește o contrapartidă → depozitarul central înregistrează transferul titlurilor la decontare → totul sub supravegherea CNPF."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "Emitenții atrag finanțare prin valori mobiliare, iar investitorii – individuali sau instituționali – le cumpără.",
+            "Investitorii individuali accesează bursa prin societăți de investiții (brokeri) licențiate.",
+            "Bursa organizează tranzacționarea, iar depozitarul central ține evidența proprietății și asigură decontarea.",
+            "CNPF reglementează și supraveghează piața de capital din Republica Moldova.",
+            "Supravegherea reduce riscul de abuz, dar nu garantează câștiguri și nu elimină riscul investițional."
+          ],
+          "quiz": [
+            {
+              "q": "Care instituție ține evidența deținătorilor de valori mobiliare?",
+              "options": [
+                "Emitentul, prin departamentul de marketing",
+                "Societatea de investiții, în mod exclusiv",
+                "Depozitarul central",
+                "Oricare investitor instituțional"
+              ],
+              "answer": 2,
+              "explanation": "Depozitarul central păstrează evidența deținătorilor de valori mobiliare și asigură decontarea tranzacțiilor."
+            },
+            {
+              "q": "Prin cine transmite un investitor individual ordinele pe bursă?",
+              "options": [
+                "Printr-o societate de investiții (broker) licențiată",
+                "Direct în sistemul bursei, fără intermediar",
+                "Prin CNPF"
+              ],
+              "answer": 0,
+              "explanation": "Investitorii individuali accesează piața prin societăți de investiții licențiate, care transmit ordinele în sistemul bursei."
+            },
+            {
+              "q": "Care afirmație despre CNPF este corectă?",
+              "options": [
+                "Garantează că investitorii nu vor pierde bani",
+                "Stabilește zilnic prețul acțiunilor",
+                "Emite acțiuni în numele companiilor",
+                "Reglementează și supraveghează piața de capital din Republica Moldova"
+              ],
+              "answer": 3,
+              "explanation": "CNPF reglementează și supraveghează piața; ea nu stabilește prețuri, nu emite acțiuni și nu garantează investițiile."
+            }
+          ]
+        },
+        {
+          "slug": "bursa-din-republica-moldova",
+          "title": "BIMx: bursa din Republica Moldova",
+          "summary": "Afli ce este Bursa Internațională a Moldovei, cine o supraveghează, cine sunt acționarii ei și în ce etapă se află lansarea tranzacționării.",
+          "minutes": 10,
+          "sections": [
+            {
+              "heading": "Operatorul de piață autorizat",
+              "blocks": [
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "Operatorul de piață",
+                  "text": "Operatorul de piață este entitatea autorizată de autoritatea de supraveghere să administreze și să exploateze o piață de capital: stabilește regulile, admite membrii și instrumentele la tranzacționare și supraveghează desfășurarea ședințelor. În Republica Moldova, acest rol îl are Bursa Internațională a Moldovei (BIMx)."
+                },
+                {
+                  "type": "p",
+                  "text": "La <strong>21 august 2026</strong>, Comisia Națională a Pieței Financiare (CNPF) a autorizat BIMx să administreze și să exploateze două piețe: <strong>Piața Reglementată</strong> și <strong>Sistemul Multilateral de Tranzacționare (MTF)</strong>. Ambele funcționează sub supravegherea CNPF, conform Legii nr. 171/2012 privind piața de capital."
+                },
+                {
+                  "type": "table",
+                  "headers": [
+                    "Piața",
+                    "Pentru cine este gândită"
+                  ],
+                  "rows": [
+                    [
+                      "Piața Reglementată",
+                      "Emitenți care îndeplinesc cerințele complete de admitere și de raportare din Regulile BIMx"
+                    ],
+                    [
+                      "MTF",
+                      "Emitenți pentru care Regulile BIMx prevăd condiții de admitere adaptate, de exemplu companii mai mici sau la prima emisiune"
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "heading": "Infrastructura: platformă, depozitar, brokeri",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "<strong>Platforma de tranzacționare</strong>: ARENA Trading, dezvoltată de Bursa de Valori București (BVB) și folosită în regim SaaS.",
+                    "<strong>Decontarea</strong>: prin Depozitarul Central Unic (DCU), în regim T+2, în lei moldovenești.",
+                    "<strong>Accesul investitorilor</strong>: exclusiv prin brokeri, adică societăți de investiții licențiate de CNPF și admise ca membri ai bursei.",
+                    "<strong>Datele de piață</strong>: publice, cu o întârziere de 15 minute, pe bimx.md."
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Exemplu ipotetic: drumul unui ordin la BIMx",
+                  "text": "Ana vrea să cumpere 100 de acțiuni ale unei companii listate la BIMx. Îi transmite ordinul brokerului ei, membru al bursei. Un agent de bursă atestat îl introduce în ARENA Trading. Ordinul se execută în ședință, iar două zile lucrătoare mai târziu DCU înregistrează acțiunile pe numele Anei și transferă banii către vânzător."
+                }
+              ]
+            },
+            {
+              "heading": "Cine deține BIMx",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "BIMx este un parteneriat public-privat. Capitalul social inițial este de <strong>29.475.000 de lei</strong> (aproximativ 1,5 milioane de euro), iar acționariatul reunește <strong>zece entități instituționale</strong> din Republica Moldova și România, din sectoare-cheie ale economiei și ale pieței financiare."
+                },
+                {
+                  "type": "table",
+                  "headers": [
+                    "Acționar",
+                    "Cotă"
+                  ],
+                  "rows": [
+                    [
+                      "Bursa de Valori București",
+                      "26,67%"
+                    ],
+                    [
+                      "Agenția Proprietății Publice",
+                      "20%"
+                    ],
+                    [
+                      "Donaris Vienna Insurance Group",
+                      "11,67%"
+                    ],
+                    [
+                      "maib",
+                      "10%"
+                    ],
+                    [
+                      "GRAWE Carat Asigurări",
+                      "10%"
+                    ],
+                    [
+                      "Moldindconbank",
+                      "6,67%"
+                    ],
+                    [
+                      "MK Kredit Company",
+                      "5%"
+                    ],
+                    [
+                      "OTP Bank Moldova, Moldcell, Premier Energy PLC",
+                      "câte 3,33%"
+                    ]
+                  ]
+                },
+                {
+                  "type": "p",
+                  "text": "Prin Agenția Proprietății Publice, statul deține 20% din acțiuni. Bursa de Valori București este atât acționar, cât și partener tehnic: furnizează platforma de tranzacționare."
+                }
+              ]
+            },
+            {
+              "heading": "În ce etapă se află lansarea",
+              "blocks": [
+                {
+                  "type": "steps",
+                  "items": [
+                    {
+                      "title": "21 august 2026",
+                      "text": "Autorizația CNPF pentru Piața Reglementată și MTF."
+                    },
+                    {
+                      "title": "28 septembrie 2026",
+                      "text": "Începe procesul de admitere a brokerilor și a emitenților, etapa finală înainte de lansarea tranzacționării."
+                    },
+                    {
+                      "title": "1 octombrie 2026",
+                      "text": "Platforma ARENA intră în producție, potrivit calendarului operațional actual."
+                    },
+                    {
+                      "title": "În paralel",
+                      "text": "Conectarea la sistemul DCU, stabilirea regulilor de operare, instruirea brokerilor pe ARENA Trading și simulări de tranzacționare."
+                    },
+                    {
+                      "title": "Până la sfârșitul anului 2026",
+                      "text": "Prima listare planificată."
+                    }
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "warning",
+                  "title": "Instrumentele de la BVM",
+                  "text": "Acțiunile și obligațiunile tranzacționate în prezent la Bursa de Valori a Moldovei nu trec automat la BIMx. Fiecare emitent parcurge procesul de admitere la BIMx; lista instrumentelor admise se publică pe bimx.md. Dacă deții astfel de instrumente, întreabă-ți brokerul ce planuri are emitentul."
+                },
+                {
+                  "type": "callout",
+                  "variant": "tip",
+                  "title": "Cum te pregătești ca investitor",
+                  "text": "Până la prima listare, parcurge lecțiile despre acțiuni, ordine și alegerea brokerului. Când lista membrilor BIMx este publicată pe bimx.md, verifică dacă brokerul tău este membru al bursei."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "BIMx este operatorul de piață autorizat de CNPF la 21 august 2026 pentru Piața Reglementată și MTF.",
+            "Tranzacționarea se face pe ARENA Trading (dezvoltată de BVB), iar decontarea prin DCU, în T+2.",
+            "Investitorii accesează bursa doar prin brokeri membri ai BIMx.",
+            "BIMx are zece acționari instituționali din Moldova și România și un capital social inițial de 29.475.000 de lei.",
+            "Admiterea brokerilor și a emitenților a început la 28 septembrie 2026; prima listare este planificată până la sfârșitul anului 2026."
+          ],
+          "quiz": [
+            {
+              "q": "Ce autoritate a autorizat BIMx să administreze Piața Reglementată și MTF?",
+              "options": [
+                "Banca Națională a Moldovei",
+                "Bursa de Valori București",
+                "Comisia Națională a Pieței Financiare (CNPF)",
+                "Ministerul Finanțelor"
+              ],
+              "answer": 2,
+              "explanation": "CNPF reglementează și supraveghează piața de capital și a autorizat BIMx la 21 august 2026."
+            },
+            {
+              "q": "Prin cine poate cumpăra un investitor individual acțiuni la BIMx?",
+              "options": [
+                "Printr-un broker admis ca membru al bursei",
+                "Direct, pe site-ul bimx.md",
+                "Prin Depozitarul Central Unic",
+                "Prin orice bancă"
+              ],
+              "answer": 0,
+              "explanation": "Tranzacționarea la BIMx se face exclusiv prin societăți de investiții licențiate de CNPF și admise ca membri ai bursei."
+            },
+            {
+              "q": "Ce etapă a început la 28 septembrie 2026?",
+              "options": [
+                "Prima ședință de tranzacționare",
+                "Emiterea primelor obligațiuni verzi",
+                "Înregistrarea BIMx ca societate",
+                "Admiterea brokerilor și a emitenților"
+              ],
+              "answer": 3,
+              "explanation": "La 28 septembrie 2026 a început procesul de admitere a brokerilor și a emitenților, etapa finală înainte de lansarea tranzacționării."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "BA-102",
+      "title": "Acțiuni și obligațiuni pe înțelesul tuturor",
+      "description": "Cursul explică pe înțelesul tuturor cele două instrumente de bază ale pieței de capital și legătura dintre randament și risc.",
+      "lessons": [
+        {
+          "slug": "actiunile",
+          "title": "Acțiunile",
+          "summary": "Înțelegi ce înseamnă să deții o acțiune, ce drepturi îți oferă și cum poți câștiga din dividende și din creșterea prețului.",
+          "minutes": 12,
+          "sections": [
+            {
+              "heading": "Ce este o acțiune",
+              "blocks": [
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "Acțiunea",
+                  "text": "Acțiunea este o valoare mobiliară care reprezintă o parte din capitalul social al unei societăți pe acțiuni. Deținătorul ei, numit <strong>acționar</strong>, devine coproprietar al companiei, proporțional cu numărul de acțiuni deținute."
+                },
+                {
+                  "type": "p",
+                  "text": "Dacă o companie are 1 000 000 de acțiuni emise și tu deții 10 000, atunci deții 1% din companie. Asta nu înseamnă că poți lua 1% din clădirile sau utilajele ei, ci că ai drepturi proporționale asupra rezultatelor și deciziilor acesteia, în limitele stabilite de lege și de statutul societății."
+                },
+                {
+                  "type": "p",
+                  "text": "Un aspect important este <strong>răspunderea limitată</strong>: ca acționar, riscul tău este limitat la suma investită. Dacă firma intră în dificultate, poți pierde valoarea acțiunilor, dar nu răspunzi cu bunurile personale pentru datoriile companiei."
+                },
+                {
+                  "type": "p",
+                  "text": "Pentru companie, emiterea de acțiuni este o modalitate de a atrage capital fără a contracta o datorie: banii primiți de la acționari nu trebuie rambursați la o anumită dată. În schimb, compania împarte proprietatea și, implicit, profiturile viitoare cu noii acționari."
+                }
+              ]
+            },
+            {
+              "heading": "Drepturile acționarului",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Deținerea acțiunilor îți oferă un set de drepturi. Conținutul exact depinde de tipul acțiunilor și de statutul societății, dar, în general, pentru acțiunile ordinare, acestea includ:"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "<strong>Dreptul de vot</strong> în adunarea generală a acționarilor, de exemplu la alegerea organelor de conducere sau la aprobarea repartizării profitului.",
+                    "<strong>Dreptul la dividende</strong>, atunci când adunarea generală decide să distribuie o parte din profit.",
+                    "<strong>Dreptul la informare</strong> despre activitatea și situația financiară a societății.",
+                    "<strong>Dreptul de a primi o parte din bunurile rămase</strong> în caz de lichidare, după plata tuturor creditorilor."
+                  ]
+                },
+                {
+                  "type": "table",
+                  "headers": [
+                    "Caracteristică",
+                    "Acțiuni ordinare",
+                    "Acțiuni preferențiale"
+                  ],
+                  "rows": [
+                    [
+                      "Drept de vot",
+                      "Da, de regulă",
+                      "De regulă limitat sau absent"
+                    ],
+                    [
+                      "Dividende",
+                      "Variabile, depind de decizia acționarilor",
+                      "Au, de obicei, prioritate la plată, adesea într-o mărime prestabilită"
+                    ],
+                    [
+                      "La lichidare",
+                      "Sunt plătite după creditori și după acțiunile preferențiale",
+                      "Sunt plătite înaintea acțiunilor ordinare"
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "heading": "Cum câștigi din acțiuni",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Randamentul unei investiții în acțiuni poate proveni din două surse: <strong>dividendele</strong> și <strong>câștigul de capital</strong>."
+                },
+                {
+                  "type": "p",
+                  "text": "<strong>Dividendul</strong> este partea din profit distribuită acționarilor. El nu este garantat: compania poate decide să reinvestească profitul în dezvoltare sau poate să nu aibă profit. <strong>Câștigul de capital</strong> apare atunci când vinzi acțiunile la un preț mai mare decât cel de cumpărare. Dacă prețul scade, înregistrezi o <em>pierdere de capital</em>."
+                },
+                {
+                  "type": "formula",
+                  "label": "Randamentul total al unei acțiuni",
+                  "expr": "Randament total (%) = (Preț de vânzare − Preț de cumpărare + Dividende încasate) ÷ Preț de cumpărare × 100",
+                  "note": "Formula simplificată nu include comisioanele și impozitele, care reduc randamentul efectiv."
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Exemplu ipotetic: dividend și câștig de capital",
+                  "text": "Victor cumpără 100 de acțiuni la 40 lei fiecare, investind 4 000 lei. În cursul anului, compania plătește un dividend de 2 lei pe acțiune, deci Victor încasează 200 lei. La final de an, vinde acțiunile la 44 lei, primind 4 400 lei, adică un câștig de capital de 400 lei. Randamentul total este (4 400 − 4 000 + 200) ÷ 4 000 × 100 = <strong>15%</strong>, înainte de comisioane și impozite. Dacă prețul ar fi scăzut la 35 lei, rezultatul ar fi fost (3 500 − 4 000 + 200) ÷ 4 000 × 100 = <strong>−7,5%</strong>. Cifrele sunt ilustrative."
+                }
+              ]
+            },
+            {
+              "heading": "Ce influențează prețul acțiunilor",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Pe termen scurt, prețul unei acțiuni reflectă echilibrul dintre cerere și ofertă pe bursă. Pe termen lung, el tinde să fie influențat de performanța companiei și de așteptările investitorilor cu privire la profiturile viitoare. Printre factorii care pot conta se numără:"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "Rezultatele financiare ale companiei și perspectivele ei de creștere.",
+                    "Situația economică generală, inflația și nivelul dobânzilor.",
+                    "Evoluțiile din sectorul în care activează compania.",
+                    "Lichiditatea acțiunii, adică ușurința cu care poate fi cumpărată sau vândută.",
+                    "Informațiile noi publicate de emitent și sentimentul general al investitorilor."
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "warning",
+                  "title": "Dividendele trecute nu garantează dividende viitoare",
+                  "text": "Faptul că o companie a plătit dividende sau că prețul acțiunilor ei a crescut în trecut nu garantează că se va întâmpla la fel în viitor. Performanța trecută nu este un indicator sigur al rezultatelor viitoare."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "O acțiune reprezintă o parte din capitalul unei societăți, iar acționarul devine coproprietar.",
+            "Acțiunile ordinare oferă, de regulă, drept de vot și drept la dividende; cele preferențiale au prioritate la dividende, dar de obicei vot limitat.",
+            "Câștigul din acțiuni provine din dividende și din câștigul de capital, dar niciunul nu este garantat.",
+            "Răspunderea acționarului este limitată la suma investită.",
+            "Prețul acțiunilor depinde de cerere și ofertă, de rezultatele companiei și de contextul economic."
+          ],
+          "quiz": [
+            {
+              "q": "Cumperi 50 de acțiuni la 20 lei, încasezi un dividend total de 50 lei și le vinzi la 22 lei. Care este randamentul total, fără comisioane și impozite?",
+              "options": [
+                "10%",
+                "5%",
+                "15%",
+                "20%"
+              ],
+              "answer": 2,
+              "explanation": "Investiție: 1 000 lei. Vânzare: 1 100 lei (câștig de capital 100 lei) plus dividende 50 lei. Randament: 150 ÷ 1 000 × 100 = 15%."
+            },
+            {
+              "q": "Ce înseamnă răspunderea limitată a acționarului?",
+              "options": [
+                "Acționarul poate pierde cel mult suma investită în acțiuni",
+                "Acționarul are drept de vot limitat",
+                "Acționarul primește dividende doar o dată pe an"
+              ],
+              "answer": 0,
+              "explanation": "Acționarul nu răspunde cu bunurile personale pentru datoriile companiei; pierderea maximă este suma investită."
+            },
+            {
+              "q": "Care afirmație despre dividende este corectă?",
+              "options": [
+                "Sunt garantate prin lege pentru fiecare acțiune",
+                "Sunt plătite de bursă tuturor investitorilor",
+                "Se plătesc doar acționarilor care vând acțiunile",
+                "Nu sunt garantate și depind de profit și de decizia adunării generale"
+              ],
+              "answer": 3,
+              "explanation": "Dividendele se distribuie din profit, în baza deciziei adunării generale a acționarilor, și nu sunt garantate."
+            }
+          ]
+        },
+        {
+          "slug": "obligatiunile",
+          "title": "Obligațiunile",
+          "summary": "Afli cum funcționează o obligațiune – valoare nominală, cupon, scadență – și de ce prețul ei scade atunci când dobânzile cresc.",
+          "minutes": 13,
+          "sections": [
+            {
+              "heading": "Ce este o obligațiune",
+              "blocks": [
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "Obligațiunea",
+                  "text": "Obligațiunea este o valoare mobiliară prin care emitentul se împrumută de la investitori. Emitentul se obligă să plătească periodic o dobândă, numită <strong>cupon</strong>, și să ramburseze <strong>valoarea nominală</strong> la o dată stabilită, numită <strong>scadență</strong>."
+                },
+                {
+                  "type": "p",
+                  "text": "Dacă prin acțiuni devii coproprietar, prin obligațiuni devii <strong>creditor</strong>. Nu ai drept de vot și nu participi la profitul companiei, dar ai dreptul să primești plățile promise, indiferent dacă firma are un an foarte bun sau doar unul obișnuit. În caz de insolvență, creditorii sunt, de regulă, plătiți înaintea acționarilor."
+                }
+              ]
+            },
+            {
+              "heading": "Elementele unei obligațiuni",
+              "blocks": [
+                {
+                  "type": "table",
+                  "headers": [
+                    "Element",
+                    "Ce înseamnă",
+                    "Exemplu ilustrativ"
+                  ],
+                  "rows": [
+                    [
+                      "Valoare nominală",
+                      "Suma pe care emitentul o rambursează la scadență pentru o obligațiune",
+                      "1 000 lei"
+                    ],
+                    [
+                      "Rata cuponului",
+                      "Dobânda anuală, exprimată ca procent din valoarea nominală",
+                      "8% pe an"
+                    ],
+                    [
+                      "Frecvența cuponului",
+                      "Cât de des se plătește cuponul",
+                      "Anual sau semestrial"
+                    ],
+                    [
+                      "Scadența",
+                      "Data la care se rambursează valoarea nominală",
+                      "Peste 3 ani"
+                    ],
+                    [
+                      "Emitentul",
+                      "Cine se împrumută și își asumă obligația de plată",
+                      "Statul sau o companie"
+                    ]
+                  ]
+                },
+                {
+                  "type": "formula",
+                  "label": "Cuponul anual",
+                  "expr": "Cupon anual = Valoare nominală × Rata cuponului",
+                  "note": "Dacă cuponul se plătește semestrial, suma anuală se împarte în două plăți egale."
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Exemplu ipotetic: fluxurile unei obligațiuni",
+                  "text": "Sergiu cumpără 10 obligațiuni cu valoarea nominală de 1 000 lei, cupon anual de 8% și scadență peste 3 ani, plătind 10 000 lei. În fiecare dintre cei trei ani primește 10 × 1 000 × 8% = 800 lei. La scadență primește înapoi și valoarea nominală, 10 000 lei. În total, încasează 2 400 lei din cupoane plus 10 000 lei rambursare, înainte de impozite și comisioane. Cifrele sunt ilustrative."
+                }
+              ]
+            },
+            {
+              "heading": "Obligațiuni de stat și obligațiuni corporative",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Obligațiunile se diferențiază în primul rând după emitent, iar acesta influențează direct nivelul riscului."
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "<strong>Obligațiunile de stat</strong> sunt emise de stat pentru a finanța bugetul sau refinanța datorii. Sunt considerate, în general, printre cele mai puțin riscante instrumente pe piața internă, deoarece statul are surse de venit stabile, dar nici ele nu sunt complet lipsite de risc.",
+                    "<strong>Obligațiunile corporative</strong> sunt emise de companii. Pentru că riscul ca o companie să nu-și poată plăti datoriile este, de regulă, mai mare, ele oferă adesea cupoane mai mari decât obligațiunile de stat cu scadență similară.",
+                    "<strong>Obligațiunile municipale</strong> sunt emise de autoritățile publice locale pentru proiecte de infrastructură sau de interes local."
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "warning",
+                  "title": "Cuponul mare semnalează adesea risc mai mare",
+                  "text": "Dacă o obligațiune oferă un cupon mult peste nivelul altor obligațiuni similare, piața cere probabil o compensație pentru un risc mai ridicat. Principalul risc este cel de credit: emitentul poate întârzia sau poate să nu mai plătească cupoanele ori valoarea nominală."
+                }
+              ]
+            },
+            {
+              "heading": "Prețul obligațiunii și nivelul dobânzilor",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Obligațiunile se pot tranzacționa pe piața secundară înainte de scadență, iar prețul lor nu rămâne neapărat egal cu valoarea nominală. Regula de bază este: <strong>când dobânzile de pe piață cresc, prețul obligațiunilor existente scade, și invers</strong>."
+                },
+                {
+                  "type": "p",
+                  "text": "Motivul este simplu. Dacă ai o obligațiune cu cupon de 8%, iar între timp pe piață se emit obligațiuni similare cu cupon de 10%, nimeni nu va plăti valoarea nominală întreagă pentru obligațiunea ta mai puțin avantajoasă. Pentru a o vinde, trebuie să accepți un preț mai mic, astfel încât cumpărătorul să obțină un randament comparabil cu cel de pe piață."
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Exemplu ipotetic: randamentul curent",
+                  "text": "O obligațiune cu valoare nominală de 1 000 lei plătește un cupon anual de 80 lei (8%). Dacă dobânzile de pe piață cresc și prețul ei scade la 900 lei, cumpărătorul obține un <strong>randament curent</strong> de 80 ÷ 900 × 100 ≈ 8,9%, iar la scadență primește 1 000 lei, deci câștigă și 100 lei din diferența de preț. Dacă dobânzile scad și prețul urcă la 1 050 lei, randamentul curent devine 80 ÷ 1 050 × 100 ≈ 7,6%. Cifrele sunt ilustrative."
+                },
+                {
+                  "type": "callout",
+                  "variant": "tip",
+                  "title": "Dacă păstrezi obligațiunea până la scadență",
+                  "text": "Variațiile de preț contează mai ales dacă vinzi înainte de scadență. Dacă păstrezi obligațiunea până la capăt și emitentul își onorează obligațiile, vei primi cupoanele promise și valoarea nominală, indiferent de fluctuațiile intermediare ale prețului."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "Obligațiunea este un împrumut acordat emitentului; investitorul devine creditor, nu proprietar.",
+            "Elementele de bază sunt valoarea nominală, rata cuponului, frecvența plăților și scadența.",
+            "Obligațiunile corporative oferă de regulă cupoane mai mari decât cele de stat, pentru a compensa un risc de credit mai ridicat.",
+            "Prețul obligațiunilor existente evoluează invers față de nivelul dobânzilor de pe piață.",
+            "Dacă păstrezi obligațiunea până la scadență și emitentul plătește, fluctuațiile de preț nu îți afectează încasările promise."
+          ],
+          "quiz": [
+            {
+              "q": "O obligațiune are valoarea nominală de 1 000 lei și un cupon anual de 6%. Cât încasează investitorul din cupon într-un an?",
+              "options": [
+                "6 lei",
+                "600 lei",
+                "1 060 lei",
+                "60 lei"
+              ],
+              "answer": 3,
+              "explanation": "Cuponul anual este 1 000 × 6% = 60 lei."
+            },
+            {
+              "q": "Dobânzile de pe piață cresc semnificativ. Ce se întâmplă, de regulă, cu prețul obligațiunilor existente cu cupon fix?",
+              "options": [
+                "Crește",
+                "Scade",
+                "Rămâne mereu egal cu valoarea nominală"
+              ],
+              "answer": 1,
+              "explanation": "Prețul obligațiunilor existente evoluează invers față de dobânzi: când dobânzile cresc, obligațiunile vechi, cu cupon mai mic, devin mai puțin atractive, iar prețul lor scade."
+            },
+            {
+              "q": "De ce oferă obligațiunile corporative, de regulă, cupoane mai mari decât obligațiunile de stat cu scadență similară?",
+              "options": [
+                "Pentru a compensa un risc de credit, de obicei, mai mare",
+                "Pentru că sunt garantate de CNPF",
+                "Pentru că oferă drept de vot în adunarea generală",
+                "Pentru că nu au scadență"
+              ],
+              "answer": 0,
+              "explanation": "Investitorii cer o compensație suplimentară pentru riscul, de regulă mai mare, ca o companie să nu-și poată plăti datoriile."
+            }
+          ]
+        },
+        {
+          "slug": "randament-si-risc",
+          "title": "Randament și risc",
+          "summary": "Înțelegi de ce un randament potențial mai mare vine cu un risc mai mare și cum te ajută orizontul de timp și diversificarea.",
+          "minutes": 13,
+          "sections": [
+            {
+              "heading": "Relația risc–randament",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Una dintre cele mai importante idei din finanțe este că <strong>nu există randament fără risc</strong>. Investitorii acceptă să își asume un risc mai mare doar dacă au perspectiva unui câștig potențial mai mare. De aceea, instrumentele care promit randamente ridicate sunt, aproape întotdeauna, și mai riscante."
+                },
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "Randamentul și riscul",
+                  "text": "<strong>Randamentul</strong> este câștigul sau pierderea unei investiții într-o anumită perioadă, exprimat de obicei în procente față de suma investită. <strong>Riscul</strong> este posibilitatea ca rezultatul efectiv să difere de cel așteptat, inclusiv posibilitatea de a pierde o parte sau toată suma investită."
+                },
+                {
+                  "type": "formula",
+                  "label": "Randamentul unei investiții",
+                  "expr": "Randament (%) = (Valoare finală − Valoare inițială + Venituri încasate) ÷ Valoare inițială × 100",
+                  "note": "Veniturile încasate pot fi dividende sau cupoane. Pentru o imagine realistă, scade comisioanele și impozitele."
+                },
+                {
+                  "type": "table",
+                  "headers": [
+                    "Instrument",
+                    "Risc general",
+                    "Randament potențial",
+                    "Variația valorii"
+                  ],
+                  "rows": [
+                    [
+                      "Depozit bancar",
+                      "Scăzut",
+                      "Scăzut",
+                      "Foarte mică"
+                    ],
+                    [
+                      "Obligațiuni de stat",
+                      "Scăzut spre moderat",
+                      "Scăzut spre moderat",
+                      "Mică spre moderată"
+                    ],
+                    [
+                      "Obligațiuni corporative",
+                      "Moderat",
+                      "Moderat",
+                      "Moderată"
+                    ],
+                    [
+                      "Acțiuni",
+                      "Ridicat",
+                      "Ridicat",
+                      "Mare"
+                    ]
+                  ]
+                },
+                {
+                  "type": "p",
+                  "text": "Tabelul de mai sus este o comparație generală, orientativă. În practică, riscul depinde de fiecare emitent și de fiecare instrument în parte: o obligațiune a unei companii fragile poate fi mai riscantă decât acțiunile unei companii solide."
+                }
+              ]
+            },
+            {
+              "heading": "Tipuri de risc",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "<strong>Riscul de piață</strong> – prețurile scad din cauza unor factori generali, cum ar fi o încetinire economică.",
+                    "<strong>Riscul specific emitentului</strong> – o anumită companie are probleme, de exemplu pierde clienți importanți.",
+                    "<strong>Riscul de credit</strong> – emitentul unei obligațiuni nu plătește cupoanele sau valoarea nominală.",
+                    "<strong>Riscul de lichiditate</strong> – nu găsești cumpărători la un preț rezonabil atunci când vrei să vinzi.",
+                    "<strong>Riscul de dobândă</strong> – creșterea dobânzilor reduce prețul obligațiunilor existente.",
+                    "<strong>Riscul valutar</strong> – dacă investești în altă monedă, variația cursului față de leu îți poate reduce câștigul.",
+                    "<strong>Riscul de inflație</strong> – creșterea prețurilor reduce puterea de cumpărare a banilor câștigați."
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "warning",
+                  "title": "Ferește-te de promisiunile de câștig garantat",
+                  "text": "Orice ofertă care promite randamente mari și „fără risc” trebuie tratată cu mare prudență. Pe piața de capital, câștigurile nu sunt garantate, iar performanța trecută nu garantează rezultatele viitoare."
+                }
+              ]
+            },
+            {
+              "heading": "Inflația și orizontul de timp",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Randamentul afișat al unei investiții este un <strong>randament nominal</strong>. Ceea ce contează cu adevărat pentru puterea ta de cumpărare este <strong>randamentul real</strong>, adică randamentul după ce ții cont de inflație."
+                },
+                {
+                  "type": "formula",
+                  "label": "Randamentul real (aproximare)",
+                  "expr": "Randament real ≈ Randament nominal − Rata inflației",
+                  "note": "Aproximarea funcționează bine pentru valori mici ale inflației și ale randamentului."
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Exemplu ipotetic: efectul inflației",
+                  "text": "Ai 10 000 lei și obții într-un an un randament nominal de 7%, adică 700 lei. Dacă inflația în acel an este de 5%, randamentul real este aproximativ 7% − 5% = 2%. Cu alte cuvinte, deși ai 10 700 lei, puterea ta de cumpărare a crescut doar cu aproximativ 200 lei. Dacă ai fi ținut banii acasă, cei 10 000 lei ar fi pierdut aproximativ 5% din puterea de cumpărare. Cifrele sunt ilustrative."
+                },
+                {
+                  "type": "p",
+                  "text": "<strong>Orizontul de timp</strong> este perioada pentru care poți lăsa banii investiți fără să ai nevoie de ei. Cu cât orizontul este mai lung, cu atât ai mai mult timp să treci peste scăderile temporare ale prețurilor. Banii de care ai nevoie în curând, de exemplu pentru o cheltuială planificată peste câteva luni, sunt de regulă mai potriviți pentru instrumente cu variații mici de valoare."
+                }
+              ]
+            },
+            {
+              "heading": "Diversificarea, pe scurt",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Expresia „nu pune toate ouăle în același coș” rezumă ideea de <strong>diversificare</strong>: împarți banii între mai multe instrumente, emitenți sau sectoare, astfel încât o problemă la unul dintre ei să nu îți afecteze grav întregul portofoliu."
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Exemplu ipotetic: concentrare vs diversificare",
+                  "text": "Maria investește 10 000 lei în acțiunile unei singure companii, care scad cu 40%: pierde 4 000 lei. Radu împarte aceeași sumă în mod egal între 5 emitenți din sectoare diferite, câte 2 000 lei. Dacă una dintre investiții scade cu 40%, iar celelalte patru rămân la aceeași valoare, Radu pierde 800 lei, adică 8% din portofoliu. Cifrele sunt ilustrative."
+                },
+                {
+                  "type": "callout",
+                  "variant": "tip",
+                  "title": "Limitele diversificării",
+                  "text": "Diversificarea reduce riscul specific unui emitent, dar nu elimină riscul de piață: atunci când întreaga piață scade, majoritatea instrumentelor pot scădea simultan."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "Un randament potențial mai mare vine, de regulă, cu un risc mai mare.",
+            "Riscurile principale sunt de piață, specifice emitentului, de credit, de lichiditate, de dobândă, valutar și de inflație.",
+            "Randamentul real se obține, aproximativ, scăzând inflația din randamentul nominal.",
+            "Un orizont de timp mai lung îți oferă mai mult spațiu pentru a trece peste scăderile temporare.",
+            "Diversificarea reduce riscul specific unui emitent, dar nu elimină riscul de piață."
+          ],
+          "quiz": [
+            {
+              "q": "O investiție aduce un randament nominal de 9% într-un an în care inflația este de 6%. Care este, aproximativ, randamentul real?",
+              "options": [
+                "15%",
+                "3%",
+                "6%",
+                "9%"
+              ],
+              "answer": 1,
+              "explanation": "Randamentul real ≈ randament nominal − inflație = 9% − 6% = 3%."
+            },
+            {
+              "q": "Ce tip de risc reduce în principal diversificarea între mai mulți emitenți?",
+              "options": [
+                "Riscul de piață",
+                "Riscul de inflație",
+                "Riscul specific unui emitent"
+              ],
+              "answer": 2,
+              "explanation": "Diversificarea limitează impactul problemelor unei singure companii, dar nu protejează împotriva scăderii generale a pieței sau a inflației."
+            },
+            {
+              "q": "Cineva îți promite un randament foarte mare și complet fără risc. Cum ar trebui să reacționezi, conform relației risc–randament?",
+              "options": [
+                "Cu mare prudență, deoarece randamentele mari implică de regulă riscuri mari",
+                "Să investești imediat, cât oferta este disponibilă",
+                "Să consideri oferta echivalentă cu un depozit bancar",
+                "Să investești toate economiile pentru a maximiza câștigul"
+              ],
+              "answer": 0,
+              "explanation": "Randamentele potențial mari vin, în general, cu riscuri mari; promisiunile de câștig mare garantat sunt un semnal de alarmă."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "BA-103",
+      "title": "Cum deschizi un cont la un broker",
+      "description": "Un ghid practic despre alegerea unui broker, deschiderea contului de investiții și plasarea primelor ordine pe bursă.",
+      "lessons": [
+        {
+          "slug": "alegerea-brokerului",
+          "title": "Alegerea brokerului și deschiderea contului",
+          "summary": "Afli ce trebuie să verifici înainte de a alege un broker și ce pași parcurgi pentru a-ți deschide contul de investiții.",
+          "minutes": 12,
+          "sections": [
+            {
+              "heading": "Rolul brokerului pentru investitorul începător",
+              "blocks": [
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "Brokerul (societatea de investiții)",
+                  "text": "Brokerul este o societate de investiții licențiată care îți oferă acces la piața de capital: îți deschide contul, îți transmite ordinele spre executare, păstrează evidența banilor și a instrumentelor tale financiare și îți raportează operațiunile efectuate."
+                },
+                {
+                  "type": "p",
+                  "text": "Alegerea brokerului este una dintre primele decizii importante ale unui investitor. De ea depind siguranța operațiunilor, costurile pe care le vei plăti și calitatea experienței tale de investiții. Merită să compari mai multe variante înainte de a semna un contract."
+                },
+                {
+                  "type": "p",
+                  "text": "Un aspect important este modul în care sunt păstrați banii și instrumentele financiare ale clienților. Regulile pieței prevăd, în general, că activele clienților trebuie ținute separat de activele proprii ale brokerului. Întreabă cum se aplică această separare și ce rapoarte periodice vei primi despre soldul și deținerile tale."
+                }
+              ]
+            },
+            {
+              "heading": "Ce verifici înainte de a alege",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "<strong>Licența CNPF</strong> – verifică pe site-ul oficial al CNPF că societatea este licențiată pentru activitățile pe care ți le oferă. Nu te baza doar pe afirmațiile din reclame.",
+                    "<strong>Calitatea de membru BIMx</strong> – pentru a cumpăra instrumente listate la Bursa Internațională a Moldovei, brokerul trebuie să fie admis ca membru al bursei. Lista membrilor este publicată pe bimx.md și se completează pe măsură ce brokerii sunt admiși.",
+                    "<strong>Comisioanele și tarifele</strong> – comisionul pe tranzacție, eventualul comision minim, taxele de administrare a contului, taxele pentru depuneri și retrageri.",
+                    "<strong>Piețele și instrumentele disponibile</strong> – pe ce piețe poți tranzacționa și ce tipuri de instrumente îți sunt accesibile.",
+                    "<strong>Platforma și modul de transmitere a ordinelor</strong> – platformă online, aplicație mobilă, telefon sau prezență fizică la sediu.",
+                    "<strong>Transparența informațiilor</strong> – contractul, lista de tarife și informările despre riscuri trebuie să fie clare și ușor de găsit.",
+                    "<strong>Serviciul pentru clienți</strong> – cât de ușor obții răspunsuri, în ce limbă și prin ce canale."
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Exemplu ipotetic: compararea comisioanelor",
+                  "text": "Vrei să faci o tranzacție de 5 000 lei. Brokerul A percepe 0,6% din valoare, dar minimum 50 lei. Brokerul B percepe 0,4%, dar minimum 40 lei. La A, 0,6% din 5 000 lei înseamnă 30 lei, dar se aplică minimul, deci plătești 50 lei. La B, 0,4% înseamnă 20 lei, dar se aplică minimul de 40 lei. Pentru o tranzacție de 50 000 lei, A ar costa 300 lei, iar B 200 lei. Cifrele sunt ilustrative și nu reflectă tarifele unui broker real."
+                },
+                {
+                  "type": "callout",
+                  "variant": "tip",
+                  "title": "Doar prin membrii bursei",
+                  "text": "Admiterea brokerilor la BIMx a început la 28 septembrie 2026. O licență CNPF nu înseamnă automat acces la BIMx: întreabă brokerul dacă este deja membru al bursei sau în ce etapă a admiterii se află."
+                },
+                {
+                  "type": "callout",
+                  "variant": "warning",
+                  "title": "Atenție la entitățile nelicențiate",
+                  "text": "Evită persoanele sau platformele care te contactează nesolicitat, îți promit câștiguri garantate sau îți cer să transferi bani în conturi personale. Verifică întotdeauna licența la CNPF înainte de a transfera orice sumă."
+                }
+              ]
+            },
+            {
+              "heading": "Pașii pentru deschiderea contului",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Procedura concretă diferă de la un broker la altul, dar, în linii mari, deschiderea unui cont de investiții presupune următorii pași:"
+                },
+                {
+                  "type": "steps",
+                  "items": [
+                    {
+                      "title": "Identificarea",
+                      "text": "Prezinți un act de identitate valabil, iar brokerul îți verifică identitatea, conform regulilor de cunoaștere a clientului și de prevenire a spălării banilor."
+                    },
+                    {
+                      "title": "Completarea informațiilor personale",
+                      "text": "Oferi date de contact, informații despre sursa fondurilor și, la cererea brokerului, alte documente justificative."
+                    },
+                    {
+                      "title": "Evaluarea profilului de investitor",
+                      "text": "Răspunzi la un chestionar despre cunoștințele, experiența, situația financiară și obiectivele tale de investiții."
+                    },
+                    {
+                      "title": "Semnarea contractului",
+                      "text": "Citești cu atenție contractul, lista de tarife și informarea privind riscurile, apoi semnezi."
+                    },
+                    {
+                      "title": "Alimentarea contului",
+                      "text": "Transferi bani în contul indicat de broker, de regulă printr-un transfer bancar dintr-un cont deschis pe numele tău."
+                    },
+                    {
+                      "title": "Accesul la platformă",
+                      "text": "Primești datele de acces și poți urmări soldul, deținerile și, ulterior, transmite ordine."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "heading": "Profilul de investitor: de ce contează",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Chestionarul de profil nu este o simplă formalitate. El ajută brokerul să înțeleagă dacă anumite instrumente sau servicii sunt potrivite pentru tine și te ajută și pe tine să reflectezi asupra propriilor obiective și asupra toleranței la risc."
+                },
+                {
+                  "type": "table",
+                  "headers": [
+                    "Întrebare de profil",
+                    "De ce este importantă"
+                  ],
+                  "rows": [
+                    [
+                      "Care este obiectivul investiției?",
+                      "Economisirea pe termen lung și câștigul rapid presupun abordări diferite"
+                    ],
+                    [
+                      "Care este orizontul de timp?",
+                      "Banii de care ai nevoie curând nu ar trebui expuși unor variații mari"
+                    ],
+                    [
+                      "Ce experiență ai?",
+                      "Instrumentele complexe cer cunoștințe suplimentare"
+                    ],
+                    [
+                      "Cât de mult ai putea pierde fără să îți afectezi traiul?",
+                      "Arată capacitatea reală de a suporta pierderi"
+                    ]
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "tip",
+                  "title": "Răspunde sincer",
+                  "text": "Nu „înfrumuseța” răspunsurile pentru a avea acces la mai multe instrumente. Un profil corect te protejează. Investește doar bani de care nu ai nevoie pe termen scurt și păstrează separat un fond pentru urgențe."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "Brokerul este societatea de investiții licențiată prin care accesezi piața de capital.",
+            "Înainte de a alege, verifică licența pe site-ul CNPF, comisioanele, platforma și transparența informațiilor.",
+            "Pentru instrumentele listate la BIMx, alege un broker admis ca membru al bursei; lista membrilor este pe bimx.md.",
+            "Compară costurile pentru sumele pe care intenționezi să le tranzacționezi, ținând cont și de comisioanele minime.",
+            "Deschiderea contului include identificarea, evaluarea profilului de investitor, semnarea contractului și alimentarea contului.",
+            "Completează sincer profilul de investitor; el te ajută să eviți instrumentele nepotrivite."
+          ],
+          "quiz": [
+            {
+              "q": "Care este cel mai sigur mod de a verifica dacă un broker are dreptul să activeze pe piața de capital din Republica Moldova?",
+              "options": [
+                "Citești recenziile de pe rețelele sociale",
+                "Verifici informațiile publicate pe site-ul oficial al CNPF",
+                "Întrebi agentul care te-a sunat",
+                "Te uiți dacă are o reclamă la televizor"
+              ],
+              "answer": 1,
+              "explanation": "CNPF acordă licențele pe piața de capital, așa că informațiile oficiale ale CNPF sunt sursa de verificare potrivită."
+            },
+            {
+              "q": "Un broker percepe 0,5% din valoarea tranzacției, dar minimum 40 lei. Cât plătești pentru o tranzacție de 6 000 lei?",
+              "options": [
+                "30 lei",
+                "70 lei",
+                "40 lei"
+              ],
+              "answer": 2,
+              "explanation": "0,5% din 6 000 lei înseamnă 30 lei, care este sub minimul de 40 lei, deci se aplică comisionul minim de 40 lei."
+            },
+            {
+              "q": "Care este scopul principal al chestionarului de profil de investitor?",
+              "options": [
+                "Să stabilească valoarea comisioanelor",
+                "Să garanteze un anumit randament",
+                "Să înlocuiască actul de identitate",
+                "Să evalueze dacă instrumentele și serviciile sunt potrivite pentru client"
+              ],
+              "answer": 3,
+              "explanation": "Chestionarul evaluează cunoștințele, experiența, situația financiară și obiectivele clientului, pentru a stabili ce este potrivit pentru el."
+            }
+          ]
+        },
+        {
+          "slug": "tipuri-de-ordine",
+          "title": "Tipuri de ordine și prima tranzacție",
+          "summary": "Înveți diferența dintre ordinele la piață, limită și stop și parcurgi pas cu pas o primă tranzacție, cu toate costurile.",
+          "minutes": 14,
+          "sections": [
+            {
+              "heading": "Ce este un ordin",
+              "blocks": [
+                {
+                  "type": "callout",
+                  "variant": "definition",
+                  "title": "Ordinul de bursă",
+                  "text": "Ordinul este instrucțiunea pe care o dai brokerului pentru a cumpăra sau a vinde un instrument financiar. Un ordin specifică, de regulă, <strong>instrumentul</strong>, <strong>sensul</strong> (cumpărare sau vânzare), <strong>cantitatea</strong>, <strong>tipul ordinului</strong>, eventual <strong>prețul</strong> și <strong>perioada de valabilitate</strong>."
+                },
+                {
+                  "type": "p",
+                  "text": "Tipul de ordin ales determină cât control ai asupra prețului și cât de sigur este că ordinul va fi executat. Nu există un tip de ordin „cel mai bun” în toate situațiile; fiecare are avantaje și limite. Tipurile de ordine disponibile pot diferi în funcție de piață și de broker."
+                }
+              ]
+            },
+            {
+              "heading": "Principalele tipuri de ordine",
+              "blocks": [
+                {
+                  "type": "table",
+                  "headers": [
+                    "Tip de ordin",
+                    "Cum funcționează",
+                    "Avantaj",
+                    "Limită"
+                  ],
+                  "rows": [
+                    [
+                      "Ordin la piață",
+                      "Se execută imediat, la cele mai bune prețuri disponibile în registru",
+                      "Execuție rapidă, dacă există contrapartidă",
+                      "Nu controlezi prețul final, mai ales pe instrumente puțin lichide"
+                    ],
+                    [
+                      "Ordin limită",
+                      "Cumperi la un preț cel mult egal cu limita sau vinzi la un preț cel puțin egal cu limita",
+                      "Controlezi prețul",
+                      "Ordinul poate rămâne neexecutat sau executat parțial"
+                    ],
+                    [
+                      "Ordin stop",
+                      "Se activează când prețul atinge un nivel stabilit (preț de declanșare) și devine ordin de piață sau limită, după caz",
+                      "Poate limita pierderile sau automatiza o decizie",
+                      "După activare, prețul de execuție poate fi diferit de nivelul stop"
+                    ]
+                  ]
+                },
+                {
+                  "type": "p",
+                  "text": "Un exemplu frecvent de ordin stop este ordinul <em>stop-loss</em>: deții acțiuni cumpărate la 50 lei și setezi un ordin de vânzare cu declanșare la 45 lei. Dacă prețul coboară la 45 lei, ordinul se activează și încearcă să vândă, limitând pierderea. Pe o piață cu variații bruște, vânzarea se poate face însă sub 45 lei."
+                },
+                {
+                  "type": "callout",
+                  "variant": "tip",
+                  "title": "Ordinul limită, un prieten al începătorului",
+                  "text": "Pe instrumentele cu puține ordine în registru și spread mare, un ordin limită te protejează de surpriza unei execuții la un preț mult diferit de cel la care te așteptai."
+                }
+              ]
+            },
+            {
+              "heading": "Prima tranzacție, pas cu pas",
+              "blocks": [
+                {
+                  "type": "steps",
+                  "items": [
+                    {
+                      "title": "Verifică soldul disponibil",
+                      "text": "Asigură-te că ai în cont suficienți bani pentru valoarea tranzacției plus comisioane."
+                    },
+                    {
+                      "title": "Analizează instrumentul și registrul de ordine",
+                      "text": "Citește informațiile publicate de emitent, uită-te la prețurile de cerere și de ofertă și la cantitățile disponibile."
+                    },
+                    {
+                      "title": "Alege tipul de ordin, prețul și cantitatea",
+                      "text": "Decide dacă folosești un ordin la piață sau un ordin limită și stabilește perioada de valabilitate."
+                    },
+                    {
+                      "title": "Verifică și transmite ordinul",
+                      "text": "Recitește toate detaliile, mai ales sensul (cumpărare/vânzare), cantitatea și prețul, apoi confirmă."
+                    },
+                    {
+                      "title": "Urmărește execuția și confirmarea",
+                      "text": "Verifică dacă ordinul a fost executat total, parțial sau deloc și păstrează confirmarea primită de la broker."
+                    },
+                    {
+                      "title": "Așteaptă decontarea",
+                      "text": "După decontare, instrumentele sunt înregistrate pe numele tău în evidența depozitarului central."
+                    }
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "example",
+                  "title": "Exemplu ipotetic: cumpărare cu ordin limită, cu toate costurile",
+                  "text": "Andrei are 10 000 lei în cont. În registru, cel mai bun preț de ofertă este 31,00 lei, iar cel mai bun preț de cerere este 30,40 lei. Andrei plasează un ordin limită de cumpărare pentru 300 de acțiuni la maximum 30,80 lei. Ordinul nu se execută imediat. Mai târziu, un vânzător acceptă 30,80 lei, iar ordinul se execută integral. Valoarea tranzacției: 300 × 30,80 = 9 240 lei. Comision ilustrativ de 0,5%: 46,20 lei. Cost total: <strong>9 286,20 lei</strong>. Sold rămas: 713,80 lei. Pentru ca operațiunea să fie profitabilă după comisioane, prețul trebuie să crească suficient încât să acopere și comisionul de vânzare. Cifrele sunt ilustrative."
+                }
+              ]
+            },
+            {
+              "heading": "Calculul costurilor și al pragului de rentabilitate",
+              "blocks": [
+                {
+                  "type": "formula",
+                  "label": "Costul total al unei cumpărări",
+                  "expr": "Cost total = Cantitate × Preț de execuție + Comisioane și taxe",
+                  "note": "Verifică în lista de tarife a brokerului toate costurile aplicabile, inclusiv eventualele comisioane minime."
+                },
+                {
+                  "type": "p",
+                  "text": "Continuând exemplul, dacă Andrei ar vinde ulterior cele 300 de acțiuni la 31,50 lei, ar încasa 9 450 lei, din care se scade un comision de vânzare ilustrativ de 0,5%, adică 47,25 lei. Suma netă: 9 402,75 lei. Câștigul net: 9 402,75 − 9 286,20 = <strong>116,55 lei</strong>, înainte de impozite. Fără comisioane, câștigul ar fi fost 210 lei; costurile au redus rezultatul cu aproape jumătate."
+                },
+                {
+                  "type": "callout",
+                  "variant": "warning",
+                  "title": "Greșeli frecvente la primele ordine",
+                  "text": "Printre cele mai des întâlnite greșeli se numără: confuzia între cumpărare și vânzare, o cifră greșită la cantitate sau preț, folosirea ordinului la piață pe un instrument cu spread mare și ignorarea comisioanelor la tranzacțiile mici. Verifică de două ori înainte de confirmare. Informațiile au scop educațional și nu reprezintă recomandări de investiții."
+                }
+              ]
+            }
+          ],
+          "takeaways": [
+            "Un ordin specifică instrumentul, sensul, cantitatea, tipul, eventual prețul și valabilitatea.",
+            "Ordinul la piață oferă execuție rapidă, dar nu controlează prețul; ordinul limită controlează prețul, dar poate rămâne neexecutat.",
+            "Ordinul stop se activează la atingerea unui preț de declanșare și poate fi folosit pentru a limita pierderile, fără a garanta prețul de execuție.",
+            "Costul total al unei tranzacții include comisioanele, care reduc câștigul net, mai ales la sumele mici.",
+            "Verifică atent fiecare ordin înainte de transmitere și păstrează confirmările de la broker."
+          ],
+          "quiz": [
+            {
+              "q": "Vrei să cumperi acțiuni, dar nu vrei să plătești mai mult de 25 lei pe acțiune. Ce tip de ordin se potrivește cel mai bine?",
+              "options": [
+                "Ordin la piață",
+                "Ordin stop de vânzare",
+                "Ordin limită de cumpărare la 25 lei"
+              ],
+              "answer": 2,
+              "explanation": "Ordinul limită de cumpărare se execută doar la un preț cel mult egal cu limita stabilită, adică 25 lei sau mai puțin."
+            },
+            {
+              "q": "Cumperi 200 de acțiuni la 15 lei, iar brokerul percepe un comision ilustrativ de 0,5%. Care este costul total?",
+              "options": [
+                "3 015 lei",
+                "3 000 lei",
+                "3 150 lei",
+                "2 985 lei"
+              ],
+              "answer": 0,
+              "explanation": "Valoarea tranzacției este 200 × 15 = 3 000 lei; comisionul este 3 000 × 0,5% = 15 lei; costul total este 3 015 lei."
+            },
+            {
+              "q": "Care afirmație despre ordinul stop-loss este corectă?",
+              "options": [
+                "Garantează vânzarea exact la prețul de declanșare",
+                "Se activează la atingerea prețului de declanșare, dar execuția poate avea loc la un preț diferit",
+                "Se execută doar dacă prețul crește",
+                "Anulează automat toate celelalte ordine din cont"
+              ],
+              "answer": 1,
+              "explanation": "Ordinul stop se activează la atingerea nivelului stabilit; pe o piață cu variații bruște, execuția poate avea loc la un preț mai slab decât nivelul stop."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
