@@ -11,6 +11,7 @@ import crypto from 'node:crypto';
 import { resolve, link as rel, splitLang } from '../src/lib/links.mjs';
 import { renderPage, altTarget } from '../src/lib/shell.mjs';
 import { renderRedirect } from '../src/lib/redirects.mjs';
+import { seoBlock, seoIndex, isIndexable } from '../src/lib/seo.mjs';
 
 const BASE = path.resolve(process.argv[2] || '../../baseline-dist');
 const OUT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
@@ -169,8 +170,35 @@ for (const [key, map] of Object.entries(clusters)) {
   for (const p of pages) if (p.lang === lang && p.parts[seg] === name) p.parts[seg] = seg;
 }
 
+// SEO: derive the page fields from the old tags; keep the raw tags only where the generator cannot reproduce them
+for (const p of pages) {
+  const robots = /<meta name="robots" content="([^"]*)">/.exec(p.seo ?? '');
+  if (robots && robots[1].includes('noindex') && isIndexable(p)) p.noindex = true;
+}
+const index = seoIndex(pages);
+let rawSeo = 0;
+for (const p of pages) {
+  const raw = p.seo ?? '';
+  delete p.seo;
+  if (seoBlock(p, index) === raw) continue;
+  const img = /og:image" content="([^"]*)">\n<meta property="og:image:width" content="(\d+)">\n<meta property="og:image:height" content="(\d+)">\n<meta property="og:image:alt" content="([^"]*)">/.exec(raw);
+  if (img) {
+    p.ogImage = { url: img[1], width: Number(img[2]), height: Number(img[3]), alt: img[4].replace(/&quot;/g, '"').replace(/&#x27;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&') };
+    if (seoBlock(p, index) === raw) continue;
+    delete p.ogImage;
+  }
+  p.seoRaw = raw;
+  rawSeo++;
+  if (rawSeo <= 3 && p.inner !== '404.html') {
+    const got = seoBlock({ ...p, seoRaw: undefined }, index);
+    let k = 0; while (got[k] === raw[k]) k++;
+    console.error(`SEO differs: ${p.route} @${k}\n  got: ${JSON.stringify(got.slice(k - 60, k + 100))}\n  exp: ${JSON.stringify(raw.slice(k - 60, k + 100))}`);
+  }
+}
+console.log(`SEO tags kept as they are on ${rawSeo} pages`);
+
 // round trip
-const shell = { templates, menu: menus };
+const shell = { templates, menu: menus, seoIndex: index };
 let bad = 0;
 for (const p of pages) {
   const out = renderPage(p, shell);
@@ -193,7 +221,7 @@ for (const [key, text] of Object.entries(templates)) {
 }
 for (const [lang, m] of Object.entries(menus)) fs.writeFileSync(path.join(SHELL_DIR, lang, 'menu.json'), JSON.stringify(m, null, 2) + '\n');
 
-const FIELDS = ['route', 'parts', 'title', 'description', 'wpPost', 'wpContainer', 'bodyAttrs', 'seo'];
+const FIELDS = ['route', 'parts', 'title', 'description', 'noindex', 'ogImage', 'wpPost', 'wpContainer', 'bodyAttrs', 'seoRaw'];
 for (const p of pages) {
   const f = path.join(PAGES_DIR, p.lang, p.inner === '' || p.inner.endsWith('/') ? `${p.inner}index.html` : p.inner);
   fs.mkdirSync(path.dirname(f), { recursive: true });

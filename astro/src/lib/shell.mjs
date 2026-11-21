@@ -10,6 +10,7 @@
 // The same functions are used by the import script (round-trip check) and by the Astro page.
 import { LANG_PREFIX, link } from './links.mjs';
 import { buildMenu } from './menu.mjs';
+import { seoBlock } from './seo.mjs';
 
 export function altTarget(page, lang) {
   return '/' + LANG_PREFIX[lang] + page.inner;
@@ -26,6 +27,7 @@ export function fill(template, page, ctx) {
       // 404.html is built from the home page and keeps its logo state
       case 'home': return page.inner === '' || page.inner === '404.html' ? ' aria-current="page"' : '';
       case 'menu': return buildMenu(page, ctx.menu);
+      case 'seo': return seoBlock(page, ctx.seoIndex);
       case 'wpPost': return page.wpPost ? `-p${page.wpPost}` : '';
       case 'wpContainer': return page.wpContainer || '0';
       default: return page[field] ?? '';
@@ -38,7 +40,7 @@ export function renderPage(page, shell) {
   const t = (seg) => {
     const tpl = shell.templates[`${page.lang}/${page.parts[seg]}`];
     if (tpl === undefined) throw new Error(`Missing shell template ${page.lang}/${page.parts[seg]} for ${page.route}`);
-    return fill(tpl, page, { menu: shell.menu[page.lang] });
+    return fill(tpl, page, { menu: shell.menu[page.lang], seoIndex: shell.seoIndex });
   };
   return t('open') + t('head') + '</head>' + t('mid') + '<body' + page.bodyAttrs + '>' + t('pre')
     + t('header') + page.body + t('footer') + t('tail');

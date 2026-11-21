@@ -1,5 +1,6 @@
 // Loads the site sources for the Astro build: page bodies with their fields, shell templates and menus.
 import { splitLang } from './links.mjs';
+import { seoIndex } from './seo.mjs';
 
 const pageFiles = import.meta.glob('/src/content/pages/**/*.html', { query: '?raw', import: 'default', eager: true });
 const shellFiles = import.meta.glob('/src/shell/**/*.html', { query: '?raw', import: 'default', eager: true });
@@ -27,5 +28,7 @@ export const shell = {
   templates: Object.fromEntries(Object.entries(shellFiles).map(([f, t]) => [f.replace('/src/shell/', '').replace(/\.html$/, ''), t])),
   menu: Object.fromEntries(Object.entries(menuFiles).map(([f, m]) => [f.split('/')[3], m])),
 };
+
+shell.seoIndex = seoIndex(pages);
 
 export const redirects = redirectList;
